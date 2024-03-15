@@ -1,0 +1,50 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="SelectionMode"-->
+			<title>Unity Script Reference &ndash; SelectionMode</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>enum SelectionMode</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="enum SelectionMode" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> SelectionMode can be used to tweak the selection returned by <a href="Selection.html#GetTransforms" class="itemlink">Selection.GetTransforms</a>.</p>
+<span class='toc'><p class='tocheader'>Values</p><p><a href='#Unfiltered'>Unfiltered</a></p>
+<p><a href='#TopLevel'>TopLevel</a></p>
+<p><a href='#Deep'>Deep</a></p>
+<p><a href='#ExcludePrefab'>ExcludePrefab</a></p>
+<p><a href='#Editable'>Editable</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> The default transform selection mode is: <a href="SelectionMode.html#TopLevel" class="itemlink">SelectionMode.TopLevel</a> | <a href="SelectionMode.html#ExcludePrefab" class="itemlink">SelectionMode.ExcludePrefab</a> | <a href="SelectionMode.html#OnlyUserModifyable" class="itemlink">SelectionMode.OnlyUserModifyable</a></p>
+   <a name="Values"></a><h2 class="script-section">Values</h2>
+	<a name="Unfiltered"></a><h3><span class="full-name">SelectionMode.</span>Unfiltered</h3><div class="synopsis"></div>
+   <p class='details'> The actual selection</p>
+	<a name="TopLevel"></a><h3><span class="full-name">SelectionMode.</span>TopLevel</h3><div class="synopsis"></div>
+   <p class='details'> Only return the top most selected transform. A selected child of another transform which is also selected will be filtered out.</p>
+	<a name="Deep"></a><h3><span class="full-name">SelectionMode.</span>Deep</h3><div class="synopsis"></div>
+   <p class='details'> Also Returns all child transforms of the selection</p>
+	<a name="ExcludePrefab"></a><h3><span class="full-name">SelectionMode.</span>ExcludePrefab</h3><div class="synopsis"></div>
+   <p class='details'> Excludes any prefabs from the selection</p>
+	<a name="Editable"></a><h3><span class="full-name">SelectionMode.</span>Editable</h3><div class="synopsis"></div>
+   <p class='details'> Excludes any objects which shall not be modified. 
+Eg. This will filter generated prefabs from an fbx file but not normal prefabs.</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

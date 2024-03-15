@@ -1,0 +1,259 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Quality Settings</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Quality Settings</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-ManagerGroup.html">Settings Managers</a> &gt; <a href="../Components/class-QualitySettings.html">Quality Settings</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><a href='../ScriptReference/QualitySettings.html' title='Go to QualitySettings Scripting Doc'>Switch to Scripting</a><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Quality Settings</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Unity allows you to set the level of graphical quality it will attempt to render. Generally speaking, quality comes at the expense of framerate and so it may be best not to aim for the highest quality on mobile devices or older hardware since it will have a detrimental effect on gameplay. The <span class='doc-keyword'>Quality Settings</span> inspector (menu: <span class='doc-menu'>Edit-&gt;Project Settings-&gt;Quality</span>) is split into two main areas. At the top, there is the following matrix:-
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-QualitySettings-0.jpg' /></div>
+<p class='vspace'>Unity lets you assign a name to a given combination of quality options for easy reference. The rows of the matrix let you choose which of the different platforms each quality level will apply to. The Default row at the bottom of the matrix is not a quality level in itself but rather sets the default quality level used for each platform (a green checkbox in a column denotes the level currently chosen for that platform). Unity comes with six quality levels pre-enabled but you can add your own levels using the button below the matrix. You can use the trashcan icon (the rightmost column) to delete an unwanted quality level.
+</p>
+<p class='vspace'>You can click on the name of a quality level to select it for editing, which is done in the panel below the settings matrix:-
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-QualitySettings-1.jpg' /></div>
+<p class='vspace'>The quality options you can choose for a quality level are as follows:-
+</p><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td >Name</td><td >The name that will be used to refer to this quality level</td></tr>
+<tr ><td ><span class='doc-prop'>Pixel Light Count</span></td><td >The maximum number of pixel lights when Forward Rendering is used.</td></tr>
+<tr ><td ><span class='doc-prop'>Texture Quality</span></td><td >This lets you choose whether to display textures at maximum resolution or at a fraction of this (lower resolution has less processing overhead). The options are <b>Full Res</b>, <b>Half Res</b>, <b>Quarter Res</b> and <b>Eighth Res</b>.</td></tr>
+<tr ><td ><span class='doc-prop'>Anisotropic Textures</span></td><td >This enables if and how anisotropic textures will be used.</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Disabled</span></span></td><td >Anisotropic textures are not used.</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Per Texture</span></span></td><td >Anisotropic rendering will be enabled separately for each Texture.</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Forced On</span></span></td><td >Anisotropic textures are always used.</td></tr>
+<tr ><td ><span class='doc-prop'>AntiAliasing</span></td><td >This sets the level of antialiasing that will be used. The options are <b>2x</b>, <b>4x</b> and <b>8x</b> multi-sampling.</td></tr>
+<tr ><td ><span class='doc-prop'>Soft Particles</span></td><td >Should soft blending be used for particles?</td></tr>
+<tr ><td ><span class='doc-prop'>Shadows</span></td><td >This determines which type of shadows should be used</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Hard and Soft Shadows</span></span></td><td >Both hard and soft shadows will be rendered.</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Hard Shadows Only</span></span></td><td >Only hard shadows will be rendered.</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Disable Shadows</span></span></td><td >No shadows will be rendered.</td></tr>
+<tr ><td ><span class='doc-prop'>Shadow resolution</span></td><td >Shadows can be rendered at several different resolutions: <b>Low</b>, <b>Medium</b>, <b>High</b> and <b>Very High</b>. The higher the resolution, the greater the processing overhead.</td></tr>
+<tr ><td ><span class='doc-prop'>Shadow Projection</span></td><td >There are two different methods for projecting shadows from a directional light. <b>Close Fit</b> renders higher resolution shadows but they can sometimes wobble slightly if the camera moves. <b>Stable Fit</b> renders lower resolution shadows but they don't wobble with camera movements.</td></tr>
+<tr ><td ><span class='doc-prop'>Shadow Cascades</span></td><td >The number of shadow cascades can be set to zero, two or four. A higher number of cascades gives better quality but at the expense of processing overhead (see the Directional Shadows page for further details).</td></tr>
+<tr ><td ><span class='doc-prop'>Shadow Distance</span></td><td >The maximum distance from camera at which shadows will be visible. Shadows that fall beyond this distance will not be rendered.</td></tr>
+<tr ><td ><span class='doc-prop'>Blend Weights</span></td><td >The number of bones that can affect a given vertex during an animation. The available options are one, two or four bones.</td></tr>
+<tr ><td ><span class='doc-prop'>VSync Count</span></td><td >Rendering can be synchronised with the refresh rate of the display device to avoid "tearing" artifacts (see below). You can choose to synchronise with every vertical blank (VBlank), every second vertical blank or not to synchronise at all.</td></tr>
+<tr ><td ><span class='doc-prop'>LOD Bias</span></td><td >LOD levels are chosen based on the onscreen size of an object. When the size is between two LOD levels, the choice can be biased toward the less detailed or more detailed of the two models available. This is set as a fraction from 0 to 1 - the closer it is to zero, the more the bias is toward the less detailed model.</td></tr>
+<tr ><td ><span class='doc-prop'>Maximum LOD Level</span></td><td >The highest LOD that will be used by the game. Models which have a LOD above this level will not be used and omitted from the build (which will save storage and memory space).</td></tr>
+</table>
+<div class='vspace'></div><h2>Tearing</h2>
+<p>The picture on the display device is not continuously updated but rather the updates happen at regular intervals much like frame updates in Unity. However, Unity's updates are not necessarily synchronised with those of the display, so it is possible for Unity to issue a new frame while the display is still rendering the previous one. This will result in a visual artifact called "tearing" at the position onscreen where the frame change occurs.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-QualitySettings-2.jpg' /><br /><em>Simulated example of tearing. The shift in the picture is clearly visible in the magnified portion.</em></div>
+<p class='vspace'>It is possible to set Unity to switch frames only during the period where the display device is not updating, the so-called "vertical blank". The VSync option on the Quality Settings synchronises frame switches with the device's vertical blank or optionally with every other vertical blank. The latter may be useful if the game requires more than one device update to complete the rendering of a frame.
+</p>
+<p class='vspace'><a name='fsaa' id='fsaa'></a>
+</p><h3>Anti-aliasing</h3>
+<p>Anti aliasing improves the appearance of polygon edges, so they are not "jagged", but smoothed out on the screen. However, it incurs a performance cost for the graphics card and uses more video memory (there's no cost on the CPU though). The level of anti-aliasing determines how smooth polygon edges are (and how much video memory does it consume).
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-QualitySettings-3.jpg' /> <br /><em>Without anti-aliasing, polygon edges are "jagged".</em></div>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-QualitySettings-4.jpg' /> <br /><em>With 6x anti-aliasing, polygon edges are smoothed out.</em></div>
+</p><small>Page last updated: 2012-01-24</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

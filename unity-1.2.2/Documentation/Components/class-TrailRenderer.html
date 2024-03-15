@@ -1,0 +1,63 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title=" Trail Renderer"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title=" Trail Renderer" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-ParticlesGroup.html%22%3EParticle%20systems%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-TrailRenderer.html%22%3E%20Trail%20Renderer%3C%2Fa%3E" navigation="%3Ca%20href%3D%22class-WorldParticleCollider.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22class-ParticleRenderer.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1> Trail Renderer</h1>
+		<p><a href="index.html">Components</a> &gt; <a href="comp-ParticlesGroup.html">Particle systems</a> &gt; <a href="class-TrailRenderer.html"> Trail Renderer</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="class-WorldParticleCollider.html"><img src="../images/prev.png"></a><a href="class-ParticleRenderer.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+<p>The Trail renderer is used to make trails behind objects in the scene as they move about.
+</p>
+
+<h2> Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Materials</nobr></b></td><td> First element of this array is used for rendering the object. Particle shaders make most sense in this context.
+</td></tr><tr><td><b><nobr>Time</nobr></b></td><td> Length of the trail, measured in seconds.
+</td></tr><tr><td><b><nobr>Start Width</nobr></b></td><td> Width of the trail at the object's place.
+</td></tr><tr><td><b><nobr>End Width</nobr></b></td><td> Width of the trail at the end.
+</td></tr><tr><td><b><nobr>Colors</nobr></b></td><td> Array of colors to use over the length of the trail.
+</td></tr><tr><td><b><nobr>AutoDestruct</nobr></b></td><td> Enable this to make the object be destroyed when the object hasn't moved for <b>Time</b> seconds
+<p></td></tr></tr></table>
+</p>
+
+<h2> Details</h2>
+<p>The TrailRenderer is great for a trail behind a missile, or contrails from the tip of a plane's wings. It is good to add a general feeling of speed.
+</p>
+
+<p>When using a TrailRenderer, no other filters in the Pipeline are used.
+</p>
+
+<h2> Hints</h2>
+<p>{HINT ()}
+Use particle materials with the Trail Renderer.
+{HINT}
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

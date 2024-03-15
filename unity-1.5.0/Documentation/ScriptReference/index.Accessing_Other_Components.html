@@ -1,0 +1,58 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Scripting - An Overview.Accessing Other Components"-->
+			<title>Unity Script Reference &ndash; Scripting - An Overview.Accessing Other Components</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<script language="JavaScript" src="UnityDoc.js"></script>
+<body>
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>Accessing Other Components</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+	<!-- #TemplateEndEditable -->
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="Accessing Other Components" path="" navigation="" --><!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-top.lbi" --><!-- #EndLibraryItem --><div class="left-menu-container"><ul class="left-menu"><li><span class="left-menu-heading">Menu</span></li><li><a class="left-menu-item" href="index.html">Overview</a></li><li><a class="left-menu-item" href="20_class_hierarchy.html">Class Hierarchy</a></li><li><a class="left-menu-item" href="10_reference.html">Reference</a></li><li><span class="left-menu-seperator"></span></li><li><a class="left-menu-heading" href="index.html">Scripting - An Overview</a></li><li><a class="left-menu-item" href="index.Common_Operations.html">Common Operations</a></li><li><a class="left-menu-item" href="index.Keeping_Track_of_Time.html">Keeping Track of Time</a></li><li><span class="left-menu-item left-menu-current">Accessing Other Components</span></li><li><a class="left-menu-item" href="index.Accessing_Other_Game_Objects.html">Accessing Other Game Objects</a></li><li><a class="left-menu-item" href="index.Vectors.html">Vectors</a></li><li><a class="left-menu-item" href="index.Member_Variables.html">Member Variables</a></li><li><a class="left-menu-item" href="index.Instantiate.html">Instantiate</a></li><li><a class="left-menu-item" href="index.Coroutines_or_the_Yield_Statement.html">Coroutines or the Yield Statement</a></li><li><a class="left-menu-item" href="index.Writing_Scripts_in_Csharp_or_Boo.html">Writing Scripts in C# or Boo</a></li><li><a class="left-menu-item" href="index.The_most_important_classes.html">The most important classes</a></li><li><a class="left-menu-item" href="index.Script_compilation_28Advanced29.html">Script compilation (Advanced)</a></li></ul></div>
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-middle.lbi" --><!-- #EndLibraryItem --><div class="pre-next-link"><b>Previous:</b> <a href="index.Keeping_Track_of_Time.html">Keeping Track of Time</a> <b>Next:</b> <a href="index.Accessing_Other_Game_Objects.html">Accessing Other Game Objects</a></div>
+   <p class="basic"> Components are attached to game objects. Attaching a <a href="Renderer.html" class="classlink">Renderer</a> component to a game object is what makes it render on the screen, attaching a <a href="Camera.html" class="classlink">Camera</a> turns it into a camera object. All scripts that can be attached to an object are also components.
+</p><p class="basic">
+The most common components are accessible as simple member variables:
+<table style="margin-left: 10 px;">
+<tr><th style="">&#67;omponent</th><th>Accessible as</ht></tr>
+<tr><td><a href="Transform.html" class="classlink">Transform</a></td><td>transform</td></tr>
+<tr><td><a href="Rigidbody.html" class="classlink">Rigidbody</a></td><td>rigidbody</td></tr>
+<tr><td><a href="Renderer.html" class="classlink">Renderer</a></td><td>renderer</td></tr>
+<tr><td><a href="Camera.html" class="classlink">Camera</a></td><td>camera (only on camera objects)</td></tr>
+<tr><td><a href="Light.html" class="classlink">Light</a></td><td>light (only on light objects)</td></tr>
+<tr><td><a href="Animation.html" class="classlink">Animation</a></td><td>animation</td></tr>
+<tr><td><a href="Collider.html" class="classlink">Collider</a></td><td>collider</td></tr>
+<tr><td colspan="2">... etc.</td></tr>
+</table>
+</p><p class="basic">
+For the full list of predefined member variables see the documentation for the <a href="Component.html" class="classlink">Component</a>, <a href="Behaviour.html" class="classlink">Behaviour</a> and <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a> classes. If the game object does not have a component of the type you wish to fetch, the above variables will be set to <span class="variable">null</span>.
+</p><p class="basic">
+In order to access another component that is not directly accessible through a member variable (like another script attached to the same game object), you can use the <a href="Component.GetComponent.html?from=index" class="itemlink">GetComponent</a> function like this:
+	</p><div class="code">var otherScript : OtherScript;<br/>otherScript = <a href="Component.GetComponent.html?from=index" class="itemlink">GetComponent</a>(OtherScript);
+</div><p class="basic">
+Note that the first line in the above example explicitly defines the type of the variable otherScript using the <em>... : typename</em> construct. This is because the type of the variable would otherwise be set to the return type of <span class="variable">GetComponent</span>.
+</p><p class="basic">
+</p>
+	
+	</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

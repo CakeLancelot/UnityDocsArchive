@@ -1,0 +1,247 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Lights</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Lights</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Building Scenes.html">Building Scenes</a> &gt; <a href="../Manual/Lights.html">Lights</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Lights</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><span class='doc-keyword'>Lights</span> are an essential part of every scene.  While meshes and textures define the shape and look of a scene, lights define the color and mood of your 3D environment. You'll likely work with more than one light in each scene.  Making them work together requires a little practice but the results can be quite amazing.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Lights-0.jpg' /></div>
+<p><em>A simple, two-light setup</em>
+</p>
+<p class='vspace'>Lights can be added to your scene from the <span class='doc-menu'>GameObject-&gt;Create Other</span> menu. Once a light has been added, you can manipulate it like any other GameObject. Additionally, you can add a Light Component to any selected GameObject by using <span class='doc-menu'>Component-&gt;Rendering-&gt;Light</span>.
+</p>
+<p class='vspace'>There are many different options within the Light Component in the <span class='doc-keyword'>Inspector</span>.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Lights-1.jpg' /></div>
+<p><em>Light Component properties in the Inspector</em>
+</p>
+<p class='vspace'>By simply changing the <span class='doc-prop'>Color</span> of a light, you can give a whole different mood to the scene.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Lights-2.jpg' /></div>
+<p><em>Bright, sunny lights</em>
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Lights-3.jpg' /></div>
+<p><em>Dark, medieval lights</em>
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Lights-4.jpg' /></div>
+<p><em>Spooky night lights</em>
+</p>
+<p class='vspace'>The lights you create this way are <span class='doc-keyword'>realtime</span> lights - their lighting is calculated each frame while the game is running. If you know the light will not change, you can make your game faster and look much better by using <a href="../Manual/Lightmapping.html">Lightmapping</a>.
+</p>
+<div class='vspace'></div><h2>Rendering paths</h2>
+<p>Unity supports different Rendering Paths, these paths affect mainly Lights and Shadows, so choosing the correct rendering path depending on your game requirements can improve your project's performance.
+For more info about rendering paths you can visit the <a href="../Manual/RenderingPaths.html">Rendering paths section</a>.
+</p>
+<div class='vspace'></div><h2>More information</h2>
+<p>For more information about using Lights, check the <a href="../Components/class-Light.html">Lights page</a> in the <a href="../Components/index.html">Reference Manual</a>.
+</p>
+</p><small>Page last updated: 2011-10-24</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

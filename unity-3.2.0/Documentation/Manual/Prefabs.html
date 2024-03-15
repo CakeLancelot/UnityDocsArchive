@@ -1,0 +1,295 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Prefabs</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Prefabs</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Building Scenes.html">Building Scenes</a> &gt; <a href="../Manual/Prefabs.html">Prefabs</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Searching.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Lights.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Prefabs</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>A <span class='doc-keyword'>Prefab</span> is a type of asset -- a reusable <span class='doc-keyword'>GameObject</span> stored in <span class='doc-keyword'>Project View</span>. Prefabs can be inserted into any number of scenes, multiple times per scene.  When you add a Prefab to a scene, you create an <span class='doc-keyword'>instance</span> of it. All Prefab instances are linked to the original Prefab and are essentially clones of it. No matter how many instances exist in your project, when you make any changes to the Prefab you will see the change applied to all instances.
+</p>
+<div class='vspace'></div><h2>Creating Prefabs</h2>
+<p>In order to create a Prefab, you must make a new blank Prefab using the menu.  This blank Prefab contains no GameObjects, and you cannot create an instance of it.  Think of a new Prefab as an empty container, waiting to be filled with GameObject data.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Prefabs-0.jpg' /></div>
+<p><em>A new, empty Prefab.  It cannot be instanced until you fill it with a GameObject.</em>
+</p>
+<p class='vspace'>To fill the Prefab, you use a GameObject that you've created in the scene.
+</p><ol><li>Choose <span class='doc-menu'>Assets-&gt;Create-&gt;Prefab</span> from the menu bar and name your new Prefab.
+</li><li>In <span class='doc-keyword'>Hierarchy View</span>, select the GameObject you wish to make into a Prefab.
+</li><li>Drag &amp; drop the GameObject from the Hierarchy onto the new Prefab in Project View.
+</li></ol><p class='vspace'>After you have performed these steps, the GameObject and all its children have been copied into the Prefab data. The Prefab can now be re-used in multiple instances.  The original GameObject in the Hierarchy has now become an instance of the Prefab.
+</p>
+<div class='vspace'></div><h2>Prefab Instances</h2>
+<p>To create a Prefab instance in the current scene, drag the Prefab from the Project View into the <span class='doc-keyword'>Scene</span> or Hierarchy View. This instance is <span class='doc-keyword'>linked</span> to the Prefab, as displayed by the blue text used for their name in the Hierarchy View.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Prefabs-1.jpg' /></div>
+<p><em>Three of these GameObjects are linked to Prefabs.  One of them is not.</em>
+</p>
+<div class='vspace'></div><ul><li>If you have selected a Prefab instance, and want to make a change that affects all instances, you can click the <span class='doc-menu'>Select</span> button in the Inspector to select the source Prefab.
+</li><li>Information about instantiating prefabs from scripts is in the <a href="../Manual/Instantiating Prefabs.html">Instantiating Prefabs</a> page.
+</li></ul><div class='vspace'></div><h3>Inheritance</h3>
+<p>Inheritance means that whenever the source Prefab changes, those changes are applied to all linked GameObjects.  For example, if you add a new script to a Prefab, all of the linked GameObjects will instantly contain the script as well.  However, it is possible to change the properties of a single instance while keeping the link intact.  Simply change any property of a prefab instance, and watch as the variable name becomes bold.  The variable is now overridden.  All overridden properties will not be affected by changes in the source Prefab.
+</p>
+<p class='vspace'>This allows you to modify Prefab instances to make them unique from their source Prefabs without breaking the Prefab link.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Prefabs-2.jpg' /><br /><em>A linked GameObject with no overrides enabled.</em></div>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Prefabs-3.jpg' /><br /><em>A linked GameObject with several (bold) overrides enabled.</em></div>
+<div class='vspace'></div><ul><li>If you want to update the source Prefab and all instances with the new overridden values, you can click the <span class='doc-menu'>Apply</span> button in the Inspector.
+</li><li>If you want to discard all overrides on a particular instance, you can click the <span class='doc-menu'>Revert</span> button.
+</li></ul><div class='vspace'></div><h3>Breaking and Restoring Prefab Links</h3>
+<p>There are certain actions which will break the link between a single instance and its source prefab, but the link can always be restored.  Actions that will break the link:
+</p>
+<div class='vspace'></div><ul><li>Adding or removing a Component
+</li><li>Adding or removing a child GameObject
+</li></ul><p class='vspace'>These actions will prompt a warning/confirmation message about breaking the link. Confirming the action will break the link so changes to the source Prefab will no longer affect the broken instance.  To restore the link, you can click either the <span class='doc-menu'>Reconnect</span> or <span class='doc-menu'>Apply</span> buttons in the Inspector of the instance.
+</p>
+<div class='vspace'></div><ul><li><span class='doc-menu'>Reconnect</span> will discard all differences from the source Prefab.
+</li><li><span class='doc-menu'>Apply</span> will copy all differences into the source Prefab (and therefore, all other Prefab instances)
+</li></ul><div class='vspace'></div><h2>Imported Prefabs</h2>
+<p>When you place a mesh asset into your Assets folder, Unity automatically imports the file and generates something that looks similar to a Prefab out of the mesh.  This is not actually a Prefab, it is simply the asset file itself.  Instancing and working with assets introduces some limitations that are not present when working with normal Prefabs.  
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Prefabs-4.jpg' /><br /><em>Notice the asset icon is a bit different from the Prefab icons</em></div>
+<p class='vspace'>The asset is instantiated in the scene as a GameObject, linked to the source asset instead of a normal Prefab.   Components can be added and removed from this GameObject as normal.  However, you cannot apply any changes to the asset itself since this would add data to the asset file itself!  If you're creating something you want to re-use, you should make the asset instance into a Prefab following the steps listed above under "Creating Prefabs".
+</p>
+<div class='vspace'></div><ul><li>When you have selected an instance of an asset, the <span class='doc-menu'>Apply</span> button in the Inspector is replaced with an <span class='doc-menu'>Edit</span> button.  Clicking this button will launch the editing application for your asset (e.g. Maya or Max).
+</li></ul>
+</p><small>Page last updated: 2010-09-09</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Searching.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Lights.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

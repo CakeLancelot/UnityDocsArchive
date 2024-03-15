@@ -1,0 +1,104 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Transparent Vertex-Lit</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Transparent Vertex-Lit</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Built-in Shader Guide.html">Built-in Shader Guide</a> &gt; <a href="../Components/shader-TransparentFamily.html">Transparent Shader Family</a> &gt; <a href="../Components/shader-TransVertexLit.html">Transparent Vertex-Lit</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/shader-TransparentFamily.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/shader-TransDiffuse.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Transparent Vertex-Lit</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<div><img class='figure' src='../Images/manual/shader-TransVertexLit-0.jpg' /></div>
+<div class='vspace'></div><h2>Transparent Properties</h2>
+<p>This shader can make mesh geometry partially or fully transparent by reading the alpha channel of the main texture.  In the alpha, 0 (black) is completely transparent while 255 (white) is completely opaque.  If your main texture does not have an alpha channel, the object will appear completely opaque.
+</p>
+<p class='vspace'>Using transparent objects in your game can be tricky, as there are traditional graphical programming problems that can present sorting issues in your game.  For example, if you see odd results when looking through two windows at once, you're experiencing the classical problem with using transparency.  The general rule is to be aware that there are some cases in which one transparent object may be drawn in front of another in an unusual way, especially if the objects are intersecting, enclose each other or are of very different sizes.  For this reason, you should use transparent objects if you need them, and try not to let them become excessive.  You should also make your designer(s) aware that such sorting problems can occur, and have them prepare to change some design to work around these issues.
+</p>
+<div class='vspace'></div><h2>Vertex-Lit Properties</h2>
+<p><span class='doc-keyword'>Vertex-Lit</span> is the simplest and least expensive shader.  Any lights shining on it are rendered in a single pass, and therefore faster than any pixel-lit shader. Even lights marked as Pixel lights will be rendered as Vertex lights when using this shader.  This shader calculates lighting at vertices only, so interpolated "overall lighting" is drawn over the actual pixels of the object's triangles.
+</p>
+<p class='vspace'>Because it is vertex-lit, it won't display any pixel-based rendering effects, such as light cookies, bumpmapping, or shadows.  This shader is also much more sensitive to tesselation of the models.  If you put a point light very close to a cube using this shader, the light will only be calculated at the corners.  Pixel-lit shaders are much more effective at creating a nice round highlight, independent of tesselation. If that's an effect you want, you may consider using a pixel-lit shader or increase tesselation of the objects instead.
+</p>
+<div class='vspace'></div><h2>Performance</h2>
+<p>Generally, this shader is very cheap to render.  For more details, please view the <a href="../Components/shader-Performance.html">Shader Peformance page</a>.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/shader-TransparentFamily.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/shader-TransDiffuse.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

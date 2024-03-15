@@ -1,0 +1,70 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Fixing the rotation of an imported model"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="Fixing the rotation of an imported model" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOW-TOs.html%22%3EHOW-TOs%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Graphics%20how-tos.html%22%3EGraphics%20how-tos%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOWTO-FixZAxisIsUp.html%22%3EFixing%20the%20rotation%20of%20an%20imported%20model%3C%2Fa%3E" -->
+		<h1>Fixing the rotation of an imported model</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="HOW-TOs.html">HOW-TOs</a> &gt; <a href="Graphics how-tos.html">Graphics how-tos</a> &gt; <a href="HOWTO-FixZAxisIsUp.html">Fixing the rotation of an imported model</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="HOWTO-LightCookie.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HOWTO-Water.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Some 3D art packages export their models so that the z-axis faces upwards. Most of the standard scripts in Unity assume that the y-axis is upwards. It is usually easier to fix the rotation in Unity than to modify the scripts to make things fit.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/HOWTO-FixZAxisIsUp-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/HOWTO-FixZAxisIsUp-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Your model with z-axis point upwards</i>
+</p>
+
+<p>If at all possible it is recommended that you fix the model in your 3d modeller to have the y-axis face upwards before exporting.
+</p>
+
+<p>If this is not possible, you can fix it in Unity by adding an extra parent transform:
+</p>
+
+<table><tr><td><div class='cbox'><div class='cbox-data'>
+<ol><li> Create an empty game object using the <b>GameObject -&gt; Create Empty</b> menu
+</li><li> Place the new game object so that it is at the center of your mesh or which ever point you want your object to rotate around.
+</li><li> Drag the mesh on the empty game object
+</li></ol>
+
+<p></div></div></td></tr></table>
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/HOWTO-FixZAxisIsUp-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/HOWTO-FixZAxisIsUp-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The model with an extra empty transform</i>
+</p>
+
+
+
+
+		<div class="navigation"><a href="HOWTO-LightCookie.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HOWTO-Water.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

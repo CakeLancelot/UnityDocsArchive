@@ -1,0 +1,134 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Player Settings</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Player Settings</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-ManagerGroup.html">Settings Managers</a> &gt; <a href="../Components/class-PlayerSettings.html">Player Settings</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-PhysicsManager.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-QualitySettings.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Player Settings</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><span class='doc-keyword'>Player Settings</span> is where you define various parameters for the final game that you will build in Unity. <span class='specific-no-iphone'>Some of these values are used in the <span class='doc-keyword'>Resolution Dialog</span> that launches when you open a standalone game.</span> 
+</p>
+<p class='vspace'>To see the Player Settings choose <span class='doc-menu'>Edit-&gt;Project Settings-&gt;Player</span> from the menu bar.
+</p>
+<div class='vspace'></div><div class='specific-no-iphone' > 
+<div><img class='figure' src='../Images/manual/class-PlayerSettings-0.jpg' /><br /><em>The Player Settings</em></div>
+</div>
+<div class='vspace'></div>
+<div class='vspace'></div><h2>Properties</h2>
+<div class='specific-no-iphone' > 
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Company Name</span></td><td  align='left'>The name of your company. This is used to locate the preferences file.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Product Name</span></td><td  align='left'>The name that will appear on the menu bar when your game is running and is used to locate the preferences file.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Screen Width</span></td><td  align='left'>Default horizontal dimension of stand-alone player window.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Screen Height</span></td><td  align='left'>Default vertical dimension of stand-alone player window.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Web Screen Width</span></td><td  align='left'>Default horizontal dimension of web player window.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Web Screen Height</span></td><td  align='left'>Default vertical dimension of web player window.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Is Full Screen</span></td><td  align='left'>If enabled, the <span class='doc-prop'>Windowed</span> checkbox on the Resolution Dialog will be disabled by default.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Display Resolution Dialog</span></td><td  align='left'>If enabled, the Resolution Dialog will appear when the game is launched.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Use Alpha in Dashboard</span></td><td  align='left'>Enabling this will use the alpha channel rendered in Unity for the transparency of the OSX Dashboard Widget. This allows you to make a dashboard widget with the shape of a mesh for example.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Run in Background</span></td><td  align='left'>If enabled, your game will continue to run if the user gives focus to another application.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Capture Single Screen</span></td><td  align='left'>If enabled, standalone games in fullscreen mode will not darken the secondary monitor in multi-monitor setups.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Always Display Watermark</span></td><td  align='left'>If enabled, the Unity watermark will always be displayed in the lower-right hand corner of your game window.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Resolution Dialog Banner</span></td><td  align='left'>Reference to the <a href="../Components/class-Texture2D.html">image</a> you would like to display in the Resolution Dialog window.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Icons</span></td><td  align='left'>Here, assign the custom icon you would like to be used for your standalone game.  Different sizes of the icon should fill the array.  Specifically you should use icon sizes of 32x32, 48x48, and 128x128.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Supported Aspect Ratios</span></td><td >Aspect Ratios selectable in the Resolution Dialog will be monitor-supported resolutions of enabled items from this list.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>First Streamed Level With Resources</span></td><td  align='left'>If you are publishing a Streamed Web Player, this is the index of the first level that will have access to all Resources.Load assets.</td></tr>
+</table></div>
+<div class='vspace'></div>
+<div class='vspace'></div><h2>Details</h2>
+<div class='specific-no-iphone' > 
+<p>The Player Settings window is where many technical preference defaults are set. See also <a href="../Components/class-QualitySettings.html">Quality Settings</a> where the different graphics quality levels can be set up.
+</p>
+<div class='vspace'></div><h3>Publishing a web player</h3>
+<p><span class='doc-prop'>Default Web Screen Width</span> and <span class='doc-prop'>Default Web Screen Height</span> determine the size used in the html file. You can modify the size in the html file later.
+</p>
+<p class='vspace'><span class='doc-prop'>Default Screen Width</span> and <span class='doc-prop'>Default Screen Height</span> are used by the Web Player when entering fullscreen mode through the context menu in the Web Player at runtime.
+</p>
+<div class='vspace'></div><h3>Customizing your Resolution Dialog</h3>
+<div><img class='figure' src='../Images/manual/class-PlayerSettings-1.jpg' /><br /><em>The Resolution Dialog, presented to end-users</em></div>
+<p class='vspace'>You have the option of adding a custom banner image to the Screen Resolution Dialog in the Standalone Player. The maximum image size is 432 x 163 pixels. The image will not be scaled up to fit the screen selector. Instead it will be centered and cropped.
+</p>
+<div class='vspace'></div></div>
+<div class='vspace'></div>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-PhysicsManager.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-QualitySettings.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

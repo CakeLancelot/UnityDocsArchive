@@ -1,0 +1,128 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Mesh Collider"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Mesh Collider" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-DynamicsGroup.html%22%3EPhysics%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-MeshCollider.html%22%3EMesh%20Collider%3C%2Fa%3E" -->
+		<h1>Mesh Collider</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-DynamicsGroup.html">Physics</a> &gt; <a href="class-MeshCollider.html">Mesh Collider</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-CapsuleCollider.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-WheelCollider.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>The Mesh Collider takes a <a href="../Components/class-Mesh.html">Mesh Asset</a> and builds its Collider based on that mesh.  It is far more accurate for collision detection than using primitives for complicated meshes, but it cannot collide with other Mesh Colliders.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-MeshCollider-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-MeshCollider-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>A Mesh Collider used on the flag tower object</i>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Material</nobr></b></td><td> Reference to the PhysicMaterial that determines how this Collider interacts with others.
+</td></tr><tr><td><b><nobr>Is Trigger</nobr></b></td><td> If enabled, this Collider is used for triggering events, and is ignored by the physics engine.
+
+</td></tr><tr><td><b><nobr>Mesh</nobr></b></td><td> Reference to the Mesh to use for collisions.
+</td></tr><tr><td><b><nobr>Smooth Sphere Collisions</nobr></b></td><td> When this is enabled, collision mesh normals are smoothed. You should enable this on smooth surfaces eg. rolling terrain without hard edges to make sphere rolling smoother.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+<p>The Mesh Collider builds its collision representation from the <a href="../Components/class-Mesh.html">Mesh</a> attached to the GameObject, and reads the properties of the attached <a href="../Components/class-Transform.html">Transform</a> to set its position and scale correctly.
+</p>
+
+
+<p>Colliders work with Rigidbodies to bring physics in Unity to life.  Whereas Rigidbodies allow objects to be controlled by physics, Colliders allow objects to collide with each other.  Colliders must be added to objects independently of Rigidbodies.  A Collider does not necessarily need a Rigidbody attached, but a Rigidbody <span style="text-decoration:underline;">must</span> be attached in order for the object to react to collisions.
+</p>
+
+<p>When a collision between two Colliders occurs and if at least one of them has a Rigidbody attached, <a class="wiki"  href="../ScriptReference/Collider.html#OnCollisionEnter">three</a> <a class="wiki"  href="../ScriptReference/Collider.html#OnCollisionExit">collision</a> <a class="wiki"  href="../ScriptReference/Collider.html#OnCollisionStay">messages</a> are sent out to the objects attached to them. These events can be handled in scripting, and allow you to create unique behaviors with or without making use of the built-in Ageia physX engine.
+</p>
+
+<h3>Triggers</h3>
+<p>An alternative way of using Colliders is to mark them as a Trigger, just check the IsTrigger property checkbox in the Inspector.  Triggers are effectively ignored by the physics engine, and have a unique set of <a class="wiki"  href="../ScriptReference/Collider.html#OnTriggerEnter">three</a> <a class="wiki"  href="../ScriptReference/Collider.html#OnTriggerExit">trigger</a> <a class="wiki"  href="../ScriptReference/Collider.html#OnTriggerStay">messages</a> that are sent out when a collision with a Trigger occurs.  Triggers are useful for triggering other events in your game, like cutscenes, automatic door opening, displaying tutorial messages, etc.  Use your imagination!
+</p>
+
+<p>Be aware that in order for two Triggers to send out trigger events when they collide, one of them must be attached to a Rigidbody. For a Trigger to collide with a normal Collider, one of them must have a Rigidbody attached.  For a detailed chart of different types of collisions, see the collision action matrix in the Advanced section below.
+</p>
+
+
+<h2>Hints</h2>
+<p><ul><li>
+Mesh Colliders <span style="text-decoration:underline;">cannot</span> collide with each other.  Therefore, they are most useful for background objects like environment geometry.
+</li><li>It is usually better to use primitive Colliders for objects under physics control.
+</li><li>When you attach a Mesh Collider to a Game Object, its Mesh property will default to the mesh being rendered. You can change that by assigning a different Mesh.
+To add multiple Colliders for an object, create child objects and attach a Collider to each one.  This allows each Collider to be manipulated independently.
+</li><li>You can look at the gizmos in the Scene view to see how the Collider is being calculated on your object.
+</li><li>Colliders do their best to match the scale of an object. If you have a non-uniform scale (a scale which is different in each direction), only the Mesh Collider can match completely.
+</li></ul>
+</p>
+
+
+<h2>Advanced</h2>
+<h3>Collider combinations</h3>
+<p>There are numerous different combinations of collisions that can happen in Unity.  Each game is unique, and different combinations may work better for different types of games.  If you're using physics in your game, it will be very helpful to understand the different basic Collider types, their common uses, and how they interact with other types of objects.
+</p>
+
+<h4><span style="text-decoration:underline;">Static Collider</span></h4>
+<p>These are Game Objects that <span style="text-decoration:underline;">do not</span> have a Rigidbody attached, but <span style="text-decoration:underline;">do</span> have a Collider attached.  These objects should remain still, or move very little.  These work great for your environment geometry.  They will not move if a Rigidbody collides with them.
+</p>
+
+<h4><span style="text-decoration:underline;">Rigidbody Collider</span></h4>
+<p>These Game Objects contain both a Rigidbody and a Collider.  They are completely affected by the physics engine through scripted forces and collsions.  They might collide with a Game Object that only contains a Collider.  These will likely be your primary type of Object in games that use physics.
+</p>
+
+<h4><span style="text-decoration:underline;">Kinematic Rigidbody Collider</span></h4>
+<p>This Game Object contains a Collider and a Rigidbody which is marked IsKinematic.  To move this Object, you modify its <a href="../Components/class-Transform.html">Transform</a> component, rather than applying forces. They're similar to Static Colliders but will work better when you want to move the Collider around frequently.  There are some other specialized scenarios for using this Object.
+</p>
+
+<p>This object can be used for circumstances in which you would normally want a Static Collider to send a trigger event.  Since a Trigger must have a Rigidbody attached, you should add a Rigidbody, then check IsKinematic.  This will prevent your Object from moving from physics influence, and allow you to receive trigger events when you want to.
+</p>
+
+<p>Kinematic Rigidbodies can easily be turned on and off.  This is great for creating ragdolls, when you normally want a character to follow an animation, then turn into a ragdoll when a collision occurs, prompted by an explosion or anything else you choose.  When this happens, simply turn all your Kinematic Rigidbodies into normal Rigidbodies through scripting.
+</p>
+
+<p>If you have Rigidbodies come to rest, so they are not moving for some time, they will "fall asleep".  That is, they will not be calculated during the physics update since they are not going anywhere.  If you move a Kinematic Rigidbody out from underneath normal Rigidbodies that are at rest on top of it, the sleeping Rigidbodies will "wake up" and be correctly calculated again in the physics update.  So if you have a lot of Static Colliders that you want to move around and have different object fall on them correctly, use Kinematic Rigidbody Colliders.
+</p>
+
+<h3>Collision action matrix</h3>
+<p>Depending on the configurations of the two colliding Objects, a number of different actions can occur.  The chart below outlines what you can expect from two colliding Objects, based on the components that are attached to them.  Some of the combinations only cause one of the two Objects to be affected by the collision, so keep the standard rule in mind &mdash; physics will not be applied to objects that do not have Rigidbodies attached.
+</p>
+
+
+<p><table class="wikitable"><tr><td class="wikicell"  colspan="7"><div align="center"><b>Collision detection occurs and messages are sent upon collision</b></div></td></tr><tr><td class="wikicell" ></td><td class="wikicell" >Static Collider</td><td class="wikicell" >Rigidbody Collider</td><td class="wikicell" >Kinematic Rigidbody Collider</td><td class="wikicell" >Static Trigger Collider</td><td class="wikicell" >Rigidbody Trigger Collider</td><td class="wikicell" >Kinematic Rigidbody Trigger Collider</td></tr><tr><td class="wikicell" >Static Collider</td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td></tr><tr><td class="wikicell" >Rigidbody Collider</td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td></tr><tr><td class="wikicell" >Kinematic Rigidbody Collider</td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td></tr><tr><td class="wikicell" >Static Trigger Collider</td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td></tr><tr><td class="wikicell" >Rigidbody Trigger Collider</td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td></tr><tr><td class="wikicell" >Kinematic Rigidbody Trigger Collider</td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td></tr></table>
+</p>
+
+
+<p><table class="wikitable"><tr><td class="wikicell"  colspan="7"><div align="center"><b>Trigger messages are sent upon collision</b></div></td></tr><tr><td class="wikicell" ></td><td class="wikicell" >Static Collider</td><td class="wikicell" >Rigidbody Collider</td><td class="wikicell" >Kinematic Rigidbody Collider</td><td class="wikicell" >Static Trigger Collider</td><td class="wikicell" >Rigidbody Trigger Collider</td><td class="wikicell" >Kinematic Rigidbody Trigger Collider</td></tr><tr><td class="wikicell" >Static Collider</td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td></tr><tr><td class="wikicell" >Rigidbody Collider</td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td></tr><tr><td class="wikicell" >Kinematic Rigidbody Collider</td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td></tr><tr><td class="wikicell" >Static Trigger Collider</td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center"> </div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td></tr><tr><td class="wikicell" >Rigidbody Trigger Collider</td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td></tr><tr><td class="wikicell" >Kinematic Rigidbody Trigger Collider</td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td><td class="wikicell" ><div align="center">&bull;</div></td></tr></table>
+</p>
+
+
+
+
+		<div class="navigation"><a href="class-CapsuleCollider.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-WheelCollider.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,154 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" Importing 3D models"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title=" Importing 3D models" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Assets.html%22%3EAssets%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Imported%20Scenes.html%22%3E%20Importing%203D%20models%3C%2Fa%3E" navigation="%3Ca%20href%3D%22Textures.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22Sound%20files.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1> Importing 3D models</h1>
+		<p><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Assets.html">Assets</a> &gt; <a href="Imported Scenes.html"> Importing 3D models</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="Textures.html"><img src="../images/prev.png"></a><a href="Sound files.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+
+<p>Meshes meshes make up a large part of your 3D worlds. You don't build your meshes in Unity, but in another application.
+</p>
+
+<p>In Unity, we have done everything in our power to make this process as simple as possible. There are a lot of details, but the following should hold:
+</p>
+
+<h2> Basics</h2>
+<p>Unity's primary format is the cross-application format FBX. If you store files in the project directiory in this format, things should just work.
+</p>
+
+<h3> Maya</h3>
+<p>Just place the .mb file in your project folder. The files are automatically converted whenever you change them. The first time we have to import a Maya file, it takes up to 10 seconds - subsequent runs are usually less than 2 seconds.
+</p>
+
+<p>More information on importing Maya files are <a href="../Manual/HOWTO-importObject.html">here</a>.
+</p>
+
+<h3> Cinema4D</h3>
+<p>Export your meshes in .fbx format into your project folder. This has been available as an export option since version 8.5.
+</p>
+
+<p>More information on exporting to fbx are here <a href="../Manual/HOWTO-importObject.html">here</a>.
+</p>
+
+<h3> Lightwave</h3>
+<p>Export your meshes in .fbx format into your project folder.
+</p>
+
+<p>More information on exporting to fbx are here <a href="../Manual/HOWTO-importObject.html">here</a>.
+</p>
+
+<h3> 3D Studio Max</h3>
+<p>Export your files from the PC into the project folder in FBX format.
+More information on exporting to fbx are here <a href="../Manual/HOWTO-importObject.html">here</a>.
+</p>
+
+<h3> Blender</h3>
+<p>We have some support for reading .blend files. Since blender doesn't have an FBX exporter, there are quite a few missing features. Most notably, we don't do skinned meshes. Blender works great for doing background scenes.
+</p>
+
+<p>More information on importing blender files are <a href="../Manual/HOWTO-importObject.html">here</a>.
+</p>
+
+<h3> Old-skool formats</h3>
+<p>We have limited support for 3DS, so if you find some of these objects on the net, you should be able to use them.
+</p>
+
+<p><i>Our import pipeline is one of the things we are most proud of. We would like to get support for all 3D modellers to the level of Maya. We are pushing all we can at the people making the different apps. However: we are small, they are huge - so we could use some help in pushing. If you would like to see your 3D app get better integration, write them to let them know that you care about this.</i>
+</p>
+
+<h2>Textures</h2>
+<p>Unity will attempt to hook up materials to your imported scenes - Basically, just place textures in a folder called 'Textures' next to the sccene file, or in any folder above it.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Imported Scenes-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/Imported Scenes-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<h2> Import settings.</h2>
+<p>To access the importing settings for a 3D scene file, click the <b>Settings</b> button in the project window, or control-click a scene file and select <b>Import Settings...</b>.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Imported Scenes-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/Imported Scenes-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Share Materials</nobr></b></td><td> Enable this to generate material files near the found texture files. When enabled,  different scenes will share the same material settings when they use the same textures. For the precise rules, see Material Generation, below.
+</td></tr><tr><td><b><nobr>Generate Materials Per Scene</nobr></b></td><td> This will generate materials, so only this scene uses them.
+</td></tr><tr><td><b><nobr>Meshes have colliders</nobr></b></td><td> If this is enabled, your meshes will be imported with Mesh Colliders attached. This is recommended for background geometry, but never for geometry you move about. For more info, see Colliders, below.
+</td></tr><tr><td><b><nobr>Automatically calculate normals</nobr></b></td><td> Enable this to automatically generate normals for the imported geometry. If enabled, the <b>Smoothing Angle</b> sets how sharp an edge has to be before it's converted into a hard edge.
+</td></tr><tr><td><b><nobr>Scale</nobr></b></td><td> Unity's physic system expects 1 meter in the game world to be 1 unit in the imported file. If you like to model at a different scale, this is the place to fix it.
+</td></tr><tr><td><b><nobr>No Animation</nobr></b></td><td> No animation or skinnng is imported.
+</td></tr><tr><td><b><nobr>Animation in root</nobr></b></td><td> Animations are stored in the scene's transform root objects. Use this when animating anything that has a hierarchy.
+</td></tr><tr><td><b><nobr>Animation stored in nodes</nobr></b></td><td> Animations are stored together with the objects they animate. Use this when you have a complex animation setup and want full scripting control.
+<p></td></tr></tr></table>
+</p>
+
+<h3> Material Generation</h3>
+
+<p>Materials are found based on the following rules:
+</p>
+
+<ul><li> Unity gets the name of the main diffuse material bound to the objects in the scene.
+</li><li> Unity looks for a material with this name in a Folder called 'Materials' next to the scene
+</li><li> Unity goes up the project folders, looking for the Material in a 'Materials' folder along the way.
+</li></ul>
+
+<p>If Unity couldn't find the Material, it tries to create one from the texture:
+</p>
+
+<ul><li> Unity checks for a texture with the correct name in the same folder as the scene
+</li><li> Unity checks for a texture with the correct name in a folder called 'Textures' next to the scene.
+</li><li> Unity goes up the project folders, looking for the correct texture in a 'Textures' folder along the way.
+</li><li> If unity finds the texture, it creates a 'Materials' folder next to it and creates a material in there.
+</li></ul>
+
+<h3> Colliders</h3>
+<p>Unity features 2 primary types of colliders: Mesh colliders &amp; Primitive colliders. Mesh colliders are imported together with your geometry and is used for background objects. When you enable <b>Meshes Have Colliders</b> in the import settings, the mesh becomes solid as far as the physic system is concerned.
+</p>
+
+<p>If you are moving the object about (let's say it's a car), you can't use mesh colliders. Instead, you'll have to use primitive colliders. In this case you should disable the <b>Meshes Have Colliders</b> setting.
+</p>
+
+<h3> Animations</h3>
+<p>Animations are automatically imported from the scene. Note that at the moment 3ds files can not import animations.
+Unity imports multi take animations. Multi take animations allow you to store multiple animation clips eg. run animation, walk animation, jump animation in one file.
+If your 3D app does not support multi take animations you can create multiple copies of the same file with different animations.
+You can name the animation clips by adding an @ character in the file name. eg. you could have 3 copies of a <i>monster.fbx</i> file called: <i>monster@walk.fbx</i>, <i>monster@run.fbx</i>, <i>monster@jump.fbx</i>
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Merge your meshes together. Make them share materials and textures. This has a huge performance benefit.
+</li><li>If you need to set up your objects further in Unity (adding physics, scripts or other coolness), save yourself a world of pain and name your objects properly in your 3D app.
+</li><li>Make your meshes be centered on the world origin in your 3D app. This will make them easier to place in Unity.
+</li></ul>
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

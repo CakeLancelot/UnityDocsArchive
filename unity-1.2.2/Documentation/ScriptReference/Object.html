@@ -1,0 +1,101 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Object"-->
+			<title>Unity Script Reference &ndash; Object</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Object</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Object" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> Base class for all objects we can have pointers to.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#name'>name</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Functions</p><p><a href='#GetInstanceID'>GetInstanceID</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#operator bool'>operator bool</a></p>
+<p><a href='#Instantiate'>Instantiate</a></p>
+<p><a href='#Destroy'>Destroy</a></p>
+<p><a href='#DestroyImmediate'>DestroyImmediate</a></p>
+<p><a href='#FindObjectsOfType'>FindObjectsOfType</a></p>
+<p><a href='#FindObjectOfType'>FindObjectOfType</a></p>
+<p><a href='#operator =='>operator ==</a></p>
+<p><a href='#operator !='>operator !=</a></p>
+<p><a href='#DontDestroyOnLoad'>DontDestroyOnLoad</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> Any public variable you make that derives from Object gets shown in the inspector as a drop target, 
+Allowing you to set the value from the GUI.</p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="name"></a><h3><span class="full-name">Object.</span>name</h3><div class="synopsis"><span class="standard_type">string</span> name</div>
+   <p class='details'> The name of the object.  <p class="details"/>Components share the same name with the game object and all attached components.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Changes the name of the game object to hello<br/>name = "Hello";</div></td></tr></table></p>
+   <a name="Methods"></a><h2 class="script-section">Methods</h2>
+	<a name="GetInstanceID"></a><h3><span class="full-name">Object.</span>GetInstanceID</h3><div class="synopsis"><span class="standard_type">int</span> GetInstanceID ()</div>
+   <p class='details'> </p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="operator bool"></a><h3><span class="full-name">Object.</span>operator bool</h3><div class="synopsis"><span class="keyword">implicit</span> <span class="keyword">operator</span> <span class="standard_type">bool</span> (Object exists)</div>
+   <p class='details'> Does the object exist?<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">if (rigidbody)
+</div></td></tr></table>is the same as<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">if (rigidbody != null)</div></td></tr></table></p>
+	<a name="Instantiate"></a><h3><span class="full-name">Object.</span>Instantiate</h3><div class="synopsis">Object Instantiate (Object original, <a href="Vector3.html" class="classlink">Vector3</a> position, <a href="Quaternion.html" class="classlink">Quaternion</a> rotation)</div>
+   <p class='details'> Clones the object <span class="variable">original</span> and places it at <span class="variable">position</span> and sets the rotation to <span class="variable">rotation</span>.
+This is essentially the same as using duplicate (cmd-d) in unity and then moving the object to the given location.
+If the game object has a transform all children are cloned as well. All game objects are activated after cloning them.
+This function preserves the postion and rotation of the cloned object.
+It returns the cloned object.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Instantiates 10 copies of prefab each 2 units apart from each other<br/>var prefab : <a href="Transform.html" class="classlink">Transform</a>;<br/><span class="keyword">for</span> (var i=0;i<10;i++) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;Instantiate (prefab, <a href="Vector3.html" class="classlink">Vector3</a>(i * 2.0, 0, 0), <a href="Quaternion.html#identity" class="itemlink">Quaternion.identity</a>);<br/>}
+</div></td></tr></table>Instantiate is most commonly used to instantiate projectiles but can be applied to anything that needs to be cloned.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">var projectile : <a href="Rigidbody.html" class="classlink">Rigidbody</a>;<br/>function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Ctrl was pressed, Launch a projectile<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Input.html#GetButtonDown" class="itemlink">Input.GetButtonDown</a>("Fire1")) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Instantiate the projectile at the position and rotation of this transform<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var clone : <a href="Rigidbody.html" class="classlink">Rigidbody</a>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clone = Instantiate(projectile, transform.position, transform.rotation);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Give the cloned object an initial velocity along the current <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// object's Z axis<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clone.velocity = transform.TransformDirection (<a href="Vector3.html#forward" class="itemlink">Vector3.forward</a> * 10);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}
+</div></td></tr></table>Note that the Instantiate can clone take any type of object including scripts.</p>
+	<a name="Instantiate"></a><h3><span class="full-name">Object.</span>Instantiate</h3><div class="synopsis">Object Instantiate (Object original)</div>
+   <p class='details'> Clones the object <span class="variable">original</span>.
+This function preserves the postion and rotation of the cloned object.
+This is essentially the same as using duplicate (cmd-d) in unity.
+If the object is a component or a game object the entire game object including all components will be cloned. 
+If the game object has a transform all children are cloned as well. All game objects are activated after cloning them.
+It returns the cloned object.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Instantiates prefab when any rigid body enters the trigger.<br/>// It preserves the prefabs original position and rotation.<br/>var prefab : <a href="Transform.html" class="classlink">Transform</a>;<br/>function OnTriggerEnter () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;Instantiate (prefab);<br/>}
+</div></td></tr></table>Note that the Instantiate can clone take any type of object including scripts.</p>
+	<a name="Destroy"></a><h3><span class="full-name">Object.</span>Destroy</h3><div class="synopsis"><span class="standard_type">void</span> Destroy (Object obj, <span class="standard_type">float</span> t = 0.0F)</div>
+   <p class='details'> Destroys the Object.
+If t is larger than 0, destroys the object in t seconds from now.
+If <span class="variable">obj</span> is a <a href="Component.html" class="classlink">Component</a> it will remove the component from the <a href="GameObject.html" class="classlink">GameObject</a> and Destroy it.
+If <span class="variable">obj</span> is a <a href="GameObject.html" class="classlink">GameObject</a> it will destroy the <a href="GameObject.html" class="classlink">GameObject</a>, all its components and all transform children of the <a href="GameObject.html" class="classlink">GameObject</a>.
+Even if t is zero the object is not destroyed immediately but is always destroyed before rendering.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Kills the game object<br/>Destroy (gameObject);<br/><br/>// Removes this script instance from the game object<br/>Destroy (gameObject);<br/><br/>// Removes the rigidbody from the game object<br/>Destroy (rigidbody);<br/><br/>// Kills the game object <span class="keyword">in</span> 5 seconds after loading the object<br/>Destroy (gameObject, 5);<br/><br/>// When the user presses Ctrl, it will remove the script <br/>// named FooScript from the game object<br/>function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Input.html#GetButton" class="itemlink">Input.GetButton</a> ("Fire1") && GetComponent (FooScript))<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Destroy (GetComponent (FooScript));<br/>}</div></td></tr></table></p>
+	<a name="DestroyImmediate"></a><h3><span class="full-name">Object.</span>DestroyImmediate</h3><div class="synopsis"><span class="standard_type">void</span> DestroyImmediate (Object obj)</div>
+   <p class='details'> Destroys the Object immediately.
+This function should always be used when writing editor code since the delayed destruction will never be invoked in edit mode.
+In game code it is recommended to use Destroy instead. Destroy is always delayed (but executed within the same frame)</p>
+	<a name="FindObjectsOfType"></a><h3><span class="full-name">Object.</span>FindObjectsOfType</h3><div class="synopsis">Object[] FindObjectsOfType (<span class="standard_type">Type</span> type)</div>
+   <p class='details'> Returns a list of all active loaded objects of Type <span class="variable">type</span>.
+It will return no assets eg. meshes, textures or prefabs or inactive objects.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// When clicking on the object, it will disable all springs on all <br/>// hinges <span class="keyword">in</span> the scene.<br/>function OnMouseDown () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;hinges = FindObjectsOfType (<a href="HingeJoint.html" class="classlink">HingeJoint</a>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span> (var hinge : <a href="HingeJoint.html" class="classlink">HingeJoint</a> <span class="keyword">in</span> hinges) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hinge.useSpring = false;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+	<a name="FindObjectOfType"></a><h3><span class="full-name">Object.</span>FindObjectOfType</h3><div class="synopsis">Object FindObjectOfType (<span class="standard_type">Type</span> type)</div>
+   <p class='details'> Returns a list of all active loaded objects of Type <span class="variable">type</span>.
+It will return no assets eg. meshes, textures or prefabs or inactive objects.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// When clicking on the object, it will disable all springs on all <br/>// hinges <span class="keyword">in</span> the scene.<br/>function OnMouseDown ()<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;hinges = FindObjectsOfType (<a href="HingeJoint.html" class="classlink">HingeJoint</a>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span> (var hinge : <a href="HingeJoint.html" class="classlink">HingeJoint</a> <span class="keyword">in</span> hinges) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hinge.useSpring = false;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}
+</div></td></tr></table>Returns the first active loaded object of Type <span class="variable">type</span>.
+<span class="seealso"><b>See Also:</b> <a href="Object.html#FindObjectsOfType" class="itemlink">Object.FindObjectsOfType</a></span></p>
+	<a name="operator =="></a><h3><span class="full-name">Object.</span>operator ==</h3><div class="synopsis"><span class="standard_type">bool</span> <span class="keyword">operator</span> == (Object x, Object y)</div>
+   <p class='details'> </p>
+	<a name="operator !="></a><h3><span class="full-name">Object.</span>operator !=</h3><div class="synopsis"><span class="standard_type">bool</span> <span class="keyword">operator</span> != (Object x, Object y)</div>
+   <p class='details'> </p>
+	<a name="DontDestroyOnLoad"></a><h3><span class="full-name">Object.</span>DontDestroyOnLoad</h3><div class="synopsis"><span class="standard_type">void</span> DontDestroyOnLoad (Object target)</div>
+   <p class='details'> Returns the Type for the class named <span class="variable">name</span>. If nameSpace is not empty searches only in the specified name space.
+Makes the <span class="variable">target</span> not be destroyed automatically when loading a new scene.
+When loading a new level all objects in the scene are destroyed, then the objects in the new level are loaded.
+In order to preserve an object during level loading call DontDestroyOnLoad on it.
+If the object is a component or game object its entire transform hierarchy will not be destroyed either.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Make this game object and its transform children/grandchildren<br/>// survive when loading a <span class="keyword">new</span> scene.<br/>function Awake () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;DontDestroyOnLoad (this);<br/>}</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

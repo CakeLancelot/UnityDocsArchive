@@ -1,0 +1,113 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Writing shader programs</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Writing shader programs</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/Shaders.html">Shaders</a> &gt; <a href="../Manual/SL-ShaderPrograms.html">Writing shader programs</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/SL-Fallback.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/SL-RenderPipeline.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Writing shader programs</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><span class='doc-keyword'><span class='wikiword'>ShaderLab</span></span> shaders encompass more than just "hardware shaders": they describe properties that are showed in the Material Inspector, contain multiple shader implementations for different graphics hardware, configure fixed function hardware state and so on. So the actual programmable shaders - like vertex and fragment programs - are just a part of the whole <span class='wikiword'>ShaderLab</span>'s "shader" concept. Take a look at <a href="../Manual/ShaderTut2.html">shader tutorial</a> for a basic introduction. Here we'll call the low-level hardware shaders as <span class='doc-keyword'>shader programs</span>.
+</p>
+<p class='vspace'>Shader programs are written in either Cg or GLSL language, by embedding "snippets" in the shader text, somewhere inside the <a href="../Manual/SL-Pass.html">Pass</a> command. They usually look like this:
+</p>
+<div class='vspace'></div><pre>  Pass {
+      <em>// ... the usual pass state setup ...</em>
+
+      <b>CGPROGRAM</b>
+      <em>// compilation directives for this snippet, e.g.:</em>
+      <b>#pragma vertex</b> vert
+      <b>#pragma fragment</b> frag
+
+      <em>// the Cg code itself</em>
+
+      <b>ENDCG</b>
+      <em>// ... the rest of pass setup ...</em>
+  }
+</pre><div class='vspace'></div><h2>Cg snippets</h2>
+<p>Cg program snippets are written between <span class='doc-prop'>CGPROGRAM</span> and <span class='doc-prop'>ENDCG</span>.
+</p>
+<p class='vspace'>At the start of the snippet compilation directives can be given as <span class='doc-prop'>#pragma</span> statements. Directives recognized by Unity are:
+</p><ul><li><span class='doc-prop'>#pragma vertex <em>name</em></span> - indicates that function <em>name</em> is a vertex program.
+</li><li><span class='doc-prop'>#pragma fragment <em>name</em></span> - indicates that function <em>name</em> is a fragment program.
+</li><li><span class='doc-prop'>#pragma fragmentoption <em>option</em></span> - adds <em>option</em> to the compiled <span class='wikiword'>OpenGL</span> fragment program. See <a class='urllink' href='http://oss.sgi.com/projects/ogl-sample/registry/ARB/fragment_program.txt' rel='nofollow'>ARB fragment program</a> specification for a list of allowed options. This directive has no effect on vertex programs or programs that are compiled to non-<span class='wikiword'>OpenGL</span> targets.
+</li><li><span class='doc-prop'>#pragma multi_compile_builtin</span> - for pixel-lit shaders; this will tell Unity to compile dozens of permutations of this shader program to support all light types and all shadowing options.
+</li><li><span class='doc-prop'>#pragma multi_compile_builtin_noshadows</span> - for pixel-lit shaders that don't receive shadows; this will tell Unity to compile several permutations of this shader program to support all light types.
+</li></ul><p class='vspace'>Each snippet must contain a vertex program, a fragment program, or both. Thus a <span class='doc-prop'>#pragma vertex</span> or <span class='doc-prop'>#pragma fragment</span> directive is required, or both.
+</p>
+<div class='vspace'></div>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/SL-Fallback.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/SL-RenderPipeline.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

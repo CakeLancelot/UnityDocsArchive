@@ -1,0 +1,516 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Particle Systems"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title="Particle Systems" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Building%20Scenes.html%22%3EBuilding%20Scenes%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Particle%20Systems.html%22%3EParticle%20Systems%3C%2Fa%3E" -->
+		<h1>Particle Systems</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Building Scenes.html">Building Scenes</a> &gt; <a href="Particle Systems.html">Particle Systems</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Cameras.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Working with Assets.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Particles are essentially 2D images rendered in 3D space.  They are primarily used for effects such as smoke, fire, water droplets, or leaves.  A particle system is made up of three separate Components: Particle Emitter, Particle Animator, Particle Renderer.  You can use a Particle Emitter and Renderer together if you want static particles.  The Particle Animator will move particles in different directions and change colors.  You also have access to each individual particle in a particle system via scripting, so you can create your own unique behaviors that way if you choose.
+</p>
+
+<p>Please view the Particle Scripting Reference <a class="wiki"  href="../ScriptReference/ParticleEmitter.html">here</a>.
+</p>
+
+<p>The remainder of this page's text is from the <a href="../Components/comp-ParticlesGroup.html">Particle Component Reference</a> pages.
+</p>
+
+<h1>Particle systems</h1>
+
+<p>Particle systems in Unity are used to make clouds of smoke, steam, fire and other atmospheric effects. Particle systems work by using one or two textures &amp; drawing them many times, creating a chaotic effect.
+</p>
+
+<p><img class='figure' src='images/Particle Systems-0.jpg' />
+</p>
+
+<p>One of the default explosions included in unity and the two textures it is made of. The orange texture is used for the flames in the bottom of the explosion, and the grayscale one is used to make the smoke near the top.
+</p>
+
+<p>A typical particle system in Unity is an object that contains a Particle Emitter, a Particle Animator and a Particle Renderer component. The <a href="../Components/class-EllipsoidParticleEmitter.html">emitter</a> generates the particles, the <a href="../Components/class-ParticleAnimator.html">animator</a> moves them over time, and the <a href="../Components/class-ParticleRenderer.html">renderer</a> gets them on the screen.
+</p>
+
+<p>If you want your particles to interact with the world, add a <a href="../Components/class-WorldParticleCollider.html">particle collider</a> component to the object.
+</p>
+
+<h2>See also</h2>
+
+
+
+<h1>Ellipsoid Particle Emitter</h1>
+<p>The Ellipsoid Particle Emitter spawns particles inside a sphere. Use the <b>Ellipsoid</b> property below to scale &amp; stretch the sphere.
+</p>
+
+<p><img class='figure' src='images/Particle Systems-1.jpg' />
+</p>
+
+<p><i>The Ellipsoid Particle Emitter</i>
+</p>
+
+
+<h2>Properties</h2>
+
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+ Emit</nobr></b></td><td> If enabled, the emitter will emit particles.
+</td></tr><tr><td><b><nobr>Min Size</nobr></b></td><td> The minimum size each particle can be at the time when it is spawned.
+</td></tr><tr><td><b><nobr>Max Size</nobr></b></td><td> The maximum size each particle can be at the time when it is spawned.
+</td></tr><tr><td><b><nobr>Min Energy</nobr></b></td><td> The minimum lifetime of each particle, measured in seconds.
+</td></tr><tr><td><b><nobr>Max Energy</nobr></b></td><td> The maximum lifetime of each particle, measured in seconds.
+</td></tr><tr><td><b><nobr>Min Emission</nobr></b></td><td> The minimum number of particles that will be spawned every second.
+</td></tr><tr><td><b><nobr>Max Emission</nobr></b></td><td> The maximum number of particles that will be spawned every second.
+</td></tr><tr><td><b><nobr>World Velocity</nobr></b></td><td> The starting speed of particles in world space, along X, Y, and Z.
+</td></tr><tr><td><b><nobr>Local Velocity</nobr></b></td><td> The starting speed of particles along X, Y, and Z, measured in the object's orientation.
+</td></tr><tr><td><b><nobr>Rnd Velocity</nobr></b></td><td> A random speed along X, Y, and Z that is added to the velocity.
+</td></tr><tr><td><b><nobr>Emitter Velocity Scale</nobr></b></td><td> The amount of the emitter's speed that the particles inherit.
+</td></tr><tr><td><b><nobr>Simulate In World Space</nobr></b></td><td> If enabled, the particles don't move when the emitter moves. If false, when you move the emitter, the particles follow it around.
+</td></tr><tr><td><b><nobr>One Shot</nobr></b></td><td> If enabled, the particle numbers specified by min &amp; max emission is spawned all at once. If disabled, the particles are generated in a long stream.
+</td></tr><tr><td><b><nobr>Ellipsoid</nobr></b></td><td> Scale of the sphere along X, Y, and Z that the particles are spawned inside.
+</td></tr><tr><td><b><nobr>MinEmitterRange</nobr></b></td><td> Determines an empty area in the center of the sphere - use this to make particles appear on the edge of the sphere.
+<p></td></tr></tr></table>
+</p>
+
+
+<h2>Details</h2>
+<p>Ellipsoid Particle Emitters (EPEs) are the basic emitter, and are included when you choose to add a Particle System to your scene from Components -&gt; Particles -&gt; Particle System.  You can define the boundaries for the particles to be spawned, and give the particles an initial velocity.  From here, use the <a href="../Components/class-ParticleAnimator.html">Particle Animator</a> to manipulate how your particles will change over time to achieve interesting effects.
+</p>
+
+<p><img class='figure' src='images/Particle Systems-2.jpg' />
+</p>
+
+<p><i>An EPE applied to a sphere</i>
+</p>
+
+<p>Particle Emitters work in conjunction with <a href="../Components/class-ParticleAnimator.html">Particle Animators</a> and <a href="../Components/class-ParticleRenderer.html">Particle Renderers</a> to create, manipulate, and display Particle Systems.  All three components must be present on an object before the particles will behave correctly.  When particles are being emitted, all different velocities are added together to create the final velocity.
+</p>
+
+
+<h3>Spawning Properties</h3>
+
+<p>Spawning properties like <b>Size</b>, <b>Energy</b>, <b>Emission</b>, and <b>Velocity</b> will give your particle system distinct personality when trying to achieve different effects.  Having a small <b>Size</b> could simulate fireflies or stars in the sky.  A large <b>Size</b> could simulate dust clouds in a musky old building.
+</p>
+
+<p><b>Energy</b> and <b>Emission</b> will control how long your particles remain onscreen and how many particles can appear at any one time.  For example, a rocket might have high <b>Emission</b> to simulate density of smoke, and high <b>Energy</b> to simulate the slow dispersion of smoke into the air.
+</p>
+
+<p><b>Velocity</b> will control how your particles move.  You might want to change your <b>Velocity</b> in scripting to achieve interesting effects, or if you want to simulate a constant effect like wind, set your X and Z <b>Velocity</b> to make your particles blow away.
+</p>
+
+<h3>Simulate in World Space</h3>
+
+<p>If this is disabled, the position of each individual particle will always translate relative to the <b>Position</b> of the emitter.  When the emitter moves, the particles will move along with it.  If you have <b>Simulate in World Space</b> enabled, particles will not be affected by the translation of the emitter.  For example, if you have a fireball that is spurting flames that rise, the flames will be spawned and float up in space as the fireball gets further away.  If <b>Simulate in World Space</b> is disabled, those same flames will move across the screen along with the fireball.
+</p>
+
+<h3>Emitter Velocity Scale</h3>
+
+<p>This property will only apply if <b>Simulate in World Space</b> is enabled.
+</p>
+
+<p>If this property is set to 1, the particles will inherit the exact translation of the emitter at the time they are spawned.  If it is set to 2, the particles will inherit double the emitter's translation when they are spawned.  3 is triple the translation, etc.
+</p>
+
+<h3>One Shot</h3>
+
+<p><b>One Shot</b> emitters will create all particles within the <b>Emission</b> property all at once, and cease to emit particles over time.  Here are some examples of different particle system uses with <b>One Shot</b> enabled or disabled:
+</p>
+
+<p>Enabled
+</p>
+<ul><li>Explosion
+</li><li>Water splash
+</li><li>Magic spell
+</li></ul>
+
+<p>Disabled
+</p>
+<ul><li>Gun barrel smoke
+</li><li>Wind effect
+</li><li>Waterfall
+</li></ul>
+
+
+
+<h3>Min Emitter Range</h3>
+
+<p>The <b>Min Emitter Range</b> determines the depth within the ellipsoid that particles can be spawned.  Setting the range to 0 will allow particles to spawn anywhere from the center core of the ellipsoid to the outer-most range.  Setting the range to 1 will restrict spawn locations to the outer-most range of the ellipsoid.
+</p>
+
+<p><img class='figure' src='images/Particle Systems-3.jpg' />
+</p>
+
+<p><i><b>Min Emitter Range</b> of 0</i>
+</p>
+
+<p><img class='figure' src='images/Particle Systems-4.jpg' />
+</p>
+
+<p><i><b>Min Emitter Range</b> of 1</i>
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Be careful of using many large particles. This can seriously hinder performance on low-level machines. Always try to use the minimum number of particles to attain an effect.
+</li><li>The <b>Emit</b> property works in conjunction with the <b>AutoDestruct</b> property of the ParticleAnimator.  Through scripting, you can cease the emitter from emitting, and then <b>AutoDestruct</b> will automatically destroy the Particle System and the GameObject it is attached to.
+</li></ul>
+</p>
+<h1> Mesh Particle Emitter</h1>
+<p>The Mesh Particle Emitter emits particles around a mesh. Particles are spawned from the surface of the mesh, which can be necessary when you want to make your particles interact in a complex way with objects.
+</p>
+
+<p><img class='figure' src='images/Particle Systems-5.jpg' />
+</p>
+
+<p><i>The Mesh Particle Emitter</i>
+</p>
+
+<p>Here is how to create a <a href="../Manual/HOWTO-MeshParticleEmitter.html">Mesh Particle Emitter</a>.
+</p>
+
+<h2> Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+ Emit</nobr></b></td><td> If enabled, the emitter will emit particles.
+</td></tr><tr><td><b><nobr>Min Size</nobr></b></td><td> The minimum size each particle can be at the time when it is spawned.
+</td></tr><tr><td><b><nobr>Max Size</nobr></b></td><td> The maximum size each particle can be at the time when it is spawned.
+</td></tr><tr><td><b><nobr>Min Energy</nobr></b></td><td> The minimum lifetime of each particle, measured in seconds.
+</td></tr><tr><td><b><nobr>Max Energy</nobr></b></td><td> The maximum lifetime of each particle, measured in seconds.
+</td></tr><tr><td><b><nobr>Min Emission</nobr></b></td><td> The minimum number of particles that will be spawned every second.
+</td></tr><tr><td><b><nobr>Max Emission</nobr></b></td><td> The maximum number of particles that will be spawned every second.
+</td></tr><tr><td><b><nobr>World Velocity</nobr></b></td><td> The starting speed of particles in world space, along X, Y, and Z.
+</td></tr><tr><td><b><nobr>Local Velocity</nobr></b></td><td> The starting speed of particles along X, Y, and Z, measured in the object's orientation.
+</td></tr><tr><td><b><nobr>Rnd Velocity</nobr></b></td><td> A random speed along X, Y, and Z that is added to the velocity.
+</td></tr><tr><td><b><nobr>Emitter Velocity Scale</nobr></b></td><td> The amount of the emitter's speed that the particles inherit.
+</td></tr><tr><td><b><nobr>Simulate In World Space</nobr></b></td><td> If enabled, the particles don't move when the emitter moves. If false, when you move the emitter, the particles follow it around.
+</td></tr><tr><td><b><nobr>One Shot</nobr></b></td><td> If enabled, the particle numbers specified by min &amp; max emission is spawned all at once. If disabled, the particles are generated in a long stream.
+</td></tr><tr><td><b><nobr>Interpolate Triangles</nobr></b></td><td> If enabled, particles are spawned all over the mesh's surface. If disabled, particles are only spawned from the mesh's vertrices.
+</td></tr><tr><td><b><nobr>Systematic</nobr></b></td><td> If enabled, particles are spawned in the order of the vertices defined in the mesh. Although you seldom have direct control over vertex order in meshes, most 3D modelling applications have a very systematic setup when using primitives. It is important that the mesh contains no faces in order for this to work.
+</td></tr><tr><td><b><nobr>Min Normal Velocity</nobr></b></td><td> Minimum amount that particles are thrown away from the mesh.
+</td></tr><tr><td><b><nobr>Max Normal Velocity</nobr></b></td><td> Maximum amount that particles are thrown away from the mesh.
+<p></td></tr></tr></table>
+</p>
+
+<h2> Details</h2>
+<p>Mesh Particle Emitters (MPEs) are used when you want more precise control over the spawn position &amp; directions than the simpler Ellipsoid Particle Emitter gives you.  They can be used for making advanced effects like flaming swords.
+</p>
+
+<p><img class='figure' src='images/Particle Systems-6.jpg' />
+</p>
+
+<p><i>A flaming sword created with a Mesh Particle Emitter</i>
+</p>
+
+<p>MPEs work emitting particles at the vertices of the attached mesh. Therefore, the areas of your mesh that are more dense with polygons will be more dense with particle emission.
+</p>
+
+<p>Particle Emitters work in conjunction with <a href="../Components/class-ParticleAnimator.html">Particle Animators</a> and <a href="../Components/class-ParticleRenderer.html">Particle Renderers</a> to create, manipulate, and display Particle Systems.  All three components must be present on an object before the particles will behave correctly.  When particles are being emitted, all different velocities are added together to create the final velocity.
+</p>
+
+
+<h3>Spawning Properties</h3>
+
+<p>Spawning properties like <b>Size</b>, <b>Energy</b>, <b>Emission</b>, and <b>Velocity</b> will give your particle system distinct personality when trying to achieve different effects.  Having a small <b>Size</b> could simulate fireflies or stars in the sky.  A large <b>Size</b> could simulate dust clouds in a musky old building.
+</p>
+
+<p><b>Energy</b> and <b>Emission</b> will control how long your particles remain onscreen and how many particles can appear at any one time.  For example, a rocket might have high <b>Emission</b> to simulate density of smoke, and high <b>Energy</b> to simulate the slow dispersion of smoke into the air.
+</p>
+
+<p><b>Velocity</b> will control how your particles move.  You might want to change your <b>Velocity</b> in scripting to achieve interesting effects, or if you want to simulate a constant effect like wind, set your X and Z <b>Velocity</b> to make your particles blow away.
+</p>
+
+<h3>Simulate in World Space</h3>
+
+<p>If this is disabled, the position of each individual particle will always translate relative to the <b>Position</b> of the emitter.  When the emitter moves, the particles will move along with it.  If you have <b>Simulate in World Space</b> enabled, particles will not be affected by the translation of the emitter.  For example, if you have a fireball that is spurting flames that rise, the flames will be spawned and float up in space as the fireball gets further away.  If <b>Simulate in World Space</b> is disabled, those same flames will move across the screen along with the fireball.
+</p>
+
+<h3>Emitter Velocity Scale</h3>
+
+<p>This property will only apply if <b>Simulate in World Space</b> is enabled.
+</p>
+
+<p>If this property is set to 1, the particles will inherit the exact translation of the emitter at the time they are spawned.  If it is set to 2, the particles will inherit double the emitter's translation when they are spawned.  3 is triple the translation, etc.
+</p>
+
+<h3>One Shot</h3>
+
+<p><b>One Shot</b> emitters will create all particles within the <b>Emission</b> property all at once, and cease to emit particles over time.  Here are some examples of different particle system uses with <b>One Shot</b> enabled or disabled:
+</p>
+
+<p>Enabled
+</p>
+<ul><li>Explosion
+</li><li>Water splash
+</li><li>Magic spell
+</li></ul>
+
+<p>Disabled
+</p>
+<ul><li>Gun barrel smoke
+</li><li>Wind effect
+</li><li>Waterfall
+</li></ul>
+
+
+<h2>Interpolate Triangles</h2>
+
+<p>Enabling your emitter to interpolate triangles will allow particles to be spawned outside of the mesh's vertices.  This option is off by default, so particles will only be spawned at vertex locations.
+</p>
+
+<p><img class='figure' src='images/Particle Systems-7.jpg' />
+</p>
+
+<p><i>A flaming sword with <b>Interpolate Triangles</b> off (by default)</i>
+</p>
+
+<p>Enabling this option will spawn particles on and in-between vertices, essentially all over the mesh's surface (seen below).
+</p>
+
+<p><img class='figure' src='images/Particle Systems-8.jpg' />
+</p>
+
+<p><i>A flaming sword with <b>Interpolate Triangles</b> on</i>
+</p>
+
+<p>It bears repeating that even with <b>Interpolate Triangles</b> enabled, particles will still be denser in areas of your mesh that are more dense with polygons.
+</p>
+
+<h2>Systematic</h2>
+
+<p>Enabling <b>Systematic</b> will cause your particles to be spawned in your mesh's vertex order.  The vertex order is set by your 3D modeling application.
+</p>
+
+<p><img class='figure' src='images/Particle Systems-9.jpg' />
+</p>
+
+<p><i>An MPE attached to a sphere with Systematic enabled</i>
+</p>
+
+<h2>Normal Velocity</h2>
+
+<p><b>Normal Velocity</b> controls the speed at which particles are emitted along the normal from where they are spawned.
+</p>
+
+<p>For example, create a Mesh Particle system, use a cube mesh as the emitter, enable <b>Interpolate Triangles</b>, and set <b>Normal Velocity Min</b> and <b>Max</b> to 1. You will now see the particles emit from the faces of the cube in a straight line.
+</p>
+
+<h2>See Also</h2>
+<ul><li> <a href="../Manual/HOWTO-MeshParticleEmitter.html">How to make a Mesh Particle Emitter</a>
+</li></ul>
+
+<h2> Hints</h2>
+<p><ul><li>
+</p>
+
+<p>MPEs can also be used to make glow from a lot of lamps placed in a scene. Simply make a mesh with one vertex in the center of each lamp, and build an MPE from that with a halo material. Great for evil sci-fi worlds.
+</li></ul>
+</p>
+<h1> Particle Animator</h1>
+<p>Particle Animators move your particles over time, you use them to apply wind, drag &amp; color cycling to your particle systems.
+</p>
+
+<p><img class='figure' src='images/Particle Systems-10.jpg' />
+</p>
+
+<p><i>The Particle Animator</i>
+</p>
+
+<h2> Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Does Animate Color</nobr></b></td><td> If enabled, particles cycle their color over their lifetime.
+</td></tr><tr><td><b><nobr>Color Animation</nobr></b></td><td> The 5 colors particles go through. All particles cycle over this - if some have a shorter life span than others, they will animate faster.
+</td></tr><tr><td><b><nobr>World Rotation Axis</nobr></b></td><td> An optional world-space axis the particles rotate around. Use this to make advanced spell effects or give caustic bubbles some life.
+</td></tr><tr><td><b><nobr>Local Rotation Axis</nobr></b></td><td> An optional local-space axis the particles rotate around. Use this to make advanced spell effects or give caustic bubbles some life.
+</td></tr><tr><td><b><nobr>Size Grow</nobr></b></td><td> Use this to make particles grow in size over their lifetime. As randomized forces will spread your particles out, it is often nice to make them grow in size so they don't fall apart.
+Use this to make smoke rise upwards, to simulate wind, etc.
+</td></tr><tr><td><b><nobr>Rnd Force</nobr></b></td><td> A random force added to particles every frame. Use this to make smoke become more alive.
+</td></tr><tr><td><b><nobr>Force</nobr></b></td><td> The force being applied every frame to the particles, measure relative to the world.
+</td></tr><tr><td><b><nobr>Damping</nobr></b></td><td> How much particles are slowed every frame. A value of 1 gives no damping, while less makes them slow down.
+</td></tr><tr><td><b><nobr>Autodestruct</nobr></b></td><td> If enabled, the GameObject attached to the Particle Animator will be destroyed when all particles disappear.
+<p></td></tr></tr></table>
+</p>
+
+<h2> Details</h2>
+
+<p>Particle Animators allow your particle systems to be dynamic.  They allow you to change the color of your particles, apply forces and rotation, and choose to destroy them when they are finished emitting.  For more information about Particle Systems, reference <a href="../Components/class-MeshParticleEmitter.html">Mesh Particle Emitters</a>, <a href="../Components/class-EllipsoidParticleEmitter.html">Ellipsoid Particle Emitters</a>, and <a href="../Components/class-ParticleRenderer.html">Particle Renderers</a>.
+</p>
+
+<h3>Animating Color</h3>
+
+<p>If you would like your particles to change colors or fade in/out, enable them to <b>Animate Color</b> and specify the colors for the cycle.  Any particle system that animates color will cycle through the 5 colors you choose.  The speed at which they cycle will be determined by the Emitter's <b>Energy</b> value.
+</p>
+
+<p>If you want your particles to fade in rather than instantly appear, set your first or last color to have a low Alpha value.
+</p>
+
+<p><img class='figure' src='images/Particle Systems-11.jpg' />
+</p>
+
+<p><i>An <b>Animating Color</b> Particle System</i>
+</p>
+
+<h3>Rotation Axes</h3>
+
+<p>Setting values in either the Local or World <b>Rotation Axes</b> will cause all spawned particles to rotate around the indicated axis (with the <b>Transform's</b> position as the center).  The greater the value is entered on one of these axes, the faster the rotation will be.
+</p>
+
+<p>Setting values in the Local Axes will cause the rotating particles to adjust their rotation as the <b>Transform's</b> rotation changes, to match its local axes.
+</p>
+
+<p>Setting values in the World Axes will cause the particles' rotation to be consistent, regardless of the <b>Transform's</b> rotation.
+</p>
+
+<h3>Forces &amp; Damping</h3>
+
+<p>You use force to make particles accelerate in the direction specified by the force.
+</p>
+
+<p>Damping (Drag) can be used to decelerate or accelerate without changing their direction.<br />
+A value of 1 means no damping is applied, the particles will not slow down or accelerate.<br />
+A value of 0 means particles will stop immediately.<br />
+A value of 2 means particles will double their speed every second.
+</p>
+
+<h3>Destroying Objects attached to Particles</h3>
+
+<p>You can destroy the Particle System and any attached Game Object by enabling the <b>AutoDestruct</b> property.  For example, if you have an oil drum, you can attach a Particle System that has <b>Emit</b> disabled and <b>AutoDestruct</b> enabled.  On collision, you enable the Particle Emitter.  The explosion will occur and after it is over, the Particle System and the oil drum will be destroyed and removed from the scene.
+</p>
+
+<h2> Hints</h2>
+<p><ul><li>
+Use the color animation to make your particles fade in &amp; out over their lifetime - otherwise, you will get nasty-looking pops.
+</li><li>Use the rotation axes to make whirlpool-like swirly motions.
+</li></ul>
+</p>
+<h1>Particle Collider</h1>
+
+<p>The Particle Collider is used to collide particles against other objects in the scene.
+</p>
+
+<p><img class='figure' src='images/Particle Systems-12.jpg' />
+</p>
+
+<p><i>A shot of a very simple particle system with particle collider colliding with a cube</i>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Bounce Factor</nobr></b></td><td> Particles can be accelerated or slowed down when they collide against other objects. This factor is similar to the Particle Animator's damping.
+</td></tr><tr><td><b><nobr>Collision Energy Loss</nobr></b></td><td>Amount of energy (in seconds) a particle should lose when colliding. If the energy goes below 0, the particle is killed
+</td></tr><tr><td><b><nobr>Min Kill Velocity</nobr></b></td><td> If a particle's velocity drops below Min Kill Velocity because of a Collision, it will be eliminated.
+</td></tr><tr><td><b><nobr>Collides with</nobr></b></td><td> Which layers the particles collides against.
+</td></tr><tr><td><b><nobr>Send Collision Message</nobr></b></td><td> When colliding every particle sends out a message that you can catch through scripting.
+<p></td></tr></tr></table>
+</p>
+<h2>Details</h2>
+
+<p>To create a particle system with particle collider:
+</p>
+<ol><li> Create a particle system using <b>GameObject -&gt; Create Other -&gt; Particle System</b>
+</li><li> Add the particle collider using <b>Component -&gt; Particles -&gt; World Particle Collider</b>
+</li></ol>
+
+
+<h3>Messaging</h3>
+<p>If Send Collision Message is enabled, any particles that are in a collision will send the message OnParticleCollision to  both the particle's GameObject and the GameObject the particle collided with.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Send Collision message can be used to simulate bullets and apply damage on impact.
+</li><li>Particle Collision Detection is slow when used with a lot of particles. Use Particle Collision Detection wisely.
+</li><li>Message sending introduces a large overhead and shouldn't be used for normal particle systems.
+</li></ul>
+</p>
+<h1>Particle Renderer</h1>
+<p>The Particle Renderer renders the particle system on screen.
+</p>
+
+<p><img class='figure' src='images/Particle Systems-13.jpg' />
+<i>The Particle Renderer</i>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Materials</nobr></b></td><td> Reference to a list of Materials that will be displayed in the position of each individual particle.
+</td></tr><tr><td><b><nobr>Camera Velocity Scale</nobr></b></td><td> The amount of stretching that is applied to the particles based on Camera movement.
+</td></tr><tr><td><b><nobr>Stretch Particles</nobr></b></td><td> Determines how the particles are rendered.
+<dl><dt>Billboard</dt><dd> The particles are rendered as if facing the camera.</dd><dt>Stretched</dt><dd> The particles are facing the direction they are moving. </dd><dt>SortedBillboard</dt><dd> The particles are sorted by depth. Use this when using a blending material.</dd></dl>
+</td></tr><tr><td><b><nobr>Length Scale</nobr></b></td><td> If <b>Stretch Particles</b> is set to Stretched, this value determines how long the particles are in their direction of motion.
+</td></tr><tr><td><b><nobr>Velocity Scale</nobr></b></td><td> If <b>Stretch Particles</b> is set to Stretched, this value determines the rate at which particles will be stretched, based on their movement speed.
+</td></tr><tr><td><b><nobr>UV Animation</nobr></b></td><td> If either of these are set, the UV coordinates of the particles will be generated for use with a tile animated texture. See the section on Animated Textures below.
+</td></tr><tr><td><b><nobr>    X Tile</nobr></b></td><td> Number of frames located across the X axis
+</td></tr><tr><td><b><nobr>    Y Tile</nobr></b></td><td> Number of frames located across the Y axis
+</td></tr><tr><td><b><nobr>    Cycles</nobr></b></td><td> How many times to loop the animation sequence.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+<p>Particle Renderers are required for any Particle Systems to be displayed on the screen.
+</p>
+
+<p><img class='figure' src='images/Particle Systems-14.jpg' />
+</p>
+
+<p><i>A Particle Renderer is what makes explosion appear on the screen</i>
+</p>
+
+<h3> Choosing a material</h3>
+<p>When setting up a particle renderer it is very important to use an appropriate material and shader. Most of the time you want to use a material with one of the <b>builtin Particle shaders</b>. There are some premade materials in the Standard Assets/Particles/Sources folder.
+</p>
+
+<p>Creating a new material is easy:
+</p>
+<ol><li> <b>Assets -&gt; Create Other -&gt; Material</b>
+</li><li> The {class-Material|material} has a shader popup, choose one of the shaders in the Particles group. Eg. Particles/Multiply
+</li><li> Now assign a texture. The different shaders use the alpha channel of the textures slightly differently, but most of the time a value of black will make it invisible and white in the alpha channel will display it on screen.
+</li></ol>
+
+<h3>Distorting particles</h3>
+
+<p>By default particles are rendered billboarded. That is simple square sprites. This is good for smoke and explosions and most other particle effects.
+</p>
+
+<p>Particles can be made to either stretch with the velocity. This is useful for sparks, lightning or laser beam.
+Length Scale and Velocity Scale affects how long the stretched particle will be.
+</p>
+
+<p>Sorted Billboard can be used to make all particles sort by depth. Sometimes this is necessary, mostly when using Alpha Blended particle shaders. This can be expensive and should only be used if it really makes a quality difference when rendering.
+</p>
+
+<h3>Animated textures</h3>
+<p>Particle systems can be rendered with an animated tile texture. To use this feature, make the texture out of a grid of images. As the particles go thorough their life cycle, they will cycle through the images. This is good for adding more life to your particles, or making small rotating debris pieces.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Use particle materials with the Particle Renderer.
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="Cameras.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Working with Assets.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

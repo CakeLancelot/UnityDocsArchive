@@ -1,0 +1,80 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="How Do I make a Mesh Particle Emitter?"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="How Do I make a Mesh Particle Emitter?" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOW-TOs.html%22%3EHOW-TOs%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Graphics%20how-tos.html%22%3EGraphics%20how-tos%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOWTO-MeshParticleEmitter.html%22%3EHow%20Do%20I%20make%20a%20Mesh%20Particle%20Emitter%3F%3C%2Fa%3E" -->
+		<h1>How Do I make a Mesh Particle Emitter?</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="HOW-TOs.html">HOW-TOs</a> &gt; <a href="Graphics how-tos.html">Graphics how-tos</a> &gt; <a href="HOWTO-MeshParticleEmitter.html">How Do I make a Mesh Particle Emitter?</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="HOWTO-UseSkybox.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HOWTO-SplashScreen.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Mesh Particle Emitters are generally used when you need high control over where to emit particles.
+For example when you want to do a flaming sword.
+</p>
+
+<table><tr><td><div class='cbox'><div class='cbox-data'>
+<ol><li> Drag a mesh into the scene.
+</li><li> Remove the MeshRenderer by right-clicking on the MeshRenderer's inspector titlebar and choosing Remove Component.
+</li><li> Choose MeshParticleEmitter from the Component-&gt;Particles menu
+</li><li> Choose ParticleAnimator from the Component-&gt;Particles menu
+</li><li> Choose ParticleRenderer from the Component-&gt;Particles menu
+</li></ol>
+
+<p></div></div></td></tr></table>
+</p>
+
+<p>You should now see particles emitting from the mesh.
+</p>
+
+<p>Play around with the values in the <a href="../Components/class-MeshParticleEmitter.html">MeshParticleEmitter</a>.
+</p>
+
+<p>Especially enable Interpolate Triangles in the Mesh Particle Emitter Inspector and set Min Normal Velocity and Max Normal Velocity to 1.
+</p>
+
+<table><tr><td><div class='cbox'><div class='cbox-data'>
+<ol><li> Choose Material from the Assets -&gt; Create menu
+</li><li> In the shader popup select the Particles/Additive shader
+</li><li> Drag&amp;Drop a texture from the project view onto the texture slot in the material
+</li><li> Drag the material from project view on the particle system in the scene view
+</li></ol>
+
+<p></div></div></td></tr></table>
+</p>
+
+<p>You should now see textured particles emitting from the mesh.
+</p>
+
+<h2>See Also</h2>
+<ul><li> <a href="../Components/class-MeshParticleEmitter.html">MeshParticleEmitter</a>
+</li></ul>
+
+
+
+		<div class="navigation"><a href="HOWTO-UseSkybox.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HOWTO-SplashScreen.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

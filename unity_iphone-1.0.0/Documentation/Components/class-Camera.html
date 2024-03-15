@@ -1,0 +1,164 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Camera</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Camera</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-RenderingGroup.html">Rendering Components</a> &gt; <a href="../Components/class-Camera.html">Camera</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><a href='../ScriptReference/Camera.html' title='Go to Camera Scripting Doc'>Switch to Scripting</a><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/comp-RenderingGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-FlareLayer.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Camera</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><span class='doc-keyword'>Cameras</span> are the devices that capture and display the world to the player.  By customizing and manipulating cameras, you can make the presentation of your game truly unique.  You can have an unlimited number of cameras in a scene. They can be set to render in any order, at any place on the screen, or only certain parts of the screen.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Camera-0.jpg' /><br /><em>Unity's flexible Camera object</em></div>
+<div class='vspace'></div><h2>Properties</h2>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Clear Flags</span></td><td  align='left'>Determines which parts of the screen will be cleared.  This is handy when using multiple Cameras to draw different game elements.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Background color</span></td><td  align='left'>Color applied to the remaining screen after all elements in view have been drawn and there is no skybox.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Normalized View Port Rect</span></td><td  align='left'>Four values that indicate where on the screen this camera view will be drawn, in Screen Coordinates.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Xmin</span></span></td><td  align='left'>The beginning horizontal position that the camera view will be drawn.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Ymin</span></span></td><td  align='left'>The beginning vertical position that the camera view will be drawn.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Xmax</span></span></td><td  align='left'>The ending horizontal position that the camera view will be drawn.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Ymax</span></span></td><td  align='left'>The ending vertical position that the camera view will be drawn.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Near clip plane</span></td><td  align='left'>The closest point relative to the camera that drawing will occur.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Far clip plane</span></td><td  align='left'>The furthest point relative to the camera that drawing will occur.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Field of view</span></td><td  align='left'>Width of the Camera's view angle, measured in degrees along the local Y axis.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Orthographic</span></td><td  align='left'>Toggles the camera's capability to simulate perspective.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Orthographic size</span></td><td  align='left'>The viewport size of the Camera when it is Orthographic.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Depth</span></td><td  align='left'>The camera's position in the draw order. Cameras with a higher depth will be drawn on top of cameras with a lower depth value.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Culling Mask</span></td><td  align='left'>Include or omit layers of objects to be rendered by the Camera.  Assign layers to your objects in the Inspector.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Render Target</span> (Pro only)</td><td  align='left'>Reference to a <a href="../Components/class-RenderTexture.html">Render Texture</a> that will contain the output of the Camera view. Making this reference will disable this Camera's capability to render to the screen.</td></tr>
+</table>
+<div class='vspace'></div><h2>Details</h2>
+<p>Cameras are essential for displaying your game to the player.  They can be customized, scripted, or parented to achieve just about any kind of effect imaginable.  For a puzzle game, you might keep the Camera static for a full view of the puzzle.  For a first-person shooter, you would parent the Camera to the player character, and place it at the character's eye level.  For a racing game, you'd likely want to have the Camera follow your player's vehicle.
+</p>
+<p class='vspace'>You can create multiple Cameras and assign each one to a different <span class='doc-prop'>Depth</span>.  Cameras are drawn from low <span class='doc-prop'>Depth</span> to high <span class='doc-prop'>Depth</span>.  In other words, a Camera with a <span class='doc-prop'>Depth</span> of 2 will be drawn on top of a Camera with a depth of 1.  You can adjust the values of the <span class='doc-prop'>Normalized View Port Rectangle</span> property to resize and position the Camera's view onscreen.  This can create multiple mini-views like missile cams, map views, rear-view mirrors, etc.
+</p>
+<div class='vspace'></div><h3>Clear Flags</h3>
+<p>Each Camera stores color and depth information when it renders its view.  The portions of the screen that are not drawn in are empty, and will display the skybox by default.  When you are using multiple Cameras, each one stores its own color and depth information in buffers, accumulating more data as each Camera renders.  As any particular Camera in your scene renders its view, you can set the <span class='doc-prop'>Clear Flags</span> to clear different collections of the buffer information. This is done by choosing one of the four options:
+</p>
+<div class='vspace'></div><h4>Skybox</h4>
+<p>This is the default setting.  Any empty portions of the screen will display the current Camera's skybox.  If the current Camera has no skybox set, it will default to the skybox chosen in the <a href="../Components/class-RenderSettings.html">Render Settings</a> (found in <span class='doc-menu'>Edit-&gt;Render Settings</span>).  It will then fall back to the <span class='doc-prop'>Background Color</span>.
+</p>
+<div class='vspace'></div><h4>Solid Color</h4>
+<p>Any empty portions of the screen will display the current Camera's <span class='doc-prop'>Background Color</span>.
+</p>
+<div class='vspace'></div><h4>Depth Only</h4>
+<p>If you wanted to draw a player's gun without letting it get clipped inside the environment, you would set one Camera at <span class='doc-prop'>Depth</span> 0 to draw the environment, and another Camera at <span class='doc-prop'>Depth</span> 1 to draw the weapon alone.  The weapon Camera's <span class='doc-prop'>Clear Flags</span> should be set to to <span class='doc-prop'>depth only</span>.  This will keep the graphical display of the environment on the screen, but discard all information about where each object exists in 3-D space.  When the gun is drawn, the opaque parts will completely cover anything drawn, regardless of how close the gun is to the wall.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Camera-1.jpg' /><br /><em>The gun is drawn last, after clearing the depth buffer of the cameras before it</em></div>
+<div class='vspace'></div><h4>Don't Clear</h4>
+<p>This mode does not clear either the color or the depth buffer.  The result is that each frame is drawn over the next, resulting in a smear-looking effect.  This isn't typically used in games, and would likely be best used with a custom shader.
+</p>
+<div class='vspace'></div><h3>Clip Planes</h3>
+<p>The <span class='doc-prop'>Near</span> and <span class='doc-prop'>Far Clip Plane</span> properties determine where the Camera's view begins and ends.  The planes are laid out perpendicular to the Camera's direction and are measured from the its position.  The <span class='doc-prop'>Near plane</span> is the closest location that will be rendered, and the <span class='doc-prop'>Far plane</span> is the furthest.
+</p>
+<p class='vspace'>The clipping planes also determine how depth buffer precision is distributed over the scene. In general, to get better precision you should move the <span class='doc-prop'>Near plane</span> as far as possible.
+</p>
+<div class='vspace'></div><h3>Culling Mask</h3>
+<p>The <span class='doc-prop'>Culling Mask</span> is used for selectively rendering groups of objects using Layers.  More information on using layers can be found <a href="../Components/Layers.html">here</a>.
+</p>
+<p class='vspace'>Commonly, it is good practice to put your User Interface on a different layer, then render it by itself with a separate Camera set to render the UI layer by itself.
+</p>
+<p class='vspace'>In order for the UI to display on top of the other Camera views, you'll also need to set the <span class='doc-prop'>Clear Flags</span> to <span class='doc-prop'>Depth only</span> and make sure that the UI Camera's <span class='doc-prop'>Depth</span> is higher than the other Cameras.
+</p>
+<div class='vspace'></div><h3>Normalized Viewport Rectangle</h3>
+<p><span class='doc-prop'>Normalized Viewport Rectangles</span> are specifically for defining a certain portion of the screen that the current camera view will be drawn upon.  You can put a map view in the lower-right hand corner of the screen, or a missile-tip view in the upper-left corner.  With a bit of design work, you can use <span class='doc-prop'>Viewport Rectangle</span> to create some unique behaviors.
+</p>
+<p class='vspace'>It's easy to create a two-player split screen effect using <span class='doc-prop'>Normalized Viewport Rectangle</span>.  After you have created your two cameras, change player one's Ymin value to 0.5, and player two's Ymax: value to 0.5.  This will make player one's camera display from halfway up the screen to the top, and player two's camera will start at the bottom and stop halfway up the screen.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Camera-2.jpg' /><br /><em>Two-player display created with <span class='doc-prop'>Normalized Viewport Rectangle</span></em></div>
+<div class='vspace'></div><h3>Orthographic</h3>
+<p>Marking a Camera as <span class='doc-prop'>Orthographic</span> removes all perspective from the Camera's view. This is mostly useful for making isometric or 2D games.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Camera-3.jpg' /><br /><em>Perspective camera.</em></div>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Camera-4.jpg' /><br /><em>Orthographic camera. Objects do not get smaller with distance here!</em></div>
+<div class='vspace'></div><h3>Render Texture</h3>
+<p>This feature is only available for Unity Pro licenses.  It will place the camera's view onto a <a href="../Components/class-RenderTexture.html">Texture</a> that can then be applied to another object.  This makes it easy to create sports arena video monitors, surveillance cameras, reflections etc.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Camera-5.jpg' /><br /><em>A Render Texture used to create a live arena-cam</em></div>
+<div class='vspace'></div><h2>Hints</h2>
+<ul><li>Cameras can be instantiated, parented, and scripted just like any other <span class='wikiword'>GameObject</span>.
+</li><li>To increase the sense of speed in a racing game, use a high <span class='doc-prop'>Field of View</span>.
+</li><li>Cameras can be used in physics simulation if you add a <span class='doc-keyword'>Rigidbody</span> Component.
+</li><li>There is no limit to the number of Cameras you can have in your scenes.
+</li><li>Orthographic cameras are great for making 3D user interfaces
+</li><li>Pro license holders have the option of rendering a Camera's view to a texture, called Render-to-Texture, for even more unique effects.
+</li><li>Unity comes with pre-installed Camera scripts, found in <span class='doc-menu'>Components-&gt;Camera Control</span>.  Experiment with them to get a taste of what's possible.
+</li><li>If you are experiencing depth artifacts (surfaces close to each other flickering), try setting <span class='doc-prop'>Near Plane</span> to as large as possible.
+</li><li>Cameras cannot render to the Game Screen and a Render Texture at the same time, only one or the other.
+</li></ul>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/comp-RenderingGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-FlareLayer.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

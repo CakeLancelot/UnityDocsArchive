@@ -1,0 +1,48 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="JointLimits"-->
+			<title>Unity Script Reference &ndash; JointLimits</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>struct JointLimits</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="struct JointLimits" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> JointLimits is used by the <a href="HingeJoint.html" class="classlink">HingeJoint</a> to limit the joints angle.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#min'>min</a></p>
+<p><a href='#minBounce'>minBounce</a></p>
+<p><a href='#max'>max</a></p>
+<p><a href='#maxBounce'>maxBounce</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> <span class="seealso"><b>See Also:</b> <a href="HingeJoint.html" class="classlink">HingeJoint</a></span></p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="min"></a><h3><span class="full-name">JointLimits.</span>min</h3><div class="synopsis"><span class="standard_type">float</span> min</div>
+   <p class='details'> The lower limit of the joint. When the joint angle or position is below it, 
+the joint will excert forces to constrain it.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Set the minimum hinge angle to be 20 degrees<br/>hingeJoint.limits.min = 20;</div></td></tr></table></p>
+	<a name="minBounce"></a><h3><span class="full-name">JointLimits.</span>minBounce</h3><div class="synopsis"><span class="standard_type">float</span> minBounce</div>
+   <p class='details'> When <table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">Set the joint to bounce off when hitting the lower limit<br/>hingeJoint.limits.minBounce = 1;</div></td></tr></table></p>
+	<a name="max"></a><h3><span class="full-name">JointLimits.</span>max</h3><div class="synopsis"><span class="standard_type">float</span> max</div>
+   <p class='details'> The upper limit of the joint. When the joint angle or position is above it, 
+the joint will excert forces to constrain it.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Set the minimum hinge angle to be 20 degrees<br/>hingeJoint.limits.max = 40;</div></td></tr></table></p>
+	<a name="maxBounce"></a><h3><span class="full-name">JointLimits.</span>maxBounce</h3><div class="synopsis"><span class="standard_type">float</span> maxBounce</div>
+   <p class='details'> <table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">Set the joint to bounce off when hitting the upper limit<br/>hingeJoint.limits.maxBounce = 1;</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

@@ -1,0 +1,51 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" How to make a simple first person walkthrough"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title=" How to make a simple first person walkthrough" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22FAQ.html%22%3EFAQ%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Game%20Code%20How-to.html%22%3EGame%20Code%20How-to%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOWTO-First%20Person%20Walkthrough.html%22%3E%20How%20to%20make%20a%20simple%20first%20person%20walkthrough%3C%2Fa%3E" -->
+		<h1> How to make a simple first person walkthrough</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="FAQ.html">FAQ</a> &gt; <a href="Game Code How-to.html">Game Code How-to</a> &gt; <a href="HOWTO-First Person Walkthrough.html"> How to make a simple first person walkthrough</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Game Code How-to.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Advanced.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Here's how you can make a simple first person walk-through with your own artwork:
+</p>
+
+<ol><li> Import your level. See <a href="../Manual/HOWTO-importObject.html">here</a> on how to import geometry from your art package into Unity.
+</li><li> Select the imported model file and choose <b>Assets -&gt; Import Settings ...</b>. Enable <b>Meshes have colliders</b>.
+</li><li> Locate the &quot;Standard Assets/Prefabs/First Person Controller&quot; in the project view and drag it into the scene view.
+</li><li> Make sure that the size of your level is correct. The First Person Controller is exactly 2 meters high, so if your level doesn't fit the size of the controller, you should adjust the scale of the level size. Getting scale right is critical for physical simulation otherwise objects feel like they are floating or too heavy. You can either scale the model in the scene view using the scale handle or use the <b>Assets -&gt; Import Settings ...</b> on the model file.
+</li><li> Move the First Person Controller to be at the start location using the transform handles. It is critical that the first person controller does not intersect any level geometry, when starting the game. (Otherwise it will be stuck in the geometry)
+</li><li> Remove the default camera &quot;Main Camera&quot; in the hierarchy view. The First person controller already has it's own camera.
+</li><li> Hit Play to walk around in your own level.
+</li></ol>
+
+
+
+		<div class="navigation"><a href="Game Code How-to.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Advanced.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

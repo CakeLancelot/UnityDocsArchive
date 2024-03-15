@@ -1,0 +1,137 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Plugins - Pro only feature"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="Plugins - Pro only feature" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced%20(for%20technical%20guys).html%22%3EAdvanced%20(for%20technical%20guys)%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Plugins.html%22%3EPlugins%20-%20Pro%20only%20feature%3C%2Fa%3E" navigation="%3Ca%20href%3D%22ShaderLab%20Cheat%20Sheet.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22HOW-TOs.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>Plugins - Pro only feature</h1>
+		<p><a href="index.html">Unity Manual</a> &gt; <a href="Advanced (for technical guys).html">Advanced (for technical guys)</a> &gt; <a href="Plugins.html">Plugins - Pro only feature</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="ShaderLab Cheat Sheet.html"><img src="../images/prev.png"></a><a href="HOW-TOs.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+
+<p>Unity has extensive support for C, C++ or Objective-C based plugins.
+In order to use a plugin you need to do two things:
+</p>
+<ul><li> Write a plugin in a C based language and compile it.
+</li><li> Create a C# script which calls functions in the plugin to do something.
+</li></ul>
+
+<p>So the plugin provides a simple c interface. The Script then invokes the functions exposed by the plugin.
+Here is a very simple example:
+</p>
+
+<h2>The C file of a minimal plugin:</h2>
+<p><pre class='codelisting'>
+float FooPluginFunction () { return 5.0F; }
+</pre>
+</p>
+
+<h2>A C# script that uses the plugin:</h2>
+<p><pre class='codelisting'>
+using UnityEngine; 
+using System.Runtime.InteropServices; 
+
+class SomeScript : MonoBehaviour 
+{
+   // This tells unity to look up the function FooPluginFunction inside the plugin named &quot;PluginName&quot;
+   [DllImport (&quot;PluginName&quot;)]
+   private static extern float FooPluginFunction ();
+
+   void Awake () 
+   {
+      // Calls the FooPluginFunction inside the PluginName plugin
+      // And prints 5 to the console 
+      print (FooPluginFunction ());
+   }
+}
+</pre>
+</p>
+
+<h1>Building a plugin for Mac OS X</h1>
+
+<p>If you are building a plugin for Mac OS X, you have to create a bundle.
+The easiest way to do this is using xCode. Use Edit-&gt;NewProject... and select the Bundle - Carbon Bundle preset.
+</p>
+
+<p>If you are using C++ or Objective-C to implement the plugin you have to make sure the functions are declared as C in the header file to avoid name mangling issues.
+<pre class='codelisting'>
+extern &quot;C&quot;
+{
+  float FooPluginFunction ();
+}
+</pre>
+</p>
+
+
+<h1>Using your plugin from C#</h1>
+
+<p>Once you have built your bundle you have to copy it to the Assets/Plugins folder.
+Unity will then find it by its name when you define a function like this:
+<pre class='codelisting'>
+[DllImport (&quot;PluginName&quot;)]
+private static extern float FooPluginFunction ();
+</pre>
+</p>
+
+<p>Please note that PluginName should not include the extension of the filename.
+</p>
+
+<h1>Cross Platform Plugins</h1>
+
+<p>If you are building a plugin for windows it has to be placed inside the Assets/Plugins folder as well but it's extension has to be .dll instead of .bundle.
+</p>
+
+<p>So if you want to create an application using a plugin for both windows and Mac OS X you need to place two plugins:
+SomePlugin.dll
+SomePlugin.bundle
+inside the Assets/Plugins folder.
+</p>
+
+<h1>Deployment</h1>
+<p>Once you have placed your plugins in the Plugins folder there is no more work required on your side.
+Unity automatically picks the right plugin for the right deployment platform and includes it with the player.
+</p>
+
+<h1>Examples</h1>
+<p>A complete example of the Plugin interface can be found <a class="wiki"  href="http://www.otee.dk/tutorials/midiplugin.zip">here</a>.
+</p>
+
+
+<p>This is a complete MidiPlugin which uses Apple's CoreMidi API.
+It provides a simple C API and a C# class using the C API.
+The C# class contains a high level API, with easy access to NoteOn and NoteOff events and their velocity.
+</p>
+
+<h1>More information</h1>
+<p><a class="wiki"  href="http://www.mono-project.com/Interop_with_Native_Libraries">Mono Interop with native libraries</a>.
+</p>
+
+<p><a class="wiki"  href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconmarshalingdatawithplatforminvoke.asp">Microsoft p-invoke</a>.
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

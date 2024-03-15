@@ -1,0 +1,95 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Physics"-->
+			<title>Unity Script Reference &ndash; Physics</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Physics</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Physics" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> Global physics properties and helper methods.</p>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#gravity'>gravity</a></p>
+<p><a href='#minPenetrationForPenalty'>minPenetrationForPenalty</a></p>
+<p><a href='#bounceTreshold'>bounceTreshold</a></p>
+<p><a href='#sleepVelocity'>sleepVelocity</a></p>
+<p><a href='#sleepAngularVelocity'>sleepAngularVelocity</a></p>
+<p><a href='#maxAngularVelocity'>maxAngularVelocity</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#Raycast'>Raycast</a></p>
+<p><a href='#Linecast'>Linecast</a></p>
+<p><a href='#OverlapSphere'>OverlapSphere</a></p>
+<p><a href='#IgnoreCollision'>IgnoreCollision</a></p>
+</span>
+<div class='tocclear'></div>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="gravity"></a><h3><span class="full-name">Physics.</span>gravity</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> gravity</div>
+   <p class='details'> The gravity applied to all rigid bodies in the scene<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code"><a href="Physics.html#gravity" class="itemlink">Physics.gravity</a> = <a href="Vector3.html" class="classlink">Vector3</a>(0, -1.0, 0);</div></td></tr></table></p>
+	<a name="minPenetrationForPenalty"></a><h3><span class="full-name">Physics.</span>minPenetrationForPenalty</h3><div class="synopsis"><span class="standard_type">float</span> minPenetrationForPenalty</div>
+   <p class='details'> The minimum contact penetration value in order to apply a penalty force. (Default 0.05) range { 0 , infinity }
+This value is usually only changed in the inspector instead of from scripting.</p>
+	<a name="bounceTreshold"></a><h3><span class="full-name">Physics.</span>bounceTreshold</h3><div class="synopsis"><span class="standard_type">float</span> bounceTreshold</div>
+   <p class='details'> A contact with a relative velocity below this will not bounce. (Default 2) range { 0, infinity }
+This value is usually only changed in the inspector instead of from scripting.</p>
+	<a name="sleepVelocity"></a><h3><span class="full-name">Physics.</span>sleepVelocity</h3><div class="synopsis"><span class="standard_type">float</span> sleepVelocity</div>
+   <p class='details'> The default linear velocity, below which objects start going to sleep. This value can be overridden per rigidbodies with scripting. (Default 0.15) range { 0, infinity }
+This value is usually only changed in the inspector instead of from scripting.</p>
+	<a name="sleepAngularVelocity"></a><h3><span class="full-name">Physics.</span>sleepAngularVelocity</h3><div class="synopsis"><span class="standard_type">float</span> sleepAngularVelocity</div>
+   <p class='details'> The default linear velocity, below which objects start going to sleep. This value can be overridden per rigidbodies with scripting. (Default 0.14) range { 0, infinity }
+This value is usually only changed in the inspector instead of from scripting.</p>
+	<a name="maxAngularVelocity"></a><h3><span class="full-name">Physics.</span>maxAngularVelocity</h3><div class="synopsis"><span class="standard_type">float</span> maxAngularVelocity</div>
+   <p class='details'> The maximimum angular velocity permitted for any rigid bodies. This can be overridden per rigidbodies with scripting. (Default 7) range { 0, infinity }
+This value is usually only changed in the inspector instead of from scripting.</p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="Raycast"></a><h3><span class="full-name">Physics.</span>Raycast</h3><div class="synopsis"><span class="standard_type">bool</span> Raycast (<a href="Vector3.html" class="classlink">Vector3</a> origin, <a href="Vector3.html" class="classlink">Vector3</a> direction, <span class="standard_type">float</span> distance = <a href="Mathf.html#Infinity" class="itemlink">Mathf.Infinity</a>, <span class="standard_type">int</span> layerMask = kDefaultRaycastLayers)</div>
+   <p class='details'> Casts a ray against all colliders in the scene.
+The ray starts at <span class="variable">origin</span> and is directed along <span class="variable">direction</span>.
+The length of the ray is <span class="variable">distance</span>.
+Returns true when the ray hits any collider.
+<a href="../ScriptingConcepts/Layers.html" class="classlink">Layer mask</a> is used to selectively ignore colliders when casting a ray. <table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;var hit : <a href="RaycastHit.html" class="classlink">RaycastHit</a>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;var fwd = transform.TransformDirection (<a href="Vector3.html#forward" class="itemlink">Vector3.forward</a>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Physics.html#Raycast" class="itemlink">Physics.Raycast</a> (transform.position, fwd, 10)) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print ("There is something <span class="keyword">in</span> front of the object!");<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+	<a name="Raycast"></a><h3><span class="full-name">Physics.</span>Raycast</h3><div class="synopsis"><span class="standard_type">bool</span> Raycast (<a href="Vector3.html" class="classlink">Vector3</a> origin, <a href="Vector3.html" class="classlink">Vector3</a> direction, out <a href="RaycastHit.html" class="classlink">RaycastHit</a> hitInfo, <span class="standard_type">float</span> distance = <a href="Mathf.html#Infinity" class="itemlink">Mathf.Infinity</a>, <span class="standard_type">int</span> layerMask = kDefaultRaycastLayers)</div>
+   <p class='details'> Casts a ray against all colliders in the scene.
+The ray starts at <span class="variable">origin</span> and is directed along <span class="variable">direction</span>.
+The length of the ray is <span class="variable">distance</span>.
+Returns true when the ray hits any collider.
+If true is returned, <span class="variable">hitInfo</span> will contain more information about where the collider was hit.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;var hit : <a href="RaycastHit.html" class="classlink">RaycastHit</a>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Physics.html#Raycast" class="itemlink">Physics.Raycast</a> (transform.position, <a href="Vector3.html#down" class="itemlink">Vector3.down</a>, hit)) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;distanceToGround = hit.distance;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}
+</div></td></tr></table><a href="../ScriptingConcepts/Layers.html" class="classlink">Layer mask</a> is used to selectively ignore colliders when casting a ray.</p>
+	<a name="Raycast"></a><h3><span class="full-name">Physics.</span>Raycast</h3><div class="synopsis"><span class="standard_type">bool</span> Raycast (<a href="Ray.html" class="classlink">Ray</a> ray, <span class="standard_type">float</span> distance = <a href="Mathf.html#Infinity" class="itemlink">Mathf.Infinity</a>, <span class="standard_type">int</span> layerMask = kDefaultRaycastLayers)</div>
+   <p class='details'> Same as above using <span class="variable">ray.origin</span> and <span class="variable">ray.direction</span> instead of <span class="variable">origin</span> and <span class="variable">direction</span>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">var ray = <a href="Camera.html#main" class="itemlink">Camera.main</a>.ScreenPointToRay (<a href="Input.html#mousePosition" class="itemlink">Input.mousePosition</a>);<br/>if (<a href="Physics.html#Raycast" class="itemlink">Physics.Raycast</a> (ray, 100)) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;print ("Hit something");<br/>}</div></td></tr></table></p>
+	<a name="Raycast"></a><h3><span class="full-name">Physics.</span>Raycast</h3><div class="synopsis"><span class="standard_type">bool</span> Raycast (<a href="Ray.html" class="classlink">Ray</a> ray, out <a href="RaycastHit.html" class="classlink">RaycastHit</a> hitInfo, <span class="standard_type">float</span> distance = <a href="Mathf.html#Infinity" class="itemlink">Mathf.Infinity</a>, <span class="standard_type">int</span> layerMask = kDefaultRaycastLayers)</div>
+   <p class='details'> Same as above using <span class="variable">ray.origin</span> and <span class="variable">ray.direction</span> instead of <span class="variable">origin</span> and <span class="variable">direction</span>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">var ray = <a href="Camera.html#main" class="itemlink">Camera.main</a>.ScreenPointToRay (<a href="Input.html#mousePosition" class="itemlink">Input.mousePosition</a>);<br/>var hit : <a href="RaycastHit.html" class="classlink">RaycastHit</a>;<br/>if (<a href="Physics.html#Raycast" class="itemlink">Physics.Raycast</a> (ray, hit, 100)) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Debug.html#DrawLine" class="itemlink">Debug.DrawLine</a> (ray.origin, hit.point);<br/>}</div></td></tr></table></p>
+	<a name="Linecast"></a><h3><span class="full-name">Physics.</span>Linecast</h3><div class="synopsis"><span class="standard_type">bool</span> Linecast (<a href="Vector3.html" class="classlink">Vector3</a> start, <a href="Vector3.html" class="classlink">Vector3</a> end, <span class="standard_type">int</span> layerMask = kDefaultRaycastLayers)</div>
+   <p class='details'> Returns true if there is any collider intersecting the line between <span class="variable">start</span> and <span class="variable">end</span>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">var target : <a href="Transform.html" class="classlink">Transform</a>;<br/>function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (!<a href="Physics.html#Linecast" class="itemlink">Physics.Linecast</a> (transform.position, target.position)) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// do stuff<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}
+</div></td></tr></table><a href="../ScriptingConcepts/Layers.html" class="classlink">Layer mask</a> is used to selectively ignore colliders when casting a ray.</p>
+	<a name="Linecast"></a><h3><span class="full-name">Physics.</span>Linecast</h3><div class="synopsis"><span class="standard_type">bool</span> Linecast (<a href="Vector3.html" class="classlink">Vector3</a> start, <a href="Vector3.html" class="classlink">Vector3</a> end, out <a href="RaycastHit.html" class="classlink">RaycastHit</a> hitInfo, <span class="standard_type">int</span> layerMask = kDefaultRaycastLayers)</div>
+   <p class='details'> Returns true if there is any collider intersecting the line between <span class="variable">start</span> and <span class="variable">end</span>.
+If true is returned, <span class="variable">hitInfo</span> will contain more information about where the collider was hit.
+<a href="../ScriptingConcepts/Layers.html" class="classlink">Layer mask</a> is used to selectively ignore colliders when casting a ray.</p>
+	<a name="OverlapSphere"></a><h3><span class="full-name">Physics.</span>OverlapSphere</h3><div class="synopsis"><a href="Collider.html" class="classlink">Collider</a>[] OverlapSphere (<a href="Vector3.html" class="classlink">Vector3</a> position, <span class="standard_type">float</span> radius)</div>
+   <p class='details'> Returns an array with all colliders touching the sphere.
+[Currently this only checks against the bounding volume of the colliders not against the actual colliders]</p>
+	<a name="IgnoreCollision"></a><h3><span class="full-name">Physics.</span>IgnoreCollision</h3><div class="synopsis"><span class="standard_type">void</span> IgnoreCollision (<a href="Collider.html" class="classlink">Collider</a> collider1, <a href="Collider.html" class="classlink">Collider</a> collider2, <span class="standard_type">bool</span> ignore = true)</div>
+   <p class='details'> Makes the collision detection ignore all collisions between <span class="variable">collider1</span> and <span class="variable">collider2</span>.
+This is most useful for making eg. projectiles not collide with the object shooting them.  <p class="details"/>IgnoreCollision has a few limitations:
+- It is not persistent. This means ignore collision state will not be stored in the editor when saving a scene.
+- You can only apply the ignore collision to colliders in active game objects.
+  When deactivating the collider or attached rigidbody the IgnoreCollision state will be lost and you have to call <a href="Physics.html#IgnoreCollision" class="itemlink">Physics.IgnoreCollision</a> again.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Instantiate a bullet and make it ignore collisions with this object.<br/>var bulletPrefab : <a href="Transform.html" class="classlink">Transform</a>;<br/>function Start () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;var bullet = Instantiate (bulletPrefab);<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Physics.html#IgnoreCollision" class="itemlink">Physics.IgnoreCollision</a>(bullet.collider, collider);<br/>}</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

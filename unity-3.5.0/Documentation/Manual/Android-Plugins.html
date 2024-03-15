@@ -1,0 +1,447 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Building Plugins for Android</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Building Plugins for Android</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/android-GettingStarted.html">Getting Started with Android Development</a> &gt; <a href="../Manual/Android-Plugins.html">Building Plugins for Android</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Building Plugins for Android</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>This page describes <a href="../Manual/Plugins.html">Native Code Plugins</a> for Android.
+</p>
+<div class='vspace'></div><h2>Building a Plugin for Android</h2>
+<p>To build a plugin for Android, you should first obtain the <a class='urllink' href='http://developer.android.com/sdk/ndk' rel='nofollow'>Android NDK</a> and familiarize yourself with the steps involved in building a shared library.
+</p>
+<p class='vspace'>If you are using C++ (.cpp) to implement the plugin you must ensure the functions are declared with C linkage to avoid <a class='urllink' href='http://en.wikipedia.org/wiki/Name_mangling' rel='nofollow'>name mangling issues</a>.
+</p>
+<div class='vspace'></div><pre class='codelisting'>extern "C" {
+  float FooPluginFunction ();
+} </pre>
+<div class='vspace'></div><h2>Using Your Plugin from C#</h2>
+<p>Once built, the shared library should be copied to the <span class='doc-menu'>Assets-&gt;Plugins-&gt;Android</span> folder. Unity will then find it by name when you define a function like the following in the C# script:-
+</p>
+<div class='vspace'></div><pre class='codelisting'>[DllImport ("PluginName")]
+private static extern float FooPluginFunction (); </pre>
+<p class='vspace'>Please note that <span class='doc-prop'>PluginName</span> should not include the prefix ('lib') nor the extension ('.so') of the filename.
+It is advisable to wrap all native code methods with an additional C# code layer. This code should check <a class='urllink' href='../ScriptReference/Application-platform.html' rel='nofollow'>Application.platform</a> and call native methods only when the app is running on the actual device; dummy values can be returned from the C# code when running in the Editor. You can also use <a class='urllink' href='http://docwiki.unity3d.com/index.php?n=Main.PlatformDependentCompilation' rel='nofollow'>platform defines</a> to control platform dependent code compilation.
+</p>
+<div class='vspace'></div><h2>Deployment</h2>
+<p>For cross platform deployment, your project should include plugins for each supported platform (ie, libPlugin.so for Android, Plugin.bundle for Mac and Plugin.dll for Windows).
+Unity automatically picks the right plugin for the target platform and includes it with the player.
+</p>
+<div class='vspace'></div><h2>Using Java Plugins</h2>
+<p>The Android plugin mechanism also allows Java to be used to enable interaction with the Android OS.
+</p>
+<div class='vspace'></div><h3>Building a Java Plugin for Android</h3>
+<p>There are several ways to create a Java plugin but the result in each case is that you end up with a .jar file containing the .class files for your plugin.
+One approach is to download the <a class='urllink' href='http://www.oracle.com/technetwork/java/javase/downloads/index.html' rel='nofollow'>JDK</a>, then compile your .java files from the command line with <em>javac</em>. This will create .class files which you can then package into a .jar with the <em>jar</em> command line tool.
+Another option is to use the <a class='urllink' href='http://www.eclipse.org' rel='nofollow'>Eclipse</a> IDE together with the <a class='urllink' href='http://developer.android.com/sdk/eclipse-adt.html' rel='nofollow'>ADT</a>.
+</p>
+<div class='vspace'></div><h3>Using Your Java Plugin from Native Code</h3>
+<p>Once you have built your Java plugin (.jar) you should copy it to the <span class='doc-menu'>Assets-&gt;Plugins-&gt;Android</span> folder in the Unity project. Unity will package your .class files together with the rest of the Java code and then access the code using the <a class='urllink' href='http://en.wikipedia.org/wiki/Java_Native_Interface' rel='nofollow'>Java Native Interface (JNI)</a>. JNI is used both when calling native code from Java and when interacting with Java (or the JavaVM) from native code.
+</p>
+<p class='vspace'>To find your Java code from the native side you need access to the Java VM. Fortunately, that access can be obtained easily by adding a function like this to your C/C++ code:
+</p>
+<div class='vspace'></div><pre class='codelisting'>jint JNI_OnLoad(JavaVM* vm, void* reserved) {
+  JNIEnv* jni_env = 0;
+  vm-&gt;AttachCurrentThread(&amp;jni_env, 0);
+} </pre>
+<p class='vspace'>This is all that is needed to start using Java from C/C++. It is beyond the scope of this document to explain JNI completely. However, using it usually involves finding the class definition, resolving the constructor (&lt;init&gt;) method and creating a new object instance, as shown in this example:-
+</p>
+<div class='vspace'></div><pre class='codelisting'>jobject createJavaObject(JNIEnv* jni_env) {
+  jclass cls_JavaClass = jni_env-&gt;FindClass("com/your/java/Class");			// find class definition
+  jmethodID mid_JavaClass = jni_env-&gt;GetMethodID (cls_JavaClass, "&lt;init&gt;",  "()V");		// find constructor method
+  jobject obj_JavaClass = jni_env-&gt;NewObject(cls_JavaClass, mid_JavaClass);		// create object instance
+  return jni_env-&gt;NewGlobalRef(obj_JavaClass);						// return object with a global reference
+} </pre>
+<div class='vspace'></div><h3>Using Your Java Plugin with helper classes</h3>
+<p><span class='doc-keyword'>AndroidJNIHelper</span> and <span class='doc-keyword'>AndroidJNI</span> can be used to ease some of the pain with raw JNI. 
+</p>
+<p class='vspace'><span class='doc-keyword'>AndroidJavaObject</span> and <span class='doc-keyword'>AndroidJavaClass</span> automate a lot of tasks and also use cacheing to make calls to Java faster. The combination of <span class='doc-keyword'>AndroidJavaObject</span> and <span class='doc-keyword'>AndroidJavaClass</span> builds on top of <span class='doc-keyword'>AndroidJNI</span> and <span class='doc-keyword'>AndroidJNIHelper</span>, but also has a lot of logic in its own right (to handle the automation). These classes also come in a 'static' version to access static members of Java classes. 
+</p>
+<p class='vspace'>You can choose whichever approach you prefer, be it raw JNI through <span class='doc-keyword'>AndroidJNI</span> class methods, or <span class='doc-keyword'>AndroidJNIHelper</span> together with <span class='doc-keyword'>AndroidJNI</span> and eventually <span class='doc-keyword'>AndroidJavaObject/AndroidJavaClass</span> for maximum automation and convenience.
+</p>
+<p class='vspace'><a class='urllink' href='../ScriptReference/AndroidJNI.html' rel='nofollow'>UnityEngine.AndroidJNI</a> is a wrapper for the JNI calls available in C (as described above). All methods in this class are static and have a 1:1 mapping to the Java Native Interface. <a class='urllink' href='../ScriptReference/AndroidJNIHelper.html' rel='nofollow'>UnityEngine.AndroidJNIHelper</a> provides helper functionality used by the next level, but is exposed as public methods because they may be useful for some special cases.
+</p>
+<p class='vspace'>Instances of <a class='urllink' href='../ScriptReference/AndroidJavaObject.html' rel='nofollow'>UnityEngine.AndroidJavaObject</a> and <a class='urllink' href='../ScriptReference/AndroidJavaClass.html' rel='nofollow'>UnityEngine.AndroidJavaClass</a> have a 1:1 mapping to an instance of java.lang.Object and java.lang.Class (or subclasses thereof) on the Java side, respectively. They essentially provide 3 types of interaction with the Java side: 
+</p><dl><dd><ul><li>Call a method
+</li><li>Get the value of a field
+</li><li>Set the value of a field
+</li></ul></dd></dl><p class='vspace'>The <span class='doc-keyword'>Call</span> is separated into two categories: <span class='doc-keyword'>Call</span> to a 'void' method, and <span class='doc-keyword'>Call</span> to a method with non-void return type. A generic type is used to represent the return type of those methods which return a non-void type. The <span class='doc-keyword'>Get</span> and <span class='doc-keyword'>Set</span> always take a generic type representing the field type. 
+</p>
+<div class='vspace'></div><h3>Example 1</h3>
+<pre class='codelisting'>
+//The comments describe what you would need to do if you were using raw JNI
+ AndroidJavaObject jo = new AndroidJavaObject("java.lang.String", "some_string"); 
+ // jni.FindClass("java.lang.String"); 
+ // jni.GetMethodID(classID, "&lt;init&gt;", "(Ljava/lang/String;)V"); 
+ // jni.NewStringUTF("some_string"); 
+ // jni.NewObject(classID, methodID, javaString); 
+ int hash = jo.Call&lt;int&gt;("hashCode"); 
+ // jni.GetMethodID(classID, "hashCode", "()I"); 
+ // jni.CallIntMethod(objectID, methodID);
+</pre>
+<p class='vspace'>Here, we're creating an instance of <a class='urllink' href='http://developer.android.com/reference/java/lang/String.html' rel='nofollow'>java.lang.String</a>, initialized with a <a class='urllink' href='http://developer.android.com/reference/java/lang/String.html#Stringjava.lang.StringBuilder' rel='nofollow'>string</a> of our choice and retrieving the <a class='urllink' href='http://developer.android.com/reference/java/lang/String.html#hashCode' rel='nofollow'>hash value</a> for 
+that string.
+</p>
+<p class='vspace'>The <span class='doc-keyword'>AndroidJavaObject</span> constructor takes at least one parameter, the name of class for which we want to construct an instance. Any parameters after the class name are for the constructor call on the object, in this case the string "some_string". The subsequent <span class='doc-keyword'>Call</span> to hashCode() returns an 'int' which is why we use that as the generic type parameter to the <span class='doc-keyword'>Call</span> method.
+</p>
+<p class='vspace'><b>Note:</b> You cannot instantiate a nested Java class using dotted notation. Inner classes must use the $ separator, and it should work in both dotted and slashed format. So <span class='doc-keyword'>android.view.ViewGroup&#36;LayoutParams</span> or <span class='doc-keyword'>android/view/ViewGroup&#36;LayoutParams</span> can be used, where a <span class='doc-keyword'>LayoutParams</span> class is nested in a <span class='doc-keyword'>ViewGroup</span> class.
+</p>
+<div class='vspace'></div><h3>Example 2</h3>
+<p>One of the plugin samples above shows how to get the cache directory for the current application. This is how you would do the same thing from C# without any plugins:-
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+ AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer"); 
+ // jni.FindClass("com.unity3d.player.UnityPlayer"); 
+ AndroidJavaObject jo = jc.GetStatic&lt;AndroidJavaObject&gt;("currentActivity"); 
+ // jni.GetStaticFieldID(classID, "Ljava/lang/Object;"); 
+ // jni.GetStaticObjectField(classID, fieldID); 
+ // jni.FindClass("java.lang.Object"); 
+
+ Debug.Log(jo.Call&lt;AndroidJavaObject&gt;("getCacheDir").Call&lt;string&gt;("getCanonicalPath")); 
+ // jni.GetMethodID(classID, "getCacheDir", "()Ljava/io/File;"); // or any baseclass thereof! 
+ // jni.CallObjectMethod(objectID, methodID); 
+ // jni.FindClass("java.io.File"); 
+ // jni.GetMethodID(classID, "getCanonicalPath", "()Ljava/lang/String;"); 
+ // jni.CallObjectMethod(objectID, methodID); 
+ // jni.GetStringUTFChars(javaString);
+</pre>
+<p class='vspace'>In this case, we start with <span class='doc-keyword'>AndroidJavaClass</span> instead of <span class='doc-keyword'>AndroidJavaObject</span> because we want to access a static member of <span class='doc-keyword'>com.unity3d.player.UnityPlayer</span> rather than create a new object (an instance is created automatically by the <span class='doc-keyword'>Android UnityPlayer</span>). Then we access the static field "currentActivity" but this time we use <span class='doc-keyword'>AndroidJavaObject</span> as the generic parameter. This is because the actual field type (<a class='urllink' href='http://developer.android.com/reference/android/app/Activity.html' rel='nofollow'>android.app.Activity</a>) is a subclass of <a class='urllink' href='http://developer.android.com/reference/java/lang/Object.html' rel='nofollow'>java.lang.Object</a>, and any <a class='urllink' href='http://developer.android.com/reference/java/lang/Class.html' rel='nofollow'>non-primitive type</a> must be accessed as <span class='doc-keyword'>AndroidJavaObject</span>. The exceptions to this rule are strings, which can be accessed directly even though they don't represent a primitive type in Java. 
+</p>
+<p class='vspace'>After that it is just a matter of traversing the <span class='doc-keyword'>Activity</span> through <a class='urllink' href='http://developer.android.com/reference/android/content/Context.html#getCacheDir' rel='nofollow'>getCacheDir()</a> to get the File object representing the cache directory, and then calling <a class='urllink' href='http://developer.android.com/reference/java/io/File.html#getCanonicalPath' rel='nofollow'>getCanonicalPath()</a> to get a string representation. 
+</p>
+<p class='vspace'>Of course, nowadays you don't need to do that to get the cache directory since Unity provides access to the application's cache and file directory with <a class='urllink' href='../ScriptReference/Application-temporaryCachePath.html' rel='nofollow'>Application.temporaryCachePath</a> and <a class='urllink' href='../ScriptReference/Application-persistentDataPath.html' rel='nofollow'>Application.persistentDataPath</a>.
+</p>
+<div class='vspace'></div><h3>Example 3</h3>
+<p>Finally, here is a trick for passing data from Java to script code using <span class='doc-keyword'>UnitySendMessage</span>.
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+using UnityEngine; 
+public class NewBehaviourScript : MonoBehaviour { 
+
+	void Start () { 
+		JNIHelper.debug = true; 
+		using (JavaClass jc = new JavaClass("com.unity3d.player.UnityPlayer")) { 
+			jc.CallStatic("UnitySendMessage", "Main Camera", "JavaMessage", "whoowhoo"); 
+		} 
+	} 
+
+	void JavaMessage(string message) { 
+		Debug.Log("message from java: " + message); 
+	}
+} 
+</pre>
+<p class='vspace'>The Java class <span class='doc-keyword'>com.unity3d.player.UnityPlayer</span> now has a static method <span class='doc-keyword'>UnitySendMessage</span>, equivalent to the iOS <a href="../Manual/Plugins.html#iPhonePlugins">UnitySendMessage</a> on 
+the native side. It can be used in Java to pass data to script code. 
+</p>
+<p class='vspace'>Here though, we call it directly from script code, which essentially relays the message on the Java side. This then calls back to the native/Unity code to deliver the message to the object named "Main Camera". This object has a script attached which contains a method called "JavaMessage". 
+</p>
+<div class='vspace'></div><h3>Best practice when using Java plugins with Unity</h3>
+<p>As this section is mainly aimed at people who don't have comprehensive JNI, Java and Android experience, we assume that the <span class='doc-keyword'>AndroidJavaObject/AndroidJavaClass</span> approach has been used for interacting with Java code from Unity.
+</p>
+<p class='vspace'>The first thing to note is that any operation you perform on an <span class='doc-keyword'>AndroidJavaObject</span> or <span class='doc-keyword'>AndroidJavaClass</span> is computationally expensive (as is the raw JNI approach). It is highly advisable to keep the number of transitions between managed and native/Java code to a minimum, for the sake of performance and also code clarity. 
+</p>
+<p class='vspace'>You could have a Java method to do all the actual work and then use <span class='doc-keyword'>AndroidJavaObject / AndroidJavaClass</span> to communicate with that method and get the result. However, it is worth bearing in mind that the JNI helper classes try to cache as much data as possible to improve performance. 
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+//The first time you call a Java function like 
+AndroidJavaObject jo = new AndroidJavaObject("java.lang.String", "some_string");  // somewhat expensive
+int hash = jo.Call&lt;int&gt;("hashCode");  // first time - expensive
+int hash = jo.Call&lt;int&gt;("hashCode");  // second time - not as expensive as we already know the java method and can call it directly
+</pre>
+<p class='vspace'>The Mono garbage collector should release all created instances of <span class='doc-keyword'>AndroidJavaObject</span> and <span class='doc-keyword'>AndroidJavaClass</span> after use, but it is advisable to keep them in a <span class='doc-keyword'>using(){}</span> statement to ensure they are deleted as soon as possible. Without this, you cannot be sure when they will be destroyed. If you set <span class='doc-keyword'>AndroidJNIHelper.debug</span> to true, you will see a record of the garbage collector's activity in the debug output.
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+//Getting the system language with the safe approach
+void Start () { 
+	using (AndroidJavaClass cls = new AndroidJavaClass("java.util.Locale")) { 
+		using(AndroidJavaObject locale = cls.CallStatic&lt;AndroidJavaObject&gt;("getDefault")) { 
+			Debug.Log("current lang = " + locale.Call&lt;string&gt;("getDisplayLanguage")); 
+
+		} 
+	} 
+}
+</pre>
+<p class='vspace'>You can also call the <span class='doc-keyword'>.Dispose()</span> method directly to ensure there are no Java objects lingering. The actual C# object might live a bit longer, but will be garbage collected by mono eventually.
+</p>
+<div class='vspace'></div><h2>Extending the UnityPlayerActivity Java Code</h2>
+<p>With Unity Android it is possible to extend the standard <span class='doc-keyword'>UnityPlayerActivity</span> class (the primary Java class for the Unity Player on Android, similar to AppController.mm on Unity iOS).
+</p>
+<p class='vspace'>An application can override any and all of the basic interaction between Android OS and Unity Android. You can enable this by creating a new <a class='urllink' href='http://developer.android.com/reference/android/app/Activity.html' rel='nofollow'>Activity</a> which derives from UnityPlayerActivity (UnityPlayerActivity.java can be found at <span class='doc-menu'>/Applications/Unity/Unity.app/Contents/PlaybackEngines/AndroidPlayer/src/com/unity3d/player</span> on Mac and usually at <span class='doc-menu'>C:\Program Files\Unity\Editor\Data\PlaybackEngines\AndroidPlayer\src\com\unity3d\player</span> on Windows). 
+</p>
+<p class='vspace'>To do this, first locate the <span class='doc-menu'>classes.jar</span> shipped with Unity Android. It is found in the installation folder (usually <span class='doc-menu'>C:\Program Files\Unity\Editor\Data</span> (on Windows) or <span class='doc-menu'>/Applications/Unity</span> (on Mac)) in a sub-folder called <span class='doc-menu'>PlaybackEngines/AndroidPlayer/bin</span>. Then add  <span class='doc-menu'>classes.jar</span> to the classpath used to compile the new Activity. The resulting .class file(s) should be compressed into a .jar file and placed in the <span class='doc-menu'>Assets-&gt;Plugins-&gt;Android</span> folder.
+Since the manifest dictates which activity to launch it is also necessary to create a new <a class='urllink' href='http://developer.android.com/guide/topics/manifest/manifest-intro.html' rel='nofollow'>AndroidManifest.xml</a>. The AndroidManifest.xml file should also be placed in the <span class='doc-menu'>Assets-&gt;Plugins-&gt;Android</span> folder.
+</p>
+<p class='vspace'>The new activity could look like the following example, <b>OverrideExample.java</b>:
+</p><pre class='codelisting'>package com.company.product;
+
+import com.unity3d.player.UnityPlayerActivity;
+
+import android.os.Bundle;
+import android.util.Log;
+
+public class OverrideExample extends UnityPlayerActivity {
+
+  protected void onCreate(Bundle savedInstanceState) {
+
+    // call UnityPlayerActivity.onCreate()
+    super.onCreate(savedInstanceState);
+
+    // print debug message to logcat
+    Log.d("OverrideActivity", "onCreate called!");
+  }
+
+  public void onBackPressed()
+  {
+    // instead of calling UnityPlayerActivity.onBackPressed() we just ignore the back button event
+    // super.onBackPressed();
+  }
+} </pre>
+<p class='vspace'>And this is what the corresponding <b>AndroidManifest.xml</b> would look like:
+</p><pre class='codelisting'>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.company.product"&gt;
+  &lt;application android:icon="@drawable/app_icon" android:label="@string/app_name"&gt;
+	&lt;activity android:name=".OverrideExample"
+			  android:label="@string/app_name"
+			  android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"&gt;
+        &lt;intent-filter&gt;
+			&lt;action android:name="android.intent.action.MAIN" /&gt;
+			&lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+		&lt;/intent-filter&gt;
+	&lt;/activity&gt;
+  &lt;/application&gt;
+&lt;/manifest&gt; </pre>
+<div class='vspace'></div><h3>UnitPlayerNativeActivity</h3>
+<p>It is also possible to extend the <code>UnityPlayerNativeActivity</code> to reduce input latency. But be aware that NativeActivity was introduced in Gingerbread and does not work with older devices. Since touch/motion events are processed in native code java views would normally not see those events. There is however a forwarding mechanism in unity which allows events to be propagated to the DalvikVM. You need to set <code>unityplayer.ForwardNativeEventsToDalvik</code> to <code>true</code> to turn this feature on.
+</p><pre class='codelisting'>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;activity android:name="com.unity3d.player.UnityPlayerNativeActivity"
+		  android:label="@string/app_name"
+		  android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"&gt;
+  &lt;meta-data android:name="android.app.lib_name" android:value="unity" /&gt;
+  &lt;meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="false" /&gt;
+&lt;/activity&gt;
+</pre>
+<div class='vspace'></div><h2>Examples</h2>
+<div class='vspace'></div><h3>Native Plugin Sample</h3>
+<p>A simple example of the use of a native code plugin can be found <a href="../Images/manual/AndroidNativePlugin.zip">here</a>
+</p>
+<p class='vspace'>This sample demonstrates how C code can be invoked from a Unity Android application.
+The package includes a scene which displays the sum of two values as calculated by the native plugin.
+Please note that you will need the <a class='urllink' href='http://developer.android.com/sdk/ndk/index.html' rel='nofollow'>Android NDK</a> to compile the plugin.
+</p>
+<div class='vspace'></div><h3>Java Plugin Sample</h3>
+<p>An example of the use of Java code can be found <a href="../Images/manual/AndroidJavaPlugin.zip">here</a>
+</p>
+<p class='vspace'>This sample demonstrates how Java code can be used to interact with the Android OS and how C++ creates a bridge between C# and Java.
+The scene in the package displays a button which when clicked fetches the application cache directory, as defined by the Android OS.
+Please note that you will need both the JDK and the <a class='urllink' href='http://developer.android.com/sdk/ndk/index.html' rel='nofollow'>Android NDK</a> to compile the plugins.
+</p>
+<p class='vspace'><a href="../Images/manual/AndroidJavaPluginProject.zip">Here</a> is a similar example but based on a prebuilt JNI library to wrap the native code into C#.
+</p>
+</p><small>Page last updated: 2012-01-16</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

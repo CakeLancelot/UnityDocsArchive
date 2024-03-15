@@ -1,0 +1,74 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="SubShaders"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="SubShaders" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced%20(for%20technical%20guys).html%22%3EAdvanced%20(for%20technical%20guys)%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Shaders.html%22%3EShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-Shader.html%22%3EShader%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-SubShader.html%22%3ESubShaders%3C%2Fa%3E" -->
+		<h1>SubShaders</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced (for technical guys).html">Advanced (for technical guys)</a> &gt; <a href="Shaders.html">Shaders</a> &gt; <a href="SL-Shader.html">Shader</a> &gt; <a href="SL-SubShader.html">SubShaders</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="SL-Properties.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-Pass.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Each shader in Unity consists of a list of subshaders. When Unity has to display a mesh, it will find the shader to use, and pick the first subshader that runs on the user's graphics card.
+</p>
+
+<h2>Syntax</h2>
+
+<p><dl><dt><b>Subshader</b> <b>{</b> [<i>CommonState</i>] <i>Passdef</i> [<i>Passdef ...</i>] <b>}</b></dt><dd> Defines the subshader as optional common state and a list of pass definitions.</dd></dl>
+</p>
+
+<h2>Details</h2>
+
+<p>A subshader defines a list of <a href="../Manual/SL-Pass.html"> rendering passes</a> and optionally setup any state that is common to all passes.
+</p>
+
+<p>When Unity chooses which subshared to render with, it renders an object once for each Pass defined (and possibly more due to light interactions). As each render of the object is an expensive operation, you want to define the shader in minimum amount of passes possible. Of course, sometimes on some graphics hardware the needed effect can't be done in a single pass; then you have no choice but to use multiple passes.
+</p>
+
+<p>Each pass definition can be a <a href="../Manual/SL-Pass.html"> regular Pass</a>, a <a > Use Pass</a> or a  <a href="../Manual/SL-GrabPass.html"> Grab Pass</a>.
+</p>
+
+<p>Any statements that are allowed in a Pass definition can also appear in Subshader block. This will make all passes use this &quot;shared&quot; state.
+</p>
+
+<h2>Example</h2>
+
+<p><pre class='codelisting'>
+SubShader {
+    Pass {
+        Lighting Off
+        SetTexture [_MainTex] {}
+    }
+}
+</pre>
+This subshader defines a single Pass that turns off any lighting and just displays a mesh with texture named <i>_MainTex</i>.
+</p>
+
+
+
+		<div class="navigation"><a href="SL-Properties.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-Pass.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

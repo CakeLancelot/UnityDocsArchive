@@ -1,0 +1,403 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - AssetBundles (Pro only)</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">AssetBundles (Pro only)</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/AssetBundles.html">AssetBundles (Pro only)</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>AssetBundles (Pro only)</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p class='vspace'>AssetBundles are files which you can export from Unity to contain assets of your choice. These files use a proprietary compressed format and can be loaded on demand in your application. This allows you to stream content like models, textures, audio clips and even entire scenes separately from the scene in which they will be used. They have been designed to make it easy to download content to your application.
+</p>
+<p class='vspace'>AssetBundles can contain any kind of asset type recognized by Unity, as determined by the filename extension. If you want to include files with custom binary data, then you must rename those files to have ".bytes" as the extension. Unity will import these files as TextAssets.
+</p>
+<p class='vspace'>For some sample code showing how to use asset bundles, see the <a class='urllink' href='http://unity3d.com/support/resources/example-projects/assetbundles' rel='nofollow'>AssetBundles Example Project</a>
+</p>
+<div class='vspace'></div><h2>Creating AssetBundles</h2>
+<p>There are three class methods you can use to build AssetBundles: <a class='urllink' href='../ScriptReference/BuildPipeline.BuildAssetBundle.html' rel='nofollow'>BuildPipeline.BuildAssetBundle</a>, <a class='urllink' href='../ScriptReference/BuildPipeline.BuildStreamedSceneAssetBundle.html' rel='nofollow'>BuildPipeline.BuildStreamedSceneAssetBundle</a> and <a class='urllink' href='../ScriptReference/BuildPipeline.BuildAssetBundleExplicitAssetNames.html' rel='nofollow'>BuildPipeline.BuildAssetBundleExplicitAssetNames</a>.. 
+</p>
+<div class='vspace'></div><ul><li><b>BuildPipeline.BuildAssetBundle</b> allows you to build AssetBundles of any type of asset. 
+<div class='vspace'></div></li><li><b>BuildPipeline.BuildStreamedSceneAssetBundle</b> is used when you want to include only scenes to be streamed and loaded as the data becomes available. 
+<div class='vspace'></div></li><li><b>BuildPipeline.BuildAssetBundleExplicitAssetNames</b> is the same as BuildPipeline.BuildAssetBundle but has an extra parameter to specify a custom string identifier (name) for each object.
+</li></ul><div class='vspace'></div><h2>Downloading AssetBundles</h2>
+<p>The recommended way to download AssetBundles is to use <a class='urllink' href='../ScriptReference/WWW.LoadFromCacheOrDownload.html' rel='nofollow'>WWW.LoadFromCacheOrDownload</a>. Once the download is complete you can retrieve the AssetBundle with the <code>assetBundle</code> property. For example:
+</p>
+<div class='vspace'></div><pre class='codelisting'>string url = "http://www.mywebsite.com/mygame/assetbundles/assetbundle1.unity3d";
+IEnumerator Start () {
+    // Start a download of the given URL
+    WWW www = WWW.LoadFromCacheOrDownload (url, 1);
+
+    // Wait for download to complete
+    yield return www;
+
+    // Load and retrieve the AssetBundle
+    AssetBundle bundle = www.assetBundle;
+}</pre>
+<p class='vspace'>When you access the <code>.assetBundle</code> property the downloaded data is extracted and the AssetBundle object is created. At this point, you are ready to load the objects contained in the bundle. The second parameter passed to LoadFromCacheOrDownload specifies which version of the AssetBundle to download.  LoadFromCacheOrDownload will download the AssetBundle if it doesn't exist in the cache or if it exists but is associated with a version that is lower than the one requested. Otherwise the AssetBundle will be loaded from cache.
+</p>
+<div class='vspace'></div><h2>Loading and unloading objects from an AssetBundle</h2>
+<p>Having created an AssetBundle object from the downloaded data, you can load the objects contained in it using three different methods: <a class='urllink' href='../ScriptReference/AssetBundle.Load.html' rel='nofollow'>AssetBundle.Load</a>, <a class='urllink' href='../ScriptReference/AssetBundle.LoadAsync.html' rel='nofollow'>AssetBundle.LoadAsync</a> and <a class='urllink' href='../ScriptReference/AssetBundle.LoadAll.html' rel='nofollow'>AssetBundle.LoadAll</a>. 
+</p>
+<div class='vspace'></div><ul><li><b>AssetBundle.Load</b> will load an object using its name identifier as a parameter. The name is the one visible in the Project view. You can optionally pass an object type as an argument to the Load method to make sure the object loaded is of a specific type.
+<div class='vspace'></div></li><li><b>AssetBundle.LoadAsync</b> works the same as the Load method described above but it will not block the main thread while the asset is loaded. This is useful when loading large assets or many assets at once to avoid pauses in your application.
+<div class='vspace'></div></li><li><b>AssetBundle.LoadAll</b> will load all the objects contained in your AssetBundle. As with AssetBundle.Load, you can optionally filter objects by their type.
+</li></ul><p class='vspace'>To unload assets you need to use <a class='urllink' href='../ScriptReference/AssetBundle.Unload.html' rel='nofollow'>AssetBundle.Unload</a>. This method takes a boolean parameter which tells Unity whether to unload all data (including the loaded asset objects) or only the compressed data from the downloaded bundle. If your application is using some objects from the AssetBundle and you want to free some memory you can pass false to unload the compressed data from memory. If you want to completely unload everything from the AssetBundle you should pass true which will destroy the Assets loaded from the AssetBundle.
+</p>
+<div class='vspace'></div><h2>Listing objects in an AssetBundle</h2>
+<p>You can use AssetBundle.LoadAll to retrieve an array containing all objects from the AssetBundle. It is not possible to get a list of the identifiers directly. A common workaround is to keep a separate TextAsset with a known name to hold the names of the assets in the AssetBundle.
+</p>
+<div class='vspace'></div><h2>Instantiating objects from AssetBundles</h2>
+<p>Once you have loaded an object from your AssetBundle, you can instantiate it in your scene with the <a class='urllink' href='../ScriptReference/Object.Instantiate.html' rel='nofollow'>Instantiate</a> function.
+</p>
+<div class='vspace'></div><pre class='codelisting'>string url = "http://www.mywebsite.com/mygame/assetbundles/assetbundle1.unity3d";
+IEnumerator Start () {
+    // Start a download of the given URL
+    WWW www = WWW.LoadFromCacheOrDownload (url, 1);
+
+    // Wait for download to complete
+    yield return www;
+
+    // Load and retrieve the AssetBundle
+    AssetBundle bundle = www.assetBundle;
+
+    // Load the GameObject
+    GameObject go = bundle.Load("myGameObject", typeof(GameObject)) as GameObject;
+
+    // Instantiate the GameObject
+    Instantiate(go);
+}</pre>
+<div class='vspace'></div><h2>Keeping track of downloaded AssetBundles</h2>
+<p>Unity doesn't provide an automatic way to retrieve a list of AssetBundles that have been downloaded. You can keep track of this information from a script by storing references to the AssetBundle objects and their URLs, say.
+</p>
+<div class='vspace'></div><h2>Storing and loading binary data in an AssetBundle</h2>
+<p>The first step is to save your binary data file with the ".bytes" extension. Unity will treat this file as a <a class='urllink' href='../ScriptReference/TextAsset.html' rel='nofollow'>TextAsset</a>. As a TextAsset the file can be included when you build your AssetBundle. Once you have downloaded the AssetBundle in your application and loaded the TextAsset object, you can use the .bytes property of the TextAsset to retrieve your binary data.
+</p>
+<div class='vspace'></div><pre class='codelisting'>string url = "http://www.mywebsite.com/mygame/assetbundles/assetbundle1.unity3d";
+IEnumerator Start () {
+    // Start a download of the given URL
+    WWW www = WWW.LoadFromCacheOrDownload (url, 1);
+
+    // Wait for download to complete
+    yield return www;
+
+    // Load and retrieve the AssetBundle
+    AssetBundle bundle = www.assetBundle;
+
+    // Load the TextAsset object
+    TextAsset txt = bundle.Load("myBinaryAsText", typeof(TextAsset)) as TextAsset;
+
+    // Retrieve the binary data as an array of bytes
+    byte[] bytes = txt.bytes;
+}</pre>
+<div class='vspace'></div><h2>Including scripts in AssetBundles</h2>
+<p>AssetBundles can contain scripts as TextAssets but as such they will not be actual executable code. If you want to include code in your AssetBundles that can be executed in your application it needs to be pre-compiled into an assembly and loaded using the Mono Reflection class (Note: Reflection is not available on iOS). You can create your assemblies in any normal C# IDE (e.g. Monodevelop, Visual Studio) or any text editor using the mono/.net compilers. 
+</p>
+<div class='vspace'></div><pre class='codelisting'>string url = "http://www.mywebsite.com/mygame/assetbundles/assetbundle1.unity3d";
+IEnumerator Start () {
+    // Start a download of the given URL
+    WWW www = WWW.LoadFromCacheOrDownload (url, 1);
+
+    // Wait for download to complete
+    yield return www;
+
+    // Load and retrieve the AssetBundle
+    AssetBundle bundle = www.assetBundle;
+
+    // Load the TextAsset object
+    TextAsset txt = bundle.Load("myBinaryAsText", typeof(TextAsset)) as TextAsset;
+
+    // Load the assembly and get a type (class) from it
+    var assembly = System.Reflection.Assembly.Load(txt.bytes);
+    var type = assembly.GetType("MyClassDerivedFromMonoBehaviour");
+
+    // Instantiate a GameObject and add a component with the loaded class
+    GameObject go = new GameObject();
+    go.AddComponent(type);
+}</pre>
+<div class='vspace'></div><h2>Managing asset dependencies</h2>
+<p>Any given asset in a bundle may depend on other assets. For example, a model may incorporate materials which in turn make use of textures and shaders. It is possible to include all an asset's dependencies along with it in its bundle. However, several assets from different bundles may all depend on a common set of other assets (eg, several different models of buildings may use the same brick texture). If a separate copy of a shared dependency is included in each bundle that has objects using it, then redundant instances of the assets will be created when the bundles are loaded. This will result in wasted memory.
+</p>
+<p class='vspace'>To avoid such wastage, it is possible to separate shared dependencies out into a separate bundle and simply reference them from any bundles with assets that need them. First, the referencing feature needs to be enabled with a call to <a class='urllink' href='../ScriptReference/BuildPipeline.PushAssetDependencies.html' rel='nofollow'>BuildPipeline.PushAssetDependencies</a>. Then, the bundle containing the referenced dependencies needs to be built. Next, another call to PushAssetDependencies should be made before building the bundles that reference the assets from the first bundle. Additional levels of dependency can be introduced using further calls to PushAssetDependencies. The levels of reference are stored on a stack, so it is possible to go back a level using the corresponding <a class='urllink' href='../ScriptReference/BuildPipeline.PopAssetDependencies.html' rel='nofollow'>BuildPipeline.PopAssetDependencies</a> function. The push and pop calls need to be balanced including the initial push that happens before building.
+</p>
+<p class='vspace'>At runtime, you need to load a bundle containing dependencies before any other bundle that references them. For example, you would need to load a bundle of shared textures before loading a separate bundle of materials that reference those textures.
+</p>
+<p class='vspace'>Note that if you anticipate needing to rebuild asset bundles that are part of a dependency chain then you should build them with the <a class='urllink' href='../ScriptReference/BuildAssetBundleOptions.DeterministicAssetBundle.html' rel='nofollow'>BuildAssetBundleOptions.DeterministicAssetBundle</a> option enabled. This guarantees that the internal ID values used to identify assets will be the same each time the bundle is rebuilt.
+</p>
+<div class='vspace'></div><h2>Can I reuse my AssetBundles in another game?</h2>
+<p>AssetBundles allow you to share content between different games. The requirement is that any Assets which are referenced by GameObjects in your AssetBundle must either be included in the AssetBundle or exist in the application (loaded in the current scene). To make sure the referenced Assets are included in the AssetBundle when they are built you can pass the <a class='urllink' href='../ScriptReference/BuildAssetBundleOptions.CollectDependencies.html' rel='nofollow'>BuildAssetBundleOptions.CollectDependencies</a> option.
+</p>
+<div class='vspace'></div><h2>Will an Asset Bundle built now be usable with future versions of Unity?</h2>
+<p>Asset bundles can contain a structure called a <span class='doc-keyword'>type tree</span> which allows information about asset types to be understood correctly between different versions of Unity. On desktop platforms, the type tree is included by default but can be disabled by passing the <a class='urllink' href='../ScriptReference/BuildAssetBundleOptions.DisableWriteTypeTree.html' rel='nofollow'>BuildAssetBundleOptions.DisableWriteTypeTree</a> to the BuildAssetBundle function. Webplayers intrinsically rely on the type tree and so it is always included (ie, the DisableWriteTypeTree option has no effect). Type trees are never included for mobile and console asset bundles and so you will need to rebuild these bundles for each new version of Unity.
+</p>
+<div class='vspace'></div><h2>How are assets in AssetBundles identified?</h2>
+<p>When you build AssetBundles the assets are identified internally by their filename without the extension. For example a Texture located in your Project folder at "Assets/Textures/myTexture.jpg" is identified and loaded using "myTexture" if you use the default method. You can have more control over this by supplying your own array of ids (strings)  for each object when Building your AssetBundle with <a class='urllink' href='../ScriptReference/BuildPipeline.BuildAssetBundleExplicitAssetNames.html' rel='nofollow'>BuildPipeline.BuildAssetBundleExplicitAssetNames</a>.
+</p>
+<div class='vspace'></div><h2>Loading objects from an AssetBundles asynchronously</h2>
+<p>You can use the <a class='urllink' href='../ScriptReference/AssetBundle.LoadAsync.html' rel='nofollow'>AssetBundle.LoadAsync</a> method to load objects Asynchronously and reduce the likelihood of having hiccups in your application.
+</p>
+<div class='vspace'></div><pre class='codelisting'>using UnityEngine;
+
+IEnumerator Start () {
+	// Start a download of the given URL
+	WWW www = WWW.LoadFromCacheOrDownload (url, 1);
+
+	// Wait for download to complete
+	yield return www;
+
+	// Load and retrieve the AssetBundle
+	AssetBundle bundle = www.assetBundle;
+
+	// Load the object asynchronously
+	AssetBundleRequest request = bundle.LoadAsync ("myObject", typeof(GameObject));
+
+	// Wait for completion
+	yield return request;
+
+	// Get the reference to the loaded object
+	GameObject obj = request.asset as GameObject;
+}</pre>
+<div class='vspace'></div><h2>Are AssetBundles cross-platform?</h2>
+<p>AssetBundles are compatible between some platforms. Use the following table as a guideline. 
+</p>
+<div class='vspace'></div>
+<table class='bordered' ><tr ><td  align='center' colspan='5'><b>Platform compatibility for AssetBundles</b></td></tr>
+<tr ><td >&nbsp;</td><td  align='left'>Standalone</td><td  align='left'>Webplayer</td><td  align='center'>iOS</td><td  align='left'>Android</td></tr>
+<tr ><td  align='left'>Editor</td><td  align='center'>Y</td><td  align='center'>Y</td><td  align='center'>Y</td><td  align='center'>Y</td></tr>
+<tr ><td  align='left'>Standalone</td><td  align='center'>Y</td><td  align='center'>Y</td><td >&nbsp;</td><td >&nbsp;</td></tr>
+<tr ><td  align='left'>Webplayer</td><td  align='center'>Y</td><td  align='center'>Y</td><td >&nbsp;</td><td  colspan='2'>&nbsp;</td></tr>
+<tr ><td  align='left'>iOS</td><td >&nbsp;</td><td >&nbsp;</td><td  align='center'>Y</td><td  colspan='2'>&nbsp;</td></tr>
+<tr ><td  align='left'>Android</td><td >&nbsp;</td><td >&nbsp;</td><td >&nbsp;</td><td  align='center' colspan='2'>Y</td></tr>
+</table>
+<p class='vspace'>For example, a bundle created while the Webplayer build target was active would be compatible with the editor and with standalone builds. However, it would not be compatible with apps built for the iOS or Android platforms.
+</p>
+<div class='vspace'></div><h2>How do I cache AssetBundles?</h2>
+<p>You can use <a class='urllink' href='../ScriptReference/WWW.LoadFromCacheOrDownload.html' rel='nofollow'>WWW.LoadFromCacheOrDownload</a> which automatically takes care of saving your AssetBundles to disk. Be aware that on the Webplayer you are limited to 50MB in total (shared between all webplayers). You can buy a separate caching license for your game if you require more space.
+</p>
+<div class='vspace'></div><h2>Protecting content</h2>
+<p>Unity allows you to create an AssetBundle object from a byte[] array with <a class='urllink' href='../ScriptReference/AssetBundle.CreateFromMemory.html' rel='nofollow'>AssetBundle.CreateFromMemory</a>. You can use this as a way to enhance the security by encrypting your assetbundles before transmission and decrypt them at runtime.
+</p>
+<div class='vspace'></div><pre class='codelisting'>string url = "http://www.mywebsite.com/mygame/assetbundles/assetbundle1.unity3d";
+IEnumerator Start () {
+    // Start a download of the encrypted assetbundle
+    WWW www = new WWW (url);
+
+    // Wait for download to complete
+    yield return www;
+
+    // Get the byte data
+    byte[] encryptedData = www.bytes;
+
+    // Decrypt the AssetBundle data
+    byte[] decryptedData = YourDecryptionMethod(encryptedData);
+
+    // Create an AssetBundle from the bytes array
+    AssetBundle bundle = AssetBundle.CreateFromMemory(decryptedData);
+
+    // You can now use your AssetBundle
+}</pre>
+</p><small>Page last updated: 2011-12-09</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

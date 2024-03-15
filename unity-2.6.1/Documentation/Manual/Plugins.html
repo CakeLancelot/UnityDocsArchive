@@ -1,0 +1,168 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Plugins - Pro only feature</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Plugins - Pro only feature</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/Plugins.html">Plugins - Pro only feature</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Web Player Debugging.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Build Player Pipeline.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Plugins - Pro only feature</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Unity has extensive support for C, C++ or Objective-C based <span class='doc-keyword'>Plugins</span>. <span class='specific-no-iphone'>Plugins will work in standalones only.  They are disabled when building a Web Player for security reasons.</span>
+</p>
+<p class='vspace'>In order to use a plugin you need to do two things:
+</p>
+<div class='vspace'></div><ul><li>Write a plugin in a C based language and compile it.
+</li><li>Create a C# script which calls functions in the plugin to do something.
+</li></ul><p class='vspace'>So the plugin provides a simple C interface. The script then invokes the functions exposed by the plugin.
+</p>
+<p class='vspace'>Here is a very simple example:
+</p>
+<div class='vspace'></div><h2>The C file of a minimal plugin:</h2>
+<p><code class='escaped'>float FooPluginFunction () { return 5.0F; } </code>
+</p>
+<div class='vspace'></div><h2>A C# script that uses the plugin:</h2>
+<div class='specific-desktop' > 
+<pre class='codelisting'>using UnityEngine;
+using System.Runtime.InteropServices;
+
+class SomeScript : MonoBehaviour
+{
+   // This tells unity to look up the function FooPluginFunction inside the plugin named "PluginName"
+   [DllImport ("PluginName")]
+   private static extern float FooPluginFunction ();
+
+   void Awake ()
+   {
+      // Calls the FooPluginFunction inside the PluginName plugin
+      // And prints 5 to the console
+      print (FooPluginFunction ());
+   }
+} </pre>
+</div>
+
+<div class='specific-desktop' > 
+<h2>Building a plugin for Mac OS X</h2>
+<p>If you are building a plugin for Mac OS X, you have to create a bundle. The easiest way to do this is using XCode. Use <span class='doc-menu'>File-&gt;NewProject...</span> and select the Bundle - Carbon/Cocoa Loadable Bundle.
+</p></div>
+
+<p>If you are using C++ (.cpp) or Objective-C (.mm) to implement the plugin you have to make sure the functions are declared with C linkage to avoid <a class='urllink' href='http://en.wikipedia.org/wiki/Name_mangling' rel='nofollow'>name mangling issues</a>.
+</p>
+<div class='vspace'></div><pre class='codelisting'>extern "C"
+{
+  float FooPluginFunction ();
+} </pre>
+<div class='vspace'></div><div class='specific-desktop' > 
+<h2>Building a plugin for Windows</h2>
+<p>Plugins on Windows are DLL files with exported functions. Practically any language or development environment that can create DLL files can be used to create plugins.<br />Again, if you use C++, declare functions with C linkage to avoid name mangling issues.
+</p></div>
+<div class='vspace'></div><h2>Using your plugin from C#</h2>
+
+<div class='specific-desktop' > 
+<p>Once you have built your bundle you have to copy it to <span class='doc-menu'>Assets-&gt;Plugins</span> folder. Unity will then find it by its name when you define a function like this:
+</p>
+<div class='vspace'></div><pre class='codelisting'>[DllImport ("PluginName")]
+private static extern float FooPluginFunction (); </pre>
+<p class='vspace'>Please note that <span class='doc-prop'>PluginName</span> should not include the extension of the filename. Be aware that whenever you change code in the Plugin you will have to recompile scripts in your project or else the plugin will not have the latest compiled code.
+</p></div>
+<div class='vspace'></div><div class='specific-desktop' > 
+<h2>Deployment</h2>
+<p>For cross platform plugins you have to include both .bundle (for Mac) and .dll (for Windows) files in Plugins folder. Once you have placed your plugins in the Plugins folder there is no more work required on your side. Unity automatically picks the right plugin for the right deployment platform and includes it with the player.
+</p></div>
+<div class='vspace'></div>
+<div class='vspace'></div><h2>Examples</h2>
+
+<div class='specific-desktop' > 
+<h3>Midi Plugin</h3>
+<p>A complete example of the Plugin interface can be found <a class='urllink' href='http://unity3d.com/tutorials/midiplugin.zip' rel='nofollow'>here</a>.
+</p>
+<p class='vspace'>This is a complete MidiPlugin for OS X which uses Apple's CoreMidi API. It provides a simple C API and a C# class using the C API. The C# class contains a high level API, with easy access to NoteOn and NoteOff events and their velocity.
+</p>
+<div class='vspace'></div><h3>Texture Plugin</h3>
+<p>An example how to assign image data to a texture from C++ directly to OpenGL (note that is will only work when Unity is using OpenGL renderer). This example includes both XCode (for Mac) and Visual Studio (for Windows) project files. The plugin with accompanying Unity project can be found <a class='urllink' href='http://unity3d.com/support/resources/example-projects/texture-plugins' rel='nofollow'>here</a>.
+</p></div>
+<div class='vspace'></div><h2>More information</h2>
+<p><a class='urllink' href='http://www.mono-project.com/Interop_with_Native_Libraries' rel='nofollow'>Mono Interop with native libraries</a>.
+</p>
+<p class='vspace'><a class='urllink' href='http://msdn2.microsoft.com/en-us/library/fzhhdwae.aspx' rel='nofollow'>P-invoke documentation on MSDN</a>.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Web Player Debugging.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Build Player Pipeline.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

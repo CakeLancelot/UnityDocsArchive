@@ -1,0 +1,76 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" Importing Objects From Maya"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title=" Importing Objects From Maya" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22FAQ.html%22%3EFAQ%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOWTO-importObject.html%22%3E%20How%20do%20I%20import%20objects%20from%20my%203D%20app%3F%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOWTO-ImportObjectMaya.html%22%3E%20Importing%20Objects%20From%20Maya%3C%2Fa%3E" -->
+		<h1> Importing Objects From Maya</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="FAQ.html">FAQ</a> &gt; <a href="HOWTO-importObject.html"> How do I import objects from my 3D app?</a> &gt; <a href="HOWTO-ImportObjectMaya.html"> Importing Objects From Maya</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="HOWTO-importObjectLightwave.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HOWTO-ImportObjectModo.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Unity natively imports Maya files. To get started, simply place your <b>.mb</b> or <b>.ma</b> file in your project's assets folder.
+When you switch back into Unity, the scene is imported automatically and will show up in the project view.
+</p>
+
+<p>To see your model in Unity, simply drag it from the project view into the scene view.
+</p>
+
+<h2> Unity currently imports from Maya</h2>
+<ol><li> All objects with pivot points, position, rotation and scale
+</li><li> Meshes with vertex colors, normals and up to 2 UV sets
+</li><li> Materials with Texture and diffuse color. Multiple materials per mesh.
+</li><li> Animations FK &amp; IK
+</li><li> Bone based animations
+</li></ol>
+
+<p>Unity does not import blend shapes. Use Bone based animations instead. Unity automatically triangulates polygonal meshes when importing. Thus there is no need to do this manually in Maya.
+</p>
+
+<p>If you are using IK to animate characters you have to select the imported .mb file in project view and choose <b>Assets -&gt; Import Settings...</b>. In the import settings dialog, you have to choose <b>Bake IK &amp; Simulation</b>.
+</p>
+
+
+<h2>Requirements</h2>
+<p>In order to import Maya <b>.mb</b> and <b>.ma</b> files, you need to have Maya installed on the machine you are using Unity to import the .mb/.ma file. Maya 5.0 and up is supported.
+</p>
+
+<p>If you don't have Maya installed on your machine but want to import a Maya file from another machine, you can export to the fbx format, which Unity imports natively.
+</p>
+<ol><li> Open the Maya file
+</li><li> If you don't have the fbx plugin already installed. Download and install it from <a class="wiki"  href="http://www.alias.com/eng/products-services/fbx/download.shtml">here</a>.
+</li><li> Place the exported fbx file in the Unity project folder. Unity will now automatically import the fbx file.
+</li></ol>
+
+<h3> Behind the import process (Advanced)</h3>
+<p>When Unity imports a Maya file it will launch Maya in the background. Unity then communicates with Maya to convert the .mb file into a format Unity can read. The first time you import a Maya file in Unity, Maya has to launch in a command line process, this can take around 20 seconds, but the second time importing will be very quick.
+</p>
+
+
+
+		<div class="navigation"><a href="HOWTO-importObjectLightwave.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HOWTO-ImportObjectModo.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

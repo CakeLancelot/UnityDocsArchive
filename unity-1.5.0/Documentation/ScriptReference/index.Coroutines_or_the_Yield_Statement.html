@@ -1,0 +1,69 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Scripting - An Overview.Coroutines or the Yield Statement"-->
+			<title>Unity Script Reference &ndash; Scripting - An Overview.Coroutines or the Yield Statement</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<script language="JavaScript" src="UnityDoc.js"></script>
+<body>
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>Coroutines or the Yield Statement</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+	<!-- #TemplateEndEditable -->
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="Coroutines or the Yield Statement" path="" navigation="" --><!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-top.lbi" --><!-- #EndLibraryItem --><div class="left-menu-container"><ul class="left-menu"><li><span class="left-menu-heading">Menu</span></li><li><a class="left-menu-item" href="index.html">Overview</a></li><li><a class="left-menu-item" href="20_class_hierarchy.html">Class Hierarchy</a></li><li><a class="left-menu-item" href="10_reference.html">Reference</a></li><li><span class="left-menu-seperator"></span></li><li><a class="left-menu-heading" href="index.html">Scripting - An Overview</a></li><li><a class="left-menu-item" href="index.Common_Operations.html">Common Operations</a></li><li><a class="left-menu-item" href="index.Keeping_Track_of_Time.html">Keeping Track of Time</a></li><li><a class="left-menu-item" href="index.Accessing_Other_Components.html">Accessing Other Components</a></li><li><a class="left-menu-item" href="index.Accessing_Other_Game_Objects.html">Accessing Other Game Objects</a></li><li><a class="left-menu-item" href="index.Vectors.html">Vectors</a></li><li><a class="left-menu-item" href="index.Member_Variables.html">Member Variables</a></li><li><a class="left-menu-item" href="index.Instantiate.html">Instantiate</a></li><li><span class="left-menu-item left-menu-current">Coroutines or the Yield Statement</span></li><li><a class="left-menu-item" href="index.Writing_Scripts_in_Csharp_or_Boo.html">Writing Scripts in C# or Boo</a></li><li><a class="left-menu-item" href="index.The_most_important_classes.html">The most important classes</a></li><li><a class="left-menu-item" href="index.Script_compilation_28Advanced29.html">Script compilation (Advanced)</a></li></ul></div>
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-middle.lbi" --><!-- #EndLibraryItem --><div class="pre-next-link"><b>Previous:</b> <a href="index.Instantiate.html">Instantiate</a> <b>Next:</b> <a href="index.Writing_Scripts_in_Csharp_or_Boo.html">Writing Scripts in C# or Boo</a></div>
+   <p class="basic"> When writing game code, one often ends up needing to script a sequence of events. This could result in code like the following.
+</p><div class="code">private var state = 0;<br/><br/>function Update() {<br/>    if (state == 0) {<br/>        <span class="comment">// do step 0</span>
+        state = 1;<br/>        return;<br/>    }<br/>    if (state == 1) {<br/>        <span class="comment">// do step 1</span>
+        state = 2;<br/>        return;<br/>    }<br/>    <span class="comment">// ...</span>
+}
+</div><p class="basic">
+It is often more convenient to use the yield statement. The yield statement is a special kind of <span class="variable">return</span>, that ensures that the function will continue from the line after the yield statement next time it's called.
+</p><div class="code">while(true) {<br/>    <span class="comment">// do step 0</span>
+    yield; <span class="comment">// wait for one frame</span>
+    <span class="comment">// do step 1</span>
+    yield; <span class="comment">// wait for one frame</span>
+    <span class="comment">// ...</span>
+}
+</div><p class="basic">
+You can also pass special values to the yield statement to delay the execution of the <span class="variable">Update</span> function until a certain event has occurred.
+</p><div class="code"><span class="comment">// do something</span>
+yield <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a>(5.0); <span class="comment">// wait for 5 seconds</span>
+<span class="comment">// do something more...</span>
+</div><p class="basic">
+</p><p class="basic">
+You can both stack and chain coroutines.
+</p><p class="basic">
+This example will execute Do but continue after calling do immediately.</p><div class="code">Do ();<br/>print ("This is printed immediately");<br/><br/>function Do ()<br/>{<br/>    print("Do now");<br/>    <br/>    yield <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a> (2);<br/><br/>    print("Do 2 seconds later");<br/>}
+</div><p class="basic">
+</p><p class="basic">
+This example will execute Do and wait until it is finished before continuing it's own execution</p><div class="code"><span class="comment">// chain the coroutine</span>
+yield StartCoroutine("Do");<br/>print("Also after 2 seconds");<br/><br/>print ("This is after the Do coroutine has finnished execution");<br/><br/>function Do ()<br/>{<br/>    print("Do now");<br/>    <br/>    yield <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a> (2);<br/><br/>    print("Do 2 seconds later");<br/>}
+</div><p class="basic">
+Note that you can't use yield from within <span class="variable">Update</span> or <span class="variable">FixedUpdate</span>, but you can use <a href="MonoBehaviour.StartCoroutine.html?from=index" class="itemlink">StartCoroutine</a> to start a function that can.
+</p><p class="basic">
+See <a href="YieldInstruction.html" class="classlink">YieldInstruction</a>, <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a>, <a href="WaitForFixedUpdate.html" class="classlink">WaitForFixedUpdate</a>, <a href="Coroutine.html" class="classlink">Coroutine</a> and <a href="MonoBehaviour.StartCoroutine.html?from=index" class="itemlink">MonoBehaviour.StartCoroutine</a> for more information on using <span class="variable">yield</span>.
+</p><p class="basic">
+
+</p>
+	
+	</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

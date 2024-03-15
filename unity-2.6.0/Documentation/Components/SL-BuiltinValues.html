@@ -1,0 +1,123 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - ShaderLab builtin values</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">ShaderLab builtin values</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/SL-Reference.html">ShaderLab Reference</a> &gt; <a href="../Components/SL-BuiltinValues.html">ShaderLab builtin values</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/SL-ShaderLOD.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/SL-V2Conversion.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>ShaderLab builtin values</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Unity provides a handful of builtin values for your shaders: things like current object's transformation matrices, light's color, time etc.
+</p>
+<p class='vspace'>You just use them in <span class='wikiword'>ShaderLab</span> like you'd use any other property, the only difference is that
+you don't have to declare it somewhere - they are "built in".
+</p>
+<p class='vspace'>Using them in Cg shaders requires including <b><span class='wikiword'>UnityCG</span>.cginc</b> file.
+</p>
+<div class='vspace'></div><h3>Transformations</h3>
+<table width='100%'><tr ><td  align='left'><b>Name</b></td><td  align='center'><b>Type</b></td><td  align='center'><b>Value</b></td><td  align='center'><b>Usage</b></td></tr>
+<tr ><td  align='left'>_Object2World</td><td  align='left'>float4x4</td><td  align='left'>Object to World space matrix</td><td  align='left'>Finding world space positions</td></tr>
+<tr ><td  align='left'>_World2Object</td><td  align='left'>float4x4</td><td  align='left'>World to Object space matrix</td><td  align='left'>Finding local space positions from world space</td></tr>
+<tr ><td  align='left'>_ObjectSpaceCameraPos</td><td  align='left'>float3</td><td  align='left'>Camera's position in object space</td></tr>
+</table>
+<div class='vspace'></div><h3>Lighting</h3>
+<p>In plain <span class='wikiword'>ShaderLab</span>, you access the following properties by appending zero at the end: e.g. the light's model*light color is <code>_ModelLightColor0</code>. In Cg shaders, they are exposed as arrays with a single element, so the same in Cg is <code>_ModelLightColor[0]</code>.
+</p>
+<div class='vspace'></div><table width='100%'><tr ><td  align='center'><b>Name</b></td><td  align='center'><b>Type</b></td><td  align='center'><b>Value</b></td></tr>
+<tr ><td  align='left'>_ModelLightColor</td><td  align='left'>float4</td><td  align='left'>Material's Main * Light color</td></tr>
+<tr ><td  align='left'>_SpecularLightColor</td><td  align='left'>float4</td><td  align='left'>Material's Specular * Light color</td></tr>
+<tr ><td  align='left'>_ObjectSpaceLightPos</td><td  align='left'>float4</td><td  align='left'>Light's position in object space. <em>w</em> component is 0 for directional lights, 1 for other lights</td></tr>
+<tr ><td  align='left'>_Light2World</td><td  align='left'>float4x4</td><td  align='left'>Light to World space matrix</td></tr>
+<tr ><td  align='left'>_World2Light</td><td  align='left'>float4x4</td><td  align='left'>World to Light space matrix</td></tr>
+<tr ><td  align='left'>_Object2Light</td><td  align='left'>float4x4</td><td  align='left'>Object to Light space matrix</td></tr>
+</table>
+<div class='vspace'></div><h3>Misc</h3>
+<table width='100%'><tr ><td  align='center'><b>Name</b></td><td  align='center'><b>Type</b></td><td  align='center'><b>Value</b></td><td  align='center'><b>Usage</b></td></tr>
+<tr ><td  align='left'>_Time</td><td  align='left'>float4</td><td  align='left'>Time (t/20, t, t*2, t*3)</td><td  align='left'>Animating things inside the shaders</td></tr>
+<tr ><td  align='left'>_SinTime</td><td  align='left'>float4</td><td  align='left'>Sine of time: (t/8, t/4, t/2, t)</td><td  align='left'>Animating things inside the shaders</td></tr>
+<tr ><td  align='left'>_CosTime</td><td  align='left'>float4</td><td  align='left'>Cosine of time: (t/8, t/4, t/2, t)</td><td  align='left'>Animating things inside the shaders</td></tr>
+<tr ><td  align='left'>_ProjectionParams</td><td  align='left'>float4</td><td  align='left'><code>x</code> is 1.0 or -1.0, negative if currently rendering with a flipped projection matrix <br clear='all' /><code>y</code> is camera's near plane <br clear='all' /><code>z</code> is camera's far plane <br clear='all' /><code>w</code> is 1/<span class='wikiword'>FarPlane</span>.</td><td  align='left'>Projecting textures in screen space</td></tr>
+<tr ><td  align='left'>_CubeNormalize</td><td  align='left'>samplerCUBE</td><td  align='left'>Normalization cube map</td><td  align='left'>Used for pixel lighting on older hardware</td></tr>
+<tr ><td  align='left'>_SpecFalloff</td><td  align='left'>sampler2D</td><td  align='left'>Specular lookup map</td><td  align='left'>Used for pixel lighting on older hardware</td></tr>
+</table>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/SL-ShaderLOD.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/SL-V2Conversion.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,111 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Built-in state variables in shader programs</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Built-in state variables in shader programs</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/SL-Reference.html">ShaderLab Reference</a> &gt; <a href="../Components/SL-ShaderPrograms.html">Writing shader programs</a> &gt; <a href="../Components/SL-BuiltinStateInPrograms.html">Built-in state variables in shader programs</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/SL-VertexProgramInputs.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/SL-GLSLShaderPrograms.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Built-in state variables in shader programs</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Often in <a href="../Components/SL-ShaderPrograms.html">shader programs</a> you need to access some global state, for example, the current model*view*projection matrix, the current ambient color, and so on.
+</p>
+<p class='vspace'>The built-in state supported by shaders in Unity is a subset of that of <a class='urllink' href='http://www.opengl.org/registry/specs/ARB/vertex_program.txt' rel='nofollow'>ARB_vertex_program</a>. When using OpenGL it just works due to nature of OpenGL, and when using Direct3D Unity engine tracks this built-in state and makes it available to shader programs. There's no need to declare variables for the built-in state, you can just use them in shader programs.
+</p>
+<div class='vspace'></div><h2>Built-in matrices</h2>
+<p>Matrices (float4x4) supported:
+</p>
+<div class='vspace'></div><dl><dt> <span class='doc-prop'>glstate.matrix.mvp</span> </dt><dd> Current model*view*projection matrix
+</dd><dt> <span class='doc-prop'>glstate.matrix.modelview[0]</span> </dt><dd> Current model*view matrix
+</dd><dt> <span class='doc-prop'>glstate.matrix.projection</span> </dt><dd> Current projection matrix
+</dd><dt> <span class='doc-prop'>glstate.matrix.transpose.modelview[0]</span> </dt><dd> Transpose of model*view matrix
+</dd><dt> <span class='doc-prop'>glstate.matrix.invtrans.modelview[0]</span> </dt><dd> Inverse transpose of model*view matrix
+</dd><dt> <span class='doc-prop'>glstate.matrix.texture[0]</span> to <span class='doc-prop'>glstate.matrix.texture[7]</span> </dt><dd> Texture transformation matrices
+</dd></dl><div class='vspace'></div><h2>Built-in vectors</h2>
+<p>Vectors (float4) supported:
+</p>
+<div class='vspace'></div><dl><dt> <span class='doc-prop'>glstate.light[0].diffuse</span> to <span class='doc-prop'>glstate.light[3].diffuse</span> </dt><dd> Colors of the first four vertex lights
+</dd><dt> <span class='doc-prop'>glstate.light[0].position</span> to <span class='doc-prop'>glstate.light[3].position</span> </dt><dd> Positions of the first four vertex lights. Point and spot lights have <span class='doc-prop'>(x,y,z,1)</span> values, and directional lights have their direction here, as <span class='doc-prop'>(x,y,z,0)</span> value.
+</dd><dt> <span class='doc-prop'>glstate.light[0].attenuation</span> to <span class='doc-prop'>glstate.light[3]. attenuation </span> </dt><dd> Attenuation values for first four vertex lights. <span class='doc-prop'>x</span> (constant attenuation) is always 1.0, <span class='doc-prop'>y</span> (linear attenuation) is always 0.0, and <span class='doc-prop'>z</span> is the quadratic attenuation.
+</dd><dt> <span class='doc-prop'>glstate.lightmodel.ambient</span> </dt><dd> Current ambient color.
+</dd></dl>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/SL-VertexProgramInputs.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/SL-GLSLShaderPrograms.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

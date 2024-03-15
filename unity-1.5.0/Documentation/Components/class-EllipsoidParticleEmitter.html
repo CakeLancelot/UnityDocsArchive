@@ -1,0 +1,153 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Ellipsoid Particle Emitter"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Ellipsoid Particle Emitter" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-ParticlesGroup.html%22%3EParticle%20systems%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-EllipsoidParticleEmitter.html%22%3EEllipsoid%20Particle%20Emitter%3C%2Fa%3E" -->
+		<h1>Ellipsoid Particle Emitter</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-ParticlesGroup.html">Particle systems</a> &gt; <a href="class-EllipsoidParticleEmitter.html">Ellipsoid Particle Emitter</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="comp-ParticlesGroup.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-MeshParticleEmitter.html">Next<img src="../images/next.png"></a></div>
+
+			
+<p>The Ellipsoid Particle Emitter spawns particles inside a sphere. Use the <b>Ellipsoid</b> property below to scale &amp; stretch the sphere.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-EllipsoidParticleEmitter-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-EllipsoidParticleEmitter-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The Ellipsoid Particle Emitter</i>
+</p>
+
+
+<h2>Properties</h2>
+
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+ Emit</nobr></b></td><td> If enabled, the emitter will emit particles.
+</td></tr><tr><td><b><nobr>Min Size</nobr></b></td><td> The minimum size each particle can be at the time when it is spawned.
+</td></tr><tr><td><b><nobr>Max Size</nobr></b></td><td> The maximum size each particle can be at the time when it is spawned.
+</td></tr><tr><td><b><nobr>Min Energy</nobr></b></td><td> The minimum lifetime of each particle, measured in seconds.
+</td></tr><tr><td><b><nobr>Max Energy</nobr></b></td><td> The maximum lifetime of each particle, measured in seconds.
+</td></tr><tr><td><b><nobr>Min Emission</nobr></b></td><td> The minimum number of particles that will be spawned every second.
+</td></tr><tr><td><b><nobr>Max Emission</nobr></b></td><td> The maximum number of particles that will be spawned every second.
+</td></tr><tr><td><b><nobr>World Velocity</nobr></b></td><td> The starting speed of particles in world space, along X, Y, and Z.
+</td></tr><tr><td><b><nobr>Local Velocity</nobr></b></td><td> The starting speed of particles along X, Y, and Z, measured in the object's orientation.
+</td></tr><tr><td><b><nobr>Rnd Velocity</nobr></b></td><td> A random speed along X, Y, and Z that is added to the velocity.
+</td></tr><tr><td><b><nobr>Emitter Velocity Scale</nobr></b></td><td> The amount of the emitter's speed that the particles inherit.
+</td></tr><tr><td><b><nobr>Simulate In World Space</nobr></b></td><td> If enabled, the particles don't move when the emitter moves. If false, when you move the emitter, the particles follow it around.
+</td></tr><tr><td><b><nobr>One Shot</nobr></b></td><td> If enabled, the particle numbers specified by min &amp; max emission is spawned all at once. If disabled, the particles are generated in a long stream.
+</td></tr><tr><td><b><nobr>Ellipsoid</nobr></b></td><td> Scale of the sphere along X, Y, and Z that the particles are spawned inside.
+</td></tr><tr><td><b><nobr>MinEmitterRange</nobr></b></td><td> Determines an empty area in the center of the sphere - use this to make particles appear on the edge of the sphere.
+<p></td></tr></tr></table>
+</p>
+
+
+<h2>Details</h2>
+<p>Ellipsoid Particle Emitters (EPEs) are the basic emitter, and are included when you choose to add a Particle System to your scene from Components -&gt; Particles -&gt; Particle System.  You can define the boundaries for the particles to be spawned, and give the particles an initial velocity.  From here, use the <a href="../Components/class-ParticleAnimator.html">Particle Animator</a> to manipulate how your particles will change over time to achieve interesting effects.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-EllipsoidParticleEmitter-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-EllipsoidParticleEmitter-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>An EPE applied to a sphere</i>
+</p>
+
+<p>Particle Emitters work in conjunction with <a href="../Components/class-ParticleAnimator.html">Particle Animators</a> and <a href="../Components/class-ParticleRenderer.html">Particle Renderers</a> to create, manipulate, and display Particle Systems.  All three components must be present on an object before the particles will behave correctly.  When particles are being emitted, all different velocities are added together to create the final velocity.
+</p>
+
+
+<h3>Spawning Properties</h3>
+
+<p>Spawning properties like <b>Size</b>, <b>Energy</b>, <b>Emission</b>, and <b>Velocity</b> will give your particle system distinct personality when trying to achieve different effects.  Having a small <b>Size</b> could simulate fireflies or stars in the sky.  A large <b>Size</b> could simulate dust clouds in a musky old building.
+</p>
+
+<p><b>Energy</b> and <b>Emission</b> will control how long your particles remain onscreen and how many particles can appear at any one time.  For example, a rocket might have high <b>Emission</b> to simulate density of smoke, and high <b>Energy</b> to simulate the slow dispersion of smoke into the air.
+</p>
+
+<p><b>Velocity</b> will control how your particles move.  You might want to change your <b>Velocity</b> in scripting to achieve interesting effects, or if you want to simulate a constant effect like wind, set your X and Z <b>Velocity</b> to make your particles blow away.
+</p>
+
+<h3>Simulate in World Space</h3>
+
+<p>If this is disabled, the position of each individual particle will always translate relative to the <b>Position</b> of the emitter.  When the emitter moves, the particles will move along with it.  If you have <b>Simulate in World Space</b> enabled, particles will not be affected by the translation of the emitter.  For example, if you have a fireball that is spurting flames that rise, the flames will be spawned and float up in space as the fireball gets further away.  If <b>Simulate in World Space</b> is disabled, those same flames will move across the screen along with the fireball.
+</p>
+
+<h3>Emitter Velocity Scale</h3>
+
+<p>This property will only apply if <b>Simulate in World Space</b> is enabled.
+</p>
+
+<p>If this property is set to 1, the particles will inherit the exact translation of the emitter at the time they are spawned.  If it is set to 2, the particles will inherit double the emitter's translation when they are spawned.  3 is triple the translation, etc.
+</p>
+
+<h3>One Shot</h3>
+
+<p><b>One Shot</b> emitters will create all particles within the <b>Emission</b> property all at once, and cease to emit particles over time.  Here are some examples of different particle system uses with <b>One Shot</b> enabled or disabled:
+</p>
+
+<p>Enabled
+</p>
+<ul><li>Explosion
+</li><li>Water splash
+</li><li>Magic spell
+</li></ul>
+
+<p>Disabled
+</p>
+<ul><li>Gun barrel smoke
+</li><li>Wind effect
+</li><li>Waterfall
+</li></ul>
+
+
+
+<h3>Min Emitter Range</h3>
+
+<p>The <b>Min Emitter Range</b> determines the depth within the ellipsoid that particles can be spawned.  Setting the range to 0 will allow particles to spawn anywhere from the center core of the ellipsoid to the outer-most range.  Setting the range to 1 will restrict spawn locations to the outer-most range of the ellipsoid.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-EllipsoidParticleEmitter-2.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-EllipsoidParticleEmitter-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i><b>Min Emitter Range</b> of 0</i>
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-EllipsoidParticleEmitter-3.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-EllipsoidParticleEmitter-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i><b>Min Emitter Range</b> of 1</i>
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Be careful of using many large particles. This can seriously hinder performance on low-level machines. Always try to use the minimum number of particles to attain an effect.
+</li><li>The <b>Emit</b> property works in conjunction with the <b>AutoDestruct</b> property of the ParticleAnimator.  Through scripting, you can cease the emitter from emitting, and then <b>AutoDestruct</b> will automatically destroy the Particle System and the GameObject it is attached to.
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="comp-ParticlesGroup.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-MeshParticleEmitter.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

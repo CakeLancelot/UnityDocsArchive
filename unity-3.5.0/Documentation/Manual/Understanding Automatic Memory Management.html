@@ -1,0 +1,339 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Understanding Automatic Memory Management</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Understanding Automatic Memory Management</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/Understanding Automatic Memory Management.html">Understanding Automatic Memory Management</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Understanding Automatic Memory Management</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>When an object, string or array is created, the memory required to store it is allocated from a central pool called the <b>heap</b>. When the item is no longer in use, the memory it once occupied can be reclaimed and used for something else. In the past, it was typically up to the programmer to allocate and release these blocks of heap memory explicitly with the appropriate function calls. Nowadays, runtime systems like Unity's Mono engine manage memory for you automatically. Automatic memory management requires less coding effort than explicit allocation/release and greatly reduces the potential for memory leakage (the situation where memory is allocated but never subsequently released).
+</p>
+<div class='vspace'></div><h2>Value and Reference Types</h2>
+<p>When a function is called, the values of its parameters are copied to an area of memory reserved for that specific call. Data types that occupy only a few bytes can be copied very quickly and easily. However, it is common for objects, strings and arrays to be much larger and it would be very inefficient if these types of data were copied on a regular basis. Fortunately, this is not necessary; the actual storage space for a large item is allocated from the heap and a small "pointer" value is used to remember its location. From then on, only the pointer need be copied during parameter passing. As long as the runtime system can locate the item identified by the pointer, a single copy of the data can be used as often as necessary.
+</p>
+<p class='vspace'>Types that are stored directly and copied during parameter passing are called value types. These include integers, floats, booleans and Unity's struct types (eg, <span class='doc-prop'>Color</span> and <span class='doc-prop'>Vector3</span>). Types that are allocated on the heap and then accessed via a pointer are called reference types, since the value stored in the variable merely "refers" to the real data. Examples of reference types include objects, strings and arrays.
+</p>
+<div class='vspace'></div><h2>Allocation and Garbage Collection</h2>
+<p>The memory manager keeps track of areas in the heap that it knows to be unused. When a new block of memory is requested (say when an object is instantiated), the manager chooses an unused area from which to allocate the block and then removes the allocated memory from the known unused space. Subsequent requests are handled the same way until there is no free area large enough to allocate the required block size. It is highly unlikely at this point that all the memory allocated from the heap is still in use. A reference item on the heap can only be accessed as long as there are still reference variables that can locate it. If all references to a memory block are gone (ie, the reference variables have been reassigned or they are local variables that are now out of scope) then the memory it occupies can safely be reallocated.
+</p>
+<p class='vspace'>To determine which heap blocks are no longer in use, the memory manager searches through all currently active reference variables and marks the blocks they refer to as "live". At the end of the search, any space between the live blocks is considered empty by the memory manager and can be used for subsequent allocations. For obvious reasons, the process of locating and freeing up unused memory is known as garbage collection (or GC for short).
+</p>
+<div class='vspace'></div><h2>Optimization</h2>
+<p>Garbage collection is automatic and invisible to the programmer but the collection process actually requires significant CPU time behind the scenes. When used correctly, automatic memory management will generally equal or beat manual allocation for overall performance. However, it is important for the programmer to avoid mistakes that will trigger the collector more often than necessary and introduce pauses in execution.
+</p>
+<p class='vspace'>There are some infamous algorithms that can be GC nightmares even though they seem innocent at first sight. Repeated string concatenation is a classic example:-
+</p>
+<div class='vspace'></div><pre>  function ConcatExample(intArray: int[]) {
+	var line = intArray[0].ToString();
+
+	for (i = 1; i &lt; intArray.Length; i++) {
+		line += ", " + intArray[i].ToString();
+	}
+
+	return line;
+  }
+</pre><p class='vspace'>The key detail here is that the new pieces don't get added to the string in place, one by one. What actually happens is that each time around the loop, the previous contents of the line variable become dead - a whole new string is allocated to contain the original piece plus the new part at the end. Since the string gets longer with increasing values of i, the amount of heap space being consumed also increases and so it is easy to use up hundreds of bytes of free heap space each time this function is called. If you need to concatenate many strings together then a much better option is the Mono library's <a class='urllink' href='http://msdn.microsoft.com/en-gb/library/system.text.stringbuilder.aspx' rel='nofollow'>System.Text.StringBuilder</a> class.
+</p>
+<p class='vspace'>However, even repeated concatenation won't cause too much trouble unless it is called frequently, and in Unity that usually implies the frame update. Something like:-
+</p>
+<div class='vspace'></div><pre>  var scoreBoard: GUIText;
+  var score: int;
+
+  function Update() {
+	var scoreText: String = "Score: " + score.ToString();
+	scoreBoard.text = scoreText;
+  }
+</pre><p class='vspace'>...will allocate new strings each time Update is called and generate a constant trickle of new garbage. Most of that can be saved by updating the text only when the score changes:-
+</p>
+<div class='vspace'></div><pre>  var scoreBoard: GUIText;
+  var scoreText: String;
+  var score: int;
+  var oldScore: int;
+
+  function Update() {
+	if (score != oldScore) {
+		scoreText = "Score: " + score.ToString();
+		scoreBoard.text = scoreText;
+		oldScore = score;
+	}
+  }
+</pre><p class='vspace'>Another potential problem occurs when a function returns an array value:-
+</p>
+<div class='vspace'></div><pre>  function RandomList(numElements: int) {
+	var result = new float[numElements];
+
+	for (i = 0; i &lt; numElements; i++) {
+		result[i] = Random.value;
+	}
+
+	return result;
+  }
+</pre><p class='vspace'>This type of function is very elegant and convenient when creating a new array filled with values. However, if it is called repeatedly then fresh memory will be allocated each time. Since arrays can be very large, the free heap space could get used up rapidly, resulting in frequent garbage collections. One way to avoid this problem is to make use of the fact that an array is a reference type. An array passed into a function as a parameter can be modified within that function and the results will remain after the function returns. A function like the one above can often be replaced with something like:-
+</p>
+<div class='vspace'></div><pre>  function RandomList(arrayToFill: float[]) {
+	for (i = 0; i &lt; arrayToFill.Length; i++) {
+		arrayToFill[i] = Random.value;
+	}
+  }
+</pre><p class='vspace'>This simply replaces the existing contents of the array with new values. Although this requires the initial allocation of the array to be done in the calling code (which looks slightly inelegant), the function will not generate any new garbage when it is called.
+</p>
+<div class='vspace'></div><h2>Requesting a Collection</h2>
+<p>As noted above, a garbage collection can sometimes create a pause in execution, especially if the search for live objects turns out to be complicated. If this happens during gameplay then the result is likely to be noticeable but there may be other occasions in the game where a pause would be harmless (eg, when the screen is faded out or a menu is being shown). It is possible to request that the system perform a garbage collection even when the heap isn't full, so as to avoid a pause at a more inopportune time. This is done with the <a class='urllink' href='http://msdn.microsoft.com/en-gb/library/xe0c2357.aspx' rel='nofollow'>System.GC.Collect</a> function:-
+</p>
+<div class='vspace'></div><pre>  function NotVeryMuchHappeningInGame() {
+	System.GC.Collect();
+  }
+</pre><p class='vspace'>Note that the memory manager doesn't necessarily perform a collection when this function is called. It is merely a suggestion that it would be a good time for GC if it is necessary.
+</p>
+<div class='vspace'></div><h2>Reusable Object Pools</h2>
+<p>There are many cases where you can avoid generating garbage simply by reducing the number of objects that get created and destroyed. There are certain types of objects in games, such as enemy characters, which may be encountered over and over again even though only a small number will ever be in play at once. In cases like this, it is often possible to reuse objects rather than destroy old ones and replace them with new ones. For example, when an enemy dies in the game, its Game Object can simply be hidden rather than destroyed. Then, when a new enemy instance is needed, the "dead" enemy can be brought back wherever it is needed. This technique is known as <em>object pooling</em> and can be applied to many different types of objects.
+</p>
+<div class='vspace'></div><h3>Implementation</h3>
+<p>A simple way to implement an object pool is to start with an array of the type of object to be pooled; for this example, let's say we are pooling Game Objects that represent enemies in the game. The array should have enough elements to contain the maximum number of enemies that will be needed at any one time.
+</p>
+<div class='vspace'></div><pre>	var enemyPool: GameObject[];
+	var enemyPrefab: GameObject;
+	var maxNumEnemies: int;
+
+
+	function InitializeEnemyPool() {
+		enemyPool = new GameObject[maxNumEnemies];
+
+		for (i = 0; i &lt; enemyPool.Length; i++) {
+			enemyPool[i] = Instantiate(enemyPrefab);
+			enemyPool[i].renderer.enabled = false;
+		}
+	}
+</pre><p class='vspace'>An enemy can be obtained from the pool simply by copying one of the array elements. To make sure that the enemy doesn't get allocated again (until it goes out of use), the array element should be set to null. Rather than make the allocator search through the array for the first non-null element on subsequent allocations, it is best to use an integer variable to point to the first index that contains an unallocated enemy.
+</p>
+<div class='vspace'></div><pre>	var nextAvailableEnemy: int = 0;
+
+	function GetEnemy() {
+		var allocatedEnemy = enemyPool[nextAvailableEnemy];
+		allocatedEnemy.renderer.enabled = true;
+		enemyPool[nextAvailableEnemy] = null;
+		nextAvailableEnemy++;
+		return allocatedEnemy;
+	}
+</pre><p class='vspace'>Once an enemy dies or otherwise goes out of use, it should be returned to the pool. This can be done by finding the array index just before <em>nextAvailableEnemy</em> and placing the enemy there.
+</p>
+<div class='vspace'></div><pre>	function ReleaseEnemy(doomedEnemy: GameObject) {
+		doomedEnemy.renderer.enabled = false;
+		nextAvailableEnemy--;
+		enemyPool[nextAvailableEnemy] = doomedEnemy;
+	}
+</pre><div class='vspace'></div><h3>Efficiency</h3>
+<p>Object pools work best for types of objects that are created at a rapid rate but which have a short life span and so only a small number are actually in play at once. For example, "swarm" enemies may arrive in countless waves from entry points but each one is quickly defeated. Similarly, there may be an inexhaustible supply of things like spell sparkles, projectiles and explosions but they quickly disappear from play. If fresh instances of such objects are created frequently then the available heap memory will be used up rapidly and garbage collections will happen regularly. However, if the objects are reused then no additional allocations will be made after the pool is constructed.
+</p>
+<p class='vspace'>However, object pools must be used with care to get the best performance. One issue is that the creation of a pool reduces the amount of heap memory available for other purposes; frequent allocations from the reduced heap may actually result in more garbage collections. Another is that the time taken for a collection increases with the number of live objects. With these issues in mind, it should be apparent that performance will suffer if you allocate pools that are too large or keep them active when the objects they contain will not be needed for some time. Furthermore, many types of objects don't lend themselves well to object pooling. For example, the game may include spell effects that persist for a considerable time or enemies that appear in large numbers but which are only killed gradually as the game progresses. In such cases, the performance overhead of an object pool greatly outweighs the benefits and so it should not be used.
+</p>
+<div class='vspace'></div><h2>Further Information</h2>
+<p>Memory management is a subtle and complex subject to which a great deal of academic effort has been devoted. If you are interested in learning more about it then <a class='urllink' href='http://www.memorymanagement.org/' rel='nofollow'>memorymanagement.org</a> is an excellent resource, listing many publications and online articles. Further information about object pooling can be found on the <a class='urllink' href='http://en.wikipedia.org/wiki/Object_pool_pattern' rel='nofollow'>Wikipedia page</a> and also at <a class='urllink' href='http://sourcemaking.com/design_patterns/object_pool' rel='nofollow'>Sourcemaking.com</a>.
+</p>
+</p><small>Page last updated: 2011-11-25</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

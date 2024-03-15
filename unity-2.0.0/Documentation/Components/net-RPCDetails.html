@@ -1,0 +1,123 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - RPC Details</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">RPC Details</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Network Reference Guide.html">Network Reference Guide</a> &gt; <a href="../Components/net-RPCDetails.html">RPC Details</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/net-NetworkView.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/net-StateSynchronization.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>RPC Details</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><span class='doc-keyword'>Remote Procedure Calls</span> (<span class='wikiword'>RPCs</span>) let you call functions on a remote machine. It is similar to calling a normal function and almost as easy, but there are some important differences to understand.
+</p>
+<div class='vspace'></div><ol><li>An RPC call can have as many parameters as you like. All parameters will of course be sent over the network. This makes the bandwidth increase with the more parameters you send.  Therefore, you should try to minimize your parameters as much as possible.
+<div class='vspace'></div></li><li>You need to determine who will receive the RPC that is being sent out. There are several RPC call modes, that cover all common use cases. You can easily invoke the RPC function on everyone, on only the server, everyone but yourself or a specific client/player.
+</li></ol><p class='vspace'>RPC calls are usually used to execute some event on all clients in the game or pass event information specifically between two parties, but you can be creative with it and use it however you want to. For example, a server for a game which only starts after 4 clients have connected could send an RPC call to all clients as soon as the forth one connects, thus starting the game. A client could send RPC calls to everyone to signal that he picked up an item. A server could send an RPC to only a particular client to initialize him right after he connects, for example, to give him his player number, spawn location, team color, etc. A client could in turn send an RPC only to the server to specify his starting options, like which color he prefers or what items he has bought.
+</p>
+<div class='vspace'></div><h2>Using <span class='wikiword'>RPCs</span></h2>
+<p>There are two steps involved in setting up RPC calls: declaring the function you want to call and invoking it. When declaring a function you have to prefix it with an RPC attribute.
+</p>
+<p class='vspace'>The following code declares an RPC function.
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+// All RPC calls need the @RPC attribute!
+@RPC
+function PrintText (text : String)
+{
+    Debug.Log(text);
+}
+</pre>
+<p class='vspace'>Once you have declared an RPC call you can invoke it. All network communication goes through the Network View attached to the same <span class='wikiword'>GameObject</span> as the script. In other words, you need to attach the scripts containing the RPCS functions to a <span class='wikiword'>GameObject</span> that contains a Network View Component.
+</p>
+<p class='vspace'>The following code invokes an RPC function.
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+networkView.RPC ("PrintText", RPCMode.All, "Hello world");
+</pre>
+<p class='vspace'>This code will use the attached Network View to invoke all "<span class='wikiword'>PrintText</span>()" functions in any scripts attached to the same <span class='wikiword'>GameObject</span>.
+</p>
+<p class='vspace'>The first parameter of <span class='doc-prop'>RPC()</span> is the name of the function to be invoked, the second determines who will have this function invoked. In this case we invoke the RPC call on everyone who is connected to the server but did not tell him to buffer the call for clients which connect later.
+</p>
+<p class='vspace'>All the following parameters are the parameters that will be passed to the RPC function and be sent across the network. In this case, "Hello World" will be sent as a parameter and be passed as the text parameter in the <span class='wikiword'>PrintText</span> function.
+</p>
+<p class='vspace'>As mention already, in order for RPC function to work in a script, a Network View must exist on the <span class='wikiword'>GameObject</span> which contains the script.  The Network View's <span class='doc-prop'>State Synchronization</span> can be set to <span class='doc-prop'>Off</span>, unless you are using State Synchronization with the same Network View.
+</p>
+<div class='vspace'></div><h2>RPC Buffer</h2>
+<p>RPC calls can also be buffered. Buffered RPC calls are stored up and executed in order for each new connecting client.  They can be useful for making the process of a player joining an existing game session easier. A common scenario is that every player who joins a game should first load a specific level. Thus you would send an RPC function to everyone and then also set it to be buffered. By buffering it, whenever a new player joins the game, it will automatically be sent to the player. This way you don't need to track players joining and manually send load level <span class='wikiword'>RPCs</span> specifically to the player.
+</p>
+<p class='vspace'>Unity also has some functionality to remove from the RPC buffer. In the load level example, if the game has progressed through multiple levels, all you really care about is having a new player join the current level.  In this case, you would remove any previously added Load Level RPC calls from the RPC buffer.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/net-NetworkView.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/net-StateSynchronization.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

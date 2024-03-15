@@ -1,0 +1,72 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Meshes"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="Meshes" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Graphics.html%22%3EGraphics%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Meshes.html%22%3EMeshes%3C%2Fa%3E" navigation="%3Ca%20href%3D%22Introduction.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22Particle%20Systems.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>Meshes</h1>
+		<p><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Graphics.html">Graphics</a> &gt; <a href="Meshes.html">Meshes</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="Introduction.html"><img src="../images/prev.png"></a><a href="Particle Systems.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			<p>At the core of any 3D game is <i>Meshes</i> - objects consisting of triangles, with textures applied.
+</p>
+
+<p>Meshes in Unity are passed through <i>pipelines</i>. Although there are many variations, almost all mesh pipelines have a few things in common:
+</p>
+
+<p>&lt;!-- img src=&quot;http://otee.dk/TODO: graph out this process --&gt;
+</p>
+
+<ul><li> They have a LodMeshFilter at the beginning. This filter loads a mesh from a Mesh asset and inserts it into the pipeline.
+</li><li> They have a MeshRenderer at the end. This filter takes the Mesh from in the pipeline and renders it at the Game Object's position. The MeshRenderer controls the object's rendered appearance through its <i>Material</i>.
+</li></ul>
+
+<h1>Mesh Filter</h1>
+<p>The Mesh Filter takes a mesh from your assets and inserts it into the pipeline.
+</p>
+
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Lod Mesh</nobr></b></td><td> Pointer to a mesh that is inserted into the pipeline. The mesh is stored in your project.
+<p></td></tr></tr></table>
+</p>
+
+<p>To see the mesh in your scene, add a <a href="../Components/class-MeshRenderer.html">mesh renderer</a> to the game object.
+</p>
+<h1>Mesh Renderer</h1>
+<p>The Mesh Renderer takes the geometry passed through the Pipeline and renders it at the position defined by the object's Transform component
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Material</nobr></b></td><td> A list of materials. This points to the material that defines all rendering properties.
+<p></td></tr></tr></table>
+</p>
+<h2>Details</h2>
+
+<h2>Hints</h2>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

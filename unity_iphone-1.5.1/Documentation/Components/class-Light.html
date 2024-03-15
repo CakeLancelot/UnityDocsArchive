@@ -1,0 +1,172 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Light</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Light</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-RenderingGroup.html">Rendering Components</a> &gt; <a href="../Components/class-Light.html">Light</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><a href='../ScriptReference/Light.html' title='Go to Light Scripting Doc'>Switch to Scripting</a><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-LensFlare.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-Projector.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Light</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><span class='doc-keyword'>Lights</span> will bring personality and flavor to your game. You use lights to illuminate the scenes and objects to create the perfect visual mood. Lights can be used to simulate the sun, burning match light, flashlights, gun-fire, or explosions, just to name a few.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Light-0.jpg' /><br /><em>The Light <span class='doc-keyword'>Inspector</span></em></div>
+<p class='vspace'>There are three types of lights in Unity:
+</p><ul><li><span class='doc-keyword'>Point lights</span> shine from a location equally in all directions, like a light bulb.
+</li><li><span class='doc-keyword'>Directional lights</span> are placed infinitely far away and affect everything in the scene, like the sun.
+</li><li><span class='doc-keyword'>Spot lights</span> shine from a point in a direction and only illuminate objects within a cone - like the headlights of a car.
+</li></ul><p class='vspace'>Lights can also cast <span class='doc-keyword'>Shadows</span>.  Shadows are a Pro-only feature.  Shadow properties can be adjusted on a per-light basis.
+</p>
+<div class='vspace'></div><h2>Properties</h2>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Type</span></td><td  align='left'>The current type of light object:</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Directional</span></span></td><td  align='left'>A light placed infinitely far away. It affects everything in the scene and can not attenuate.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Point</span></span></td><td  align='left'>A light that shines equally in all directions from its location, affecting all objects within its <span class='doc-prop'>Range</span>.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Spot</span></span></td><td  align='left'>A light that shines everywhere within a cone (the <span class='doc-prop'>Spot Angle</span>), and a <span class='doc-prop'>Range</span>. Only objects within this region are affected by the light.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Color</span></td><td  align='left'>The color of the light emitted.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Attenuate</span></td><td  align='left'>Does the light diminish with increasing distance? If disabled, objects' brightness will "pop" as they enter and exit the light's region of influence. It can be useful to turn off when you want to do some special effects. If the light is directional, this property is ignored.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Intensity</span></td><td  align='left'>Brightness of the light. Default value for Spot/Point lights is 1. Default value for Directional lights is 0.5</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Range</span></td><td  align='left'>How far light is emitted from the center of the object.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Spot Angle</span></td><td  align='left'>If the light is a <span class='doc-prop'>Spot</span> light, this determines the angle of the cone in degrees.</td></tr>
+</table>
+<table width='100%'><tr ><td  align='left'><span class='doc-prop'>Cookie</span></td><td  align='left'>You can assign a texture to a light. The alpha channel of this texture is used as a mask that determines how bright the light is at different places. If the light is a <span class='doc-prop'>Spot</span> or a <span class='doc-prop'>Directional</span> light, this must be a 2D texture. If the light is a <span class='doc-prop'>Point</span> light, it must be a <span class='doc-keyword'>Cubemap</span>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Draw Halo</span></td><td  align='left'>If checked, a spherical halo of light will be drawn with a radius equal to <span class='doc-prop'>Range</span>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Flare</span></td><td  align='left'>Optional reference to the <a href="../Components/class-Flare.html">Flare</a> that will be rendered at the light's position.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Render Mode</span></td><td >Choose whether this light is rendered as a vertex light, pixel light, or determined automatically. For a detailed description of this tradoff, see <em>Performance Considerations</em> below. Options include:</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Auto</span></span></td><td  align='left'>The rendering method is determined at runtime depending on the brightness of nearby lights.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Force Pixel</span></span></td><td  align='left'>This light is always rendered at per-pixel quality. Use this for very important effects only (e.g. headlights of a player's car).</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Force Vertex</span></span></td><td  align='left'>This light is always rendered as a vertex-lit light.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Culling Mask</span></td><td  align='left'>Use to selectively exclude groups of objects from being affected by the light; see <a href="../Components/Layers.html">Layers</a>.</td></tr>
+</table>
+<div class='vspace'></div><h2>Details</h2>
+<p>There are three basic light types in Unity. Each type can be customized to fit your needs.
+</p>
+<p class='vspace'>You can create a texture that contains an alpha channel and assign it to the <span class='doc-prop'>Cookie</span> variable of the light.  The Cookie will be projected from the light. The Cookie's alpha mask modulates the light amount, creating light and dark spots on surfaces. They are a great way af adding lots of complexity or atmosphere to a scene.
+</p>
+<p class='vspace'>All <a href="../Components/Built-in Shader Guide.html">built-in shaders</a> in Unity seamlessly work with any type of light. <span class='doc-keyword'><span class='wikiword'>VertexLit</span></span> shaders cannot display Cookies or Shadows, however.
+</p>
+<p class='vspace'>
+</p>
+<div class='vspace'></div><h3>Point Lights</h3>
+<div><img class='figure' src='../Images/manual/class-Light-1.jpg' /></div>
+<p class='vspace'>Point lights shine out from a point in all directions. They are the most common lights in computer games - typically used for explosions, light bulbs, etc.  They have an average cost on the graphics processor (though point light shadows are the most expensive).
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Light-2.jpg' /><br /><em>Point Light</em></div>
+
+<div class='vspace'></div><h3>Spot Lights</h3>
+<div><img class='figure' src='../Images/manual/class-Light-3.jpg' /></div>
+<p class='vspace'>Spot lights only shine in one direction, in a cone.  They are perfect for flashlights, car headlights or lamp posts.  They are the most expensive on the graphics processor.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Light-4.jpg' /><br /><em>Spot Light</em></div>
+<p class='vspace'>Spot lights can also have cookies - a texture projected down the cone of the light. This is good for creating an effect of light shining through the window. It is very important that the texture is black at the edges, has <span class='doc-prop'>Border Mipmaps</span> option on and its wrapping mode is set to <span class='doc-prop'>Clamp</span>. For more info on this, see <a href="../Components/class-Texture2D.html">Textures</a>.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Light-5.jpg' /><br /><em>Spot Light with a Cookie</em></div>
+<div class='vspace'></div><h3>Directional Lights</h3>
+<div><img class='figure' src='../Images/manual/class-Light-6.jpg' /></div>
+<p class='vspace'>Directional lights are used mainly in outdoor scenes for sun &amp; moonlight.  The light affect all surfaces of objects in your scene.  They are the least expensive on the graphics processor.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Light-7.jpg' /><br /><em>Directional Light</em></div>
+<p class='vspace'>When directional light has a cookie, it is projected down the center of the light's Z axis. The size of the cookie is controlled with <span class='doc-prop'>Spot Angle</span> property. Set the cookie texture's wrapping mode to <span class='doc-prop'>Repeat</span> in the <span class='doc-keyword'>Inspector</span>.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Light-8.jpg' /><br /><em>Directional Light projecting a cloud-like cookie texture</em></div>
+<p class='vspace'>A cookie is a great way to add some quick detail to large outdoor scenes. You can even slide the light slowly over the scene to give the impression of moving clouds.
+</p>
+<div class='vspace'></div><h2>Performance considerations</h2>
+<p>Lights can be rendered in one of two methods: <span class='doc-keyword'>vertex</span> lighting and <span class='doc-keyword'>pixel</span> lighting. Vertex lighting only calculates the lighting at the vertices of the game models, and interpolates the lighting over the surfaces of the models. Pixel lights are calculated at every screen pixel, and hence are much more expensive.  Some older graphics cards only support vertex lighting.
+</p>
+<p class='vspace'>While pixel lighting is slower to render, it does allow some effects that are not possible with vertex lighting. Bump-mapping, light cookies and realtime shadows are only rendered for pixel lights. Spotlight shapes and Point light highlights are much better when rendered in pixel mode as well. The three light types above would look like this when rendered in vertex light mode:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Light-9.jpg' /><br /><em>Point light in Vertex lighting mode.</em></div>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Light-10.jpg' /><br /><em>Spot light in Vertex lighting mode.</em></div>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Light-11.jpg' /><br /><em>Directional light in Vertex lighting mode.</em></div>
+<p class='vspace'>Lights have a big impact on rendering speed - therefore a tradeoff has to be made betwen lighting quality and game speed. Since pixel lights are much more expensive than vertex lights, Unity will only render the brightest lights at per-pixel quality.
+</p>
+<p class='vspace'>You can explicitly control if a light should be rendered as a vertex or pixel light using the <span class='doc-prop'>Render Mode</span> property. By default Unity will classify the light automatically based on how much the object is affected by the light.
+</p>
+<p class='vspace'>The actual lights that are rendered as pixel lights are determined on an object-by-object case. This means:
+</p>
+<div class='vspace'></div><ul><li>Huge objects with bright lights could use all the pixel lights (depending on the quality settings). If the player is far from these, nearby lights will be rendered as vertex lights.  Therefore, it is better to split huge objects up in a couple of small ones.
+</li></ul><p class='vspace'>See <a href="../Manual/iphone-Optimizing-Graphics.html">Optimizing Graphics Performance</a></span> page for more information.
+</p>
+<div class='vspace'></div><h2>Creating Cookies</h2>
+<p>For more information on creating cookies, please see the tutorial on how to create a Spot Light cookie <a href="../Manual/HOWTO-LightCookie.html">here</a>.
+</p>
+<div class='vspace'></div><h2>Hints</h2>
+<ul><li>Spot lights with cookies can be extremely effective for making light coming in from windows. In this case, disable attenuation, and set the range to just reach the floor.
+</li><li>Low-intensity point lights are good for providing depth to a scene.
+</li><li>For maximum performance, use a <a href="../Components/Built-in Shader Guide.html">VertexLit</a> shader. This shader only does per-vertex lighting, giving a much higher throughput on low-end cards.
+</li></ul>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-LensFlare.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-Projector.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

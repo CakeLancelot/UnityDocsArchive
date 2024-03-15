@@ -1,0 +1,218 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Unity 2.x Shader Conversion Guide</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Unity 2.x Shader Conversion Guide</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/SL-Reference.html">ShaderLab Reference</a> &gt; <a href="../Components/SL-V2Conversion.html">Unity 2.x Shader Conversion Guide</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/SL-BuiltinValues.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/Scripting Concepts.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Unity 2.x Shader Conversion Guide</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Unity 2.x has many new features and changes to its rendering system, and <span class='wikiword'>ShaderLab</span> did update accordingly. Most of the shaders that were used in Unity 1.x do work without any changes in Unity 2.x, but some of <span class='wikiword'>ShaderLab</span> constructs need to be changed when you upgrade your project from Unity 1.x to 2.x. Most of the changes apply to advanced pixel lighting shaders only, and if you have trouble updating them - just ask for our help!
+</p>
+<p class='vspace'>This document describes all the changes in detail, with instructions on how shaders should be updated.
+</p>
+<div class='vspace'></div><h3>New shader compilation directives</h3>
+<p>Unity 1.x used comment-like directives to compile Cg shaders, for example:
+</p><pre class='codelisting'>
+// vertex vert
+// fragment frag
+// autolight 7
+</pre>
+<p>would say that vertex program is named <em>vert</em>, fragment program is named <em>frag</em> and the shader supports all Unity's lights (assuming it's a pixel lit shader). The downside of such directives is that they are very fragile - if you'd accidentally wrote a comment somewhere like <code>// vertex program here</code>, Unity would think it's a Cg compilation directive!
+</p>
+<p class='vspace'>Unity 2.0 introduces a new compilation scheme based on <code>#pragma</code> statements, which is much more robust. If no new-style directives are found in the shader, then Unity will try processing the old comment-like directives. So your shader will be compiled correctly, and Unity will print warnings to the console indicating how old-style directives should be replaced with new ones.
+</p>
+<p class='vspace'>The above example converted to new directives would look like:
+</p><pre class='codelisting'>
+#pragma vertex vert
+#pragma fragment frag
+#pragma multi_compile_builtin
+</pre>
+<div class='vspace'></div><h3><span class='wikiword'>SetTexture</span> and register bindings aren't needed anymore with fragment programs</h3>
+<p>In Unity 1.x when using fragment programs, the texture samplers had to be explicitly bound to registers like this:
+</p><pre class='codelisting'>
+uniform sampler2D _BumpMap : register(s0); // bind to 1st register
+</pre>
+<p>and after the fragment program dummy <a href="../Components/SL-SetTexture.html">SetTexture</a> commands had to be written in this register order.
+</p>
+<p class='vspace'>In Unity 2.0 this is not needed anymore; Unity will automatically allocate the samplers and figure out the textures that are used. So remove the register binding from samplers:
+</p><pre class='codelisting'>
+uniform sampler2D _BumpMap; // no more register worries!
+</pre>
+<p>and remove those dummy <span class='wikiword'>SetTexture</span> commands after the fragment program.
+</p>
+<p class='vspace'>There's one caveat though: because now sampler registers will be allocated automatically, vertex program code that used <code>TRANSFORM_UV</code> macro to apply texture tiling/offset may not work anymore (because it might be using wrong index in the new shader). In Unity 2.x the proper (and more optimal) way of applying texture tiling/offset is this:
+</p><pre class='codelisting'>
+// declare float4 properties for each texture before the vertex program,
+// with _ST appended:
+uniform float4 _MainTex_ST; // for _MainTex
+</pre>
+<p>and inside vertex program, use new <code>TRANSFORM_TEX</code> macro, that takes input texture coordinate (usually from vertex) and texture name:
+</p><pre class='codelisting'>
+TRANSFORM_TEX(v.texcoord, _MainTex)
+</pre>
+<div class='vspace'></div><h3>Commands and constructs removed from <span class='wikiword'>ShaderLab</span></h3>
+<table width='100%'><tr ><td  align='left'>Sep<b>e</b>rateSpecular command</td><td  align='left'>Replace it with Sep<b>a</b>rateSpecular, we just removed the typo-version.</td></tr>
+<tr ><td  align='left'><span class='wikiword'>TexCount</span> command</td><td  align='left'>This was used in some old shaders, it has no purpose now.</td></tr>
+<tr ><td  align='left'>Shorthand comparison functions in <span class='wikiword'>AlphaTest</span> and <span class='wikiword'>ZTest</span></td><td  align='left'><span class='wikiword'>ShaderLab</span> did support shorthand versions, like <em><span class='wikiword'>ZTest</span> &lt;=</em>, replace with a normal version like <em><span class='wikiword'>ZTest</span> <span class='wikiword'>LEqual</span></em></td></tr>
+<tr ><td  align='left'>Program properties not in <code>Properties</code> block</td><td  align='left'>Support for those has been removed. They were only used by Water shaders, so all you have to do is <a href="../Manual/HOWTO-InstallStandardAssets.html">update standard assets</a></td></tr>
+</table>
+<div class='vspace'></div><h3>Cg 1.5 caveats</h3>
+<p>In Unity 2.0 we upgraded to NVIDIA's Cg 1.5 shader compiler. Most existing shaders should continue to work, with one caveat: Cg 1.5 treats projective texture reads differently. If before you did a <code>tex2Dproj</code> with a four-element texture coordinate, you have to use a three-element texture coordinate now (otherwise Cg will turn it into a shadowmap lookup). That means code like this:
+</p><pre class='codelisting'>
+tex2Dproj( _MainTex, uv ); // where uv is float4
+</pre>
+<p>needs to be turned into:
+</p><pre class='codelisting'>
+tex2Dproj( _MainTex, uv.xyw ); // or just make uv to be a float3
+</pre>
+<div class='vspace'></div><h3>Pixel-lit shader changes</h3>
+<p>The way pixel-lit shaders are constructed has changed significantly in Unity 2.0, partly to simplify the process and partly to support new features like realtime shadows. Here's a guide on how to convert a pixel-lit shader (in case you have one):
+</p>
+<p class='vspace'><b>1. Convert to new compilation directives</b>, like outlined above:
+</p><ul><li><em>// vertex</em> becomes <em>#pragma vertex</em>
+</li><li><em>// fragment</em> becomes <em>#pragma fragment</em>
+</li><li><em>// autolight 7</em> becomes <em>#pragma multi_compile_builtin</em>
+</li><li><em>// fragmentoption</em> becomes <em>#pragma fragmentoption</em>
+</li><li><em>// profiles</em> - just remove that line
+</li></ul><p class='vspace'><b>2. Convert vertex-to-fragment structure</b>. <br />Before you had to write two structures (often named <code>v2f</code> and <code>v2f2</code>), one with <code><span class='wikiword'>V2F</span>_LIGHT_COORDS</code> macro inside and the other without. In Unity 2.x you only have to write a single structure, and remove bindings to individual <code>TEXCOORD</code>s as well. So old code like this:
+</p><pre class='codelisting'>
+struct v2f {
+    V2F_POS_FOG;
+    float3  uvK       : TEXCOORD0;
+    float2  uv2       : TEXCOORD1;
+    float3  viewDirT  : TEXCOORD2;
+    float3  lightDirT : TEXCOORD3;
+    V2F_LIGHT_COORDS(TEXCOORD4);
+}; 
+struct v2f2 { 
+    V2F_POS_FOG;
+    float3  uvK       : TEXCOORD0;
+    float2  uv2       : TEXCOORD1;
+    float3  viewDirT  : TEXCOORD2;
+    float3  lightDirT : TEXCOORD3;
+};
+</pre>
+<p>should become this:
+</p><pre class='codelisting'>
+struct v2f {
+    V2F_POS_FOG;
+    LIGHTING_COORDS
+    float3  uvK;
+    float2  uv2;
+    float3  viewDirT;
+    float3  lightDirT;
+}; 
+</pre>
+<p>The changes are:
+</p><ul><li><code> <span class='wikiword'>V2F</span>_LIGHT_COORDS</code> is removed; instead a macro <code>LIGHTING_COORDS</code> is written <em>before</em> all usual interpolators. Note that the macro <em>does not</em> have an ending semicolon.
+</li><li>Bindings to <code>TEXCOORD</code> are removed from the interpolators. Cg will generate them automatically, and with much more lighting options in Unity 2.x there's no way of knowing how much bindings will be used to transfer light-specific information.
+</li></ul><p class='vspace'><b>3. Pass lighting information in the vertex program</b> <br />Usually at the end of the vertex program a <code>PASS_LIGHT_COORDS</code> macro was used. In Unity 2.x, replace it with <code>TRANSFER_VERTEX_TO_FRAGMENT</code> macro. So code like:
+</p><pre class='codelisting'>
+PASS_LIGHT_COORDS(1); // or some other number, indicating the texture stage for attenuation textures
+</pre>
+<p>becomes:
+</p><pre class='codelisting'>
+TRANSFER_VERTEX_TO_FRAGMENT(o); // 'o' being the output structure name
+</pre>
+<p class='vspace'><b>4. Remove register bindings from samplers</b> like outlines above. <br />Whenever there's code like:
+</p><pre class='codelisting'>
+uniform sampler2D _BumpMap : register(s0);
+</pre>
+<p>turn it into
+</p><pre class='codelisting'>
+uniform sampler2D _BumpMap;
+</pre>
+<p class='vspace'><b>5. Change signature of the fragment program</b> <br />There are no two separate structures for passing information from vertex program to fragment program, so change code like this:
+</p><pre class='codelisting'>
+float4 frag (v2f2 i, LIGHTDECL(TEXUNIT2)) : COLOR
+</pre>
+<p>simply into this:
+</p><pre class='codelisting'>
+float4 frag (v2f i) : COLOR
+</pre>
+<p class='vspace'><b>6. Use new macro for light attenuation</b> <br />In the fragment program, replace all <code>LIGHTATT</code> occurences with <code>LIGHT_ATTENUATION(i)</code>, in this case <em>i</em> being the input structure name.
+</p>
+<p class='vspace'><b>7. Remove <span class='wikiword'>SetTexture</span> commands after fragment program</b> <br /><span class='wikiword'>SetTexture</span> commands are not necessary anymore when fragment programs are used. Just remove them!
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/SL-BuiltinValues.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/Scripting Concepts.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,87 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="WWW"-->
+			<title>Unity Script Reference &ndash; WWW</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class WWW</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class WWW" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> Simple access to URLs</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#data'>data</a></p>
+<p><a href='#size'>size</a></p>
+<p><a href='#error'>error</a></p>
+<p><a href='#texture'>texture</a></p>
+<p><a href='#isDone'>isDone</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Functions</p><p><a href='#LoadImageIntoTexture'>LoadImageIntoTexture</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#EscapeURL'>EscapeURL</a></p>
+<p><a href='#UnEscapeURL'>UnEscapeURL</a></p>
+<p><a href='#GetURL'>GetURL</a></p>
+<p><a href='#GetTextureFromURL'>GetTextureFromURL</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> This is a small utility module for retrieving URLs.  <p class="basic"/>You start a download in the background by calling WWW(url) which returns a new WWW object.  <p class="basic"/>You can inspect the <span class="variable">isDone</span> property to see if the download has completed or yield
+the download object to automatically wait until it is (without blocking the rest of the game).    <p class="basic"/>Useful if you want to get some data from a web server for integration with a game
+such as highscore lists or calling home for some reason. There is also funtionality
+to create textures from images downloaded from the web.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// This example assumes that the user has entered his name into a<br/>// variable called <span class="variable">name</span> and that <span class="variable">score</span> contains the user's current<br/>// score.<br/><br/>var highscore_url="http://www.my-site.com/highscores.pl?game=GameName";<br/>// add a name parameter to the URL:<br/>highscore_url += "&name=" + <a href="WWW.html#EscapeURL" class="itemlink">WWW.EscapeURL</a>(name);<br/>// add the score<br/>highscore_url += "&score=" + score;<br/><br/>// Post the URL to the site and create a download object to get the result.<br/>download=WWW(highscore_url); <br/><br/>yield download; // Wait until the download is done<br/>if(download.error) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;print("There was an error downloading the URL: " + download.error);<br/>}<br/>else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;/* show the highscores */<br/>}<br/>// The implementation of highscores.pl is left as an exercise <span class="keyword">for</span> the<br/>// reader. :-)</div></td></tr></table></p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="data"></a><h3><span class="full-name">WWW.</span>data</h3><div class="synopsis"><span class="standard_type">string</span> data</div>
+   <p class='details'> Returns the contents of the fetched URL as string.  <p class="details"/>If the object has not finished downloading the data, it will block until the download has finished.
+Use isDone or yield to see if the data is available.</p>
+	<a name="size"></a><h3><span class="full-name">WWW.</span>size</h3><div class="synopsis"><span class="standard_type">int</span> size</div>
+   <p class='details'> Returns the size of the fetched URL.  <p class="details"/>If the object has not finished downloading the data, it will block until the download has finished.
+Use isDone or yield to see if the data is available.</p>
+	<a name="error"></a><h3><span class="full-name">WWW.</span>error</h3><div class="synopsis"><span class="standard_type">string</span> error</div>
+   <p class='details'> Returns an error string if there was an error during the download.
+If there was no error, <span class="variable">error</span> will return <span class="variable">null</span>.  <p class="details"/>If the object has not finished downloading the data, it will block until the download has finished.
+Use isDone or yield to see if the data is available.</p>
+	<a name="texture"></a><h3><span class="full-name">WWW.</span>texture</h3><div class="synopsis"><a href="FileTexture.html" class="classlink">FileTexture</a> texture</div>
+   <p class='details'> Returns a <a href="FileTexture.html" class="classlink">FileTexture</a> generated from the downloaded data.  <p class="details"/>If the object has not finished downloading the data, it will block until the download has finished.
+Use isDone to see if the data is available.  <p class="details"/>The image dimensions must be a power of two in each direction or
+the texture will get padded with white pixels up to the next power of two size.  <p class="details"/>Note: This class only supports RGB jpeg images.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;// Get the latest webcam shot from outside "Friday's" <span class="keyword">in</span> Times Square<br/>&nbsp;&nbsp;&nbsp;&nbsp;var url="http://images.earthcam.com/ec_metros/ourcams/fridays.jpg"<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span> var www : WWW;<br/>&nbsp;&nbsp;&nbsp;&nbsp;www=WWW(url); // Start a download of the given URL<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;while(true) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if( www.isDone ) { // check whether the download is done<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// assign the downloaded image as a texture to the object<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;renderer.material.mainTexture=www.texture; <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// wait <span class="keyword">for</span> 20 seconds<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a>(20);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// then start a <span class="keyword">new</span> download<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;www = <span class="keyword">new</span> WWW(url);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// wait <span class="keyword">for</span> a second before checking again<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a>(1);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+*</div></td></tr></table></p>
+	<a name="isDone"></a><h3><span class="full-name">WWW.</span>isDone</h3><div class="synopsis"><span class="standard_type">bool</span> isDone</div>
+   <p class='details'> isDone is false until the object has finished downloading the url.  <p class="details"/>if you try to access any data while isDone is false, the program will block while finishing the download.</p>
+   <a name="Methods"></a><h2 class="script-section">Methods</h2>
+	<a name="LoadImageIntoTexture"></a><h3><span class="full-name">WWW.</span>LoadImageIntoTexture</h3><div class="synopsis"><span class="standard_type">void</span> LoadImageIntoTexture (<a href="FileTexture.html" class="classlink">FileTexture</a> tex)</div>
+   <p class='details'> Replaces the contents of a <a href="FileTexture.html" class="classlink">FileTexture</a> with an image from the downloaded data.  <p class="details"/>If the object has not finished downloading the data, it will block until the download has finished.
+Use isDone to see if the data is available or yield using the WWW object to automatically wait until it is.  <p class="details"/>The image dimensions must be a power of two in each direction or
+the texture will get padded with white pixels up to the next power of two size.  <p class="details"/>Note: This class only supports RGB jpeg images.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;// Get the latest webcam shot from outside "Friday's" <span class="keyword">in</span> Times Square<br/>&nbsp;&nbsp;&nbsp;&nbsp;var url="http://images.earthcam.com/ec_metros/ourcams/fridays.jpg";<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span> var www : WWW;<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;while(true) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;www=WWW(url); // Start a download of the given URL<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield www; // wait until the download is done<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// assign the downloaded image to the main texture of the object<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;www.LoadImageIntoTexture(renderer.material.mainTexture); <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// wait <span class="keyword">for</span> 20 seconds<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a>(20);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}</div></td></tr></table></p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="EscapeURL"></a><h3><span class="full-name">WWW.</span>EscapeURL</h3><div class="synopsis"><span class="standard_type">string</span> EscapeURL (<span class="standard_type">string</span> s)</div>
+   <p class='details'> Replaces illegal characters in <span class="variable">s</span> with the correct URL escape code.
+Useful when building url parameters.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;// This will print the <span class="standard_type">string</span> "Testing%201%2C2%2C3" to the console<br/>&nbsp;&nbsp;&nbsp;&nbsp;print(<a href="WWW.html#EscapeURL" class="itemlink">WWW.EscapeURL</a>("Testing 1,2,3"));</div></td></tr></table></p>
+	<a name="UnEscapeURL"></a><h3><span class="full-name">WWW.</span>UnEscapeURL</h3><div class="synopsis"><span class="standard_type">string</span> UnEscapeURL (<span class="standard_type">string</span> s)</div>
+   <p class='details'> The inverse of <a href="WWW.html#EscapeURL" class="itemlink">WWW.EscapeURL</a>. Replaces any occurences of %XX with the corresponding letter.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// This will print the <span class="standard_type">string</span> "Testing 1,2,3" to the console<br/>print(<a href="WWW.html#UnEscapeURL" class="itemlink">WWW.UnEscapeURL</a>("Testing%201%2C2%2C3"));</div></td></tr></table></p>
+	<a name="GetURL"></a><h3><span class="full-name">WWW.</span>GetURL</h3><div class="synopsis"><span class="standard_type">string</span> GetURL (<span class="standard_type">string</span> url, <span class="standard_type">bool</span> includeHeader=false)</div>
+   <p class='details'> Fetches the address stored in <span class="variable">url</span>, can fetch both http and ftp URLs.
+The entire data is returned in a string.  <p class="details"/>The function will block the execution of the game until the data has been downloaded.
+If <span class="variable">includeHeader</span> is set to true, the returned string will also include
+the HTTP response headers from the web server.  <p class="details"/>Any parsing of the returned data is up to you.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;otees_home_page=<a href="WWW.html#GetURL" class="itemlink">WWW.GetURL</a>("http://www.otee.dk/");</div></td></tr></table></p>
+	<a name="GetTextureFromURL"></a><h3><span class="full-name">WWW.</span>GetTextureFromURL</h3><div class="synopsis"><a href="FileTexture.html" class="classlink">FileTexture</a> GetTextureFromURL (<span class="standard_type">string</span> url)</div>
+   <p class='details'> Downloads an image from URL and generates a <a href="FileTexture.html" class="classlink">FileTexture</a> from it.  <p class="details"/>The function will block the execution of the game until the data has been downloaded.
+The image dimensions must be a power of two in each direction or
+this function will pad the texture with white pixels up to the next power of two size.  <p class="details"/>Note: This function only supports RGB jpeg images.</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

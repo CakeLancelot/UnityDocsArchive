@@ -1,0 +1,139 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Getting Started" title="Scene View"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Getting Started" title="Scene View" path="%3Ca%20href%3D%22index.html%22%3EGetting%20Started%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Scene%20view.html%22%3EScene%20View%3C%2Fa%3E" navigation="%3Ca%20href%3D%22Editor%20interface.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22Inspector%20View.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>Scene View</h1>
+		<p><a href="index.html">Getting Started</a> &gt; <a href="Scene view.html">Scene View</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="Editor interface.html"><img src="../images/prev.png"></a><a href="Inspector View.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+
+<p><i>Without further ado, lets make a game!</i>
+</p>
+
+<h2>Basics</h2>
+
+<p>To get you started quickly we opened a playground scene. In the scene view you see big lawn with toys on it. There are also a nice lighting setup to give a bit of life to the scene.
+</p>
+
+<p>Let's take a loot around:
+</p>
+
+<h3> 3-Button Mouse Navigation</h3>
+<ul><li> To orbit around the scene, hold down the ALT and drag with the left mouse button pressed.
+</li><li> To pan the view, hold down ALT and drag with the middle button pressed.
+</li><li> To zoom the view in and out, hold down the ALT and drag with the right button pressed. If you have a mouse with a scroll wheel, you can also use that.
+</li></ul>
+
+<h3> Trackpad Navigation</h3>
+<p>If you're working from a laptop, there is an alternative way of moving your view:
+</p>
+
+<p>In the toolbar, make sure the leftmost, <i>View</i> tool is activated, by clicking on it with the mouse or hitting Q.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Scene view-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/Scene view-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>When this tool is selected, you can navigate using the left mouse button only.
+</p>
+<ul><li> To orbit around the scene, hold down the ALT and drag the mouse.
+</li><li> To pan the view, drag the mouse.
+</li><li> To zoom the view in and out, hold down the CMD and drag the mouse.
+</li></ul>
+
+<p>HINT: No matter which tool is selected, ALT-drag will always orbit the view.
+</p>
+
+<h3> Object Placement</h3>
+<p>Now, lets try moving stuff around... In the toolbar, activate the <i>Move Tool</i>, by clicking on the second button or pressing W.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Scene view-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/Scene view-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>When this tool is active, you can select an object in the scene by clicking on it. Do this on one of the topmost boxes. When you select an object, manipulation handles appear:
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Scene view-2.jpg%22" --><p><table><tr><td><img class="figure" src="images/Scene view-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>To center the scene view on the box, make sure the mouse is over the scene view and hit F.
+</p>
+
+<p>The Move Tool has 4 handles: the 3 arrows and the square in the center. To move the object along any of its axes, drag the arrows. To move it freely, drag the square in the center.
+</p>
+
+<p>Now try placing a few boxes in the air, so instead of being nicely stacked they will fall down when we play. You might end up with something looking like this:
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Scene view-3.jpg%22" --><p><table><tr><td><img class="figure" src="images/Scene view-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<h2>Creating Geometry</h2>
+<p>Just so you can see that there was no behind-the-scenes magic going with the world we made, lets extend it a bit by placing a light over the doorway.
+</p>
+
+<ol><li> In the library view, expand the 'Playground Prefabs' folder and find the 'Catapult Bananas' object.
+</li><li> Drag this into the scene view:
+</li></ol>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Scene view-4.jpg%22" --><p><table><tr><td><img class="figure" src="images/Scene view-4.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>Now, we have some nice bananas places in the scene. Try to move them above the boxes - like this:
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Scene view-5.jpg%22" --><p><table><tr><td><img class="figure" src="images/Scene view-5.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>HINT: If you want to see the scene in a full-screen view, make sure the mouse is over the Scene View and hit Space. This hides any other views (while still leaving the toolbars), allowing you to see what you're doing when you need to place stuff precisely. To get back to the normal view, simply hit Space again.
+</p>
+
+<p>Once you've done that we're nearly there.
+</p>
+
+<h2>Object Rotation</h2>
+<p>Activate the <i>Rotate Tool</i> by clicking the 3rd button in the toolbar or hitting E. If you look at the object, you will see that the manipulation handles have changed shape to show that you are now rotating the object. Like the <i>Move Tool</i>, you have handles in the object's 3 primary directions. Drag <i>along</i> any of these to rotate the object around that axis, or use the center handle to rotate the object freely...
+</p>
+
+<h2>The Play Button.</h2>
+<p>Try out the game. Press the play button in the lower right of the window:
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Scene view-6.jpg%22" --><p><table><tr><td><img class="figure" src="images/Scene view-6.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>After pressing it, the game should play. The boxes fall down, and the very heavy bananas plunge through and topple over the rubbery light boxes.
+</p>
+
+<p>This is a small first person shooter. You can play it using the mouse and the arrow or WASD keys. When you're done, simply press the Play button again to stop.
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,267 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Flash: Building &amp; Running</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Flash: Building &amp; Running</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/flash-gettingstarted.html">Getting Started with Flash Development</a> &gt; <a href="../Manual/flash-building.html">Flash: Building &amp; Running</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Flash: Building &amp; Running</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>The following is a step-by-step guide to build and run a new project exported to Flash.
+</p>
+<div class='vspace'></div><ol><li>Create your Unity content.
+</li><li>Choose File-&gt;Build Settings to bring up the Build Settings dialog and add your scene(s).
+</li><li>Change the Platform to Flash Player
+</li><li>Tick Development Build.  (This causes Unity to <b>not</b> compress the final SWF file.  Not compressing will make the build faster, and also, the SWF file will not have to be decompressed before being run in the Flash Player.  Note that an empty scene built using the Development Build option will be around 16M in size, compared to around 2M compressed.)
+</li><li>Press the Build button.
+</li></ol><div class='vspace'></div><div class='indent'><img class='figure' src='../Images/manual/flash-building-0.jpg' />
+</div><p class='vspace'>Unity will build a SWF file at the location you choose.  Additionally an html and swfobject.js file will be created.  To view your Flash-built content open the html file.  (Do not open the SWF file directly).
+</p>
+<p class='vspace'>As with other build target there are Player settings that you can specify.  Most of the Flash settings are shared with other platforms.  Note that the resolution for the content is taken from the Standalone player settings.
+</p>
+<p class='vspace'>Build-and-run will create the SWF file, launch your default browser and load the generated html file.  Note that there is a swfobject.js file created with handles the checking for the Flash Player and browser integration.
+</p>
+<p class='vspace'>The build will also give you a swc file, which allows you to load the swf in your own project. Embedding the Unity content in a standard flash project allows you to do GUI in Flash. This type of flash integration will of course not work in any of the other build targets.
+</p>
+<p class='vspace'>We allow for a Flash API that gives you texture handles, which in combination with the swc embedding will give you means to do webcam, video, vector graphics from flash as textures.
+</p>
+<div class='vspace'></div><h2>Texture Support</h2>
+<p>We support <code>jpeg</code> textures, as well as RGBA / Truecolor. The compression ratio can be specified in the texture import under 'Override for FlashPlayer' setting.  Compressed textures get converted to <code>jpeg</code> with the chosen compression ratio.  The compression ratio is worth experimenting with since it can considerably reduce the size of the final SWF.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/flash-building-1.jpg' /></div>
+<p class='vspace'>Texture quality ranges from 0 to 100, with 100 indicating no compression, and 0 the highest amount of compression possible.  The maximum supported texture resolution is 2048x2048.
+</p>
+<div class='vspace'></div><h2>Build Errors and Warnings</h2>
+<h3>The Build Process</h3>
+<p>The Unity Flash Publisher attempts to convert scripts from UnityScript into ActionScript. In this process, there can be two kinds of conversion errors:
+errors during conversion of unity code to ActionScript, and errors while compiling the converted code. 
+</p>
+<p class='vspace'>Errors during conversion will point to the original  will have the familiar UnityScript error messages with file names and line numbers. If there are errors in the ActionScript, the error will take you to the message in the generated ActionScript code (with filenames ending with <code>.as</code>).  It is possible that these ActionScript errors will not be easily understood.  Just remember that the ActionScript is generated from your game script code, so any changes you need to make will be in your code and not the ActionScript.
+</p>
+<div class='vspace'></div><h3>Specific Errors and Warnings</h3>
+<p>1. What does this error message mean?
+<code class='escaped'>"Failed assemblies stripper ... Unhandled Exception: Mono.Linker.ResolutionException: Can not resolve reference: System.String UnityEngine.WWW::get_text()"</code>
+</p><div class='indent'>This means that you have a precompiled dll in your project that was not built with flash support in mind and references classes that Unity Flash does not support (such as WWW).
+</div><p>2. Why do I get:
+</p><pre class='codelisting'>'TerrainCollider' is not supported when building for FlashPlayer.
+'TerrainData' is not supported when building for FlashPlayer.
+Asset: 'Assets/New Terrain.asset'</pre>
+<div class='indent'>The terrain feature is not supported when building for the FlashPlayer target.  All <a href="../Manual/flash-whatssupported.html">un-supported features</a> will generate a similar warning.  Note that the build will continue, however, the unsupported feature will be missing from the final SWF.
+</div><p class='vspace'>3a. Why do I get:
+<code class='escaped'>Error: Call to a possibly undefined method RuntimeServices_UnboxSingle_Object through a reference with static type Class.</code>
+</p><ul><li>This is likely because the conversion between types that is defined on the UnityScript side is not defined for our Flash Publisher.  Any time you see an error that refers to <code>Unbox</code> it means a type conversion is required but cannot be found.
+</li></ul><p>3b. What should I do about this?
+</p><ul><li>Do not forget to use <code>#pragma strict</code>, and take care of all "implicit downcast" warning messages. 
+</li><li>The rule of thumb is to avoid runtime casts from Object to primitive types (int, float, etc.). Also prefer containers with explicit types to generic ones, for example:
+<ul><li>System.Collections.Generic.List.&lt;float&gt; instead of Array
+</li><li>Dictionary&lt;string, float&gt; instead of Hashtable
+</li></ul></li></ul><p class='vspace'>4. Why do I get
+<code class='escaped'>Error building Player: UnauthorizedAccessException: Access to the path "Temp/StagingArea/Data/ConvertedDotNetCode/global" is denied.</code>
+</p><ul><li>If Unity-generated ActionScript files are open in a text editor, Unity may refuse to build issuing this error. To fix this, please close the ActionScript files and allow Unity to overwrite them.
+</li></ul>
+</p><small>Page last updated: 2011-12-21</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

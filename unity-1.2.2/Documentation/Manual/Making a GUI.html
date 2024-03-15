@@ -1,0 +1,84 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" Making a GUI"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title=" Making a GUI" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Graphics.html%22%3EGraphics%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Making%20a%20GUI.html%22%3E%20Making%20a%20GUI%3C%2Fa%3E" navigation="%3Ca%20href%3D%22Lighting%20and%20Rendering.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22Assets.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1> Making a GUI</h1>
+		<p><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Graphics.html">Graphics</a> &gt; <a href="Making a GUI.html"> Making a GUI</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="Lighting and Rendering.html"><img src="../images/prev.png"></a><a href="Assets.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+
+<p>Unity has functionality for making in-game Head-Up-Displays and 2D menus, using the GUI Texture and GUI Text components. A complete GUI is made up from several GUI components.
+</p>
+
+<p>To create a GUI, you must first attach a GUI Layer component to the main camera. Then add GUI Texture and GUI Text objects to the scene. The x and y components of the GUI objects' position determine the position on the screen with (0,0) being the bottom left and (1,1) the top right corner of the screen.
+</p>
+
+<h1>GUI Texture</h1>
+
+<p>GUI Textures are displayed as flat images in 2D. Positioning and scaling is done using the x and y components of the position and scale properties of the Transform component attached to the same game object. The positioning is relative to the screen width and height.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Making a GUI-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/Making a GUI-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Texture</nobr></b></td><td> The image used by the GUI Texture.
+</td></tr><tr><td><b><nobr>Color</nobr></b></td><td> The color can be used to tint the image drawn on screen.
+</td></tr><tr><td><b><nobr>Pixel Inset</nobr></b></td><td> Used for pixel-based control of the scaling and positioning of the GUI Texture. <br/>When position and scale are set to to 0 the <i>Pixel Inset</i> parameters define the lower-left and upper right pixel coordinates of the image. If position and/or scale are set to different values, the pixel position of each corner will follow the following formulas. <br/><tt><i>lowerLeft</i>=(screenWidth*position.x - screenWidth*scale.x/2 + <b>Xmin</b>, screenHeight*position.y - screenHeight*scale.y/2 + <b>Ymin</b>)<br/><i>upperRight</i>=(screenWidth*position.x + screenWidth*scale.x/2 + <b>Xmax</b>, screenHeight*position.y + screenHeight*scale.y/2 + <b>Ymax</b>)
+</td></tr><tr><td><b><nobr>Left Border, Right Border,<br/> Top Border, Bottom Border</nobr></b></td><td> The number of pixels not to scale with the texture at each edge of the image.  As you rarely know the resolution your game runs in, chances are your GUI will get scaled. Some GUI textures have a border at the edge that is meant to be an exact number of pixels. In order for this to work, set the border sizes to match those from the texture.
+<p></td></tr></tr></table>
+</p>
+
+
+
+
+<h1>GUI Text</h1>
+
+<p>GUI Texts are used to print text onto the screen in 2D. The camera has to have a <a href="../Components/class-GUILayer.html">GUI Layer</a> attached in order to render the text.
+</p>
+
+<p>GUI Texts are positioned using the x and y components of the <a href="../Components/class-Transform.html">Transform</a> of the same game object, where (0,0) is the bottom-left and (1,1) is the top-right corner of the screen
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Text</nobr></b></td><td> The text to display.</td></tr><tr><td><b><nobr>
+Anchor</nobr></b></td><td> How the text is placed relative to the position given in the transform.</td></tr><tr><td><b><nobr>
+Align</nobr></b></td><td> How multiple lines are aligned within the GUIText.</td></tr><tr><td><b><nobr>
+Line Spacing</nobr></b></td><td> Extra space to add between lines.</td></tr><tr><td><b><nobr>
+Font</nobr></b></td><td> The <a href="../Components/class-Font.html">font</a> to use when rendering the text.</td></tr><tr><td><b><nobr>
+Material</nobr></b></td><td> The material containing the characters to be drawn. This property overrides the one in the <a href="../Components/class-Font.html">Font</a> asset
+<p></td></tr></tr></table>
+</p>
+
+
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

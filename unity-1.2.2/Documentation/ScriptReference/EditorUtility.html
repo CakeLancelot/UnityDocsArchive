@@ -1,0 +1,42 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="EditorUtility"-->
+			<title>Unity Script Reference &ndash; EditorUtility</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class EditorUtility</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class EditorUtility" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'> 	<div class="editorclass">This is an editor class. To use it you have to place your script in Assets/Editor inside your project folder. Editor classes are in the UnityEditor namespace so you need to add "import UnityEditor;" in the beginning of the script.</div></p>
+   <p class='first'> Utility functions</p>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#DisplayDialog'>DisplayDialog</a></p>
+<p><a href='#FindAsset'>FindAsset</a></p>
+</span>
+<div class='tocclear'></div>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="DisplayDialog"></a><h3><span class="full-name">EditorUtility.</span>DisplayDialog</h3><div class="synopsis"><span class="standard_type">bool</span> DisplayDialog (<span class="standard_type">string</span> title, <span class="standard_type">string</span> message, <span class="standard_type">string</span> ok, <span class="standard_type">string</span> cancel)</div>
+   <p class='details'> Displays a modal dialog.</p>
+	<a name="FindAsset"></a><h3><span class="full-name">EditorUtility.</span>FindAsset</h3><div class="synopsis"><a href="Object.html" class="classlink">Object</a> FindAsset (<span class="standard_type">string</span> path, <span class="standard_type">Type</span> type)</div>
+   <p class='details'> Finds an asset at path name. The pathname must include the file extension. It should not be prefixed with "Assets".
+This returns only assets that are visible in the project view.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Javascript example:<br/>import UnityEditor;<br/><br/>@<a href="MenuItem.html" class="classlink">MenuItem</a> ("<a href="GameObject.html" class="classlink">GameObject</a>/Assign Default <a href="Skybox.html" class="classlink">Skybox</a>")<br/><span class="keyword">static</span> function AssignSkybox () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;var sky = <a href="Camera.html#main" class="itemlink">Camera.main</a>.GetComponent(<a href="Skybox.html" class="classlink">Skybox</a>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;sky.material = <a href="EditorUtility.html#FindAsset" class="itemlink">EditorUtility.FindAsset</a>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Standard Assets/Skyboxes/ Tropical.mat", <a href="Material.html" class="classlink">Material</a>);<br/>}<br/><br/>@<a href="MenuItem.html" class="classlink">MenuItem</a> ("<a href="GameObject.html" class="classlink">GameObject</a>/Create First Person Controller")<br/><span class="keyword">static</span> function BuildFPS () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;var prefab = <a href="EditorUtility.html#FindAsset" class="itemlink">EditorUtility.FindAsset</a>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Standard Assets/ Prefabs/First Person Controller.prefab",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Transform.html" class="classlink">Transform</a>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;var fps = Instantiate(prefab);<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Selection.html#activeObject" class="itemlink">Selection.activeObject</a> = fps;<br/>}
+</div></td></tr></table><table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// C# Example:<br/>[<a href="MenuItem.html" class="classlink">MenuItem</a> ("<a href="GameObject.html" class="classlink">GameObject</a>/Assign Default <a href="Skybox.html" class="classlink">Skybox</a>")]<br/><span class="keyword">static</span> <span class="standard_type">void</span> AssignSkybox () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Skybox.html" class="classlink">Skybox</a> sky = (<a href="Skybox.html" class="classlink">Skybox</a>)<a href="Camera.html#main" class="itemlink">Camera.main</a>.GetComponent(typeof(<a href="Skybox.html" class="classlink">Skybox</a>));<br/>&nbsp;&nbsp;&nbsp;&nbsp;sky.material = (<a href="Material.html" class="classlink">Material</a>)<a href="EditorUtility.html#FindAsset" class="itemlink">EditorUtility.FindAsset</a>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Standard Assets/Skyboxes/ Tropical.mat", typeof(<a href="Material.html" class="classlink">Material</a>));<br/>}<br/><br/>[<a href="MenuItem.html" class="classlink">MenuItem</a> ("<a href="GameObject.html" class="classlink">GameObject</a>/Create First Person Controller")]<br/><span class="keyword">static</span> <span class="standard_type">void</span> BuildFPS () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Object.html" class="classlink">Object</a> fps;<br/>&nbsp;&nbsp;&nbsp;&nbsp;fps = Instantiate(<a href="EditorUtility.html#FindAsset" class="itemlink">EditorUtility.FindAsset</a>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Standard Assets/ Prefabs/First Person Controller.prefab",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typeof(<a href="Transform.html" class="classlink">Transform</a>)));<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Selection.html#activeObject" class="itemlink">Selection.activeObject</a> = fps;<br/>}</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

@@ -1,0 +1,43 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="FileTexture"-->
+			<title>Unity Script Reference &ndash; FileTexture</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class FileTexture</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class FileTexture" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Texture.html" class="classlink">Texture</a></div></p>
+   <p class='first'> <a href="Texture.html" class="classlink">Texture</a> assets.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#frameCount'>frameCount</a></p>
+<p><a href='#frame'>frame</a></p>
+</span>
+<div class='tocclear'></div>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="frameCount"></a><h3><span class="full-name">FileTexture.</span>frameCount</h3><div class="synopsis"><span class="standard_type">int</span> frameCount</div>
+   <p class='details'> How many frames are in this texture <b>(Read Only)</b>.
+Use this to query the length of a texture immported from a quicktime file.</p>
+	<a name="frame"></a><h3><span class="full-name">FileTexture.</span>frame</h3><div class="synopsis"><span class="standard_type">int</span> frame</div>
+   <p class='details'> Currently active frame in the texture.
+Change this value to update how the texture looks. The new frame will be uploaded to the graphic
+card, so it is potentially an expensive operation.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">var texture : FileTexture;<br/>var framesPerSecond = 12.0;<br/><br/>function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Calculate the frame to use by repeating time when it exceeds playLength<br/>&nbsp;&nbsp;&nbsp;&nbsp;frameCount = texture.frameCount;<br/>&nbsp;&nbsp;&nbsp;&nbsp;playLength = frameCount / framesPerSecond;<br/>&nbsp;&nbsp;&nbsp;&nbsp;time = <a href="Mathf.html#Repeat" class="itemlink">Mathf.Repeat</a> (<a href="Time.html#time" class="itemlink">Time.time</a>, playLength) / playLength;<br/>&nbsp;&nbsp;&nbsp;&nbsp;var frame : <span class="standard_type">int</span> = time * frameCount;<br/>&nbsp;&nbsp;&nbsp;&nbsp;frame = <a href="Mathf.html#Clamp" class="itemlink">Mathf.Clamp</a> (frame, 0, texture.frameCount -1);<br/>&nbsp;&nbsp;&nbsp;&nbsp;texture.frame = frame;<br/>}<br/><br/>function Reset () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (renderer) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;texture = renderer.sharedMaterial.mainTexture;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

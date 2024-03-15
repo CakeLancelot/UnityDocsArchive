@@ -1,0 +1,257 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Procedural Materials</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Procedural Materials</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Asset Import and Creation.html">Asset Import and Creation</a> &gt; <a href="../Manual/Procedural Materials.html">Procedural Materials</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Procedural Materials</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Unity incorporates a new asset type known as <span class='doc-keyword'>Procedural Materials</span>. These are essentially the same as standard Materials except that the textures they use can be generated at runtime rather than being predefined and stored.
+</p>
+<p class='vspace'>The script code that generates a texture procedurally will typically take up much less space in storage and transmission than a bitmap image and so Procedural Materials can help reduce download times. Additionally, the generation script can be equipped with parameters that can be changed in order to vary the visual properties of the material at runtime. These properties can be anything from color variations to the size of bricks in a wall. Not only does this mean that many variations can be generated from a single Procedural Material but also that the material can be animated on a frame-by-frame basis. Many interesting visual effects are possible - imagine a character gradually turning to stone or acid damaging a surface as it touches.
+</p>
+<p class='vspace'>Unity's Procedural Material system is based around an industry standard product called Substance, developed by <a class='urllink' href='http://www.allegorithmic.com/' rel='nofollow'>Allegorithmic</a>
+</p>
+<div class='vspace'></div><h2>Supported Platforms</h2>
+<p>In Unity, Procedural Materials are fully supported for standalone and webplayer build targets only (Windows and Mac OS X). For all other platforms, Unity will pre-render or <em>bake</em> them into ordinary Materials during the build. Although this clearly negates the runtime benefits of procedural generation, it is still useful to be able to create variations on a basic material in the editor.
+</p>
+<div class='vspace'></div><h2>Adding Procedural Materials to a Project</h2>
+<p>A Procedural Material is supplied as a Substance Archive file (SBSAR) which you can import like any other asset (drag and drop directly onto the Assets folder or use <span class='doc-menu'>Assets-&gt;Import New Asset...</span>). A Substance Archive asset contains one or more Procedural Materials and contains all the scripts and images required by these. Uncompiled SBS files are not supported.
+</p>
+<p class='vspace'>Although they are implemented differently, Unity handles a Procedural Material just like any other Material. To assign a Procedural Material to a mesh, for example, you just drag and drop it onto the mesh exactly as you would with any other Material.
+</p>
+<div class='vspace'></div><h2>Procedural Properties</h2>
+<p>Each Procedural Material is a custom script which generates a particular type of material. These scripts are similar to Unity scripts in that they can have variables exposed for assignment in the inspector. For example, a "Brick Wall" Procedural Material could expose properties that let you set the number of courses of bricks, the colors of the bricks and the color of the mortar. This potentially offers infinite material variations from a single asset. These properties can also be set from a script at runtime in much the same way as the public variables of a MonoBehaviour script.
+</p>
+<p class='vspace'>Procedural Materials can also incorporate complex texture animation. For example, you could animate the hands of the clock or cockroaches running across a floor.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Procedural Materials-0.jpg' /></div>
+<div class='vspace'></div><h2>Creating Procedural Materials From Scratch</h2>
+<p>Procedural Materials can work with any combination of procedurally generated textures and stored bitmaps. Additionally, included bitmap images can be filtered and modified before use. Unlike a standard Material, a Procedural Material can use vector images in the form of SVG files which allows for resolution-independent textures.
+</p>
+<p class='vspace'>The design tools available for creating Procedural Materials from scratch use visual, node-based editing similar to the kind found in artistic tools. This makes creation accessible to artists who may have little or no coding experience. As an example, here is a screenshot from Allegorithmic's Substance Designer which shows a "brick wall" Procedural Material under construction: 
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Procedural Materials-1.jpg' /></div>
+<div class='vspace'></div><h2>Obtaining Procedural Materials</h2>
+<p>Since Unity's Procedural Materials are based on the industry standard Substance  product, Procedural Material assets are readily available from internet sources, including Unity's own Asset Store. Allegorithmic's Substance Designer can be used to create Procedural Materials, but there are other applications (3D modelling apps, for example) that incorporate the Substance technology and work just as well with Unity.
+</p>
+<div class='vspace'></div><h2>Performance and Optimization</h2>
+<p>Procedural Materials inherently tend to use less storage than bitmap images. However, the trade-off is that they are based around scripts and running those scripts to generate materials requires some CPU and GPU resources. The more complex your Procedural Materials are, the greater their runtime overhead.
+</p>
+<p class='vspace'>Procedural Materials support a form of caching whereby the material is only updated if its parameters have changed since it was last generated. Further to this, some materials may have many properties that could theoretically be changed and yet only a few will ever need to change at runtime. In such cases, you can inform Unity about the variables that will not change to help it cache as much data as possible from the previous generation of the material. This will often improve performance significantly.
+</p>
+<div class='vspace'></div><div class='indent'>Procedural Materials can refer to hidden, system-wide, variables, such as elapsed time or number of Procedural Material instances (this data can be useful for animations). Changes in the values of these variables can still force a Procedural Material to update even if none of the explicitly defined parameters change.
+</div><p class='vspace'>Procedural Materials can also be used purely as a convenience in the editor (ie, you can generate a standard Material by setting the parameters of a Procedural Material and then "baking" it). This will remove the runtime overhead of material generation but naturally, the baked materials can't be changed or animated during gameplay.
+</p>
+<div class='vspace'></div><h2>Using the Substance Player to Analyze Performance</h2>
+<p>Since the complexity of a Procedural Material can affect runtime performance, Allegorithmic incorporates profiling features in its <em>Substance Player</em> tool. This tool is available to download for free from <a class='urllink' href='http://www.allegorithmic.com/' rel='nofollow'>Allegorithmic’s website</a>.
+</p>
+<p class='vspace'>Substance Player uses the same optimized rendering engine as the one integrated into Unity, so its rendering measurement is more representative of performance in Unity than that of Substance Designer.
+</p>
+</p><small>Page last updated: 2011-11-23</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,336 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Character Animation"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title="Character Animation" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Creating%20Gameplay.html%22%3ECreating%20Gameplay%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Character-Animation.html%22%3ECharacter%20Animation%3C%2Fa%3E" -->
+		<h1>Character Animation</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Creating Gameplay.html">Creating Gameplay</a> &gt; <a href="Character-Animation.html">Character Animation</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Animation.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Sound.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Unity's Animation System allows you to create beautifully animated skinned characters. The Animation System supports animation blending, mixing, additive animations, walk cycle time synchronization, animation layers, control over all aspects of the animation playback (time, speed, blend-weights), mesh skinning with 1, 2 or 4 bones per vertex and finally physically based ragdolls.
+</p>
+
+<p>Making an animated character involves two things; <i>moving</i> them through the world and <i>animating</i> them accordingly.
+</p>
+
+<p>This page focuses on the animation. If you want to learn more about moving characters around (for a Super Mario Bros style game or a first-person shooter), go <a href="../Components/class-CharacterController.html">here</a>.
+</p>
+
+<ul><li><A HREF="#ImportAnim">Importing Character Animations</A>
+<ul><li><A HREF="#ImportSplit">Animation Splitting</A>
+</li><li><A HREF="#ImportFile">Multipe Files</A>
+</li><li><A HREF="#ImportIK">Inverse Kinematics</A>
+</li></ul></li><li><A HREF="#IntoScene">Inserting Into a Unity Scene</A>
+</li><li><A HREF="#Animate">Animating the Character</A>
+<ul><li><A HREF="#AnimBlend">Animation Blending</A>
+</li><li><A HREF="#AnimLayers">Animation Layers</A>
+</li><li><A HREF="#LayerExample">Additive Animation</A>
+</li></ul></li></ul>
+
+<p>You can download an <b><a class="wiki"  href="http://www.unity3d.com/examples/index.html">example project</a></b> showing pre-setup animated characters <a class="wiki"  href="http://www.unity3d.com/examples/index.html">here</a>.
+</p>
+
+
+
+<p><A NAME="ImportAnim"></A>
+</p>
+<h2> Importing The Animations</h2>
+<p>First of all we have to import the character.  Unity natively imports Maya (.mb/.ma) files, Cinema 4D (.c4d) files, and fbx files which can be exported from most animation packages. Click here to learn how to <a href="../Manual/HOWTO-importObject.html">export from your modelling/animation package</a>.
+</p>
+
+<p><A NAME="ImportSplit"></A>
+</p>
+<h3>Importing Animations using Animation Splitting</h3>
+<p>The most convenient way for animators to work is to have a single model containing all animations. When importing the animated model, you can define which frames make up each part of the animation. Unity will automatically split the animation into the individual parts, called <b>Animation Clips</b>.
+</p>
+
+<p>For example:
+</p>
+<ul><li>idle animation during frames 0 - 40
+</li><li>run animation during frames 41 - 65
+</li><li>walk animation during frames 66 - 83
+</li></ul>
+
+<p>To import the animations you simply place the model in your project folder. Unity will now automatically import it. Now highlight it in the project view and choose <b>Assets -&gt; Import Settings...</b> from the main menu.
+</p>
+
+<p><img class='figure' src='images/Character-Animation-0.jpg' />
+</p>
+
+<p><i>The Import Settings Dialog for a mesh</i>
+</p>
+
+<p>In the Import Settings' <b>Split Animations</b> table you tell Unity which frames in your 3D file make up which <b>Animation Clip</b>. The names you specify here are used to activate them in your game.
+</p>
+
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+name</nobr></b></td><td> Defines the Animation Clip's name within Unity.
+</td></tr><tr><td><b><nobr>first frame</nobr></b></td><td> the first frame of the animation. The frame number refers to the same frame as in the 3D program used to create the animation.
+</td></tr><tr><td><b><nobr>last frame</nobr></b></td><td> The last frame of the animation.
+</td></tr><tr><td><b><nobr>loop frame</nobr></b></td><td> If enabled, an extra <i>loop frame</i> is inserted at the end of the animation. This frame matches the first frame in the clip. Use this if you want to make a looping animation and your artwork has not been created in such a way that the first and last frame of the animation match up exactly.
+<p></td></tr></tr></table>
+</p>
+
+<p><A NAME="ImportFile"></A>
+</p>
+<h3>Importing Animations using multiple model files</h3>
+<p>The other way to import animations is to follow the @ animation naming scheme. You create seperate model files and name them like: 'model name'@'animation name'.fbx
+</p>
+
+<p><img class='figure' src='images/Character-Animation-1.jpg' />
+</p>
+
+<p><i>An example of 4 animation files for an animated character</i>
+</p>
+
+<p>Unity automatically imports all 4 files and collects all animations to the file without the @ sign in. In the example above, the goober.mb file will be setup to reference idle, jump, and walk automatically.
+</p>
+
+<p><A NAME="ImportIK"></A>
+</p>
+<h3> Importing Inverse Kinematics</h3>
+<p>When importing animated Characters from Maya that are created using IK, you have to check the Bake IK &amp; simulation box in the import settings. Otherwise, your Character will not animate correctly.
+</p>
+
+<p><A NAME="IntoScene"></A>
+</p>
+<h2> Bringing the Character into the Scene</h2>
+
+<p>When you have imported your model you drag the object from the Project view into the Scene view or Hierarchy.
+</p>
+
+<p><img class='figure' src='images/Character-Animation-2.jpg' />
+</p>
+
+<p><i>The animated character is added by dragging it into the scene</i>
+</p>
+
+<p>The character above has 3 animations in the animation list and no default animation. You can add more animations to the character by dragging animation clips from the <b>Project View</b> on to the character (in either the <b>Hierarchy View</b> or a <b>Scene View</b>). This will also set the default animation. When you hit play the default animation will be played.
+</p>
+
+<p>TIP: you can use this to quickly test if your animation plays back correctly. Also use the Wrap Mode to view different behaviors of the animation- especially looping.
+</p>
+
+<p><A NAME="Animate"></A>
+</p>
+<h2> Animating the Character</h2>
+
+<p>The actual animation of characters is done through Unity's scripting interface.
+</p>
+
+<p><A NAME="AnimBlend"></A>
+</p>
+<h3> Animation Blending</h3>
+
+<p>In today's games, animation blending is an essential feature to ensure that characters have smooth animations. Animators create separate animations, e.g. a walk cycle, run cycle, idle animation or shoot animation. At any point in time in your game you need to be able to transition from the idle animation into the walk cycle and vice versa. Of course you don't want any sudden jumps in the motion. You want the animation to smoothly transition.
+</p>
+
+<p>This is where animation blending comes in. In Unity you can have an arbitrary amount of animations playing on the same character. All animations are blended or added together to generate the final animation.
+</p>
+
+
+<p>Our first step will be to make a character smoothly blend between the idle and walk animations.  In order to make our job simpler when scripting, we will first set the <b>Wrap Mode</b> of the animation to <b>Loop</b>. Then we will turn off <b>Play Automatically</b> to make sure our script is the only one playing animations.
+</p>
+
+<p>Our first script for animating the character is quite simple; we only need some way to detect how fast our character is moving, and then fade between walk and idle animation. For this simple test we use the pre-setup input axes.
+</p>
+
+<p><pre class='codelisting'>
+function Update ()
+{
+   if (Input.GetAxis(&quot;Vertical&quot;) &gt; 0.2)
+       animation.CrossFade (&quot;walk&quot;);
+   else
+      animation.CrossFade (&quot;idle&quot;);
+}
+</pre>
+</p>
+
+<p>To get this script running:
+</p>
+<ol><li> Create a javascript using Assets -&gt; Create Other -&gt; Javascript.
+</li><li> Copy &amp; Paste the code into it
+</li><li> Drag the script onto the character (It needs to be the same game object as the animation)
+</li></ol>
+
+<p>When you hit the play button, The character will start walking in place when you hold the up arrow key and return to the idle pose when you release  it.
+</p>
+
+<p><A NAME="AnimLayers"></A>
+</p>
+<h3> Animation Layers</h3>
+
+<p>Layers are an incredibly useful concept that allow you to group animations and prioritize weighting.
+</p>
+
+<p>in Unity's animation system, you can blend between as many animation clips as you want. You can assign blend weights manually or simply use animation.CrossFade, which will animate the weight automatically.
+</p>
+
+<h4>Blend weights are always normalized before being applied</h4>
+
+<p>Let's say you have a walk cycle and a run cycle, both have a weight of 1 (100%). When Unity generates the final animation it will normalize the weights, which means walk will contribute 50% to the animation, the run cycle will also contribute 50%.
+</p>
+
+<p>This is all very nice, but often you want to prioritize which animation receives most weight when there are two animations playing. Surely you could just make sure that the weight sums up to 100% manually, but it is a lot easier to use layers for this purpose.
+</p>
+
+
+<p><A NAME="LayerExample"></A>
+</p>
+<h4> Layering Example</h4>
+<p>For example you might have a shoot animation, an idle and a walk cycle. You will want to continously fade between the walk and idle animation based on the player's speed. But when the player shoots you want to only show the shoot animation. Thus the shoot animation essentially has a higher priority.
+</p>
+
+<p>The easiest way to do this is to simply keep playing the walk and idle animations while shooting. Then we need to make sure that the shoot animation is in a higher layer than idle and walk. This means the shoot animation will receive blend weights first. The walk and idle animation will receive weights only if the shoot animation doesn't use all of the 100% blend weights. So when CrossFading the shoot animation in, the weight will start out at zero and over a short period become 100%. In the beginning the walk and idle layer will still receive blend weights but when the shoot animation is completely faded in, they will receive no weights at all.  This is exactly what we need!
+</p>
+
+<p><pre class='codelisting'>
+function Start ()
+{
+   // Set all animations to loop
+   animation.wrapMode = WrapMode.Loop;
+   // except shooting
+   animation[&quot;shoot&quot;].wrapMode = WrapMode.Once;
+
+   // Put idle and walk into lower layers (The default layer is always 0)
+   // This will do two things
+   // - Since shoot and idle/walk are in different layers they will not affect
+   //   each other's playback when calling CrossFade.
+   // - Since shoot is in a higher layer, the animation will replace idle/walk 
+   //   animations when faded in.
+   animation[&quot;shoot&quot;].layer = 1;
+  
+   // Stop animations that are already playing
+   //(In case user forgot to disable play automatically)
+   animation.Stop();
+}
+
+function Update () {
+   // Based on the key that is pressed,
+   // play the walk animation or the idle animation
+   if (Mathf.Abs(Input.GetAxis(&quot;Vertical&quot;)) &gt; 0.1)
+      animation.CrossFade(&quot;walk&quot;);
+   else
+      animation.CrossFade(&quot;idle&quot;);
+
+   // Shoot
+   if (Input.GetButtonDown (&quot;Fire1&quot;))
+      animation.CrossFade(&quot;shoot&quot;);
+}
+</pre>
+</p>
+
+<p>By default the animation.Play or animation.CrossFade function will stop or fade out animations that are in the same layer. This is exactly what we want in mose cases. In our shoot, idle, run example. Playing idle and run will not affect the shoot animation and vice versa. (You can change this behaviour with an optional parameter to animation.CrossFade if you like)
+</p>
+
+<p><A NAME="Additive"></A>
+</p>
+<h3> Additive Animations and Animation Mixing</h3>
+
+<p>Additive Animations and Animation mixing allow you to cut down on the number of animations you have to create for your game, and are important to creating facial animation.
+</p>
+
+<p>Let's say you want to create a character that leans to the sides when running and turning.
+</p>
+
+<p>You already made a walk and run cycle, now you could make a walk-lean-left, walk-lean-right, run-lean-left, run-lean-right animation.
+</p>
+
+<p>But that means you just doubled the amount of animation work! Creating a huge amount of animations is not feasiable. Additive animations and Mixing to the rescue!
+</p>
+
+<h4>Additive Animation Example</h4>
+<p>Additive animations allow you to overlay the effects of animation on top of any others that may be playing. When making additive animations, Unity will calculate the difference between the first frame in the animation clip and the current frame. Then it will apply this difference on top of all other playing animations.
+</p>
+
+<p>Now you only have to make a lean-left and lean-right animation. Unity will then layer this animation on top of the walk, idle or run cycle.
+</p>
+
+<p>Here is the code to make that happen:
+<pre class='codelisting'>
+private var leanLeft : AnimationState;
+private var leanRight : AnimationState;
+
+function Start ()
+{
+   leanLeft = animation[&quot;leanLeft&quot;];
+   leanRight = animation[&quot;leanRight&quot;];
+	
+   // Put the leaning animation in a seperate layer
+   // So that other calls to CrossFade won't affect it.
+   leanLeft.layer = 10;
+   leanRight.layer = 10;
+
+   // Set the lean animation to be additive
+   leanLeft.blendMode = AnimationBlendMode.Additive;
+   leanRight.blendMode = AnimationBlendMode.Additive;
+
+   // Set the lean animation ClampForever
+   // With ClampForever animation's will not automatically
+   // stop when reaching the end of the clip
+   leanLeft.wrapMode = WrapMode.ClampForever;
+   leanRight.wrapMode = WrapMode.ClampForever;
+
+   // Enable the animation and fade it in completely
+   // We don't use animation.Play here because we manually adjust the time
+   // in the Update function.
+   // Instead we just enable the animation and set it to full weight
+   leanRight.enabled = true;
+   leanLeft.enabled = true;
+   leanRight.weight = 1.0;
+   leanLeft.weight = 1.0;
+
+   // For testing just play run animation and loop it
+   animation[&quot;walk&quot;].wrapMode = WrapMode.Loop;
+   animation.Play(&quot;walk&quot;);
+}
+
+// Every frame just set the normalized time 
+// based on how much lean we want to apply
+function Update ()
+{
+   var lean = Input.GetAxis(&quot;Horizontal&quot;);
+   // normalizedTime is 0 at the first frame and 1 at the last frame in the clip
+   leanLeft.normalizedTime = -lean;
+   leanRight.normalizedTime = lean;
+}
+</pre>
+</p>
+
+<p>Tip:
+When using Additive animations it critical that you are also playing some other non-additive animation on every transform that is also used int eh additive animation, otherwise the animations will add on top of the last frame's result. This is most certainly not what you want.
+</p>
+
+<p>You have learned how to make a basic character animation please see the <a class="wiki"  href="http://www.unity3d.com/examples">projects</a> for in-depth examples of character animation and the <a class="wiki"  href="../ScriptReference/Animation.html">animation script interface</a>.
+</p>
+
+
+
+		<div class="navigation"><a href="Animation.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Sound.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

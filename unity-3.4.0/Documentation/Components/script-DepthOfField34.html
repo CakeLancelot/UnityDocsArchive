@@ -1,0 +1,289 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Depth of Field 3.4</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Depth of Field 3.4</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-ImageEffects.html">Image Effect Scripts</a> &gt; <a href="../Components/script-DepthOfField34.html">Depth of Field 3.4</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/script-Crease.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/script-EdgeDetectEffectNormals.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Depth of Field 3.4</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>The <span class='doc-keyword'>Depth of Field 3.4</span> image effect is a common post effect simulating camera lens systems. It has been updated with new features and faster execution for Unity 3.4, hence the name. An example for the new Depth of Field effect can be seen in the following images, displaying the results of a defocused foreground and a defocused background. Notice how the foreground blur overlaps with the rest while the background doesn't.
+You might also consider the <a href="../Components/script-TiltShift.html">Tilt Shift effect</a> for a simpler to use but less powerful depth of field effect.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/script-DepthOfField34-0.jpg' /><br /><em>Only the nearby pipes are in the focal area</em></div>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/script-DepthOfField34-1.jpg' /><br /><em>Foreground vs. Background blurring with Depth of Field</em></div>
+<p class='vspace'>As with the other <a href="../Components/comp-ImageEffects.html">image effects</a>, this effect is only available in Unity Pro. Make sure to have the <a href="../Manual/HOWTO-InstallStandardAssets.html">Pro Standard Assets installed</a>.
+</p>
+<div class='vspace'></div><h2>Properties</h2>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left' colspan='2'><span class='doc-prop'>General Settings</span></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Resolution</span></td><td  align='left'>Determines the internal render target sizes. The lower the resolution the faster the effect and the lower the memory requirements will be.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Quality</span></td><td  align='left'>The quality level. Chose between the faster <span class='doc-prop'>OnlyBackground</span> or the slower <span class='doc-prop'>BackgroundAndForeground</span> options which calculates the Depth of Field defocus for both areas seperately.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Simple tweak</span></td><td  align='left'>Switches to a simpler focal model.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Visualize focus</span></td><td  align='left'>Visualizes the focal areas in the game view.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Enable bokeh</span></td><td  align='left'>This will generate more realistic lens blurs where very bright parts are scaled and overlap.</td></tr>
+</table>
+<div class='vspace'></div><table width='100%'><tr ><td  align='left' colspan='2'><span class='doc-prop'>Focal Settings</span></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Focal distance</span></td><td  align='left'>The distance to the focal point from the camera position in world space.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Object Focus</span></td><td >Instead of setting the distance manually you can always autofocus on this Transform.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Smoothness</span></td><td  align='left'>The smoothness when transitioning from out-of-focus to in-focus areas.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Focal size</span></td><td  align='left'>The size of the in-focus area.</td></tr>
+</table>
+<div class='vspace'></div><table width='100%'><tr ><td  align='left' colspan='2'><span class='doc-prop'>Blur</span></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Blurriness</span></td><td >How many iterations are taken for defocusing the various buffers.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Blur spread</span></td><td  align='left'>The blur distance (resolution independent, you might have to re-tweak if the resolution changes drastically).</td></tr>
+</table>
+<div class='vspace'></div><table width='100%'><tr ><td  align='left' colspan='2'><span class='doc-prop'>Bokeh Settings</span></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Destination</span></td><td  align='left'>Enabling foreground and background blur will be a lot slower but gives more realistic results.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Intensity</span></td><td >Blend intensity when all bokeh shapes are being accumulated. This is a critical value that always needs to be carefully adjusted.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Min luminance</span></td><td  align='left'>The luminance threshhold for all pixels that should be considered.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Min contrast</span></td><td  align='left'>The contrast threshhold for all pixels that should be considered (this is important as usually, you only need bokeh shapes in areas of high frequency. They would be close to invisible otherwise. It also helps performance as it can save a lot of fillrate.).</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Downsample</span></td><td  align='left'>The size of the internal render target used for accumulating bokeh shapes.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Size</span></td><td  align='left'>The maximum bokeh size. Will be modulated by the amount of defocus (Circle of Confusion).</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Bokeh Texture</span></td><td  align='left'>The texture defining the bokeh shapes.</td></tr>
+</table>
+<p class='vspace'>Note about the <span class='doc-prop'>Bokeh effect</span>: as it is based on drawing triangles per pixel it can drastically affect your framerate, especially if it's not properly tweaked. Adjust the <span class='doc-prop'>Size</span>, <span class='doc-prop'>Min luminance</span>, <span class='doc-prop'>Min contrast</span>, <span class='doc-prop'>Downsample</span> and <span class='doc-prop'>Resolution</span> for highest performance. Also, as it pre-darkens the screen before applying the bokeh shapes, one should take care of using an apropriately high <span class='doc-prop'>Blurriness</span> level to remove possible artefacts.
+</p>
+<div class='vspace'></div><h3>Hardware support</h3>
+<p>This effect requires a graphics card with pixel shaders (3.0) or OpenGL ES 2.0. Additionally, depth texture support is required. PC: NVIDIA cards since 2004 (GeForce 6), AMD cards since 2005 (Radeon X1300), Intel cards since 2006 (GMA X3000); Mobile: OpenGL ES 2.0 with depth texture support; Consoles: Xbox 360, PS3.
+</p>
+<p class='vspace'>All image effects automatically disable themselves when they can not run on end-users graphics card.
+</p>
+</p><small>Page last updated: 2011-06-12</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/script-Crease.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/script-EdgeDetectEffectNormals.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

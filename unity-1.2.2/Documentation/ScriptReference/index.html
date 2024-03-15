@@ -1,0 +1,153 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Scripting - An Overview"-->
+			<title>Unity Script Reference &ndash; Scripting - An Overview</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>Scripting - An Overview</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="Scripting - An Overview" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><b>Overview</b> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='basic'> This is a short overview of how scripting inside Unity works.<br/></p>
+<span class='toc'><p class='tocheader'>Subsections</p><p><a href='#Common Operations'>Common Operations</a></p>
+<p><a href='#Keeping Track of Time'>Keeping Track of Time</a></p>
+<p><a href='#Accessing Other Components'>Accessing Other Components</a></p>
+<p><a href='#Accessing Other Game Objects'>Accessing Other Game Objects</a></p>
+<p><a href='#Vectors'>Vectors</a></p>
+<p><a href='#Member Variables'>Member Variables</a></p>
+<p><a href='#The Yield Statement'>The Yield Statement</a></p>
+<p><a href='#Writing Scripts in C# or Boo'>Writing Scripts in C# or Boo</a></p>
+<p><a href='#Script compilation (Advanced)'>Script compilation (Advanced)</a></p>
+</span><div class='tocclear'></div>
+   <p class='basic'> 
+Scripting inside Unity consists of <a href="../Manual/Scripting.html" class="classlink">attaching custom script objects</a> called behaviours to game objects. Different functions inside the script objects are called on certain events. The most used ones being
+the following:  <p class="basic"/><dl>
+<dt>Update:</dt>
+<dd>This function is called before rendering a frame. This is where most game behaviour code goes, except physics code.</dd>
+<dt>FixedUpdate:</dd>
+<dd>This function is called once every physics time step. This is the place to do physics-based game behaviour.</dd>
+<dt>Code outside any function:</dt>
+<dd>Code outside functions is run when the object is loaded. This can be used to initialise the state of the script.</dd>
+</dl>  <p class="basic"/><em>Note: This document assumes you are using Javascript, but see at the end of this page for information about how to apply this to scripts written in C# or Boo.</em>  <p class="basic"/>You can also define event handlers. These all have names starting with On, (i.e. OnCollisionEnter). To see the full list of predefined events, see the documentation for <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a>.  <p class="basic"/></p>
+   <a name="Common Operations"></a><h2 class="script-section">Common Operations</h2>
+   <p class='basic'> Most game object manipulations are done either through the game object's <a href="Transform.html" class="classlink">Transform</a> and/or <a href="Rigidbody.html" class="classlink">Rigidbody</a>. These are accessible inside behaviour scripts through the member variables transform and rigidbody respectively. So if you wanted to rotate an object 5 degrees around it's Y axis every frame you could write the following:
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;function Update() {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform.Rotate(0, 5, 0);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></td></tr></table>
+</p>
+   <a name="Keeping Track of Time"></a><h2 class="script-section">Keeping Track of Time</h2>
+   <p class='basic'> The <a href="Time.html" class="classlink">Time</a> class contains a very important class variable called deltaTime. This variable contains the amount of time since the last call to Update or FixedUpdate. (Depending on whether you are inside an Update or a FixedUpdate function.)  <p class="basic"/>So the above example, modified to make the object rotate with a constant speed not dependent on the frame rate becomes:
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;function Update() {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform.Rotate(0, 5 * <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a>, 0);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></td></tr></table>
+</p>
+   <a name="Accessing Other Components"></a><h2 class="script-section">Accessing Other Components</h2>
+   <p class='basic'> Components are attached to game objects. Attaching a <a href="Renderer.html" class="classlink">Renderer</a> component to a game object is what makes it render on screen, attaching a <a href="Camera.html" class="classlink">Camera</a> turns it into a camera object. All scripts that can be attached to an object are also components.  <p class="basic"/>The most common components are accessible as simple member variables:
+<table style="margin-left: 10 px;">
+<tr><th style="">&#67;omponent</th><th>Accessible as</ht></tr>
+<tr><td><a href="Transform.html" class="classlink">Transform</a></td><td>transform</td></tr>
+<tr><td><a href="Rigidbody.html" class="classlink">Rigidbody</a></td><td>rigidbody</td></tr>
+<tr><td><a href="Renderer.html" class="classlink">Renderer</a></td><td>renderer</td></tr>
+<tr><td><a href="Camera.html" class="classlink">Camera</a></td><td>camera (only on camera objects)</td></tr>
+<tr><td><a href="Light.html" class="classlink">Light</a></td><td>light (only on light objects)</td></tr>
+<tr><td><a href="Animation.html" class="classlink">Animation</a></td><td>animation</td></tr>
+<tr><td><a href="Collider.html" class="classlink">Collider</a></td><td>collider</td></tr>
+<tr><td colspan="2">... etc.</td></tr>
+</table>  <p class="basic"/>For the full list of predefined member variables see the documentation for the <a href="Component.html" class="classlink">Component</a> class, the <a href="Behaviour.html" class="classlink">Behaviour</a> class and <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a>. If the game object does not have a component of the type you wish to fetch, the above variables will be set to <span class="variable">null</span>.
+ 
+In order to access another component, not directly accessible through a member variable (like another script behaviour attached to the same game object,) you can use the <a href="Component.html#GetComponent" class="itemlink">GetComponent</a> function like this:
+	<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;var otherScript : OtherScript;<br/>&nbsp;&nbsp;&nbsp;&nbsp;otherScript = <a href="Component.html#GetComponent" class="itemlink">GetComponent</a>(OtherScript);
+</div></td></tr></table>
+(Note that the first line in the above example explicitly defines the type of the variable otherScript using the <em>... : typename</em> construct. This is because the type of the variable would otherwise be set to the return type of GetComponent.)  <p class="basic"/></p>
+   <a name="Accessing Other Game Objects"></a><h2 class="script-section">Accessing Other Game Objects</h2>
+   <p class='basic'> Most advanced game code does not only manipulate a single object. The Unity scripting interface has various ways to find and access other game objects:  <p class="basic"/><strong>1. Located through the object hierarchy.</strong>  <p class="basic"/>You can find child and parent objects to an existing object through the <a href="Transform.html" class="classlink">Transform</a> of a game object:
+	<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;// Moves all transform children 10 units upwards!<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span> (var child : <a href="Transform.html" class="classlink">Transform</a> <span class="keyword">in</span> transform) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;child.position += <a href="Vector3.html#up" class="itemlink">Vector3.up</a> * 10.0;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></td></tr></table>
+See the documentation for the <a href="Transform.html" class="classlink">Transform</a> class for further information.  <p class="basic"/><strong>2. Passed as parameters.</strong>  <p class="basic"/>Some event messages contain detailed information on the event. Trigger events for instance, pass the <a href="Collider.html" class="classlink">Collider</a> component of the colliding object to the handler function.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;function OnTriggerEnter( other : <a href="Collider.html" class="classlink">Collider</a> ) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (other.transform.root != transform.root) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// the colliding objects are not part of the same hierarchy...<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* insert some collision handling code, <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   such as damage calculations, here */<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// the colliding objects are part of the same hierarchy.  -- ignore<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></td></tr></table>
+Note that by suffixing the <span class="variable">other</span> variable in the above example, you can access any component inside the colliding object.  <p class="basic"/><strong>3. Through global variables and functions.</strong>  <p class="basic"/>The main camera object is accessible through <a href="Camera.html#main" class="itemlink">Camera.main</a>. You can search for game objects with certain tags using <a href="GameObject.html#FindGameObjectWithTag" class="itemlink">GameObject.FindGameObjectWithTag</a> and <a href="GameObject.html#FindGameObjectsWithTag" class="itemlink">GameObject.FindGameObjectsWithTag</a>.
+You can also use  the <a href="Object.html#FindObjectOfType" class="itemlink">Object.FindObjectOfType</a> to locate objects other than game objects.
+Use <a href="GameObject.html#Find" class="itemlink">GameObject.Find</a> to find a game object by name.  <p class="basic"/>
+</p>
+   <a name="Vectors"></a><h2 class="script-section">Vectors</h2>
+   <p class='basic'> Unity uses the <a href="Vector3.html" class="classlink">Vector3</a> class throughout to represent all 3D vectors. The individual components of a 3D vector can be accessed through it's x, y and z member variables.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;var aPosition : <a href="Vector3.html" class="classlink">Vector3</a>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;aPosition.x = 1;<br/>&nbsp;&nbsp;&nbsp;&nbsp;aPosition.y = 1;<br/>&nbsp;&nbsp;&nbsp;&nbsp;aPosition.z = 1;
+</div></td></tr></table>
+You can also use the <a href="Vector3.html" class="classlink">Vector3</a> constructor function to initialise all components at once.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;var aPosition = <a href="Vector3.html" class="classlink">Vector3</a>(1, 1, 1);
+</div></td></tr></table>
+<a href="Vector3.html" class="classlink">Vector3</a> also defines some common values as constants.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;var direction = <a href="Vector3.html#up" class="itemlink">Vector3.up</a>; // same as saying <a href="Vector3.html" class="classlink">Vector3</a>(0, 1, 0);
+</div></td></tr></table>
+Operations on single vectors are accessed the following way:
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;someVector.Normalize();
+</div></td></tr></table>
+And operations using multiple vectors are done using <a href="Vector3.html" class="classlink">Vector3</a> class functions:
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;theDistance = <a href="Vector3.html#Distance" class="itemlink">Vector3.Distance</a>(oneVector, otherVector);
+</div></td></tr></table>
+(Note that you have to write <a href="Vector3.html" class="classlink">Vector3</a>. in front of the function name to tell Javascript where to find the function. This applies to all class functions.)  <p class="basic"/>You can also use the common math operators to manipulate vectors:
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;combined = vector1 + vector2;
+</div></td></tr></table>
+See the documentation on the <a href="Vector3.html" class="classlink">Vector3</a> class for the full list of operations and properties available.  <p class="basic"/></p>
+   <a name="Member Variables"></a><h2 class="script-section">Member Variables</h2>
+   <p class='basic'> Any variable defined in the global scope of a script defines a member variable. The variables are accessible through the inspector inside Unity. Any value stored in a member variable is also automatically saved with the project.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;var memberVariable = 0.0; 
+</div></td></tr></table>
+The above variable will show up as a numeric property in the inspector called "Member Variable".  <p class="basic"/>If you set the type of a variable to a component type (i.e. <a href="Transform.html" class="classlink">Transform</a>, <a href="Rigidbody.html" class="classlink">Rigidbody</a>, <a href="Collider.html" class="classlink">Collider</a>, any script name, etc.) you can set them by dragging game objects onto the value in the inspector.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;var enemy : <a href="Transform.html" class="classlink">Transform</a>;<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;function Update() {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ( <a href="Vector3.html#Distance" class="itemlink">Vector3.Distance</a>( enemy.position, transform.position ) < 10 ) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("I sense the enemy is near!");<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></td></tr></table>
+You can also create private member variables. Private member variables are useful for storing state that should not be visible outside the script. Private member variables are not saved to disk and not editable in the inspector, and then only visible when the inspector is set to expert mode.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span> var lastCollider : <a href="Collider.html" class="classlink">Collider</a>;<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;function OnCollisionEnter( collisionInfo : <a href="Collision.html" class="classlink">Collision</a> ) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lastCollider = collisionInfo.other;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></td></tr></table>
+</p>
+   <a name="The Yield Statement"></a><h2 class="script-section">The Yield Statement</h2>
+   <p class='basic'> When writing game code, one often ends up needing to script a sequence of events. This could result in code like the following.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span> var state = 0;<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;function Update() {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (state == 0) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// do step 0<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state = 1;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (state == 1) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// do step 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state = 2;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// ...<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></td></tr></table>
+It is often more convenient to use the yield statement. The yield statement is a special kind of return, that ensures that the function will continue from the line after the yield statement next time it's called.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;while(true) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// do step 0<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// do step 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// ...<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></td></tr></table>
+You can also pass special values to the yield statement to delay the execution of the Update function until a certain event has occurred.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;// do something<br/>&nbsp;&nbsp;&nbsp;&nbsp;yield <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a>(5.0); // wait <span class="keyword">for</span> 5 seconds<br/>&nbsp;&nbsp;&nbsp;&nbsp;// do something more...
+</div></td></tr></table>
+Note that you can't use yield from within Update or FixedUpdate, but you can use <a href="MonoBehaviour.html#StartCoroutine" class="itemlink">StartCoroutine</a> to start a
+function that can.  <p class="basic"/>See <a href="YieldInstruction.html" class="classlink">YieldInstruction</a>, <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a>, <a href="WaitForFixedUpdate.html" class="classlink">WaitForFixedUpdate</a>, <a href="Coroutine.html" class="classlink">Coroutine</a> and <a href="MonoBehaviour.html#StartCoroutine" class="itemlink">MonoBehaviour.StartCoroutine</a> for more information on using yield.  <p class="basic"/></p>
+   <a name="Writing Scripts in C# or Boo"></a><h2 class="script-section">Writing Scripts in C# or Boo</h2>
+   <p class='basic'> Apart from syntax, there are some differences when writing scripts in C# or Boo. Most notable are:  <p class="basic"/><strong>1. Inherit from <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a>.</strong>  <p class="basic"/>All behaviour scripts must inherit from <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a>. This happens automatically in Javascript, but must be set explicitly inside C# and Boo scripts. If you create your script inside Unity through the Asset -> Create -> C Sharp/Boo Script menu, the created template will already contain the necessary definition.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span> <span class="keyword">class</span> NewBehaviourScript : <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a> {...} // C#<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">class</span> NewBehaviourScript (<a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a>):  ... # Boo
+</div></td></tr></table>
+<strong>2. Use the Awake or Start function to do initialisation.</strong>  <p class="basic"/>What you would put outside any functions in Javascript, you put inside an Awake or a Start function in C# or Boo.
+The difference between Awake and Start, is that Awake is run when a scene is loaded and Start is called just before the first call to an Update or a FixedUpdate function. All Awake functions are called before any Start functions are called.  <p class="basic"/><strong>3. The class name must match the file name.</strong>  <p class="basic"/>In Javascript, the class name is implicitly set to the name of the script. (Minus the file extension.) This must be done manually in C# and Boo.  <p class="basic"/><strong>4. Coroutines have a different syntax in C#.</strong>  <p class="basic"/>Coroutines have to have a return type of IEnumerator and you yield using <tt>yield return ... ;</tt> instead of just <tt>yield
+... ;</tt>.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">using System.Collections;<br/>using UnityEngine;<br/><span class="keyword">public</span> <span class="keyword">class</span> NewBehaviourScript : <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a> {<br/>   IEnumerator SomeCoroutine () {<br/>       // Wait <span class="keyword">for</span> one frame<br/>       yield <span class="keyword">return</span> 0;<br/><br/><br/>       // Wait <span class="keyword">for</span> two second<br/>       yield <span class="keyword">return</span> <span class="keyword">new</span> <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a> (2);<br/>   }<br/>}
+</div></td></tr></table>
+<strong>5. Don't use namespaces.</strong>  <p class="basic"/>Unity doesn't support placing your scripts inside of a namespace at the moment.
+This requirement will be removed in a future version.  <p class="basic"/><strong>6. Only member variables are serialized and shown in the Inspector.</strong>  <p class="basic"/>Private and protected member variables are shown in Expert Mode.
+Properties are not serialized or shown in the inspector.  <p class="basic"/>
+</p>
+   <a name="Script compilation (Advanced)"></a><h2 class="script-section">Script compilation (Advanced)</h2>
+   <p class='basic'> Script compilation is performed in 3 steps:  <p class="basic"/><strong>1. All scripts in "Standard Assets", "Pro Standard Assets" or "Plugins" are compiled first.</strong>  <p class="basic"/>Scripts in one of these folders can't directly access scripts outside these folders.  <p class="basic"/>That is, it is not possible to reference the class or it's variables directly.
+But it is possible to communicate with them using <a href="GameObject.html#SendMessage" class="itemlink">GameObject.SendMessage</a>  <p class="basic"/><strong>2. All scripts in "Editor" or "Standard Assets/Editor" are compiled next.</strong>  <p class="basic"/>If you want to use the UnityEditor namespace you have to place your scripts in these folders.
+For example to add menu items or write custom wizards you have to place your scripts in those folders.  <p class="basic"/>Editor scripts can reference all scripts in the first group.  <p class="basic"/><strong>3. All other scripts are compiled last.</strong>  <p class="basic"/>All scripts that are not in one of the folders above are compiled last.  <p class="basic"/>All scripts that are compiled now, have access to all scripts in the first group ("Standard Assets", "Pro Standard Assets" or "Plugins").
+This allows you to let different script languages interoperate.
+For example, if you want to create a javascript that uses a C# script. Place the C# script in the "Standard Assets" folder and the Javascript outside of the "Standard Assets" folder.
+The Javascript can now reference the C# script directly.  <p class="basic"/>Scripts that are placed in the first group, will take longer to compile, since when they are compiled the third group needs to be compiled too.
+Thus if you want to reduce compile times, move scripts that seldomly change into group 1 and scripts that change a lot into group 3.</p>
+ <div class="bottomlink"><b>Overview</b> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

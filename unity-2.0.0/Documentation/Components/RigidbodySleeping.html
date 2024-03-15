@@ -1,0 +1,89 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Rigidbody Sleeping</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Rigidbody Sleeping</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Scripting Concepts.html">Scripting Concepts</a> &gt; <a href="../Components/RigidbodySleeping.html">Rigidbody Sleeping</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/Layers.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	 </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Rigidbody Sleeping</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>When Rigidbodies fall to rest - a box landing on the floor - they will start sleeping. Sleeping is an optimization which allows the Physics Engine to stop processing those rigidbodies. This way you can have huge amounts of rigidbodies in your scene as long as you make sure that they normally don't move.
+</p>
+<p class='vspace'>Rigidbody sleeping happens completely automatically. Whenever a rigidbody is slower than the sleepAngularVelocity and sleepVelocity it will start falling asleep. After a few frames of resting it will then be set to sleep. When the body is sleeping, no collision detection or simulation will be performed anymore. This saves a lot of CPU cycles.
+</p>
+<p class='vspace'>Rigidbodies automatically wake up when:
+</p><ul><li>another rigidbody collides with the sleeping rigidbody
+</li><li>another rigidbody connected through a joint is moving.
+</li><li>when modifying a property of the rigidbody
+</li><li>when <a class='urllink' href='../ScriptReference/Rigidbody.AddForce.html' rel='nofollow'>adding forces</a>.
+</li></ul><p class='vspace'>So if you want to make rigidbodies fall to rest, don't modify their properties or add forces when they are about to go into sleep mode.
+</p>
+<p class='vspace'>There are two variables that you can tune to make sure your rigidbodies automatically fall to rest: <a class='urllink' href='../ScriptReference/Rigidbody-sleepVelocity.html' rel='nofollow'>Rigidbody.sleepVelocity</a> and <a class='urllink' href='../ScriptReference/Rigidbody-sleepAngularVelocity.html' rel='nofollow'>Rigidbody.sleepAngularVelocity</a>. Those two variables are initialized to the sleepVelocity and sleepAngularVelocity variable defined in the <a href="../Components/class-PhysicsManager.html">Physics Manager</a> (<em>Edit -&gt; Project Settings -&gt; Physics</em>).
+</p>
+<p class='vspace'>Rigidbodies can also be forced to sleep using <a class='urllink' href='../ScriptReference/Rigidbody.Sleep.html' rel='nofollow'>rigidbody.Sleep</a>. This is useful to start rigidbodies in a rest state when loading a new level.
+</p>
+<p class='vspace'>Kinematic rigidbodies wake up sleeping rigidbodies. Static Colliders do not.
+If you have a sleeping rigidbody and you move a static collider (A collider without a Rigidbody attached) into the rigidbody or pull it from underneath the rigidbody, the sleeping rigidbody will <b>not</b> awake.
+If you move a Kinematic Rigidbody out from underneath normal Rigidbodies that are at rest on top of it, the sleeping Rigidbodies will "wake up" and be correctly calculated again in the physics update.  So if you have a lot of Static Colliders that you want to move around and have different objects fall on them correctly, use Kinematic Rigidbody Colliders.
+</p>
+<p class='vspace'>Kinematic rigidbodies - they will not be calculated during the physics update since they are not going anywhere.  If you move a Kinematic Rigidbody out from underneath normal Rigidbodies that are at rest on top of it, the sleeping Rigidbodies will "wake up" and be correctly calculated again in the physics update.  So if you have a lot of Static Colliders that you want to move around and have different objects fall on them correctly, use Kinematic Rigidbody Colliders.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/Layers.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	 </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

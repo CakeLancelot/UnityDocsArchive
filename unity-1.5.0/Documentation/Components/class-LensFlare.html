@@ -1,0 +1,86 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Lens Flare"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Lens Flare" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-RenderingGroup.html%22%3ERendering%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-LensFlare.html%22%3ELens%20Flare%3C%2Fa%3E" -->
+		<h1>Lens Flare</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-RenderingGroup.html">Rendering</a> &gt; <a href="class-LensFlare.html">Lens Flare</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-Halo.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-GuiTexture.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Lens flares simulate the effect of lights refracting inside camera lens. They are used to represent really bright lights or, more subtly, just to add a bit more atmosphere to your scene.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-LensFlare-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-LensFlare-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>A lens flare over the skybox</i>
+</p>
+
+<p>The easiest way to setup a lens flare is just to assign Flare property of the <a href="../Components/class-Light.html">Light</a>. Unity contains a couple of flares in the <a href="../Manual/HOWTO-InstallStandardAssets.html"> Standard Assets package</a>.
+</p>
+
+<p>Otherwise, create an empty game object (<i>Game Object-&gt;Create Empty</i>), add this component to it (<i>Component-&gt;Rendering-&gt;Lens Flare</i>) and choose the flare in the Inspector.
+</p>
+
+<p>To see the effect of lens flare in the Scene View, check the <b>Fx</b> button in the toolbar:
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-LensFlare-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-LensFlare-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Flare</nobr></b></td><td> A <a href="../Components/class-Flare.html">Flare</a> to render. The flare defines all aspects of the lens flare's appearance.
+</td></tr><tr><td><b><nobr>Color</nobr></b></td><td> Some flares can be colorized to better fit in with your scene's mood.
+</td></tr><tr><td><b><nobr>Brightness</nobr></b></td><td> How large and bright the lens flare is.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+
+<p>You can directly set flares as a property of a <a href="../Components/class-Light.html">Light</a> component, or set them up separately as Lens Flare component. If you attach them to a light, they will automatically track the position and direction of the light. To get more precise control, use this component.
+</p>
+
+<p>A <a href="../Components/class-Camera.html">camera</a> has to have a <a href="../Components/class-FlareLayer.html">Flare Layer</a> component attached to make flares visible (by default there is a flare layer in cameras, so you don't have to do anything special).
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Be discrete about your usage of lens flares.
+</li><li>If you use a very bright lens flare, make sure it's direction fits with your scene's primary light source.
+</li><li> To design your own flares, you need to create some flare Assets. Start by duplicating some of the ones we provided in the the <i>Lens Flares</i> folder of the Standard Assets, then modify from that.
+</li></ul>
+</p>
+
+
+
+
+		<div class="navigation"><a href="class-Halo.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-GuiTexture.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,48 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Scripting - An Overview.Instantiate"-->
+			<title>Unity Script Reference &ndash; Scripting - An Overview.Instantiate</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<script language="JavaScript" src="UnityDoc.js"></script>
+<body>
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>Instantiate</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+	<!-- #TemplateEndEditable -->
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="Instantiate" path="" navigation="" --><!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-top.lbi" --><!-- #EndLibraryItem --><div class="left-menu-container"><ul class="left-menu"><li><span class="left-menu-heading">Menu</span></li><li><a class="left-menu-item" href="index.html">Overview</a></li><li><a class="left-menu-item" href="20_class_hierarchy.html">Class Hierarchy</a></li><li><a class="left-menu-item" href="10_reference.html">Reference</a></li><li><span class="left-menu-seperator"></span></li><li><a class="left-menu-heading" href="index.html">Scripting - An Overview</a></li><li><a class="left-menu-item" href="index.Common_Operations.html">Common Operations</a></li><li><a class="left-menu-item" href="index.Keeping_Track_of_Time.html">Keeping Track of Time</a></li><li><a class="left-menu-item" href="index.Accessing_Other_Components.html">Accessing Other Components</a></li><li><a class="left-menu-item" href="index.Accessing_Other_Game_Objects.html">Accessing Other Game Objects</a></li><li><a class="left-menu-item" href="index.Vectors.html">Vectors</a></li><li><a class="left-menu-item" href="index.Member_Variables.html">Member Variables</a></li><li><span class="left-menu-item left-menu-current">Instantiate</span></li><li><a class="left-menu-item" href="index.Coroutines_or_the_Yield_Statement.html">Coroutines or the Yield Statement</a></li><li><a class="left-menu-item" href="index.Writing_Scripts_in_Csharp_or_Boo.html">Writing Scripts in C# or Boo</a></li><li><a class="left-menu-item" href="index.The_most_important_classes.html">The most important classes</a></li><li><a class="left-menu-item" href="index.Script_compilation_28Advanced29.html">Script compilation (Advanced)</a></li></ul></div>
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-middle.lbi" --><!-- #EndLibraryItem --><div class="pre-next-link"><b>Previous:</b> <a href="index.Member_Variables.html">Member Variables</a> <b>Next:</b> <a href="index.Coroutines_or_the_Yield_Statement.html">Coroutines or the Yield Statement</a></div>
+   <p class="basic"> Instantiate duplicates an object. Including all attached scripts and the entire hierarchy. It keeps references in the way you expect it:
+References to objects outside the cloned hierarchy will be left untouched, References to objects in the cloned hierarchy will map to the cloned object.
+</p><p class="basic">
+Instantiate is incredibly fast and very versatile. It is essential to using Unity to it's fullest.
+</p><p class="basic">
+For example here is a tiny script that when attached to a rigidbody with collider will destroy itself
+and instead spawn an explosion object</p><div class="code">var explosion : <a href="Transform.html" class="classlink">Transform</a>;<br/><br/><span class="comment">// When a collision happens destroy ourselves</span>
+<span class="comment">// and spawn an explosion prefab instead</span>
+function OnCollisionEnter ()<br/>{<br/>    Destroy (gameObject);<br/><br/>    var theClonedExplosion : <a href="Transform.html" class="classlink">Transform</a>;<br/>    theClonedExplosion = Instantiate(explosion,<br/>            transform.position, transform.rotation);<br/>}
+</div><p class="basic">
+Instantiate is usually used in conjunction with <a href="../Manual/Prefabs.html" class="classlink">Prefabs</a>.
+</p><p class="basic">
+</p>
+	
+	</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

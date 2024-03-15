@@ -1,0 +1,98 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Properties"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title="Properties" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced.html%22%3EAdvanced%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Shaders.html%22%3EShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-Shader.html%22%3EShader%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-Properties.html%22%3EProperties%3C%2Fa%3E" -->
+		<h1>Properties</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced.html">Advanced</a> &gt; <a href="Shaders.html">Shaders</a> &gt; <a href="SL-Shader.html">Shader</a> &gt; <a href="SL-Properties.html">Properties</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="SL-Shader.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-SubShader.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Shaders can define a list of parameters to be set by artists in Unity's material inspector. The Properties block in the shader file defines them.
+</p>
+
+<h2>Syntax</h2>
+<p><dl><dt><b>Properties</b> { <i>Property</i> [<i>Property ...</i>] }</dt><dd> Defines the property block. Inside braces multiple properties are defined as follows.</dd><dt><i>name</i> (&quot;<i>display name</i>&quot;, <b>Range</b> (<i>min</i>, <i>max</i>)) = <i>number</i></dt><dd> Defines a float property, represented as a slider from <i>min</i> to <i>max</i> in the inspector.</dd><dt><i>name</i> (&quot;<i>display name</i>&quot;, <b>Color</b>) = (<i>number</i>,<i>number</i>,<i>number</i>,<i>number</i>)</dt><dd> Defines a color property.</dd><dt><i>name</i> (&quot;<i>display name</i>&quot;, <b>2D</b>) = &quot;<i>name</i>&quot; { <i>options</i> }</dt><dd> Defines a 2D texture property.</dd><dt><i>name</i> (&quot;<i>display name</i>&quot;, <b>Rect</b>) = &quot;<i>name</i>&quot; { <i>options</i> }</dt><dd> Defines a rectangle (non power of 2) texture property.</dd><dt><i>name</i> (&quot;<i>display name</i>&quot;, <b>Cube</b>) = &quot;<i>name</i>&quot; { <i>options</i> }</dt><dd> Defines a cubemap texture property.</dd><dt><i>name</i> (&quot;<i>display name</i>&quot;, <b>Float</b>) = <i>number</i></dt><dd> Defines a float property.</dd><dt><i>name</i> (&quot;<i>display name</i>&quot;, <b>Vector</b>) = (<i>number</i>,<i>number</i>,<i>number</i>,<i>number</i>)</dt><dd> Defines a four component vector property.</dd></dl>
+</p>
+
+<h2>Details</h2>
+
+<p>Each property inside the shader is referenced by <b>name</b> (in Unity, it's common to start shader property names with underscore). The property will show up in material inspector as <b>display name</b>. For each property a default value is given after equals sign:
+</p>
+<ul><li> For <i>Range</i> and <i>Float</i> properties it's just a single number.
+</li><li> For <i>Color</i> and <i>Vector</i> properties it's four numbers in parentheses.
+</li><li> For texture (<i>2D</i>, <i>Rect</i>, <i>Cube</i>) the default value is either an empty string, or one of builtin default textures: &quot;<i>white</i>&quot;, &quot;<i>black</i>&quot;, &quot;<i>gray</i>&quot; or &quot;<i>bump</i>&quot;.
+</li></ul>
+
+<p>Later on in the shader, property values are accessed using property name in square brackets: <b>[name]</b>.
+</p>
+
+<h2>Example</h2>
+<p><pre class='codelisting'>
+Properties {
+    // properties for water shader
+    _WaveScale (&quot;Wave scale&quot;, Range (0.02,0.15)) = 0.07 // sliders
+    _ReflDistort (&quot;Reflection distort&quot;, Range (0,1.5)) = 0.5
+    _RefrDistort (&quot;Refraction distort&quot;, Range (0,1.5)) = 0.4
+    _RefrColor (&quot;Refraction color&quot;, Color)  = (.34, .85, .92, 1) // color
+    _ReflectionTex (&quot;Environment Reflection&quot;, 2D) = &quot;&quot; {} // textures
+    _RefractionTex (&quot;Environment Refraction&quot;, 2D) = &quot;&quot; {}
+    _Fresnel (&quot;Fresnel (A) &quot;, 2D) = &quot;&quot; {}
+    _BumpMap (&quot;Bumpmap (RGB) &quot;, 2D) = &quot;&quot; {}
+}
+</pre>
+</p>
+
+<h3>Texture property options</h3>
+
+<p>The <i>options</i> inside curly braces of the texture property are optional. The available options are:
+</p>
+
+<p><dl><dt><b>TexGen</b> <i>texgenmode</i></dt><dd> Automatic texture coordinate generation mode for this texture. Can be one of <i>ObjectLinear</i>, <i>EyeLinear</i>, <i>SphereMap</i>, <i>CubeReflect</i>, <i>CubeNormal</i>; these correspond directly to OpenGL texgen modes. Note that TexGen is ignored if custom vertex programs are used.</dd></dl>
+</p>
+
+<h3>Example</h3>
+<p><pre class='codelisting'>
+// EyeLinear texgen mode example
+Shader &quot;Texgen/Eye Linear&quot; {
+	Properties {
+		_MainTex (&quot;Base&quot;, 2D) = &quot;white&quot; { TexGen EyeLinear }
+	}
+	SubShader {
+		Pass {
+			SetTexture [_MainTex] { combine texture alpha }
+		}
+	} 
+}
+</pre>
+</p>
+
+
+
+		<div class="navigation"><a href="SL-Shader.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-SubShader.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

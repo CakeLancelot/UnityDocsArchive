@@ -1,0 +1,348 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Using web player templates</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Using web player templates</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Web Player Deployment.html">Web Player Deployment</a> &gt; <a href="../Manual/Using Web Player templates.html">Using web player templates</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Using web player templates</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<a class='desktopRef' id='desktopRef' href="javascript:ShowHideDiv('desktopRef','specific-desktop','Desktop');"> <h1> <img class='figure' src='../Images/manual/Using Web Player templates-0.jpg' /> Desktop </h1> </a>
+<div class='specific-desktop' style='display: block;' id='specific-desktop' > 
+<h1>Using web player templates</h1>
+<p>When you build a webplayer project, Unity embeds the player in an HTML page so that it can be played in the browser. The default page is very simple, with just a white background and some minimal text. There are actually three different variations of this page which can be selected from the Player Settings inspector (menu: Edit &gt; Project Settings &gt; Player).
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Using Web Player templates-1.jpg' /></div>
+<p class='vspace'>The built-in HTML pages are fine for testing and demonstrating a minimal player but for production purposes, it is often desirable to see the player hosted in the page where it will eventually be deployed. For example, if the Unity content interacts with other elements in the page via the external call interface then it must be tested with a page that provides those interacting elements. Unity allows you to supply your own pages to host the player by using <b>webplayer templates</b>.
+</p>
+<div class='vspace'></div><h2>Structure of a Webplayer Template</h2>
+<p>Custom templates are added to a project by creating a folder called "WebPlayerTemplates" in the Assets folder - the templates themselves are sub-folders within this folder. Each template folder contains an index.html or index.php file along with any other resources the page needs, such as images or stylesheets.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Using Web Player templates-2.jpg' /></div>
+<p class='vspace'>Once created, the template will appear among the options on the Player Settings inspector. (the name of the template will be the same as its folder). Optionally, the folder can contain a file named thumbnail.png, which should have dimensions of 128x128 pixels. The thumbnail image will be displayed in the inspector to hint at what the finished page will look like.
+</p>
+<div class='vspace'></div><h2>Template Tags</h2>
+<p>During the build process, Unity will look for special tag strings in the page text and replace them with values supplied by the editor. These include the name, onscreen dimensions and various other useful information about the player.
+</p>
+<p class='vspace'>The tags are delimited by percent signs (%) in the page source. For example, if the product name is defined as "MyPlayer" in the Player settings:-
+</p>
+<p class='vspace'><code class='escaped'>&lt;title&gt;%UNITY_WEB_NAME%&lt;/title&gt;</code>
+</p>
+<p class='vspace'>...in the template's index file will be replaced with
+</p>
+<p class='vspace'><code class='escaped'>&lt;title&gt;MyPlayer&lt;/title&gt;</code>
+</p>
+<p class='vspace'>...in the host page generated for the build. The complete set of tags is given below:-
+</p>
+<p class='vspace'><span class='doc-prop'>UNITY_WEB_NAME</span><br />Name of the webplayer.
+</p>
+<p class='vspace'><span class='doc-prop'>UNITY_WIDTH</span><br /><span class='doc-prop'>UNITY_HEIGHT</span><br />Onscreen width and height of the player in pixels.
+</p>
+<p class='vspace'><span class='doc-prop'>UNITY_WEB_PATH</span><br />Local path to the webplayer file.
+</p>
+<p class='vspace'><span class='doc-prop'>UNITY_UNITYOBJECT_LOCAL</span><br />A browser JavaScript file called UnityObject.js is generally used to embed the player in the host page and provide part of the interaction between Unity and the host's JavaScript. This is normally supplied to a page by downloading from Unity's website. However, this requires an internet connection and causes problems if the page is to be deployed offline from the user's hard drive. This tag provides the local path to the UnityObject.js file, which will be generated if the Offline Deployment option is enabled in the Build Settings.
+</p>
+<p class='vspace'><span class='doc-prop'>UNITY_UNITYOBJECT_URL</span><br />In the usual case where the page will download UnityObject.js from the Unity's website (ie, the Offline Deployment option is disabled), this tag will provide the download URL.
+</p>
+<p class='vspace'><span class='doc-prop'>UNITY_BETA_WARNING</span><br />If the webplayer has been built with a beta version of Unity, this tag will be replaced with a short warning message about the fact. Otherwise, it is replaced with nothing.
+</p>
+<p class='vspace'><span class='doc-prop'>UNITY_CUSTOM_SOME_TAG</span><br />If you add a tag to the index file with the form UNITY_CUSTOM_XXX, then this tag will appear in the Player Settings when your template is selected. For example, if something like
+</p>
+<p class='vspace'><code class='escaped'>&lt;title&gt;Unity Web Player | %UNITY_CUSTOM_MYTAG%&lt;/title&gt;</code>
+</p>
+<p class='vspace'>...is added to the source, the Player Settings will look like this:-
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Using Web Player templates-3.jpg' /></div>
+<p class='vspace'>The textbox next to the tag's name contains the text that the custom tag will be replaced with during the build.
+</p>
+<div class='vspace'></div><h2>Example</h2>
+<p>To illustrate the use of the template tags, here is the HTML source that Unity uses for its default webplayer build.
+</p>
+<div class='vspace'></div><pre class='codelisting'>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+	&lt;head&gt;
+		&lt;title&gt;Unity Web Player | %UNITY_WEB_NAME%&lt;/title&gt;
+		&lt;script type="text/javascript" src="%UNITY_UNITYOBJECT_URL%"&gt;&lt;/script&gt;
+		&lt;script type="text/javascript"&gt;
+		&lt;!--
+		function GetUnity() {
+			if (typeof unityObject != "undefined") {
+				return unityObject.getObjectById("unityPlayer");
+			}
+			return null;
+		}
+		if (typeof unityObject != "undefined") {
+			unityObject.embedUnity("unityPlayer", "%UNITY_WEB_PATH%", %UNITY_WIDTH%, %UNITY_HEIGHT%);
+		}
+		--&gt;
+		&lt;/script&gt;
+		&lt;style type="text/css"&gt;
+		&lt;!--
+		body {
+			font-family: Helvetica, Verdana, Arial, sans-serif;
+			background-color: white;
+			color: black;
+			text-align: center;
+		}
+		a:link, a:visited {
+			color: #000;
+		}
+		a:active, a:hover {
+			color: #666;
+		}
+		p.header {
+			font-size: small;
+		}
+		p.header span {
+			font-weight: bold;
+		}
+		p.footer {
+			font-size: x-small;
+		}
+		div.content {
+			margin: auto;
+			width: %UNITY_WIDTH%px;
+		}
+		div.missing {
+			margin: auto;
+			position: relative;
+			top: 50%;
+			width: 193px;
+		}
+		div.missing a {
+			height: 63px;
+			position: relative;
+			top: -31px;
+		}
+		div.missing img {
+			border-width: 0px;
+		}
+		div#unityPlayer {
+			cursor: default;
+			height: %UNITY_HEIGHT%px;
+			width: %UNITY_WIDTH%px;
+		}
+		--&gt;
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;p class="header"&gt;&lt;span&gt;Unity Web Player | &lt;/span&gt;%UNITY_WEB_NAME%&lt;/p&gt;%UNITY_BETA_WARNING%
+		&lt;div class="content"&gt;
+			&lt;div id="unityPlayer"&gt;
+				&lt;div class="missing"&gt;
+					&lt;a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!"&gt;
+						&lt;img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" /&gt;
+					&lt;/a&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;p class="footer"&gt;&amp;laquo; created with &lt;a href="http://unity3d.com/unity/" title="Go to unity3d.com"&gt;Unity&lt;/a&gt; &amp;raquo;&lt;/p&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+</p><small>Page last updated: 2011-08-18</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

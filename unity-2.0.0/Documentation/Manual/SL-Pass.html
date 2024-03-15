@@ -1,0 +1,127 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Pass</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Pass</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/Shaders.html">Shaders</a> &gt; <a href="../Manual/SL-Shader.html">Shader</a> &gt; <a href="../Manual/SL-SubShader.html">SubShaders</a> &gt; <a href="../Manual/SL-Pass.html">Pass</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/SL-SubShader.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/SL-Material.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Pass</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>The Pass block causes the geometry of an object to be rendered once.
+</p>
+<div class='vspace'></div><h2>Syntax</h2>
+<dl><dt><b>Pass</b> <b>{</b> <em>[Name and Tags] [<span class='wikiword'>RenderSetup</span>] [<span class='wikiword'>TextureSetup</span>]</em> <b>}</b> </dt><dd> The basic pass command contains an optional list of render setup commands, optionally followed by a list of textures to use.
+</dd></dl><div class='vspace'></div><h3>Name and tags</h3>
+<p>A Pass can define its name and arbitrary number of Tags - name/value strings that communicate Pass' intent to the rendering engine. More details <a href="../Manual/SL-NameAndTags.html">here</a>.
+</p>
+<div class='vspace'></div><h3>Render Setup</h3>
+<dl><dt><b>Material</b> <b>{</b> <em>Material Block</em> <b>}</b></dt><dd> Defines a material to use in a vertex lighting pipeline.
+</dd><dt><b>Lighting</b> On | Off</dt><dd> Turn vertex lighting on or off.
+</dd><dt><b>Cull</b> Back | Front | Off</dt><dd> Set polygon culling mode.
+</dd><dt><b><span class='wikiword'>ZTest</span></b> (Less | Greater | <span class='wikiword'>LEqual</span> | <span class='wikiword'>GEqual</span> | Equal | <span class='wikiword'>NotEqual</span> | Always)</dt><dd> Set depth testing mode.
+</dd><dt><b><span class='wikiword'>ZWrite</span></b> On | Off</dt><dd> Set depth writing mode.
+</dd><dt><b>Fog</b> <b>{</b> <em>Fog Block</em> <b>}</b></dt><dd> Set fog parameters.
+</dd><dt><b><span class='wikiword'>AlphaTest</span></b> (Less | Greater | <span class='wikiword'>LEqual</span> | <span class='wikiword'>GEqual</span> | Equal | <span class='wikiword'>NotEqual</span> | Always) <em><span class='wikiword'>CutoffValue</span></em></dt><dd> Turns on alpha testing.
+</dd><dt><b>Blend</b> <em><span class='wikiword'>SourceBlendMode</span></em> <em><span class='wikiword'>DestBlendMode</span></em></dt><dd>
+</dd><dt><b>Color</b> <em>Color value</em></dt><dd> Sets color to use if vertex lighting is turned off.
+</dd><dt><b><span class='wikiword'>ColorMask</span></b> RGB | A | or any combination of R, G, B, A</dt><dd> Set color writing mask.
+</dd><dt><b>Offset</b> <em><span class='wikiword'>OffsetFactor</span></em> <b>,</b> <em><span class='wikiword'>OffsetUnits</span></em></dt><dd> Set depth offset.
+</dd><dt><b><span class='wikiword'>SeparateSpecular</span></b> On | Off</dt><dd> Turns separate specular color for vertex lighting on or off.
+</dd></dl><div class='vspace'></div><h3>Texture Setup</h3>
+<p>After the render setup, you can specify a number of textures and their combining modes to apply:
+</p>
+<p class='vspace'><b><span class='wikiword'>SetTexture</span></b> <em>texture property</em> { <em>[Combine options]</em> }
+</p>
+<div class='vspace'></div><h2>Details</h2>
+<h3>Lighting</h3>
+<p>The per-pixel lighting pipeline works by rendering objects in multiple passes. Unity renders the object once to get ambient and any vertex lights in. Then it renders each pixel light affecting the object in a separate additive pass. See <a href="../Manual/SL-RenderPipeline.html">Render Pipeline</a> for details.
+</p>
+<div class='vspace'></div><h2>See Also</h2>
+<p>There are a selection of special passes available for reusing common functionality or implementing various high-end effects:
+</p><ul><li><a href="../Manual/SL-UsePass.html">UsePass</a> includes named passes from another shader.
+</li><li><a href="../Manual/SL-GrabPass.html">GrabPass</a> grabs the contents of the screen into a texture, for use in a later pass.
+</li></ul><div class='vspace'></div><h2>Subsections</h2>
+<ul><li class='toclink'><a href="../Manual/SL-Material.html">Color, Material &amp; Lighting</a>
+</li><li class='toclink'><a href="../Manual/SL-CullAndDepth.html">Culling &amp; Depth Testing</a>
+</li><li class='toclink'><a href="../Manual/SL-SetTexture.html">Texturing</a>
+</li><li class='toclink'><a href="../Manual/SL-Fog.html">Fog</a>
+</li><li class='toclink'><a href="../Manual/SL-AlphaTest.html">Alpha testing</a>
+</li><li class='toclink'><a href="../Manual/SL-Blend.html">Blend</a>
+</li><li class='toclink'><a href="../Manual/SL-NameAndTags.html">Name and Tags</a>
+</li><li class='toclink'><a href="../Manual/SL-BindChannels.html">Bind Channels</a>
+</li></ul>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/SL-SubShader.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/SL-Material.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,269 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" Instantiating Prefabs at runtime"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title=" Instantiating Prefabs at runtime" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Creating%20Gameplay.html%22%3ECreating%20Gameplay%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Instantiating%20Prefabs.html%22%3E%20Instantiating%20Prefabs%20at%20runtime%3C%2Fa%3E" -->
+		<h1> Instantiating Prefabs at runtime</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Creating Gameplay.html">Creating Gameplay</a> &gt; <a href="Instantiating Prefabs.html"> Instantiating Prefabs at runtime</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Creating Gameplay.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Input.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Hopefully by now you understand the concept of <a href="../Manual/Prefabs.html">Prefabs</a>.  They are a collection of pre-defined Game Objects &amp; Components that are re-usable throughout your game.  Prefabs come in very handy when you want to instantiate complicated Game Objects at runtime.  The alternative to instantiating Prefabs is to create Game Objects from scratch using code.  Instantiating Prefabs has many advantages over this.  Let's look at some examples.
+</p>
+
+<ol><li> Building a wall out of a single &quot;brick&quot; Prefab by instantiating it several times in different positions.
+</li><li> A rocket launcher instantiates a rocket Prefab when the user presses fire. The Prefab contains the mesh, a rigidbody, collider, and a child Game Object that contains a trail particle system.
+</li><li> A robot exploding to many pieces. The complete, operational robot is destroyed and replaced with a wrecked robot Prefab. This Prefab would consist of the robot split into many parts, all set up with rigidbodies and particle systems of their own. This technique allows you to blow up a robot into many pieces, with 1 line of code, replacing one object with a Prefab.
+</li></ol>
+
+<p>Instantiating Prefabs instead of building new Game Objects from code has huge advantages:
+</p>
+<ul><li> You can set up and modify the Prefab quickly &amp; easily in the Scene &amp; Inspector.
+</li><li> You can change the Prefab being instanced without changing the code that instantiates it. A simple rocket might become a super-charged rocket, and you don't have to change the existing code.
+</li></ul>
+
+<h2>Building a wall</h2>
+
+<p>Let's compare creating objects from code and using prefabs by building a brick wall.
+</p>
+
+<p>First lets build a brick wall from code:
+<pre class='codelisting'>
+function Start ()
+{
+   for (var y=0;y&lt;5;y++)
+   {
+        for (var x=0;x&lt;5;x++)
+        {
+            var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.transform.position = Vector3 (x, y, 0);
+            cube.AddComponent(Rigidbody);
+        }
+   }
+}
+</pre>
+</p>
+
+<p>Now lets say you want to start tweaking values. For example you might want to assign a different texture, a different color, change friction and change the mass of the rigidbody. You can do all those things in one line of code but when you want to tweak a lot of things you will still end up with 6 lines of code. Plus tweaking a value takes longer if you have to type it, instead of edit a value in the inspector.
+</p>
+
+<p>The point is once you go beyond the basics, creating everything completely from code becomes unmanagable very quickly.
+</p>
+
+<p>So why not just create one of those cubes in the Editor, adjust all the values until they are right, add any Components we like, and instantiate a bunch of them?
+</p>
+
+<p>This is the script necessary to create our stack.
+<pre class='codelisting'>
+var cube : Transform;
+function Start ()
+{
+   for (var y=0;y&lt;5;y++)
+   {
+        for (var x=0;x&lt;5;x++)
+        {
+            var cube = Insantiate(cube, Vector3 (x, y, 0), Quaternion.identity);
+        }
+   }
+}
+</pre>
+</p>
+
+<p>Now this is not only very clean but also very reusable. There is nothing saying we are instantiating a cube or that it must contain a rigidbody. All of this is defined in the Prefab and can be quickly created in the Editor.
+</p>
+
+<p>Now we only need to create the Prefab, which we do in the Editor
+</p>
+<ol><li> Choose <b>Game Object -&gt; Create Other -&gt; Cube</b>
+</li><li> Choose <b>Component -&gt; Physics -&gt; Rigidbody</b>
+</li><li> Choose <b>Assets -&gt; Create Prefab</b>
+</li><li> Drag the cube you created in the Hierarchy View onto the empty Prefab that was created in the Project View.
+</li></ol>
+
+<ul><li> To use the above script we simply drag the script onto an empty Game Object.
+</li><li> Then we select the Game Object that contains the script and drag the Prefab onto the cube variable in the Inspector.
+</li></ul>
+
+<p>This is a workflow pattern that can be used over and over again in Unity. In the beginning you might wonder why this is so much better, because the script creating the cube from code is only 2 lines longer.
+</p>
+
+<p>But because you are using a Prefab now, you can adjust the Prefab in seconds. Want to change the mass of all those instances? Adjust the Rigidbody in the Prefab only once. Want to use a different Material for all the instances?  Drag the Material onto the Prefab only once. Want to change friction?  Use a different Physic Material in the Prefab's collider. Want to add a particle system to all those boxes?  Add a child to the Prefab only once.
+</p>
+
+
+<h2> Instantiating rockets &amp; explosions:</h2>
+
+<ol><li> A rocket launcher instantiates a rocket Prefab when the user presses fire. The Prefab contains the mesh, a rigidbody, collider, and a child Game Object that contains a trail particle system.
+</li><li> The rocket impacts and instantiates an explosion Prefab. The explosion Prefab contains a Particle System, a light that fades out over time, and a script that applies damage to surrounding Game Objects.
+</li></ol>
+
+<p>While it would be possible to build a rocket Game Object completely from code, adding Components manually and setting properties, it is far easier to instantiate a Prefab. You can instantiate the rocket in just one line of code, no matter how complex the rocket's Prefab is.  After instantiating the Prefab you can also modify any properties of the instantiated object. E.g. you can set the velocity of the rocket's Rigidbody.
+</p>
+
+<p>Aside from being easier to use. You can update the prefab later on. So if you are building a rocket you don't immediately have to add a particle trail to it. You can do that later. As soon as you add the trail as a child Game Object to the Prefab, all your instantiated rockets will have particle trails. And lastly, you can quickly tweak property of the rocket game object in the Inspector, making it far easier to fine tune your game.
+</p>
+
+<p>This script shows how to launch a rocket using the <b>Instantiate</b> function.
+<pre class='codelisting'>
+// Require the rocket to be a rigidbody.
+// This way we the user can not assign a prefab without rigidbody
+var rocket : Rigidbody;
+var speed : 10.0;
+
+function FireRocket () {
+    var rocketClone : Rigidbody = Insantiate(rocket, transform.position, transform.rotation);
+    rocketClone.velocity = transform.forward * speed;
+    // You can also acccess other components / scripts of the clone
+    rocketClone.GetComponent(MyRocketScript).DoSomething();
+}
+
+// Calls the fire method when holding down ctrl or mouse
+function Update () {
+    if (Input.GetButtonDown(&quot;Fire1&quot;))
+       FireRocket();
+}
+</pre>
+</p>
+
+
+<h2> Replacing a character with a ragdoll or wreck:</h2>
+<p>Let's say you have a fully rigged enemy character and he dies.  You could simply play a death animation on the character and disable all scripts that usually handle the enemy logic. You probably have to take care of removing several scripts, adding some custom logic to make sure that no one will continue attacking the dead enemy anymore, for example.
+</p>
+
+<p>A far better approach is to immediately delete the entire character and instantiate a wreck prefab instead of it. This gives you a lot of flexibility. You could use a different material for the dead character, attach completely different scripts, spawn a Prefab containing the object broken into many pieces to simulate a shattered enemy, or simply instantiate a Prefab containing a version of the character.
+</p>
+
+<p>Any of these options can be achieved with a single call to instantiate, you just have to hook it up to the right prefab and you are set.
+</p>
+
+<p>The important part to remember is that the wreck which you Instantiate can be made of completely different objects that the original. For example, if you have an airplane, you would model two versions. One where the plane consists of a single game object with mesh renderer and scripts for airplane physics. By keeping the model in just one game object your game will run faster since you will be able to make the model with less triangles and since it consists of fewer objects it will render faster than using many small parts. Also while your plane is happily flying around there is no reason to have it in seperate parts.
+</p>
+
+<p>To build an airplane wreck prefab the typical steps are:
+</p>
+<ol><li> Model your air plane with lots of different parts in your favorite modeller
+</li><li> Create an empty scene
+</li><li> Drag the model into an empty scene
+</li><li> Add rigidbodies to all parts, by selecting all the parts and choosing <b>Component -&gt; Physics -&gt; Rigidbody</b>
+</li><li> Add box colliders to all parts by selecting all the parts and choosing <b>Component -&gt; Physics -&gt; Box Collider</b>
+</li><li> For extra Special FX add a Smoke like Particle system as a child game object to each of the parts
+</li><li> Now you have an airplane with multiple exploded parts, they fall to the ground by physics and will create a particle trail due to the attached particle system. Hit Play to preview how your model reacts and do any necessary tweaks.
+</li><li> Choose <b>Assets -&gt; Create Prefab</b>
+</li><li> Drag the root game object containing all the air plane parts into the prefab
+</li></ol>
+
+<p><pre class='codelisting'>
+var wreck : GameObject;
+
+// As an example, we turn the game object into a wreck after 3 seconds automatically
+function Start ()
+{
+    yield WaitForSeconds(3);
+    KillSelf();
+}
+
+// Calls the fire method when holding down ctrl or mouse
+function KillSelf () {
+    // Instantiate the wreck game object at the same position we are at
+    var wreckClone = Instantiate(wreck, transform.position, transform.rotation);
+
+    // Sometimes we need to carry over some variables from this object
+    // to the wreck
+    wreckClone.GetComponent(MyScript).someVariable = GetComponent(MyScript).someVariable;
+
+    // Kill ourselves
+    Destroy(gameObject);
+}
+</pre>
+</p>
+
+<p>The First person shooter tutorial explains how to replace a character with a ragdoll version and also synchronize limbs with the last state of the animation.
+</p>
+
+
+<h2>Placing a bunch of objects in a specific pattern eg. a grid or a circle.</h2>
+
+<p>Lets say you want to place a bunch of objects on a grid or a circle.
+</p>
+
+<p>Traditionally this would be done by either:
+</p>
+<ol><li>Building an object completely from code. Eg. creating an empty game object and adding a component, then setting up all it's properties. This is tedious, entering values from a script is both slow, unintuitive and not worth the hassle.
+</li><li>Make the fully rigged object, duplicate it and place it multiple times in the scene. This is tedious, and placing objects accurately in a grid is hard.
+</li></ol>
+
+<p>Solution: Use Instantiate. Create one Prefab, the prototype of what you want to create. Call instantiate several times in a loop and place those objects. You can also modify the Prefab components or Game Objects after you have instantiated them
+</p>
+
+
+<p><pre class='codelisting'>
+// Instantiates a prefab in a circle
+var prefab : GameObject;
+var numberOfObjects = 20;
+var radius = 5;
+
+function Start ()
+{
+	for (var i=0;i&lt;numberOfObjects;i++)
+	{
+		var angle = i * Mathf.PI * 2 / numberOfObjects;
+		var pos = Vector3 (Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
+		Instantiate(prefab, pos, Quaternion.identity);
+	}
+}
+</pre>
+</p>
+
+
+<p><pre class='codelisting'>
+// Instantiates a prefab in a grid
+var prefab : GameObject;
+var gridX = 5;
+var gridY = 5;
+var spacing = 2.0;
+
+function Start ()
+{
+	for (var y=0;y&lt;gridY;y++)
+	{
+		for (var x=0;x&lt;gridX;x++)
+		{
+			var pos = Vector3 (x, 0, y) * spacing;
+			Instantiate(prefab, pos, Quaternion.identity);
+		}
+	}
+}
+</pre>
+</p>
+
+
+
+
+
+		<div class="navigation"><a href="Creating Gameplay.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Input.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

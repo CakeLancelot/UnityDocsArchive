@@ -1,0 +1,283 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Particle System (Shuriken)</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Particle System (Shuriken)</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-Effects.html">Effects</a> &gt; <a href="../Components/class-ParticleSystem.html">Particle System (Shuriken)</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><a href='../ScriptReference/ParticleSystem.html' title='Go to ParticleSystem Scripting Doc'>Switch to Scripting</a><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Particle System (Shuriken)</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Particle Systems in Unity are used to make clouds of smoke, steam, fire and other atmospheric effects. 
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-ParticleSystem-0.jpg' /></div>
+<p class='vspace'>You can create a new particle system by creating a <span class='doc-prop'>Particle System</span> GameObject (menu <span class='doc-menu'>GameObject</span> -&gt; <span class='doc-menu'>Create Other</span> -&gt; <span class='doc-menu'>Particle System</span>) or by creating an empty <span class='doc-prop'>GameObject</span> and adding the <span class='doc-prop'>ParticleSystem</span> component to it (in <span class='doc-menu'>Component</span>-&gt;<span class='doc-menu'>Effects</span>)
+</p>
+<div class='vspace'></div><h2>The Particle System Inspector (Shuriken)</h2>
+<p>The <span class='doc-menu'>Particle System Inspector</span> shows one particle system at a time (the currently selected one), and it looks like this:
+</p><div><img class='figure' src='../Images/manual/class-ParticleSystem-1.jpg' /></div>
+<p class='vspace'>Individual particle systems can take on various complex behaviors by using <a href="../Manual/Particle System Modules Intro.html">Modules</a>.
+</p>
+<p class='vspace'>They can also be extended by being grouped together into <span class='doc-keyword'>Particle Effects</span>. 
+</p>
+<p class='vspace'>If you press the button <span class='doc-menu'>Open Editor ...</span>, this will open up the Extended <span class='doc-menu'>Particle Editor</span>, that shows all of the particle systems under the same root in the scene tree. For more information on particle system grouping, please see the section on <a href="../Manual/Particle System Grouping.html">Particle Effects</a>. 
+</p>
+<div class='vspace'></div><h2>Scene View Editing</h2>
+<p>When creating and editing Particle Systems, you either work with the <span class='doc-menu'>Inspector</span> or the extended <span class='doc-menu'>Particle Editor</span>, and your changes are reflected in the <span class='doc-menu'>SceneView</span>. The scene view has a <span class='doc-menu'>Preview Panel</span>, where playback of the currently selected <span class='doc-menu'>Particle Effect</span> can be controlled in Edit Mode, with actions like <span class='doc-menu'>play</span>, <span class='doc-menu'>pause</span>, <span class='doc-menu'>stop</span> and <span class='doc-menu'>scrubbing playback time</span>
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-ParticleSystem-2.jpg' /></div>
+<p class='vspace'>Scrubbing play back time can be performed by dragging on the label <em>Playback Time</em>. All Playback controls have shortcut keys which can be customized in the <a href="../Manual/Preferences.html">Preferences window</a>
+</p>
+<div class='vspace'></div><h1>Particle System Curve Editor</h1>
+<h2>MinMax curves</h2>
+<p>Many of the properties in the particle system modules describe a change of a value with time. That change is described via <span class='doc-keyword'>MinMax Curves</span>. 
+These time-animated properties (for example  <span class='doc-prop'>size</span> and <span class='doc-prop'>speed</span>), will have a pull down menu on the right hand side, where you can choose between: 
+</p><div><img class='figure' src='../Images/manual/class-ParticleSystem-3.jpg' /></div>
+<p class='vspace'><span class='doc-prop'>Constant</span>: The value of the property will not change with time, and will not be displayed in the <span class='doc-keyword'>Curve Editor</span>
+</p>
+<p class='vspace'><span class='doc-prop'>Random between constants</span>: The value of the property will be selected at random between the two constants
+</p>
+<p class='vspace'><span class='doc-prop'>Curve</span>: The value of the property will change with time based on the curve specified in the <span class='doc-keyword'>Curve Editor</span>
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-ParticleSystem-4.jpg' /></div>
+<div class='indent'>A property animated with a Curve
+</div><p class='vspace'><span class='doc-prop'>Random between curves</span>: A curve will be generated at random between the min and the max curve, and the value of the property will change in time based on the generated curve
+</p><div><img class='figure' src='../Images/manual/class-ParticleSystem-5.jpg' /></div>
+<p>A property animated as <span class='doc-prop'>Random Between Two Curves</span>
+</p>
+<p class='vspace'>In the <span class='doc-keyword'>Curve Editor</span>, the <em>x</em>-axis spans time between 0 and the value specified by the <span class='doc-prop'>Duration</span> property, and the <em>y</em>-axis represents the value of the animated property at each point in time. The range of the <em>y</em>-axis can be adjusted in the number field in the upper right corner of the <span class='doc-keyword'>Curve Editor</span>. The <span class='doc-keyword'>Curve Editor</span> currently displays all of the curves for a particle system in the same window. 
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-ParticleSystem-6.jpg' /> </div>
+<div class='indent'>Multiple curves in the same curve editor
+</div><p class='vspace'>Note that the "-" in the bottom-right corner will remove the currently selected curve, while the "+" will <em>optimize</em> it (that is make it into a parametrized curve with at most 3 keys). 
+</p>
+<p class='vspace'>For animating properties that describe vectors in 3D space, we use the TripleMinMax Curves, which are simply curves for the x-,y-, and z- dimensions side by side, and it looks like this: 
+</p><div><img class='figure' src='../Images/manual/class-ParticleSystem-7.jpg' /></div>
+<div class='vspace'></div><h2>Managing many curves in the curve editor</h2>
+<p>To avoid cluttering in the <span class='doc-keyword'>Curve Editor</span>, it is possible to toggle curves on and off, by clicking on them in the inspector. The Particle System Curve Editor can also be detached from the Inspector by right-clicking on the <span class='doc-prop'>Particle System Curves</span> title bar, after which you should see something like this:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-ParticleSystem-8.jpg' /> </div>
+<p>A detached Curve Editor that can be docked like any other window 
+</p>
+<p class='vspace'>For more information on working with curves, take a look at the <a href="../Components/EditingCurves.html">Curve Editor documentation</a> 
+</p><h1>Colors and Gradients in the Particle System (Shuriken)</h1>
+<div><img class='figure' src='../Images/manual/class-ParticleSystem-9.jpg' /></div>
+<p>For properties that deal with color, the <span class='doc-prop'>Particle System</span> makes use of the <span class='doc-keyword'>Color and Gradient Editor</span>. 
+It works in a similar way to the <a href="../Manual/Particle System Curve Editor.html">Curve Editor</a>.
+</p>
+<p class='vspace'>The color-based properties will have a pull down menu on the right hand side, where you can choose between: 
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-ParticleSystem-10.jpg' /></div>
+<p class='vspace'><span class='doc-prop'>Color</span>: The color will be the same throughout time (see <a href="../Manual/Editing Value Properties.html">Color Picker</a>)
+</p>
+<p class='vspace'><span class='doc-prop'>Gradient</span>: The gradient (RGBA) will vary throughout time, edited in the <span style='font-size: 110%; font-weight: bold; color: yellow; background-color: red; padding: 2px;'>Gradient Editor</span>
+</p>
+<p class='vspace'><span class='doc-prop'>Random Between Two Colors</span>: The color varies with time and is chosen at random between two values specified in the <a href="../Manual/Editing Value Properties.html">Color Picker</a>
+</p>
+<p class='vspace'><span class='doc-prop'>Random Between Two Gradients</span>: The gradient (RGBA) varies with time and is chosen at random between two values specified <span style='font-size: 110%; font-weight: bold; color: yellow; background-color: red; padding: 2px;'>Gradient Editor</span>
+</p>
+</p><small>Page last updated: 2012-01-25</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

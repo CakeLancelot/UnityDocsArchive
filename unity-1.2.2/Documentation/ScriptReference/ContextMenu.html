@@ -1,0 +1,41 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="ContextMenu"-->
+			<title>Unity Script Reference &ndash; ContextMenu</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class ContextMenu</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class ContextMenu" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass">Attribute</div></p>
+   <p class='first'> The ContextMenu attribute allows you to add commands to the context menu</p>
+<span class='toc'><p class='tocheader'>Constructors</p><p><a href='#ContextMenu'>ContextMenu</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> in the inspector of the attached script. When the user selects the context menu,
+the function will be executed.  <p class="basic"/>This is most useful for automatically setting up scene data from the script.
+The function has to be non-static.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">@ContextMenu ("Do Something")<br/>function DoSomething () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Debug.html#Log" class="itemlink">Debug.Log</a> ("Perform operation");<br/>}
+</div></td></tr></table><table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// C# example:<br/><span class="keyword">class</span> ContextTesting : <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a> {<br/>&nbsp;&nbsp;&nbsp;&nbsp;/// Add a context menu named "Do Something" <span class="keyword">in</span> the inspector<br/>&nbsp;&nbsp;&nbsp;&nbsp;/// of the attached script.<br/>&nbsp;&nbsp;&nbsp;&nbsp;[ContextMenu ("Do Something")]<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="standard_type">void</span> DoSomething () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Debug.html#Log" class="itemlink">Debug.Log</a> ("Perform operation");<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+   <a name="Constructors"></a><h2 class="script-section">Constructors</h2>
+	<a name="ContextMenu"></a><h3><span class="full-name">ContextMenu.</span>ContextMenu</h3><div class="synopsis">ContextMenu (<span class="standard_type">string</span> name)</div>
+   <p class='details'> </p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

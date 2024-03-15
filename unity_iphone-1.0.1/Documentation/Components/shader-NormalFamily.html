@@ -1,0 +1,152 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Normal Shader Family</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Normal Shader Family</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Built-in Shader Guide.html">Built-in Shader Guide</a> &gt; <a href="../Components/shader-NormalFamily.html">Normal Shader Family</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/Built-in Shader Guide.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/shader-NormalVertexLit.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Normal Shader Family</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>These shaders are the most basic shaders for Unity.  They are not specialized in any way and should be suitable for most purposes.  They are not suitable if you want your object to be transparent, lightmapped, etc.  They are a great starting place for learning how to alter the properties of <span class='doc-keyword'>Material</span>.  They are also useful for opaque, non-reflective objects like plastics or wood, or if you don't have access to a tool that creates Lightmaps.
+</p>
+<div class='vspace'></div><h2><a href="../Components/shader-NormalVertexLit.html">Vertex Lit</a></h2>
+<div><a href="../Components/shader-NormalVertexLit.html"><img class='figure' src='../Images/manual/shader-NormalFamily-0.jpg' /></a></div>
+<p class='vspace'><strong>Assets needed:</strong>
+</p><ul><li>One <span class='doc-prop'>Base</span> texture, no alpha channel required
+</li></ul><p class='vspace'><a href="../Components/shader-NormalVertexLit.html">&#187; More details</a>
+</p>
+<div class='vspace'></div><h2><a href="../Components/shader-NormalDiffuse.html">Diffuse</a></h2>
+<div><a href="../Components/shader-NormalDiffuse.html"><img class='figure' src='../Images/manual/shader-NormalFamily-1.jpg' /></a></div>
+<p class='vspace'><strong>Assets needed:</strong>
+</p><ul><li>One <span class='doc-prop'>Base</span> texture, no alpha channel required
+</li></ul><p class='vspace'><a href="../Components/shader-NormalDiffuse.html">&#187; More details</a>
+</p>
+<div class='vspace'></div><h2><a href="../Components/shader-NormalSpecular.html">Specular</a></h2>
+<div><a href="../Components/shader-NormalSpecular.html"><img class='figure' src='../Images/manual/shader-NormalFamily-2.jpg' /></a></div>
+<p class='vspace'><strong>Assets needed:</strong>
+</p><ul><li>One <span class='doc-prop'>Base</span> texture with alpha channel for Specular Map
+</li></ul><p class='vspace'><a href="../Components/shader-NormalSpecular.html">&#187; More details</a>
+</p>
+<div class='vspace'></div><h2><a href="../Components/shader-NormalBumpedDiffuse.html">Bumped</a></h2>
+<div><a href="../Components/shader-NormalBumpedDiffuse.html"><img class='figure' src='../Images/manual/shader-NormalFamily-3.jpg' /></a></div>
+<p class='vspace'><strong>Assets needed:</strong>
+</p><ul><li>One <span class='doc-prop'>Base</span> texture, no alpha channel required
+</li><li>One <span class='doc-prop'>Bumpmap</span> normal map, no alpha channel required
+</li></ul><p class='vspace'><a href="../Components/shader-NormalBumpedDiffuse.html">&#187; More details</a>
+</p>
+<div class='vspace'></div><h2><a href="../Components/shader-NormalBumpedSpecular.html">Bumped Specular</a></h2>
+<div><a href="../Components/shader-NormalBumpedSpecular.html"><img class='figure' src='../Images/manual/shader-NormalFamily-4.jpg' /></a></div>
+<p class='vspace'><strong>Assets needed:</strong>
+</p><ul><li>One <span class='doc-prop'>Base</span> texture with alpha channel for Specular Map
+</li><li>One <span class='doc-prop'>Bumpmap</span> normal map, no alpha channel required
+</li></ul><p class='vspace'><a href="../Components/shader-NormalBumpedSpecular.html">&#187; More details</a>
+</p>
+<div class='vspace'></div><h2><a href="../Components/shader-NormalParallaxDiffuse.html">Parallax</a></h2>
+<div><a href="../Components/shader-NormalParallaxDiffuse.html"><img class='figure' src='../Images/manual/shader-NormalFamily-5.jpg' /></a></div>
+<p class='vspace'><strong>Assets needed:</strong>
+</p><ul><li>One <span class='doc-prop'>Base</span> texture, no alpha channel required
+</li><li>One <span class='doc-prop'>Bumpmap</span> normal map with alpha channel for Parallax Depth
+</li></ul><p class='vspace'><a href="../Components/shader-NormalParallaxDiffuse.html">&#187; More details</a>
+</p>
+<div class='vspace'></div><h2><a href="../Components/shader-NormalParallaxSpecular.html">Parallax Specular</a></h2>
+<div><a href="../Components/shader-NormalParallaxSpecular.html"><img class='figure' src='../Images/manual/shader-NormalFamily-6.jpg' /></a></div>
+<p class='vspace'><strong>Assets needed:</strong>
+</p><ul><li>One <span class='doc-prop'>Base</span> texture with alpha channel for Specular Map
+</li><li>One <span class='doc-prop'>Bumpmap</span> normal map with alpha channel for Parallax Depth
+</li></ul><p class='vspace'><a href="../Components/shader-NormalParallaxSpecular.html">&#187; More details</a>
+</p>
+<div class='vspace'></div><h2><a href="../Components/shader-NormalDecal.html">Decal</a></h2>
+<div><a href="../Components/shader-NormalDecal.html"><img class='figure' src='../Images/manual/shader-NormalFamily-7.jpg' /></a></div>
+<p class='vspace'><strong>Assets needed:</strong>
+</p><ul><li>One <span class='doc-prop'>Base</span> texture, no alpha channel required
+</li><li>One <span class='doc-prop'>Decal</span> texture with alpha channel for Decal transparency
+</li></ul><p class='vspace'><a href="../Components/shader-NormalDecal.html">&#187; More details</a>
+</p>
+<div class='vspace'></div><h2><a href="../Components/shader-NormalDiffuseFast.html">Diffuse Fast</a></h2>
+<div><a href="../Components/shader-NormalDiffuseFast.html"><img class='figure' src='../Images/manual/shader-NormalFamily-8.jpg' /></a></div>
+<p class='vspace'><strong>Assets needed:</strong>
+</p><ul><li>One <span class='doc-prop'>Base</span> texture, no alpha channel required
+</li></ul><p class='vspace'><a href="../Components/shader-NormalDiffuseFast.html">&#187; More details</a>
+</p>
+<div class='vspace'></div><h2><a href="../Components/shader-NormalDiffuseDetail.html">Diffuse Detail</a></h2>
+<div><a href="../Components/shader-NormalDiffuseDetail.html"><img class='figure' src='../Images/manual/shader-NormalFamily-9.jpg' /></a></div>
+<p class='vspace'><strong>Assets needed:</strong>
+</p><ul><li>One <span class='doc-prop'>Base</span> texture, no alpha channel required
+</li><li>One <span class='doc-prop'>Detail</span> grayscale texture, no alpha channel required
+</li></ul><p class='vspace'><a href="../Components/shader-NormalDiffuseDetail.html">&#187; More details</a>
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/Built-in Shader Guide.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/shader-NormalVertexLit.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

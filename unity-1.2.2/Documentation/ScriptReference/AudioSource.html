@@ -1,0 +1,71 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="AudioSource"-->
+			<title>Unity Script Reference &ndash; AudioSource</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class AudioSource</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class AudioSource" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Component.html" class="classlink">Component</a></div></p>
+   <p class='first'> A representation of audio sources in 3D.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#volume'>volume</a></p>
+<p><a href='#clip'>clip</a></p>
+<p><a href='#isPlaying'>isPlaying</a></p>
+<p><a href='#ignoreListenerVolume'>ignoreListenerVolume</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Functions</p><p><a href='#Play'>Play</a></p>
+<p><a href='#Stop'>Stop</a></p>
+<p><a href='#Pause'>Pause</a></p>
+<p><a href='#PlayOneShot'>PlayOneShot</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#PlayClipAtPoint'>PlayClipAtPoint</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> An AudioSource is attached to a <a href="GameObject.html" class="classlink">GameObject</a> for playing back sounds in a 3D environment.
+Mono sounds play back 3D. In order to play 3D sounds you also need to have a <a href="AudioListener.html" class="classlink">AudioListener</a>.
+The audio listener is normally attached to the camera you want to use.
+Stereo sounds are always played back without distance based attenuation.  <p class="basic"/><span class="seealso"><b>See Also:</b> <a href="AudioListener.html" class="classlink">AudioListener</a>, <a href="AudioClip.html" class="classlink">AudioClip</a>, <a href="../Components/class-AudioSource.html" class="classlink">AudioSource</a> in the Components Reference.</span></p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="volume"></a><h3><span class="full-name">AudioSource.</span>volume</h3><div class="synopsis"><span class="standard_type">float</span> volume</div>
+   <p class='details'> The volume of the audio source.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">audio.volume = 0.2;</div></td></tr></table></p>
+	<a name="clip"></a><h3><span class="full-name">AudioSource.</span>clip</h3><div class="synopsis"><a href="AudioClip.html" class="classlink">AudioClip</a> clip</div>
+   <p class='details'> The default <a href="AudioClip.html" class="classlink">AudioClip</a> to play<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">audio.Play();<br/>// Wait <span class="keyword">for</span> the audio to have finished<br/>yield <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a> (audio.clip.length);</div></td></tr></table></p>
+	<a name="isPlaying"></a><h3><span class="full-name">AudioSource.</span>isPlaying</h3><div class="synopsis"><span class="standard_type">bool</span> isPlaying</div>
+   <p class='details'> Is the <a href="#clip " class="itemlink">clip </a>playing right now (Read only)</p>
+	<a name="ignoreListenerVolume"></a><h3><span class="full-name">AudioSource.</span>ignoreListenerVolume</h3><div class="synopsis"><span class="standard_type">bool</span> ignoreListenerVolume</div>
+   <p class='details'> This makes the audio source not take into account the volume of the audio listener.
+Enable this when playing back music.
+When playing back music you want a separate setting which is unaffected by the normal sound effects volume.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">audio.ignoreListenerVolume = true;</div></td></tr></table></p>
+   <a name="Methods"></a><h2 class="script-section">Methods</h2>
+	<a name="Play"></a><h3><span class="full-name">AudioSource.</span>Play</h3><div class="synopsis"><span class="standard_type">void</span> Play ()</div>
+   <p class='details'> Plays the <a href="#clip" class="itemlink">clip</a></p>
+	<a name="Stop"></a><h3><span class="full-name">AudioSource.</span>Stop</h3><div class="synopsis"><span class="standard_type">void</span> Stop ()</div>
+   <p class='details'> Stops playing the <a href="#clip" class="itemlink">clip</a></p>
+	<a name="Pause"></a><h3><span class="full-name">AudioSource.</span>Pause</h3><div class="synopsis"><span class="standard_type">void</span> Pause ()</div>
+   <p class='details'> Pauses playing the <a href="AudioSource.html#clip" class="itemlink">AudioSource.clip</a></p>
+	<a name="PlayOneShot"></a><h3><span class="full-name">AudioSource.</span>PlayOneShot</h3><div class="synopsis"><span class="standard_type">void</span> PlayOneShot (<a href="AudioClip.html" class="classlink">AudioClip</a> clip, <span class="standard_type">float</span> volumeScale = 1.0F)</div>
+   <p class='details'> Plays an <a href="AudioClip.html" class="classlink">AudioClip</a></p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="PlayClipAtPoint"></a><h3><span class="full-name">AudioSource.</span>PlayClipAtPoint</h3><div class="synopsis"><span class="standard_type">void</span> PlayClipAtPoint (<a href="AudioClip.html" class="classlink">AudioClip</a> clip, <a href="Vector3.html" class="classlink">Vector3</a> position, <span class="standard_type">float</span> volume = 1.0F)</div>
+   <p class='details'> <table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Plays the clip at position<br/>var clip : <a href="AudioClip.html" class="classlink">AudioClip</a>;<br/><a href="AudioSource.html#PlayClipAtPoint" class="itemlink">AudioSource.PlayClipAtPoint</a>(clip, <a href="Vector3.html" class="classlink">Vector3</a> (5, 1, 2));</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

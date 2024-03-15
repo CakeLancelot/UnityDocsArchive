@@ -1,0 +1,144 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Player Settings</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Player Settings</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-ManagerGroup.html">Settings Managers</a> &gt; <a href="../Components/class-PlayerSettings.html">Player Settings</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-PhysicsManager.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-RenderSettings.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Player Settings</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><span class='doc-keyword'>Player Settings</span> is where you define various parameters for the final game that you will build in Unity.  <span class='specific-iphone'>Some of these values are used by <span class='wikiword'>XCode</span> when building your game for the iPhone or iPod Touch, so it's important to fill them out correctly.</span>
+</p>
+<p class='vspace'>To see the Player Settings choose <span class='doc-menu'>Edit-&gt;Project Settings-&gt;Player</span> from the menu bar.
+</p>
+<div class='vspace'></div>
+<div class='vspace'></div><div class='specific-iphone' > 
+<div><img class='figure' src='../Images/manual/class-PlayerSettings-0.jpg' /><br /><em>Unity iPhone's Player Settings</em></div>
+</div>
+<div class='vspace'></div><h2>Properties</h2>
+
+<div class='vspace'></div><div class='specific-iphone' > 
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>iPhone Bundle Identifier</span></td><td  align='left'>The string used in your provisioning certificate from your Apple Developer Network account</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>iPhone Bundle Version</span></td><td >Specifies the build version number of the bundle, which identifies an iteration (released or unreleased) of the bundle. This is a monotonically increased string, comprised of one or more period-separated integers.</td></tr>
+<tr ><td ><span class='doc-prop'>iPhone Application Display Name</span></td><td >Specifies the display name of the bundle.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>iPhone Stripping Level (Advanced-only feature)</span></td><td  align='left'>Options to strip out scripting features to reduce built player size</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Strip Assemblies</span></span></td><td  align='left'>Level 1 size reduction</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Strip <span class='wikiword'>ByteCode</span></span></span></td><td  align='left'>Level 2 size reduction (includes reductions from Level 1)</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Use micro mscorlib</span></span></td><td  align='left'>Level 3 size reduction (includes reductions from Levels 1 and 2)</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>iPhone Script Call Optimization</span></td><td  align='left'>Optionally disable exception handling for a speed boost at runtime</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Slow and Safe</span></span></td><td  align='left'>Full exception handling will occur with some performance impact on the device</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Fast but no Exceptions</span></span></td><td  align='left'>No data provided for exceptions on the device, but the game will run faster</td></tr>
+<tr ><td ><span class='doc-prop'>Default Screen Orientation</span></td><td >Specifies default device UI orientation</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Portrait</span></span></td><td >The device is in portrait mode, with the device held upright and the home button at the bottom.</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Portrait Upside Down</span></span></td><td >The device is in portrait mode but upside down, with the device held upright and the home button at the top.</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Landscape Right</span></span></td><td >The device is in landscape mode, with the device held upright and the home button on the <b>left</b> side.</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Landscape Left</span></span></td><td >The device is in landscape mode, with the device held upright and the home button on the <b>right</b> side.</td></tr>
+<tr ><td ><span class='doc-prop'>iPhone SDK Version</span></td><td >Specifies iPhone OS SDK version to use for building in Xcode</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>iPhone OS 2.0</span></span></td><td >iPhone OS 2.0.</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>iPhone OS 2.1</span></span></td><td >iPhone OS 2.1.</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>iPhone OS 2.2</span></span></td><td >iPhone OS 2.2.</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>iPhone OS 2.2.1</span></span></td><td >iPhone OS 2.2.1 (default value)</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>iPhone OS 3.0</span></span></td><td >iPhone OS 3.0.</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>iPhone OS 3.1</span></span></td><td >iPhone OS 3.1.</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>iPhone OS 3.1.2</span></span></td><td >iPhone OS 3.1.2.</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Unknown</span></span></td><td >iPhone OS SDK version is not managed by Unity iPhone Editor.</td></tr>
+<tr ><td ><span class='doc-prop'>UI Prerendered Icon</span></td><td >If unchecked the iPhone OS applies sheen and bevel effects to the application icon</td></tr>
+<tr ><td ><span class='doc-prop'>UI Requires Persistent <span class='wikiword'>WiFi</span></span></td><td >Specifies whether the application requires a Wi-Fi connection. iPhone OS maintains the active Wi-Fi connection open while the application is running.</td></tr>
+<tr ><td ><span class='doc-prop'>UI Status Bar Hidden</span></td><td >Specifies whether the status bar is initially hidden when the application launches.</td></tr>
+<tr ><td ><span class='doc-prop'>UI Status Bar Style</span></td><td >Specifies the style of the status bar as the application launches</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Default</span></span></td><td >&nbsp;</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Black Translucent</span></span></td><td >&nbsp;</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Black Opaque</span></span></td><td >&nbsp;</td></tr>
+<tr ><td ><span class='doc-prop'>iPhone Splash Screen (Advanced-only feature)</span></td><td >Specifies texture which should be used as Splash Screen. Standard Splash Screen size is 320x480.</td></tr>
+<tr ><td ><span class='doc-prop'>iPhone Icon</span></td><td >Specifies texture which should be used as application icon. Standard Icon size is 57x57.</td></tr>
+<tr ><td ><span class='doc-prop'>Override iPod Music</span></td><td  align='left'>If selected application will silence user's iPod music. Otherwise user's iPod music will continue playing in the background, but no compressed sounds are later possible in application.</td></tr>
+</table></div>
+<div class='vspace'></div><h2>Details</h2>
+
+<div class='vspace'></div><div class='specific-iphone' > 
+<div class='vspace'></div><h3>Bundle Identifier</h3>
+<p>The <span class='doc-prop'>Bundle Identifier</span> string must match the provisioning profile of the game you are building.  The basic structure of the identifier is <span class='doc-prop'>com.<span class='wikiword'>CompanyName.GameName</span></span>. This structure may vary internationally based on where you live, so always default to the string provided to you by Apple for your Developer Account.  Your <span class='wikiword'>GameName</span> is set up in your provisioning certificates, that are manageable from the Apple iPhone Developer Center website.  Please refer to the <a class='urllink' href='http://developer.apple.com/iphone/' rel='nofollow'>Apple iPhone Developer Center website</a> for more information on how this is performed.
+</p>
+<div class='vspace'></div><h3>Stripping Level (Advanced-only)</h3>
+<p>Most games don't use all necessary dlls.  With this option, you can strip out unused parts to reduce the size of the built player on the iPhone.  If your game is using classes that would normally be stripped out by the option you currently have selected, you'll be presented with a Debug message when you make a build.
+</p>
+<div class='vspace'></div><h3>Script Call Optimization</h3>
+<p>A good development practice on the iPhone is to never rely on exception handling (either internally or through the use of try/catch blocks).  When using the default <span class='doc-prop'>Slow and Safe</span> option, any exceptions that occur on the device will be caught and a stack trace will be provided.  When using the <span class='doc-prop'>Fast but no Exceptions</span> option, any exceptions that occur will crash the game, and no stack trace will be provided.  However, the game will run faster since the processor is not diverting power to handle exceptions.  When releasing your game to the world, it's best to publish with the <span class='doc-prop'>Fast but no Exceptions</span> option.
+</p>
+<div class='vspace'></div></div>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-PhysicsManager.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-RenderSettings.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

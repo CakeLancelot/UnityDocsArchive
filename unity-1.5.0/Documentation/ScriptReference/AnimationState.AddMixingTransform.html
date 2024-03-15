@@ -1,0 +1,46 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="AnimationState.AddMixingTransform"-->
+			<title>Unity Script Reference &ndash; AnimationState.AddMixingTransform</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<script language="JavaScript" src="UnityDoc.js"></script>
+<body>
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>AddMixingTransform</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+	<!-- #TemplateEndEditable -->
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-top.lbi" --><!-- #EndLibraryItem --><div class="left-menu-container"><ul class="left-menu"><li><span class="left-menu-heading">Menu</span></li><li><a class="left-menu-item" href="index.html">Overview</a></li><li><a class="left-menu-item" href="20_class_hierarchy.html">Class Hierarchy</a></li><li><a class="left-menu-item" href="10_reference.html">Reference</a></li><li><span class="left-menu-seperator"></span></li><li><a class="left-menu-heading" href="AnimationState.html">AnimationState</a></li><li><a class="left-menu-item" href="AnimationState.html">Class Members</a></li><li><span class="left-menu-subheading">Variables</span></li><li><a class="left-menu-item" href="AnimationState.blendMode.html">blendMode</a></li><li><a class="left-menu-item" href="AnimationState.clip.html">clip</a></li><li><a class="left-menu-item" href="AnimationState.enabled.html">enabled</a></li><li><a class="left-menu-item" href="AnimationState.layer.html">layer</a></li><li><a class="left-menu-item" href="AnimationState.length.html">length</a></li><li><a class="left-menu-item" href="AnimationState.name.html">name</a></li><li><a class="left-menu-item" href="AnimationState.normalizedSpeed.html">normalizedSpeed</a></li><li><a class="left-menu-item" href="AnimationState.normalizedTime.html">normalizedTime</a></li><li><a class="left-menu-item" href="AnimationState.speed.html">speed</a></li><li><a class="left-menu-item" href="AnimationState.time.html">time</a></li><li><a class="left-menu-item" href="AnimationState.weight.html">weight</a></li><li><a class="left-menu-item" href="AnimationState.wrapMode.html">wrapMode</a></li><li><span class="left-menu-subheading">Functions</span></li><li><span class="left-menu-item left-menu-current">AddMixingTransform</span></li></ul></div>
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-middle.lbi" --><!-- #EndLibraryItem -->	<div id="AddMixingTransform" class="manual-entry"><h3><span class="full-name">AnimationState.</span>AddMixingTransform</h3><div class="synopsis">void AddMixingTransform (<a href="Transform.html" class="classlink">Transform</a> mix, bool recursive = true)</div>
+   <p class="details"> Adds a transform which should be animated. This allows you to reduce the number of animations you have to create.
+For example you might have a handwaving animation.
+You might want to play the hand waving animation on a idle character or on a walking character.
+Either you have to create 2 hand waving animations one for idle, one for walking.
+By using mixing the hand waving animation will have full control of the shoulder. But the lower body will not be affected by it, and continue playing the idle or walk animation.
+Thus you only need one hand waving animation.
+</p><p class="details">
+If <span class="variable">recursive</span> is true all children of the <span class="variable">mix</span> transform will also be animated.
+If you don't call AddMixingTransform, all animation curves will be used.</p><div class="code"><span class="comment">/// Adds a mixing transform using a path instead</span>
+var shoulder : <a href="Transform.html" class="classlink">Transform</a>;<br/>animation["wave_hand"].AddMixingTransform(shoulder);
+</div><p class="details"></p><div class="code">function Start ()<br/>{<br/>    <span class="comment">/// Adds a mixing transform using a path instead</span>
+    var mixTransform = transform.Find("root/upper_body/left_shoulder");<br/>    animation["wave_hand"].AddMixingTransform(mixTransform);<br/>}</div><p class="details"></p>
+</div>	
+	</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

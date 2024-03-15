@@ -1,0 +1,74 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="HingeJoint"-->
+			<title>Unity Script Reference &ndash; HingeJoint</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class HingeJoint</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class HingeJoint" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Joint.html" class="classlink">Joint</a></div></p>
+   <p class='first'> The Hinge <a href="Joint.html" class="classlink">Joint</a> groups together 2 rigid bodies, constraining them to move like connected by a Hinge.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#motor'>motor</a></p>
+<p><a href='#limits'>limits</a></p>
+<p><a href='#spring'>spring</a></p>
+<p><a href='#useMotor'>useMotor</a></p>
+<p><a href='#useLimits'>useLimits</a></p>
+<p><a href='#useSpring'>useSpring</a></p>
+<p><a href='#velocity'>velocity</a></p>
+<p><a href='#angle'>angle</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> 
+This joint is great for, well, doors, but can also be used to model chains, etc...  <p class="basic"/>The HingeJoint has a motor which can be used to make the hinge spin around the joints axis.
+A spring which attempts to reach for a target angle by spinning arund the joints axis.
+And a limit which constrains the joint angle.</p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="motor"></a><h3><span class="full-name">HingeJoint.</span>motor</h3><div class="synopsis"><a href="JointMotor.html" class="classlink">JointMotor</a> motor</div>
+   <p class='details'> The motor will apply a force up to a maximum force to achieve the target velocity in degrees per second.  <p class="details"/>The motor tries to reach <span class="variable">motor.targetVelocity</span> angular velocity in degrees per second.
+The motor will only be able to reach <span class="variable">motor.targetVelocity</span>, if <span class="variable">motor.force</span> is sufficiently large.
+If the joint is spinning faster than <span class="variable">motor.targetVelocity</span> the motor will break.
+A negative <span class="variable">motor.targetVelocity</span> will make the motor spin in the opposite direction.  <p class="details"/>The <span class="variable">motor.force</span> is the maximum torque the motor can exert. If it is zero the motor is disabled.
+ 
+The motor will brake when it is spinning faster than <span class="variable">motor.targetVelocity</span> only, if <span class="variable">motor.freeSpin</span> is false.
+If <span class="variable">motor.freeSpin</span> is true the motor will not brake.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Make the hinge motor rotate with 90 degrees per second and a strong force.<br/>hingeJoint.motor.force = 100;<br/>hingeJoint.motor.targetVelocity = 90;<br/>hingeJoint.motor.freeSpin = false;
+</div></td></tr></table>Modifying the motor automatically enables the motor by setting <a href="HingeJoint.html#useMotor" class="itemlink">HingeJoint.useMotor</a> to true.</p>
+	<a name="limits"></a><h3><span class="full-name">HingeJoint.</span>limits</h3><div class="synopsis"><a href="JointLimits.html" class="classlink">JointLimits</a> limits</div>
+   <p class='details'> The limits of the hinge joint.
+The joint will be limited so that the angle is always between <span class="variable">limits.min</span> and <span class="variable">limits.max</span>.
+The joint angle is in degrees relative to the rest angle. The rest angle between the bodies is always zero at the beginning of the simulation.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Make hinge limit <span class="keyword">for</span> a door.<br/>hingeJoint.limits.min = 0;<br/>hingeJoint.limits.minBounce = 0;<br/>hingeJoint.limits.max = 90;<br/>hingeJoint.limits.maxBounce = 0;
+</div></td></tr></table>Modifying the limit automatically enables it.</p>
+	<a name="spring"></a><h3><span class="full-name">HingeJoint.</span>spring</h3><div class="synopsis"><a href="JointSpring.html" class="classlink">JointSpring</a> spring</div>
+   <p class='details'> The spring attempts to reach a target angle by adding spring and damping forces.  <p class="details"/>The <span class="variable">spring.spring</span> force attempts to reach the target angle. A larger value makes the spring reach the target position faster.  <p class="details"/>The <span class="variable">spring.damper</span> force dampens the angular velocity. A larger value makes the spring reach the goal slower.  <p class="details"/>The spring reaches for the <span class="variable">spring.targetPosition</span> angle in degrees relative to the rest angle. The rest angle between the bodies is always zero at the beginning of the simulation.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Make the spring reach shoot <span class="keyword">for</span> a 70 degree angle.<br/>// This could be used to fire off a catapult.<br/>hingeJoint.spring.spring = 10;<br/>hingeJoint.spring.damper = 3;<br/>hingeJoint.spring.targetPosition = 70;
+</div></td></tr></table>Modifying the spring automatically enables it.</p>
+	<a name="useMotor"></a><h3><span class="full-name">HingeJoint.</span>useMotor</h3><div class="synopsis"><span class="standard_type">bool</span> useMotor</div>
+   <p class='details'> Enables the joint's motor.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">hingeJoint.useMotor = true;</div></td></tr></table></p>
+	<a name="useLimits"></a><h3><span class="full-name">HingeJoint.</span>useLimits</h3><div class="synopsis"><span class="standard_type">bool</span> useLimits</div>
+   <p class='details'> Enables the joint's limits.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">hingeJoint.useLimits = true;</div></td></tr></table></p>
+	<a name="useSpring"></a><h3><span class="full-name">HingeJoint.</span>useSpring</h3><div class="synopsis"><span class="standard_type">bool</span> useSpring</div>
+   <p class='details'> Enables the joint's spring.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">hingeJoint.useSpring = true;</div></td></tr></table></p>
+	<a name="velocity"></a><h3><span class="full-name">HingeJoint.</span>velocity</h3><div class="synopsis"><span class="standard_type">float</span> velocity</div>
+   <p class='details'> The angular velocity of the joint in degrees per second.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">print(hingeJoint.velocity);</div></td></tr></table></p>
+	<a name="angle"></a><h3><span class="full-name">HingeJoint.</span>angle</h3><div class="synopsis"><span class="standard_type">float</span> angle</div>
+   <p class='details'> The current angle in degrees of the joint relative to its rest position.
+The rest angle between the bodies is always zero at the beginning of the simulation.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">print(hingeJoint.angle);</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

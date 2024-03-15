@@ -1,0 +1,135 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Plugins - Pro only feature"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title="Plugins - Pro only feature" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced.html%22%3EAdvanced%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Plugins.html%22%3EPlugins%20-%20Pro%20only%20feature%3C%2Fa%3E" -->
+		<h1>Plugins - Pro only feature</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced.html">Advanced</a> &gt; <a href="Plugins.html">Plugins - Pro only feature</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Web-BrowserCommunication.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Build Player Pipeline.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Unity has extensive support for C, C++ or Objective-C based plugins.
+In order to use a plugin you need to do two things:
+</p>
+<ul><li> Write a plugin in a C based language and compile it.
+</li><li> Create a C# script which calls functions in the plugin to do something.
+</li></ul>
+
+<p>So the plugin provides a simple c interface. The Script then invokes the functions exposed by the plugin.
+Here is a very simple example:
+</p>
+
+<h2>The C file of a minimal plugin:</h2>
+<p><pre class='codelisting'>
+float FooPluginFunction () { return 5.0F; }
+</pre>
+</p>
+
+<h2>A C# script that uses the plugin:</h2>
+<p><pre class='codelisting'>
+using UnityEngine; 
+using System.Runtime.InteropServices; 
+
+class SomeScript : MonoBehaviour 
+{
+   // This tells unity to look up the function FooPluginFunction inside the plugin named &quot;PluginName&quot;
+   [DllImport (&quot;PluginName&quot;)]
+   private static extern float FooPluginFunction ();
+
+   void Awake () 
+   {
+      // Calls the FooPluginFunction inside the PluginName plugin
+      // And prints 5 to the console 
+      print (FooPluginFunction ());
+   }
+}
+</pre>
+</p>
+
+<h2>Building a plugin for Mac OS X</h2>
+
+<p>If you are building a plugin for Mac OS X, you have to create a bundle. The easiest way to do this is using XCode. Use <i>File-&gt;NewProject...</i> and select the Bundle - Carbon Bundle preset.
+</p>
+
+<p>If you are using C++ or Objective-C to implement the plugin you have to make sure the functions are declared with C linkage to avoid name mangling issues.
+<pre class='codelisting'>
+extern &quot;C&quot;
+{
+  float FooPluginFunction ();
+}
+</pre>
+</p>
+
+<h2>Building a plugin for Windows</h2>
+
+<p>Plugins on Windows are DLL files with exported functions. Practically any language or development environment that can create DLL files can be used to create plugins. Again, if you use C++, declare functions with C linkage to avoid name mangling issues.
+</p>
+
+<h2>Using your plugin from C#</h2>
+
+<p>Once you have built your bundle you have to copy it to <i>Assets/Plugins</i> folder.
+Unity will then find it by its name when you define a function like this:
+<pre class='codelisting'>
+[DllImport (&quot;PluginName&quot;)]
+private static extern float FooPluginFunction ();
+</pre>
+</p>
+
+<p>Please note that <i>PluginName</i> should not include the extension of the filename.
+</p>
+
+<h2>Deployment</h2>
+<p>For cross platform plugins you have to include both .bundle (for Mac) and .dll (for Windows) files in Plugins folder. Once you have placed your plugins in the Plugins folder there is no more work required on your side. Unity automatically picks the right plugin for the right deployment platform and includes it with the player.
+</p>
+
+<h2>Examples</h2>
+
+<h3> Midi Plugin</h3>
+<p>A complete example of the Plugin interface can be found <a class="wiki"  href="http://www.otee.dk/tutorials/midiplugin.zip">here</a>.
+</p>
+
+<p>This is a complete MidiPlugin for OS X which uses Apple's CoreMidi API.
+It provides a simple C API and a C# class using the C API.
+The C# class contains a high level API, with easy access to NoteOn and NoteOff events and their velocity.
+</p>
+
+<h3> Texture Plugin</h3>
+<p>An example how to assign image data to a texture from C++ directly to OpenGL. This can be used to implement decompressed movies. This example includes both XCode (for Mac) and Visual Studio (for Windows) project files. The plugin with accompanying Unity project can be found <a class="wiki"  href="http://www.otee.dk/examples/TexturePlugin.zip">here</a>.
+</p>
+
+<h2>More information</h2>
+<p><a class="wiki"  href="http://www.mono-project.com/Interop_with_Native_Libraries">Mono Interop with native libraries</a>.
+</p>
+
+<p><a class="wiki"  href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconmarshalingdatawithplatforminvoke.asp">Microsoft p-invoke</a>.
+</p>
+
+
+
+		<div class="navigation"><a href="Web-BrowserCommunication.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Build Player Pipeline.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

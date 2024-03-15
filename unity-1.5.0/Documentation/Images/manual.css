@@ -1,0 +1,245 @@
+body {
+	background-color:    white;
+	margin-top:   0px;
+	margin-left:   0px;
+	margin-bottom:   0px;
+	margin-right:   0px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	color: #333
+}
+
+
+/* Cells where nothing is specified */
+td {
+	font-size:   12px;
+	vertical-align:   top;
+}
+.main {
+	padding-left:5px;
+	padding-right:5px;
+}
+th {
+	border:   1px solid #8CACBB;
+	padding-left:   2px;
+	padding-right:   5px;
+}
+a {
+	color:   #cc0000;
+	text-decoration: none;
+	font-weight:bold;
+}
+.navigation {
+	width:100%;
+	height:2em;
+	border:1px;
+	text-align:right;
+	vertical-align:middle;
+}
+.navigation a {
+	color:   #666;
+	vertical-align:middle;
+}
+.navigation a:hover {
+	color:   #c00;
+	text-decoration: none;
+//	ertical-align:middle;
+}
+.navigation img {
+	vertical-align:middle;	
+}
+
+img {
+	border: 0px;
+}
+
+a:hover {
+	color:   #cc0000;
+	text-decoration: underline;
+}
+
+/* Non-linking titles (three levels) */
+h1 {
+	font-size:    20px;
+//	font-family:   Arial, Helvetica, sans-serif;
+	color:   #CC0000;
+	margin-bottom: 1px;
+	clear: both;
+}
+
+h2 {
+	font-size:    12px;
+//	font-family:   Arial, Helvetica, sans-serif;
+	color:   #CC0000;
+	font-weight: bold;
+	clear: both;
+	margin-bottom: 1px;
+}
+
+h3 {
+	font-size:    12px;
+//	font-family:   Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	clear: both;
+	margin-bottom: 1px;
+}
+.doctitle p {
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	margin-top: 0px;
+}
+p {
+	padding-top: 0px;
+	margin-top: 0px;
+}
+table {
+	margin-bottom:10px;
+}
+dt {
+	font-weight: bold;
+}
+th {
+	background-color: white;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-right-style: none;
+	border-left-style: none;
+	border-top-style: none;
+	border-color:    black;
+	margin-left: 10px;
+	text-align: left;
+	font-size: 12px;
+}
+.reftable {
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-right-style: none;
+	border-bottom-style: solid;
+	border-left-style: none;
+	clear: both;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	vertical-align: top;
+	text-align: left;
+}
+
+div.code {
+	font-size:    90%;
+	padding:   5px;
+	border-style:   solid;
+	border-width:   1px;
+	border-color:   #CCCCCC;
+	background-color:   #F4F4F4;
+	font-family:   courier;
+}
+/*****the plugin {CODE} tag ******dgd*********/
+
+.codelisting {
+font-family : monospace;
+font-size: 8pt;
+padding : 2ex;
+background-color : #edeeef;
+margin : 1ex;
+border : 1px dashed #adacaf;
+}
+
+
+pre {
+	font-size:    14px;
+	font-family:   courier;
+}
+/*************************************************** WIKI TOCS ***************************************************/
+div.tocnav {
+	font-family:    Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size:   9px;
+	background:   #DEE7EC;
+	border:   1px solid #8CACBB;
+	color:   black;
+	padding-bottom:   2px;
+	padding-top:   2px;
+	margin-bottom:   2px;
+}
+
+.tocnavlink {
+	color:    black;
+	text-decoration:   underline;
+	font-family:   Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size:   10px;
+}
+
+.tocnavlink:hover {
+	font-family:    Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size:   10px;
+	color:   black;
+	text-decoration:   underline;
+}
+
+.figure {
+	width:100%;
+}
+
+.abstract h1 {
+	color:   #949495;
+	font-size:24px;
+	margin-top: 15px;
+	padding-bottom:-10px;
+	height:24px;
+}
+.abstract p{
+	padding-left:10px;
+	padding-right:5px;
+	font-style:italic;
+	color:    #333333;
+}
+
+td.doctitle {
+	height:50px;
+}
+
+.doctitle h1 {
+	color:   #CC0000;
+	font-size:24px;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+.doctitle p {
+	padding:0px 5px;
+	font-weight:bold;
+	color:    #666666;
+//	width:100%;
+}
+
+.doctitle a {
+	color:    #666666;
+}
+
+.doctitle a:hover {
+	color:    #CC0000;
+	text-decoration:none;
+}
+
+.sep {
+	height:20px;
+}
+
+.navbuttons {
+	text-align:right;
+	width:194px;
+	padding: 0px;
+	white-space: nowrap;
+}
+
+.botalign {
+	vertical-align:   bottom;
+}
+
+
+.titlebar {
+	width: 100%;
+	border-width:0px;
+	padding: 0px;
+	border-collapse: collapse;
+}

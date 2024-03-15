@@ -1,0 +1,103 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Animation"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title="Animation" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Creating%20Gameplay.html%22%3ECreating%20Gameplay%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Animation.html%22%3EAnimation%3C%2Fa%3E" -->
+		<h1>Animation</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Creating Gameplay.html">Creating Gameplay</a> &gt; <a href="Animation.html">Animation</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Physics.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Character-Animation.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Animations are best imported from art programs but can also be created inside Unity.
+</p>
+
+<p>To import an animation from your art package just <a href="../Manual/HOWTO-importObject.html">drop in your model files</a>.
+</p>
+
+<p>When you place your model file in unity's project folder it will automatically appear in the project view and you can drag it to the scene. The animation on all objects in the scene is imported automatically and you wil see the animation playing when you hit play.
+</p>
+
+<p>For more information about animating characters or importing animations see the <a href="../Manual/Character-Animation.html"> Character Animation section</a>.
+</p>
+
+<h2>Creating animations inside Unity</h2>
+
+<p>1. Switch to the animation layout. This will display the <b>Timeline View</b>. In the Timeline you will create and modify animations.
+</p>
+
+<p><img class='figure' src='images/Animation-0.jpg' />
+</p>
+
+<p>2. Select the object you want to animate in the scene view.
+</p>
+
+<p>3. Click on the record button in the animation Timeline
+</p>
+
+<p><img class='figure' src='images/Animation-1.jpg' />
+</p>
+
+<p>4. Select another time in the Timeline by clicking on it. Then move the object some where else and hit record again.
+</p>
+
+<p>If you hit Play now, your object will follow the animation you just created.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+By default only the transform's position, rotation and scale is included in the animation.
+Right-click on the Timeline and use the <b>Add Key With Attribute</b> menu to add other animatable properties of the selected object to the animation.
+</p>
+
+<p><img class='figure' src='images/Animation-2.jpg' />
+</p>
+
+<p></li><li>You can scrub on the timeline by dragging a keyframe with the center mouse button
+</p>
+
+<p></li><li>Post Infinity is used to define behaviour of the animation after the last keyframe. Right-click on the timeline and select <b>Post Infinity -&gt; Repeat</b> from the context menu.
+</p>
+
+<p><img class='figure' src='images/Animation-3.jpg' />
+</p>
+
+<p></li><li>Sometimes it is useful to create animations which are shared among all objects.
+To do this, create an animation clip in the assets menu.
+</p>
+
+<p><img class='figure' src='images/Animation-4.jpg' />
+</p>
+
+<p>Then drag the animation clip on an object. Then you animate the object. Then you can drag the animation clip on other objects.
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="Physics.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Character-Animation.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

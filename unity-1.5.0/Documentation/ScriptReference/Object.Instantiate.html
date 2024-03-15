@@ -1,0 +1,59 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Object.Instantiate"-->
+			<title>Unity Script Reference &ndash; Object.Instantiate</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<script language="JavaScript" src="UnityDoc.js"></script>
+<body>
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>Instantiate</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+	<!-- #TemplateEndEditable -->
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-top.lbi" --><!-- #EndLibraryItem --><div class="left-menu-container"><ul class="left-menu"><li><span class="left-menu-heading">Menu</span></li><li><a class="left-menu-item" href="index.html">Overview</a></li><li><a class="left-menu-item" href="20_class_hierarchy.html">Class Hierarchy</a></li><li><a class="left-menu-item" href="10_reference.html">Reference</a></li><li><span class="left-menu-seperator"></span></li><li><a class="left-menu-heading" href="Object.html">Object</a></li><li><a class="left-menu-item" href="Object.html">Class Members</a></li><li><span class="left-menu-subheading">Variables</span></li><li><a class="left-menu-item" href="Object.name.html">name</a></li><li><span class="left-menu-subheading">Functions</span></li><li><a class="left-menu-item" href="Object.GetInstanceID.html">GetInstanceID</a></li><li><span class="left-menu-subheading">Class Functions</span></li><li><a class="left-menu-item" href="Object.Destroy.html">Destroy</a></li><li><a class="left-menu-item" href="Object.DestroyImmediate.html">DestroyImmediate</a></li><li><a class="left-menu-item" href="Object.DontDestroyOnLoad.html">DontDestroyOnLoad</a></li><li><a class="left-menu-item" href="Object.FindObjectOfType.html">FindObjectOfType</a></li><li><a class="left-menu-item" href="Object.FindObjectsOfType.html">FindObjectsOfType</a></li><li><span class="left-menu-item left-menu-current">Instantiate</span></li><li><a class="left-menu-item" href="Object.ne_operator.html">operator !=</a></li><li><a class="left-menu-item" href="Object.eq_operator.html">operator ==</a></li><li><a class="left-menu-item" href="Object.bool_operator.html">operator bool</a></li></ul></div>
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-middle.lbi" --><!-- #EndLibraryItem -->	<div id="Instantiate" class="manual-entry"><h3><span class="full-name">Object.</span>Instantiate</h3><div class="synopsis">Object Instantiate (Object original, <a href="Vector3.html" class="classlink">Vector3</a> position, <a href="Quaternion.html" class="classlink">Quaternion</a> rotation)</div>
+   <p class="details"> Clones the object <span class="variable">original</span>, places it at <span class="variable">position</span> and sets the rotation to <span class="variable">rotation</span>.
+This is essentially the same as using duplicate command (cmd-d) in Unity and then moving the
+object to the given location.
+If the game object has a transform all children are cloned as well. All game objects are activated
+after cloning them.
+It returns the cloned object.</p><div class="code"><span class="comment">// Instantiates 10 copies of prefab each 2 units apart from each other</span>
+var prefab : <a href="Transform.html" class="classlink">Transform</a>;<br/>for (var i=0;i<10;i++) {<br/>    Instantiate (prefab, <a href="Vector3.html" class="classlink">Vector3</a>(i * 2.0, 0, 0), <a href="Quaternion.identity.html?from=Object" class="itemlink">Quaternion.identity</a>);<br/>}
+</div><p class="details">Instantiate is most commonly used to instantiate projectiles but can be applied to anything
+that needs to be cloned.</p><div class="code">var projectile : <a href="Rigidbody.html" class="classlink">Rigidbody</a>;<br/>function Update () {<br/>    <span class="comment">// Ctrl was pressed, launch a projectile</span>
+    if (<a href="Input.GetButtonDown.html?from=Object" class="itemlink">Input.GetButtonDown</a>("Fire1")) {<br/>        <span class="comment">// Instantiate the projectile at the position and rotation of this transform</span>
+        var clone : <a href="Rigidbody.html" class="classlink">Rigidbody</a>;<br/>        clone = Instantiate(projectile, transform.position, transform.rotation);<br/>        <br/>        <span class="comment">// Give the cloned object an initial velocity along the current </span>
+        <span class="comment">// object's Z axis</span>
+        clone.velocity = transform.TransformDirection (<a href="Vector3.forward.html?from=Object" class="itemlink">Vector3.forward</a> * 10);<br/>    }<br/>}
+</div><p class="details">Note that the Instantiate can clone any type of Object including scripts.</p>
+</div>	<div id="Instantiate" class="manual-entry"><h3><span class="full-name">Object.</span>Instantiate</h3><div class="synopsis">Object Instantiate (Object original)</div>
+   <p class="details"> Clones the object <span class="variable">original</span>.
+This function preserves the position and rotation of the cloned object.
+This is essentially the same as using duplicate command (cmd-d) in Unity.
+If the object is a <a href="Component.html" class="classlink">Component</a> or a <a href="GameObject.html" class="classlink">GameObject</a> then entire game object including all components
+will be cloned. 
+If the game object has a transform all children are cloned as well. All game objects are activated after cloning them.
+It returns the cloned object.</p><div class="code"><span class="comment">// Instantiates prefab when any rigid body enters the trigger.</span>
+<span class="comment">// It preserves the prefab's original position and rotation.</span>
+var prefab : <a href="Transform.html" class="classlink">Transform</a>;<br/>function OnTriggerEnter () {<br/>    Instantiate (prefab);<br/>}
+</div><p class="details">Note that the Instantiate can clone any type of Object including scripts.</p>
+</div>	
+	</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

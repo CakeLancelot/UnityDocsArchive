@@ -1,0 +1,55 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Shader"-->
+			<title>Unity Script Reference &ndash; Shader</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Shader</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Shader" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Object.html" class="classlink">Object</a></div></p>
+   <p class='first'> Shader scripts used for all rendering.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#isSupported'>isSupported</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#textureUnitCount'>textureUnitCount</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#ClearAll'>ClearAll</a></p>
+<p><a href='#SetColor'>SetColor</a></p>
+</span>
+<div class='tocclear'></div>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="isSupported"></a><h3><span class="full-name">Shader.</span>isSupported</h3><div class="synopsis"><span class="standard_type">bool</span> isSupported</div>
+   <p class='details'> Can this shader run on the end-users graphics card?
+This returns true, if the shader itself or any fallbacks setup in the shader are supported.</p>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="textureUnitCount"></a><h3><span class="full-name">Shader.</span>textureUnitCount</h3><div class="synopsis"><span class="standard_type">int</span> textureUnitCount</div>
+   <p class='details'> How many texture units the card has <b>(Read Only)</b>.</p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="ClearAll"></a><h3><span class="full-name">Shader.</span>ClearAll</h3><div class="synopsis"><span class="standard_type">void</span> ClearAll ()</div>
+   <p class='details'> Remove all shaders from memory, causing a recompile. 
+This will cause all shaders to be reloaded. Used for debugging shaders from a player application.</p>
+	<a name="SetColor"></a><h3><span class="full-name">Shader.</span>SetColor</h3><div class="synopsis"><span class="standard_type">void</span> SetColor (<span class="standard_type">string</span> propertyName, <a href="Color.html" class="classlink">Color</a> color)</div>
+   <p class='details'> Sets a global shader color property. 
+This is read if the shader does not define a value for a property.
+Typically used to offload complex calculation to a script: Do the calculation from scripting, and 
+just read the color.</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

@@ -1,0 +1,182 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Detecting the Unity Web Player using browser scripting</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Detecting the Unity Web Player using browser scripting</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/Web Player Deployment.html">Web Player Deployment</a> &gt; <a href="../Manual/Detecting the Unity Web Player using browser scripting.html">Detecting the Unity Web Player using browser scripting</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Unity Web Player and browser communication.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Publishing active content.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Detecting the Unity Web Player using browser scripting</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Any time you build and post <span class='doc-keyword'>Web Player</span> content you should take steps to ensure the end-user has the Unity Web Player before attempting to display the content. While the default HTML file generated when you publish web player content contains a <span class='doc-prop'>noembed</span> tag for the cases where the end-user doesn't have the player, that tag isn't used or displayed consistently across all browsers and fails to offer a consistent and predictable user experience. Therefore instead of relying on the browser's handling of the noembed tag you can use browser script to determine whether the end-user has the Unity Web Player installed and respond appropriately.
+</p>
+<p class='vspace'>Detecting the Unity Web Player in all browsers can be done using a combination of <span class='wikiword'>JavaScript</span> and <span class='wikiword'>VBScript</span> browser code. The process of detecting the web player involves the following steps:
+</p>
+<div class='vspace'></div><ul><li>Browser Detection: is the page being viewed on Windows using Microsoft Internet Explorer or some other browser?
+</li><li><span class='wikiword'>ActiveX</span> Control Detection: If the page is being viewed on Windows in Internet Explorer, is the web player's <span class='wikiword'>ActiveX</span> Control installed?
+</li><li>Plugin Detection: if the page is being viewed in any other browser, is the <span class='doc-prop'>mime type</span> understood and the plugin installed? 
+</li></ul><p class='vspace'>Note that version 2.5 of the Unity Web Player introduced an error when installing under Windows Vista with Internet Explorer and when UAC is active.  In this scenario it is not possible to perform an auto-update to 2.5.1 or beyond.  Instead, users need to be told to manually install a new plugin.  This requires the <span class='wikiword'>VBScript</span> to look for an install of 2.5.0 under Vista.  If it finds one we pretend that we have not found a web player and so you should provide HTML that instructs the user to download and manually install the Web Player.  Note that it is non-trivial to identify when a user is using UAC and so we simply check for Vista and Internet Explorer.
+</p>
+<p class='vspace'>Here is an example <span class='wikiword'>JavaScript</span> and <span class='wikiword'>VBScript</span> function that performs the above steps in order to detect the Unity Web Player:
+</p><pre class='codelisting'>
+&lt;script language='VBScript'&gt;
+function detectUnityWebPlayerActiveX
+    on error resume next
+    dim tControl, res, ua, re, matches, major
+    res = 0
+    set tControl = CreateObject("UnityWebPlayer.UnityWebPlayer.1")
+    if IsObject(tControl) then
+        if tControl.GetPluginVersion() = "2.5.0f5" then
+            ' 2.5.0f5 on Vista and later has an auto-update issue
+            ' on Internet Explorer. Detect Vista (6.0 or later)
+            ' and in that case treat it as not installed
+            ua = Navigator.UserAgent
+            set re = new RegExp
+            re.Pattern = "Windows NT (\d+)\."
+            set matches = re.Execute(ua)
+            if matches.Count = 1 then
+                major = CInt(matches(0).SubMatches(0))
+                if major &lt; 6 then
+                    res = 1
+                end if
+            end if
+        else
+            res = 1
+        end if
+    end if
+    detectUnityWebPlayerActiveX = res
+end function
+&lt;/script&gt;
+&lt;script language="javascript1.1" type="text/javascript"&gt;
+function detectUnityWebPlayer () {
+    var tInstalled = false;
+    if (navigator.appVersion.indexOf("MSIE") != -1 &amp;&amp;
+        navigator.appVersion.toLowerCase().indexOf("win") != -1)
+    {
+        tInstalled = detectUnityWebPlayerActiveX();
+    }
+    else if (navigator.mimeTypes &amp;&amp; navigator.mimeTypes["application/vnd.unity"])
+    {
+        if (navigator.mimeTypes["application/vnd.unity"].enabledPlugin &amp;&amp;
+            navigator.plugins &amp;&amp; navigator.plugins["Unity Player"])
+        {
+            tInstalled = true;	
+        }
+    }	
+    return tInstalled;	
+}
+&lt;/script&gt;
+</pre>
+<p>When the function above is called, it checks for the <span class='doc-keyword'>Unity Web Player</span> and returns a boolean value as a result. A return value of true indicates that the Unity Web Player is installed whereas a return value of false indicates that it is not. The HTML file generated by Unity when building web player contains a very similar function.
+</p>
+<p class='vspace'>The detection is performed separately for Internet Explorer and all the other browsers:
+</p><ul><li>For IE, a <span class='wikiword'>VBScript</span> snippet is used. <span class='wikiword'>VBScript</span> is used instead of <span class='wikiword'>JavaScript</span> because after detection it releases the plugin resource immediately (whereas in <span class='wikiword'>JavaScript</span> it would only happen the next time garbage collection is performed). The script tries to create an <span class='wikiword'>ActiveX</span> object named "<span class='wikiword'>UnityWebPlayer.UnityWebPlayer</span>.1" which is the name of Unity Web Player <span class='wikiword'>ActiveX</span> control.
+</li><li>For other browsers it is checked whether a MIME type "application/vnd.unity" is understood and plugin named "Unity Player" is installed and enabled.
+</li></ul><p class='vspace'>Here is an example of using the function within a HTML page to detect the Unity Web Player and then respond appropriately:
+</p><pre class='codelisting'>
+&lt;script type="text/javascript" language="javascript"&gt;
+&lt;!--
+-- check for the Unity Web Player
+var tIsInstalled = detectUnityWebPlayer();
+if (tIsInstalled)
+{
+    // write the content object and embed tags
+    document.write("&lt;object classid='clsid:444785F1-DE89-4295-863A-D46C3A781394' \");
+    document.write("  codebase='http://webplayer.unity3d.com/download_webplayer/UnityWebPlayer.cab#version=2,0,0,0' \n");
+    document.write("  id='UnityObject' width='600' height='450' &gt; \n");
+    document.write("  &lt;param name='src' value='MyDataFile.unity3d' /&gt; \n");
+    document.write("  &lt;embed type='application/vnd.unity' pluginspage='http://www.unity3d.com/unity-web-player-2.x' \n");
+    document.write("    id='UnityEmbed' width='600' height='450' src='MyDataFile.unity3d' \n");
+    document.write("  /&gt; \n");
+    document.write("&lt;/object&gt;");
+}
+else
+{
+    // write out a simple message prompting the user to install the Unity Web Player
+    document.write("&lt;div align='center'&gt; \n");
+    document.write("  This content requires the Unity Web Player,");
+    document.write("  please use the link below to install the player today:&lt;br /&gt;&lt;br /&gt;\n");
+    document.write("  &lt;a href='http://www.unity3d.com/unity-web-player-2.x'&gt; \n");
+    document.write("    Install the Unity Web Player \n");
+    document.write("  &lt;/a&gt; \n");
+    document.write("&lt;/div&gt; \n");
+}
+--&gt;
+&lt;/script&gt;
+</pre>
+<p class='vspace'>As you can see the function is used to detect the Unity Web Player, then if the web player is found the required <span class='doc-prop'>object</span> and <span class='doc-prop'>embed</span> tags are written into the page. Note that if the web player is not found then a message is displayed prompting the user to install the Unity Web Player.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Unity Web Player and browser communication.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Publishing active content.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

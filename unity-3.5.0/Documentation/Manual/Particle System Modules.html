@@ -1,0 +1,389 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Particle System Modules (Shuriken)</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Particle System Modules (Shuriken)</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Creating Gameplay.html">Creating Gameplay</a> &gt; <a href="../Manual/Particle Systems.html">Particle Systems</a> &gt; <a href="../Manual/Particle System Modules.html">Particle System Modules (Shuriken)</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Particle System Modules (Shuriken)</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>This page is dedicated to individual modules and their properties. For introduction to modules see <a href="../Manual/Particle System Modules Intro.html">this page</a>
+</p>
+<div class='vspace'></div><h2>Initial Module </h2>
+<div><img class='figure' src='../Images/manual/Particle System Modules-0.jpg' /></div>
+<p>This module is always present, cannot be removed or disabled.
+</p><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Duration</span></td><td >The duration the Particle System will be emitting particles.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Looping</span></td><td  align='left'>Is the Particle System looping.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Prewarm</span></td><td  align='left'>Only looping systems can be prewarmed which means that the Particle System will have emitted particles at start as if it had already emitted particles one cycle.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Start Delay</span></td><td >Delay in seconds that this Particle System will wait before emitting particles. Note prewarmed looping systems cannot use a start delay</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Start Lifetime</span></td><td  align='left'>The lifetime of particles in seconds (see <a href="../Manual/Particle System Curve Editor.html">MinMaxCurve</a>)</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Start Speed</span></td><td >The speed of particles when emitted.(see <a href="../Manual/Particle System Curve Editor.html">MinMaxCurve</a>)</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Start Size</span></td><td >The size of particles when emitted. (see <a href="../Manual/Particle System Curve Editor.html">MinMaxCurve</a>)</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Start Rotation</span></td><td >The rotation of particles when emitted. (see <a href="../Manual/Particle System Curve Editor.html">MinMaxCurve</a>)</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Start Color</span></td><td >The color of particles when emitted. (see <a href="../Manual/Particle System Color Editor.html">MinMaxGradient</a>)</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Gravity Modifier</span></td><td  align='left'>The amount of gravity that will affect particles during their lifetime</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Inherit Velocity</span></td><td  align='left'>Factor for controlling the amount of velocity the particles should inherit of the transform of the Particle System (for moving Particle Systems)</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Simulation Space</span></td><td >Simulate the Particle System in local space or world space</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Play On Awake</span></td><td  align='left'>If enabled the Particle System will automatically start when it's created.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Max Particles</span></td><td  align='left'>Max number of particles the Particle System will emit</td></tr>
+</table>
+<div class='vspace'></div><h2>Emission Module</h2>
+<div><img class='figure' src='../Images/manual/Particle System Modules-1.jpg' /></div>
+<p>Controls the rate of particles being emitted and allows spawning large groups of particles at certain moments (over Particle System duration time). Useful for explosions when a bunch of particles need to be created at once.
+</p><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Rate</span></td><td >Amount of particles emitted over Time (per second) or Distance (per meter). (see <a href="../Manual/Particle System Curve Editor.html">MinMaxCurve</a>)</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Bursts</span> (Time option only)</td><td >Add bursts of particles that occur within the duration of the Particle System</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Time and Number of Particles</span></span></td><td >Specify time (in seconds within duration) that a specified amount of particles should be emitted. Use the + and - for adjusting number of bursts.</td></tr>
+</table>
+<div class='vspace'></div><h2>Shape Module</h2>
+<div><img class='figure' src='../Images/manual/Particle System Modules-2.jpg' /></div>
+<p>Defines the shape of the emitter: Sphere, Hemishpere, Cone, Box and Mesh. Can apply initial force along the surface normal or random direction.
+</p>
+<div class='vspace'></div><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Sphere</span></td><td >&nbsp;</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Radius</span></span></td><td >Radius of the sphere (can also be manipulated by handles in the Scene View)</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Emit from Shell</span></span></td><td >Emit from shell of the sphere. If disabled, particles will be emitted from the volume of the sphere.</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Random Direction</span></span></td><td >Should particles have have a random direction when emitted or a direction along the surface normal of the sphere</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Hemisphere</span></td><td >&nbsp;</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Radius</span></span></td><td >Radius of the hemisphere (can also be manipulated by handles in the Scene View)</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Emit from Shell</span></span></td><td >Emit from shell of the hemisphere. If disabled particles will be emitted from the volume of the hemisphere.</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Random Direction</span></span></td><td >Should particles have have a random direction when emitted or a direction along the surface normal of the hemisphere.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Cone</span></td><td >&nbsp;</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Angle</span></span></td><td >Angle of the cone. If angle is 0 then particles will be emitted in one direction. (can also be manipulated by handles in the Scene View)</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Radius</span></span></td><td >A value larger than 0 when basically create a capped cone, using this will change emission from a point to a disc.(can also be manipulated by handles in the Scene View)</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Box</span></td><td >&nbsp;</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Box X</span></span></td><td >Scale of box in X (can also be manipulated by handles in the Scene View)</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Box Y</span></span></td><td >Scale of box in Y (can also be manipulated by handles in the Scene View)</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Box Z</span></span></td><td >Scale of box in Z (can also be manipulated by handles in the Scene View)</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Random Direction</span></span></td><td >Should particles have have a random direction when emitted or a direction along the Z-axis of the box</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Mesh</span></td><td >&nbsp;</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Type</span></span></td><td >Particles can be emitted from either Vertex, Edge or Triangle</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Mesh</span></span></td><td >Select Mesh that should be used as emission shape</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Random Direction</span></span></td><td >Should particles have have a random direction when emitted or a direction along the surface of the mesh</td></tr>
+</table>
+<div class='vspace'></div><h2>Velocity Over Lifetime Module</h2>
+<div><img class='figure' src='../Images/manual/Particle System Modules-3.jpg' /></div>
+<p>Directly animates velocity of the particle. Mostly useful for particles which has complex physical, but simple visual behavior (like smoke with turbulence and temperature loss) and has little interaction with physical world.
+</p><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>XYZ</span></td><td >Use either constant values for curves or random between curves for controlling the movement of the particles. See <a href="../Manual/Particle System Curve Editor.html">MinMaxCurve</a>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Space</span></td><td  align='left'>Local / World: Are the velocity values in local space or world space</td></tr>
+</table>
+<div class='vspace'></div><h2>Limit Velocity Over Lifetime Module</h2>
+<div><img class='figure' src='../Images/manual/Particle System Modules-4.jpg' /></div>
+<p>Basically can be used to simulate drag. Dampens or clamps velocity, if it is over certain threshold. Can be configured per axis or per vector length.
+</p><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Separate Axis</span></td><td >Use for setting per axis control.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Speed</span></span></td><td >Specify magnitude as constant or by curve that will limit all axes of velocity.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>XYZ</span></span></td><td >Control each axis seperately. See <a href="../Manual/Particle System Curve Editor.html">MinMaxCurve</a>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Dampen</span></td><td >(0-1) value that controls how much the exceeding velocity should be dampened. For example, a value of 0.5 will dampen exceeding velocity by 50%</td></tr>
+</table>
+<div class='vspace'></div><h2>Force Over Lifetime Module</h2>
+<div><img class='figure' src='../Images/manual/Particle System Modules-5.jpg' /></div>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>XYZ</span></td><td >Use either constant values for curves or random between curves for controlling the force applied to the particles. See <a href="../Manual/Particle System Curve Editor.html">MinMaxCurve</a>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Randomize</span></td><td  align='left'>Randomize the force applied to the particles every frame</td></tr>
+</table>
+<div class='vspace'></div><h2>Color Over Lifetime Module</h2>
+<div><img class='figure' src='../Images/manual/Particle System Modules-6.jpg' /></div>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Color</span></td><td >Controls the color of each particle during its lifetime. If some particles have a shorter lifetime than others, they will animate faster. Use constant color, random between two colors, animate it using gradient or specify a random color using two gradients. See <span style='font-size: 110%; font-weight: bold; color: yellow; background-color: red; padding: 2px;'>Gradient</span>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Color Scale</span></td><td >Use the color scale for easy adjustment of color or gradient.</td></tr>
+</table>
+<div class='vspace'></div><h2>Color By Speed Module</h2>
+<div><img class='figure' src='../Images/manual/Particle System Modules-7.jpg' /></div>
+<p>Animates particle color based on its speed. Remaps speed in the defined range to a color.
+</p><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Color</span></td><td >Color used for remapping of speed. Use gradients for varying colors. See <a href="../Manual/Particle System Color Editor.html">MinMaxGradient</a>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Color Scale</span></td><td >Use the color scale for easy adjustment of color or gradient.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Speed Range</span></td><td >The min and max values for defining the speed range which is used for remapping a speed to a color.</td></tr>
+</table>
+<div class='vspace'></div><h2>Size Over Lifetime Module</h2>
+<div><img class='figure' src='../Images/manual/Particle System Modules-8.jpg' /></div>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Size</span></td><td >Controls the size of each particle during its lifetime. Use constant size, animate it using a curve or specify a random size using two curves. See <a href="../Manual/Particle System Curve Editor.html">MinMaxCurve</a>.</td></tr>
+</table>
+<div class='vspace'></div><h2>Size By Speed Module</h2>
+<div><img class='figure' src='../Images/manual/Particle System Modules-9.jpg' /></div>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Size</span></td><td >Size used for remapping of speed. Use curves for varying sizes. See <a href="../Manual/Particle System Curve Editor.html">MinMaxCurve</a>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Speed Range</span></td><td >The min and max values for defining the speed range which is used for remapping a speed to a size.</td></tr>
+</table>
+<div class='vspace'></div><h2>Rotation Over Lifetime Module</h2>
+<div><img class='figure' src='../Images/manual/Particle System Modules-10.jpg' /></div>
+<p>Specify values in degrees.
+</p><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Rotational Speed</span></td><td >Controls the rotational speed of each particle during its lifetime. Use constant rotational speed, animate it using a curve or specify a random rotational speed using two curves. See <a href="../Manual/Particle System Curve Editor.html">MinMaxCurve</a>.</td></tr>
+</table>
+<div class='vspace'></div><h2>Rotation By Speed Module</h2>
+<div><img class='figure' src='../Images/manual/Particle System Modules-11.jpg' /></div>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Rotational Speed</span></td><td >Rotational speed used for remapping of a particle's speed. Use curves for varying rotational speeds. See <a href="../Manual/Particle System Curve Editor.html">MinMaxCurve</a>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Speed Range</span></td><td >The min and max values for defining the speed range which is used for remapping a speed to a rotational speed.</td></tr>
+</table>
+<div class='vspace'></div><h2>Collision Module</h2>
+<div><img class='figure' src='../Images/manual/Particle System Modules-12.jpg' /></div>
+<p>Set up collisions for the particles of this Particle System. For now only planar collisions are supported which is a very efficient for simple collision detection. Planes are set up by referencing an existing transform in the scene or by creating a new empty GameObject for this purpose.
+</p>
+<div class='vspace'></div><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Planes</span></td><td >Planes are defined by assigning a reference to a transform. This transform can be any transform in the scene and can be animated. Multiple planes can be used. Note: the Y-axis is used as the normal of a plane.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Dampen</span></td><td >(0-1) When the particle collides, it will keep this fraction of its speed. Unless it is set to 1.0, the particle will become slower after collision</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Bounce</span></td><td >(0-1) When the particle collides, it will keep this fraction of the component of the velocity, which is normal to the plane of collision</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Lifetime Loss</span></td><td >(0-1) The fraction of Start Lifetime lost on each collision. When lifetime reaches 0, the particle dies. For example if a particle should die on first collision, set this to 1.0.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Visualization</span></td><td >Only used for visualizing the planes: Grid or Solid.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Grid</span></span></td><td >Rendered as gizmos and is useful for quick indication of position and orientation in the world.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Solid</span></span></td><td >Renders a plane in the scene which is useful for exact positioning of a plane.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Scale Plane</span></td><td >Resizes the visualization planes.</td></tr>
+</table>
+<div class='vspace'></div><h2>Sub Emitter Module</h2>
+<div><img class='figure' src='../Images/manual/Particle System Modules-13.jpg' /></div>
+<p>This is a powerful module that enables spawning of other Particle Systems at the follwing particle events: birth, death or collision of a particle.
+</p><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Birth</span></td><td >Spawn another Particle System at birth of each particle in this Particle System</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Death</span></td><td >Spawn another Particle System at death of each particle in this Particle System</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Collision</span></td><td >Spawn another Particle System at collision of each particle in this Particle System. IMPORTANT: Collison needs to be set up using the Collision Module. See Collision Module</td></tr>
+</table>
+<div class='vspace'></div><h2>Texture Sheet Animation Module </h2>
+<div><img class='figure' src='../Images/manual/Particle System Modules-14.jpg' /></div>
+<p>Animates UV coordinates of the particle over its lifetime. Animation frames can be presented in a form of a grid or every row in the sheet can be separate animation. The frames are animated with curves or can be a random frame between two curves. The speed of the animation is defined by "Cycles".
+</p><div class='property-IMPORTANT'>IMPORTANT: The texture used for animation is the one used by the material found in the Renderer module.</div>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Tiles</span></td><td >Define the tiling of the texture.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Animation</span></td><td >Specify the animation type: Whole Sheet or Single Row.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Whole Sheet</span></span></td><td >Uses the whole sheet for uv animation</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>- Frame over Time</span></span></td><td >Controls the uv animation frame of each particle during its lifetime over the whole sheet. Use constant, animate it using a curve or specify a random frame using two curves. See <a href="../Manual/Particle System Curve Editor.html">MinMaxCurve</a>.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Single Row</span></span></td><td >Uses a single row of the texture sheet for uv animation</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>- Random Row</span></span></td><td >If checked the start row will be random and if unchecked the row index can be specified (first row is 0).</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>- Frame over Time</span></span></td><td >Controls the uv animation frame of each particle during its lifetime within the specified row. Use constant, animate it using a curve or specify a random frame using two curves. See <a href="../Manual/Particle System Curve Editor.html">MinMaxCurve</a>.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>- Cycles</span></span></td><td >Specify speed of animation.</td></tr>
+</table>
+<p class='vspace'><a name='RendererModule' id='RendererModule'></a>
+</p><h2>Renderer Module</h2>
+<div><img class='figure' src='../Images/manual/Particle System Modules-15.jpg' /></div>
+<p>The renderer module exposes the <span class='doc-prop'>ParticleSystemRenderer</span> component's properties. Note that even though a GameObject has a <span class='doc-prop'>ParticleSystemRenderer</span> component, its properties are only exposed here, when this module is removed/added. It is actually the <span class='doc-prop'>ParticleSystemRenderer</span> component that is added or removed.
+</p>
+<div class='vspace'></div><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Render Mode</span></td><td >Select one of the following particle render modes</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Billboard</span></span></td><td >Makes the particles always face the camera</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Stretched Billboard</span></span></td><td >Particles are stretched using the following parameters</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>-  Camera Scale</span></span></td><td >How much the camera speed is factored in when determining particle stretching</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>-  Speed Scale</span></span></td><td >Defines the length of the particle compared to its speed</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>-  Length Scale</span></span></td><td >Defines the length of the particle compared to its width</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Horizontal Billboard</span></span></td><td >Makes the particles align with the Y axis</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Vertical Billboard</span></span></td><td >Makes the particles align with the XZ plane while facing the camera</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Mesh</span></span></td><td >Particles are rendered using a mesh instead of a quad</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>-  Mesh</span></span></td><td >The reference to the mesh used for rendering particles</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Material</span></td><td >Material used by billboarded or mesh particles.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Sort Mode</span></td><td >The draw order of particles can be sorted by distance, youngest first, or oldest first.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Sorting Fudge</span></td><td >Use this to affect the draw order. Particle systems with <em>lower</em> sorting fudge numbers are more likely to be drawn last, and thus appear in front of other transparent objects, including other particles.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Cast Shadows</span></td><td >Should particles cast shadows? May or may not be possible depending on the material</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Receive Shadows</span></td><td >Should particles receive shadows? May or may not be possible depending on the material</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Max Particle Size</span></td><td  align='left'>Set max relative viewport size. Valid values: 0-1</td></tr>
+</table>
+<div class='vspace'></div>
+</p><small>Page last updated: 2012-01-13</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

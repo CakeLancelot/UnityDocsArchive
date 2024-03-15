@@ -1,0 +1,46 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="DrawGizmo"-->
+			<title>Unity Script Reference &ndash; DrawGizmo</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class DrawGizmo</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class DrawGizmo" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass">System.Attribute</div></p>
+   <p class='details'> 	<div class="editorclass">This is an editor class. To use it you have to place your script in Assets/Editor inside your project folder. Editor classes are in the UnityEditor namespace so you need to add "import UnityEditor;" in the beginning of the script.</div></p>
+   <p class='first'> The DrawGizmo attribute allows you to supply a gizmo renderer for any <a href="Component.html" class="classlink">Component</a>.</p>
+<span class='toc'><p class='tocheader'>Constructors</p><p><a href='#DrawGizmo'>DrawGizmo</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> At the moment you can only supply gizmo drawers for engine-components.
+All gizmo drawing methods need to be static.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">import UnityEditor;<br/><br/>/// The RenderLightGizmo function will be called if the light is not selected.<br/>/// The gizmo is drawn when picking.<br/>@DrawGizmo (<a href="GizmoType.html#NotSelected" class="itemlink">GizmoType.NotSelected</a> | <a href="GizmoType.html#Pickable" class="itemlink">GizmoType.Pickable</a>)<br/><span class="keyword">static</span> function RenderLightGizmo (light : <a href="Light.html" class="classlink">Light</a>, gizmoType : <a href="GizmoType.html" class="classlink">GizmoType</a>)<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;var position = light.transform.position;<br/>    // Draw the light icon<br/>    // (A bit above the one drawn by the builtin light gizmo renderer)<br/>    <a href="Gizmos.html#DrawIcon" class="itemlink">Gizmos.DrawIcon</a> (position + <a href="Vector3.html#up" class="itemlink">Vector3.up</a>, "<a href="Light.html" class="classlink">Light</a> Gizmo.tiff");<br/>    <br/>    // Are we selected? Draw a solid sphere surrounding the light<br/>    if ((gizmoType & <a href="GizmoType.html#SelectedOrChild" class="itemlink">GizmoType.SelectedOrChild</a>) != 0)<br/>    {<br/>        // Indicate that this is the active object by using a brighter color.<br/>        if ((gizmoType & <a href="GizmoType.html#Active" class="itemlink">GizmoType.Active</a>) != 0)<br/>            <a href="Gizmos.html#color" class="itemlink">Gizmos.color</a> = <a href="Color.html#red" class="itemlink">Color.red</a>;<br/>        else<br/>            <a href="Gizmos.html#color" class="itemlink">Gizmos.color</a> = <a href="Color.html#red" class="itemlink">Color.red</a> * 0.5;<br/>        <a href="Gizmos.html#DrawSphere" class="itemlink">Gizmos.DrawSphere</a> (position, light.range);<br/>    }<br/>}<br/><br/>/*<br/>// Draw the gizmo if it is selected or a child of the selection.<br/>// This is the most common way to render a gizmo<br/>@DrawGizmo (<a href="GizmoType.html#SelectedOrChild" class="itemlink">GizmoType.SelectedOrChild</a>)<br/><br/>// Draw the gizmo only if it is the active object.<br/>@DrawGizmo (<a href="GizmoType.html#Active" class="itemlink">GizmoType.Active</a>)]<br/>*/
+</div></td></tr></table><table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">/// C# example<br/>using UnityEditor;<br/>using UnityEngine;<br/><br/><span class="keyword">class</span> GizmoTest<br/>{<br/>/// The RenderLightGizmo function will be called if the light is not selected.<br/>/// The gizmo is drawn when picking.<br/>[DrawGizmo (<a href="GizmoType.html#NotSelected" class="itemlink">GizmoType.NotSelected</a> | <a href="GizmoType.html#Pickable" class="itemlink">GizmoType.Pickable</a>)]<br/><span class="keyword">static</span> <span class="standard_type">void</span> RenderLightGizmo (<a href="Light.html" class="classlink">Light</a> light, <a href="GizmoType.html" class="classlink">GizmoType</a> gizmoType)<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Vector3.html" class="classlink">Vector3</a> position = light.transform.position;<br/>    // Draw the light icon<br/>    // (A bit above the one drawn by the builtin light gizmo renderer)<br/>    <a href="Gizmos.html#DrawIcon" class="itemlink">Gizmos.DrawIcon</a> (position + <a href="Vector3.html#up" class="itemlink">Vector3.up</a>, "<a href="Light.html" class="classlink">Light</a> Gizmo.tiff");<br/>    <br/>    // Are we selected? Draw a solid sphere surrounding the light<br/>    if ((gizmoType & <a href="GizmoType.html#SelectedOrChild" class="itemlink">GizmoType.SelectedOrChild</a>) != 0)<br/>    {<br/>        // Indicate that this is the active object by using a brighter color.<br/>        if ((gizmoType & <a href="GizmoType.html#Active" class="itemlink">GizmoType.Active</a>) != 0)<br/>            <a href="Gizmos.html#color" class="itemlink">Gizmos.color</a> = <a href="Color.html#red" class="itemlink">Color.red</a>;<br/>        else<br/>            <a href="Gizmos.html#color" class="itemlink">Gizmos.color</a> = <a href="Color.html#red" class="itemlink">Color.red</a> * 0.5F;<br/>        <a href="Gizmos.html#DrawSphere" class="itemlink">Gizmos.DrawSphere</a> (position, light.range);<br/>    }<br/>}<br/>}<br/>/*<br/>// Draw the gizmo if it is selected or a child of the selection.<br/>// This is the most common way to render a gizmo<br/>[DrawGizmo (<a href="GizmoType.html#SelectedOrChild" class="itemlink">GizmoType.SelectedOrChild</a>)]<br/><br/>// Draw the gizmo only if it is the active object.<br/>[DrawGizmo (<a href="GizmoType.html#Active" class="itemlink">GizmoType.Active</a>)]<br/>*/</div></td></tr></table></p>
+   <a name="Constructors"></a><h2 class="script-section">Constructors</h2>
+	<a name="DrawGizmo"></a><h3><span class="full-name">DrawGizmo.</span>DrawGizmo</h3><div class="synopsis">DrawGizmo (<a href="GizmoType.html" class="classlink">GizmoType</a> gizmo)</div>
+   <p class='details'> Defines when the gizmo should be invoked for drawing.
+<span class="seealso"><b>See Also:</b> <a href="GizmoType.html" class="classlink">GizmoType</a></span></p>
+	&nbsp;<div class="synopsis">DrawGizmo (<a href="GizmoType.html" class="classlink">GizmoType</a> gizmo, <span class="standard_type">Type</span> drawnGizmoType)</div>
+   <p class='details'> Same as above. <span class="variable">drawnGizmoType</span> determines of what type the object we are drawing the gizmo of has to be.
+If drawnGizmoType is null, the type will be determined from the first parameter of the draw gizmo method.</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

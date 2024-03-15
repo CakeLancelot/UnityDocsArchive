@@ -1,0 +1,213 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - iPhone unique Input system</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">iPhone unique Input system</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/iphone-GettingStarted.html">Getting Started with iPhone Development</a> &gt; <a href="../Manual/iphone-API.html">iPhone Scripting</a> &gt; <a href="../Manual/iphone-Input.html">iPhone unique Input system</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/iphone-API.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/iphone-keyboard.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>iPhone unique Input system</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Unity iPhone offers you access to iPhone's unique input system via the <a class='urllink' href='../ScriptReference/iPhoneInput.html' rel='nofollow'>iPhoneInput</a> scripting interface. <a class='urllink' href='../ScriptReference/iPhoneInput.html' rel='nofollow'>iPhoneInput</a> provides access to the multi-touch screen, accelerometer, device orientation and geographical location.
+</p>
+<div class='vspace'></div><h2>Multi-touch screen</h2>
+<p>The iPhone and iPod Touch devices are capable of tracking up to five fingers touching the screen simultaneously. You can retrieve the status of each finger touching the screen during the last frame by accessing the <a class='urllink' href='../ScriptReference/iPhoneInput-touches.html' rel='nofollow'>iPhoneInput.touches</a> property array.
+</p>
+<p class='vspace'>Each finger touch is represented by an <a class='urllink' href='../ScriptReference/iPhoneTouch.html' rel='nofollow'>iPhoneTouch</a> data structure:
+</p><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>fingerId</span></td><td >The unique index for a touch.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>position</span></td><td >The screen position of the touch.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>deltaPosition</span></td><td >The screen position change since the last frame.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>deltaTime</span></td><td >Amount of time that has passed since the last state change.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>tapCount</span></td><td >The iPhone screen is able to distinguish quick finger taps by the user. This counter will let you know how many times the user has tapped the screen without moving a finger to the sides.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>phase</span></td><td >Describes so called "phase" or the state of the touch. It can help you determine if touch just began, if user moved the finger or if he just lifted the finger.</td></tr>
+</table>
+<p class='vspace'>Phase can be one of the following:
+</p><table ><tr ><td  align='left'><span class='doc-prop'>Began</span></td><td >A finger just touched the screen.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Moved</span></td><td >A finger moved on the screen.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Stationary</span></td><td >A finger is touching the screen but hasn't moved since last frame.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Ended</span></td><td >A finger was lifted from the screen. This is the final phase of a touch.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Canceled</span></td><td >The system cancelled tracking for the touch, as when (for example) the user puts the device to her face or more than five touches happened simultaneously. This is the final phase of a touch.</td></tr>
+</table>
+<p class='vspace'>Following is an example script which will shoot a ray whenever the user taps on the screen:
+</p><pre class='codelisting'>
+	var particle : GameObject;
+	function Update () {
+		for (var touch : iPhoneTouch in iPhoneInput.touches) {
+			if (touch.phase == iPhoneTouchPhase.Began) {
+				// Construct a ray from the current touch coordinates
+				var ray = Camera.main.ScreenPointToRay (touch.position);
+				if (Physics.Raycast (ray)) {
+					// Create a particle if hit
+					Instantiate (particle, transform.position, transform.rotation);
+				}
+			}
+		}
+	}
+</pre>
+<div class='vspace'></div><h3>Mouse simulation</h3>
+<p>On top of native touch support Unity iPhone provides a mouse simulation. You can use mouse functionality from the standard <a class='urllink' href='../ScriptReference/Input.html' rel='nofollow'>Input</a> class.
+</p>
+<div class='vspace'></div><h2>Device orientation</h2>
+<p>Unity iPhone allows you to get discreet description of the device physical orientation in three-dimensional space. Detecting a change in orientation can be useful if you want to create game behaviors depending on how the user is holding the device.
+</p>
+<p class='vspace'>You can retrieve device orientation by accessing the  <a class='urllink' href='../ScriptReference/iPhoneInput-orientation.html' rel='nofollow'>iPhoneInput.orientation</a> property. Orientation can be one of the following:
+</p><table ><tr ><td  align='left'><span class='doc-prop'>Unknown</span></td><td >The orientation of the device cannot be determined. For example when device is rotate diagonally.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Portrait</span></td><td >The device is in portrait mode, with the device held upright and the home button at the bottom.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'><span class='wikiword'>PortraitUpsideDown</span></span></td><td >The device is in portrait mode but upside down, with the device held upright and the home button at the top.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'><span class='wikiword'>LandscapeLeft</span></span></td><td >The device is in landscape mode, with the device held upright and the home button on the right side.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'><span class='wikiword'>LandscapeRight</span></span></td><td >The device is in landscape mode, with the device held upright and the home button on the left side.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'><span class='wikiword'>FaceUp</span></span></td><td >The device is held perpendicular to the ground with the screen facing upwards.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'><span class='wikiword'>FaceDown</span></span></td><td >The device is held perpendicular to the ground with the screen facing downwards.</td></tr>
+</table>
+<div class='vspace'></div><h2>Device geographical location</h2>
+<p>Device geographical location can be obtained via the <a class='urllink' href='../ScriptReference/iPhoneInput-lastLocation.html' rel='nofollow'>iPhoneInput.lastLocation</a> property. Before calling this property you should start location service updates using <a class='urllink' href='../ScriptReference/iPhoneSettings.StartLocationServiceUpdates.html' rel='nofollow'>iPhoneSettings.StartLocationServiceUpdates()</a> and check the service status via <a class='urllink' href='../ScriptReference/iPhoneSettings-locationServiceStatus.html' rel='nofollow'>iPhoneSettings.locationServiceStatus</a>. See the <a class='urllink' href='../ScriptReference/iPhoneSettings.StartLocationServiceUpdates.html' rel='nofollow'>scripting reference</a> for details.
+</p>
+<div class='vspace'></div><h2>Accelerometer</h2>
+<p>As the iPhone moves a built-in accelerometer reports linear acceleration changes along the three primary axes in three-dimensional space. Acceleration along each axis is reported directly by the hardware as G-force values. A value of 1.0 represents a load of about +1g along a given axis while a value of -1.0 represents -1g. If you hold the device upright (with the home button at the bottom) in front of you, the X axis is positive along the right, the Y axis is positive directly up, and the Z axis is positive pointing toward you.
+</p>
+<p class='vspace'>You can retrieve accelerometer value by accessing the <a class='urllink' href='../ScriptReference/iPhoneInput-acceleration.html' rel='nofollow'>iPhoneInput. acceleration</a> property.
+</p>
+<p class='vspace'>Following is an example script which which will move an object using accelerometer:
+</p><pre class='codelisting'>
+	var speed = 10.0;
+	function Update () {
+		var dir : Vector3 = Vector3.zero;
+
+		// we assume that device is held parallel to the ground
+		// and Home button is in the right hand
+
+		// remap device acceleration axis to game coordinates:
+		//  1) XY plane of the device is mapped onto XZ plane
+		//  2) rotated 90 degrees around Y axis
+		dir.x = -iPhoneInput.acceleration.y;
+		dir.z = iPhoneInput.acceleration.x;
+
+		// clamp acceleration vector to unit sphere
+		if (dir.sqrMagnitude &gt; 1)
+			dir.Normalize();
+
+		// Make it move 10 meters per second instead of 10 meters per frame...
+		dir *= Time.deltaTime;
+
+		// Move object
+		transform.Translate (dir * speed);
+	}
+</pre>
+<div class='vspace'></div><h3>Low-pass filter</h3>
+<p>Accelerometer readings can be jerky and noisy. Applying low-pass filtering on the signal allows you to smooth it and get rid of high frequency noise.
+</p>
+<p class='vspace'>The following script shows you how to apply low-pass filtering to accelerometer readings:
+</p><pre class='codelisting'>
+	var AccelerometerUpdateInterval : float = 1.0 / 60.0;
+
+	private var LowPassFilterFactor : float = AccelerometerUpdateInterval / LowPassKernelWidthInSeconds; // tweakable
+	private var lowPassValue : Vector3 = Vector.zero;
+	function Start () {
+		lowPassValue = iPhoneInput.acceleration;
+	}
+	function LowPassFilterAccelerometer() : Vector3 {
+		lowPassValue = Math.Lerp(lowPassValue, iPhoneInput.acceleration, LowPassFilterFactor);
+		return lowPassValue;
+	}
+</pre>
+<p class='vspace'>The greater the value of <span class='wikiword'>LowPassKernelWidthInSeconds</span>, the slower the filtered value will converge towards current input sample (and vice versa). You should be able to use <span class='wikiword'>LowPassFilter</span>() function instead of avgSamples().
+</p>
+<div class='vspace'></div><h3>I'd like as much precision as possible when reading the accelerometer. What should I do?</h3>
+<p>Reading the <a class='urllink' href='../ScriptReference/iPhoneInput-acceleration.html' rel='nofollow'>iPhoneInput.acceleration</a> variable does not equal sampling the hardware. Put simply, Unity samples the hardware at a frequency of 60Hz and stores the result into the variable. In reality, things are a little bit more complicated - accelerometer sampling doesn't occur at consistent time intervals, if under significant CPU loads. As a result system might report 2 samples during one frame, then 1 sample during the next frame.
+</p>
+<p class='vspace'>You can access all measurements executed by accelerometer during the frame. The following code will illustrate a simple average of all the accelerometer events that were collected within the last frame:
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+	var period : float = 0.0;
+	var acc : Vector3 = Vector3.zero;
+	foreach (iPhoneAccelerationEvent evnt in iPhoneInput.accelerationEvents)
+	{
+		acc += evnt.acceleration * evnt.timeDelta;
+		period += evnt.timeDelta;
+	}
+	if (period &gt; 0)
+		acc *= 1.0/period;
+	return acc;
+</pre>
+<div class='vspace'></div><h2>Further reading</h2>
+<p>The Unity iPhone input API is based on Apple's API. It may help to learn more about the native API to better understand Unity's Input API.
+You can find the Apple input API documentation here:
+</p><ul><li><a class='urllink' href='file:///Library/Developer/Shared/Documentation/DocSets/com.apple.adc.documentation.AppleiPhone2_0.iPhoneLibrary.docset/Contents/Resources/Documents/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/EventHandling/chapter_8_section_1.html' rel='nofollow'>Programming Guide: Event Handling (Apple iPhone SDK documentation)</a>
+</li><li><a class='urllink' href='file:///Library/Developer/Shared/Documentation/DocSets/com.apple.adc.documentation.AppleiPhone2_0.iPhoneLibrary.docset/Contents/Resources/Documents/documentation/UIKit/Reference/UITouch_Class/Reference/Reference.html' rel='nofollow'>UITouch Class Reference (Apple iPhone SDK documentation)</a>
+</li></ul><p class='vspace'><b>Note:</b> The above links reference your locally installed iPhone SDK Reference Documentation and will contain native <span class='wikiword'>ObjectiveC</span> code. It is not necessary to understand these documents for using Unity iPhone, but may be helpful to some!
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/iphone-API.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/iphone-keyboard.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

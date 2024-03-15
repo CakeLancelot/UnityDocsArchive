@@ -1,0 +1,278 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Bloom and Lens Flares</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Bloom and Lens Flares</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-ImageEffects.html">Image Effect Scripts</a> &gt; <a href="../Components/script-BloomAndLensFlares.html">Bloom and Lens Flares</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/script-AntialiasingAsPostEffect.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/script-ColorCorrectionCurves.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Bloom and Lens Flares</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>The <span class='doc-keyword'>Bloom and Lens Flares</span> image effect adds image based bloom and automatically generates lens flares (Image based lens flares should be cast based on bright parts of the color buffer, so it's very performant to provide a built in lens flare system here). It can drastically enhance the feel and look of your scene. 
+This effect is a more modern version of the older <a href="../Components/script-GlowEffect.html">Glow image effect</a> with a more fine grain control over various glow parameters.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/script-BloomAndLensFlares-0.jpg' /><br /><em>Example use of <span class='doc-keyword'>Bloom and Lens Flares</span> demonstration a very soft glow using the new <span class='doc-prop'>Screen</span> blend mode and how the new anamorphic lens flares can easily create a more cinematic feeling.</em></div>
+<p class='vspace'>As with the other <a href="../Components/comp-ImageEffects.html">image effects</a>, this effect is only available in Unity Pro. Make sure to have the <a href="../Manual/HOWTO-InstallStandardAssets.html">Pro Standard Assets installed</a>.
+</p>
+<div class='vspace'></div><h2>Properties</h2>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Mode</span></td><td  align='left'>Choose complex mode fore more tweaking options such as enabling lens flare.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Blend mode</span></td><td  align='left'>How to add the bloom to the color buffer. The softer <span class='doc-prop'>Screen</span> blend is better at keeping bright image parts alive.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Intensity</span></td><td  align='left'>The global light intensity of the added light (affects both, bloom and lens flares).</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Threshhold</span></td><td  align='left'>The global light intensity threshhold that defines which image parts are being considered for blooming (and lens flares creation).</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Blur iterations</span></td><td  align='left'>The smoothness of the bloom and flares. Remember that more iterations result in a more expensive effect.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Blur spread</span></td><td  align='left'>The global, resolution independent spread (width) of the effect.</td></tr>
+</table>
+<div class='vspace'></div><table width='100%'><tr ><td  align='left'><span class='doc-prop'>Use alpha mask</span></td><td  align='left'>How much you want to have the alpha channel act as a mask for the bloom effect.</td></tr>
+</table>
+<div class='vspace'></div><table width='100%'><tr ><td  align='left'><span class='doc-prop'>Cast lens flares</span></td><td  align='left'>Enable or disable lens flares.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Mode</span></td><td  align='left'>The kind of lens flares that should be cast. Chose between <span class='doc-prop'>Ghosting</span>, <span class='doc-prop'>Anamorphic</span> or a combination of both.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Local intensity</span></td><td  align='left'>Additional intensity for all lens flares.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Local threshhold</span></td><td  align='left'>The additional light intensity threshhold that defines which image parts are being considered for lens flares.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Stretch width</span></td><td  align='left'>The width for anamorphic lens flares.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Blur iterations</span></td><td  align='left'>Defines the smoothness for anamorphic lens flares.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Tint Color</span></td><td  align='left'>Color modulation for the anamorphic flare type.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>1st-4th Color</span></td><td  align='left'>Color modulation for all additional lens flares when <span class='doc-prop'>Ghosting</span> or <span class='doc-prop'>Combined</span> is chosen.</td></tr>
+</table>
+<div class='vspace'></div><h3>Hardware support</h3>
+<p>This effect requires a graphics card with pixel shaders (2.0) or OpenGL ES 2.0. PC: NVIDIA cards since 2003 (GeForce FX), AMD cards since 2004 (Radeon 9500), Intel cards since 2005 (GMA 900); Mobile: OpenGL ES 2.0; Consoles: Xbox 360, PS3.
+</p>
+<p class='vspace'>All image effects automatically disable themselves when they can not run on end-users graphics card.
+</p>
+</p><small>Page last updated: 2011-06-09</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/script-AntialiasingAsPostEffect.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/script-ColorCorrectionCurves.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

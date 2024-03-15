@@ -1,0 +1,347 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Lighting and Rendering"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="Lighting and Rendering" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Graphics.html%22%3EGraphics%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Lighting%20and%20Rendering.html%22%3ELighting%20and%20Rendering%3C%2Fa%3E" -->
+		<h1>Lighting and Rendering</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Graphics.html">Graphics</a> &gt; <a href="Lighting and Rendering.html">Lighting and Rendering</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Materials and Shaders.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Making a GUI.html">Next<img src="../images/next.png"></a></div>
+
+			<p>This chapter deals with how to get graphics on the screen in the final game.
+</p>
+
+<p>The components discussed here are added through the 'Add Component—&gt;Rendering' menu in the game object inspector
+</p>
+
+
+<h1>Light</h1>
+
+<p>Lights will bring personality and flavor to your game. You use lights to illuminate the scenes and objects to create the perfect visual mood. Lights can be used to simulate the sun, match light, flashlights, gun-fire, or explosions, just to name a few.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The Light Component</i>
+</p>
+
+<p>There are three types of lights in Unity:
+</p>
+<ul><li> <i>Point lights</i> shine from a location equally in all directions, like a light bulb.
+</li><li> <i>Directional lights</i> are placed infinitely far away and affect everything in the scene, like the sun.
+</li><li> <i>Spot lights</i> shine from a point in a direction and only illuminate objects within a cone - like the headlights of a car.
+</li></ul>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The three different light types in Unity</i>
+</p>
+
+<h2>Properties</h2>
+
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>Type</nobr></b></td><td> The current type of light object
+<dl><dt>Directional</dt><dd> A light placed infinitely far away. It affects everything in the scene and can not attenuate.</dd><dt>Point</dt><dd> A light that shines equally in all directions from its location, affecting all objects within its <b>Range</b>.</dd><dt>Spot</dt><dd> A light that shines everywhere within a cone (<b>Spot Angle</b>), and a <b>Range</b>. Only objects within this region are affected by the light.</dd></dl>
+</td></tr><tr><td><b><nobr>Color</nobr></b></td><td> The color of the light emitted
+</td></tr><tr><td><b><nobr>Attenuate</nobr></b></td><td> Does the light diminish with increasing distance? If disabled, objects' brightness will &quot;pop&quot; as they enter and exit the light's region of influence. It can be useful to turn off when you want to do some special effects. If the light is directional, this property is ignored.
+</td></tr><tr><td><b><nobr>Range</nobr></b></td><td> How far light is emitted from the center of the object.
+</td></tr><tr><td><b><nobr>Spot Angle</nobr></b></td><td> If the light is a Spot light, this determines the angle of the cone in degrees.
+</td></tr><tr><td><b><nobr>Cookie</nobr></b></td><td> You can assign a texture to a light. The alpha channel of this texture is used as a mask that determines how bright the light is at different places. If the light is a <b>Spot</b> or a <b>Directional</b> light, this must be a 2D texture. If the light is a <b>Point</b> light, it must be a cubemap.
+</td></tr><tr><td><b><nobr>Draw Halo</nobr></b></td><td> If checked, a spherical halo of light will be drawn with a radius equal to <b>Range</b>.
+</td></tr><tr><td><b><nobr>Flare</nobr></b></td><td> Optional reference to the <a href="../Components/class-Flare.html">Flare</a> that will be rendered at the light's position.
+</td></tr><tr><td><b><nobr>Render Mode</nobr></b></td><td> Choose whether this light is rendered as a vertex light, pixel light, or determined automatically. For a detailed description of this tradoff, see <i>Performance Considerations</i> below. Options include
+<dl><dt>Auto</dt><dd> The rendering method is determined at runtime depending on the brightness of nearby lights and current <a href="../Components/class-QualitySettings.html">QualitySettings</a>.</dd><dt>Force Pixel</dt><dd> This light is always rendered at per-pixel quality. Use this for very important effects only (e.g. headlights of a player's car).</dd><dt>Force Vertex</dt><dd> This light is always rendered as a vertex-lit light.</dd></dl>
+</td></tr><tr><td><b><nobr> Culling Mask</nobr></b></td><td> Use to selectively exclude groups of objects from being affected by the light; see <a href="../ScriptingConcepts/Layers.html">Layers</a>.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+
+<p>There are three basic light types in Unity. Each type can be customized to fit your needs.
+</p>
+
+<p>You can use a texture that contains an alpha channel and assign it to be projected from any of the light types. This texture then becomes the cookie. The cookie's alpha mask modulates the light amount, creating light and dark spots on surfaces. They are a great way af adding lots of complexity to a scene, and hence providing a lot of atmosphere.
+</p>
+
+<p>All builtin shaders in Unity seamlessly work with any type of light (<i>VertexLit</i> type shaders ignore light cookies though).
+</p>
+
+<h3>Point Lights</h3>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-2.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>Point lights shine out from a point in all directions. They are the most common lights in computer games - typically used for explosions, light bulbs, etc.  They have an average cost on the graphics processor.
+</p>
+
+<p>Point light cookies must be cubemaps with an alpha channel. This cubemap gets projected out in all directions.
+</p>
+
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-3.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+
+<h3>Spot Lights</h3>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-4.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-4.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>Spot lights only shine in one direction, in a cone.  They are Perfect for flashlights or car headlights.  They cost the most expensive on the graphics processor.
+</p>
+
+<p>The cookie is projected down the cone of the spot light. This is good for creating an effect of light shining through a window. It is very important that the texture is black at the edges and its wrapping mode is set to <i>clamp</i>. For more info on this, see Texture
+</p>
+
+
+<h3>Directional Lights</h3>
+<p>Directional lights are used mainly in outdoor scenes for sun &amp; moonlight.  The light affect all surfaces of objects in your scene.  They are the least expensive on the graphics processor.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-5.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-5.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>With a directional light, the cookie is projected down the center of the light's Z axis. If you want to stretch it out over a large area, set the wrapping mode to 'repeat'
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-6.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-6.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>The above is a great way to add some quick detail to large outdoor scenes. You can even slide the light slowly over the scene to give the impression of moving clouds.
+</p>
+
+
+<h2>Performance considerations</h2>
+<p>Lights can be rendered in one of two methods: vertex lighting and per-pixel lighting. Vertex lighting only calculates the lighting at the vertices of the game models, and interpolates the lighting over the surfaces of the models. Per-pixel lights are calculated at every screen pixel, and hence are much more expensive.  Some older graphics cards only support vertex lighting.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-7.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-7.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>Lights have a big impact on rendering speed - therefore a tradeoff has to be made betwen lighting quality and game speed. Since per-pixel lights are much more expensive than per-vertex lights, Unity will only render the brightest lights at per-pixel quality. The actual number of pixel lights can be set as in the <a href="../Components/class-QualitySettings.html">Quality Settings</a>. The actual lights that are rendered as pixel lights are determined on an object-by-object case. This means:
+</p>
+<ul><li> Huge objects with bright lights could use all the pixel lights (depending on the quality settings). If the player is far from these, nearby lights will be rendered as vertex lights.  Therefore, it is better to split huge objects up in a couple of small ones.
+</li></ul>
+
+<h2>Creating Cookies</h2>
+
+<p>For more information on creating cookies, please see the tutorial on how to create a Spot Light cookie <a href="../Manual/HOWTO-LightCookie.html">here</a>.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Spotlights with textures can be extremely effective for making light coming in from windows. In this case, disable attenuation, and set the range to just reach the floor.
+</li><li>Low-intensity point lights are good for providing depth to a scene.
+</li><li>Put a light near a particle system and assign a 'lighted' shader from the Particles group to its material. This works really well with projection textures.
+</li><li>For high performance, use the <i>Vertex Lit</i> shader. This shader only does per-vertex lighting, giving a much higher throughput on low-end cards.
+</li></ul>
+</p>
+<h1>Camera</h1>
+
+<p>Cameras are the devices that capture and display the world to the player.  By customizing and manipulating cameras, you can make the presentation of your game truly unique.  You can have an unlimited number of cameras in a scene. They can be set to render in any order, at any place on the screen, or only certain parts of the screen.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-8.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-8.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Unity's flexible Camera object</i>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Clear Flags</nobr></b></td><td> Determines which parts of the screen will be cleared.  This is handy when using multiple Cameras to draw different game elements.
+</td></tr><tr><td><b><nobr>Background color</nobr></b></td><td> Color applied to the remaining screen after all elements in view have been drawn and there is no skybox.
+</td></tr><tr><td><b><nobr>Normalized View Port Rect</nobr></b></td><td> Four values that indicate where on the screen this camera view will be drawn, in Screen Coordinates.
+</td></tr><tr><td><b><nobr>    Xmin</nobr></b></td><td>The beginning horizontal position that the camera view will be drawn.
+</td></tr><tr><td><b><nobr>    Ymin</nobr></b></td><td>The beginning vertical position that the camera view will be drawn.
+</td></tr><tr><td><b><nobr>    Xmax</nobr></b></td><td>The ending horizontal position that the camera view will be drawn.
+</td></tr><tr><td><b><nobr>    Ymax</nobr></b></td><td>The ending vertical position that the camera view will be drawn.
+</td></tr><tr><td><b><nobr>Near Clip Plane</nobr></b></td><td> The closest point relative to the camera that drawing will occur.
+</td></tr><tr><td><b><nobr>Far Clip Plane</nobr></b></td><td> The furthest point relative to the camera that drawing will occur.
+</td></tr><tr><td><b><nobr>Field of view</nobr></b></td><td> Width of the Camera's view angle, measured in degrees along the local Y axis.
+</td></tr><tr><td><b><nobr>Is ortho graphic</nobr></b></td><td> Toggles the camera's capability to simulate perspective.
+</td></tr><tr><td><b><nobr>Orthographic size</nobr></b></td><td> The viewport size of the Camera when it is Orthographic.
+</td></tr><tr><td><b><nobr>Depth</nobr></b></td><td> The camera's position in the draw order. Cameras with a higher depth will be drawn on top of cameras with a lower depth value.
+</td></tr><tr><td><b><nobr>Culling Mask</nobr></b></td><td> Include or omit layers of objects to be rendered by the Camera.  Assign layers to your objects in the Inspector.
+</td></tr><tr><td><b><nobr>Render Target (Pro)</nobr></b></td><td> Reference to a Render Texture that will contain the output of the Camera view
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+<p>Cameras are essential for displaying your game to the player.  They can be customized, scripted, or parented to achieve just about any kind of effect imaginable.  For a puzzle game, you might keep the Camera static for a full view of the puzzle.  For a first-person shooter, you would parent the Camera to the player character, and place it at the character's eye level.  For a racing game, you'd likely want to have the Camera follow your player's vehicle.
+</p>
+
+<p>You can create multiple Cameras and assign each one to a different depth.  Cameras are drawn from low depth to high depth.  In other words, a Camera with a depth of 2 will be drawn on top of a Camera with a depth of 1.  You can adjust the values of the <b>Normalized View Port Rectangle</b> property to resize and position the Camera's view onscreen.  This can create multiple mini-views like missile cams, map views, rear-view mirrors, etc.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-9.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-9.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Multiple Cameras making use of <b>Normalized View Port Rectangle</b></i>
+</p>
+
+<h3>Clear Flags</h3>
+
+<p>Each Camera stores a color and depth information when it renders its view.  The portions of the screen that are not filled with a game object are empty, and will display the skybox by default.  When you are using multiple Cameras, each one stores its own color and depth information in buffers, accumulating more data as each Camera renders.  As any particular Camera in your scene renders its view, you can set the <b>Clear Flags</b> to clear different collections of the buffer information. This is done by choosing one of the four options:
+</p>
+
+<h4><span style="text-decoration:underline;">Skybox</span></h4>
+<p>This is the default setting.  Any empty portions of the screen will display the current Camera's skybox.  If the current Camera has no skybox set, it will default to the skybox chosen in the <a href="../Components/class-RenderSettings.html">Render Settings</a> (found in <b>Edit -&gt; Render Settings</b>).  It will then fall back to the <b>Background Color</b>.
+</p>
+
+<h4><span style="text-decoration:underline;">Solid Color</span></h4>
+<p>Any empty portions of the screen will display the current Camera's <b>Background Color</b>.
+</p>
+
+<h4><span style="text-decoration:underline;">Depth Only</span></h4>
+<p>For example, if you wanted to draw a player's gun without letting it get clipped inside the environment, you would set one Camera at Depth 0 to draw the environment, and another Camera at Depth 1 to draw the weapon alone.  The weapon Camera's <b>Clear Flags</b> should be set to to &quot;depth only&quot;.  This will keep the graphical display of the environment on the screen, but discard all information about where each object exists in 3-D space.  When the gun is drawn, the opaque parts will completely cover anything drawn, regardless of how close the gun is to the wall.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-10.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-10.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The gun is drawn last, after clearing the depth buffer of the cameras before it</i>
+</p>
+
+<h4><span style="text-decoration:underline;">Don't Clear</span></h4>
+<p>This mode does not clear either the color or the depth buffer.  The result is that each frame is drawn over the next, resulting in a smear-looking effect.  This isn't typically used in games, and would likely be best used with a custom shader.
+</p>
+
+<h3>Clip Planes</h3>
+
+<p>The <b>Near</b> and <b>Far Clip Plane</b> properties determine where the Camera's view begins and ends.  The planes are laid out perpendicular to the Camera's direction and are measured from the its position.  The <b>Near plane</b> is the closest location that will be rendered, and the <b>Far plane</b> is the furthest.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-11.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-11.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Far Clip Plane set to small versus large distance</i>
+</p>
+
+<h3>Culling Mask</h3>
+
+<p>The Culling Mask is used for selectively rendering groups of objects using Layers.  More information on using layers can be found <a href="../ScriptingConcepts/Layers.html">here</a>.
+</p>
+
+<p>Commonly, it is good practice to put your User Interface on a different layer, then render it by itself with a separate camera set to render the UI layer by itself.
+</p>
+
+<p>In order for the UI to display on top of the other Camera views, you'll also need to set the <b>Clear Flags</b> to &quot;Depth only&quot; and make sure that the UI Camera's <b>Depth</b> is higher than the other Cameras.
+</p>
+
+<h3>Normalized Viewport Rectangle</h3>
+
+<p><b>Normalized Viewport Rectangles</b> are specifically for defining a certain portion of the screen that the current camera view will be drawn upon.  You can put a map view in the lower-right hand corner of the screen, or a missile-tip view in the upper-left corner.  With a bit of design work, you can use Viewport Rectangle to create some unique behaviors.
+</p>
+
+<p>It's easy to create a two-player split screen effect using Normalized Viewport Rectangle.  After you have created your two cameras, change player one's Ymin value to 0.5, and player two's Ymax: value to 0.5.  This will make player one's camera display from halfway up the screen to the top, and player two's camera will start at the bottom and stop halfway up the screen.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-12.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-12.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Two-player display created with Normalized Viewport Rectangle</i>
+</p>
+
+<h3>Orthographic</h3>
+
+<p>Marking a Camera as orthographic removes all perspective from the Camera's view.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-13.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-13.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>A non-orthographic and orthographic camera viewports</i>
+</p>
+
+
+<h3>Render Texture</h3>
+
+<p>This feature is only available for Unity Pro licenses.  It will place the camera's view onto a <a href="../Components/class-RenderTexture.html"> Texture</a> that can then be applied to another object.  This makes it easy to create sports arena video monitors, surveillance cameras, reflections etc.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-14.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-14.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Render Texture used to create a live Arena-Cam</i>
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Cameras can be instantiated, parented, and scripted just like any other Game Object.
+</li><li>To increase the sense of speed in a racing game, use a high field of view.
+</li><li>Cameras can be used in physics simulation if you add a Rigidbody component.
+</li><li>There is no limit to the number of Cameras you can have in your scenes.
+</li><li>Orthographic cameras are great for making 3-D user interfaces
+</li><li>Pro license holders have the option of rendering a Camera's view to a texture, called Render-to-Texture, for even more unique effects.
+</li><li>Unity comes with pre-installed Camera scripts, found in <b>Components -&gt; Camera Control</b>.  Experiment with them to get a taste of what's possible.
+</li></ul>
+</p>
+<h1>Skybox</h1>
+
+<p>Skyboxes are a wrapper around your entire scene that display the vast beyond of your world.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-15.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-15.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The Skybox</i>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Material</nobr></b></td><td> The Material used to render the skybox, which contains the 6 Skybox textures. This Material should use the Skybox shader, and each of the textures should be assigned to the proper global direction.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+
+<p>Skyboxes are rendered before anything else in the scene in order to give the impression of complex scenery at the horizon. They are a box of 6 textures, one for each primary direction (+/-X, +/-Y, +/-Z).
+</p>
+
+<p>You have 2 options for implementing Skyboxes.  You can add them to an individual <a href="../Components/class-Camera.html">Camera</a> (usually the main Camera) or you can set up a default Skybox in <a href="../Components/class-RenderSettings.html">Render Settings's</a> <b>Skybox Material</b> property.  The Render Settings is most useful if you want all cameras in your scene to share the same Skybox.
+</p>
+
+<p>Adding the Skybox component to a Camera is useful if you want to override the default skybox set up in the Render Settings.  E.g. You might have two split screens and want the second camera to use a different skybox.  To add a Skybox component to a Camera, click to highlight the camera and go to <b>Component -&gt; Rendering -&gt; Skybox</b>.
+</p>
+
+<p>Unity's Standard Assets contain 6 pre setup Skybox materials. (Standard Assets/Skyboxes)
+</p>
+
+<p>If you want to create a new Skybox see <a href="../Manual/HOWTO-UseSkybox.html">here</a>.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+If you have a skybox assigned to a camera, make sure to set the camera's clear mode to Skybox
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="Materials and Shaders.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Making a GUI.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

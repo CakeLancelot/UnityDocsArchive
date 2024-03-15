@@ -1,0 +1,122 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Hinge Joint"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Hinge Joint" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-DynamicsGroup.html%22%3EPhysics%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-HingeJoint.html%22%3EHinge%20Joint%3C%2Fa%3E" -->
+		<h1>Hinge Joint</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-DynamicsGroup.html">Physics</a> &gt; <a href="class-HingeJoint.html">Hinge Joint</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-WheelCollider.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-SpringJoint.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>The Hinge Joint groups together 2 <a href="../Components/class-Rigidbody.html">Rigidbodies</a>, constraining them to move like they are connected by a hinge. It is perfect for doors, but can also be used to model chains, pendulums, etc.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-HingeJoint-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-HingeJoint-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The Hinge Joint</i>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Connected Body</nobr></b></td><td> Optional reference to the Rigidbody that the joint is dependent upon. If not set, the joint connects to the world.
+</td></tr><tr><td><b><nobr>Anchor</nobr></b></td><td> The Position of the anchor around which the body swings. The Position is defined in local space.
+</td></tr><tr><td><b><nobr>Axis</nobr></b></td><td> The Direction of the axis around which the body swings. The Axis is defined in local space.
+</td></tr><tr><td><b><nobr>Use Spring</nobr></b></td><td> Spring makes the rigid body attempt to stay in a specific angle compared to its connected body.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spring</nobr></b></td><td> The force the object asserts to move into the position.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Damper</nobr></b></td><td> the higher this value, the more the object will slow down.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Target Position</nobr></b></td><td> Target angle of the spring. The spring pulls towards this angle measured in degrees.
+</td></tr><tr><td><b><nobr>Use Motor</nobr></b></td><td> The motor makes the object spin around.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Target Velocity</nobr></b></td><td> The speed the object tries to attain.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Force</nobr></b></td><td> The force applied in order to attain the speed.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Free Spin</nobr></b></td><td> If enabled, the motor is never used to brake the spinning, only accelerate it.
+</td></tr><tr><td><b><nobr>Use Limits</nobr></b></td><td> If enabled, the angle of the hinge will be restricted within the <b>Min</b> &amp; <b>Max</b> values.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Min</nobr></b></td><td> The lowest angle the rotation can go.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Max</nobr></b></td><td> The highest angle the rotation can go.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Min Bounce</nobr></b></td><td> How much the object bounces when it hits the minimum stop.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Max Bounce</nobr></b></td><td> How much the object bounces when it hits the maximum stop.
+</td></tr><tr><td><b><nobr>Break Force</nobr></b></td><td> The force that needs to be applied for this joint to break.
+</td></tr><tr><td><b><nobr>Break Torque</nobr></b></td><td> The torque that needs to be applied for this joint to break.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+
+<p>A single Hinge Joint should be applied to an object per desired hinge.  The hinge will rotate at the point specified by the <b>Anchor</b> property, moving around the specified <b>Axis</b> property.  You DO NOT need to assign a Game Object to the joint's <b>Connected Body</b> property.  You should only assign a Game Object to the <b>Connected Body</b> property if you want the joint's Transform to be dependent on the attached object's Transform.
+</p>
+
+<p>Think about how the hinge of a door works. The <b>Axis</b> in this case is up, positive along the Y axis. The <b>Anchor</b> is placed somewhere at the intersection between door and wall.  You would not need to assign the wall to the <b>Connected Body</b>, because the joint will be connected to the world by default.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-HingeJoint-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-HingeJoint-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>A practical Hinge Joint with no <b>Connected Body</b></i>
+</p>
+
+<p>Now think about a doggy door hinge. The doggy door's <b>Axis</b> would be sideways, positive along the relative X axis.  The main door should be assigned as the <b>Connected Body</b>, so the doggy door's hinge is dependent on the main door's Transform.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-HingeJoint-2.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-HingeJoint-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>A practical Hinge Joint with a proper <b>Connected Body</b></i>
+</p>
+
+
+<h3>Chains</h3>
+
+<p>Multiple Hinge Joints can also be strung together to create a chain.  Add a joint to each link in the chain, and attach the next link as a <b>Connected Body</b>.  The result should be similar to the following picture.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-HingeJoint-3.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-HingeJoint-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>A Nunchaku made exclusively with primitives and Hinge Joints</i>
+</p>
+
+<h3>Vehicles</h3>
+
+<p>Hinge Joints can be implemented as axles on vehicles, as seen here in Forest Johnson's racing game. However, it's often better just to use a <a href="../Components/class-WheelCollider.html">Wheel Collider</a> for vehicles.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-HingeJoint-4.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-HingeJoint-4.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+You do not need to assign a <b>Connected Body</b> to your joint for it to work.
+</li><li>Use <b>Break Force</b> in order to make dynamic damage systems. This is really cool as it allows the player to break a door off its hinge by blasting it with a rocket launcher or running into it with a car.
+</li><li>The <b>Spring</b>, <b>Motor</b>, and <b>Limits</b> properties allow you to fine-tune your joint's behaviors.
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="class-WheelCollider.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-SpringJoint.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

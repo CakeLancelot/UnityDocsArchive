@@ -1,0 +1,116 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Color"-->
+			<title>Unity Script Reference &ndash; Color</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>struct Color</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="struct Color" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> Generic RGBA Color struct.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#r'>r</a></p>
+<p><a href='#g'>g</a></p>
+<p><a href='#b'>b</a></p>
+<p><a href='#a'>a</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Constructors</p><p><a href='#Color'>Color</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Functions</p><p><a href='#ToString'>ToString</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#red'>red</a></p>
+<p><a href='#green'>green</a></p>
+<p><a href='#blue'>blue</a></p>
+<p><a href='#white'>white</a></p>
+<p><a href='#black'>black</a></p>
+<p><a href='#yellow'>yellow</a></p>
+<p><a href='#cyan'>cyan</a></p>
+<p><a href='#magenta'>magenta</a></p>
+<p><a href='#gray'>gray</a></p>
+<p><a href='#grey'>grey</a></p>
+<p><a href='#clear'>clear</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#operator +'>operator +</a></p>
+<p><a href='#operator -'>operator -</a></p>
+<p><a href='#operator *'>operator *</a></p>
+<p><a href='#Lerp'>Lerp</a></p>
+<p><a href='#operator <a href="Vector4.html" class="classlink">Vector4</a>'>operator <a href="Vector4.html" class="classlink">Vector4</a></a></p>
+<p><a href='#operator Color'>operator Color</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> This structure is used throughout Unity in order to pass colors around. 
+Each color component is floating-point and has a range from 0 to 1.</p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="r"></a><h3><span class="full-name">Color.</span>r</h3><div class="synopsis"><span class="standard_type">float</span> r</div>
+   <p class='details'> Red component of the color</p>
+	<a name="g"></a><h3><span class="full-name">Color.</span>g</h3><div class="synopsis"><span class="standard_type">float</span> g</div>
+   <p class='details'> Green component of the color</p>
+	<a name="b"></a><h3><span class="full-name">Color.</span>b</h3><div class="synopsis"><span class="standard_type">float</span> b</div>
+   <p class='details'> Blue component of the color</p>
+	<a name="a"></a><h3><span class="full-name">Color.</span>a</h3><div class="synopsis"><span class="standard_type">float</span> a</div>
+   <p class='details'> Alpha component of the color</p>
+   <a name="Constructors"></a><h2 class="script-section">Constructors</h2>
+	<a name="Color"></a><h3><span class="full-name">Color.</span>Color</h3><div class="synopsis">Color (<span class="standard_type">float</span> _r, <span class="standard_type">float</span> _g, <span class="standard_type">float</span> _b, <span class="standard_type">float</span> _a)</div>
+   <p class='details'> Constructor with intializers.</p>
+   <a name="Methods"></a><h2 class="script-section">Methods</h2>
+	<a name="ToString"></a><h3><span class="full-name">Color.</span>ToString</h3><div class="synopsis"><span class="standard_type">string</span> ToString ()</div>
+   <p class='details'> Returns a nicely formatted string of the Color</p>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="red"></a><h3><span class="full-name">Color.</span>red</h3><div class="synopsis">Color red</div>
+   <p class='details'> Solid red. RGBA is (1, 0, 0, 1)</p>
+	<a name="green"></a><h3><span class="full-name">Color.</span>green</h3><div class="synopsis">Color green</div>
+   <p class='details'> Solid green. RGBA is (0, 1, 0, 1)</p>
+	<a name="blue"></a><h3><span class="full-name">Color.</span>blue</h3><div class="synopsis">Color blue</div>
+   <p class='details'> Solid blue. RGBA is (0, 0, 1, 1)</p>
+	<a name="white"></a><h3><span class="full-name">Color.</span>white</h3><div class="synopsis">Color white</div>
+   <p class='details'> Solid white. RGBA is (1, 1, 1, 1)</p>
+	<a name="black"></a><h3><span class="full-name">Color.</span>black</h3><div class="synopsis">Color black</div>
+   <p class='details'> Solid black. RGBA is (0, 0, 0, 1)</p>
+	<a name="yellow"></a><h3><span class="full-name">Color.</span>yellow</h3><div class="synopsis">Color yellow</div>
+   <p class='details'> Yellow. RGBA is weird, but nice to look at.</p>
+	<a name="cyan"></a><h3><span class="full-name">Color.</span>cyan</h3><div class="synopsis">Color cyan</div>
+   <p class='details'> Cyan. RGBA is (0, 1, 1, 1)</p>
+	<a name="magenta"></a><h3><span class="full-name">Color.</span>magenta</h3><div class="synopsis">Color magenta</div>
+   <p class='details'> Magenta. RGBA is (1, 0, 1, 1)</p>
+	<a name="gray"></a><h3><span class="full-name">Color.</span>gray</h3><div class="synopsis">Color gray</div>
+   <p class='details'> Gray. RGBA is (0.5, 0.5, 0.5, 1)</p>
+	<a name="grey"></a><h3><span class="full-name">Color.</span>grey</h3><div class="synopsis">Color grey</div>
+   <p class='details'> English Gray. RGBA is (0.5, 0.5, 0.5, 1)</p>
+	<a name="clear"></a><h3><span class="full-name">Color.</span>clear</h3><div class="synopsis">Color clear</div>
+   <p class='details'> Completely transparent. RGBA is (0, 0, 0, 0)</p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="operator +"></a><h3><span class="full-name">Color.</span>operator +</h3><div class="synopsis">Color <span class="keyword">operator</span> + (Color a, Color b)</div>
+   <p class='details'> Adds two colors together. Each component is added separately</p>
+	<a name="operator -"></a><h3><span class="full-name">Color.</span>operator -</h3><div class="synopsis">Color <span class="keyword">operator</span> - (Color a, Color b)</div>
+   <p class='details'> Subtracts color b from color a. Each RGBA component is subtracted separately</p>
+	<a name="operator *"></a><h3><span class="full-name">Color.</span>operator *</h3><div class="synopsis">Color <span class="keyword">operator</span> * (Color a, Color b)</div>
+   <p class='details'> Multiplies the RGBA components of two colors.</p>
+	<a name="operator *"></a><h3><span class="full-name">Color.</span>operator *</h3><div class="synopsis">Color <span class="keyword">operator</span> * (Color a, <span class="standard_type">float</span> b)</div>
+   <p class='details'> Multiplies color a by the float b. Each RGBA component is scaled separately.</p>
+	<a name="operator *"></a><h3><span class="full-name">Color.</span>operator *</h3><div class="synopsis">Color <span class="keyword">operator</span> * (<span class="standard_type">float</span> b, Color a)</div>
+   <p class='details'> Multiplies color a by the float b. Each RGBA component is scaled separately.</p>
+	<a name="Lerp"></a><h3><span class="full-name">Color.</span>Lerp</h3><div class="synopsis">Color Lerp (Color a, Color b, <span class="standard_type">float</span> t)</div>
+   <p class='details'> </p>
+	<a name="operator Vector4"></a><h3><span class="full-name">Color.</span>operator Vector4</h3><div class="synopsis"><span class="keyword">implicit</span> <span class="keyword">operator</span> <a href="Vector4.html" class="classlink">Vector4</a> (Color c)</div>
+   <p class='details'> Colors can be cast implicitly to and from Vector4s</p>
+	<a name="operator Color"></a><h3><span class="full-name">Color.</span>operator Color</h3><div class="synopsis"><span class="keyword">implicit</span> <span class="keyword">operator</span> Color (<a href="Vector4.html" class="classlink">Vector4</a> v)</div>
+   <p class='details'> Colors can be cast implicitly to and from Vector4s</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

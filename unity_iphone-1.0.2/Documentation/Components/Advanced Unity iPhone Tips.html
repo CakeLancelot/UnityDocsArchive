@@ -1,0 +1,170 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Advanced Unity iPhone Tips</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Advanced Unity iPhone Tips</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/iPhoneGuide.html">Developing for the iPhone</a> &gt; <a href="../Components/Advanced Unity iPhone Tips.html">Advanced Unity iPhone Tips</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/Unity iPhone Basics.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/Optimizing Performance on the iPhone.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Advanced Unity iPhone Tips</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<h2>Working with the Accelerometer</h2>
+<h3>Detecting device orientation</h3>
+<p>You can always use the built-in <code>iPhoneInput.orientation</code> property to detect device orientation.  However, if you want even more control you can use your own low pass filtering for this case.
+</p>
+<p class='vspace'>Using low-pass filtering on the accelerometer signal to detect device orientation is better than calculating a recent average.  This is because recent data would be treated as more important than older data, and because it's easier to implement and it's slightly more efficient.
+</p>
+<div class='vspace'></div><pre>	private const float <span class='wikiword'>AccelerometerUpdateInterval</span> = 1.0f / 60.0f;
+	private const float <span class='wikiword'>LowPassFilterFactor</span> = <span class='wikiword'>AccelerometerUpdateInterval</span> / <span class='wikiword'>LowPassKernelWidthInSeconds</span>; // tweakable
+
+	private Vector3 lowPassValue = Vector.zero; // should be initialized with 1st sample
+	Vector3 <span class='wikiword'>LowPassFilter</span>(Vector3 newSample) {
+		lowPassValue = Math.Lerp(lowPassValue, newSample, <span class='wikiword'>LowPassFilterFactor</span>);
+		return lowPassValue;
+	}
+</pre><p class='vspace'>The greater the value of <span class='wikiword'>LowPassKernelWidthInSeconds</span>, the slower the filtered value will converge towards current input sample (and vice versa). You should be able to use <span class='wikiword'>LowPassFilter</span>() function instead of avgSamples().
+</p>
+<div class='vspace'></div><h3>I'd like as much precision as possible when reading the accelerometer.  What should I do?</h3>
+<p><b>A</b>: Reading the <code>iPhoneInput.accelerometer</code> variable does not equal sampling the hardware. Put simply, Unity samples the hardware at a frequency of 60Hz and stores the result into the variable. In reality, things are a little bit more complicated. Accelerometer sampling is handled via <span class='wikiword'>NSTimer</span> internally, which doesn't execute at consistent time intervals while under significant CPU loads. For example you can get 2 samples during one frame, then 1 sample during another frame. The following is a list of time intervals in milliseconds of sampling the accelerometer. The sample interval is 120Hz while a test scene is running at 30fps and simple code simulates ~20ms CPU load per frame:
+</p><ul><li>accelerator dt = 1.0ms
+</li><li>accelerator dt = 0.5ms
+</li><li>accelerator dt = 0.4ms
+</li><li>accelerator dt = 26.5ms
+</li><li>accelerator dt = 0.8ms
+</li><li>accelerator dt = 12.7ms
+</li><li>accelerator dt = 5.6ms
+</li></ul><p class='vspace'>You can access all measurements executed by accelerometer during the frame. The following code will calculate a simple average of all the accelerometer events that were collected within the last frame:
+</p>
+<div class='vspace'></div><pre>	float period = 0;
+	Vector3 acc = Vector3.zero;
+	foreach (iPhoneAccelerationEvent evnt in iPhoneInput.accelerationEvents)
+	{
+		acc += evnt.acceleration * evnt.timeDelta;
+		period += evnt.timeDelta;
+	}
+	if (period &gt; 0)
+		acc *= 1.0/period;
+</pre><div class='vspace'></div><h2>Unique ID</h2>
+<p>There are a number of properties that you can read to handle various cases, from checking to make sure the user is running a specific iPhone OS version, to simply incorporating the device's name into your game somehow.  These properties are:
+</p>
+<div class='vspace'></div><ul><li><span class='doc-prop'>iPhoneSettings.uniqueIdentifier</span>
+</li><li><span class='doc-prop'>iPhoneSettings.name</span>
+</li><li><span class='doc-prop'>iPhoneSettings.model</span>
+</li><li><span class='doc-prop'>iPhoneSettings.systemName</span>
+</li><li><span class='doc-prop'>iPhoneSettings.systemVersion</span>
+</li></ul><div class='vspace'></div><h2>iPhone Stripping Level (Advanced License feature)</h2>
+<p>Size optimizations work in following way:  
+</p>
+<p class='vspace'>A) at <span class='doc-keyword'>Strip assemblies</span> level: script byte code is analyzed and according to gathered information, 
+classes and methods that are not referenced from the scripts are removed from <span class='wikiword'>DLLs</span> and also are excluded from AOT step.
+This optimization reduces main binary and accompanying DLL size. This feature is safe when no reflection is used.
+</p>
+<p class='vspace'>B) at <span class='doc-keyword'>Use micro mscorlib</span> level: special smaller version of mscorlib is used, there are few components pre-removed like: Security, Reflection.Emit, Remoting, non Gregorian calendars, etc. Also internal component inter dependencies were minimized.
+This optimization reduces main binary and mscorlib.dll size. This feature is not compatible with some System assembly classes, so use it with care.
+</p>
+<p class='vspace'>C) at <span class='doc-keyword'>Strip <span class='wikiword'>ByteCode</span></span> level: accompanying .NET <span class='wikiword'>DLLs</span> (stored in Data folder) are stripped down to metadata only. This is possible because all the code is already precompiled with AOT and linked into main binary.
+</p>
+<p class='vspace'>Note: if you choose level B) then it means that optimizations described at A) are also performed and if you choose level C) then A) and B) level optimizations are also included.
+</p>
+<p class='vspace'><a name='ScriptCallOptimization' id='ScriptCallOptimization'></a>
+</p><h2>iPhone Script Call Optimization (Advanced License feature)</h2>
+<ul><li><span class='doc-keyword'>Slow and Safe</span> - default mono internal call handling with exception support.
+</li><li><span class='doc-keyword'>Fast and Exceptions Unsupported</span> - fast mono internal call implementation, but exceptions are not supported, so use it with care. Typical scenario when it could be useful: application deals a lot with Unity Engine and does not throw any exceptions. This option could save 1-4 ms / frame.
+</li></ul><div class='vspace'></div><h2>Using .NET libraries</h2>
+<p>It is recommended to keep your references to other libraries as little as possible, because 1 MB of .NET CIL code roughly translates to 3-4 MB of ARM code. So for example if application is referencing System.dll and System.Xml.dll then it means additional 6 MB of ARM code <b>if stripping is not used</b>. At some point application will reach limit when linker will have troubles linking the code.x
+If you care about application size a lot you might find C# more suitable language for your code as is has less dependencies than Boo or <span class='wikiword'>JavaScript</span>.
+</p>
+<div class='vspace'></div><h2>Unsupported items</h2>
+<h3>General</h3>
+<ul><li>Apple iPhone Simulator is not supported. Use Unity iPhone Remote application for rapid development or deploy and run your project directly on iPhone.
+</li><li>Ogg audio compression is not supported, use mp3 or m4a files instead.  Please see the <a href="../Components/class-AudioClip.html">AudioClip Component page</a> for more information about audio support in Unity iPhone.
+</li></ul><div class='vspace'></div><h3>Graphics</h3>
+<ul><li>Pixel shaders are not supported by iPhone hardware, but you can use texture combiners.
+</li><li>DXT texture compression is not supported, use PVRTC instead.
+</li><li>Non-square textures are not supported.
+</li><li>Terrain engine is not supported. 
+</li></ul><div class='vspace'></div><h3>Phone features</h3>
+<ul><li>iPhone camera, location services, silent switch, mic input and vibration are not directly supported by Unity, but you may use custom Objective-C/C/C++ code to access these features.
+</li></ul><div class='vspace'></div><h3>Scripting</h3>
+<ul><li>Dynamic <span class='wikiword'>JavaScript</span> features like duck typing, "eval" function, etc. are not supported, because all the code should be available and compilable already at the build stage. Use #pragma strict for your scripts to force compiler report dynamic features as errors.
+</li><li>.NET 2.0 features (including generics) are not supported.
+</li><li>.NET sockets are not supported in <b>Unity iPhone Standard</b>.
+</li><li>System.dll &amp; System.Xml.dll are not supported in <b>Unity iPhone Standard</b>.
+</li><li>Video streaming via WWW class is currently not supported.
+</li><li>HTTPS is currently not supported by WWW class.
+</li><li>Up to 7 additional .NET assemblies are currently supported (actual number depends on how many different scripting languages are used in project). It is recommended to keep .NET dependencies as low as possible, because it greatly affects final binary and distribution package size.
+</li></ul>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/Unity iPhone Basics.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/Optimizing Performance on the iPhone.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

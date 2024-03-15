@@ -1,0 +1,115 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" Name and Tags"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title=" Name and Tags" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced.html%22%3EAdvanced%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Shaders.html%22%3EShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-Shader.html%22%3EShader%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-SubShader.html%22%3ESubShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-Pass.html%22%3E%20Pass%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-NameAndTags.html%22%3E%20Name%20and%20Tags%3C%2Fa%3E" -->
+		<h1> Name and Tags</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced.html">Advanced</a> &gt; <a href="Shaders.html">Shaders</a> &gt; <a href="SL-Shader.html">Shader</a> &gt; <a href="SL-SubShader.html">SubShaders</a> &gt; <a href="SL-Pass.html"> Pass</a> &gt; <a href="SL-NameAndTags.html"> Name and Tags</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="SL-Blend.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-BindChannels.html">Next<img src="../images/next.png"></a></div>
+
+			
+<p>Passes and subshaders use tags to tell how and when they expect to be rendered to the rendering engine. The tags recognized by Unity are different for Passes and SubShaders. Passes can also be given a name to be referenced by a <a href="../Manual/SL-UsePass.html">UsePass</a> command.
+</p>
+<h2> Syntax</h2>
+<p><dl><dt><b>Tags {</b> &quot;<i>TagName1</i>&quot; = &quot;<i>Value1</i>&quot; &quot;<i>TagName2</i>&quot; = &quot;<i>Value2</i>&quot; <b>}</b></dt><dd> Specifies <b>TagName1</b> to have <b>Value1</b>, <b>TagName2</b> to have <b>Value2</b>. You can have as many tags as you like.</dd><dt><b>Name</b> &quot;<i>PassName</i>&quot;</dt><dd> Gives the <i>PassName</i> name to the current pass.</dd></dl>
+</p>
+<h2> Details</h2>
+<p>Tags are basic key-value pairs. Inside a <a href="../Manual/SL-SubShader.html">SubShader</a> tags are used to determine rendering order. Inside a <a href="../Manual/SL-Pass.html">Pass</a> tags are used to control which role this pass has in the lighting pipeline (ambient, vertex lit, pixel lit etc.).
+</p>
+
+<p>A pass can be given a name so that a <a href="../Manual/SL-UsePass.html">UsePass</a> command can reference it.
+</p>
+
+<hr />
+
+<h2> SubShader Tags</h2>
+
+<h3> Rendering Order - Queue tag</h3>
+<p>You can determine in which order your objects are drawn using the <i>Queue</i> tag. Unity renders all objects in 4 render queues in order to make effects like transparency work properly. A Shader decides which render queue any objects using it belongs to.
+</p>
+
+<p><i>Transparent</i> and <i>Overlay</i> queues are rendered back to front, all other queues have arbitrary order that optimizes for performance.
+</p>
+
+<p>The 4 queues are:
+<table class="wikitable"><tr><td class="wikicell" >Background</td><td class="wikicell" >This render queue is rendered before any others. It is used for skyboxes and the like.</td></tr><tr><td class="wikicell" >Geometry <i>(default)</i></td><td class="wikicell" >This is used for most objects. Usually opaque geometry uses this queue.</td></tr><tr><td class="wikicell" >Transparent</td><td class="wikicell" >This render queue is rendered after <i>Geometry</i>, in back-to-front order. Anything alpha-blended (i.e. shaders that don't write to depth buffer) should go here (glass, particle effects)</td></tr><tr><td class="wikicell" >Overlay</td><td class="wikicell" >This render queue is meant for overlay effects. Anything rendered last should go here (e.g. lens flares)</td></tr></table>
+</p>
+
+<hr />
+
+<h2> Pass Tags</h2>
+
+<h3> LightMode tag</h3>
+
+<p><b>LightMode</b> tag defines Pass' role in the lighting pipeline. See <a href="../Manual/SL-RenderPipeline.html">render pipeline</a> for details.
+</p>
+
+<p>Possible values for LightMode tag are:
+<dl><dt>Vertex</dt><dd> Rendered if any lights hit the object.</dd><dt>VertexOrNone</dt><dd> <i>(default)</i> Rendered if only vertex lights or no lights at all hit the object.</dd><dt>VertexOnly</dt><dd> Rendered if only vertex lights hit the object.</dd><dt>PixelOnly</dt><dd> Rendered once for each pixel light, provided that no vertex lights hit the object.</dd><dt>Pixel</dt><dd> Rendered once for each pixel light.</dd><dt>VertexOrPixel</dt><dd> Rendered once if any light hits the object.</dd><dt>VertexAndPixel</dt><dd> Rendered once if both vertex and pixel lights hit the object.</dd><dt>PixelOrNone</dt><dd> Rendered if only pixel lights or no lights at all hit the object. Often used as an ambient pass.</dd><dt>None</dt><dd> Rendered only if no lights affect the object.</dd><dt>Always</dt><dd> Always rendered. All lights are setup for vertex lighting.</dd></dl>
+</p>
+
+<p>If the active subshader does not have a pass with LightMode of PixelOnly or Pixel, then Unity treats the shader as not supporting pixel lights. In that case, all lights affecting the object are treated as vertex lights.
+</p>
+
+<p>The most common cases of LightMode usage are:
+</p>
+<ul><li> Leave it at default value of VertexOrNone (i.e. not use the tag at all). All lights will be setup as vertex lighting + ambient; or if no lights are affecting the object only ambient portion will be set up.
+</li><li> To implement good pixel lit shaders, most often you write a <i>PixelOrNone</i> pass that renders ambient only, a <i>Vertex</i> pass that renders vertex lighting + ambient, and a <i>Pixel</i> pass that adds illumination one light at a time. Majority of builtin shaders in Unity follow this configuration.
+</li></ul>
+
+<h3>LightCount tag</h3>
+
+<p>For pixel lit (LightType is Pixel or PixelOnly) passes, a <b>LightCount</b> tag indicates how many lights this pass computes at once. The default value is 1, meaning that a pixel lit pass computes lighting from a single light. All builtin Unity shaders compute lighting from one pixel light at a time.
+</p>
+
+<p>For passes that use a larger LightCount (currently up to and including 2), Unity will render as many pixel lights simultaneously. If there are less lights than this number, their colors will be set to black. The light parameters (positions, colors etc.) are provided in the <a href="../Manual/SL-BuiltinValues.html">builtin value arrays</a>.
+</p>
+
+<h3>LightTexCount tag</h3>
+
+<p>For a pixel lit pass, the <b>LightTexCount</b> indicates what combination of light attenuation types does the pass support. The tag's value is a string consisting of '0', '1' and '2' characters; meaning a pass supports zero, one or two light attenuation textures. The default value is &quot;012&quot; - i.e. the pass supports all attenuation combinations. When implementing pixel lit shaders for older hardware, often you implement separate passes for these combinations because of hardware restrictions. See <a href="../Manual/SL-Attenuation.html">Attenuation and Pixel Lights</a> for details.
+</p>
+
+<hr />
+
+<h2> Examples</h2>
+<p><pre class='codelisting'>
+Shader &quot;Transparent Queue Example&quot; {
+     SubShader {
+        Tags {&quot;Queue&quot; = &quot;Transparent&quot; }
+        Pass {
+        }
+    } 
+}
+</pre>
+<i>An example illustrating how to render something in the transparent queue</i>
+</p>
+
+
+
+		<div class="navigation"><a href="SL-Blend.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-BindChannels.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

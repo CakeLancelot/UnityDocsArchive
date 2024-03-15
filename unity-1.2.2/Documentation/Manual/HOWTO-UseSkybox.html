@@ -1,0 +1,58 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="How do I Make a Skybox?"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="How do I Make a Skybox?" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOW-TOs.html%22%3EHOW-TOs%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Graphics%20how-tos.html%22%3EGraphics%20how-tos%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOWTO-UseSkybox.html%22%3EHow%20do%20I%20Make%20a%20Skybox%3F%3C%2Fa%3E" navigation="%3Ca%20href%3D%22HOWTO-BuildCubeMap.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22HOWTO-MeshParticleEmitter.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>How do I Make a Skybox?</h1>
+		<p><a href="index.html">Unity Manual</a> &gt; <a href="HOW-TOs.html">HOW-TOs</a> &gt; <a href="Graphics how-tos.html">Graphics how-tos</a> &gt; <a href="HOWTO-UseSkybox.html">How do I Make a Skybox?</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="HOWTO-BuildCubeMap.html"><img src="../images/prev.png"></a><a href="HOWTO-MeshParticleEmitter.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+
+<p>A skybox is a 6-sided cube that is drawn behind all graphics in the camera. To create one, do as follows:
+</p>
+
+<table><tr><td><div class='cbox'><div class='cbox-data'>
+<ol><li> Make 6 textures that correspond to each of the 6 sides of the skybox.
+</li><li> Create a new material by choosing <b>Assets-&gt;Create-&gt;Material</b> from the main menu.
+</li><li> Select the shader drop-down in the top of the inspector, choose <b>RenderFX-&gt;Skybox</b> from the drop-down.
+</li><li> Assign the 6 textures to each texture slot in the material.
+</li></ol>
+
+<p>To Assign the skybox to the scene you're working on, do like this:
+</p>
+
+<ol><li> Choose <b>Edit-&gt;Render Settings</b> from the main menu.
+</li><li> Drag the material you created above to the Skybox Material slot in the inspector.
+</li></ol>
+
+<p></div></div></td></tr></table>
+</p>
+
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

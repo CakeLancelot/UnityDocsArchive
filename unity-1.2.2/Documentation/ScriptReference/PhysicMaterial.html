@@ -1,0 +1,88 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="PhysicMaterial"-->
+			<title>Unity Script Reference &ndash; PhysicMaterial</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class PhysicMaterial</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class PhysicMaterial" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Object.html" class="classlink">Object</a></div></p>
+   <p class='first'> The PhysicMaterials contains all info needed to handle colliding objects in a sensible manner.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#dynamicFriction'>dynamicFriction</a></p>
+<p><a href='#staticFriction'>staticFriction</a></p>
+<p><a href='#bouncyness'>bouncyness</a></p>
+<p><a href='#frictionDirection2'>frictionDirection2</a></p>
+<p><a href='#dynamicFriction2'>dynamicFriction2</a></p>
+<p><a href='#staticFriction2'>staticFriction2</a></p>
+<p><a href='#useSpring'>useSpring</a></p>
+<p><a href='#spring'>spring</a></p>
+<p><a href='#frictionCombine'>frictionCombine</a></p>
+<p><a href='#bounceCombine'>bounceCombine</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Constructors</p><p><a href='#PhysicMaterial'>PhysicMaterial</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> <span class="seealso"><b>See Also:</b> <a href="Collider.html" class="classlink">Collider</a></span></p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="dynamicFriction"></a><h3><span class="full-name">PhysicMaterial.</span>dynamicFriction</h3><div class="synopsis"><span class="standard_type">float</span> dynamicFriction</div>
+   <p class='details'> The friction used when already moving.  This value has to be between 0 and 1.
+A value of 0 feels like ice, 1 feels like rubber.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">collider.dynamicFriction = 1;</div></td></tr></table></p>
+	<a name="staticFriction"></a><h3><span class="full-name">PhysicMaterial.</span>staticFriction</h3><div class="synopsis"><span class="standard_type">float</span> staticFriction</div>
+   <p class='details'> The friction used when an object is lying on a surface. Usually a value from 0 to 1.
+A value of 0 feels like ice, 1 feels like rubber.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">collider.staticFriction = 1;</div></td></tr></table></p>
+	<a name="bouncyness"></a><h3><span class="full-name">PhysicMaterial.</span>bouncyness</h3><div class="synopsis"><span class="standard_type">float</span> bouncyness</div>
+   <p class='details'> How bouncy is the surface? A value of 0 will not bounce. A value of 1 will bounce without any loss of energy.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">collider.bouncyness = 1;</div></td></tr></table></p>
+	<a name="frictionDirection2"></a><h3><span class="full-name">PhysicMaterial.</span>frictionDirection2</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> frictionDirection2</div>
+   <p class='details'> The direction of anisotropy. Anisotropic friction is enabled if the <a href="Vector3.html" class="classlink">Vector3</a> is not zero.
+dynamicFriction2 and staticFriction2 will be applied along frictionDirection2.
+The direction of anisotropy is relative to the colliders local coordinate system.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Make the collider slippery when going forward but not when going sideways<br/>collider.physicMaterial.frictionDirection2 = <a href="Vector3.html#forward" class="itemlink">Vector3.forward</a>;<br/>collider.physicMaterial.dynamicFriction2 = 0;<br/>collider.physicMaterial.dynamicFriction = 1;</div></td></tr></table></p>
+	<a name="dynamicFriction2"></a><h3><span class="full-name">PhysicMaterial.</span>dynamicFriction2</h3><div class="synopsis"><span class="standard_type">float</span> dynamicFriction2</div>
+   <p class='details'> If anisotropic friction is enabled, dynamicFriction2 will be applied along frictionDirection2.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">collider.physicMaterial.dynamicFriction2 = 0;</div></td></tr></table></p>
+	<a name="staticFriction2"></a><h3><span class="full-name">PhysicMaterial.</span>staticFriction2</h3><div class="synopsis"><span class="standard_type">float</span> staticFriction2</div>
+   <p class='details'> If anisotropic friction is enabled, staticFriction2 will be applied along frictionDirection2.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">collider.physicMaterial.staticFriction2 = 0;</div></td></tr></table></p>
+	<a name="useSpring"></a><h3><span class="full-name">PhysicMaterial.</span>useSpring</h3><div class="synopsis"><span class="standard_type">bool</span> useSpring</div>
+   <p class='details'> Should the surface of the collider be springy?<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">collider.material.useSpring = true;</div></td></tr></table></p>
+	<a name="spring"></a><h3><span class="full-name">PhysicMaterial.</span>spring</h3><div class="synopsis"><a href="JointSpring.html" class="classlink">JointSpring</a> spring</div>
+   <p class='details'> This is useful for colliders used as wheels are other materials that should appear wobbly.
+The spring force is <span class="variable">spring.spring</span>.
+The damping force is <span class="variable">spring.damping</span>.
+The damping force is <span class="variable">spring.spring</span>.
+spring.damper is the damping force.
+spring.damper is the damping force.
+The spring parameters for the surface. The spring attempts to reach a target distance by adding spring and damping forces.  <p class="details"/>The <span class="variable">spring.spring</span> force attempts to reach the target distance. A larger value makes the spring reach the target position faster.  <p class="details"/>The <span class="variable">spring.damper</span> force dampens the angular velocity. A larger value makes the spring reach the goal slower.  <p class="details"/>The spring reaches for the <span class="variable">spring.targetPosition</span>. If <span class="variable">spring.targetPosition</span> is zero the spring will rest when the surfaces are just touch each other.
+collider.material.</p>
+	<a name="frictionCombine"></a><h3><span class="full-name">PhysicMaterial.</span>frictionCombine</h3><div class="synopsis"><a href="PhysicMaterialCombine.html" class="classlink">PhysicMaterialCombine</a> frictionCombine</div>
+   <p class='details'> Determines how the friction is combined.
+Traditionally friction properties are dependent on the combination of the two materials in contact.
+This is however impractical in a game. Instead you can use the combine mode to tune how the friction values of two materials are combined.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">collider.material.frictionCombine = FrictionCombineMode.Average;</div></td></tr></table></p>
+	<a name="bounceCombine"></a><h3><span class="full-name">PhysicMaterial.</span>bounceCombine</h3><div class="synopsis"><a href="PhysicMaterialCombine.html" class="classlink">PhysicMaterialCombine</a> bounceCombine</div>
+   <p class='details'> Determines how the bouncyness is combined.
+Traditionally bouncyness properties are dependent on the combination of the two materials in contact.
+This is however impractical in a game. Instead you can use the combine mode to tune how the bouncyness values of two materials are combined.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">collider.material.bounceCombine = FrictionCombineMode.Average;</div></td></tr></table></p>
+   <a name="Constructors"></a><h2 class="script-section">Constructors</h2>
+	<a name="PhysicMaterial"></a><h3><span class="full-name">PhysicMaterial.</span>PhysicMaterial</h3><div class="synopsis">PhysicMaterial ()</div>
+   <p class='details'> Creates a new material.
+It is usually easier to just use collider.material and modify the attached material directly.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Creates a <span class="keyword">new</span> material and attaches it<br/>function Start () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;var material = <span class="keyword">new</span> PhysicMaterial();<br/>&nbsp;&nbsp;&nbsp;&nbsp;material.dynamicfriction = 1;<br/>&nbsp;&nbsp;&nbsp;&nbsp;collider.material = material;<br/>}</div></td></tr></table></p>
+	&nbsp;<div class="synopsis">PhysicMaterial (<span class="standard_type">string</span> name)</div>
+   <p class='details'> Creates a new material named <span class="variable">name</span>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Creates a <span class="keyword">new</span> material attaches and attaches it<br/>function Start () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;var material = <span class="keyword">new</span> PhysicMaterial("New <a href="Material.html" class="classlink">Material</a>");<br/>&nbsp;&nbsp;&nbsp;&nbsp;material.dynamicfriction = 1;<br/>&nbsp;&nbsp;&nbsp;&nbsp;collider.material = material;<br/>}</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

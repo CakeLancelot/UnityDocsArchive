@@ -1,0 +1,110 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" Importing Objects From Lightwave"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title=" Importing Objects From Lightwave" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22FAQ.html%22%3EFAQ%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOWTO-importObject.html%22%3E%20How%20do%20I%20import%20objects%20from%20my%203D%20app%3F%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOWTO-importObjectLightwave.html%22%3E%20Importing%20Objects%20From%20Lightwave%3C%2Fa%3E" -->
+		<h1> Importing Objects From Lightwave</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="FAQ.html">FAQ</a> &gt; <a href="HOWTO-importObject.html"> How do I import objects from my 3D app?</a> &gt; <a href="HOWTO-importObjectLightwave.html"> Importing Objects From Lightwave</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="HOWTO-ImportObjectCinema4D.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HOWTO-ImportObjectMaya.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>You can import meshes and animations from Lightwave using the FBX plugin for Lightwave.
+</p>
+
+<h2>Unity currently imports</h2>
+<ol><li> All objects with pivot points, position, rotation and scale
+</li><li> Meshes with UV's and Normals
+</li><li> Materials with Texture and diffuse color. Multiple materials per mesh.
+</li><li> Animations
+</li><li> Bone based animations
+</li></ol>
+
+<h3> Installation</h3>
+<p>Download the latest Lightwave FBX exporter from:
+</p>
+<h3> By downloading these plugins you automatically agree to <a class="wiki"  href="http://www.otee.dk/lightwave_plugins/License.txt">this</a> license.</h3>
+<p><a class="wiki"  href="http://www.otee.dk/lightwave_plugins/mbr_FBX200508_LW80_MACOS.pkg.sit"> os x lighwave 8.0 plugin</a> <br />
+<a class="wiki"  href="http://www.otee.dk/lightwave_plugins/mbr_FBX200508_LW82_MACOS.pkg.sit"> os x lighwave 8.2 plugin</a> <br />
+<a class="wiki"  href="http://www.otee.dk/lightwave_plugins/mbr_FBX200508_LW80_WIN.zip"> windows lighwave 8.0 plugin</a> <br />
+<a class="wiki"  href="http://www.otee.dk/lightwave_plugins/mbr_FBX200508_LW82_WIN.zip"> windows lighwave 8.2 plugin</a> <br />
+</p>
+
+
+<p>There are three versions of the plugin, one for LightWave 7.5, one for LightWave 8.0 and one for LightWave 8.2. Make sure you have the correct version: the LW7 plugin doesn't work properly with LW8.
+</p>
+
+<p>The plugin comes in a OS X package. If  you double click the package to install it, the installer will try put it in the correct folder. If it can't find your LightWave plugin folder, it will create its own LightWave folder in your Application folder and dump it there. If the latter occurs you should move it to your LightWave plugin folder (or any sub-folder). Once there you have to add the plugin to LightWave via the &quot;Edit Plugins&quot; panel (option-F11) -  see the LightWave manual for more details on how to add plugins.
+</p>
+
+<p><img class='figure' src='images/HOWTO-importObjectLightwave-0.jpg' />
+</p>
+
+<p>Once added to LightWave the plugin is acessible via the Generics menu (on the Utiliies) tab.  If the Generic menu is not present you will have to add it using the Config Menus panel. In the latter panel it can be found in the Plug-ins category and is calld &quot;Generic Plugins&quot;. Add it to any convenient menu (see the LightWave manual for more details on how to do this).
+</p>
+
+<p>More information about installation can also be found in the release notes that can downloaded with the installer.
+</p>
+
+<h2> Exporting</h2>
+<p>All objects and animations have to be exported from Layout (there is no Modeler FBX exporter).
+</p>
+
+<h3>1. Select Export to FBX from the Generics menu</h3>
+
+<p><img class='figure' src='images/HOWTO-importObjectLightwave-1.jpg' /> <img class='figure' src='images/HOWTO-importObjectLightwave-2.jpg' />
+</p>
+
+<h3>2. Select the appropriate settings in the fbx export dialog</h3>
+<ul><li> Select the fbx file name. Make sure to save the exported fbx file in the Assets folder of your current Unity project.
+</li><li> In the FBX dialogue panel you MUST select &quot;Embed Textures&quot; else the exported object will have no UVs. This is a bug in the lightwave fbx exporter and will be fixed in a future version according to Alias.
+</li><li> If you want to export animations into unity you must have &quot;Animations&quot; checked. You also need to have &quot;Lights&quot; or &quot;Cameras&quot; checked.
+</li><li> To change the name of the exported animation clip in unity, change the name from &quot;LW Take 001&quot; to your liking.
+</li></ul>
+
+<p><img class='figure' src='images/HOWTO-importObjectLightwave-3.jpg' />
+</p>
+
+<h3>3. Switch to unity.</h3>
+<ul><li> Unity will automatically import the fbx file and automatically generate materials for the textures.
+</li><li> Drag the imported fbx file from the project view into the scene view.
+</li></ul>
+
+<p><img class='figure' src='images/HOWTO-importObjectLightwave-4.jpg' />
+</p>
+
+
+<h2>Important notes</h2>
+<ul><li>  You must select &quot;Embed Textures&quot; in the FBX panel when exporting or no UVs are exported
+</li><li>  If you want to export animations you must enable &quot;Animations&quot; and either &quot;Camera&quot; or &quot;Lights&quot;.
+</li><li>  It is strongly recommended to always place your textures in a folder called &quot;Textures&quot; next to the fbx file. This will guarantee that Unity can always find the Texture and automatically connect the texture to the material.
+</li></ul>
+
+
+
+		<div class="navigation"><a href="HOWTO-ImportObjectCinema4D.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HOWTO-ImportObjectMaya.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

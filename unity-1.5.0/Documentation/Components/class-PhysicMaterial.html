@@ -1,0 +1,89 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Physic Material"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Physic Material" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-DynamicsGroup.html%22%3EPhysics%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-PhysicMaterial.html%22%3EPhysic%20Material%3C%2Fa%3E" -->
+		<h1>Physic Material</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-DynamicsGroup.html">Physics</a> &gt; <a href="class-PhysicMaterial.html">Physic Material</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-ConstantForce.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-CharacterJoint.html">Next<img src="../images/next.png"></a></div>
+
+			
+<p>The physics material contain all info needed to tune friction and bouncing effects of colliding objects.
+</p>
+
+<p>To create a physic material select the menu <b>Assets -&gt; Create -&gt; Physic Material</b>.  Then drag the physic material from the project pane on a collider in the scene.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-PhysicMaterial-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-PhysicMaterial-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The Physic Material</i>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Static Friction</nobr></b></td><td> The friction used when an object is lying on a surface. Usually a value from 0 to 1.
+</td></tr><tr><td><b><nobr>Dynamic Friction</nobr></b></td><td> The friction used when already moving. Usually a value from 0 to 1.
+</td></tr><tr><td><b><nobr>Bouncyness</nobr></b></td><td> How bouncy is the surface? A value of 0 will not bounce. A value of 1 will bounce without any loss of energy.
+</td></tr><tr><td><b><nobr>Friction Combine Mode</nobr></b></td><td> How the friction of two colliding objects is combined.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Average</nobr></b></td><td> The two friction values are averaged.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Min</nobr></b></td><td> The smallest of the two values is used.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Max</nobr></b></td><td> The largest of the two values is used.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiply</nobr></b></td><td> The friction values are multiplied with each other.
+</td></tr><tr><td><b><nobr>Bounce Combine Mode</nobr></b></td><td> How the bouncyness of two colliding objects is combined.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Average</nobr></b></td><td> The two values are averaged.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Min</nobr></b></td><td> The smallest of the two values is used.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Max</nobr></b></td><td> The largest of the two values is used.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiply</nobr></b></td><td> The values are multiplied with each other.
+</td></tr><tr><td><b><nobr>Friction Direction 2</nobr></b></td><td> The direction of anisotropy. Anisotropic friction is enabled if the vector3 is not zero. Dynamic Friction 2 and Static Friction 2 will be applied along Friction Direction 2.
+</td></tr><tr><td><b><nobr>Dynamic Friction 2</nobr></b></td><td> If anisotropic friction is enabled, dynamicFriction2 will be applied along Friction Direction 2.
+</td></tr><tr><td><b><nobr>Static Friction 2</nobr></b></td><td> If anisotropic friction is enabled, staticFriction2 will be applied along Friction Direction 2.
+</td></tr><tr><td><b><nobr>Static Friction 2</nobr></b></td><td> If anisotropic friction is enabled, staticFriction2 will be applied along Friction Direction 2.
+</td></tr><tr><td><b><nobr>Use Spring</nobr></b></td><td> If use Spring is checked, surface will be springy.
+</td></tr><tr><td><b><nobr>Spring</nobr></b></td><td> The spring of the surface
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spring</nobr></b></td><td> The spring coefficient. A high value will pull the surfaces towards the rest position faster.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Damper</nobr></b></td><td> The damper coefficient. A high value will dampen the relative movement of the two surfaces.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Target Position</nobr></b></td><td> The rest position of the spring.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+
+<p>Friction is the quantity which prevents surfaces from sliding off each other. This value is critical when trying to stack objects.
+Friction comes in two forms, dynamic and static. Static friction is used when the object is lying still. It will prevent the object from starting to move. If a large enough force is applied to the object it will start moving. At this point dynamic friction will come into play. Dynamic friction will now attempt to slow down the object while in contact with another.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Don't try to use a standard physic material for the main character. Make a customized one and get it perfect.
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="class-ConstantForce.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-CharacterJoint.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,171 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Daily use of the Asset Server</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Daily use of the Asset Server</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Asset Server Guide.html">Asset Server Guide</a> &gt; <a href="../Components/assetserver-DailyUse.html">Daily use of the Asset Server</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/assetserver-Setup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/Built-in Shader Guide.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Daily use of the Asset Server</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>This section explains the common tasks, workflow and best practices for using the Asset Server on a day-to-day basis.
+</p>
+<div class='vspace'></div><h2>Getting Started</h2>
+<p>If you are joining a team that has a lot of work stored on the Asset Server already, this is the quickest way to get up and running correctly.  If you are starting your own project from scratch, you can skip down to the "Workflow Fundamentals" section.
+</p>
+<div class='vspace'></div><ol><li>Create a new Project
+</li><li>In the <span class='doc-keyword'>Create Project</span> dialog, make sure all packages are not checked
+</li><li>The Project should be completely blank
+</li><li>From the menubar, select <span class='doc-menu'>Server -&gt; Update from Server</span>
+</li><li>Enter the user and password that your Asset Server administrator provided to you
+</li><li>Wait for the update to complete
+</li><li>You are ready to go
+</li></ol><p class='vspace'>Continue reading for detailed information on how to use the Asset Server effectively every day.
+</p>
+<div class='vspace'></div><h2>Workflow Fundamentals</h2>
+<p>When using the Asset Server with a multi-person team, it is generally good practice to Update all changed assets from the server when you begin working, and Commit your changes at the end of the day, or whenever you're done working.  You should also commit changes when you have made significant progress on something, even if it is in the middle of the day.  Committing your changes regularly and frequently is recommended.
+</p>
+<div class='vspace'></div><h2>Understanding the Server View</h2>
+<p>The <span class='doc-keyword'>Server View</span> is your window into the Asset Server you're connected to.  Select the Server View from the View Selector drop-down of any existing View.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/assetserver-DailyUse-0.jpg' /><br /><em>The Server View interfaces with the Asset Server</em></div>
+<p class='vspace'>This view will show you the state of the assets that exist in both your local project and the server project.  There are two important things to remember here.
+</p>
+<p class='vspace'>1) The Server View uses color-and-symbol coding to indicate what kind of state the asset is in.  To see a list of what the color indicators mean, select <span class='doc-menu'>Server-&gt;Show Legend...</span> in the main menu. You can also view detailed information about individual assets in the <span class='doc-keyword'>Inspector</span> by selecting them within the Server View.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/assetserver-DailyUse-1.jpg' /><br /><em>The state of each asset is color-coded</em></div>
+<p class='vspace'>2) The Server View will not show you assets that do exist on the server but do not exist on your Local Project. It will show you items that exist in your Local Project but not the server.  This is important because if someone puts a new asset on the server, you will not see it until you download the directory that contains the new asset. When there are new assets available on the server, the parent directory will be marked to indicate that there are changes on the server.
+</p>
+<div class='vspace'></div><h3>Updating Assets from the Server</h3>
+<p>To download all new or changed assets from the server, make sure nothing is selected in the Server View and press the <span class='doc-menu'>Update From Server</span> button or select <span class='doc-menu'>Server-&gt;Update From Server</span> from the menubar.
+</p>
+<p class='vspace'>If you have a folder selected, only new or changed assets in that folder (and subfolders) will be downloaded.  If you have one or multiple individual assets selected, only those assets will be downloaded (if they have been updated on the server).
+</p>
+<div class='vspace'></div><h3>Committing Changes to the Server</h3>
+<p>When you have made a change to your local project and you want to store those changes on the server, you use select <span class='doc-menu'>Server-&gt;Commit Changes...</span> from the menubar.
+</p>
+<p class='vspace'>If you do this while no assets are selected, all modified assets in your Project will committed to the Server. If a folder is selected, all modified assets inside it (and its subfolders) will be committed. If you have one or more individual assets selected, only those assets will be committed.
+</p>
+<p class='vspace'>Before the assets are uploaded to the server, you will see a <span class='doc-keyword'>Commit Dialog</span> that lists all assets on the server that will be modified.  You'll also have an option to include dependencies of uploaded assets, and a text area where you can describe your changes.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/assetserver-DailyUse-2.jpg' /><br /><em>The Commit dialog</em></div>
+<p class='vspace'>You can disable the checkbox to the left of each asset in the dialog to skip committing that individual asset. Checking the <span class='doc-menu'>Include dependencies</span> option will add all assets that are used by the selected assets.
+</p>
+<p class='vspace'>The text area is for entering a message describing the changes you're committing. Enter a descriptive note about the changes you've made and press the <span class='doc-menu'>Commit</span> button.  The change message will be displayed when you <span class='doc-keyword'>compare versions</span> or <span class='doc-keyword'>revert to an earlier version</span>, both of which are discussed below.
+</p>
+<div class='vspace'></div><h3>Resolving conflicts</h3>
+<p>With multiple people working on the same collection of data, conflicts will inevitably arise.  Remember, there is no need to panic!  If a conflict exists, you will become aware of it in one of two situations: either when you are <span class='doc-keyword'>Updating</span> your Project from the server, or when you are <span class='doc-keyword'>Committing</span> your changes to the server.
+</p>
+<p class='vspace'>If you run into a conflict while you are Updating from the server to your Local Project, a <span class='doc-keyword'>Conflict Resolution</span> dialog will be shown. Here, you will be informed of each individual conflict, and be presented with different options to resolve each individual conflict. For any single conflict, you can select <span class='doc-menu'>Skip Asset</span> (which will not download that asset from the server), <span class='doc-menu'>Trash My Changes</span> (which will completely overwrite your local version of the asset)  or <span class='doc-menu'>Ignore Server Changes</span> (which will discard the asset on the server and replace it with your local asset) for each individual conflict. Additionally, you can select <span class='doc-menu'>Merge</span> for text assets like scripts to merge the server version with the local version.
+</p>
+<p class='vspace'>If you run into a conflict while you are Committing your local changes, Unity will refuse to commit your changes and inform you that a conflict exists. To resolve the conflicts, select <span class='doc-menu'>Server-&gt;Update From Server...</span>.  Your local changes will not automatically be overwritten, so there is no need to panic.  At this point you will see the <span class='doc-keyword'>Conflict Resolution</span> dialog, and can follow the instructions in the above paragraph.
+</p>
+<div class='vspace'></div><h3>Reverting assets to an earlier revision</h3>
+<p>The Asset Server retains all uploaded versions of an asset in its database, so you can revert your local version to an earlier version at any time.  To revert to an older version of an asset, select the asset in the <span class='doc-keyword'>Server View</span> and then choose <span class='doc-menu'>Server-&gt;Revert to Earlier Version...</span> from the menubar. You will then see the <span class='doc-keyword'>Revert Asset</span> dialog.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/assetserver-DailyUse-3.jpg' /><br /><em>The <span class='doc-keyword'>Revert Asset</span> dialog</em></div>
+<p class='vspace'>Here, you can see the version number and added comments with each version of the asset.  This is one reason why descriptive comments are helpful.  After hitting the <span class='doc-menu'>Revert</span> button, your local asset will be replaced with a copy of the selected version.
+</p>
+<p class='vspace'>Prior to reverting, if there are any differences between your local version and the selected server version, those changes will be lost when the local version is reverted.
+</p>
+<p class='vspace'>If you only want to abandon the changes made to the local copy, you don't have to revert.  You can discard those local modifications by selecting <span class='doc-menu'>Server-&gt;Discard Changes</span> in the main menu.  This will immediately download the current version of the asset from the server to your local Project.
+</p>
+<div class='vspace'></div><h3>Comparing asset versions</h3>
+<p>If you're curious to see the differences between two particular versions you can explicitly compare them.  To do this, select an asset in the Server View and then choose <span class='doc-menu'>Server-&gt;Compare..</span> from the menubar. Unity will pop up a pane for choosing which versions of the asset to compare.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/assetserver-DailyUse-4.jpg' /><br /><em>Comparing two different versions of an asset</em></div>
+<p class='vspace'><em>Note:</em> This feature requires that you have either have <span class='doc-keyword'>Diff/Merge</span> or <span class='doc-keyword'><span class='wikiword'>FileMerge</span>.app</span> installed.
+<span class='doc-keyword'>Diff/Merge</span> is available for free from <span class='wikiword'>SourceGear</span> at <a class='urllink' href='http://www.sourcegear.com/diffmerge/' rel='nofollow'>http://www.sourcegear.com/diffmerge/</a>.
+<span class='doc-keyword'><span class='wikiword'>FileMerge</span></span> is a part of Apple's <span class='doc-keyword'><span class='wikiword'>XCode</span></span> development tools, which can be downloaded from <a class='urllink' href='http://developer.apple.com' rel='nofollow'>http://developer.apple.com</a>.
+</p>
+<div class='vspace'></div><h3>Deleting assets on the server</h3>
+<p>If you delete an asset through the Project View and that asset has already been committed to the Asset Server, you will notice that it will reappear the next time you hit <span class='doc-menu'>Update</span>. This is because assets can be accidentally deleted from the local Project, and it would not be ideal to automatically delete assets on the server to match the local Project.
+</p>
+<p class='vspace'>You must explicitly tell the server that you want to remove the asset. This is done by selecting the asset and choosing <span class='doc-menu'>Server-&gt;Mark For Removal</span> from the menubar. This will mark the selected asset(s) for deletion, indicated in the <span class='doc-keyword'>Server View</span> by adding an strike-through to the asset name. The next time you Commit Changes, the items marked for deletion will be deleted from the server.
+</p>
+<p class='vspace'>To undo marking for deletion, use the <span class='doc-menu'>Server-&gt;Mark For Removal</span> menu entry again to toggle the removal state.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/assetserver-DailyUse-5.jpg' /><br /><em>Assets marked for removal on the next commit are marked with green text and a strike-through</em></div>
+<div class='vspace'></div><h3>Recovering deleted assets</h3>
+<p>Marking for removal and committing to the server will in fact not delete an asset permanently. Just as any previous version of an asset can be restored using <span class='doc-menu'>Server-&gt;Revert to Earlier Version...</span>, removed assets can be restored through <span class='doc-menu'>Server-&gt;Recover Deleted Assets...</span> from the menubar.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/assetserver-DailyUse-6.jpg' /><br /><em>The Recover Deleted Assets dialog</em></div>
+<p class='vspace'>After selecting assets from the list and hitting <span class='doc-menu'>Recover</span>, the selected assets will be downloaded and re-added to the local project. If the folder that the asset was located in before the deletion still exists, the asset will be restored to the original location, otherwise it will be added to the root of the Assets folder in the local project.
+</p>
+<div class='vspace'></div><h2>Asset Server training complete</h2>
+<p>You should now be equipped with the knowledge you need to start using the Asset Server effectively.  Get to it, and don't forget the good workflow fundamentals.  Commit changes often, and don't be afraid of losing anything.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/assetserver-Setup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/Built-in Shader Guide.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

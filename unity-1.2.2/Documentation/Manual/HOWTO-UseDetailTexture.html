@@ -1,0 +1,58 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" How do I use Detail Textures?"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title=" How do I use Detail Textures?" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOW-TOs.html%22%3EHOW-TOs%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Graphics%20how-tos.html%22%3EGraphics%20how-tos%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOWTO-UseDetailTexture.html%22%3E%20How%20do%20I%20use%20Detail%20Textures%3F%3C%2Fa%3E" navigation="%3Ca%20href%3D%22HOWTO-bumpmap.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22HOWTO-lensflare.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1> How do I use Detail Textures?</h1>
+		<p><a href="index.html">Unity Manual</a> &gt; <a href="HOW-TOs.html">HOW-TOs</a> &gt; <a href="Graphics how-tos.html">Graphics how-tos</a> &gt; <a href="HOWTO-UseDetailTexture.html"> How do I use Detail Textures?</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="HOWTO-bumpmap.html"><img src="../images/prev.png"></a><a href="HOWTO-lensflare.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+
+<p>A detail texture is small, fine pattern which is faded in as you approach a surface, for example wood grain, imperfections in stone, or earthly details on a terrain.
+</p>
+
+<p>Detail textures must tile in all directions. Color values from 0-127 makes the object it's applied to darker, 128 doesn't change anything, and lighter colors makes the object lighter. It's very important that the image is centered around 128 - otherwise the object it's applied to will get lighter or darker as you approach.
+</p>
+
+<table><tr><td><div class='cbox'><div class='cbox-data'>
+<ol><li> Draw or find a grayscale image of the detail texture. <br><!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/HOWTO-UseDetailTexture-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/HOWTO-UseDetailTexture-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</li><li> Save the image next to your main texture.
+</li><li> In Unity, select the image and choose <b>Asset->Import Settings...</b> from the main menu.
+</li><li> The Texture importer pops up; Under mip maps, enable <b>Fades Out</b> and set the sliders to something like this:<br> <!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/HOWTO-UseDetailTexture-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/HOWTO-UseDetailTexture-1.jpg"></td></tr></table></p><!-- #EndLibraryItem --><br> The top slider determines how small the texture should before before beginning to fade out, and the bottom determines how far away it is completely gone
+</li><li> In the material inspector on the right, select 'DiffuseDetail' from the Shader drop-down:<br><!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/HOWTO-UseDetailTexture-2.jpg%22" --><p><table><tr><td><img class="figure" src="images/HOWTO-UseDetailTexture-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</li><li> Drag your texture from the project window to the 'Detail' texture slot.
+</li><li> Click the texture in the material inspector, and set the scale values to a high value below <br> <!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/HOWTO-UseDetailTexture-3.jpg%22" --><p><table><tr><td><img class="figure" src="images/HOWTO-UseDetailTexture-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</li></ol>
+
+<p></div></div></td></tr></table>
+</p>
+
+
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

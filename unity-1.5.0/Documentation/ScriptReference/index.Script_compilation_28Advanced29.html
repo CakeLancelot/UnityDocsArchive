@@ -1,0 +1,69 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Scripting - An Overview.Script compilation (Advanced)"-->
+			<title>Unity Script Reference &ndash; Scripting - An Overview.Script compilation (Advanced)</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<script language="JavaScript" src="UnityDoc.js"></script>
+<body>
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>Script compilation (Advanced)</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+	<!-- #TemplateEndEditable -->
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="Script compilation (Advanced)" path="" navigation="" --><!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-top.lbi" --><!-- #EndLibraryItem --><div class="left-menu-container"><ul class="left-menu"><li><span class="left-menu-heading">Menu</span></li><li><a class="left-menu-item" href="index.html">Overview</a></li><li><a class="left-menu-item" href="20_class_hierarchy.html">Class Hierarchy</a></li><li><a class="left-menu-item" href="10_reference.html">Reference</a></li><li><span class="left-menu-seperator"></span></li><li><a class="left-menu-heading" href="index.html">Scripting - An Overview</a></li><li><a class="left-menu-item" href="index.Common_Operations.html">Common Operations</a></li><li><a class="left-menu-item" href="index.Keeping_Track_of_Time.html">Keeping Track of Time</a></li><li><a class="left-menu-item" href="index.Accessing_Other_Components.html">Accessing Other Components</a></li><li><a class="left-menu-item" href="index.Accessing_Other_Game_Objects.html">Accessing Other Game Objects</a></li><li><a class="left-menu-item" href="index.Vectors.html">Vectors</a></li><li><a class="left-menu-item" href="index.Member_Variables.html">Member Variables</a></li><li><a class="left-menu-item" href="index.Instantiate.html">Instantiate</a></li><li><a class="left-menu-item" href="index.Coroutines_or_the_Yield_Statement.html">Coroutines or the Yield Statement</a></li><li><a class="left-menu-item" href="index.Writing_Scripts_in_Csharp_or_Boo.html">Writing Scripts in C# or Boo</a></li><li><a class="left-menu-item" href="index.The_most_important_classes.html">The most important classes</a></li><li><span class="left-menu-item left-menu-current">Script compilation (Advanced)</span></li></ul></div>
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-middle.lbi" --><!-- #EndLibraryItem --><div class="pre-next-link"><b>Previous:</b> <a href="index.The_most_important_classes.html">The most important classes</a> </div>
+   <p class="basic"> Unity compiles all scripts to .NET dll files. The .dll files will be jit compiled at runtime.
+</p><p class="basic">
+This allows incredibly fast script execution. It is around 20 times faster than traditional javascript and around 50% slower than native C++ code.
+Unity might take a second to compile all your scripts when you save it.
+You can see if Unity is still compiling with the small spinning progress icon in the lower right corner of Unity's main window.
+</p><p class="basic">
+
+Script compilation is performed in 3 steps:
+</p><p class="basic">
+<strong>1. All scripts in "Standard Assets", "Pro Standard Assets" or "Plugins" are compiled first.</strong>
+</p><p class="basic">
+Scripts in one of these folders can't directly access scripts outside these folders.
+</p><p class="basic">
+It is not possible to reference the class or it's variables directly.
+But it is possible to communicate with them using <a href="GameObject.SendMessage.html?from=index" class="itemlink">GameObject.SendMessage</a>.
+</p><p class="basic">
+<strong>2. All scripts in "Editor" or "Standard Assets/Editor" are compiled next.</strong>
+</p><p class="basic">
+If you want to use the <span class="variable">UnityEditor</span> namespace you have to place your scripts in these folders.
+For example to add menu items or write custom wizards you have to place your scripts in those folders.
+</p><p class="basic">
+Editor scripts can reference any script in the first group.
+</p><p class="basic">
+<strong>3. All other scripts are compiled last.</strong>
+</p><p class="basic">
+All scripts that are not in the folders above are compiled last.
+</p><p class="basic">
+All scripts that are compiled in this step have access to all scripts in the first group ("Standard Assets", "Pro Standard Assets" or "Plugins").
+This allows you to let different scripting languages interoperate.
+For example, if you want to create a Javascript that uses a C# script: place the C# script in the "Standard Assets" folder and the Javascript outside of the "Standard Assets" folder.
+The Javascript can now reference the C# script directly.
+</p><p class="basic">
+Scripts that are placed in the first group, will take longer to compile, since when they are compiled the third group needs to be recompiled too.
+Thus if you want to reduce compile times, move scripts that seldomly change into group 1 and scripts that change a lot into group 3.</p>
+	
+	</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

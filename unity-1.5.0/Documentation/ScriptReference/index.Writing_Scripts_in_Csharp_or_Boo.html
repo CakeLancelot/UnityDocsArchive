@@ -1,0 +1,73 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Scripting - An Overview.Writing Scripts in C# or Boo"-->
+			<title>Unity Script Reference &ndash; Scripting - An Overview.Writing Scripts in C# or Boo</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<script language="JavaScript" src="UnityDoc.js"></script>
+<body>
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>Writing Scripts in C# or Boo</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+	<!-- #TemplateEndEditable -->
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="Writing Scripts in C# or Boo" path="" navigation="" --><!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-top.lbi" --><!-- #EndLibraryItem --><div class="left-menu-container"><ul class="left-menu"><li><span class="left-menu-heading">Menu</span></li><li><a class="left-menu-item" href="index.html">Overview</a></li><li><a class="left-menu-item" href="20_class_hierarchy.html">Class Hierarchy</a></li><li><a class="left-menu-item" href="10_reference.html">Reference</a></li><li><span class="left-menu-seperator"></span></li><li><a class="left-menu-heading" href="index.html">Scripting - An Overview</a></li><li><a class="left-menu-item" href="index.Common_Operations.html">Common Operations</a></li><li><a class="left-menu-item" href="index.Keeping_Track_of_Time.html">Keeping Track of Time</a></li><li><a class="left-menu-item" href="index.Accessing_Other_Components.html">Accessing Other Components</a></li><li><a class="left-menu-item" href="index.Accessing_Other_Game_Objects.html">Accessing Other Game Objects</a></li><li><a class="left-menu-item" href="index.Vectors.html">Vectors</a></li><li><a class="left-menu-item" href="index.Member_Variables.html">Member Variables</a></li><li><a class="left-menu-item" href="index.Instantiate.html">Instantiate</a></li><li><a class="left-menu-item" href="index.Coroutines_or_the_Yield_Statement.html">Coroutines or the Yield Statement</a></li><li><span class="left-menu-item left-menu-current">Writing Scripts in C# or Boo</span></li><li><a class="left-menu-item" href="index.The_most_important_classes.html">The most important classes</a></li><li><a class="left-menu-item" href="index.Script_compilation_28Advanced29.html">Script compilation (Advanced)</a></li></ul></div>
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-middle.lbi" --><!-- #EndLibraryItem --><div class="pre-next-link"><b>Previous:</b> <a href="index.Coroutines_or_the_Yield_Statement.html">Coroutines or the Yield Statement</a> <b>Next:</b> <a href="index.The_most_important_classes.html">The most important classes</a></div>
+   <p class="basic"> Apart from syntax, there are some differences when writing scripts in C# or Boo. Most notable are:
+</p><p class="basic">
+<strong>1. Inherit from <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a>.</strong>
+</p><p class="basic">
+All behaviour scripts must inherit from <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a>. This happens automatically in Javascript, but must be explicitly explicitly inside C# or Boo scripts. If you create your script inside Unity through the <tt>Asset -> Create -> C Sharp/Boo Script</tt> menu, the created template will already contain the necessary definition.
+</p><div class="code">public class NewBehaviourScript : <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a> {...} <span class="comment">// C#</span>
+<br/>class NewBehaviourScript (<a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a>):  ... # Boo
+</div><p class="basic">
+<strong>2. Use the Awake or Start function to do initialisation.</strong>
+</p><p class="basic">
+What you would put outside any functions in Javascript, you put inside <a href="MonoBehaviour.Awake.html?from=index" class="itemlink">Awake</a> or <a href="MonoBehaviour.Start.html?from=index" class="itemlink">Start</a> function in C# or Boo.
+</p><p class="basic">
+The difference between <span class="variable">Awake</span> and <span class="variable">Start</span> is that <span class="variable">Awake</span> is run when a scene is loaded and <span class="variable">Start</span> is called just before the first call to an <span class="variable">Update</span> or a <span class="variable">FixedUpdate</span> function. All <span class="variable">Awake</span> functions are called before any <span class="variable">Start</span> functions are called.
+</p><p class="basic">
+<strong>3. The class name must match the file name.</strong>
+</p><p class="basic">
+In Javascript, the class name is implicitly set to the file name of the script (minus the file extension). This must be done manually in C# and Boo.
+</p><p class="basic">
+<strong>4. Coroutines have a different syntax in C#.</strong>
+</p><p class="basic">
+Coroutines have to have a return type of <span class="variable">IEnumerator</span> and you yield using <tt>yield return ... ;</tt> instead of just <tt>yield ... ;</tt>.
+</p><div class="code">using System.Collections;<br/>using UnityEngine;<br/>public class NewBehaviourScript : <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a> {<br/>    <span class="comment">// C# coroutine</span>
+    IEnumerator SomeCoroutine () {<br/>        <span class="comment">// Wait for one frame</span>
+        yield return 0;<br/>        <br/>        <span class="comment">// Wait for two seconds</span>
+        yield return new <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a> (2);<br/>    }<br/>}
+</div><p class="basic">
+<strong>5. Don't use namespaces.</strong>
+</p><p class="basic">
+Unity doesn't support placing your scripts inside of a namespace at the moment.
+This requirement will be removed in a future version.
+</p><p class="basic">
+<strong>6. Only member variables are serialized and are shown in the Inspector.</strong>
+</p><p class="basic">
+Private and protected member variables are shown only in Expert Mode.
+Properties are not serialized or shown in the inspector.
+</p><p class="basic">
+
+</p>
+	
+	</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

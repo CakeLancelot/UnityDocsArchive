@@ -1,0 +1,49 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="WWW.texture"-->
+			<title>Unity Script Reference &ndash; WWW.texture</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<script language="JavaScript" src="UnityDoc.js"></script>
+<body>
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>texture</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+	<!-- #TemplateEndEditable -->
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-top.lbi" --><!-- #EndLibraryItem --><div class="left-menu-container"><ul class="left-menu"><li><span class="left-menu-heading">Menu</span></li><li><a class="left-menu-item" href="index.html">Overview</a></li><li><a class="left-menu-item" href="20_class_hierarchy.html">Class Hierarchy</a></li><li><a class="left-menu-item" href="10_reference.html">Reference</a></li><li><span class="left-menu-seperator"></span></li><li><a class="left-menu-heading" href="WWW.html">WWW</a></li><li><a class="left-menu-item" href="WWW.html">Class Members</a></li><li><span class="left-menu-subheading">Variables</span></li><li><a class="left-menu-item" href="WWW.data.html">data</a></li><li><a class="left-menu-item" href="WWW.error.html">error</a></li><li><a class="left-menu-item" href="WWW.isDone.html">isDone</a></li><li><a class="left-menu-item" href="WWW.size.html">size</a></li><li><span class="left-menu-item left-menu-current">texture</span></li><li><span class="left-menu-subheading">Functions</span></li><li><a class="left-menu-item" href="WWW.LoadImageIntoTexture.html">LoadImageIntoTexture</a></li><li><span class="left-menu-subheading">Class Functions</span></li><li><a class="left-menu-item" href="WWW.EscapeURL.html">EscapeURL</a></li><li><a class="left-menu-item" href="WWW.GetTextureFromURL.html">GetTextureFromURL</a></li><li><a class="left-menu-item" href="WWW.GetURL.html">GetURL</a></li><li><a class="left-menu-item" href="WWW.UnEscapeURL.html">UnEscapeURL</a></li></ul></div>
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-middle.lbi" --><!-- #EndLibraryItem -->	<div id="texture" class="manual-entry"><h3><span class="full-name">WWW.</span>texture</h3><div class="synopsis"><a href="Texture2D.html" class="classlink">Texture2D</a> texture</div>
+   <p class="details"> Returns a <a href="Texture2D.html" class="classlink">Texture2D</a> generated from the downloaded data. The data must be an image in JPG format.
+</p><p class="details">
+If the object has not finished downloading the data, it will block until the download has finished.
+Use <a href="WWW.isDone_.html" class="itemlink">isDone </a>or <span class="variable">yield</span> to see if the data is available.
+</p><p class="details">
+The image dimensions must be a power of two in each direction or
+the texture will get padded with white pixels up to the next power of two size.</p><div class="code"><span class="comment">// Get the latest webcam shot from outside "Friday's" in Times Square</span>
+var url="http:<span class="comment">//images.earthcam.com/ec_metros/ourcams/fridays.jpg"</span>
+private var www : WWW;<br/>www=WWW(url); <span class="comment">// Start a download of the given URL</span>
+<br/>while(true) {<br/>    if( www.isDone ) { <span class="comment">// check whether the download is done</span>
+        <span class="comment">// assign the downloaded image as a texture to the object</span>
+        renderer.material.mainTexture=www.texture; <br/>        <br/>        <span class="comment">// wait for 20 seconds</span>
+        yield <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a>(20);<br/>        <br/>        <span class="comment">// then start a new download</span>
+        www = new WWW(url);<br/>    }<br/>    <span class="comment">// wait for a second before checking again</span>
+    yield <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a>(1);<br/>}</div><p class="details"></p>
+</div>	
+	</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

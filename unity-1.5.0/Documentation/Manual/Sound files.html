@@ -1,0 +1,86 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Sound Files"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="Sound Files" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Assets.html%22%3EAssets%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Sound%20files.html%22%3ESound%20Files%3C%2Fa%3E" -->
+		<h1>Sound Files</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Assets.html">Assets</a> &gt; <a href="Sound files.html">Sound Files</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Imported Scenes.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Prefabs.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Adding sound to a game is one of the final touches that make a game feel like a complete product. Be it nerve-wrecking sound effects or thumping background music, they are seen by Unity as Audio Clips.
+</p>
+
+<p>See the <a href="../Manual/Sound.html">Sound chapter</a> in the Game Logic section of this manual for more information on how to use sound in Unity.
+</p>
+
+<h1>Audio Clip</h1>
+
+<p>Audio Clips are used by <a href="../Components/class-AudioSource.html">Audio Sources</a> to represent the audio asset imported into Unity.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Sound files-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/Sound files-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The Audio Clip</i>
+</p>
+
+<p>Audio Clips just work.  The only thing you should have to do with them is reference them from within <a href="../Components/class-AudioSource.html">Audio Sources</a>.
+</p>
+
+<h2>Properties</h2>
+<p>Sound assets only have 3 read-only properties.
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Format </nobr></b></td><td> The format the sound is stored in. Unity supports 4 raw formats and one compressed.
+<dl><dt>Mono 8 bit</dt><dd> 8 bit uncompressed mono PCM audio</dd><dt>Mono 16 bit</dt><dd> 16 bit uncompressed mono PCM audio</dd><dt>Stereo 8 bit</dt><dd> 8 bit uncompressed stereo PCM audio</dd><dt>Stereo 16 bit</dt><dd> 16 bit uncompressed stereo PCM audio</dd><dt>Ogg Vorbis</dt><dd> Ogg Vorbis encoded stereo or mono audio</dd></dl>
+</td></tr><tr><td><b><nobr>Length</nobr></b></td><td> The duration of the sound file in seconds.
+</td></tr><tr><td><b><nobr>Frequency</nobr></b></td><td> The sampling frequency of the file.
+</td></tr></tr></table>
+</p>
+
+<h2>Supported sound formats</h2>
+<p>Unity currently supports the following file formats:
+</p>
+
+<p><dl><dt><b>AIFF</b></dt><dd> Both mono and stereo. The sound will be stored as-is inside the player-data. No compression will be attempted.</dd><dt><b>WAV</b></dt><dd> Both mono and stereo. The sound will be stored as-is inside the player-data. No compression will be attempted.</dd><dt><b>MP3</b></dt><dd> Mono and stereo. Note that the audio will be uncompressed in the editor and stored uncompressed in the player. If you want to conserve space, use Ogg Vorbis files instead.</dd><dt><b>Ogg Vorbis</b></dt><dd> Both mono and stereo. The file will be stored compressed in the player-data and decompressed on the fly. </dd></dl>
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Stereo sounds are always played as-is. If you want to use attenuation and other 3D audio effects, use mono sounds.
+</li><li>You can get an Ogg Vorbis encoder here <a class="wiki"  href="http://www.nouturn.com/oggdrop/">http://www.nouturn.com/oggdrop/</a>
+</li></ul>
+</p>
+
+
+
+
+
+
+		<div class="navigation"><a href="Imported Scenes.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Prefabs.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

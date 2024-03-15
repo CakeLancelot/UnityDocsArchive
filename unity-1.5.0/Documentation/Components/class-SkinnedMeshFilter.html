@@ -1,0 +1,103 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Skinned Mesh Filter"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Skinned Mesh Filter" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-MeshGroup.html%22%3E%20Meshes%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-SkinnedMeshFilter.html%22%3ESkinned%20Mesh%20Filter%3C%2Fa%3E" -->
+		<h1>Skinned Mesh Filter</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-MeshGroup.html"> Meshes</a> &gt; <a href="class-SkinnedMeshFilter.html">Skinned Mesh Filter</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-Pipeline.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="comp-ParticlesGroup.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>The Skinned Mesh Filter is automatically added to imported meshes when the imported mesh is skinned.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-SkinnedMeshFilter-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-SkinnedMeshFilter-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>An Animated Character rendered using the Skinned Mesh Filter and Mesh Renderer</i>
+</p>
+
+
+<h2> Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Update When Offscreen</nobr></b></td><td> Should the skinned mesh be updated when offscreen. This also disables updating animations.
+</td></tr><tr><td><b><nobr>Skin Normals</nobr></b></td><td> If enabled, normal will be updated with the bone animation.
+</td></tr><tr><td><b><nobr>Quality</nobr></b></td><td> The maximum amount of bones affecting every vertex.
+</td></tr><tr><td><b><nobr>Animation</nobr></b></td><td> The current animation (change this via scripting).
+<p></td></tr></tr></table>
+</p>
+
+<h2> Details</h2>
+
+<p>Skinned meshes are used for rendering characters. Characters are animated using bones, and every bone affects a part of the mesh.
+Multiple bones can affect the same vertex and are weighted.  The main advantage to using boned characters in Unity is you can enable the bones to be affected by physics, making your characters into ragdolls.  You can enable/disable bones via scripting, so your character instantly goes ragdoll when it is hit by an explosion.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-SkinnedMeshFilter-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-SkinnedMeshFilter-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>A Skinned Mesh enabled as a Ragdoll</i>
+</p>
+
+<h3>Skin Normals</h3>
+<p>When Skin Normals is enabled, normals will be correctly animated with the bones. This makes your character correctly react to lights.
+If it is disabled the normals from the character in bind pose will be used.
+</p>
+
+<p>Skinning Normals comes at a slight performance cost. In some situations correct lighting is not necessary and you can get away with disabling this option.
+Play with it and see if it makes difference in your particular situation. If you can't see a difference, disable Skin Normals.
+</p>
+
+<h3>Quality</h3>
+<p>Unity can skin every vertex with either 1, 2, or 4 bones. 4 bone weights look nicest and are most expensive. 2 Bone weights is a good compromise and is most commonly used in games.
+</p>
+
+<p>If Quality is set to automatic, the <a href="../Components/class-QualitySettings.html">Quality Settings</a> <b>Blend Weights</b> value will be used. This allows end-users to choose a quality setting that gives them optimum performance.
+</p>
+
+<h3>Update When Offscreen</h3>
+
+<p>When a Skinned Mesh is not visible their skin will not be updated. That means the animation will stop playing until it comes onscreen again. This is an important performance optimization. That allows you to have a lot of characters running around not taking up any processing power when they are not visible.
+</p>
+
+<p>For characters you should always check this option off in order to gain performance.
+</p>
+
+<p>Sometimes however, the bounding volume will change a lot based on a change in the animation. Thus you need to enable offscreen updating to prevent object from suddenly appearing on screen.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Skinned meshes can be imported from Maya or Cinema4D.
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="class-Pipeline.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="comp-ParticlesGroup.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

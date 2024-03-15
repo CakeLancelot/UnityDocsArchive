@@ -1,0 +1,98 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Collider"-->
+			<title>Unity Script Reference &ndash; Collider</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Collider</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Collider" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Component.html" class="classlink">Component</a></div></p>
+   <p class='first'> A base class of all colliders.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#attachedRigidbody'>attachedRigidbody</a></p>
+<p><a href='#isTrigger'>isTrigger</a></p>
+<p><a href='#material'>material</a></p>
+<p><a href='#sharedMaterial'>sharedMaterial</a></p>
+<p><a href='#bounds'>bounds</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Messages Sent</p><p><a href='#OnTriggerEnter'>OnTriggerEnter</a></p>
+<p><a href='#OnTriggerExit'>OnTriggerExit</a></p>
+<p><a href='#OnTriggerStay'>OnTriggerStay</a></p>
+<p><a href='#OnCollisionEnter'>OnCollisionEnter</a></p>
+<p><a href='#OnCollisionExit'>OnCollisionExit</a></p>
+<p><a href='#OnCollisionStay'>OnCollisionStay</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> <span class="seealso"><b>See Also:</b> <a href="BoxCollider.html" class="classlink">BoxCollider</a>, <a href="CapsuleCollider.html" class="classlink">CapsuleCollider</a>, <a href="PhysicMaterial.html" class="classlink">PhysicMaterial</a>, <a href="Rigidbody.html" class="classlink">Rigidbody</a>  <p class="basic"/>If you intend to move the collider around a lot it is recommended to also attach a kinematic rigid body to it.</span></p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="attachedRigidbody"></a><h3><span class="full-name">Collider.</span>attachedRigidbody</h3><div class="synopsis"><a href="Rigidbody.html" class="classlink">Rigidbody</a> attachedRigidbody</div>
+   <p class='details'> The rigidbody the collider is attached to.
+Returns null if the collider is attached to no rigidbody.  <p class="details"/>Colliders are automatically connected to the rigid body attached 
+to the same game object or attached to any parent game object.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Lift the rigidbody attached to the collider.<br/>collider.attachedRigidbody.AddForce(0,1,0);</div></td></tr></table></p>
+	<a name="isTrigger"></a><h3><span class="full-name">Collider.</span>isTrigger</h3><div class="synopsis"><span class="standard_type">bool</span> isTrigger</div>
+   <p class='details'> Is the collider a trigger?
+A trigger doesn't collide with rigid bodies.
+Instead it sends OnTriggerEnter, OnTriggerExit and OnTriggerStay message
+when a rigid body enters or exits the trigger.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Turns the attached to collider into a trigger.<br/>collider.isTrigger = true;</div></td></tr></table></p>
+	<a name="material"></a><h3><span class="full-name">Collider.</span>material</h3><div class="synopsis"><a href="PhysicMaterial.html" class="classlink">PhysicMaterial</a> material</div>
+   <p class='details'> The material used by the collider.
+If material is shared by colliders,
+it will duplicate the material and assign it to the collider.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Makes the collider act like ice.<br/>collider.material.dynamicFriction = 0;<br/>collider.material.staticFriction = 0;</div></td></tr></table></p>
+	<a name="sharedMaterial"></a><h3><span class="full-name">Collider.</span>sharedMaterial</h3><div class="synopsis"><a href="PhysicMaterial.html" class="classlink">PhysicMaterial</a> sharedMaterial</div>
+   <p class='details'> The shared physic material of this collider.
+Modifying this material will change the surface properties of all colliders using the material.
+In most cases you want to modify <a href="Collider.html#material" class="itemlink">Collider.material</a> instead.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">var material : <a href="PhysicMaterial.html" class="classlink">PhysicMaterial</a><br/>collider.sharedMaterial = material;</div></td></tr></table></p>
+	<a name="bounds"></a><h3><span class="full-name">Collider.</span>bounds</h3><div class="synopsis"><a href="Bounds.html" class="classlink">Bounds</a> bounds</div>
+   <p class='details'> The world space bounding volume of the collider.</p>
+   <a name="Messages Sent"></a><h2 class="script-section">Messages Sent</h2>
+	<a name="OnTriggerEnter"></a><h3><span class="full-name">Collider.</span>OnTriggerEnter</h3><div class="synopsis"><span class="standard_type">void</span> OnTriggerEnter (Collider other)</div>
+   <p class='details'> OnTriggerEnter is called when the Collider <span class="variable">other</span> enters the <a href="../Components/class-BoxCollider.html" class="classlink">trigger</a>.
+This message is sent to the trigger collider and the rigidbody (or the collider if there is no rigidbody) that touches the trigger.
+Note that trigger events are only sent if one of the colliders also has a non-kinematic rigid body attached.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Destroy everything that enters the trigger<br/>function OnTriggerEnter (other : Collider) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;Destroy(other.gameObject);<br/>}</div></td></tr></table></p>
+	<a name="OnTriggerExit"></a><h3><span class="full-name">Collider.</span>OnTriggerExit</h3><div class="synopsis"><span class="standard_type">void</span> OnTriggerExit (Collider other)</div>
+   <p class='details'> OnTriggerExit is called when the Collider <span class="variable">other</span> has stopped touching the <a href="../Components/class-BoxCollider.html" class="classlink">trigger</a>.
+This message is sent to the trigger and the collider that touches the trigger.
+Note that trigger events are only sent if one of the colliders also has a non-kinematic rigid body attached.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Destroy everything that leaves the trigger<br/>function OnTriggerExit (other : Collider) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;Destroy(other.gameObject);<br/>}</div></td></tr></table></p>
+	<a name="OnTriggerStay"></a><h3><span class="full-name">Collider.</span>OnTriggerStay</h3><div class="synopsis"><span class="standard_type">void</span> OnTriggerStay (Collider other)</div>
+   <p class='details'> OnTriggerStay is called once per frame for every Collider <span class="variable">other</span> that is touching the <a href="../Components/class-BoxCollider.html" class="classlink">trigger</a>.
+This message is sent to the trigger and the collider that touches the trigger.
+Note that trigger events are only sent if one of the colliders also has a non-kinematic rigid body attached.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Applies an upwards force to all rigidbodies that enter the trigger.<br/>function OnTriggerStay (Collider other) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (other.attachedRigidbody) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other.attachedRigidbody.AddForce(<a href="Vector3.html#up" class="itemlink">Vector3.up</a> * 10);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+	<a name="OnCollisionEnter"></a><h3><span class="full-name">Collider.</span>OnCollisionEnter</h3><div class="synopsis"><span class="standard_type">void</span> OnCollisionEnter (<a href="Collision.html" class="classlink">Collision</a> collisionInfo)</div>
+   <p class='details'> OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider.
+In contrast to OnTriggerEnter, OnCollisionEnter is passed the <a href="Collision.html" class="classlink">Collision</a> class and not a Collider.
+The <a href="Collision.html" class="classlink">Collision</a> class contains information about contact points, impactVelocity etc.
+If you don't use collisionInfo in the function, leave out the collisionInfo parameter as this avoids unneccessary calculations.
+Note that collision events are only sent if one of the colliders also has a non-kinematic rigid body attached.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function OnCollisionEnter(collision : <a href="Collision.html" class="classlink">Collision</a>) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;// <a href="Debug.html" class="classlink">Debug</a>-draw all contact points and normals<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span> (var contact : <a href="ContactPoint.html" class="classlink">ContactPoint</a> <span class="keyword">in</span> collision.contacts) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Debug.html#DrawRay" class="itemlink">Debug.DrawRay</a>(contact.point, contact.normal, <a href="Color.html#white" class="itemlink">Color.white</a>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Play a sound if the coliding objects had a big impact.		<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (collision.relativeVelocity.magnitude > 2)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;audio.Play();<br/>}
+</div></td></tr></table><table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// A grenade<br/>// - instantiates a explosion prefab when hitting a surface<br/>// - then destroys itself<br/>var explosionPrefab : <a href="Transform.html" class="classlink">Transform</a>;<br/>function OnCollisionEnter(collision : <a href="Collision.html" class="classlink">Collision</a>) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Rotate the object so that the y-axis faces along the normal of the surface<br/>&nbsp;&nbsp;&nbsp;&nbsp;var contact = collision.contacts[0];<br/>&nbsp;&nbsp;&nbsp;&nbsp;var rot = <a href="Quaternion.html#FromToRotation" class="itemlink">Quaternion.FromToRotation</a>(<a href="Vector3.html#up" class="itemlink">Vector3.up</a>, contact.normal);<br/>&nbsp;&nbsp;&nbsp;&nbsp;var pos = contact.point;<br/>&nbsp;&nbsp;&nbsp;&nbsp;Instantiate(explosionPrefab, pos, rot);<br/>&nbsp;&nbsp;&nbsp;&nbsp;Destroy (gameObject);<br/>}</div></td></tr></table></p>
+	<a name="OnCollisionExit"></a><h3><span class="full-name">Collider.</span>OnCollisionExit</h3><div class="synopsis"><span class="standard_type">void</span> OnCollisionExit (<a href="Collision.html" class="classlink">Collision</a> collisionInfo)</div>
+   <p class='details'> OnCollisionEnter is called when this collider/rigidbody has stopped touching another rigidbody/collider.
+In contrast to OnTriggerExit, OnCollisionExit is passed the <a href="Collision.html" class="classlink">Collision</a> class and not a Collider.
+The <a href="Collision.html" class="classlink">Collision</a> class contains information about contact points, impactVelocity etc.
+If you don't use collisionInfo in the function, leave out the collisionInfo parameter as this avoids unneccessary calculations.
+Note that collision events are only sent if one of the colliders also has a non-kinematic rigid body attached.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function OnCollisionExit(collisionInfo : <a href="Collision.html" class="classlink">Collision</a>) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;print("No longer <span class="keyword">in</span> contact with " + collisionInfo.transform.name);<br/>}</div></td></tr></table></p>
+	<a name="OnCollisionStay"></a><h3><span class="full-name">Collider.</span>OnCollisionStay</h3><div class="synopsis"><span class="standard_type">void</span> OnCollisionStay (<a href="Collision.html" class="classlink">Collision</a> collisionInfo)</div>
+   <p class='details'> OnCollisionEnter is called once per frame for every collider/rigidbody that is touching rigidbody/collider.
+In contrast to OnTriggerStay, OnCollisionStay is passed the <a href="Collision.html" class="classlink">Collision</a> class and not a Collider.
+The <a href="Collision.html" class="classlink">Collision</a> class contains information about contact points, impactVelocity etc.
+If you don't use collisionInfo in the function, leave out the collisionInfo parameter as this avoids unneccessary calculations.
+Note that collision events are only sent if one of the colliders also has a non-kinematic rigid body attached.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function OnCollisionStay(collisionInfo : <a href="Collision.html" class="classlink">Collision</a>) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;// <a href="Debug.html" class="classlink">Debug</a>-draw all contact points and normals<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span> (var contact : <a href="ContactPoint.html" class="classlink">ContactPoint</a> <span class="keyword">in</span> collision.contacts) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Debug.html#DrawRay" class="itemlink">Debug.DrawRay</a>(contact.point, contact.normal, <a href="Color.html#white" class="itemlink">Color.white</a>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

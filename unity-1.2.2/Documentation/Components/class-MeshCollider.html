@@ -1,0 +1,79 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Mesh Collider"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Mesh Collider" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-DynamicsGroup.html%22%3EPhysics%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-MeshCollider.html%22%3EMesh%20Collider%3C%2Fa%3E" navigation="%3Ca%20href%3D%22class-CapsuleCollider.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22class-HingeJoint.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>Mesh Collider</h1>
+		<p><a href="index.html">Components</a> &gt; <a href="comp-DynamicsGroup.html">Physics</a> &gt; <a href="class-MeshCollider.html">Mesh Collider</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="class-CapsuleCollider.html"><img src="../images/prev.png"></a><a href="class-HingeJoint.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+<p>The Mesh collider takes 3D geometry and makes it visible to the physics system.
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Material</nobr></b></td><td> Pointer to the <a href="../Components/class-PhysicMaterial.html">PhysicMaterial</a> used how this collider interacts with others.
+</td></tr><tr><td><b><nobr>Is Trigger</nobr></b></td><td> If enabled, this collider is used for triggering events, and is ignored by the physics system.
+
+</td></tr><tr><td><b><nobr>Mesh</nobr></b></td><td> A Pointer to the mesh to use for collisions.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+<p>The Mesh Collider takes the assigned LodMesh and places it its object's position and scales it correctly.
+</p>
+
+<p>Colliders attach themselves to a rigidbody either in the same object as themseleves, or above them in the transform hierarchy. This is called <i>attached</i>. If there is no rigidbody above them, they are considered <i>world colliders</i> and will move with the object they are a part of.
+</p>
+
+<p>World Colliders do not collide with each other. For two objects to collide, one of them <i>must</i> have a <a href="../Components/class-Rigidbody.html">Rigid Body</a> attached to it.
+</p>
+
+<h3>Triggers</h3>
+<p>If a collider is a trigger (has the IsTrigger property checked), whenever it is involved in a collision, a <b>CollisionEvent</b> is sent out to objects attached to it. Triggers do not deflect other physical objects.
+</p>
+
+<p>Be aware that for two triggers to collide, one of them must be attached to a rigid body. For a trigger to collide with a collider, one of them must be attached to a rigid body.
+</p>
+
+
+<h2>Hints</h2>
+<p><ul><li>
+Mesh Colliders are great for background gemoetry.
+</li><li>Since Mesh Colliders can't collide with each other, the recommended solution is to use Mesh Colliders for background objects and primitive colliders for objects under physics control.
+</li><li>If you attach a Mesh collider to a GameObject with a Mesh assigned, it will autoconfigure to be correct.
+</p>
+
+<p>The colliders do their best to match the scale of an object. If you have a non-uniform scale (a scale which is different in each direction), only the Mesh collider can match completely. You can look at the gizmos in the sceneview to see how Unity has matched.
+</p>
+
+<p></li></ul>
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

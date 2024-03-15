@@ -1,0 +1,88 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Application"-->
+			<title>Unity Script Reference &ndash; Application</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Application</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Application" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> Access to application run-time data.</p>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#loadedLevel'>loadedLevel</a></p>
+<p><a href='#levelCount'>levelCount</a></p>
+<p><a href='#isPlaying'>isPlaying</a></p>
+<p><a href='#platform'>platform</a></p>
+<p><a href='#isEditor'>isEditor</a></p>
+<p><a href='#runInBackground'>runInBackground</a></p>
+<p><a href='#dataPath'>dataPath</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#Quit'>Quit</a></p>
+<p><a href='#LoadLevel'>LoadLevel</a></p>
+<p><a href='#CaptureScreenshot'>CaptureScreenshot</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> This class contains static methods for looking up information about and controlling the run-time data.</p>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="loadedLevel"></a><h3><span class="full-name">Application.</span>loadedLevel</h3><div class="synopsis"><span class="standard_type">int</span> loadedLevel</div>
+   <p class='details'> the level that was last loaded.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">*<a href="Application.html#loadedLevel" class="itemlink">Application.loadedLevel</a>;</div></td></tr></table></p>
+	<a name="levelCount"></a><h3><span class="full-name">Application.</span>levelCount</h3><div class="synopsis"><span class="standard_type">int</span> levelCount</div>
+   <p class='details'> The total number of levels available<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Loads a random level<br/><a href="Application.html#LoadLevel" class="itemlink">Application.LoadLevel</a> (<a href="Random.html#Range" class="itemlink">Random.Range</a>(0, <a href="Application.html#levelCount" class="itemlink">Application.levelCount</a>-1));</div></td></tr></table></p>
+	<a name="isPlaying"></a><h3><span class="full-name">Application.</span>isPlaying</h3><div class="synopsis"><span class="standard_type">bool</span> isPlaying</div>
+   <p class='details'> Always returns true when in any kind of player.
+Returns true in the editor when in playmode.</p>
+	<a name="platform"></a><h3><span class="full-name">Application.</span>platform</h3><div class="synopsis"><a href="RuntimePlatform.html" class="classlink">RuntimePlatform</a> platform</div>
+   <p class='details'> </p>
+	<a name="isEditor"></a><h3><span class="full-name">Application.</span>isEditor</h3><div class="synopsis"><span class="standard_type">bool</span> isEditor</div>
+   <p class='details'> Are we running inside the editor?
+True if this game is being run from the unity editor.
+False if run from any deployment target.</p>
+	<a name="runInBackground"></a><h3><span class="full-name">Application.</span>runInBackground</h3><div class="synopsis"><span class="standard_type">bool</span> runInBackground</div>
+   <p class='details'> Should the player be running when the application is in the background?
+Default is false.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code"><a href="Application.html#runInBackground" class="itemlink">Application.runInBackground</a> = true;</div></td></tr></table></p>
+	<a name="dataPath"></a><h3><span class="full-name">Application.</span>dataPath</h3><div class="synopsis"><span class="standard_type">string</span> dataPath</div>
+   <p class='details'> Contains the path to the game data folder. The value depends on which platform you are running on:
+<table>
+<tr><th>Unity Editor:</th><td><i>&lt;path tp project folder&gt;</i>/Assets</td></tr>
+<tr><th>Mac player:</th><td><i>&lt;path to player app bundle&gt;</i>/Contents</td></tr>
+<tr><th>Win player:</th><td><i>&lt;path to dir containing the player exe&gt;</i>\Data</td></tr>
+<tr><th>Dasboard widget:</th><td><i>&lt;path to the dashboard widget bundle&gt;</i></td></tr>
+<tr><th>Web player:</th><td><i>empty string</i> - The web player does not allow access to local files.</td></tr>
+</table></p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="Quit"></a><h3><span class="full-name">Application.</span>Quit</h3><div class="synopsis"><span class="standard_type">void</span> Quit ()</div>
+   <p class='details'> Quits the player application. Quit is ignored in the editor.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">*<a href="Application.html#Quit" class="itemlink">Application.Quit</a>();</div></td></tr></table></p>
+	<a name="LoadLevel"></a><h3><span class="full-name">Application.</span>LoadLevel</h3><div class="synopsis"><span class="standard_type">void</span> LoadLevel (<span class="standard_type">int</span> index)</div>
+   <p class='details'> Loads the level by its index. You can see the indices of all levels using the the Build Settings File->Build Settings... menu.
+Before you can load a level you have to add it to the list of levels used in the game.
+Use the menu item File->Build Settings... and add the levels you need to the level list there.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Loads the level with index 0 <br/><a href="Application.html#LoadLevel" class="itemlink">Application.LoadLevel</a> (0);
+</div></td></tr></table>When loading a new level all game objects that have been loaded before are destroyed.
+If you want to let an object survive when loading a new level, use <a href="Object.html#DontDestroyOnLoad" class="itemlink">Object.DontDestroyOnLoad</a>.</p>
+	<a name="LoadLevel"></a><h3><span class="full-name">Application.</span>LoadLevel</h3><div class="synopsis"><span class="standard_type">void</span> LoadLevel (<span class="standard_type">string</span> name)</div>
+   <p class='details'> Loads the level by its name.
+Before you can load a level you have to add it to the list of levels used in the game.
+Use the menu item File->Build Settings... and add the levels you need to the level list there.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Load the level named "HighScore".<br/><a href="Application.html#LoadLevel" class="itemlink">Application.LoadLevel</a> ("HighScore");
+</div></td></tr></table>When loading a new level all game objects that have been loaded before are destroyed.
+If you want to let an object survive when loading a new level, use <a href="Object.html#DontDestroyOnLoad" class="itemlink">Object.DontDestroyOnLoad</a>.</p>
+	<a name="CaptureScreenshot"></a><h3><span class="full-name">Application.</span>CaptureScreenshot</h3><div class="synopsis"><span class="standard_type">void</span> CaptureScreenshot (<span class="standard_type">string</span> filename)</div>
+   <p class='details'> Captures a screenshot at path <span class="variable">filename</span> as a png file.
+If the file exists already, it will be overridden.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function OnMouseDown() {<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Application.html#CaptureScreenshot" class="itemlink">Application.CaptureScreenshot</a>("Screenshot.png");<br/>}</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

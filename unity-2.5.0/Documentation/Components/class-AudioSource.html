@@ -1,0 +1,110 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Audio Source</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Audio Source</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-AudioGroup.html">Audio Components</a> &gt; <a href="../Components/class-AudioSource.html">Audio Source</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><a href='../ScriptReference/AudioSource.html' title='Go to AudioSource Scripting Doc'>Switch to Scripting</a><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-AudioListener.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/comp-DynamicsGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Audio Source</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>The <span class='doc-keyword'>Audio Source</span> takes an <a href="../Components/class-AudioClip.html">Audio Clip</a> and plays it from a position in the world.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-AudioSource-0.jpg' /><br /><em>The Audio Source in the <span class='doc-keyword'>Scene View</span> and <span class='doc-keyword'>Inspector</span></em></div>
+<div class='vspace'></div><h2>Properties</h2>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Audio Clip</span></td><td  align='left'>Reference to the sound clip file that will be played</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Play On Awake</span></td><td  align='left'>If enabled, the sound will start playing the moment the scene launches. If disabled, you need to start it using the <span class='doc-prop'>Play()</span> command from scripting.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Volume</span></td><td  align='left'>How loud the sound is at a distance of 1 world unit (1 meter) from the <span class='doc-keyword'>Audio Listener</span>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Pitch</span></td><td  align='left'>Amount of change in pitch due to slowdown/speed up of the <span class='doc-prop'>Audio Clip</span>.  Value 1 is normal playback speed.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Min Volume</span></td><td  align='left'>The minimum value of the sound. No matter how far away you get, the sound will not get softer than this value.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Max Volume</span></td><td  align='left'>How loud the sound gets at the loudest. No matter how close you get, the sound will never get louder than this value.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Rolloff Factor</span></td><td  align='left'>How fast the sound fades. The higher the value, the closer the Listener has to be before hearing the sound.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Loop</span></td><td  align='left'>Enable this to make the <span class='doc-prop'>Audio Clip</span> loop when it reaches the end.</td></tr>
+</table>
+<div class='vspace'></div><h2>Creating Audio Sources</h2>
+<p>Audio Sources don't do anything without an assigned <span class='doc-prop'>Audio Clip</span>.  The Clip is the actual sound file that will be played back.  The Source is like a controller for starting and stopping playback of that clip, and modifying other audio properties.
+</p>
+<p class='vspace'>To create a new Audio Source:
+</p><ol><li>Import your audio files into your Unity Project.  These are now Audio Clips.
+</li><li>Go to <span class='doc-menu'><span class='wikiword'>GameObject</span>-&gt;Create Empty</span> from the menubar.
+</li><li>With the new <span class='wikiword'>GameObject</span> selected, select <span class='doc-menu'>Component-&gt;Audio-&gt;Audio Source</span>.
+</li><li>Assign the <span class='doc-prop'>Audio Clip</span> property of the Audio Source Component in the Inspector.
+</li></ol><div class='vspace'></div><h2>Hints</h2>
+<ul><li>The key to a nice sound environment is tweaking the <span class='doc-prop'>Rolloff Factor</span>.
+</li><li>3D audio effects will only work for mono Audio Clips. Stereo Audio Clips will be mixed as-is into the sound output.
+</li></ul>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-AudioListener.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/comp-DynamicsGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

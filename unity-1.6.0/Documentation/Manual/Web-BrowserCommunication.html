@@ -1,0 +1,118 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" Web Player and Browser communication"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title=" Web Player and Browser communication" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced.html%22%3EAdvanced%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Web%20Player%20Deployment.html%22%3E%20Web%20Player%20Deployment%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Web-BrowserCommunication.html%22%3E%20Web%20Player%20and%20Browser%20communication%3C%2Fa%3E" -->
+		<h1> Web Player and Browser communication</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced.html">Advanced</a> &gt; <a href="Web Player Deployment.html"> Web Player Deployment</a> &gt; <a href="Web-BrowserCommunication.html"> Web Player and Browser communication</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Web-GeneratedHtml.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Plugins.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>The HTML page that contains a web player can communicate with it and vice versa. Basically there are two communication directions:
+</p>
+<ul><li> Web page calls functions in Unity game.
+</li><li> Unity game calls functions in the web page.
+</li></ul>
+
+
+<h2>Calling game functions from the web page</h2>
+
+<p>The Unity web plugin has a function <i>SendMessage</i> that can be called from a web page. This is a very similar to the <a class="wiki"  href="../ScriptReference/GameObject.SendMessage.html">GameObject.SendMessage</a> function in Unity scripting API. From a web page you pass object name, function name and a single argument; and <i>SendMessage</i> will call the given function in the given game object.
+</p>
+
+<p>When building a web player, the generated HTML template contains a helper function <i>GetUnity()</i> that returns the Unity object. Use it to call <i>SendMessage</i>; for example this would execute function <i>MyFunction</i> on the game object named <i>MyObject</i>, passing a string argument.
+<pre class='codelisting'>
+&lt;script language="javascript" type="text/javascript">
+&lt;!--
+function SaySomethingToUnity()
+{
+    GetUnity().SendMessage( "MyObject", "MyFunction", "Hello from a web page!" );
+}
+-->
+&lt;/script>
+</pre>
+</p>
+
+<p>Inside of Unity, you need to have a script attached to the game object named <i>MyObject</i>. This script needs to implement a function named MyFunction:
+<pre class='codelisting'>
+function MyFunction(param : String)
+{
+    Debug.Log(param);
+}
+</pre>
+</p>
+
+<p>A single string, int or float argument must be passed using SendMessage. Note that this parameter is required on the calling side. If you don't need it, just pass a zero and ignore it on the Unity side.
+</p>
+
+<p>Also note that the game object specified by the name can be given like a path name eg. <i>/MyObject/SomeChild</i>. <i>SomeChild</i> must be a child of <i>MyObject</i> and <i>MyObject</i> must be at the root level due to the <i>/</i> in front of it's name.
+</p>
+
+<h2>Calling web page functions from the game</h2>
+
+<p>For this <a class="wiki"  href="../ScriptReference/Application.ExternalCall.html">Application.ExternalCall</a> function is used. Basically you can call any JavaScript function defined in the web page, passing any number of parameters to it. For example, this call in a game script:
+<pre class='codelisting'>
+Application.ExternalCall( "SayHello", "The game says hello!" );
+</pre>
+will execute function <i>SayHello</i> in the web page, passing a single string to it. The web page would define the function like this:
+<pre class='codelisting'>
+&lt;script language="javascript" type="text/javascript">
+&lt;!--
+function SayHello( arg )
+{
+    // show the message
+    alert( arg );
+}
+-->
+&lt;/script>
+</pre>
+</p>
+
+<p>Of course, the function in the web page can be arbitrarily complex; for example navigate to some other web page, change some HTML content or even perform some AJAX magic.
+</p>
+
+<p>Arbitrary number of string, int and float arguments can be passed using <i>ExternalCall</i>.
+</p>
+
+<h2>Executing arbitrary browser code from the game</h2>
+
+<p>You don't even have to define functions in the embedding web page, as with the  <a class="wiki"  href="../ScriptReference/Application.ExternalEval.html">Application.ExternalEval</a> function, you can execute arbitrary browser code from the game.
+</p>
+
+<p>The following example checks that the page embedding the game is fetched from a certain host (unity3d.com). If not, it will redirect to another URL.
+This can be used to prevent deep linking to your game.
+<pre class='codelisting'>
+Application.ExternalEval( "if(document.location.host != 'unity3d.com') { document.location='http://unity3d.com'; }" );
+</pre>
+</p>
+
+
+
+
+		<div class="navigation"><a href="Web-GeneratedHtml.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Plugins.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

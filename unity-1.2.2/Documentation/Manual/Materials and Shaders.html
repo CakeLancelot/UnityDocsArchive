@@ -1,0 +1,108 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Materials and Shaders"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="Materials and Shaders" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Graphics.html%22%3EGraphics%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Materials%20and%20Shaders.html%22%3EMaterials%20and%20Shaders%3C%2Fa%3E" navigation="%3Ca%20href%3D%22Particle%20Systems.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22Lighting%20and%20Rendering.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>Materials and Shaders</h1>
+		<p><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Graphics.html">Graphics</a> &gt; <a href="Materials and Shaders.html">Materials and Shaders</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="Particle Systems.html"><img src="../images/prev.png"></a><a href="Lighting and Rendering.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+
+<p>Unity has an extensive shader system, allowing you to tweak the look of all in-game graphics. It works like this:
+</p>
+
+<p>A shader basically defines a formula for how the in-game shading should look. Each shader also has a number of properties (typically textures). Materials are created from shaders, and define which textures and colors are used by the shaders. The materials are attached to game objects, defining the look in the game.
+</p>
+
+<p>As this is rather complex, A graph is in order:
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Materials and Shaders-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/Materials and Shaders-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>On the left side of the graph there is the Carbody shader. 2 Materials are created from this: Blue car material and Red car material. Each of these have 2 textures assigned: The car texture that defines the main texture of the car, and a color FX texture. These are used by the shader to make the car finish look like 2-tone paint (this can be seen on the front of the red car: it is yellow where it faces the camera and then fades towards purple as the angle increases). The car materials are assigned to the 2 cars. The car wheels, lights and windows don't have the color change effect, and must hence use another material. At the bottom of the graph there is a Simple Metal Shader. From this, the Wheel Material is made. Note that even though the Car texture is reused here, the end result is quite different from the car body, as another shader is used.
+</p>
+
+<p><i>Note: Quite a few textures, shaders &amp; materials were left out from this diagram in order to avoid clutter.</i>
+</p>
+
+<p>To be more specific, a shader defines:
+</p>
+<ul><li> The method to render an object. This includes using different methods depending on the graphics card of the end user.
+</li><li> Any vertex and fragment programs used to render.
+</li><li> Some texture properties that are left up to materials to fill in.
+</li><li> Color and number settings that materials need to provide
+</li></ul>
+
+<p>A Material defines:
+</p>
+<ul><li> Which textures to use for rendering.
+</li><li> Which colors to use for rendering.
+</li></ul>
+
+<p>Shaders are meant to be written by graphic programmers. They are written using the ShaderLab scripting language, which is quite simple. However, getting a shader to work well on all graphic cards is an involved job, and requires a fairly comprehensive knowledge of how graphic cards work.
+</p>
+
+<p>A number of standard shaders come with Unity in the Standard Asset Library.
+</p>
+
+
+<h2>Making new Materials</h2>
+
+<p>To make a new Material, either:
+</p>
+<ul><li> Right-click on a Shader in the library window and select 'Add Material'
+</li><li> Select an existing material and choose duplicate from the edit menu.
+</li><li> Drag a texture onto a mesh. This automatically creates the material in the 'Materials' folder next to the texture.
+</li></ul>
+
+<h2>Setting Material Properties</h2>
+<p>When you select an object in the scene, you can pick the Material in the component pop-up, or selecting a material from the library. After doing this, the Material inspector pops up. This is split into 2 areas: at the top, all properties of the material is listed. The properties currently available are numbers, colors, sliders and textures. As you change these, you can see the changes to the scene updated in real-time.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Materials and Shaders-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/Materials and Shaders-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>To assign a texture, drag one from the library over one of the texture buttons. To edit the mapping options for the texture, click the texture button. The bottom part of the inspector will show the mapping options for the selected texture:
+</p>
+
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Scale</nobr></b></td><td>
+Scales the texture along the different axes
+</td></tr><tr><td><b><nobr>Offset</nobr></b></td><td>
+Slides the texture around
+<p></td></tr></tr></table>
+<i>Note: If a shader uses vertex programs, the scale and offset properties have no effect</i>
+</p>
+
+<h2>Changing The Shader of a Material</h2>
+<p>Sometimes, you wish to change the shader being used by a material. In order to do so, simply drag a shader on the material in the library window. Unity will carry across any properties that the shaders share. All shaders that ship with unity have been constructed with this in mind, so most of the time you can just replace a shader and see the effect.
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

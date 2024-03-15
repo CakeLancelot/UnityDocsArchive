@@ -1,0 +1,81 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Character Joint"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Character Joint" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-DynamicsGroup.html%22%3EPhysics%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-CharacterJoint.html%22%3ECharacter%20Joint%3C%2Fa%3E" -->
+		<h1>Character Joint</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-DynamicsGroup.html">Physics</a> &gt; <a href="class-CharacterJoint.html">Character Joint</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-PhysicMaterial.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="comp-AudioGroup.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Character Joint's are mainly used for Ragdoll effects. They are an extended ball-socket joint which allows you to limit the joint on each axis.
+</p>
+
+<p>If you just want to set up a ragdoll go here.
+</p>
+
+<p><i>The Character Joint</i>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Connected Body</nobr></b></td><td> Optional reference to the Rigidbody that the joint is dependent upon. If not set, the joint connects to the world.
+</td></tr><tr><td><b><nobr>Break Force</nobr></b></td><td> The force that needs to be applied for this joint to break.
+</td></tr><tr><td><b><nobr>Break Torque</nobr></b></td><td> The torque that needs to be applied for this joint to break.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+
+<p>Fixed Joints lock an object's movement to be dependent upon another object.  This is somewhat similar to Parenting but is implemented through physics rather than object hierarchy.  The best scenarios for using them are when you have objects that you want to easily break apart from each other, or connect two object's movement without parenting.
+</p>
+
+<h3>Dynamic joints</h3>
+
+<p>There may be scenarios in your game where you want objects to stick together permanently or temporarily.  <b>Fixed Joints</b> may be a good component to use for these scenarios, since you will not have to script a change in your object's hierarchy to achieve the desired effect.  The trade-off is that you must use Rigidbodies for any objects to want to use a <b>Fixed Joint</b>.
+</p>
+
+<p>For example, if you want to use a &quot;sticky grenade&quot;, you can write a script that will detect collision with another Rigidbody (like an enemy), and then create a <b>Fixed Joint</b> that will attach itself to that Rigidbody.  Then as the enemy moves around, the joint will keep the grenade stuck to them.
+</p>
+
+<h3>Breaking joints</h3>
+
+<p>You can use the <b>Break Force</b> and <b>Break Torque</b> properties to set limits for the joint's strength.  If these are less than infinity, and a force/torque greater than these limits are applied to the object, its Fixed Joint will be destroyed and will no longer be confined by its restraints.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+You do not need to assign a <b>Connected Body</b> to your joint for it to work.
+</li><li>Fixed Joints require your objed to have a <b>Rigidbody</b> attached
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="class-PhysicMaterial.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="comp-AudioGroup.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

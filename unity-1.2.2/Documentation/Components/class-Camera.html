@@ -1,0 +1,67 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Camera"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Camera" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-RenderingGroup.html%22%3ERendering%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-Camera.html%22%3ECamera%3C%2Fa%3E" navigation="%3Ca%20href%3D%22comp-RenderingGroup.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22class-Light.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>Camera</h1>
+		<p><a href="index.html">Components</a> &gt; <a href="comp-RenderingGroup.html">Rendering</a> &gt; <a href="class-Camera.html">Camera</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="comp-RenderingGroup.html"><img src="../images/prev.png"></a><a href="class-Light.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+<p>Cameras are the devices which the player views the world through.
+</p>
+
+<p>You can have an unlimited number of cameras in a scene, and arrange and stack them using the View Size and Depth values, described below.
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>Field Of view</nobr></b></td><td> How wide the camera view angle is measured in degrees along the vertical axis
+</td></tr><tr><td><b><nobr>Background color</nobr></b></td><td> The clear color of the camera. Only has an effect if Color is enabled in <i>Clearing</i>
+</td></tr><tr><td><b><nobr>Clearing</nobr></b></td><td> Clearing decides what should be cleared
+<dl><dt>Color</dt><dd> clear the background color. Disable this if you have a skybox or other fullscreen effect in the background Depth</dd></dl>
+</td></tr><tr><td><b><nobr>Clipping</nobr></b></td><td> The distance to the near and far clipping planes.
+</td></tr><tr><td><b><nobr>View size</nobr></b></td><td> The size of the camera's viewport. Use this to limit the camera to a certain part of the screen. All values are between 0-1
+</td></tr><tr><td><b><nobr>Depth</nobr></b></td><td> The camera depth in the draw order. Cameras with the lowest numbers are drawn first.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+<p>A complete description of the component, including:
+</p>
+<ul><li> Depth order explanation
+</li><li> Near and far clipping planes
+</li></ul>
+
+<h2>Hints</h2>
+<p><ul><li>
+Use multiple cameras to increase the coolness of your game: try putting one in the tip of a player missile. Place it in one corner of the screnn and give it a higher <b>depth</b> value than the main camera.
+</li><li>To increase the sense of speed in a racing game, use a high field of view.
+</li></ul>
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

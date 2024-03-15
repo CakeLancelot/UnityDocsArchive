@@ -1,0 +1,164 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Plugins - Pro only feature</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Plugins - Pro only feature</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/Plugins.html">Plugins - Pro only feature</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Reducing File size.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Command Line Arguments.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Plugins - Pro only feature</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Unity has extensive support for C, C++ or Objective-C based <span class='doc-keyword'>Plugins</span>. 
+</p>
+<p class='vspace'>In order to use a plugin you need to do two things:
+</p>
+<div class='vspace'></div><ul><li>Write a plugin in a C based language and compile it.
+</li><li>Create a C# script which calls functions in the plugin to do something.
+</li></ul><p class='vspace'>So the plugin provides a simple C interface. The script then invokes the functions exposed by the plugin.
+</p>
+<p class='vspace'>Here is a very simple example:
+</p>
+<div class='vspace'></div><h2>The C file of a minimal plugin:</h2>
+<p><code class='escaped'>float FooPluginFunction () { return 5.0F; } </code>
+</p>
+<div class='vspace'></div><h2>A C# script that uses the plugin:</h2>
+
+<div class='specific-iphone' > 
+<pre class='codelisting'>using UnityEngine;
+using System.Runtime.InteropServices;
+
+class SomeScript : MonoBehaviour
+{
+   // This tells unity to look up the function FooPluginFunction inside the static binary
+   [DllImport ("__Internal")]
+   private static extern float FooPluginFunction ();
+
+   void Awake ()
+   {
+      // Calls the native FooPluginFunction
+      // And prints 5 to the console
+      print (FooPluginFunction ());
+   }
+} </pre>
+</div>
+
+<div class='specific-iphone' > 
+<h2>Building an application with native plugin for iPhone</h2>
+<ol><li>Define your extern method like: <br /><pre class='codelisting'>[DllImport ("__Internal")]
+private static extern float FooPluginFunction ();</pre>
+</li><li>Hit build in Unity iPhone
+</li><li>Add your native implementation to generated <span class='wikiword'>XCode</span> project "Classes" folder (this folder is not overwritten when project is appended, but don't forget to backup your native code).
+</li></ol><div class='vspace'></div></div>
+<p>If you are using C++ (.cpp) or Objective-C (.mm) to implement the plugin you have to make sure the functions are declared with C linkage to avoid <a class='urllink' href='http://en.wikipedia.org/wiki/Name_mangling' rel='nofollow'>name mangling issues</a>.
+</p>
+<div class='vspace'></div><pre class='codelisting'>extern "C"
+{
+  float FooPluginFunction ();
+} </pre>
+<div class='vspace'></div>
+<div class='vspace'></div><h2>Using your plugin from C#</h2>
+<div class='specific-iphone' > 
+<p>iPhone native plugins can be called only when deployed on actual device, thus it is recommended to wrap all native code methods with additional C# code layer.
+This code could check Application.platform and call native methods only when running on actual device and return mockup values when running in Editor. Check Bonjour browser sample application.
+</p></div>
+
+<div class='vspace'></div>
+<div class='vspace'></div><div class='specific-iphone' > 
+<h2>iPhone Tips</h2>
+<ol><li>Managed -&gt; unmanaged calls are quite expensive on iPhone. Try to avoid calling multiple native methods per frame.
+</li><li>As mentioned above wrap your native methods with additional C# layer that would call actual code on device and return mockup values in Editor.
+</li><li>String values returned from native method should be UTF-8 encoded and allocated on heap. Mono marshaling calls free for them.
+</li><li>As mentioned above <span class='wikiword'>XCode</span> project "Classes" folder is a good place to store your native code, because it is not overwritten when project is appended.
+</li><li>Other good place for storing native code is Assets folder or its subfolders. Just add references from <span class='wikiword'>XCode</span> project to native code files: right click on "Classes" subfolder and choose "Add-&gt;Existing files...".
+</li></ol></div>
+<div class='vspace'></div><h2>Examples</h2>
+<div class='specific-iphone' > 
+<h3>Bonjour browser sample</h3>
+<p>A simple example of the use of native code plugin can be found <a class='urllink' href='http://beta.unity3d.com/download/2448380694/iPhoneNativeCodeSample.zip' rel='nofollow'>here</a>
+</p>
+<p class='vspace'>This sample is aimed to demonstrate how objective-C code could be invoked
+from Unity iPhone application. This application implements very simple Bonjour client.
+Application consists of Unity iPhone project (Plugins/Bonjour.cs C# interface to the native code,
+<span class='wikiword'>BonjourTest</span>.js JS script that implements application logic) and native code (Assets/Code) 
+that should be appended to built <span class='wikiword'>XCode</span> project.
+</p></div>
+
+<div class='vspace'></div><h2>More information</h2>
+<p><a class='urllink' href='http://www.mono-project.com/Interop_with_Native_Libraries' rel='nofollow'>Mono Interop with native libraries</a>.
+</p>
+<p class='vspace'><a class='urllink' href='http://msdn2.microsoft.com/en-us/library/fzhhdwae.aspx' rel='nofollow'>P-invoke documentation on MSDN</a>.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Reducing File size.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Command Line Arguments.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

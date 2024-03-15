@@ -1,0 +1,322 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Shaders: Vertex and Fragment Programs"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title="Shaders: Vertex and Fragment Programs" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced.html%22%3EAdvanced%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Shaders.html%22%3EShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22ShaderTut2.html%22%3EShaders%3A%20Vertex%20and%20Fragment%20Programs%3C%2Fa%3E" -->
+		<h1>Shaders: Vertex and Fragment Programs</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced.html">Advanced</a> &gt; <a href="Shaders.html">Shaders</a> &gt; <a href="ShaderTut2.html">Shaders: Vertex and Fragment Programs</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="ShaderTut1.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-Shader.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p><i>This tutorial will teach you how to write custom vertex and fragment programs in Unity shaders. For a basic introduction to ShaderLab see the <a href="../Manual/ShaderTut1.html">Getting Started tutorial</a>.</i>
+</p>
+
+<p>Lets start with a small recap of the general structure of a shader:
+</p>
+
+<p><pre class='codelisting'>Shader &quot;MyShaderName&quot; {
+    Properties {
+        // ... properties here ...
+    }
+    SubShader {
+        // ... subshader for graphics hardware A ...
+        Pass {
+            // ... pass commands ...
+        }
+        // ... more passes if needed ...
+    }
+    SubShader {
+        // ... subshader for graphics hardware B ...
+    }
+    // ... Optional fallback ...
+    FallBack &quot; VertexLit&quot;, 1
+}
+</pre>
+Here at the end we introduce a new command:
+</p>
+
+<p><tt>    &nbsp;&nbsp;&nbsp;&nbsp;<b>FallBack</b> &quot; VertexLit&quot;, 1</tt>
+</p>
+
+<p>The <b><a href="../Manual/SL-Fallback.html">Fallback</a></b> command can be used at the end of the shader; it tells which shader should be used if no SubShaders from the current shader can run on user's graphics hardware. The effect is the same as including all SubShaders from the fallback shader at the end. For example, if you were to write a bump-mapped shader, then instead of writing a very basic non-bump-mapped subshader for old graphics cards you can just fallback to builtin <i>VertexLit</i> shader.
+</p>
+
+<p>The basic building blocks of the shader are introduced in the <a href="../Manual/ShaderTut1.html">first shader tutorial</a> while the full documentation of <a href="../Manual/SL-Properties.html">Properties</a>, <a href="../Manual/SL-SubShader.html">SubShaders</a> and <a href="../Manual/SL-Pass.html">Passes</a> is in the reference.
+</p>
+
+<p>A quick way of building subshaders is to use passes defined in other shaders. The command <b><a href="../Manual/SL-UsePass.html">UsePass</a></b> does just that, so you can reuse shader code in a neat fashion. As an example the following command uses the pass with the name <i>&quot;BASE&quot;</i> from the builtin <i>Glossy</i> shader:
+</p>
+
+<p><tt>    &nbsp;&nbsp;&nbsp;&nbsp;<b>UsePass</b> &quot; Glossy/BASE&quot;</tt>
+</p>
+
+<p>In order for UsePass to work, a name must be given to the pass one wishes to use. The <b><a href="../Manual/SL-NameAndTags.html">Name</a></b> command inside the pass gives it a name:
+</p>
+
+<p><tt>    &nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b> &quot;<i>MyPassName</i>&quot;</tt>
+</p>
+
+<h2> Vertex and fragment programs</h2>
+
+<p>We described a pass that used just a single texture combine instruction in the <a href="../Manual/ShaderTut1.html">first tutorial</a>. Now it is time to demonstrate how we can use vertex and fragment programs in our pass.
+</p>
+
+<p>When you use vertex and fragment programs (the so called &quot;programmable pipeline&quot;), most of the hardcoded functionality (&quot;fixed function pipeline&quot;) in the graphics hardware is switched off. For example, using a vertex program turns off standard OpenGL transformations, lighting and texture coordinate generation completely. Similarly, using a fragment program replaces any texture combine modes defined in SetTexture commands; so you can as well just write empty SetTexture commands just to set the used textures:
+</p>
+
+<p><tt>    &nbsp;&nbsp;&nbsp;&nbsp;SetTexture [_MainTex] {}</tt>
+</p>
+
+<p>Writing vertex/fragment programs requires a thorough knowledge of 3D transformations, lighting and coordinate spaces - because you have to rewrite the fixed functionality that is built into OpenGL yourself. On the other hand, you can do much more than what's built in!
+</p>
+
+<h2> Using Cg in ShaderLab</h2>
+
+<p>Shaders in ShaderLab are usually written in <a class="wiki"  href="http://developer.nvidia.com/page/cg_main.html">Cg programming language</a> by embedding &quot;Cg snippets&quot; in the shader text. Cg snippets are compiled into low-level shader assembly by the Unity editor, and the final shader that is included in your game's data files only contains this low-level assembly. When you select a shader in the Project View, the Inspector shows shader text after Cg compilation, which might help as a debugging aid. Note that because Cg code is compiled by the editor, you can't create Cg shaders from scripts at runtime.
+</p>
+
+<p>In general, Cg snippets are placed inside Pass blocks. They look like this:
+<pre class='codelisting'>
+Pass {
+&nbsp;&nbsp;&nbsp;&nbsp;<i>// ... the usual pass state setup ...</i>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<b>CGPROGRAM</b>
+<i>// compilation directives for this snippet, e.g.:</i>
+<b>// profiles</b> arbfp1
+<b>// vertex</b> vert
+<b>// fragment</b> frag
+<br />
+<i>// the Cg code itself</i>
+<br />
+<b>ENDCG</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>// ... the rest of pass setup ...</i>
+}
+</pre>
+</p>
+
+<p>The following example demonstrates a complete shader with Cg programs that renders object normals as colors:
+<pre class='codelisting'>
+Shader &quot;Tutorial/Display Normals&quot; {
+SubShader {
+    Pass {
+    
+CGPROGRAM
+// profiles arbfp1
+// vertex vert
+// fragment frag
+// fragmentoption ARB_fog_exp2
+#include &quot;UnityCG.cginc&quot;
+
+struct v2f {
+    V2F_POS_FOG;
+    float3  color : COLOR0;
+};
+
+v2f vert (appdata_base v)
+{
+    v2f o;
+    PositionFog( v.vertex, o.pos, o.fog );
+    o.color = v.normal * 0.5 + 0.5;
+    return o;
+}
+
+half4 frag (v2f i) : COLOR
+{
+    return half4( i.color, 1 );
+}
+ENDCG
+
+    }
+}
+Fallback &quot; VertexLit&quot;, 1
+}
+</pre>
+</p>
+
+<p>When applied on an object it will result in an image like this (if your graphics card supports vertex&amp; fragment programs of course):
+</p>
+
+<p><img class='figure' src='images/ShaderTut2-0.jpg' />
+</p>
+
+<p>Our &quot;Display Normals&quot; shader does not have any properties, contains a single SubShader with a single Pass that is empty except for the Cg code. Finally, a fallback to the builtin <i>VertexLit</i> shader is defined. Let's dissect the Cg code part by part:
+</p>
+
+<p><pre class='codelisting'>
+<b>CGPROGRAM</b>
+<b>// profiles</b> arbfp1
+<b>// vertex</b> vert
+<b>// fragment</b> frag
+<b>// fragmentoption</b> ARB_fog_exp2
+<br />
+<i>// ... snip ...</i>
+<b>ENDCG</b>
+</pre>
+</p>
+
+<p>The whole Cg snippet is written between <b>CGPROGRAM</b> and <b>ENDCG</b> keywords. At the start compilation directives are given as a special form of comments:
+</p>
+<ul><li> <b>// profiles</b> <i>name</i> indicates which hardware profile to compile to, <i>arbfp1</i> being the OpenGL ARB vertex and fragment programs.
+</li><li> <b>// vertex</b> <i>name</i> tells that the code contains a vertex program in the given function (<i>vert</i> here).
+</li><li> <b>// fragment</b> <i>name</i> tells that the code contains a fragment program in the given function (<i>frag</i> here).
+</li><li> <b>// fragmentoption</b> <i>name</i> adds an option to the compiled fragment program. Here we add support for exponential squared fog.
+</li></ul>
+
+<p>Following the compilation directives is just plain Cg code. We start by including a builtin Cg file:
+</p>
+
+<p><tt>    &nbsp;&nbsp;&nbsp;&nbsp;#include &quot;UnityCg.cginc&quot;</tt>
+</p>
+
+<p>The <i>UnityCg.cginc</i> file contains commonly used declarations and functions so that the shaders can be kept smaller. The file itself is found inside Unity application: <i>Unity.app/Contents/CGIncludes/UnityCG.cginc</i>. Here we'll use <i>appdata_base</i> structure, <i>V2F_POS_FOG</i> macro and <i>PositionFog</i> helper function from that file. We could just define them directly in the shader and not include the file of course.
+</p>
+
+<p>Next we define a &quot;vertex to fragment&quot; structure (here named <i>v2f</i>) - what information is passed from the vertex to the fragment program. We pass the standard position and fog parameters and a <i>float3 color</i> parameter. The color will be computed in the vertex program and just output in the fragment program.
+</p>
+
+<p>We proceed by defining the vertex program - <i>vert</i> function. Here we compute position and fog in the standard way (using helper function from <i>UnityCG.cginc</i>) and output input normal as a color:
+</p>
+
+<p><tt>    &nbsp;&nbsp;&nbsp;&nbsp;o.color = v.normal * 0.5 + 0.5;</tt>
+</p>
+
+<p>Normal components are in -1..1 range, while colors are in 0..1 range, so we scale and bias the normal in the code above. Next we define a fragment program - <i>frag</i> function that just outputs the calculated color and 1 as the alpha component:
+<pre class='codelisting'>
+half4 frag (v2f i) : COLOR
+{
+    return half4( i.color, 1 );
+}
+</pre>
+</p>
+
+<p>That's it, our shader is finished! Even this simple shader is very useful to visualize mesh normals.
+</p>
+
+<p>Of course, this shader does not respond to lights at all, and that's where things get a bit more complicated; read on <a href="../Manual/SL-RenderPipeline.html">Render Pipeline</a> and <a href="../Manual/SL-Attenuation.html">Light Attenuation</a> pages in the reference for details.
+</p>
+
+
+<h2> Using shader properties in Cg code</h2>
+
+<p>When you define properties in the shader, you give them a name like <i>_Color</i> or <i>_MainTex</i>. To use them in Cg you just have to define a variable of a matching name and type. Unity will automatically set Cg variables that have names matching with shader properties.
+</p>
+
+<p>Here is a complete shader that displays a texture modulated by a color. Of course, you could easily do the same in a texture combiner call, but the point here is just to show how to use properties in Cg:
+</p>
+
+<p><pre class='codelisting'>
+Shader &quot;Tutorial/Textured Colored&quot; {
+Properties {
+    _Color (&quot;Main Color&quot;, Color) = (1,1,1,0.5)
+    _MainTex (&quot;Texture&quot;, 2D) = &quot;white&quot; { }
+}
+SubShader {
+    Pass {
+    
+CGPROGRAM
+// profiles arbfp1
+// vertex vert
+// fragment frag
+// fragmentoption ARB_fog_exp2
+
+#include &quot;UnityCG.cginc&quot;
+
+float4 _Color;
+sampler2D _MainTex : register(s0);
+
+struct v2f {
+    V2F_POS_FOG;
+    float2  uv : TEXCOORD0;
+};
+
+v2f vert (appdata_base v)
+{
+    v2f o;
+    PositionFog( v.vertex, o.pos, o.fog );
+    o.uv = TRANSFORM_UV(0);
+    return o;
+}
+
+half4 frag (v2f i) : COLOR
+{
+    half4 texcol = tex2D( _MainTex, i.uv );
+    return texcol * _Color;
+}
+ENDCG
+
+        SetTexture [_MainTex] {}
+    }
+}
+Fallback &quot; VertexLit&quot;, 1
+}
+</pre>
+</p>
+
+<p>The structure of this shader is the same as in the previous example. Here we define two properties, namely <i>_Color</i> and <i>_MainTex</i>. Inside Cg code we define corresponding variables:
+</p>
+
+<p><tt>    &nbsp;&nbsp;&nbsp;&nbsp;float4 <i>_Color</i>;</tt>
+</p>
+<p><tt>    &nbsp;&nbsp;&nbsp;&nbsp;sampler2D <i>_MainTex</i> : register(s0);</tt>
+</p>
+
+<p>Property types in ShaderLab map to Cg variable types this way:
+</p>
+<ul><li> Color and Vector properties map to <i>float4</i> variables
+</li><li> Range and Float properties map to <i>float</i> variables
+</li><li> Texture properties map to <i>sampler2D</i> variables for regular (2D) textures. CUBE and RECT textures map to <i>samplerCUBE</i> and <i>samplerRECT</i> variables respectively.
+</li></ul>
+
+<p>Note that in the case of a texture property we explicitly bind it to the first sampler register: <i>register(s0)</i>. This is to ensure that Cg will use the correct texture; sampler registers should match the order of <i>SetTexture</i> commands later.
+</p>
+
+<p>The vertex and fragment programs here don't do anything fancy; vertex program uses the <i>TRANSFORM_UV</i> macro from <i>UnityCG.cginc</i> to make sure texture scale&amp;offset is applied correctly, and fragment program just samples the texture and multiplies by the color property.
+</p>
+
+<p>After the Cg snippet we write an empty SetTexture command:
+</p>
+
+<p><tt>    &nbsp;&nbsp;&nbsp;&nbsp;SetTexture [<i>_MainTex</i>] {}</tt>
+</p>
+
+<p>This actually sets the texture <i>_MainTex</i> from the properties. If you'd have more textures, you'd need to write similar SetTexture commands in the order that matches sampler register declarations (see paragraph about <i>register(s0)</i> above).
+</p>
+
+
+<h2> Summary</h2>
+
+<p>We have shown how custom shader programs can be generated in a few easy steps. While the examples shown here are very simple, there's nothing preventing you to write arbitrarily complex shader programs! This can help you to take the full advantage of Unity and achieve optimal rendering results.
+</p>
+
+<p>We have a forum for shaders at <a class="wiki"  href="http://forum.unity3d.com">forum.unity3d.com</a> so go there to get help with your shaders! There you can also find the source of all Unity builtin shaders - to examine and learn from. The complete ShaderLab reference manual is <a href="../Manual/Shaders.html">here</a>. Happy programming, and enjoy the power of Unity and Shaderlab.
+</p>
+
+
+
+		<div class="navigation"><a href="ShaderTut1.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-Shader.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,184 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Vector3"-->
+			<title>Unity Script Reference &ndash; Vector3</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>struct Vector3</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="struct Vector3" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> Representation of 3D vectors and points</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#x'>x</a></p>
+<p><a href='#y'>y</a></p>
+<p><a href='#z'>z</a></p>
+<p><a href='#this [int index]'>this [int index]</a></p>
+<p><a href='#normalized'>normalized</a></p>
+<p><a href='#magnitude'>magnitude</a></p>
+<p><a href='#sqrMagnitude'>sqrMagnitude</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Constructors</p><p><a href='#Vector3'>Vector3</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Functions</p><p><a href='#Scale'>Scale</a></p>
+<p><a href='#Normalize'>Normalize</a></p>
+<p><a href='#ToString'>ToString</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#kEpsilon'>kEpsilon</a></p>
+<p><a href='#zero'>zero</a></p>
+<p><a href='#one'>one</a></p>
+<p><a href='#forward'>forward</a></p>
+<p><a href='#back'>back</a></p>
+<p><a href='#up'>up</a></p>
+<p><a href='#down'>down</a></p>
+<p><a href='#left'>left</a></p>
+<p><a href='#right'>right</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#Lerp'>Lerp</a></p>
+<p><a href='#Slerp'>Slerp</a></p>
+<p><a href='#OrthoNormalize'>OrthoNormalize</a></p>
+<p><a href='#RotateTowards'>RotateTowards</a></p>
+<p><a href='#operator +'>operator +</a></p>
+<p><a href='#operator -'>operator -</a></p>
+<p><a href='#operator /'>operator /</a></p>
+<p><a href='#operator *'>operator *</a></p>
+<p><a href='#Scale'>Scale</a></p>
+<p><a href='#Cross'>Cross</a></p>
+<p><a href='#operator =='>operator ==</a></p>
+<p><a href='#operator !='>operator !=</a></p>
+<p><a href='#Reflect'>Reflect</a></p>
+<p><a href='#Normalize'>Normalize</a></p>
+<p><a href='#Dot'>Dot</a></p>
+<p><a href='#Project'>Project</a></p>
+<p><a href='#AngleBetween'>AngleBetween</a></p>
+<p><a href='#Distance'>Distance</a></p>
+<p><a href='#Min'>Min</a></p>
+<p><a href='#Max'>Max</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> This structure is used throughout Unity to pass 3D positions and vectors around.
+It also contains methods for doing common manipulations on vectors.</p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="x"></a><h3><span class="full-name">Vector3.</span>x</h3><div class="synopsis"><span class="standard_type">float</span> x</div>
+   <p class='details'> </p>
+	<a name="y"></a><h3><span class="full-name">Vector3.</span>y</h3><div class="synopsis"><span class="standard_type">float</span> y</div>
+   <p class='details'> </p>
+	<a name="z"></a><h3><span class="full-name">Vector3.</span>z</h3><div class="synopsis"><span class="standard_type">float</span> z</div>
+   <p class='details'> </p>
+	<a name="this [int index]"></a><h3><span class="full-name">Vector3.</span>this [int index]</h3><div class="synopsis"><span class="standard_type">float</span> this [<span class="standard_type">int</span> index]</div>
+   <p class='details'> Access the x, y, z axis using [0], [1], [2]<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">Vector3 p;<br/>p[1] = 5;</div></td></tr></table></p>
+	<a name="normalized"></a><h3><span class="full-name">Vector3.</span>normalized</h3><div class="synopsis">Vector3 normalized</div>
+   <p class='details'> Returns this Vector3 with a Magnitude of 1
+If value is too small to be normalized returns zero.</p>
+	<a name="magnitude"></a><h3><span class="full-name">Vector3.</span>magnitude</h3><div class="synopsis"><span class="standard_type">float</span> magnitude</div>
+   <p class='details'> The length of this Vector3</p>
+	<a name="sqrMagnitude"></a><h3><span class="full-name">Vector3.</span>sqrMagnitude</h3><div class="synopsis"><span class="standard_type">float</span> sqrMagnitude</div>
+   <p class='details'> The square of the magnitude of this Vector3
+(Calculating the square magnitude instead of the magnitude is much faster)</p>
+   <a name="Constructors"></a><h2 class="script-section">Constructors</h2>
+	<a name="Vector3"></a><h3><span class="full-name">Vector3.</span>Vector3</h3><div class="synopsis">Vector3 (<span class="standard_type">float</span> x, <span class="standard_type">float</span> y, <span class="standard_type">float</span> z)</div>
+   <p class='details'> </p>
+	&nbsp;<div class="synopsis">Vector3 (<span class="standard_type">float</span> x, <span class="standard_type">float</span> y)</div>
+   <p class='details'> </p>
+   <a name="Methods"></a><h2 class="script-section">Methods</h2>
+	<a name="Scale"></a><h3><span class="full-name">Vector3.</span>Scale</h3><div class="synopsis"><span class="standard_type">void</span> Scale (Vector3 scale)</div>
+   <p class='details'> Multiplies every component of this Vector3 by the same component of <span class="variable">scale</span>.</p>
+	<a name="Normalize"></a><h3><span class="full-name">Vector3.</span>Normalize</h3><div class="synopsis"><span class="standard_type">void</span> Normalize ()</div>
+   <p class='details'> Makes this Vector3 have a Magnitude of 1
+If this Vector3 is too small to be normalized it will be set to zero.</p>
+	<a name="ToString"></a><h3><span class="full-name">Vector3.</span>ToString</h3><div class="synopsis"><span class="standard_type">string</span> ToString ()</div>
+   <p class='details'> Returns a nicely formatted string for this Vector3</p>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="kEpsilon"></a><h3><span class="full-name">Vector3.</span>kEpsilon</h3><div class="synopsis"><span class="standard_type">float</span> kEpsilon = 0.00001F</div>
+   <p class='details'> </p>
+	<a name="zero"></a><h3><span class="full-name">Vector3.</span>zero</h3><div class="synopsis">Vector3 zero</div>
+   <p class='details'> Shorthand for writing <tt>Vector3(0, 0, 0)</tt></p>
+	<a name="one"></a><h3><span class="full-name">Vector3.</span>one</h3><div class="synopsis">Vector3 one</div>
+   <p class='details'> Shorthand for writing <tt>Vector3(1, 1, 1)</tt></p>
+	<a name="forward"></a><h3><span class="full-name">Vector3.</span>forward</h3><div class="synopsis">Vector3 forward</div>
+   <p class='details'> Shorthand for writing <tt>Vector3(0, 0, 1)</tt></p>
+	<a name="back"></a><h3><span class="full-name">Vector3.</span>back</h3><div class="synopsis">Vector3 back</div>
+   <p class='details'> Shorthand for writing <tt>Vector3(0, 0, -1)</tt></p>
+	<a name="up"></a><h3><span class="full-name">Vector3.</span>up</h3><div class="synopsis">Vector3 up</div>
+   <p class='details'> Shorthand for writing <tt>Vector3(0, 1, 0)</tt></p>
+	<a name="down"></a><h3><span class="full-name">Vector3.</span>down</h3><div class="synopsis">Vector3 down</div>
+   <p class='details'> Shorthand for writing <tt>Vector3(0, -1, 0)</tt></p>
+	<a name="left"></a><h3><span class="full-name">Vector3.</span>left</h3><div class="synopsis">Vector3 left</div>
+   <p class='details'> Shorthand for writing <tt>Vector3(-1, 0, 0)</tt></p>
+	<a name="right"></a><h3><span class="full-name">Vector3.</span>right</h3><div class="synopsis">Vector3 right</div>
+   <p class='details'> Shorthand for writing <tt>Vector3(1, 0, 0)</tt></p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="Lerp"></a><h3><span class="full-name">Vector3.</span>Lerp</h3><div class="synopsis">Vector3 Lerp (Vector3 from, Vector3 to, <span class="standard_type">float</span> t)</div>
+   <p class='details'> Interpolates from towards to by <span class="variable">t</span>.
+<span class="variable">t</span> is clamped between [0...1]
+When <span class="variable">t</span> = 0 -> returns from
+When <span class="variable">t</span> = 1 -> return to
+When <span class="variable">t</span> = .5 -> returns the average of from and to.</p>
+	<a name="Slerp"></a><h3><span class="full-name">Vector3.</span>Slerp</h3><div class="synopsis">Vector3 Slerp (Vector3 from, Vector3 to, <span class="standard_type">float</span> t)</div>
+   <p class='details'> Spherically interpolates from towards to by t.
+The returned Vector3's Magnitude will be interpolated between from and to.
+t is clamped between [0...1]</p>
+	<a name="OrthoNormalize"></a><h3><span class="full-name">Vector3.</span>OrthoNormalize</h3><div class="synopsis"><span class="standard_type">void</span> OrthoNormalize (ref Vector3 normal, ref Vector3 tangent)</div>
+   <p class='details'> Normalizes <span class="variable">normal</span>.
+Normalizes <span class="variable">tangent</span> and makes sure it is orthogonal to <span class="variable">normal</span>.</p>
+	<a name="OrthoNormalize"></a><h3><span class="full-name">Vector3.</span>OrthoNormalize</h3><div class="synopsis"><span class="standard_type">void</span> OrthoNormalize (ref Vector3 normal, ref Vector3 tangent, ref Vector3 binormal)</div>
+   <p class='details'> Normalizes <span class="variable">normal</span>.
+Normalizes <span class="variable">tangent</span> and makes sure it is orthogonal to <span class="variable">tangent</span>.
+Normalizes <span class="variable">bitangent</span> and makes sure it is orthogonal to <span class="variable">normal</span> and <span class="variable">binormal</span></p>
+	<a name="RotateTowards"></a><h3><span class="full-name">Vector3.</span>RotateTowards</h3><div class="synopsis">Vector3 RotateTowards (Vector3 from, Vector3 to, <span class="standard_type">float</span> maxRadians, <span class="standard_type">float</span> maxMagnitude)</div>
+   <p class='details'> </p>
+	<a name="operator +"></a><h3><span class="full-name">Vector3.</span>operator +</h3><div class="synopsis">Vector3 <span class="keyword">operator</span> + (Vector3 a, Vector3 b)</div>
+   <p class='details'> </p>
+	<a name="operator -"></a><h3><span class="full-name">Vector3.</span>operator -</h3><div class="synopsis">Vector3 <span class="keyword">operator</span> - (Vector3 a, Vector3 b)</div>
+   <p class='details'> </p>
+	<a name="operator -"></a><h3><span class="full-name">Vector3.</span>operator -</h3><div class="synopsis">Vector3 <span class="keyword">operator</span> - (Vector3 a)</div>
+   <p class='details'> </p>
+	<a name="operator /"></a><h3><span class="full-name">Vector3.</span>operator /</h3><div class="synopsis">Vector3 <span class="keyword">operator</span> / (Vector3 a, <span class="standard_type">float</span> d)</div>
+   <p class='details'> </p>
+	<a name="operator *"></a><h3><span class="full-name">Vector3.</span>operator *</h3><div class="synopsis">Vector3 <span class="keyword">operator</span> * (Vector3 a, <span class="standard_type">float</span> d)</div>
+   <p class='details'> </p>
+	<a name="operator *"></a><h3><span class="full-name">Vector3.</span>operator *</h3><div class="synopsis">Vector3 <span class="keyword">operator</span> * (<span class="standard_type">float</span> d, Vector3 a)</div>
+   <p class='details'> </p>
+	<a name="Scale"></a><h3><span class="full-name">Vector3.</span>Scale</h3><div class="synopsis">Vector3 Scale (Vector3 a, Vector3 b)</div>
+   <p class='details'> Multiplies every component of <span class="variable">a</span> by the same component of <span class="variable">b</span>.</p>
+	<a name="Cross"></a><h3><span class="full-name">Vector3.</span>Cross</h3><div class="synopsis">Vector3 Cross (Vector3 lhs, Vector3 rhs)</div>
+   <p class='details'> Returns the Cross product of lhs and rhs.</p>
+	<a name="operator =="></a><h3><span class="full-name">Vector3.</span>operator ==</h3><div class="synopsis"><span class="standard_type">bool</span> <span class="keyword">operator</span> == (Vector3 lhs, Vector3 rhs)</div>
+   <p class='details'> </p>
+	<a name="operator !="></a><h3><span class="full-name">Vector3.</span>operator !=</h3><div class="synopsis"><span class="standard_type">bool</span> <span class="keyword">operator</span> != (Vector3 lhs, Vector3 rhs)</div>
+   <p class='details'> </p>
+	<a name="Reflect"></a><h3><span class="full-name">Vector3.</span>Reflect</h3><div class="synopsis">Vector3 Reflect (Vector3 inDirection, Vector3 inNormal)</div>
+   <p class='details'> Reflects <span class="variable">inDirection</span> along <span class="variable">inNormal</span></p>
+	<a name="Normalize"></a><h3><span class="full-name">Vector3.</span>Normalize</h3><div class="synopsis">Vector3 Normalize (Vector3 value)</div>
+   <p class='details'> Returns <span class="variable">value</span> with a magnitude of 1.
+If <span class="variable">value</span> is too small to be normalized returns zero.</p>
+	<a name="Dot"></a><h3><span class="full-name">Vector3.</span>Dot</h3><div class="synopsis"><span class="standard_type">float</span> Dot (Vector3 lhs, Vector3 rhs)</div>
+   <p class='details'> Returns the Dot product between <span class="variable">lhs</span> and <span class="variable">rhs</span></p>
+	<a name="Project"></a><h3><span class="full-name">Vector3.</span>Project</h3><div class="synopsis">Vector3 Project (Vector3 vector, Vector3 onNormal)</div>
+   <p class='details'> Projects <span class="variable">vector</span> onto <span class="variable">onNormal</span>. Returns zero if <span class="variable">onNormal</span> is almost zero.</p>
+	<a name="AngleBetween"></a><h3><span class="full-name">Vector3.</span>AngleBetween</h3><div class="synopsis"><span class="standard_type">float</span> AngleBetween (Vector3 from, Vector3 to)</div>
+   <p class='details'> Returns the angle in radians between <span class="variable">from</span> and <span class="variable">to</span>.</p>
+	<a name="Distance"></a><h3><span class="full-name">Vector3.</span>Distance</h3><div class="synopsis"><span class="standard_type">float</span> Distance (Vector3 a, Vector3 b)</div>
+   <p class='details'> Returns the distance between <span class="variable">a</span> and <span class="variable">b</span>.</p>
+	<a name="Min"></a><h3><span class="full-name">Vector3.</span>Min</h3><div class="synopsis">Vector3 Min (Vector3 lhs, Vector3 rhs)</div>
+   <p class='details'> For every component (x, y, z) of the vector, returns the smaller.</p>
+	<a name="Max"></a><h3><span class="full-name">Vector3.</span>Max</h3><div class="synopsis">Vector3 Max (Vector3 lhs, Vector3 rhs)</div>
+   <p class='details'> For every component (x, y, z) of the vector, returns the greater.</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

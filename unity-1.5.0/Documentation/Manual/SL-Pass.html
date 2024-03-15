@@ -1,0 +1,82 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" Pass"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title=" Pass" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced%20(for%20technical%20guys).html%22%3EAdvanced%20(for%20technical%20guys)%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Shaders.html%22%3EShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-Shader.html%22%3EShader%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-SubShader.html%22%3ESubShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-Pass.html%22%3E%20Pass%3C%2Fa%3E" -->
+		<h1> Pass</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced (for technical guys).html">Advanced (for technical guys)</a> &gt; <a href="Shaders.html">Shaders</a> &gt; <a href="SL-Shader.html">Shader</a> &gt; <a href="SL-SubShader.html">SubShaders</a> &gt; <a href="SL-Pass.html"> Pass</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="SL-SubShader.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-Material.html">Next<img src="../images/next.png"></a></div>
+
+			
+<p>The Pass block causes the geometry of an object to be rendered once.
+</p>
+
+<h2>Syntax</h2>
+<p><dl><dt><b>Pass</b> <b>{</b> <i>[Name and Tags]</i> <i>[RenderSetup]</i> <i>[TextureSetup]</i> <b>}</b> </dt><dd> The basic pass command contains an optional list of render setup commands, optionally followed by a list of textures to use.</dd></dl>
+</p>
+
+<h3> Name and tags</h3>
+
+<p>A Pass can define it's name and arbitrary number of Tags - name/value strings that communicate Pass' intent to the rendering engine. More details <a href="../Manual/SL-NameAndTags.html"> here</a>.
+</p>
+
+<h3> Render Setup</h3>
+<p><dl><dt><b>Material</b> <b>{</b> <i>Material Block</i> <b>}</b></dt><dd> Defines a material to use in a vertex lighting pipeline.</dd><dt><b>Lighting</b> On | Off</dt><dd> Turn vertex lighting on or off.</dd><dt><b>SeparateSpecular</b> On | Off</dt><dd> Turns separate specular color for vertex lighting on or off.</dd><dt><b>Cull</b> Back | Front | Off</dt><dd> Set polygon culling mode.</dd><dt><b>ZTest</b> Less | Greater | LEqual | GEqual | Always</dt><dd> Set depth testing mode.</dd><dt><b>ZWrite</b> On | Off</dt><dd> Set depth writing mode.</dd><dt><b>Fog</b></dt><dd></dd><dt><b>AlphaTest</b> (Less | Greater | LEqual | GEqual) <i>CutoffValue</i></dt><dd> Turns on alpha testing.</dd><dt><b>Blend</b> <i>SourceBlendMode</i> <i>DestBlendMode</i></dt><dd></dd><dt><b>Color</b> <i>Color value</i></dt><dd> Sets color to use if vertex lighting is turned off.</dd><dt><b>ColorMask</b> RGB | A | or any combination of R, G, B, A</dt><dd> Set color writing mask.</dd><dt><b>DepthOffset</b></dt><dd></dd></dl>
+</p>
+
+<h3> Texture Setup</h3>
+<p>After the render setup, you can specify a number of textures and their combining modes to apply.
+<dl><dt><b>SetTexture</b> <i>texture property</i> { <i>[Combine options]</i> }</dt><dd></dd></dl>
+</p>
+
+
+<h2>Details</h2>
+
+<h3> Lighting</h3>
+
+<p>The per-pixel lighting pipeline works by rendering objects in multiple passes. Unity renders the object once to get ambient and any vertex lights in. Then it renders each pixel light affecting the object in a separate additive pass.
+</p>
+
+<p>This is where the performance-critical PixelLightCount in <a href="../Components/class-RenderSettings.html"> Render Settings</a> variable comes in. If the pixel light count is 4, Unity renders an object 5 times, whereas if it is 0 (effectively turning off all pixel effects such as bumpmapping), Unity only renders the VertexLit pass.
+</p>
+
+<h2> See Also</h2>
+
+<p>There are a selection of special passes available for reusing common functionality or implementing various high-end effects:
+<dl><dt><a >UsePass</a></dt><dd> Includes named passes from another shader.</dd><dt><a href="../Manual/SL-GrabPass.html">GrabPass</a></dt><dd> Grabs the contents of the screen into a texture, for use in a later pass.</dd><dt><a >OffScreenPass</a></dt><dd> Works like a normal pass, but renders into a texture. Used for deferred shading or special effects.</dd></dl>
+</p>
+
+<h2> Subsections</h2>
+
+<p><ul class="toc"><li class="toclevel"><a href="../Manual/SL-Material.html">SL-Material</a></li><li class="toclevel"><a href="../Manual/SL-CullAndDepth.html">SL-CullAndDepth</a></li><li class="toclevel"><a href="../Manual/SL-SetTexture.html">SL-SetTexture</a></li><li class="toclevel"><a href="../Manual/SL-Fog.html">SL-Fog</a></li><li class="toclevel"><a href="../Manual/SL-AlphaTest.html">SL-AlphaTest</a></li><li class="toclevel"><a href="../Manual/SL-Blend.html">SL-Blend</a></li><li class="toclevel"><a href="../Manual/SL-NameAndTags.html">SL-NameAndTags</a></li><li class="toclevel"><a href="../Manual/SL-BindChannels.html">SL-BindChannels</a></li></ul>
+</p>
+
+
+
+
+		<div class="navigation"><a href="SL-SubShader.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-Material.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

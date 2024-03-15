@@ -1,0 +1,101 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Rigidbody"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Rigidbody" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-DynamicsGroup.html%22%3EPhysics%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-Rigidbody.html%22%3ERigidbody%3C%2Fa%3E" navigation="%3Ca%20href%3D%22comp-DynamicsGroup.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22class-BoxCollider.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>Rigidbody</h1>
+		<p><a href="index.html">Components</a> &gt; <a href="comp-DynamicsGroup.html">Physics</a> &gt; <a href="class-Rigidbody.html">Rigidbody</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="comp-DynamicsGroup.html"><img src="../images/prev.png"></a><a href="class-BoxCollider.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+<p>Rigidbody components take control over an object's position - it makes the objects fall down under the influence of gravity, and can calculate how objects will respond to collisions.
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Mass</nobr></b></td><td> The weight of the object. Keep this below 1 for the best stability.
+</td></tr><tr><td><b><nobr>Drag</nobr></b></td><td> How much the object is slowed down from air resistance. 0 means not at all, whereas infinity makes the object stop immediately.
+</td></tr><tr><td><b><nobr>Angular Drag</nobr></b></td><td> How fast the object's rotation is slowed down. 0 means not at all, whereas infinity makes the object stop immediately.
+</td></tr><tr><td><b><nobr>Use Gravity</nobr></b></td><td> If on, the object is affected by gravity.
+</td></tr><tr><td><b><nobr>Is Kinematic</nobr></b></td><td> If on the object will not be driven by the physics engine. This is useful for moving platforms or if you want to animate an rigidbody that has an hinge attached.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+<p>Rigidbodies provide a key ingredient for making your world come alive, simulating lots of physical behaviour and providing lots of quick emergent behaviours.
+</p>
+
+<p>You move objects under physics control about by adding forces to them, rather than by setting the position of the objects. While cumbersome, this is important in order to ensure the stability of the physics system. Adding forces prevents objects accidentally moving into walls and ensures that the physics system can handle collision response in a sensible manner.
+</p>
+
+<h3> Colliders</h3>
+<p>In order for objects to collide correctly, they need to have colliders attached. Colliders come in two flavours: Mesh Colliders and Collision Primitives.
+</p>
+
+<p>Mesh colliders are the easiest to use - simply add a MeshCollider to an object to make othe objects bounce of it. When importing a mesh you can also enable the Has Mesh Collider option in the import settings.
+</p>
+
+<p>Collision primitives are the basic shapes of <a href="../Components/class-SphereCollider.html">spheres</a>, <a href="../Components/class-BoxCollider.html">boxes</a> and <a href="../Components/class-CapsuleCollider.html">capsules</a>.
+</p>
+
+<h3>Compound colliders</h3>
+<p>You add multiple colliders to a rigidbody by adding collision objects as transform children of the rigidbody object. Look at the example below:
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Rigidbody-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Rigidbody-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>The terrain has a Mesh Collider attached, as you cannot capture its irregular shape using collision primitives. The Rigidbody (shown in the sceneview with the transform handles) has 3 children: the capsule, the cube and the sphere. When playing, the rigidbody lands on the terrain, balancing on the 3 collision primitives.
+</p>
+
+<p>There is a catch to all this, though: Meshes can't collide with each other, so the typical solution is to use primitives for any objects that move, and meshes for static background objects.
+</p>
+
+<h3> Parenting</h3>
+<p>When an object is under physics control, it moves semi-independantly of the way its transform parents move. If you move any parents, they will pull the physics object along with them. However, the physically controlled objects still fall down due to gravity and tumble when they hit cliff sides, etc.
+</p>
+
+<h3> Scripting</h3>
+<p>When objects are under physics control, you mainly control them from scripts. You do this by calling AddForce and AddTorque on the object's rigidbody, rather than setting the position or rotation on its transform.
+</p>
+
+<h3>Animation</h3>
+<p>For ragdoll effects it is important to be able to switch between a characer being animated or simulated by physics.
+For this purpose rigidbodies can be marked as kinematic. This means the rigidbody is not affected by collisions or force applied to it. Any motion or rotation has to be set directly by changing the position or rotation of the transform through scripting or by animating it.
+Kinematic rigidbodies do affect other objects. Joints which are attached to kinematic actors will constrain any other rigid bodies attached to them. Also kinematic rigidbodies will affect other rigidbodies through collisions.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+The relative masses of two objects determines how they react when they collide.
+</li><li>Making one object have higher mass than another does not make it fall faster in free fall. Use drag for that.
+</li><li>A low drag value makes an object seem heavy. A high one makes it seem light. Typical values for drag are between .001 (solid block of metal) and 10 (feather)
+</li></ul>
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

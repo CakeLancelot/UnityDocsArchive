@@ -1,0 +1,105 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Player Settings"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Player Settings" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-ManagerGroup.html%22%3EManagers%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-PlayerSettings.html%22%3EPlayer%20Settings%3C%2Fa%3E" -->
+		<h1>Player Settings</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-ManagerGroup.html">Managers</a> &gt; <a href="class-PlayerSettings.html">Player Settings</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-QualitySettings.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-RenderSettings.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Player Settings is where you define various parameters for the final game that you will build in Unity.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-PlayerSettings-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-PlayerSettings-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The Player Settings</i>
+</p>
+
+<p>To see the Player Settings choose
+<b>Edit -&gt; Project Settings -&gt; Player</b>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Company Name</nobr></b></td><td> The name of your company. This is used to locate the preferences file.
+</td></tr><tr><td><b><nobr>Product Name</nobr></b></td><td> The name that will appear on the menu bar when your game is running and is used to locate the preferences file.
+</td></tr><tr><td><b><nobr>Default Screen Width</nobr></b></td><td> Default horizontal dimension of stand-alone player window.
+</td></tr><tr><td><b><nobr>Default Screen Height</nobr></b></td><td> Default vertical dimension of stand-alone player window.
+</td></tr><tr><td><b><nobr>Default Web Screen Width</nobr></b></td><td> Default horizontal dimension of web player window.
+</td></tr><tr><td><b><nobr>Default Web Screen Height</nobr></b></td><td> Default vertical dimension of web player window.
+</td></tr><tr><td><b><nobr>Default Graphics Quality</nobr></b></td><td> Default graphical quality option that is enabled on the Resolution Dialog.
+</td></tr><tr><td><b><nobr>Default Is Full Screen</nobr></b></td><td> If enabled, the &quot;Windowed&quot; checkbox on the Resolution Dialog will be disabled by default.
+</td></tr><tr><td><b><nobr>Display Resolution Dialog</nobr></b></td><td> If enabled, the Resolution Dialog will appear when the game is launched.
+</td></tr><tr><td><b><nobr>Use Alpha in Dashboard</nobr></b></td><td> Enabling this will use the alpha channel rendered in Unity for the transparency of the OSX Dashboard Widget. This allows you to make a dashboard widget with the shape of a mesh for example.
+</td></tr><tr><td><b><nobr>Run in Background</nobr></b></td><td> If enabled, your game will continue to run if the user gives focus to another application.
+</td></tr><tr><td><b><nobr>Resolution Dialog Banner</nobr></b></td><td> Reference to the image you would like to display in the Resolution Dialog window.
+</td></tr><tr><td><b><nobr>Always Display Watermark</nobr></b></td><td> If enabled, the Unity watermark will always be displayed in the lower-right hand corner of your game window.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+
+<p>The Player Settings window is where many technical preference defaults are set.
+</p>
+
+<p>Graphics quality levels can be defined in <a href="../Components/class-QualitySettings.html">Quality Settings</a>.
+</p>
+
+<h3>Publishing a web player</h3>
+
+<p><b>Default Web Screen Width</b> and <b>Default Web Screen Height</b> determine the size used in the html file. Of course you can modify the size in the html file later.
+</p>
+
+<p><b>Default Screen Width</b> and <b>Default Screen Height</b> are used by the web player when entering fullscreen mode through the context menu in the web player view.
+</p>
+
+<h3>Customizing your Resolution Dialog</h3>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-PlayerSettings-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-PlayerSettings-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The resolution / input selected presented to end-usrers</i>
+</p>
+
+<p>You have the option of adding a custom banner image to the Screen Resolution Dialog in the Standalone Player.
+The maximum image size is 432 x 163 pixels. The image will not be scaled up to fit the screen selector. Instead it will be centered and cropped.
+</p>
+
+<p>Since all imported textures need to be power of two, you should places this image in the center of a 512x256 pixel big image.
+The easiest way to do this in photoshop is:
+</p>
+<ol><li> Create a 432 x 163 pixel big image
+</li><li> <b>Image -&gt; Canvas Size</b> and make the image 512 x 256 pixel wide.
+</li></ol>
+
+
+
+		<div class="navigation"><a href="class-QualitySettings.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-RenderSettings.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

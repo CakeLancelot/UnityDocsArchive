@@ -1,0 +1,141 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="GL"-->
+			<title>Unity Script Reference &ndash; GL</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class GL</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class GL" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> Wrapper for the raw OpenGL interface. Use these funtions to implement your own drawing code.</p>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#GL_ZERO'>GL_ZERO</a></p>
+<p><a href='#GL_ONE'>GL_ONE</a></p>
+<p><a href='#GL_SRC_COLOR'>GL_SRC_COLOR</a></p>
+<p><a href='#GL_ONE_MINUS_SRC_COLOR'>GL_ONE_MINUS_SRC_COLOR</a></p>
+<p><a href='#GL_SRC_ALPHA'>GL_SRC_ALPHA</a></p>
+<p><a href='#GL_ONE_MINUS_SRC_ALPHA'>GL_ONE_MINUS_SRC_ALPHA</a></p>
+<p><a href='#GL_DST_ALPHA'>GL_DST_ALPHA</a></p>
+<p><a href='#GL_ONE_MINUS_DST_ALPHA'>GL_ONE_MINUS_DST_ALPHA</a></p>
+<p><a href='#TRIANGLES, TRIANGLE_STRIP, QUADS, LINES'>TRIANGLES, TRIANGLE_STRIP, QUADS, LINES</a></p>
+<p><a href='#MODELVIEW, PROJECTION, TEXTURE'>MODELVIEW, PROJECTION, TEXTURE</a></p>
+<p><a href='#modelview'>modelview</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#<a href="Color.html" class="classlink">Color</a>'><a href="Color.html" class="classlink">Color</a></a></p>
+<p><a href='#Vertex3'>Vertex3</a></p>
+<p><a href='#Vertex'>Vertex</a></p>
+<p><a href='#TexCoord'>TexCoord</a></p>
+<p><a href='#TexCoord2'>TexCoord2</a></p>
+<p><a href='#TexCoord3'>TexCoord3</a></p>
+<p><a href='#MultiTexCoord2'>MultiTexCoord2</a></p>
+<p><a href='#MultiTexCoord3'>MultiTexCoord3</a></p>
+<p><a href='#MultiTexCoord'>MultiTexCoord</a></p>
+<p><a href='#MultiTexColor'>MultiTexColor</a></p>
+<p><a href='#SetAppBlendModes'>SetAppBlendModes</a></p>
+<p><a href='#Begin'>Begin</a></p>
+<p><a href='#End'>End</a></p>
+<p><a href='#LoadOrtho'>LoadOrtho</a></p>
+<p><a href='#LoadProjectionMatrix'>LoadProjectionMatrix</a></p>
+<p><a href='#LoadIdentity'>LoadIdentity</a></p>
+<p><a href='#LoadMatrix'>LoadMatrix</a></p>
+<p><a href='#MultMatrix'>MultMatrix</a></p>
+<p><a href='#PushMatrix'>PushMatrix</a></p>
+<p><a href='#PopMatrix'>PopMatrix</a></p>
+<p><a href='#SetRevertBackfacing'>SetRevertBackfacing</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> 
+This class is only available in Unity PRO.</p>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="GL_ZERO"></a><h3><span class="full-name">GL.</span>GL_ZERO</h3><div class="synopsis"><span class="standard_type">int</span> GL_ZERO = 0</div>
+   <p class='details'> Blend mode constants for <a href="#SetAppBlendModes" class="itemlink">SetAppBlendModes</a></p>
+	<a name="GL_ONE"></a><h3><span class="full-name">GL.</span>GL_ONE</h3><div class="synopsis"><span class="standard_type">int</span> GL_ONE = 1</div>
+   <p class='details'> </p>
+	<a name="GL_SRC_COLOR"></a><h3><span class="full-name">GL.</span>GL_SRC_COLOR</h3><div class="synopsis"><span class="standard_type">int</span> GL_SRC_COLOR = 0x0300</div>
+   <p class='details'> </p>
+	<a name="GL_ONE_MINUS_SRC_COLOR"></a><h3><span class="full-name">GL.</span>GL_ONE_MINUS_SRC_COLOR</h3><div class="synopsis"><span class="standard_type">int</span> GL_ONE_MINUS_SRC_COLOR = 0x0301</div>
+   <p class='details'> </p>
+	<a name="GL_SRC_ALPHA"></a><h3><span class="full-name">GL.</span>GL_SRC_ALPHA</h3><div class="synopsis"><span class="standard_type">int</span> GL_SRC_ALPHA = 0x0302</div>
+   <p class='details'> </p>
+	<a name="GL_ONE_MINUS_SRC_ALPHA"></a><h3><span class="full-name">GL.</span>GL_ONE_MINUS_SRC_ALPHA</h3><div class="synopsis"><span class="standard_type">int</span> GL_ONE_MINUS_SRC_ALPHA = 0x0303</div>
+   <p class='details'> </p>
+	<a name="GL_DST_ALPHA"></a><h3><span class="full-name">GL.</span>GL_DST_ALPHA</h3><div class="synopsis"><span class="standard_type">int</span> GL_DST_ALPHA = 0x0304</div>
+   <p class='details'> </p>
+	<a name="GL_ONE_MINUS_DST_ALPHA"></a><h3><span class="full-name">GL.</span>GL_ONE_MINUS_DST_ALPHA</h3><div class="synopsis"><span class="standard_type">int</span> GL_ONE_MINUS_DST_ALPHA = 0x0305</div>
+   <p class='details'> </p>
+	<a name="TRIANGLES"></a><h3><span class="full-name">GL.</span>TRIANGLES, TRIANGLE_STRIP, QUADS, LINES</h3><div class="synopsis"><span class="standard_type">int</span> TRIANGLES = 0x0004, TRIANGLE_STRIP = 0x0005, QUADS = 0x0007, LINES = 0x0001</div>
+   <p class='details'> Constants for <a href="#Begin" class="itemlink">Begin</a></p>
+	<a name="MODELVIEW"></a><h3><span class="full-name">GL.</span>MODELVIEW, PROJECTION, TEXTURE</h3><div class="synopsis"><span class="standard_type">int</span> MODELVIEW = 0x1700, PROJECTION =0x1701, TEXTURE = 0x1702</div>
+   <p class='details'> </p>
+	<a name="modelview"></a><h3><span class="full-name">GL.</span>modelview</h3><div class="synopsis"><a href="Matrix4x4.html" class="classlink">Matrix4x4</a> modelview</div>
+   <p class='details'> the opengl modelview matrix.</p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="Color"></a><h3><span class="full-name">GL.</span>Color</h3><div class="synopsis"><span class="standard_type">void</span> <a href="Color.html" class="classlink">Color</a> (<a href="Color.html" class="classlink">Color</a> c)</div>
+   <p class='details'> </p>
+	<a name="Vertex3"></a><h3><span class="full-name">GL.</span>Vertex3</h3><div class="synopsis"><span class="standard_type">void</span> Vertex3 (<span class="standard_type">float</span> a, <span class="standard_type">float</span> b, <span class="standard_type">float</span> c)</div>
+   <p class='details'> Submit a vertex (matches glVertex3f)</p>
+	<a name="Vertex"></a><h3><span class="full-name">GL.</span>Vertex</h3><div class="synopsis"><span class="standard_type">void</span> Vertex (<a href="Vector3.html" class="classlink">Vector3</a> v)</div>
+   <p class='details'> </p>
+	<a name="TexCoord"></a><h3><span class="full-name">GL.</span>TexCoord</h3><div class="synopsis"><span class="standard_type">void</span> TexCoord (<a href="Vector3.html" class="classlink">Vector3</a> v)</div>
+   <p class='details'> Submit a texcoord (matches glVertex3f). This function is integrated with ShaderLab</p>
+	<a name="TexCoord2"></a><h3><span class="full-name">GL.</span>TexCoord2</h3><div class="synopsis"><span class="standard_type">void</span> TexCoord2 (<span class="standard_type">float</span> x, <span class="standard_type">float</span> y)</div>
+   <p class='details'> </p>
+	<a name="TexCoord3"></a><h3><span class="full-name">GL.</span>TexCoord3</h3><div class="synopsis"><span class="standard_type">void</span> TexCoord3 (<span class="standard_type">float</span> x, <span class="standard_type">float</span> y, <span class="standard_type">float</span> z)</div>
+   <p class='details'> </p>
+	<a name="MultiTexCoord2"></a><h3><span class="full-name">GL.</span>MultiTexCoord2</h3><div class="synopsis"><span class="standard_type">void</span> MultiTexCoord2 (<span class="standard_type">int</span> i, <span class="standard_type">float</span> x, <span class="standard_type">float</span> y)</div>
+   <p class='details'> Submit a texture coordinate to a specific texture unit. 
+Calls glMutiTexCoord for texture unit <span class="variable">i</span>.</p>
+	<a name="MultiTexCoord3"></a><h3><span class="full-name">GL.</span>MultiTexCoord3</h3><div class="synopsis"><span class="standard_type">void</span> MultiTexCoord3 (<span class="standard_type">int</span> i, <span class="standard_type">float</span> x, <span class="standard_type">float</span> y, <span class="standard_type">float</span> z)</div>
+   <p class='details'> </p>
+	<a name="MultiTexCoord"></a><h3><span class="full-name">GL.</span>MultiTexCoord</h3><div class="synopsis"><span class="standard_type">void</span> MultiTexCoord (<span class="standard_type">int</span> i, <a href="Vector3.html" class="classlink">Vector3</a> v)</div>
+   <p class='details'> </p>
+	<a name="MultiTexColor"></a><h3><span class="full-name">GL.</span>MultiTexColor</h3><div class="synopsis"><span class="standard_type">void</span> MultiTexColor (<span class="standard_type">int</span> i, <a href="Color.html" class="classlink">Color</a> col)</div>
+   <p class='details'> Set a texture environment color on texture unit <span class="variable">i</span>.</p>
+	<a name="SetAppBlendModes"></a><h3><span class="full-name">GL.</span>SetAppBlendModes</h3><div class="synopsis"><span class="standard_type">void</span> SetAppBlendModes (<span class="standard_type">int</span> src, <span class="standard_type">int</span> dest)</div>
+   <p class='details'> Set the custom shaderlab blend modes for AppSrcAdd and AppDestAdd blend modes.
+<span class="variable">src</span> gets mapped to AppSrcAdd and <span class="variable">dest</span> gets mapped to AppDestBlendMode.
+After calling this function, you must call Shaders SetPass function to have the changes take effect.</p>
+	<a name="Begin"></a><h3><span class="full-name">GL.</span>Begin</h3><div class="synopsis"><span class="standard_type">void</span> Begin (<span class="standard_type">int</span> mode)</div>
+   <p class='details'> make a glBegin call.</p>
+	<a name="End"></a><h3><span class="full-name">GL.</span>End</h3><div class="synopsis"><span class="standard_type">void</span> End ()</div>
+   <p class='details'> </p>
+	<a name="LoadOrtho"></a><h3><span class="full-name">GL.</span>LoadOrtho</h3><div class="synopsis"><span class="standard_type">void</span> LoadOrtho ()</div>
+   <p class='details'> Helper function to set up an ortho perspective transform.
+After calling LoadOrtho, the viewing frustum goes from (0,0,-1) to (1,1,100)</p>
+	<a name="LoadProjectionMatrix"></a><h3><span class="full-name">GL.</span>LoadProjectionMatrix</h3><div class="synopsis"><span class="standard_type">void</span> LoadProjectionMatrix (<a href="Matrix4x4.html" class="classlink">Matrix4x4</a> mat)</div>
+   <p class='details'> Load an arbitrary matrix to the OpenGL projection matrix
+Equivalent to the C calls<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">glMatrixMode (GL_PROJECTION);<br/>glLoadMatrix (mat);<br/>glMatrixMode (GL_MODELVIEW);</div></td></tr></table></p>
+	<a name="LoadIdentity"></a><h3><span class="full-name">GL.</span>LoadIdentity</h3><div class="synopsis"><span class="standard_type">void</span> LoadIdentity ()</div>
+   <p class='details'> Load the identity matrix to the OpenGL modelview matrix</p>
+	<a name="LoadMatrix"></a><h3><span class="full-name">GL.</span>LoadMatrix</h3><div class="synopsis"><span class="standard_type">void</span> LoadMatrix (<a href="Matrix4x4.html" class="classlink">Matrix4x4</a> mat)</div>
+   <p class='details'> Load an arbitrary matrix to the OpenGL modelview matrix
+Equivalent to the C call<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">glLoadMatrix (mat);</div></td></tr></table></p>
+	<a name="MultMatrix"></a><h3><span class="full-name">GL.</span>MultMatrix</h3><div class="synopsis"><span class="standard_type">void</span> MultMatrix (<a href="Matrix4x4.html" class="classlink">Matrix4x4</a> mat)</div>
+   <p class='details'> Load an arbitrary matrix to the OpenGL modelview matrix
+Equivalent to the C call<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">glMultMatrix (mat);</div></td></tr></table></p>
+	<a name="PushMatrix"></a><h3><span class="full-name">GL.</span>PushMatrix</h3><div class="synopsis"><span class="standard_type">void</span> PushMatrix ()</div>
+   <p class='details'> Pushes both projection and modelview matrices to the OpenGL matrix stack.
+Selects the modelview matrix at the end.</p>
+	<a name="PopMatrix"></a><h3><span class="full-name">GL.</span>PopMatrix</h3><div class="synopsis"><span class="standard_type">void</span> PopMatrix ()</div>
+   <p class='details'> Pops both project and modelview matrices off the top of the OpenGL matrix stack.</p>
+	<a name="SetRevertBackfacing"></a><h3><span class="full-name">GL.</span>SetRevertBackfacing</h3><div class="synopsis"><span class="standard_type">void</span> SetRevertBackfacing (<span class="standard_type">bool</span> revertBackFaces)</div>
+   <p class='details'> Select whether to invert the backface culling (true) or not (false)</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

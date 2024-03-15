@@ -1,0 +1,65 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Customizing Web Player loading screen"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title="Customizing Web Player loading screen" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced.html%22%3EAdvanced%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Web%20Player%20Deployment.html%22%3E%20Web%20Player%20Deployment%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Web-LoaderImages.html%22%3ECustomizing%20Web%20Player%20loading%20screen%3C%2Fa%3E" -->
+		<h1>Customizing Web Player loading screen</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced.html">Advanced</a> &gt; <a href="Web Player Deployment.html"> Web Player Deployment</a> &gt; <a href="Web-LoaderImages.html">Customizing Web Player loading screen</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Web Player Deployment.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Web-GeneratedHtml.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>By default Unity Web Player displays a small Unity logo and a progress bar while loading a web player. It is possible to customize the appearance of this loading screen. Here is a <a class="wiki"  href="http://www.otee.dk/webplayers/CustomProgress/index.html">sample html</a> file of a customized loader screen.
+</p>
+
+<p>Please note that modifying the loader images is only allowed with <b>Unity Pro</b>.
+</p>
+
+<p>The Unity Web Player takes five customizable parameters which are used to display custom loader screens. All images used need to be RGB 8 bit/channel <b>.png</b> files. The parameters to images can be absolute or relative links.
+</p>
+
+<p>Example:
+<pre class='codelisting'>
+logoimage=&quot;mylogo.png&quot; progressbarimage=&quot;myprogress.png&quot; progressframeimage=&quot;myprogressframe.png&quot; backgroundcolor=020F16
+</pre>
+This example is an excerpt of the HTML file inside the &lt;<i>embed</i>&gt; tag (for Firefox/Safari/Netscape/Opera browsers). Similar HTML code needs to be added for Internet Explorer as separate &lt;<i>param</i>&gt; tags inside the &lt;<i>object</i>&gt; tag (see the <a class="wiki"  href="http://www.otee.dk/webplayers/CustomProgress/index.html">sample html</a> file).
+</p>
+
+<p>The parameters are:
+</p>
+<ul><li> <b>logoimage</b>: the logo image. This is drawn centered on the screen.
+</li><li> <b>progressframeimage</b>: drawn below the logo for the empty parts of the progress bar.
+</li><li> <b>progressbarimage</b>: the &quot;filled&quot; part of the progress bar. This is drawn on top of the progress frame image. It is recommended to keep this image the same width as the <i>progressframeimage</i>. The progress image is always cropped to the percentage of how far the download has progressed relative to the width of the image.
+<ul><li> The progress bar and progress frame images usually have the same width and height.
+</li></ul></li><li> <b>backgroundcolor</b>: the window of the plugin is cleared with this solid color. Colors always need to be 6 hexadecimal characters eg. 020F16 (default is white).
+</li><li> <b>bordercolor</b>: a one pixel border is drawn around the plugin window in this color. Colors always need to be 6 hexadecimal characters eg. 020F16 (default is white).
+</li></ul>
+
+
+
+		<div class="navigation"><a href="Web Player Deployment.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Web-GeneratedHtml.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

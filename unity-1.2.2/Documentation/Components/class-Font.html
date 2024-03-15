@@ -1,0 +1,59 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Font"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Font" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-AssetsGroup.html%22%3EAssets%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-Font.html%22%3EFont%3C%2Fa%3E" navigation="%3Ca%20href%3D%22class-Flare.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22class-AudioClip.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>Font</h1>
+		<p><a href="index.html">Components</a> &gt; <a href="comp-AssetsGroup.html">Assets</a> &gt; <a href="class-Font.html">Font</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="class-Flare.html"><img src="../images/prev.png"></a><a href="class-AudioClip.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+
+<p>Defines a font for drawing using either the <a href="../Components/class-GuiText.html">GUI Text</a> the <a href="../Components/class-TextMesh.html">Text Mesh</a> components.
+</p>
+
+<h2>Properties</h2>
+
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Ascii Start Offset</nobr></b></td><td> The ASCII code of the first character in the font.
+</td></tr><tr><td><b><nobr>Font Count X</nobr></b></td><td> The number of characters each line in the font texture.
+</td></tr><tr><td><b><nobr>Font Count Y</nobr></b></td><td> Number of lines in the font texture.
+</td></tr><tr><td><b><nobr>Kerning</nobr></b></td><td> Kerning of spacing between characters (less than 1.0 pulls characters together, larger values increase the spacing)
+</td></tr><tr><td><b><nobr>Line Spacing</nobr></b></td><td> Spacing between lines as multiple of the height of the characters
+</td></tr><tr><td><b><nobr>Per Character Kerning</nobr></b></td><td> Used for applying different kerning values per character.
+</td></tr><tr><td><b><nobr>Convert Case</nobr></b></td><td> Defines how character case is handled. Useful if the font only contains a single case of characters.
+</td></tr><tr><td><b><nobr>Default Material</nobr></b></td><td> The material used to render the font, unless overridden by the GUI Text compontent.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+
+<p>The font glyphs themselves come from a grid of characters inside a <a href="../Components/class-FileTexture.html">texture</a>. This Texture should be assigned to the material used as <b>Default Material</b>.
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,74 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Physics Manager"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Components" title="Physics Manager" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-ManagerGroup.html%22%3EManagers%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-PhysicsManager.html%22%3EPhysics%20Manager%3C%2Fa%3E" -->
+		<h1>Physics Manager</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-ManagerGroup.html">Managers</a> &gt; <a href="class-PhysicsManager.html">Physics Manager</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-InputManager.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-QualitySettings.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>You can access the Physics Manager by selecting <b>Edit -&gt; Project Settings -&gt; Physics</b>.
+</p>
+
+<p><img class='figure' src='images/class-PhysicsManager-0.jpg' />
+</p>
+
+<p><i>The Physics Manager</i>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Gravity</nobr></b></td><td> The amount of gravity applied to all Rigidbodies. Usually gravity acts only on the Y-axis (negative is down). Gravity is m/s^2.
+</td></tr><tr><td><b><nobr>Default Material</nobr></b></td><td> The default Physic Material that will be used if none has been assigned to an individual Collider.
+</td></tr><tr><td><b><nobr>Bounce Threshold</nobr></b></td><td> Two colliding objects with a relative velocity below this value will not bounce. This value also reduces jitter so it is not recommended to set it to a very low value.
+</td></tr><tr><td><b><nobr>Sleep Velocity</nobr></b></td><td> The default linear velocity, below which objects start going to sleep.
+</td></tr><tr><td><b><nobr>Sleep Angular Velocity</nobr></b></td><td> The default angular (rotating) velocity, below which objects start going to sleep.
+</td></tr><tr><td><b><nobr>Max Angular Velocity</nobr></b></td><td> The default maximimum angular velocity permitted for any Rigidbodies. The angular velocity of rigidbodies is clamped to <b>Max Angular Velocity</b> to avoid numerical instability with quickly rotating bodies. Because this may prevent intentional fast rotations on objects such as wheels, you can override this value for any Rigidbody by scripting Rigidbody.maxAngularVelocity.
+</td></tr><tr><td><b><nobr>Min Penetration For Penalty</nobr></b></td><td> How deep in meters are two objects allowed to penetrate before the collision solver pushes them apart. A higher value will make objects penetrate more but reduces jitter.
+</td></tr><tr><td><b><nobr>Solver Iteration Count</nobr></b></td><td> Determines how accurately joints and contacts are resolved. Usually a value of 7 works very well for almost all situations.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+<p>The Physics Manager is where you define the default behaviors of your world.
+</p>
+
+<p>For an explanation of Rigidbody Sleeping, read this page about <a href="../ScriptingConcepts/RigidbodySleeping.html">sleeping</a>.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+If you are having trouble with connected bodies oscillating and behaving eratically, setting a higher <b>Solver Iteration Count</b> may improve their stability, but will require more processing power.
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="class-InputManager.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-QualitySettings.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

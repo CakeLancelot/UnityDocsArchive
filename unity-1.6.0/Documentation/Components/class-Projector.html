@@ -1,0 +1,85 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Projector"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Components" title="Projector" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-RenderingGroup.html%22%3ERendering%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-Projector.html%22%3EProjector%3C%2Fa%3E" -->
+		<h1>Projector</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-RenderingGroup.html">Rendering</a> &gt; <a href="class-Projector.html">Projector</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><a href='../ScriptReference/Projector.html' title='Go to Projector Scripting Doc'><img src="../Images/SwitchScripting.png" width="66" height="51" /></a><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-Light.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-Halo.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Projectors allow you to project an arbitrary material on all objects that intersect its frustum.
+</p>
+
+<p><img class='figure' src='images/class-Projector-0.jpg' />
+</p>
+
+<p><i>The Projector</i>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Near Clip Plane</nobr></b></td><td> The Near clip plane of the Projector. Objects in front of the near clip plane will not be affected.
+</td></tr><tr><td><b><nobr>Far Clip Plane</nobr></b></td><td> The Far clip plane of the Projector. Objects beyond this distance will not be affected.
+</td></tr><tr><td><b><nobr>Field Of View</nobr></b></td><td> The field of view in degrees. This is only used if the Projector is not Ortho Graphic.
+</td></tr><tr><td><b><nobr>Aspect Ratio</nobr></b></td><td> The Aspect Ratio of the Projector. This allows you to tune the height vs width of the Projector.
+</td></tr><tr><td><b><nobr>Is Ortho Graphic</nobr></b></td><td> If enabled, the Projector will be Ortho Graphic instead of perspective.
+</td></tr><tr><td><b><nobr>Ortho Graphic Size</nobr></b></td><td> The Ortho Graphic size of the Projection. this is only used if Is Ortho Graphic is turned on.
+</td></tr><tr><td><b><nobr>Material</nobr></b></td><td> The Material that will be Projected onto Objects.
+</td></tr><tr><td><b><nobr>Ignore Layers</nobr></b></td><td> Objects that are in one of the Ignore Layers will not be affected. By default, Ignore Layers is none so all geometry that intersects the Projector frustum will be affected.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+<p>With a projector you can:
+</p>
+<ol><li> Create shadows
+</li><li> Make a real world projector on a tripod with another <a href="../Components/class-Camera.html">camera</a> that films some other part of the world using a render texture
+</li><li> Create bullet marks
+</li><li> Funky lighting effects.
+</li></ol>
+
+<p><img class='figure' src='images/class-Projector-1.jpg' />
+</p>
+
+<p><i>A projector used to create a Blob Shadow for this hovercraft</i>
+</p>
+
+<p>If you want to create a simple shadow effect, simply drag the <b>StandardAssets/Blob-Shadow/Blob shadow projector</b> prefab into your scene. You can modify the material to use a different Blob shadow texture.
+</p>
+
+<h2>Hints</h2>
+<ul><li> Projector Blob shadows can create very impressive <i>Splinter Cell</i>-like lighting effects if used to shadow the environment properly.
+</li><li> When no Falloff texture is used in the projector's material, it can project both forward and backward, creating &quot;double projection&quot;. To fix this, use an alpha-only Falloff texture that has a black leftmost pixel column.
+</li></ul>
+
+
+
+
+		<div class="navigation"><a href="class-Light.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-Halo.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

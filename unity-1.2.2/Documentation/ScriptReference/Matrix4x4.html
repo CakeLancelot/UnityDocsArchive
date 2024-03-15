@@ -1,0 +1,108 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Matrix4x4"-->
+			<title>Unity Script Reference &ndash; Matrix4x4</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>struct Matrix4x4</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="struct Matrix4x4" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> A four by four matrix</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#m00, m10, m20, m30'>m00, m10, m20, m30</a></p>
+<p><a href='#m01, m11, m21, m31'>m01, m11, m21, m31</a></p>
+<p><a href='#m02, m12, m22, m32'>m02, m12, m22, m32</a></p>
+<p><a href='#m03, m13, m23, m33'>m03, m13, m23, m33</a></p>
+<p><a href='#this [int row, int column]'>this [int row, int column]</a></p>
+<p><a href='#this [int index]'>this [int index]</a></p>
+<p><a href='#inverse'>inverse</a></p>
+<p><a href='#transpose'>transpose</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Functions</p><p><a href='#GetColumn'>GetColumn</a></p>
+<p><a href='#GetRow'>GetRow</a></p>
+<p><a href='#SetColumn'>SetColumn</a></p>
+<p><a href='#SetRow'>SetRow</a></p>
+<p><a href='#MultiplyPoint3x4'>MultiplyPoint3x4</a></p>
+<p><a href='#MultiplyVector'>MultiplyVector</a></p>
+<p><a href='#MultiplyPoint'>MultiplyPoint</a></p>
+<p><a href='#SetTRS'>SetTRS</a></p>
+<p><a href='#ToString'>ToString</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#operator *'>operator *</a></p>
+<p><a href='#Inverse'>Inverse</a></p>
+<p><a href='#Transpose'>Transpose</a></p>
+<p><a href='#Scale'>Scale</a></p>
+<p><a href='#TRS'>TRS</a></p>
+<p><a href='#Ortho'>Ortho</a></p>
+</span>
+<div class='tocclear'></div>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="m00"></a><h3><span class="full-name">Matrix4x4.</span>m00, m10, m20, m30</h3><div class="synopsis"><span class="standard_type">float</span> m00, m10, m20, m30</div>
+   <p class='details'> </p>
+	<a name="m01"></a><h3><span class="full-name">Matrix4x4.</span>m01, m11, m21, m31</h3><div class="synopsis"><span class="standard_type">float</span> m01, m11, m21, m31</div>
+   <p class='details'> </p>
+	<a name="m02"></a><h3><span class="full-name">Matrix4x4.</span>m02, m12, m22, m32</h3><div class="synopsis"><span class="standard_type">float</span> m02, m12, m22, m32</div>
+   <p class='details'> </p>
+	<a name="m03"></a><h3><span class="full-name">Matrix4x4.</span>m03, m13, m23, m33</h3><div class="synopsis"><span class="standard_type">float</span> m03, m13, m23, m33</div>
+   <p class='details'> </p>
+	<a name="this [int row"></a><h3><span class="full-name">Matrix4x4.</span>this [int row, int column]</h3><div class="synopsis"><span class="standard_type">float</span> this [<span class="standard_type">int</span> row, <span class="standard_type">int</span> column]</div>
+   <p class='details'> Standard math notation!</p>
+	<a name="this [int index]"></a><h3><span class="full-name">Matrix4x4.</span>this [int index]</h3><div class="synopsis"><span class="standard_type">float</span> this [<span class="standard_type">int</span> index]</div>
+   <p class='details'> </p>
+	<a name="inverse"></a><h3><span class="full-name">Matrix4x4.</span>inverse</h3><div class="synopsis">Matrix4x4 inverse</div>
+   <p class='details'> </p>
+	<a name="transpose"></a><h3><span class="full-name">Matrix4x4.</span>transpose</h3><div class="synopsis">Matrix4x4 transpose</div>
+   <p class='details'> </p>
+   <a name="Methods"></a><h2 class="script-section">Methods</h2>
+	<a name="GetColumn"></a><h3><span class="full-name">Matrix4x4.</span>GetColumn</h3><div class="synopsis"><a href="Vector4.html" class="classlink">Vector4</a> GetColumn (<span class="standard_type">int</span> i)</div>
+   <p class='details'> </p>
+	<a name="GetRow"></a><h3><span class="full-name">Matrix4x4.</span>GetRow</h3><div class="synopsis"><a href="Vector4.html" class="classlink">Vector4</a> GetRow (<span class="standard_type">int</span> i)</div>
+   <p class='details'> </p>
+	<a name="SetColumn"></a><h3><span class="full-name">Matrix4x4.</span>SetColumn</h3><div class="synopsis"><span class="standard_type">void</span> SetColumn (<span class="standard_type">int</span> i, <a href="Vector4.html" class="classlink">Vector4</a> v)</div>
+   <p class='details'> </p>
+	<a name="SetRow"></a><h3><span class="full-name">Matrix4x4.</span>SetRow</h3><div class="synopsis"><span class="standard_type">void</span> SetRow (<span class="standard_type">int</span> i, <a href="Vector4.html" class="classlink">Vector4</a> v)</div>
+   <p class='details'> </p>
+	<a name="MultiplyPoint3x4"></a><h3><span class="full-name">Matrix4x4.</span>MultiplyPoint3x4</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> MultiplyPoint3x4 (<a href="Vector3.html" class="classlink">Vector3</a> v)</div>
+   <p class='details'> </p>
+	<a name="MultiplyVector"></a><h3><span class="full-name">Matrix4x4.</span>MultiplyVector</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> MultiplyVector (<a href="Vector3.html" class="classlink">Vector3</a> v)</div>
+   <p class='details'> </p>
+	<a name="MultiplyPoint"></a><h3><span class="full-name">Matrix4x4.</span>MultiplyPoint</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> MultiplyPoint (<a href="Vector3.html" class="classlink">Vector3</a> v)</div>
+   <p class='details'> </p>
+	<a name="SetTRS"></a><h3><span class="full-name">Matrix4x4.</span>SetTRS</h3><div class="synopsis"><span class="standard_type">void</span> SetTRS (<a href="Vector3.html" class="classlink">Vector3</a> pos, <a href="Quaternion.html" class="classlink">Quaternion</a> q, <a href="Vector3.html" class="classlink">Vector3</a> s)</div>
+   <p class='details'> </p>
+	<a name="ToString"></a><h3><span class="full-name">Matrix4x4.</span>ToString</h3><div class="synopsis"><span class="standard_type">string</span> ToString ()</div>
+   <p class='details'> </p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="operator *"></a><h3><span class="full-name">Matrix4x4.</span>operator *</h3><div class="synopsis">Matrix4x4 <span class="keyword">operator</span> * (Matrix4x4 lhs, Matrix4x4 rhs)</div>
+   <p class='details'> </p>
+	<a name="operator *"></a><h3><span class="full-name">Matrix4x4.</span>operator *</h3><div class="synopsis"><a href="Vector4.html" class="classlink">Vector4</a> <span class="keyword">operator</span> * (Matrix4x4 lhs, <a href="Vector4.html" class="classlink">Vector4</a> v)</div>
+   <p class='details'> </p>
+	<a name="Inverse"></a><h3><span class="full-name">Matrix4x4.</span>Inverse</h3><div class="synopsis">Matrix4x4 Inverse (Matrix4x4 m)</div>
+   <p class='details'> </p>
+	<a name="Transpose"></a><h3><span class="full-name">Matrix4x4.</span>Transpose</h3><div class="synopsis">Matrix4x4 Transpose (Matrix4x4 m)</div>
+   <p class='details'> </p>
+	<a name="Scale"></a><h3><span class="full-name">Matrix4x4.</span>Scale</h3><div class="synopsis">Matrix4x4 Scale (<a href="Vector3.html" class="classlink">Vector3</a> v)</div>
+   <p class='details'> </p>
+	<a name="TRS"></a><h3><span class="full-name">Matrix4x4.</span>TRS</h3><div class="synopsis">Matrix4x4 TRS (<a href="Vector3.html" class="classlink">Vector3</a> pos, <a href="Quaternion.html" class="classlink">Quaternion</a> q, <a href="Vector3.html" class="classlink">Vector3</a> s)</div>
+   <p class='details'> </p>
+	<a name="Ortho"></a><h3><span class="full-name">Matrix4x4.</span>Ortho</h3><div class="synopsis">Matrix4x4 Ortho (<span class="standard_type">float</span> left, <span class="standard_type">float</span> right, <span class="standard_type">float</span> bottom, <span class="standard_type">float</span> top, <span class="standard_type">float</span> zNear, <span class="standard_type">float</span> zFar)</div>
+   <p class='details'> </p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

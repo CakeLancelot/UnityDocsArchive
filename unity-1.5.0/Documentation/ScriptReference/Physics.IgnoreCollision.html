@@ -1,0 +1,42 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Physics.IgnoreCollision"-->
+			<title>Unity Script Reference &ndash; Physics.IgnoreCollision</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<script language="JavaScript" src="UnityDoc.js"></script>
+<body>
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>IgnoreCollision</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+	<!-- #TemplateEndEditable -->
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-top.lbi" --><!-- #EndLibraryItem --><div class="left-menu-container"><ul class="left-menu"><li><span class="left-menu-heading">Menu</span></li><li><a class="left-menu-item" href="index.html">Overview</a></li><li><a class="left-menu-item" href="20_class_hierarchy.html">Class Hierarchy</a></li><li><a class="left-menu-item" href="10_reference.html">Reference</a></li><li><span class="left-menu-seperator"></span></li><li><a class="left-menu-heading" href="Physics.html">Physics</a></li><li><a class="left-menu-item" href="Physics.html">Class Members</a></li><li><span class="left-menu-subheading">Class Variables</span></li><li><a class="left-menu-item" href="Physics.bounceTreshold.html">bounceTreshold</a></li><li><a class="left-menu-item" href="Physics.gravity.html">gravity</a></li><li><a class="left-menu-item" href="Physics.maxAngularVelocity.html">maxAngularVelocity</a></li><li><a class="left-menu-item" href="Physics.minPenetrationForPenalty.html">minPenetrationForPenalty</a></li><li><a class="left-menu-item" href="Physics.sleepAngularVelocity.html">sleepAngularVelocity</a></li><li><a class="left-menu-item" href="Physics.sleepVelocity.html">sleepVelocity</a></li><li><a class="left-menu-item" href="Physics.solverIterationCount.html">solverIterationCount</a></li><li><span class="left-menu-subheading">Class Functions</span></li><li><span class="left-menu-item left-menu-current">IgnoreCollision</span></li><li><a class="left-menu-item" href="Physics.Linecast.html">Linecast</a></li><li><a class="left-menu-item" href="Physics.OverlapSphere.html">OverlapSphere</a></li><li><a class="left-menu-item" href="Physics.Raycast.html">Raycast</a></li></ul></div>
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-middle.lbi" --><!-- #EndLibraryItem -->	<div id="IgnoreCollision" class="manual-entry"><h3><span class="full-name">Physics.</span>IgnoreCollision</h3><div class="synopsis">void IgnoreCollision (<a href="Collider.html" class="classlink">Collider</a> collider1, <a href="Collider.html" class="classlink">Collider</a> collider2, bool ignore = true)</div>
+   <p class="details"> Makes the collision detection system ignore all collisions between <span class="variable">collider1</span> and <span class="variable">collider2</span>.
+This is most useful for making eg. projectiles not collide with the object shooting them.
+</p><p class="details">
+IgnoreCollision has a few limitations:
+1) It is not persistent. This means ignore collision state will not be stored in the editor when saving a scene.
+2) You can only apply the ignore collision to colliders in active game objects.
+   When deactivating the collider or attached rigidbody the IgnoreCollision state will be lost and you have to call <a href="Physics.IgnoreCollision.html" class="itemlink">Physics.IgnoreCollision</a> again.</p><div class="code"><span class="comment">// Instantiate a bullet and make it ignore collisions with this object.</span>
+var bulletPrefab : <a href="Transform.html" class="classlink">Transform</a>;<br/>function Start () {<br/>    var bullet = Instantiate (bulletPrefab);<br/>    <a href="Physics.IgnoreCollision.html" class="itemlink">Physics.IgnoreCollision</a>(bullet.collider, collider);<br/>}</div><p class="details"></p>
+</div>	
+	</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

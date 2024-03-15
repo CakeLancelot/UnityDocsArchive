@@ -1,0 +1,143 @@
+body {
+	background-color:    white;
+	margin-top:   5px;
+	margin-left:   5px;
+	margin-bottom:   5px;
+	margin-right:   5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+
+/* Cells where nothing is specified */
+TD {
+	color:    Black;
+	font-family:   Arial, Helvetica, sans-serif;
+	font-size:   12px;
+	vertical-align:   top;
+}
+
+th {
+	border:   1px solid #8CACBB;
+	padding-left:   2px;
+	padding-right:   5px;
+}
+a {
+	color:   #640606;
+	text-decoration: none;
+	font-weight:bold;
+}
+a:hover {
+	color:   #640606;
+	text-decoration: underline;
+}
+/* Non-linking titles (three levels) */
+H1 {
+	font-size:    20px;
+	font-family:   Verdana, Arial, Helvetica, sans-serif;
+	color:   #640606;
+	clear: both;
+}
+
+H2 {
+	font-size:    16px;
+	font-family:   Verdana, Arial, Helvetica, sans-serif;
+	color:   #640606;
+	clear: both;
+	margin-bottom: 1px;
+}
+
+H3 {
+	font-size:    14px;
+	font-family:   Verdana, Arial, Helvetica, sans-serif;
+	color:   #640606;
+	clear: both;
+	margin-bottom: 1px;
+}
+P {
+	padding-top: 0px;
+	margin-top: 0px;
+}
+DT {
+	font-weight: bold;
+}
+TH {
+	background-color: white;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-right-style: none;
+	border-left-style: none;
+	border-top-style: none;
+	border-color:    black;
+	margin-left: 10px;
+	text-align: left;
+	font-size: 12px;
+}
+.reftable {
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-right-style: none;
+	border-bottom-style: solid;
+	border-left-style: none;
+	clear: both;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	vertical-align: top;
+	text-align: left;
+}
+
+div.code {
+	font-size:    90%;
+	padding:   5px;
+	border-style:   solid;
+	border-width:   1px;
+	border-color:   #CCCCCC;
+	background-color:   #F4F4F4;
+	font-family:   courier;
+}
+/*****the plugin {CODE} tag ******dgd*********/
+
+.codelisting {
+font-family : monospace;
+font-size: 8pt;
+padding : 2ex;
+background-color : #edeeef;
+margin : 1ex;
+border : 1px dashed #adacaf;
+}
+
+
+pre {
+	font-size:    14px;
+	font-family:   courier;
+}
+/*************************************************** WIKI TOCS ***************************************************/
+div.tocnav {
+	font-family:    Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size:   9px;
+	background:   #DEE7EC;
+	border:   1px solid #8CACBB;
+	color:   black;
+	padding-bottom:   2px;
+	padding-top:   2px;
+	margin-bottom:   2px;
+}
+
+.tocnavlink {
+	color:    black;
+	text-decoration:   underline;
+	font-family:   Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size:   10px;
+}
+
+.tocnavlink:hover {
+	font-family:    Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size:   10px;
+	color:   black;
+	text-decoration:   underline;
+}
+
+.figure {
+	width:100%;
+}

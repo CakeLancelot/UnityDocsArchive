@@ -1,0 +1,139 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Movie Texture</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Movie Texture</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Working with Assets.html">Working with Assets</a> &gt; <a href="../Manual/Video Files.html">Movie Texture</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Textures.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Audio Files.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Movie Texture</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><span class='doc-keyword'>Movie Textures</span> are animated <span class='doc-keyword'>Textures</span> that are created from a video file.  By placing a video file in your project's <span class='doc-menu'>Assets Folder</span>, you can import the video to be used exactly as you would use a regular <a href="../Components/class-Texture2D.html">Texture</a>.
+</p>
+<p class='vspace'>The supported video file types are:
+</p><ul><li><b>.mov</b>
+</li><li><b>.avi</b>
+</li><li><b>.asf</b>
+</li><li><b>.mpg</b>
+</li><li><b>.mpeg</b>
+</li><li><b>.mp4</b>
+</li></ul><div class='vspace'></div><h2>Properties</h2>
+<p>The Movie Texture <span class='doc-keyword'>Inspector</span> is very similar to the regular <a href="../Components/class-Texture2D.html">Texture</a> Inspector.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Video Files-0.jpg' /><br /><em>Video files are Movie Textures in Unity</em></div>
+<div class='vspace'></div><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Filtering Mode</span> (un-editable)</td><td  align='left'>Selects how the Texture is filtered when it gets stretched by 3D transformations:</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Anisotropy</span> (un-editable)</td><td  align='left'>Increases Texture quality when viewing the texture at a steep angle. Good for floor and ground textures</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Edge mode</span> (un-editable)</td><td  align='left'>Selects how the Texture behaves when tiled:</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Show Alpha</span></td><td  align='left'>If enabled, the Texture's alpha channel will be displayed</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Mip Level</span></td><td  align='left'>The current Mip Level that is displayed</td></tr>
+</table>
+<div class='vspace'></div><h2>Details</h2>
+<p>When a video file is added to your Project, the <span class='doc-keyword'>Import Settings</span> will appear.  Here, you can set the maximum bit-rate for encoding your video files.  Internally, the asset is converted to <span class='doc-keyword'>Ogg Theora</span> format.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Video Files-1.jpg' /><br /><em>Import Settings for Movie Textures</em></div>
+<p class='vspace'>Once your Movie Texture has been imported, you can attach it to any <span class='doc-keyword'><span class='wikiword'>GameObject</span></span> or <span class='doc-keyword'>Material</span>, just like a regular Texture.
+</p>
+<div class='vspace'></div><h3>Playing the Movie</h3>
+<p>Your Movie Texture will not play automatically when the game begins running.  You must use a short script to tell it when to play.
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+// this line of code will make the Movie Texture begin playing
+renderer.material.mainTexture.Play();
+</pre>
+<p class='vspace'>Attach the following script to toggle Movie playback when the space bar is pressed:
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+function Update () {
+	if (Input.GetButtonDown ("Jump")) {
+		if (renderer.material.mainTexture.isPlaying) {
+			renderer.material.mainTexture.Pause();
+		}
+		else {
+			renderer.material.mainTexture.Play();
+		}
+	}
+}
+</pre>
+<p class='vspace'>For more information about playing Movie Textures, see the <a class='urllink' href='../ScriptReference/MovieTexture.html' rel='nofollow'>Movie Texture Script Reference</a> page
+</p>
+<div class='vspace'></div><h3>Movie Audio</h3>
+<p>When a Movie Texture is imported, the audio track accompanying the visuals are imported as well.  This audio appears as an <span class='doc-keyword'><span class='wikiword'>AudioClip</span></span> child of the Movie Texture.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Video Files-2.jpg' /><br /><em>The video's audio track appears as a child of the Movie Texture in the <span class='doc-keyword'>Project View</span></em></div>
+<p class='vspace'>To play this audio, the Audio Clip must be attached to a <span class='wikiword'>GameObject</span>, like any other Audio Clip.  Drag the Audio Clip from the Project View onto any <span class='wikiword'>GameObject</span> in the Scene or Hierarchy View.  Usually, this will be the same <span class='wikiword'>GameObject</span> that is showing the Movie.  Then use <a class='urllink' href='../ScriptReference/%20GameObject-audio.html' rel='nofollow'>audio.Play()</a> to make the the movie's audio track play along with its video.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Textures.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Audio Files.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

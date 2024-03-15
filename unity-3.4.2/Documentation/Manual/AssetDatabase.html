@@ -1,0 +1,341 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - AssetDatabase</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">AssetDatabase</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/AssetDatabase.html">AssetDatabase</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/AssetBundles.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/RenderingPaths.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>AssetDatabase</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>AssetDatabase is an API which allows you to access the assets contained in your project. Among other things, it provides methods to find and load assets and also to create, delete and modify them. The Unity Editor uses the AssetDatabase internally to keep track of asset files and maintain the linkage between assets and objects that reference them. Since Unity needs to keep track of all changes to the project folder, you should always use the AssetDatabase API rather than the filesystem if you want to access or modify asset data.
+</p>
+<p class='vspace'>The AssetDatabase interface is only available in the editor and has no function in the built player. Like all other editor classes, it is only available to scripts placed in the Editor folder (just create a folder named “Editor” in the main Assets folder of your project if there isn't one already).
+</p>
+<div class='vspace'></div><h2>Importing an Asset</h2>
+<p>Unity normally imports assets automatically when they are dragged into the project but it is also possible to import them under script control. To do this you can use the <a class='urllink' href='../ScriptReference/AssetDatabase.ImportAsset.html' rel='nofollow'>AssetDatabase.ImportAsset</a> method as in the example below.
+</p>
+<div class='vspace'></div><pre class='codelisting'>using UnityEngine;
+using UnityEditor;
+
+public class ImportAsset {
+	[MenuItem ("AssetDatabase/ImportExample")]
+	static void ImportExample ()
+	{
+		AssetDatabase.ImportAsset("Assets/Textures/texture.jpg", ImportAssetOptions.Default);
+	}
+}</pre>
+<p class='vspace'>You can also pass an extra parameter of type <a class='urllink' href='../ScriptReference/AssetDatabase.ImportAssetOptions.html' rel='nofollow'>AssetDatabase.ImportAssetOptions</a> to the AssetDatabase.ImportAsset call. The scripting reference page documents the different options and their effects on the function's behaviour.
+</p>
+<div class='vspace'></div><h2>Loading an Asset</h2>
+<p>The editor loads assets only as needed, say if they are added to the scene or edited from the Inspector panel. However, you can load and access assets from a script using <a class='urllink' href='../ScriptReference/AssetDatabase.LoadAssetAtPath.html' rel='nofollow'>AssetDatabase.LoadAssetAtPath</a>, <a class='urllink' href='../ScriptReference/AssetDatabase.LoadMainAssetAtPath.html' rel='nofollow'>AssetDatabase.LoadMainAssetAtPath</a>,  <a class='urllink' href='../ScriptReference/AssetDatabase.LoadAllAssetRepresentationsAtPath.html' rel='nofollow'>AssetDatabase.LoadAllAssetRepresentationsAtPath</a> and <a class='urllink' href='../ScriptReference/AssetDatabase.LoadAllAssetsAtPath%20.html' rel='nofollow'>AssetDatabase.LoadAllAssetsAtPath</a>. See the scripting documentation for further details.
+</p>
+<div class='vspace'></div><pre class='codelisting'>using UnityEngine;
+using UnityEditor;
+
+public class ImportAsset {
+	[MenuItem ("AssetDatabase/LoadAssetExample")]
+	static void ImportExample ()
+	{
+		Texture2D t = AssetDatabase.LoadAssetAtPath("Assets/Textures/texture.jpg", typeof(Texture2D)) as Texture2D;
+	}
+}</pre>
+<div class='vspace'></div><h2>File Operations using the AssetDatabase</h2>
+<p>Since Unity keeps metadata about asset files, you should never create, move or delete them using the filesystem. Instead, you can use <a class='urllink' href='../ScriptReference/AssetDatabase.Contains.html' rel='nofollow'>AssetDatabase.Contains</a>, <a class='urllink' href='../ScriptReference/AssetDatabase.CreateAsset.html' rel='nofollow'>AssetDatabase.CreateAsset</a>, <a class='urllink' href='../ScriptReference/AssetDatabase.CreateFolder.html' rel='nofollow'>AssetDatabase.CreateFolder</a>, <a class='urllink' href='../ScriptReference/AssetDatabase.RenameAsset.html' rel='nofollow'>AssetDatabase.RenameAsset</a>, <a class='urllink' href='../ScriptReference/AssetDatabase.CopyAsset.html' rel='nofollow'>AssetDatabase.CopyAsset</a>, <a class='urllink' href='../ScriptReference/AssetDatabase.MoveAsset.html' rel='nofollow'>AssetDatabase.MoveAsset</a>, <a class='urllink' href='../ScriptReference/AssetDatabase.MoveAssetToTrash.html' rel='nofollow'>AssetDatabase.MoveAssetToTrash</a> and <a class='urllink' href='../ScriptReference/AssetDatabase.DeleteAsset.html' rel='nofollow'>AssetDatabase.DeleteAsset</a>.
+</p>
+<div class='vspace'></div><pre class='codelisting'>public class AssetDatabaseIOExample {
+	[MenuItem ("AssetDatabase/FileOperationsExample")]
+	static void Example ()
+	{
+		string ret;
+
+		// Create
+		Material material = new Material (Shader.Find("Specular"));
+		AssetDatabase.CreateAsset(material, "Assets/MyMaterial.mat");
+		if(AssetDatabase.Contains(material))
+			Debug.Log("Material asset created");
+
+		// Rename
+		ret = AssetDatabase.RenameAsset("Assets/MyMaterial.mat", "MyMaterialNew");
+		if(ret == "")
+			Debug.Log("Material asset renamed to MyMaterialNew");
+		else
+			Debug.Log(ret);
+
+		// Create a Folder
+		ret = AssetDatabase.CreateFolder("Assets", "NewFolder");
+		if(AssetDatabase.GUIDToAssetPath(ret) != "")
+			Debug.Log("Folder asset created");
+		else
+			Debug.Log("Couldn't find the GUID for the path");
+
+		// Move
+		ret = AssetDatabase.MoveAsset(AssetDatabase.GetAssetPath(material), "Assets/NewFolder/MyMaterialNew.mat");
+		if(ret == "")
+			Debug.Log("Material asset moved to NewFolder/MyMaterialNew.mat");
+		else
+			Debug.Log(ret);
+
+		// Copy
+		if(AssetDatabase.CopyAsset(AssetDatabase.GetAssetPath(material), "Assets/MyMaterialNew.mat"))
+			Debug.Log("Material asset copied as Assets/MyMaterialNew.mat");
+		else
+			Debug.Log("Couldn't copy the material");
+		// Manually refresh the Database to inform of a change
+		AssetDatabase.Refresh();
+		Material MaterialCopy = AssetDatabase.LoadAssetAtPath("Assets/MyMaterialNew.mat", typeof(Material)) as Material;
+
+		// Move to Trash
+		if(AssetDatabase.MoveAssetToTrash(AssetDatabase.GetAssetPath(MaterialCopy)))
+			Debug.Log("MaterialCopy asset moved to trash");
+
+		// Delete
+		if(AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(material)))
+			Debug.Log("Material asset deleted");
+		if(AssetDatabase.DeleteAsset("Assets/NewFolder"))
+			Debug.Log("NewFolder deleted");
+
+		// Refresh the AssetDatabase after all the changes
+		AssetDatabase.Refresh();
+	}
+}</pre>
+<div class='vspace'></div><h2>Using AssetDatabase.Refresh</h2>
+<p>When you have finished modifying assets, you should call AssetDatabase.Refresh to commit your changes to the database and make them visible in the project.
+</p>
+</p><small>Page last updated: 2011-06-14</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/AssetBundles.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/RenderingPaths.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

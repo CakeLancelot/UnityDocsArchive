@@ -1,0 +1,167 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Transform"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Transform" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-TransformationGroup.html%22%3ETransforms%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-Transform.html%22%3ETransform%3C%2Fa%3E" -->
+		<h1>Transform</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-TransformationGroup.html">Transforms</a> &gt; <a href="class-Transform.html">Transform</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="comp-TransformationGroup.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="comp-RenderingGroup.html">Next<img src="../images/next.png"></a></div>
+
+			
+<p>The Transform component determines the physical location, rotation, and scale of all objects in the scene. Every object has a Transform.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Transform-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Transform-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The Transform component of the Game Object is viewable and editable in the Inspector</i>
+</p>
+
+
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Position</nobr></b></td><td>Position of the Transform in X, Y, and Z coordinates
+
+</td></tr><tr><td><b><nobr>Rotation</nobr></b></td><td>Rotation of the Transform around the X, Y, and Z axes, measured in degrees
+</td></tr><tr><td><b><nobr>Scale</nobr></b></td><td>Scale of the Transform along X, Y, and Z axes.  Value &quot;1&quot; is the size at which the object was imported.
+<p></td></tr></tr></table>
+All properties of a Transform are measured relative to the Transform's parent.  If the Transform has no parent, the properties are measured relative to the World.
+</p>
+
+
+
+<h2>Using Transforms</h2>
+<p>Transforms are always manipulated in 3-D space using X, Y, and Z axes.  In Unity, these axes are represented by the colors red, green, and blue respectively.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Transform-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Transform-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Color-coded relationship between 3 axes and Transform properties</i>
+</p>
+
+<p>Transform components can be directly manpulated using the Scene view or the Inspector.  The Inspector will list the properties stated above for easy editing.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Transform-2.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Transform-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Translation along the X axis (Left/Right)</i>
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Transform-3.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Transform-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Translation along the Y axis (Up/Down)</i>
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Transform-4.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Transform-4.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Translation along the Z axis (Forward/Backward)</i>
+</p>
+
+<p>You can also modify Transforms in your Scene by interacting with them, using the Move, Rotate, and Scale tools.  These tools are located in the upper left-hand corner of the Unity UI.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Transform-5.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Transform-5.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The View, Translate, Rotate, and Scale tools</i>
+</p>
+
+<p>The tools will be usable on any object in your scene.  Click on the object, and you will see the tool gizmo appear around it.  Depending on the current tool, the gizmo will look slightly different.  Clicking the object will also cause the Transform component to become visible in the Inspector.  If the Inspector does not display the Transform component or its properties, then you do not have an object highlighted in the scene view.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Transform-6.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Transform-6.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Different Gizmos for the 3 tools can be directly edited in Scene view</i>
+</p>
+
+
+<p>To manipulate the Transform, click and drag on one of the 3 gizmo axes, you'll notice its color changes to yellow.  As you drag the mouse, you will see the object translate, rotate, or scale along the axis.  When you release the mouse button, you'll notice that the axis remains yellow.  You can click the middle mouse button and drag the mouse to manipulate the Transform around the yellow axis.  To access all 3 axes at once click and drag the center point of all 3 gizmos.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Transform-7.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Transform-7.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Any individual axis will change yellow when you click on it</i>
+</p>
+
+
+
+<h3>Parenting</h3>
+<p>Parenting is one of the most important concepts to understand when using Unity. It is a method of attaching two or more objects together, creating a &quot;Parent&quot; and a &quot;Child&quot; or &quot;Children&quot;  Each object can have multiple children, but only one parent.
+</p>
+
+<p>The principle behind parenting is simple; you can attach objects to each other - just like your arms are attached to your body. When you turn your body, your arms move. An object can only have one parent (just like each of your arms can only be attached to one body), but each object can have many children (your body does have two arms, after all).
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Transform-8.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Transform-8.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Example of the Parenting concept</i>
+</p>
+
+<p>In the above example, we say that the arms are parented to the body, and the hands are parented to the arms. The scenes you make in Unity will contain collections of these <i>Transform hierarchies</i>. The topmost parent object is called the <i>Root object</i>. When you move, scale, or rotate a parent, all the changes in its Transform are applied to its children as well.
+</p>
+
+<p>You can build compound objects by parenting multiple separate objects together, like the skeletal structure of a human ragdoll. You can also create small yet effective objects with single parents.  For example, if you have a horror game that takes place at night, you can create an effective atmosphere with a flashlight.  To create this object, you would parent a  spotlight Transform to the flashlight Transform.  Then, any alteration of the flashlight Transform will affect the spotlight, creating a convincing flashlight effect.
+</p>
+
+<p>Creating and removing parents is performed in the <i>Hierarchy</i> window.  The hierarchy window will display all the objects currently in your scene.  To create a parent, drag the desired child object over the desired parent object in your Hierarchy, and release.  You have then <i>parented</i> your child to its new parent.  To remove the child from its parent, click and drag the child object outside of the parent object.
+</p>
+
+
+<h2>Importance of scale</h2>
+<p>The scale of the Transform determines the difference between the size of your mesh in your modeling application, and the size of your mesh in Unity. The mesh's size in Unity (and therefore the Transform's scale) is <span style="text-decoration:underline;">very</span> important, especially  during physics simulation.   There are 3 factors that can determine the scale of your object:
+</p>
+<ul><li>The size of your mesh in your 3D modeling application
+</li><li>The Global scale setting in your <i>Import Settings</i> menu
+</li><li>The scale values of your Transform component
+</li></ul>
+
+<p>Ideally, you should not adjust the scale of your object in the Transform component.  The best option is to create your models at real-life scale, so you won't have to change your Transform's scale.  The second-best option is to adjust the scale at which your mesh is imported in the <i>Import Settings</i> for your individual mesh.  Certain optimizations occur based on the import size, and instantiating an object that has an adjusted scale value can decrease performance.  For more information, read through the <a href="../Components/class-Rigidbody.html">Rigidbody</a> component's section on optimizing scale.
+</p>
+
+
+<h2>Hints</h2>
+<p><ul><li>
+When parenting Transforms, make sure the new parent is located at 0,0,0 before applying the child.  This will save you many headaches later.
+</li><li>Particle systems are the only type of Transform that are not affected by Scale. In order to scale a particle system, you need to modify the particle emitter, animator and renderer properties.
+</li><li>If you are using Rigidbodies for physics simulation, there is some important information about the Scale property to be read on the  <a href="../Components/class-Rigidbody.html">Rigidbody</a> page.
+</li><li>You can change the colors of the axes (and other UI elements) from the Unity Menu -&gt; Preferences -&gt; Colors &amp; keys.
+</li><li>If you can avoid scaling, avoid scaling.  Try to have the scales of your object finalized in your 3D modeling application, or in the <i>Import Settings</i> of your mesh.
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="comp-TransformationGroup.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="comp-RenderingGroup.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

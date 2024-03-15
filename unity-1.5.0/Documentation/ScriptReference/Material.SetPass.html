@@ -1,0 +1,35 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Material.SetPass"-->
+			<title>Unity Script Reference &ndash; Material.SetPass</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<script language="JavaScript" src="UnityDoc.js"></script>
+<body>
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>SetPass</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+	<!-- #TemplateEndEditable -->
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-top.lbi" --><!-- #EndLibraryItem --><div class="left-menu-container"><ul class="left-menu"><li><span class="left-menu-heading">Menu</span></li><li><a class="left-menu-item" href="index.html">Overview</a></li><li><a class="left-menu-item" href="20_class_hierarchy.html">Class Hierarchy</a></li><li><a class="left-menu-item" href="10_reference.html">Reference</a></li><li><span class="left-menu-seperator"></span></li><li><a class="left-menu-heading" href="Material.html">Material</a></li><li><a class="left-menu-item" href="Material.html">Class Members</a></li><li><span class="left-menu-subheading">Variables</span></li><li><a class="left-menu-item" href="Material.color.html">color</a></li><li><a class="left-menu-item" href="Material.mainTexture.html">mainTexture</a></li><li><a class="left-menu-item" href="Material.passCount.html">passCount</a></li><li><a class="left-menu-item" href="Material.shader.html">shader</a></li><li><span class="left-menu-softheading">Inherited:</span></li><li><a title="Inherited from Object" class="left-menu-inherited-item" href="Object.name.html?from=Material">name</a></li><li><span class="left-menu-subheading">Constructors</span></li><li><a class="left-menu-item" href="Material.Material.html">Material</a></li><li><span class="left-menu-subheading">Functions</span></li><li><a class="left-menu-item" href="Material.GetColor.html">GetColor</a></li><li><a class="left-menu-item" href="Material.GetFloat.html">GetFloat</a></li><li><a class="left-menu-item" href="Material.GetMatrix.html">GetMatrix</a></li><li><a class="left-menu-item" href="Material.GetTexture.html">GetTexture</a></li><li><a class="left-menu-item" href="Material.GetTextureOffset.html">GetTextureOffset</a></li><li><a class="left-menu-item" href="Material.GetTextureScale.html">GetTextureScale</a></li><li><a class="left-menu-item" href="Material.GetVector.html">GetVector</a></li><li><a class="left-menu-item" href="Material.Lerp.html">Lerp</a></li><li><a class="left-menu-item" href="Material.SetColor.html">SetColor</a></li><li><a class="left-menu-item" href="Material.SetFloat.html">SetFloat</a></li><li><a class="left-menu-item" href="Material.SetMatrix.html">SetMatrix</a></li><li><span class="left-menu-item left-menu-current">SetPass</span></li><li><a class="left-menu-item" href="Material.SetTexture.html">SetTexture</a></li><li><a class="left-menu-item" href="Material.SetTextureOffset.html">SetTextureOffset</a></li><li><a class="left-menu-item" href="Material.SetTextureScale.html">SetTextureScale</a></li><li><a class="left-menu-item" href="Material.SetVector.html">SetVector</a></li><li><span class="left-menu-softheading">Inherited:</span></li><li><a title="Inherited from Object" class="left-menu-inherited-item" href="Object.GetInstanceID.html?from=Material">GetInstanceID</a></li><li><span class="left-menu-subheading">Class Functions</span></li><li><span class="left-menu-softheading">Inherited:</span></li><li><a title="Inherited from Object" class="left-menu-inherited-item" href="Object.Destroy.html?from=Material">Destroy</a></li><li><a title="Inherited from Object" class="left-menu-inherited-item" href="Object.DestroyImmediate.html?from=Material">DestroyImmediate</a></li><li><a title="Inherited from Object" class="left-menu-inherited-item" href="Object.DontDestroyOnLoad.html?from=Material">DontDestroyOnLoad</a></li><li><a title="Inherited from Object" class="left-menu-inherited-item" href="Object.FindObjectOfType.html?from=Material">FindObjectOfType</a></li><li><a title="Inherited from Object" class="left-menu-inherited-item" href="Object.FindObjectsOfType.html?from=Material">FindObjectsOfType</a></li><li><a title="Inherited from Object" class="left-menu-inherited-item" href="Object.Instantiate.html?from=Material">Instantiate</a></li><li><a title="Inherited from Object" class="left-menu-inherited-item" href="Object.ne_operator.html?from=Material">operator !=</a></li><li><a title="Inherited from Object" class="left-menu-inherited-item" href="Object.eq_operator.html?from=Material">operator ==</a></li><li><a title="Inherited from Object" class="left-menu-inherited-item" href="Object.bool_operator.html?from=Material">operator bool</a></li></ul></div>
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-middle.lbi" --><!-- #EndLibraryItem -->	<div id="SetPass" class="manual-entry"><h3><span class="full-name">Material.</span>SetPass</h3><div class="synopsis">bool SetPass (int pass)</div>
+   <p class="details"> Activate a numbered <span class="variable">pass</span> for rendering.</p>
+</div>	
+	</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

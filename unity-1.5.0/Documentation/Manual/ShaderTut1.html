@@ -1,0 +1,225 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Shaders: Getting started"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="Shaders: Getting started" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced%20(for%20technical%20guys).html%22%3EAdvanced%20(for%20technical%20guys)%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Shaders.html%22%3EShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22ShaderTut1.html%22%3EShaders%3A%20Getting%20started%3C%2Fa%3E" -->
+		<h1>Shaders: Getting started</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced (for technical guys).html">Advanced (for technical guys)</a> &gt; <a href="Shaders.html">Shaders</a> &gt; <a href="ShaderTut1.html">Shaders: Getting started</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Shaders.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ShaderTut2.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p><i>This tutorial will teach you how you can create your own shaders and make you game look a lot better</i>
+</p>
+
+<p>Unity is equipped with a powerful shading language, called ShaderLab. The syntax for this is reminiscent  to cgFX and Microsoft's .fx languages, but not identical.
+</p>
+
+<p>The shaders in Unity can use both OpenGLs fixed function pipeline, fragment and vertex programs or a combination of both.
+</p>
+
+<p>In this tutorial we describe how to write shaders in shaderlab using both fixed function and fragment/vertex programs, therefore we rely on the shader programmer to have an basic understanding of OpenGLs render states and how to create fragment/vertex programs (using Cg from Nvidia corp.).
+</p>
+
+<p>Information about render states in OpenGL can be found here: http://fly.cc.fer.hr/~unreal/theredbook/ and tutorials on how to create fragment and vertex programs can be found here: http://www.shadertech.com/articles/.
+</p>
+
+<h2> Getting started</h2>
+<p>To create a new shader, Either coose <b>Assets-&gt;Create-&gt;Shader</b> from the main menu, or duplicate an existing shader, and work from that. The new shader can be edited by choosing <b>Edit Shader</b> in the inspector.
+</p>
+
+<p><pre class='codelisting'>Shader &quot;simple&quot; {
+    Properties {
+        _Color (&quot;Main Color&quot;, Color) = (1,.5,.5,1)
+    }
+    SubShader {
+        Pass {
+            Material {
+                Diffuse [_Color]
+            }
+            Lighting On
+        }
+    }
+}
+</pre>
+</p>
+
+<p>This simple shader demonstrates one of the most basic shaders possible. It defines a color property called &quot;main Color&quot; and assigns it a default value of (Red: 1, Green: 0.5, blue: 0.5, alpha: 1). It then renders the object by invoking a Pass and in that pass setting the diffuse material component to the property color.
+</p>
+
+<p>In the following tutorial we will descripe all the things you need to be able to create your own shaders.
+</p>
+
+<h2> Basic Vertex Lighting</h2>
+<p>if you open an existing shader, it can be a bit hard to get a good overview. To get you started, we will dissect the built-in VertexLit shader that ships with Unity. This shader uses OpenGL's fixed function pipeline to do per-vertex lighting.
+</p>
+
+<p><pre class='codelisting'>Shader &quot; VertexLit&quot; {
+  Properties {
+    _Color (&quot;Main Color&quot;, Color) = (1,1,1,0)
+    _SpecColor (&quot;Spec Color&quot;, Color) = (1,1,1,1)
+    _Emission (&quot;Emmisive Color&quot;, Color) = (0,0,0,0)
+    _Shininess (&quot;Shininess&quot;, Range (0.01, 1)) = 0.7
+    _MainTex (&quot;Base (RGB)&quot;, 2D) = &quot;white&quot; { }
+  }
+
+  SubShader {
+    Pass {
+      Material {
+        Diffuse [_Color]
+        Ambient [_Color]	
+        Shininess [_Shininess]
+        Specular [_SpecColor]
+        Emission [_Emission]	
+      } 
+      Lighting On
+      SeperateSpecular On
+      SetTexture [_MainTex] {
+        constantColor [_Color]
+        Combine texture * primary DOUBLE, texture * constant 
+      } 
+    }
+  } 
+}
+</pre>
+</p>
+
+<p>All shaders start with the keyword <b>Shader</b> followed by a string that represents the name of the shader. This is the name that is shown in the inspector. All code for this shader must be put within the braces after it {} (called a block).
+</p>
+
+<ul><li> The name should be short and descriptive. It does not have to match the .shader file name.
+</li><li> To put shaders in submenus in Unity, use slashes - E.g. &quot;MyShaders/test&quot; would be shown as &quot;Test&quot; in a submenu called &quot;MyShaders&quot;
+</li></ul>
+
+<h2>Properties</h2>
+<p>At the beginning of the shader block you can define any properties that artists can edit. In the VertexLit example the properties looks like this:
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/ShaderTut1-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/ShaderTut1-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>The properties are listed on separate lines within the Properties block. Each property starts with the internal name (<b>_Color</b>, <b>_MainTex</b>). After this comes some more info (in parenthises); the name that is shown in the material inspector, and the type of edit control used. After this, the default value is listed.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/ShaderTut1-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/ShaderTut1-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>The list of possible types are in the cheat sheet, along with a hirachial sheet of the way the command structure is built.
+It is also possible to set a default value for a property. This is done by using the equals sign, and then the default value. In the example of the color, a default value should be a four component vector, which is written (1, 1, 1, 1) for an vector of ones.
+</p>
+
+<p>We now have our properties defined, and are ready to start writing the actual shader.
+</p>
+
+<h2> The Shader Body</h2>
+
+<p><i>Before we move on, let's define the basic structure of a shader file.</i>
+</p>
+
+<p>Different graphic cards have different capabilities. To allow you to make full use of whatever hardware your user has, a shader can contain multiple subshaders. When Unity renders a shader, it will go over the subshaders and simply use the first one that the hardware supports.
+</p>
+
+<p><pre class='codelisting'>
+Shader &quot;Test&quot; {
+  // Properties here
+
+  SubShader {
+    // Subshader that requires fragment programs
+  }
+  SubShader {
+    // Subshader that only requires vertex programs
+  }
+  SubShader {
+    // SubShader that can run on anything.
+  }
+}
+</pre>
+</p>
+
+<p>This system allows Unity to support all existing hardware and maximize the quality of each one. It does, however, result in some long shaders.
+</p>
+
+<p>Inside the each subshader block you set the render mode for this subshader. A complete list of available commands and the hierarchy can be found in the cheat sheet.
+</p>
+
+<h2> Passes</h2>
+<p>Each subshader is a collection of passes. For each pass, the object geometry is rendered, so there must be at least one pass. The pass for our VertexLit shader looks like this:
+</p>
+
+<p><pre class='codelisting'>Pass {
+  Material {
+    Diffuse [_Color]
+    Ambient [_Color]
+    Shininess [_Shininess]
+    Specular [_SpecColor]
+    Emission [_Emission]	
+  } 
+  Lighting On
+  SeperateSpecular On
+  SetTexture [_MainTex] {
+    constantColor [_Color]
+    Combine texture * primary DOUBLE, texture * constant 
+  }
+}
+</pre>
+</p>
+
+<p>Any commands defined in a pass configures the graphics hardware to render the geometry in a specific way.
+</p>
+
+<p>In the example above we have a <b>Material</b> block. This binds our property variables to the different parts of the OpenGL hardware. The command <b>Lighting On</b> turns on the standard OpenGl lighting, and <b>SeperateSpecular On</b> enables the use for a separate color for the specular highlight.
+</p>
+
+<p>All of these setups map very directly on to the OpenGL hardware API. To read more about this, consult the <a class="wiki"  href="http://fly.cc.fer.hr/~unreal/theredbook/">Red Book</a>.
+</p>
+
+<p>The next couple of commands are very important. They define the texture we want to use, and how to apply it in our rendering. The <b>SetTexture</b> command is followed by the property name of the texture we would like to use. This is followed by a block that defines how the texture is applied.
+</p>
+
+<p>Within this block we set a constant color value, namely the color of the material, _Color.
+</p>
+
+<p>In the next call we specify how to mix the texture with the color values.
+We do this with the <b>Combine</b> command that specifies how to blend the texture with another, or with a color. Here <b>texture</b> is the image of the texture specified immediately above (<b>SetTexture</b>). <b>Primary</b> is the vertex color, calculated from the <b>Material</b> values set above. We then have a comma, which specify that we are now working on the alpha channel, so texture here means the alpha value of the texture and constant is the constant value we just described. Another important variable is called previous. This is the result of any previous Combine step, and can be used to apply the result from a previous step to combine several textures and/or colors with each other. The object will now be rendered with the information specified in the Pass scope.
+</p>
+
+<p>It is not necessary to start the rendering with a command or alike, it will begin automatically at the end of the pass block.
+</p>
+
+<p>We can put more passes into the shader - they would get rendered afterwards. For now, though, that is not nessesary  as we have the desired effect. Also, we only need one subshader, as we make no use of advanced features - this particular shader will work on any card that Unity supports.
+</p>
+
+<p>The VertexLit shader is the most basic shader that we can think of. We did not use any hardware specific operations, nor did we utilize any of the more special and cool commands that the build in shading language has to offer.
+</p>
+
+<p>In the next chapter, we do something about that by discussing those additional and important concepts.
+</p>
+
+
+
+		<div class="navigation"><a href="Shaders.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ShaderTut2.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

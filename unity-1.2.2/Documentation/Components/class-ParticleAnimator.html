@@ -1,0 +1,58 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title=" Particle Animator"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title=" Particle Animator" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-ParticlesGroup.html%22%3EParticle%20systems%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-ParticleAnimator.html%22%3E%20Particle%20Animator%3C%2Fa%3E" navigation="%3Ca%20href%3D%22class-MeshParticleEmitter.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22class-WorldParticleCollider.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1> Particle Animator</h1>
+		<p><a href="index.html">Components</a> &gt; <a href="comp-ParticlesGroup.html">Particle systems</a> &gt; <a href="class-ParticleAnimator.html"> Particle Animator</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="class-MeshParticleEmitter.html"><img src="../images/prev.png"></a><a href="class-WorldParticleCollider.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+<p>Particle Animators move your particles over time, you use them to apply wind, drag &amp; color cycling to your particle systems.
+</p>
+
+<h2> Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Does Animate Color</nobr></b></td><td> If enabled, particles cycle their color over their lifetime.
+Color Animation</td></tr><tr><td><b><nobr>Force</nobr></b></td><td> The force being applied every frame to the particles. Use this to make smoke rise upwards, to simulate wind, etc..
+</td></tr><tr><td><b><nobr>Rnd Force</nobr></b></td><td> A random force added to particles every frame. Use this to make smoke become more alive.
+</td></tr><tr><td><b><nobr>Damping</nobr></b></td><td> How much particles are slowed every frame. A value of 1 gives no damping, while less makes them slow down.
+</td></tr><tr><td><b><nobr>Size Grow</nobr></b></td><td> Use this to make particles grow in size over their lifetime. As randomized forces will spread your particles out, it is often nice to make them grow in size so they don't fall apart.
+</td></tr><tr><td><b><nobr>World Rotation Axis</nobr></b></td><td> An optional world-space axis the particles rotate around. Use this to make advanced spell effects or give caustic bubbles some life.
+</td></tr><tr><td><b><nobr>Local Rotation Axis</nobr></b></td><td> An optional local-space axis the particles rotate around. Use this to make advanced spell effects or give caustic bubbles some life.
+<p></td></tr></tr></table>
+</p>
+<h2> Details</h2>
+<h2> Hints</h2>
+<p><ul><li>
+Use the color animation to make your particles fade in &amp; out over their lifetime - otherwise, you will get nasty-looking pops.
+</li><li>Use the rotation axes to make whirlpool-like swirly motions.
+</li></ul>
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

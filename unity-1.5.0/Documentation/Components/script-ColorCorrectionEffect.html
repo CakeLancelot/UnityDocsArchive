@@ -1,0 +1,84 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Color Correction image effect"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Color Correction image effect" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-ImageEffects.html%22%3EImage%20Effects%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22script-ColorCorrectionEffect.html%22%3EColor%20Correction%20image%20effect%3C%2Fa%3E" -->
+		<h1>Color Correction image effect</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-ImageEffects.html">Image Effects</a> &gt; <a href="script-ColorCorrectionEffect.html">Color Correction image effect</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="script-NoiseEffect.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="script-EdgeDetectEffect.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Color correction allows you apply arbitrary color correction to your scene as a postprocessing effect (just like the Curves tool in Photoshop or Gimp). This page explains how to setup color correction in Photoshop and then apply <i>exactly</i> the same color correction at runtime in Unity.
+</p>
+
+<p>Color Correction is only available in Pro version of Unity. Make sure to have the <a href="../Manual/HOWTO-InstallStandardAssets.html">Pro Standard Assets installed</a>.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/script-ColorCorrectionEffect-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/script-ColorCorrectionEffect-0.jpg"></td></tr></table></p><!-- #EndLibraryItem --> <!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/script-ColorCorrectionEffect-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/script-ColorCorrectionEffect-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Color correction applied to the scene to get strongly posterized look. Color ramp used (magnified) is shown at the right.</i>
+</p>
+
+<h2>Getting color correction from Photoshop into Unity</h2>
+
+<ol><li> Take a screenshot of a typical scene in your game
+</li><li> Open it in Photoshop and color correct using the <i>Image-&gt;Adjustments-&gt;Curves</i>
+</li><li> Save the <i>.acv</i> file file from the dialog using <i>Save...</i>
+</li><li> Open <i>Pro Standard Assets/Image Based/color correction ramp.png</i> in Photoshop
+</li><li> Now apply color correction to the ramp image: open <i>Image-&gt;Adjustments-&gt;Curves</i> again and load your saved <i>.acv</i> file
+</li><li> Select your camera in Unity and select <i>Component-&gt;Image Effects-&gt;Color Correction</i> to add color correction effect. Select your modified color ramp.
+</li><li> Hit Play to see the effect in action!
+</li></ol>
+
+<h2>Details</h2>
+
+<p>Color correction works by remapping the original image colors through the color ramp image (sized 256x1):
+</p>
+<ol><li> result.red = pixel's red value in ramp image at (original.red + RampOffsetR) index
+</li><li> result.green = pixel's green value in ramp image at (original.green + RampOffsetG) index
+</li><li> result.blue = pixel's blue value in ramp image at (original.blue + RampOffsetB) index
+</li></ol>
+<p>So for example, to invert the colors in the image you only need to flip the original color ramp horizontally (so that it goes from white to black instead of from black to white).
+</p>
+
+<p>A simpler version of color remapping that only remaps based on luminance can be achieved with <a href="../Components/script-GrayscaleEffect.html">Grayscale</a> image effect.
+</p>
+
+<h2>Tips:</h2>
+<ul><li> You need to attach the image effect to the camera while edit mode. To see the effect you have to go into playmode afterwards.
+</li></ul>
+
+<p>Color correction works only on graphics cards with support for pixel shaders (2.0). E.g. GeForce FX 5200 or Radeon 9500 and up.
+All image effects automatically disable themselves when they can not run on an end-users graphics card.
+</p>
+
+
+
+		<div class="navigation"><a href="script-NoiseEffect.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="script-EdgeDetectEffect.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

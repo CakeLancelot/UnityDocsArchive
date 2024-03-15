@@ -1,0 +1,115 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Unity's Rendering Pipeline</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Unity's Rendering Pipeline</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/SL-Reference.html">ShaderLab Reference</a> &gt; <a href="../Components/SL-AdvancedTopics.html">Advanced ShaderLab topics</a> &gt; <a href="../Components/SL-RenderPipeline.html">Unity's Rendering Pipeline</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/SL-AdvancedTopics.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/SL-Attenuation.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Unity's Rendering Pipeline</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Shaders define both how an object looks by itself (its material properties) and how it reacts to the light. Because lighting calculations must be built into the shader, and there are many possible light types, writing quality shaders that "just work" is an involved task. This document describes the pecularities of Unity's lighting&amp;rendering pipeline and how the shaders need to be written to support all the different lights.
+</p>
+<div class='vspace'></div><h2>Light types and modes</h2>
+<p>In Unity, a <a href="../Components/class-Light.html">Light</a> can be Directional, Point or Spot light. Additionally, Ambient light level can be specified in <a href="../Components/class-RenderSettings.html">Render Settings</a>.
+</p>
+<p class='vspace'>When any object is rendered, the lights that illuminate it are determined; and each light is chosen to render in <em>Vertex</em> or <em>Pixel</em> lighting mode. Per-pixel lighting usually looks a lot better, but is more expensive to render as well. So for each object, only some amount (specified in <a href="../Components/class-QualitySettings.html">Quality Settings</a>) of brightest lights are rendered in Pixel mode, while the remaining are rendered using Vertex lighting. When no lights are shining on an object, it is rendered in <em>None</em> mode.
+</p>
+<p class='vspace'>Each object is then rendered in the following way:
+</p><ul><li>If there are any Vertex lights shining on it, they are all rendered at once. This renders all "vertex" passes in the shader, and the shader is expected to take both vertex lighting and ambient light into account here.
+</li><li>If there are no Vertex lights shining on it, a shader is executed once, to take ambient light into account. This renders all "none" passes in the shader.
+</li><li>After that, the pixel lighting is added on top. All "pixel" passes in the shader are rendered for each pixel light. This is the main reason why pixel lights are more expensive - because they have to render object for each light separately, instead of for all lights at once.
+</li></ul><p class='vspace'>Each pass in a shader communicates its lighting type (pixel, vertex etc.) via <a href="../Components/SL-PassTags.html">Pass Tags</a>.
+</p>
+<div class='vspace'></div><h2>Vertex Lights</h2>
+<p>Vertex lights are rendered using "vertex" passes (see <a href="../Components/SL-PassTags.html">pass tags</a>). All lights are rendered at once, using a fixed function <span class='wikiword'>OpenGL/Direct3D</span> lighting model (<a class='urllink' href='http://en.wikipedia.org/wiki/Blinn-Phong_shading' rel='nofollow'>Blinn-Phong</a>). It is not possible to use vertex programs with vertex lights because vertex programs and fixed function lighting can be used at the same time. Note that it is still possible to use fragment programs, reading the interpolated diffuse and specular lighting colors.
+</p>
+<p class='vspace'>In summary, vertex lighting is calculated automatically. All you do in a shader is use the calculated diffuse/specular colors, either in a fragment program or in the texture combiner setup. Vertex lights do not support light cookies.
+</p>
+<div class='vspace'></div><h2>Pixel Lights</h2>
+<p>Implementing a pixel lighting shader part is much more involved, mostly because there are different light types (directional, point, spot) and a shader must be able to process all of them. For pixel lights you also want to write a custom vertex program (using fixed function lighting does not make sense - you could just use vertex lights and get much better performance) where you must calculate the lighting yourself.
+</p>
+<p class='vspace'>If you implement pixel lighting passes in the shader, most often you want to implement passes for the case when no lights are shining (ambient pass) as well. See <a href="../Components/SL-PassTags.html">Pass Tags</a> for details.
+</p>
+<p class='vspace'>The details of implementing light types in custom shaders are described in <a href="../Components/SL-Attenuation.html">Attenuation and Cookies for Pixel Lights</a>.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/SL-AdvancedTopics.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/SL-Attenuation.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

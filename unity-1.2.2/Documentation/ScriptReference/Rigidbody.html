@@ -1,0 +1,171 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Rigidbody"-->
+			<title>Unity Script Reference &ndash; Rigidbody</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Rigidbody</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Rigidbody" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Component.html" class="classlink">Component</a></div></p>
+   <p class='first'> Control of an object's position through physics simulation.	</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#velocity'>velocity</a></p>
+<p><a href='#angularVelocity'>angularVelocity</a></p>
+<p><a href='#drag'>drag</a></p>
+<p><a href='#angularDrag'>angularDrag</a></p>
+<p><a href='#mass'>mass</a></p>
+<p><a href='#useGravity'>useGravity</a></p>
+<p><a href='#isKinematic'>isKinematic</a></p>
+<p><a href='#freezeRotation'>freezeRotation</a></p>
+<p><a href='#centerOfMass'>centerOfMass</a></p>
+<p><a href='#inertiaTensorRotation'>inertiaTensorRotation</a></p>
+<p><a href='#inertiaTensor'>inertiaTensor</a></p>
+<p><a href='#maxAngularVelocity'>maxAngularVelocity</a></p>
+<p><a href='#detectCollisions'>detectCollisions</a></p>
+<p><a href='#position'>position</a></p>
+<p><a href='#rotation'>rotation</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Functions</p><p><a href='#SetDensity'>SetDensity</a></p>
+<p><a href='#AddForce'>AddForce</a></p>
+<p><a href='#AddRelativeForce'>AddRelativeForce</a></p>
+<p><a href='#AddTorque'>AddTorque</a></p>
+<p><a href='#AddRelativeTorque'>AddRelativeTorque</a></p>
+<p><a href='#AddForceAtPosition'>AddForceAtPosition</a></p>
+<p><a href='#GetRelativePointVelocity'>GetRelativePointVelocity</a></p>
+<p><a href='#GetPointVelocity'>GetPointVelocity</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> Rigidbody components take control over an object's position - it makes the objects fall down under the influence of gravity, 
+and can calculate how objects will respond to collisions.  <p class="basic"/>When manipulating rigidbody parameters you should work inside the <a href="MonoBehaviour.html#FixedUpdate" class="itemlink">FixedUpdate</a>.
+<a href="Physics.html" class="classlink">Physics</a> simulation is carried out in discrete timesteps. The <a href="MonoBehaviour.html#FixedUpdate" class="itemlink">FixedUpdate</a> is called immediately before each step.  <p class="basic"/>Things to watch out for when using rigid bodies.  <p class="basic"/>1. When your simulation looks like slow motion and not solid.
+This is a problem of scale. When your game world is huge everything will appear to be move very slow.
+Make sure all your models are in real world sizes. For example a car should be around 3 meters long. A character around 2 meters high.
+An object falls at the same speed no matter big or small. No matter heavy or light.
+But if your game world has a large scale, objects will still fall at the same speed. But since everything is larger, objects will appear like they fall slower.</p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="velocity"></a><h3><span class="full-name">Rigidbody.</span>velocity</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> velocity</div>
+   <p class='details'> The velocity vector of the rigid body.
+In most cases you should not modify the velocity directly, as this can result in unrealistic behaviour.
+Don't set the velocity of an object every physics step, this will lead to unrealistic physics simulation.
+A typical example where you would change the velocity is when jumping in a first person shooter, because you want an immediate change in velocity.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function FixedUpdate () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Input.html#GetButtonDown" class="itemlink">Input.GetButtonDown</a> ("Jump")) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rigidbody.velocity.y = 10;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+	<a name="angularVelocity"></a><h3><span class="full-name">Rigidbody.</span>angularVelocity</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> angularVelocity</div>
+   <p class='details'> The angular velocity vector of the rigid body.
+In most cases you should not modify it directly, as this can result in unrealistic behaviour.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Change the material depending on the speed of rotation<br/>var fastWheelMaterial : <a href="Material.html" class="classlink">Material</a>;<br/>var slowWheelMaterial : <a href="Material.html" class="classlink">Material</a>;<br/>function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (rigidbody.angularVelocity.magnitude < 5) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;renderer.sharedMaterial = slowWheelMaterial;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}	<br/>&nbsp;&nbsp;&nbsp;&nbsp;else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;renderer.sharedMaterial = fastWheelMaterial;	<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+	<a name="drag"></a><h3><span class="full-name">Rigidbody.</span>drag</h3><div class="synopsis"><span class="standard_type">float</span> drag</div>
+   <p class='details'> The drag of the object.
+Drag can be used to slow down an object.
+The higher the drag the more the object slows down.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function OpenParachute() {<br/>&nbsp;&nbsp;&nbsp;&nbsp;rigidbody.drag = 20;<br/>}<br/><br/>function Update() {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Input.html#GetButton" class="itemlink">Input.GetButton</a> ("<a href="Space.html" class="classlink">Space</a>")) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OpenParachute();<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+	<a name="angularDrag"></a><h3><span class="full-name">Rigidbody.</span>angularDrag</h3><div class="synopsis"><span class="standard_type">float</span> angularDrag</div>
+   <p class='details'> The angular drag of the object.
+Angular drag can be used to slow down the rotation of an object.
+The higher the drag the more the rotation slows down<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">rigidbody.angularDrag = 10;</div></td></tr></table></p>
+	<a name="mass"></a><h3><span class="full-name">Rigidbody.</span>mass</h3><div class="synopsis"><span class="standard_type">float</span> mass</div>
+   <p class='details'> The mass of the rigid body.
+You should strive to keep mass close to 0.1 and never more than 10.
+Large masses make physics simulation unstable.  <p class="details"/>Higher mass objects push lower mass objects more when colliding. Think of a big truck, hitting a small car.  <p class="details"/>A common mistake is to assume that heavy objects fall faster than light ones.
+This is not true as the speed is dependent on gravity and drag.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">rigidbody.mass = 0.5;</div></td></tr></table></p>
+	<a name="useGravity"></a><h3><span class="full-name">Rigidbody.</span>useGravity</h3><div class="synopsis"><span class="standard_type">bool</span> useGravity</div>
+   <p class='details'> Controls whether gravity affects this rigidbody.
+If set to false the rigidbody will behave as in outer space.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Disables gravity on all rigid bodies entering this collider.<br/>function OnTriggerEnter (other : <a href="Collider.html" class="classlink">Collider</a>)<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (other.attachedRigidbody)<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other.attachedRigidbody.useGravity = false;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}<br/>// Turn this collider into a trigger on startup<br/>collider.isTrigger = true;</div></td></tr></table></p>
+	<a name="isKinematic"></a><h3><span class="full-name">Rigidbody.</span>isKinematic</h3><div class="synopsis"><span class="standard_type">bool</span> isKinematic</div>
+   <p class='details'> Controls whether physics affects the rigidbody.
+If isKinematic is enabled, Forces, collisions or joints will not affect the rigidbody anymore.
+The rigidbody will be under full control of animation or script control by changing transform.position.
+Kinematic bodies also affect the motion of other rigidbodies through collisions or joints.
+Eg. can connect a kinematic rigidbodiy to a normal rigidbody with a joint 
+and the rigidbody will be constrained with the motion of the kinematic body.
+Kinematic rigidbodies are also particularly useful for making characters which are normally driven by an animation,
+but on certain events can be quickly turned into a ragdoll by setting isKinematic to false.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Don't let the rigid body be affected by physics!<br/>rigidbody.isKinematic = true;</div></td></tr></table></p>
+	<a name="freezeRotation"></a><h3><span class="full-name">Rigidbody.</span>freezeRotation</h3><div class="synopsis"><span class="standard_type">bool</span> freezeRotation</div>
+   <p class='details'> Controls whether physics will change the rotation of the object.
+If freezeRotation is enabled, the rotation is not modified by the physics simulation.
+This is useful for creating first person shooters,
+because the player needs full control of the rotation using the mouse.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Freeze the rotation<br/>rigidbody.freezeRotation = true;</div></td></tr></table></p>
+	<a name="centerOfMass"></a><h3><span class="full-name">Rigidbody.</span>centerOfMass</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> centerOfMass</div>
+   <p class='details'> The center of mass relative to the transform's origin.
+If you don't set the center of mass from a script it will be calculated automatically from all colliders attached to the rigidbody.
+Setting the center of mass is often useful when simulating cars to make them more stable.
+A car with a lower center of mass is less likely to topple over.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">rigidbody.centerOfMass = <a href="Vector3.html" class="classlink">Vector3</a> (0, -2, 0);</div></td></tr></table></p>
+	<a name="inertiaTensorRotation"></a><h3><span class="full-name">Rigidbody.</span>inertiaTensorRotation</h3><div class="synopsis"><a href="Quaternion.html" class="classlink">Quaternion</a> inertiaTensorRotation</div>
+   <p class='details'> The rotation of the inertia tensor.
+If you don't set intertia tensor rotation from a script it will be calculated automatically from all colliders attached to the rigidbody.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Resets the inertia tensor to be the coordinate system of the transform<br/>rigidbody.inertiaTensorRotation = <a href="Quaternion.html#identity" class="itemlink">Quaternion.identity</a>;</div></td></tr></table></p>
+	<a name="inertiaTensor"></a><h3><span class="full-name">Rigidbody.</span>inertiaTensor</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> inertiaTensor</div>
+   <p class='details'> The diagonal inertia tensor of mass relative to the center of mass.
+The inertia tensor is rotated by the inertiaTensorRotation.
+If you don't set intertia tensor from a script it will be calculated automatically from all colliders attached to the rigidbody.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// The inertia tensor of a long brick<br/>rigidbody.inertiaTensor = <a href="Vector3.html" class="classlink">Vector3</a>(5, 1, 1);</div></td></tr></table></p>
+	<a name="maxAngularVelocity"></a><h3><span class="full-name">Rigidbody.</span>maxAngularVelocity</h3><div class="synopsis"><span class="standard_type">float</span> maxAngularVelocity</div>
+   <p class='details'> Sets the maximum rotation speed of the rigdbody.
+Fast spinning objects can sometimes lead to unrealistic physics simulation.
+This value makes the rigid bodies velocity never exceed maxAngularVelocity.
+By default the rigidbodies maximum angular velocity is set to <a href="Physics.html#maxAngularVelocity" class="itemlink">Physics.maxAngularVelocity</a><table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">rigidbody.maxAngularVelocity = 5;</div></td></tr></table></p>
+	<a name="detectCollisions"></a><h3><span class="full-name">Rigidbody.</span>detectCollisions</h3><div class="synopsis"><span class="standard_type">bool</span> detectCollisions</div>
+   <p class='details'> Should collision detection be enabled? (By default always enabled)
+Disabling collision detections is useful when you have a ragdoll which is setup to be kinematic and you want to avoid
+heavy collision detection calculations on that rigidbody.
+<span class="variable">detectCollisions</span> is not serialized. This means, it doesn't show up in the inspector
+and when Instantiate'ing the rigidbody or saving it in a scene it will not be saved.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">/// Let animation control the rigidbody and ignore collisions<br/>rigidbody.isKinematic = true;<br/>rigidbody.detectCollisions = false;<br/>/// Let the rigidbody take over control, detect collisions <br/>rigidbody.isKinematic = false;<br/>rigidbody.detectCollisions = true;</div></td></tr></table></p>
+	<a name="position"></a><h3><span class="full-name">Rigidbody.</span>position</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> position</div>
+   <p class='details'> </p>
+	<a name="rotation"></a><h3><span class="full-name">Rigidbody.</span>rotation</h3><div class="synopsis"><a href="Quaternion.html" class="classlink">Quaternion</a> rotation</div>
+   <p class='details'> </p>
+   <a name="Methods"></a><h2 class="script-section">Methods</h2>
+	<a name="SetDensity"></a><h3><span class="full-name">Rigidbody.</span>SetDensity</h3><div class="synopsis"><span class="standard_type">void</span> SetDensity (<span class="standard_type">float</span> density)</div>
+   <p class='details'> Sets the mass based on the attached colliders assuming a constant density.
+This is useful to set the mass to a value which scales with the size of the colliders.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">rigidbody.SetDensity(1.5);</div></td></tr></table></p>
+	<a name="AddForce"></a><h3><span class="full-name">Rigidbody.</span>AddForce</h3><div class="synopsis"><span class="standard_type">void</span> AddForce (<a href="Vector3.html" class="classlink">Vector3</a> force, <a href="ForceMode.html" class="classlink">ForceMode</a> mode = <a href="ForceMode.html#Force" class="itemlink">ForceMode.Force</a>)</div>
+   <p class='details'> Adds a force to the rigid body. As a result the rigidbody will start moving.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Adds a force upwards <span class="keyword">in</span> the global coordinate system<br/>function FixedUpdate () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;rigidbody.AddForce (<a href="Vector3.html#up" class="itemlink">Vector3.up</a> * 10);<br/>}</div></td></tr></table></p>
+	&nbsp;<div class="synopsis"><span class="standard_type">void</span> AddForce (<span class="standard_type">float</span> x, <span class="standard_type">float</span> y, <span class="standard_type">float</span> z, <a href="ForceMode.html" class="classlink">ForceMode</a> mode = <a href="ForceMode.html#Force" class="itemlink">ForceMode.Force</a>)</div>
+   <p class='details'> Adds a force to the rigid body.  As a result the rigidbody will start moving.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Adds a force upwards <span class="keyword">in</span> the global coordinate system<br/>function FixedUpdate () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;rigidbody.AddForce (0, 10, 0);<br/>}
+</div></td></tr></table>If you want to apply a force over several frames you should apply it inside FixedUpdate instead of Update.</p>
+	<a name="AddRelativeForce"></a><h3><span class="full-name">Rigidbody.</span>AddRelativeForce</h3><div class="synopsis"><span class="standard_type">void</span> AddRelativeForce (<a href="Vector3.html" class="classlink">Vector3</a> force, <a href="ForceMode.html" class="classlink">ForceMode</a> mode = <a href="ForceMode.html#Force" class="itemlink">ForceMode.Force</a>)</div>
+   <p class='details'> Adds a force to the rigidbody relative to it's coordinate system.
+As a result the rigidbody will start moving.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Moves the rigid body forward along its own z-axis<br/>function FixedUpdate () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;rigidbody.AddRelativeForce (<a href="Vector3.html#forward" class="itemlink">Vector3.forward</a> * 10);<br/>}</div></td></tr></table></p>
+	&nbsp;<div class="synopsis"><span class="standard_type">void</span> AddRelativeForce (<span class="standard_type">float</span> x, <span class="standard_type">float</span> y, <span class="standard_type">float</span> z, <a href="ForceMode.html" class="classlink">ForceMode</a> mode = <a href="ForceMode.html#Force" class="itemlink">ForceMode.Force</a>)</div>
+   <p class='details'> Adds a force to the rigidbody relative to it's coordinate system.
+As a result the rigidbody will start moving.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Moves the rigid body forward along its own z-axis<br/>function FixedUpdate () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;rigidbody.AddRelativeForce (0, 0, 10);<br/>}
+</div></td></tr></table>If you want to apply a force over several frames you should apply it inside FixedUpdate instead of Update.</p>
+	<a name="AddTorque"></a><h3><span class="full-name">Rigidbody.</span>AddTorque</h3><div class="synopsis"><span class="standard_type">void</span> AddTorque (<a href="Vector3.html" class="classlink">Vector3</a> torque, <a href="ForceMode.html" class="classlink">ForceMode</a> mode = <a href="ForceMode.html#Force" class="itemlink">ForceMode.Force</a>)</div>
+   <p class='details'> Adds a torque to the rigidbody.
+As a result the rigidbody will start spinning around the <span class="variable">torque</span> axis.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Spins the rigidbody around the global y-axis<br/>function FixedUpdate () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;rigidbody.AddTorque (<a href="Vector3.html#up" class="itemlink">Vector3.up</a> * 10);<br/>}
+</div></td></tr></table>If you want to apply a force over several frames you should apply it inside FixedUpdate instead of Update.</p>
+	&nbsp;<div class="synopsis"><span class="standard_type">void</span> AddTorque (<span class="standard_type">float</span> x, <span class="standard_type">float</span> y, <span class="standard_type">float</span> z, <a href="ForceMode.html" class="classlink">ForceMode</a> mode = <a href="ForceMode.html#Force" class="itemlink">ForceMode.Force</a>)</div>
+   <p class='details'> Adds a torque to the rigidbody.
+As a result the rigidbody will start spinning around the <span class="variable">torque</span> axis.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Spins the rigidbody around the global y-axis<br/>function FixedUpdate () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;rigidbody.AddTorque (0, 10, 0);<br/>}</div></td></tr></table></p>
+	<a name="AddRelativeTorque"></a><h3><span class="full-name">Rigidbody.</span>AddRelativeTorque</h3><div class="synopsis"><span class="standard_type">void</span> AddRelativeTorque (<a href="Vector3.html" class="classlink">Vector3</a> torque, <a href="ForceMode.html" class="classlink">ForceMode</a> mode = <a href="ForceMode.html#Force" class="itemlink">ForceMode.Force</a>)</div>
+   <p class='details'> Adds a torque to the rigidbody relative to the rigidbodie's own coordinate system.
+As a result the rigidbody will start spinning around the <span class="variable">torque</span> axis.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Spins the rigidbody around it's own y-axis<br/>function FixedUpdate () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;rigidbody.AddRelativeTorque (<a href="Vector3.html#up" class="itemlink">Vector3.up</a> * 10);<br/>}</div></td></tr></table></p>
+	&nbsp;<div class="synopsis"><span class="standard_type">void</span> AddRelativeTorque (<span class="standard_type">float</span> x, <span class="standard_type">float</span> y, <span class="standard_type">float</span> z, <a href="ForceMode.html" class="classlink">ForceMode</a> mode = <a href="ForceMode.html#Force" class="itemlink">ForceMode.Force</a>)</div>
+   <p class='details'> Adds a torque to the rigidbody relative to the rigidbodie's own coordinate system.
+As a result the rigidbody will start spinning around the <span class="variable">torque</span> axis.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Spins the rigidbody around it's own y-axis<br/>function FixedUpdate () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;rigidbody.AddRelativeTorque (0, 10, 0);<br/>}
+</div></td></tr></table>If you want to apply a force over several frames you should apply it inside FixedUpdate instead of Update.</p>
+	<a name="AddForceAtPosition"></a><h3><span class="full-name">Rigidbody.</span>AddForceAtPosition</h3><div class="synopsis"><span class="standard_type">void</span> AddForceAtPosition (<a href="Vector3.html" class="classlink">Vector3</a> force, <a href="Vector3.html" class="classlink">Vector3</a> position, <a href="ForceMode.html" class="classlink">ForceMode</a> mode = <a href="ForceMode.html#Force" class="itemlink">ForceMode.Force</a>)</div>
+   <p class='details'> Applies <span class="variable">force</span> at <span class="variable">position</span>. As a result this will apply a torque and force on the object.
+For realistic effects <span class="variable">position</span> should be approximately in the range of the surface of the rigid body.
+This is most commonly used for explosions. When applying explosions it is best to apply forces over several frames instead of just one.
+Note that when <span class="variable">position</span> is far away from the center of the rigidbody the applied torque will be unrealistically large.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function ApplyForce (body : Rigidbody) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;direction = body.transform.position - transform.position;<br/>&nbsp;&nbsp;&nbsp;&nbsp;body.AddForceAtPosition(direction.normalized, transform.position);<br/>}</div></td></tr></table></p>
+	<a name="GetRelativePointVelocity"></a><h3><span class="full-name">Rigidbody.</span>GetRelativePointVelocity</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> GetRelativePointVelocity (<a href="Vector3.html" class="classlink">Vector3</a> relativePoint)</div>
+   <p class='details'> The velocity relative to the rigidbody at the point <span class="variable">relativePoint</span>.
+GetRelativePointVelocity will take the angularVelocity of the rigidbody into account when calculating the velocity.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Prints the velocity of the wheel<br/>var relativeVelocity = rigidbody.GetRelativePointVelocity(<a href="Vector3.html" class="classlink">Vector3</a>(0, -.2, 0));<br/>print(relativeVelocity.magnitude);</div></td></tr></table></p>
+	<a name="GetPointVelocity"></a><h3><span class="full-name">Rigidbody.</span>GetPointVelocity</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> GetPointVelocity (<a href="Vector3.html" class="classlink">Vector3</a> worldPoint)</div>
+   <p class='details'> The velocity of the rigidbody at the point <span class="variable">worldPoint</span> in global space.
+GetPointVelocity will take the angularVelocity of the rigidbody into account when calculating the velocity.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Prints the velocity of the wheel<br/>point = transform.InverseTransformPoint(<a href="Vector3.html" class="classlink">Vector3</a>(0, -.2, 0));<br/>var velocity = rigidbody.GetPointVelocity(point);<br/>print(velocity.magnitude);</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

@@ -1,0 +1,71 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" How Do I Use Bump Maps?"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title=" How Do I Use Bump Maps?" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOW-TOs.html%22%3EHOW-TOs%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Graphics%20how-tos.html%22%3EGraphics%20how-tos%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOWTO-bumpmap.html%22%3E%20How%20Do%20I%20Use%20Bump%20Maps%3F%3C%2Fa%3E" navigation="%3Ca%20href%3D%22HOWTO-importObject.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22HOWTO-UseDetailTexture.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1> How Do I Use Bump Maps?</h1>
+		<p><a href="index.html">Unity Manual</a> &gt; <a href="HOW-TOs.html">HOW-TOs</a> &gt; <a href="Graphics how-tos.html">Graphics how-tos</a> &gt; <a href="HOWTO-bumpmap.html"> How Do I Use Bump Maps?</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="HOWTO-importObject.html"><img src="../images/prev.png"></a><a href="HOWTO-UseDetailTexture.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+
+<p>Bump maps are greyscale images that use as a height map on your objects in order to give an appearance of depth. Assuming you have a model that looks like this:
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/HOWTO-bumpmap-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/HOWTO-bumpmap-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>we want to make the light parts of the object stand out.
+</p>
+
+<table><tr><td><div class='cbox'><div class='cbox-data'>
+<ol><li> Draw a grayscale height map of your texture in photoshop. White is high, black is low. Something like this:<br> <!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/HOWTO-bumpmap-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/HOWTO-bumpmap-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</li><li> Save the image next to your main texture.
+</li><li> In Unity, select the image and choose <b>Asset->Import Settings...</b> from the main menu.
+</li><li> The Texture inspector pops up; select the 24 bit RGB format and enable 'Generate Bump map':<br> <!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/HOWTO-bumpmap-2.jpg%22" --><p><table><tr><td><img class="figure" src="images/HOWTO-bumpmap-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</li><li> In the material inspector on the right, select 'Bumped' from the Shader drop-down:<br><!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/HOWTO-bumpmap-3.jpg%22" --><p><table><tr><td><img class="figure" src="images/HOWTO-bumpmap-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</li><li> Drag your texture from the project window to the 'Bumpmap' texture slot: <br><!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/HOWTO-bumpmap-4.jpg%22" --><p><table><tr><td><img class="figure" src="images/HOWTO-bumpmap-4.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</li></ol>
+
+<p></div></div></td></tr></table>
+</p>
+
+<p>Your object now has a bump map applied:
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/HOWTO-bumpmap-5.jpg%22" --><p><table><tr><td><img class="figure" src="images/HOWTO-bumpmap-5.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<h2>Hints</h2>
+<ul><li> To make the bumps more noticable, either use the Bumpyness slider in the texture import settings or blur the texture in photoshop. Play with both to get a feel for it.
+</li></ul>
+
+
+
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,322 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Character Animation</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Character Animation</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Creating Gameplay.html">Creating Gameplay</a> &gt; <a href="../Manual/Character-Animation.html">Character Animation</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Animation.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Sound.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Character Animation</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Unity's Animation System allows you to create beautifully animated skinned characters. The Animation System supports animation blending, mixing, additive animations, walk cycle time synchronization, animation layers, control over all aspects of the animation playback (time, speed, blend-weights), mesh skinning with 1, 2 or 4 bones per vertex and finally physically based ragdolls.
+</p>
+<p class='vspace'>There are some best practices for creating a rigged character with optimal performance in Unity.  It is recommended that you read about these techniques on the <a href="../Manual/Modeling Optimized Characters.html">Modeling Optimized Characters</a> page.
+</p>
+<p class='vspace'>Making an animated character involves two things; <em>moving</em> them through the world and <em>animating</em> them accordingly.
+</p>
+<p class='vspace'>This page focuses on the animation. If you want to learn more about moving characters around (for a Super Mario Bros style game or a first-person shooter), take a look at the <a href="../Components/class-CharacterController.html">Character Controller page</a>.
+</p>
+<p class='vspace'>If you like, quickly jump to one of the topics covered on this page:
+</p>
+<div class='vspace'></div><ul><li><a href='#ImportAnim'>Importing Character Animations</a>
+<ul><li><a href='#ImportSplit'>Animation Splitting</a>
+</li><li><a href='#ImportFile'>Multiple Files</a>
+</li><li><a href='#ImportIK'>Inverse Kinematics</a>
+</li></ul></li><li><a href='#IntoScene'>Inserting Into a Unity Scene</a>
+</li><li><a href='#Animate'>Animating the Character</a>
+<ul><li><a href='#AnimBlend'>Animation Blending</a>
+</li><li><a href='#AnimLayers'>Animation Layers</a>
+</li><li><a href='#LayerExample'>Additive Animation</a>
+</li></ul></li></ul><p class='vspace'>You can download an <a class='urllink' href='http://www.unity3d.com/examples/index.html' rel='nofollow'>example demo</a> showing pre-setup animated characters <a class='urllink' href='http://www.unity3d.com/examples/index.html' rel='nofollow'>here</a>.
+</p>
+<p class='vspace'><a name='ImportAnim' id='ImportAnim'></a>
+</p>
+<div class='vspace'></div><h2>Importing The Animations</h2>
+<p>First of all we have to import the character.  Unity natively imports Maya (.mb or .ma) files, Cinema 4D (.c4d) files, and fbx files which can be exported from most animation packages. Click here to learn how to <a href="../Manual/HOWTO-importObject.html">export from your modelling/animation package</a>.
+</p>
+<p class='vspace'><a name='ImportSplit' id='ImportSplit'></a>
+</p>
+<div class='vspace'></div><h3>Importing Animations using Animation Splitting</h3>
+<p>The most convenient way for animators to work is to have a single model containing all animations. When importing the animated model, you can define which frames make up each part of the animation. Unity will automatically split the animation into the individual parts, called <span class='doc-keyword'>Animation Clips</span>.
+</p>
+<p class='vspace'>For example:
+</p><ul><li>walk animation during frames 1 - 33
+</li><li>run animation during frames 41 - 57
+</li><li>kick animation during frames 81 - 97
+</li></ul><p class='vspace'>To import the animations you simply place the model in the <span class='doc-keyword'>Assets</span> folder of your project. Unity will now automatically import it. Highlight it in the <span class='doc-keyword'>Project View</span> and edit the <span class='doc-keyword'>Import Settings</span> in the <span class='doc-keyword'>Inspector</span>.
+</p>
+<div class='vspace'></div>
+<div class='specific-iphone' > 
+<div><img class='figure' src='../Images/manual/Character-Animation-0.jpg' /><br /><em>The Import Settings Dialog for a mesh</em></div>
+</div>
+<p class='vspace'>In the Import Settings, the <span class='doc-prop'>Split Animations</span> table is where you tell Unity which frames in your asset file make up which Animation Clip. The names you specify here are used to activate them in your game.
+</p>
+<div class='vspace'></div><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>name</span></td><td  align='left'>Defines the Animation Clip's name within Unity.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>start frame</span></td><td  align='left'>The first frame of the animation. The frame number refers to the same frame as in the 3D program used to create the animation.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>stop frame</span></td><td  align='left'>The last frame of the animation.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>WrapMode</span></td><td >Defines how should time beyond the playback range of the clip be treated (Once, Loop, PingPong, ClampForever).</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>loop frame</span></td><td  align='left'>If enabled, an extra <span class='doc-prop'>loop frame</span> is inserted at the end of the animation. This frame matches the first frame in the clip. Use this if you want to make a looping animation and the first &amp; last frames don't match up exactly.</td></tr>
+</table>
+<p class='vspace'><a name='ImportFile' id='ImportFile'></a>
+</p>
+<div class='vspace'></div><h3>Importing Animations using multiple model files</h3>
+<p>The other way to import animations is to follow the @ animation naming scheme. You create separate model files and use this naming convention: 'model name'@'animation name'.fbx
+</p>
+<div class='vspace'></div>
+<div class='specific-iphone' > 
+<div><img class='figure' src='../Images/manual/Character-Animation-1.jpg' /></div>
+</div>
+<p class='vspace'><em>An example of four animation files for an animated character</em>
+</p>
+<p class='vspace'>Unity automatically imports all four files and collects all animations to the file without the @ sign in. In the example above, the goober.mb file will be set up to reference idle, jump, walk and wallJump automatically.
+</p>
+<p class='vspace'><a name='ImportIK' id='ImportIK'></a>
+</p>
+<div class='vspace'></div><h3>Importing Inverse Kinematics</h3>
+<p>When importing animated characters from Maya that are created using IK, you have to check the <span class='doc-prop'>Bake IK &amp; simulation</span> box in the Import Settings. Otherwise, your character will not animate correctly.
+</p>
+<p class='vspace'><a name='IntoScene' id='IntoScene'></a>
+</p>
+<div class='vspace'></div><h2>Bringing the character into the Scene</h2>
+<p>When you have imported your model you drag the object from the Project view into the <span class='doc-keyword'>Scene View</span> or <span class='doc-keyword'>Hierarchy</span>.
+</p>
+<div class='specific-iphone' > 
+<div><img class='figure' src='../Images/manual/Character-Animation-2.jpg' /><br /><em>The animated character is added by dragging it into the scene</em></div>
+</div>
+<p class='vspace'>The character above has three animations in the animation list and no default animation. You can add more animations to the character by dragging animation clips from the Project View on to the character (in either the Hierarchy or Scene View). This will also set the default animation. When you hit Play, the default animation will be played.
+</p>
+<div class='vspace'></div><div class='property-TIP'>TIP: You can use this to quickly test if your animation plays back correctly. Also use the <span class='doc-prop'>Wrap Mode</span> to view different behaviors of the animation, especially looping.</div>
+<p class='vspace'><a name='Animate' id='Animate'></a>
+</p>
+<div class='vspace'></div><h2>Animating the Character</h2>
+<p>The actual animating of characters is done through Unity's scripting interface.
+</p>
+<p class='vspace'><a name='AnimBlend' id='AnimBlend'></a>
+</p>
+<div class='vspace'></div><h3>Animation Blending</h3>
+<p>In today's games, animation blending is an essential feature to ensure that characters have smooth animations. Animators create separate animations, e.g. a walk cycle, run cycle, idle animation or shoot animation. At any point in time in your game you need to be able to transition from the idle animation into the walk cycle and vice versa. Of course you don't want any sudden jumps in the motion, you want the animation to smoothly transition.
+</p>
+<p class='vspace'>This is where animation blending comes in. In Unity you can have an arbitrary amount of animations playing on the same character. All animations are blended or added together to generate the final animation.
+</p>
+<p class='vspace'>Our first step will be to make a character smoothly blend between the idle and walk animations.  In order to make our job simpler when scripting, we will first set the <span class='doc-prop'>Wrap Mode</span> of the animation to <span class='doc-prop'>Loop</span>. Then we will turn off <span class='doc-prop'>Play Automatically</span> to make sure our script is the only one playing animations.
+</p>
+<p class='vspace'>Our first script for animating the character is quite simple; we only need some way to detect how fast our character is moving, and then fade between walk and idle animation. For this simple test we use the pre-setup input axes.
+</p>
+<div class='vspace'></div><pre class='codelisting'>function Update ()
+{
+   if (Input.GetAxis("Vertical") &gt; 0.2)
+       animation.CrossFade ("walk");
+   else
+      animation.CrossFade ("idle");
+} </pre>
+<p class='vspace'>To get this script running:
+</p><ol><li>Create a javascript using <span class='doc-menu'>Assets-&gt;Create Other-&gt;Javascript</span>.
+</li><li>Copy &amp; Paste the code into it
+</li><li>Drag the script onto the character (It needs to be the same <span class='doc-keyword'>GameObject</span> as the animation)
+</li></ol><p class='vspace'>When you hit the Play button, the character will start walking in place when you hold the up arrow key and return to the idle pose when you release it.
+</p>
+<p class='vspace'><a name='AnimLayers' id='AnimLayers'></a>
+</p>
+<div class='vspace'></div><h3>Animation Layers</h3>
+<p>Layers are an incredibly useful concept that allow you to group animations and prioritize weighting.
+</p>
+<p class='vspace'>In Unity's animation system, you can blend between as many animation clips as you want. You can assign blend weights manually or simply use <span class='doc-prop'>animation.CrossFade()</span>, which will animate the weight automatically.
+</p>
+<div class='vspace'></div><h4>Blend weights are always normalized before being applied</h4>
+<p>Let's say you have a walk cycle and a run cycle, both have a weight of 1 (100%). When Unity generates the final animation it will normalize the weights, which means walk will contribute 50% to the animation, the run cycle will also contribute 50%.
+</p>
+<p class='vspace'>This is all very nice, but often you want to prioritize which animation receives most weight when there are two animations playing. Surely you could just make sure that the weight sums up to 100% manually, but it is a lot easier to use layers for this purpose.
+</p>
+<p class='vspace'><a name='LayerExample' id='LayerExample'></a>
+</p>
+<div class='vspace'></div><h4>Layering Example</h4>
+<p>As an example, you might have a shoot animation, an idle and a walk cycle. You will want to continously fade between the walk and idle animation based on the player's speed. But when the player shoots you want to only show the shoot animation. Thus the shoot animation essentially has a higher priority.
+</p>
+<p class='vspace'>The easiest way to do this is to simply keep playing the walk and idle animations while shooting. Then we need to make sure that the shoot animation is in a higher layer than idle and walk. This means the shoot animation will receive blend weights first. The walk and idle animation will receive weights only if the shoot animation doesn't use all of the 100% blend weights. So when CrossFading the shoot animation in, the weight will start out at zero and over a short period become 100%. In the beginning the walk and idle layer will still receive blend weights but when the shoot animation is completely faded in, they will receive no weights at all.  This is exactly what we need!
+</p>
+<div class='vspace'></div><pre class='codelisting'>function Start ()
+{
+   // Set all animations to loop
+   animation.wrapMode = WrapMode.Loop;
+   // except shooting
+   animation["shoot"].wrapMode = WrapMode.Once;
+
+   // Put idle and walk into lower layers (The default layer is always 0)
+   // This will do two things
+   // - Since shoot and idle/walk are in different layers they will not affect
+   //   each other's playback when calling CrossFade.
+   // - Since shoot is in a higher layer, the animation will replace idle/walk
+   //   animations when faded in.
+   animation["shoot"].layer = 1;
+
+   // Stop animations that are already playing
+   //(In case user forgot to disable play automatically)
+   animation.Stop();
+}
+
+function Update () {
+   // Based on the key that is pressed,
+   // play the walk animation or the idle animation
+   if (Mathf.Abs(Input.GetAxis("Vertical")) &gt; 0.1)
+      animation.CrossFade("walk");
+   else
+      animation.CrossFade("idle");
+
+   // Shoot
+   if (Input.GetButtonDown ("Fire1"))
+      animation.CrossFade("shoot");
+} </pre>
+<p class='vspace'>By default the <span class='doc-prop'>animation.Play()</span> and <span class='doc-prop'>animation.CrossFade()</span> will stop or fade out animations that are in the same layer. This is exactly what we want in most cases. In our shoot, idle, run example, playing idle and run will not affect the shoot animation and vice versa (you can change this behaviour with an optional parameter to animation.CrossFade if you like).
+</p>
+<p class='vspace'><a name='Additive' id='Additive'></a>
+</p>
+<div class='vspace'></div><h3>Additive Animations and Animation Mixing</h3>
+<p>Additive Animations and Animation mixing allow you to cut down on the number of animations you have to create for your game, and are important for creating facial animations.
+</p>
+<p class='vspace'>Let's say you want to create a character that leans to the sides when running and turning.
+</p>
+<p class='vspace'>You already made a walk and run cycle, now you could make individual walk-lean-left, walk-lean-right, run-lean-left, run-lean-right animations.
+</p>
+<p class='vspace'>But that means you just quadrupled the amount of animation work! Creating a huge amount of animations is not feasiable. Additive animations and Mixing to the rescue!
+</p>
+<div class='vspace'></div><h4>Additive Animation Example</h4>
+<p>Additive animations allow you to overlay the effects of animation on top of any others that may be playing. When making additive animations, Unity will calculate the difference between the first frame in the animation clip and the current frame. Then it will apply this difference on top of all other playing animations.
+</p>
+<p class='vspace'>Now you only have to make a lean-left and lean-right animation. Unity will then layer this animation on top of the walk, idle or run cycle.
+</p>
+<p class='vspace'>Here is the code to make that happen:
+</p>
+<div class='vspace'></div><pre class='codelisting'>private var leanLeft : AnimationState;
+private var leanRight : AnimationState;
+
+function Start ()
+{
+   leanLeft = animation["leanLeft"];
+   leanRight = animation["leanRight"];
+
+   // Put the leaning animation in a separate layer
+   // So that other calls to CrossFade won't affect it.
+   leanLeft.layer = 10;
+   leanRight.layer = 10;
+
+   // Set the lean animation to be additive
+   leanLeft.blendMode = AnimationBlendMode.Additive;
+   leanRight.blendMode = AnimationBlendMode.Additive;
+
+   // Set the lean animation ClampForever
+   // With ClampForever animation's will not automatically
+   // stop when reaching the end of the clip
+   leanLeft.wrapMode = WrapMode.ClampForever;
+   leanRight.wrapMode = WrapMode.ClampForever;
+
+   // Enable the animation and fade it in completely
+   // We don't use animation.Play here because we manually adjust the time
+   // in the Update function.
+   // Instead we just enable the animation and set it to full weight
+   leanRight.enabled = true;
+   leanLeft.enabled = true;
+   leanRight.weight = 1.0;
+   leanLeft.weight = 1.0;
+
+   // For testing just play run animation and loop it
+   animation["walk"].wrapMode = WrapMode.Loop;
+   animation.Play("walk");
+}
+
+// Every frame just set the normalized time
+// based on how much lean we want to apply
+function Update ()
+{
+   var lean = Input.GetAxis("Horizontal");
+   // normalizedTime is 0 at the first frame and 1 at the last frame in the clip
+   leanLeft.normalizedTime = -lean;
+   leanRight.normalizedTime = lean;
+} </pre>
+<div class='vspace'></div><div class='property-Tip'>Tip:</div>
+<p>When using Additive animations it is critical that you are also playing some other non-additive animation on every transform that is also used in the additive animation, otherwise the animations will add on top of the last frame's result. This is most certainly not what you want.
+</p>
+<div class='vspace'></div><h4>Procedurally animating characters</h4>
+<p>Sometimes you want to animate the bones of your character procedurally. For example you might want the head of your character to look at a specific point in 3D space. This is best done with a script. Fortunately, Unity makes this very easy. In Unity all bones are just Transforms which drive the skinned mesh. Thus you can script bones of a character just like any other GameObject.
+</p>
+<p class='vspace'>One important thing to know is that the animation system updates the Transforms after the <span class='doc-prop'>Update()</span> function and before the <span class='doc-prop'>LateUpdate()</span> function is called. Thus if you want to do a <span class='doc-prop'>LookAt()</span> function you should do that in <span class='doc-prop'>LateUpdate()</span> to make sure that you are really overriding the animation.
+</p>
+<p class='vspace'>Ragdolls are created in the same way. You simply have to attach Rigidbodies, Character Joints and Capsule Colliders to the different bones. This will then physically animate your skinned character.
+</p>
+<div class='vspace'></div><h4>Finally</h4>
+<p>You have learned how to make a basic character animation please see the <a class='urllink' href='http://www.unity3d.com/examples' rel='nofollow'>projects</a> for in-depth examples of character animation and the <a class='urllink' href='../ScriptReference/Animation.html' rel='nofollow'>animation script interface</a>.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Animation.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Sound.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

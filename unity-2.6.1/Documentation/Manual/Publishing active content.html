@@ -1,0 +1,153 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Publishing active content</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Publishing active content</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/Web Player Deployment.html">Web Player Deployment</a> &gt; <a href="../Manual/Publishing active content.html">Publishing active content</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Detecting the Unity Web Player using browser scripting.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Web Player Debugging.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Publishing active content</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>When publishing active content, like Unity <span class='doc-keyword'>Web Player</span> content, developers must consider how that content will be handled in various browsers. Specifically, developers need to consider how that content will be handled by Microsoft's Internet Explorer browser as it offers slightly different behavior than all other supported browsers today. Depending on how your content is embedded within your web page it may require the end-user to activate the content before it will be sensitive to mouse and keyboard input. In order to activate the content the end-user will have to either click once on the content itself, or click OK in a dialog box to load the ActiveX Control. While this doesn't prevent web player content from being used in Internet Explorer, it does offer a potentially confusing and less than optimal end-user experience. Fortunately, Microsoft has provided page design solutions so that developers can create or update their web pages in such a way that end-users do not have to click to activate web player content. Below you will find details on how to implement one of those solutions.
+</p>
+<p class='vspace'>For more information on activating ActiveX Controls in Internet Explorer please read <a class='urllink' href='http://msdn.microsoft.com/library/default.asp?url=/workshop/author/dhtml/overview/activating_activex.asp' rel='nofollow'>Activating ActiveX Controls</a>.
+</p>
+<p class='vspace'>In order to prevent your end-user from having to activate your Unity Web Player content prior to using it you must use an external JavaScript file to dynamically write the required object tags into your web page at run-time. In order to keep things simple, the solution outlined here will use an external JavaScript file to write both the object and embed tags so the page loads and plays the same in all browsers. In the simplest case you would create an external JavaScript file with a function that when called, writes out the required object and embed tags using <span class='doc-prop'>document.write()</span> calls. 
+</p>
+<p class='vspace'>Here is an example JavaScript function that uses <span class='doc-prop'>document.write()</span> calls to dynamically create the necessary object and embed tags:
+</p><pre class='codelisting'>
+&lt;script type="text/javascript" language="javascript"&gt;
+function writeUnityTags (aSrc, aWidth, aHeight) {
+    // write the content object and embed tags
+    document.write("&lt;object ");
+    document.write("    classid='clsid:444785F1-DE89-4295-863A-D46C3A781394' \n");
+    document.write("    codebase='http://webplayer.unity3d.com/download_webplayer/UnityWebPlayer.cab#version=2,0,0,0' \n");
+    document.write("    id='UnityObject' width='" + aWidth + "' height='" + aHeight + "'  &gt; \n");
+    document.write("    &lt;param name='src' value='" + aSrc + "' /&gt; \n");
+    document.write("    &lt;embed type='application/vnd.unity' pluginspage='http://www.unity3d.com/unity-web-player-2.x' \n");
+    document.write("        id='UnityEmbed' width='" + aWidth + "' height='" + aHeight + "' src='" + aSrc + "' \n");
+    document.write("    /&gt; \n");
+    document.write("&lt;/object\&gt;");
+}
+&lt;/script&gt;
+</pre>
+<p>Notice that when the function is called you must pass three arguments, those arguments being the path to the web player data file as well as the width and height of the content to be displayed. Using those arguments the function then writes out the object and embed tags directly into the web page that called the function. 
+</p>
+<p class='vspace'>Here is an example of using the <span class='doc-prop'>writeUnityTags()</span> JavaScript function in a web page, where that function is defined in an external JavaScript file named unityweb.js:
+</p><pre class='codelisting'>
+&lt;script type="text/javascript" language="javascript" src="unityweb.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" language="javascript"&gt;
+
+    // call the writeUnityTags function
+    writeUnityTags("MyFile.unity3d", 640, 480);
+
+&lt;/script&gt;
+</pre>
+<p class='vspace'>Using an external JavaScript file with a simple function whose sole purpose is to write out the object and embed tags is sufficient to avoid requiring your end-user to activate the content prior to using and interacting with it. Additionally the above solution functions properly in all browsers and therefore implementing it ensures that the end-user experience is consistent regardless of their browser and platform combination.
+</p>
+<p class='vspace'>Combining the technique described here along with the web player detection routine discussed in <a href="../Manual/Detecting the Unity Web Player using browser scripting.html">Detecting the Unity Web Player using browser scripting</a> yields a predictable and optimized end-user experience. Here is an example of using both the <span class='doc-prop'>detectUnityWebPlayer()</span> and <span class='doc-prop'>writeUnityTags()</span> functions, where both functions are defined in an external JavaScript file named unityweb.js:
+</p><pre class='codelisting'>
+&lt;script type="text/javascript" language="javascript" src="unityweb.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" language="javascript"&gt;
+
+    // check for the Unity Web Player and respond appropriately
+    var tIsInstalled = detectUnityWebPlayer();
+    if (tIsInstalled) {
+
+        // call the writeUnityTags function
+        writeUnityTags("MyFile.unity3d", 640, 480);
+
+    } else {
+
+        // write out a simple message prompting the user to install the Unity Web Player
+        document.write("&lt;div align='center'&gt; \n");
+        document.write("  This content requires the Unity Web Player,");
+        document.write("  please use the link below to install the player today:&lt;br /&gt;&lt;br /&gt; \n");
+        document.write("  &lt;a href='http://www.unity3d.com/unity-web-player-2.x'&gt; \n");
+        document.write("    Install the Unity Web Player \n");
+        document.write("  &lt;/a&gt; \n");
+        document.write("&lt;/div&gt; \n");
+
+    }
+&lt;/script&gt;
+</pre>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Detecting the Unity Web Player using browser scripting.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Web Player Debugging.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

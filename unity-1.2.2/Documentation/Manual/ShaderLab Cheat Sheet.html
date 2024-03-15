@@ -1,0 +1,49 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="ShaderLab Cheat Sheet"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="ShaderLab Cheat Sheet" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced%20(for%20technical%20guys).html%22%3EAdvanced%20(for%20technical%20guys)%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Shaders.html%22%3EShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22ShaderLab%20Cheat%20Sheet.html%22%3EShaderLab%20Cheat%20Sheet%3C%2Fa%3E" navigation="%3Ca%20href%3D%22Reference%20-%20Values.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22Plugins.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>ShaderLab Cheat Sheet</h1>
+		<p><a href="index.html">Unity Manual</a> &gt; <a href="Advanced (for technical guys).html">Advanced (for technical guys)</a> &gt; <a href="Shaders.html">Shaders</a> &gt; <a href="ShaderLab Cheat Sheet.html">ShaderLab Cheat Sheet</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="Reference - Values.html"><img src="../images/prev.png"></a><a href="Plugins.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			<p>Print this &amp; stick on the wall
+</p>
+
+<h2>Basic syntax</h2>
+
+<p><table class="wikitable"><tr><td class="wikicell"  colspan="4"><div align="center"><b>State modifiers</b></div></td></tr><tr><td class="wikicell" ><b>Culling</b></td><td class="wikicell" ><b>Blending</b></td><td class="wikicell" ><b>Material &amp; Lighting</b></td><td class="wikicell" ><b>Esoteric stuff</b></td></tr><tr><td class="wikicell" >ZTest<br>ZWrite<br>AlphaTest<br>Cull</td><td class="wikicell" >Blend<br>BlendColor</td><td class="wikicell" >Material<br>Lighting<br>Fog<br>SeparateSpecular<br>color</td><td class="wikicell" >ColorMask<br>ShadeModel<br>Matrix<br>Offset</td></tr><tr><td class="wikicell" ><b>Texturing</b></td><td class="wikicell" ><b>Channels</b></td><td class="wikicell" ><b>Programs</b></td><td class="wikicell" ><b>Tags</b></td></tr><tr><td class="wikicell" >SetTexture<br>Texgen<br>Bind<br>ConstantColor<br>Combine <br>Matrix</td><td class="wikicell" >indChannels<br>Bind<br><br>DefineProgram<br>LoadProgram</td><td class="wikicell" >Bind<br>Properties<br>Local</td><td class="wikicell" >Tags</td></tr></table>
+</p>
+<hr />
+<p><table class="wikitable"><tr><td class="wikicell" ><b>Material</b></td><td class="wikicell"  colspan="3">Diffuse Specular Ambient Emission Shininess</td></tr><tr><td class="wikicell" ><b>BlendModes</b></td><td class="wikicell"  colspan="3">One Zero SrcAlpha DstAlpha SrcColor DstColor OneMinusXXX</td></tr><tr><td class="wikicell" ><b>Fog</b></td><td class="wikicell"  colspan="3">Mode Color Start End</td></tr></table>
+</p>
+
+<p><table class="wikitable"><tr><td class="wikicell"  colspan="4"><div align="center"><b>Tags</b></div></td></tr><tr><td class="wikicell" >RenderQueue</td><td class="wikicell"  colspan="3">Background Geometry Transparent Overlay</td></tr><tr><td class="wikicell" >LightMode</td><td class="wikicell"  colspan="3"> VertexOnly(d) Vertex Pixel PixelOnly NoLights<br><b>No lights</b>->NoLights   <b>Vertex only</b>->Vertex, VertexOnly   <b>Pixel only</b>->Pixel, PixelOnly  <b>Both</b>->vertex, pixel</td></tr><tr><td class="wikicell" >LightCount</td><td class="wikicell"  colspan="3">(int)Lights per pass (0 = render once without lighting)</td></tr><tr><td class="wikicell"  colspan="4"><div align="center"><b>Channels</b></div></td></tr><tr><td class="wikicell"  colspan="4">Vertex Normal TexCoord DiffuseDot3 SpecularDot3(NI) Color</td></tr><tr><td class="wikicell"  colspan="4"><div align="center"><b>Properties</b></div></td></tr><tr><td class="wikicell" >Lighiting</td><td class="wikicell"  colspan="3">_LightAmbient _LightColor _LightDiffuseAmbient _LightAmbientDivDiffuse _LightHackedDiffuse<br>_DOTLight</td></tr><tr><td class="wikicell" >Fog </td><td class="wikicell"  colspan="3"> _FogColor _FogStart _FogEnd _FogDensity</td></tr><tr><td class="wikicell"  colspan="4"><div align="center"><b>Cg</b></div></td></tr><tr><td class="wikicell" ><b>float4 props</b></td><td class="wikicell"  colspan="3">_Time _SinTime _CosTime<br>_LightRange (r, r<sup>2</sup>, 1/r, 1/r<sup>2</sup>)</td></tr><tr><td class="wikicell" ><b>vector3 props</b></td><td class="wikicell"  colspan="3">_ObjectSpaceLightPos _ObjectSpaceLightDir</td></tr><tr><td class="wikicell" ><b>float3x3 matrices</b></td><td class="wikicell"  colspan="3">_LightDiffuseRotation _LightSpecularRotation</td></tr><tr><td class="wikicell" ><b>float4x4 matrices</b></td><td class="wikicell"  colspan="3">_World2Light _Light2World _Object2World _World2Object _Object2Light _SpotlightProjectionMatrix</td></tr></table>
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

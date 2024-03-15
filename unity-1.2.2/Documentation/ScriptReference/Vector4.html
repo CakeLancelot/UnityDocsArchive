@@ -1,0 +1,133 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Vector4"-->
+			<title>Unity Script Reference &ndash; Vector4</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>struct Vector4</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="struct Vector4" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> Representation of 4-dimensional vectors</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#this [int index]'>this [int index]</a></p>
+<p><a href='#x'>x</a></p>
+<p><a href='#y'>y</a></p>
+<p><a href='#z'>z</a></p>
+<p><a href='#w'>w</a></p>
+<p><a href='#magnitude'>magnitude</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Constructors</p><p><a href='#Vector4'>Vector4</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Functions</p><p><a href='#Scale'>Scale</a></p>
+<p><a href='#Normalize'>Normalize</a></p>
+<p><a href='#ToString'>ToString</a></p>
+<p><a href='#SqrMagnitude'>SqrMagnitude</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#kEpsilon'>kEpsilon</a></p>
+<p><a href='#zero'>zero</a></p>
+<p><a href='#one'>one</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#operator +'>operator +</a></p>
+<p><a href='#operator -'>operator -</a></p>
+<p><a href='#operator /'>operator /</a></p>
+<p><a href='#operator *'>operator *</a></p>
+<p><a href='#Scale'>Scale</a></p>
+<p><a href='#operator =='>operator ==</a></p>
+<p><a href='#operator !='>operator !=</a></p>
+<p><a href='#Normalize'>Normalize</a></p>
+<p><a href='#Lerp'>Lerp</a></p>
+<p><a href='#Dot'>Dot</a></p>
+<p><a href='#Project'>Project</a></p>
+<p><a href='#Magnitude'>Magnitude</a></p>
+<p><a href='#Distance'>Distance</a></p>
+<p><a href='#SqrMagnitude'>SqrMagnitude</a></p>
+</span>
+<div class='tocclear'></div>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="this [int index]"></a><h3><span class="full-name">Vector4.</span>this [int index]</h3><div class="synopsis"><span class="standard_type">float</span> this [<span class="standard_type">int</span> index]</div>
+   <p class='details'> </p>
+	<a name="x"></a><h3><span class="full-name">Vector4.</span>x</h3><div class="synopsis"><span class="standard_type">float</span> x</div>
+   <p class='details'> </p>
+	<a name="y"></a><h3><span class="full-name">Vector4.</span>y</h3><div class="synopsis"><span class="standard_type">float</span> y</div>
+   <p class='details'> </p>
+	<a name="z"></a><h3><span class="full-name">Vector4.</span>z</h3><div class="synopsis"><span class="standard_type">float</span> z</div>
+   <p class='details'> </p>
+	<a name="w"></a><h3><span class="full-name">Vector4.</span>w</h3><div class="synopsis"><span class="standard_type">float</span> w</div>
+   <p class='details'> </p>
+	<a name="magnitude"></a><h3><span class="full-name">Vector4.</span>magnitude</h3><div class="synopsis"><span class="standard_type">float</span> magnitude</div>
+   <p class='details'> </p>
+   <a name="Constructors"></a><h2 class="script-section">Constructors</h2>
+	<a name="Vector4"></a><h3><span class="full-name">Vector4.</span>Vector4</h3><div class="synopsis">Vector4 (<span class="standard_type">float</span> a, <span class="standard_type">float</span> b, <span class="standard_type">float</span> c, <span class="standard_type">float</span> d)</div>
+   <p class='details'> </p>
+	&nbsp;<div class="synopsis">Vector4 (<span class="standard_type">float</span> a, <span class="standard_type">float</span> b, <span class="standard_type">float</span> c)</div>
+   <p class='details'> </p>
+	&nbsp;<div class="synopsis">Vector4 (<span class="standard_type">float</span> a, <span class="standard_type">float</span> b)</div>
+   <p class='details'> </p>
+   <a name="Methods"></a><h2 class="script-section">Methods</h2>
+	<a name="Scale"></a><h3><span class="full-name">Vector4.</span>Scale</h3><div class="synopsis"><span class="standard_type">void</span> Scale (Vector4 scale)</div>
+   <p class='details'> </p>
+	<a name="Normalize"></a><h3><span class="full-name">Vector4.</span>Normalize</h3><div class="synopsis"><span class="standard_type">void</span> Normalize ()</div>
+   <p class='details'> </p>
+	<a name="ToString"></a><h3><span class="full-name">Vector4.</span>ToString</h3><div class="synopsis"><span class="standard_type">string</span> ToString ()</div>
+   <p class='details'> </p>
+	<a name="SqrMagnitude"></a><h3><span class="full-name">Vector4.</span>SqrMagnitude</h3><div class="synopsis"><span class="standard_type">float</span> SqrMagnitude ()</div>
+   <p class='details'> </p>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="kEpsilon"></a><h3><span class="full-name">Vector4.</span>kEpsilon</h3><div class="synopsis"><span class="standard_type">float</span> kEpsilon = 0.00001F</div>
+   <p class='details'> </p>
+	<a name="zero"></a><h3><span class="full-name">Vector4.</span>zero</h3><div class="synopsis">Vector4 zero</div>
+   <p class='details'> </p>
+	<a name="one"></a><h3><span class="full-name">Vector4.</span>one</h3><div class="synopsis">Vector4 one</div>
+   <p class='details'> </p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="operator +"></a><h3><span class="full-name">Vector4.</span>operator +</h3><div class="synopsis">Vector4 <span class="keyword">operator</span> + (Vector4 a, Vector4 b)</div>
+   <p class='details'> </p>
+	<a name="operator -"></a><h3><span class="full-name">Vector4.</span>operator -</h3><div class="synopsis">Vector4 <span class="keyword">operator</span> - (Vector4 a, Vector4 b)</div>
+   <p class='details'> </p>
+	<a name="operator -"></a><h3><span class="full-name">Vector4.</span>operator -</h3><div class="synopsis">Vector4 <span class="keyword">operator</span> - (Vector4 a)</div>
+   <p class='details'> </p>
+	<a name="operator /"></a><h3><span class="full-name">Vector4.</span>operator /</h3><div class="synopsis">Vector4 <span class="keyword">operator</span> / (Vector4 a, <span class="standard_type">float</span> d)</div>
+   <p class='details'> </p>
+	<a name="operator *"></a><h3><span class="full-name">Vector4.</span>operator *</h3><div class="synopsis">Vector4 <span class="keyword">operator</span> * (Vector4 a, <span class="standard_type">float</span> d)</div>
+   <p class='details'> </p>
+	<a name="operator *"></a><h3><span class="full-name">Vector4.</span>operator *</h3><div class="synopsis">Vector4 <span class="keyword">operator</span> * (<span class="standard_type">float</span> d, Vector4 a)</div>
+   <p class='details'> </p>
+	<a name="Scale"></a><h3><span class="full-name">Vector4.</span>Scale</h3><div class="synopsis">Vector4 Scale (Vector4 a, Vector4 b)</div>
+   <p class='details'> </p>
+	<a name="operator =="></a><h3><span class="full-name">Vector4.</span>operator ==</h3><div class="synopsis"><span class="standard_type">bool</span> <span class="keyword">operator</span> == (Vector4 lhs, Vector4 rhs)</div>
+   <p class='details'> </p>
+	<a name="operator !="></a><h3><span class="full-name">Vector4.</span>operator !=</h3><div class="synopsis"><span class="standard_type">bool</span> <span class="keyword">operator</span> != (Vector4 lhs, Vector4 rhs)</div>
+   <p class='details'> </p>
+	<a name="Normalize"></a><h3><span class="full-name">Vector4.</span>Normalize</h3><div class="synopsis">Vector4 Normalize (Vector4 a)</div>
+   <p class='details'> </p>
+	<a name="Lerp"></a><h3><span class="full-name">Vector4.</span>Lerp</h3><div class="synopsis">Vector4 Lerp (Vector4 from, Vector4 to, <span class="standard_type">float</span> t)</div>
+   <p class='details'> </p>
+	<a name="Dot"></a><h3><span class="full-name">Vector4.</span>Dot</h3><div class="synopsis"><span class="standard_type">float</span> Dot (Vector4 a, Vector4 b)</div>
+   <p class='details'> </p>
+	<a name="Project"></a><h3><span class="full-name">Vector4.</span>Project</h3><div class="synopsis">Vector4 Project (Vector4 a, Vector4 b)</div>
+   <p class='details'> </p>
+	<a name="Magnitude"></a><h3><span class="full-name">Vector4.</span>Magnitude</h3><div class="synopsis"><span class="standard_type">float</span> Magnitude (Vector4 a)</div>
+   <p class='details'> </p>
+	<a name="Distance"></a><h3><span class="full-name">Vector4.</span>Distance</h3><div class="synopsis"><span class="standard_type">float</span> Distance (Vector4 a, Vector4 b)</div>
+   <p class='details'> </p>
+	<a name="SqrMagnitude"></a><h3><span class="full-name">Vector4.</span>SqrMagnitude</h3><div class="synopsis"><span class="standard_type">float</span> SqrMagnitude (Vector4 a)</div>
+   <p class='details'> </p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

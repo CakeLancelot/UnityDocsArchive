@@ -1,0 +1,87 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Transform"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Transform" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-TransformationGroup.html%22%3ETransforms%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-Transform.html%22%3ETransform%3C%2Fa%3E" navigation="%3Ca%20href%3D%22comp-TransformationGroup.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22comp-RenderingGroup.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>Transform</h1>
+		<p><a href="index.html">Components</a> &gt; <a href="comp-TransformationGroup.html">Transforms</a> &gt; <a href="class-Transform.html">Transform</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="comp-TransformationGroup.html"><img src="../images/prev.png"></a><a href="comp-RenderingGroup.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+<p>The transform component decides the physical location of your objects in the scene. All objects have a transform.
+</p>
+
+<p>Objects in your scene can be attached to each other, called <i>parenting</i>. Each object can have multiple children, but only one parent. When you move an object, all its children move with it. For more info, see below.
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Position</nobr></b></td><td> The position of the object, relative to its parent.
+</td></tr><tr><td><b><nobr>Rotation</nobr></b></td><td> The rotation of the object, relative to its parent.
+</td></tr><tr><td><b><nobr>Scale</nobr></b></td><td> The scale of the object, relative to its parent
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+<p>To manipulate object positions in your scene, click on them in the scene view and use the move, rotate and scale tools, located in the top-left part of the main window.
+</p>
+
+<p>If you have an object hovering a bit above a floor, use 'Object-&gt;Place on surface' from the main menu to move it down.
+</p>
+
+<h3>Parenting</h3>
+<p>Parenting is one of the most important concepts to understand when using Unity.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Transform-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Transform-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>The principle behind parenting is simple; you can attach objects to each other - just like your arms are attached to your body. When you turn your body, your arms move. An object can only have one parent (just like your arm can only be on attached to one body), but each object can have many children (you have two arms, after all).
+</p>
+
+
+<p>In this example, we would say that the arms are parented to the body, and the hands are parented to the arms. The scenes you make in Unity are collections of these <i>transform hierarchies</i>. The topmost object is called the <i>root object</i>. When you move, rotate or scale an object, all children are affected.
+</p>
+
+<p>You build compound objects by parenting multiple separate objects together. If you have a miner in a game, you can add a miner's lamp to his helmet, simple by parenting a spotlight object to the helmet.
+</p>
+
+<p>At any time, you can see your scene hierarchy in the <i>Hierarchy</i> window, shown above. Here, you can change parenting by dragging objects around.
+</p>
+
+<p>The other way to set up parents are using selections: click on two or more objects in the scene view, ending with the object you want to become the parent and select 'Object-&gt;Make Parent' from the main menu. To remove a child from a parent, select the child in the scene view select 'Object-&gt;Clear Parent'.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+To quickly reset the transform of an object, use Reset Component, found in the <i>component menu</i>.
+</li><li>You cannot scale a particle system. in order to do that, you need to modify the particle emitter, animator and renderer properties.
+</li></ul>
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

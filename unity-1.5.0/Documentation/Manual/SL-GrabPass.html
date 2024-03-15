@@ -1,0 +1,116 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" GrabPass"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title=" GrabPass" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced%20(for%20technical%20guys).html%22%3EAdvanced%20(for%20technical%20guys)%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Shaders.html%22%3EShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-Shader.html%22%3EShader%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-SubShader.html%22%3ESubShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-GrabPass.html%22%3E%20GrabPass%3C%2Fa%3E" -->
+		<h1> GrabPass</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced (for technical guys).html">Advanced (for technical guys)</a> &gt; <a href="Shaders.html">Shaders</a> &gt; <a href="SL-Shader.html">Shader</a> &gt; <a href="SL-SubShader.html">SubShaders</a> &gt; <a href="SL-GrabPass.html"> GrabPass</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="SL-BindChannels.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-Fallback.html">Next<img src="../images/next.png"></a></div>
+
+			
+<p>GrabPass is a special passtype - it grabs the contents of the screen where the object is about to be drawn into a texture. This texture can be used in subsequent passes to do advanced displacement effects.
+</p>
+
+<h2>Syntax</h2>
+<p>The GrabPass belongs inside a subshader. All properties are optional.
+</p>
+
+<p><pre class='codelisting'>
+GrabPass {
+    Tags { &quot;RenderMode&quot; = &quot;VertexLit&quot; }
+    Name BASE
+    TextureScale .5
+    TextureSize 256
+    BorderScale .3
+}
+</pre>
+</p>
+
+<h2> Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Name</nobr></b></td><td> The name of this pass. Used in conjunction with <a >SL-UsePass</a>
+</td></tr><tr><td><b><nobr>Tags</nobr></b></td><td> Any tags that you might want to set. See ((SL-Pass#Tags)) for docs.
+</td></tr><tr><td><b><nobr>TextureSize</nobr></b></td><td> Specifies that you want the grabbed texture to have a certain pixel dimension.
+</td></tr><tr><td><b><nobr>TextureScale</nobr></b></td><td> Specifies that you want the texture to be a certain scale of the object's screen size. This is the default behaviour.
+</td></tr><tr><td><b><nobr>BorderScale</nobr></b></td><td> Specifies that you want to grab an extra region around the object. The value is relative to the object's bounding box.
+<p></td></tr></tr></table>
+</p>
+
+<h2> Details</h2>
+
+<h4> Screen Grabbing</h4>
+<p>You can grab the screen behind the object being rendered in order to use it in a later pass. This is done with the GrabPass command. In a subsequent pass, you can access the grabbed screen distorting what is behind the object. This is typically used to create stained glass and other refraction-like effects.
+</p>
+
+<p>See <a href="../Manual/SL-GrabPass.html">GrabPass</a>.
+</p>
+
+<h4> Offscreen rendering</h4>
+<p>Sometimes you want to render one or more passes into a temporary texture and then use this texture in a later pass (know as deferred shading). This is done using the OffScreenPass command
+</p>
+
+<p>See <a >OffScreenPass</a>.
+</p>
+
+<ul><li> The Region grabbed from the screen is available to subsequent passes as _GrabTexture.
+</li><li> After grabbing, BorderScale gets converted into screenspace coords as _GrabBorderPixels. This is the maximum amount you can displace with in subsequent passes.
+</li></ul>
+
+<p>Unity will reuse the screen texture between different objects doing GrabPass. This means that one refractive object will not refract another.
+</p>
+
+<h2> Example</h2>
+
+<h3> So Much For So Little</h3>
+<p>Here is the most complex way ever of rendering nothing.
+<pre class='codelisting'>
+Shader &quot;ComplexInvisble&quot; {
+    SubShader {
+        // Grab the screen behind the object into _GrabTexture, using default values
+        GrabPass { }
+        
+        // Render the object with the texture generated above.
+        Pass {
+            SetTexture [_GrabTexture] 
+        }
+    }
+}
+</pre>
+</p>
+
+<p>This shader has 2 passes: First pass grabs whatever is behind the object at the time of rendering, then applies that in the second pass. Note that the _GrabTexture is configured to display at the exact position of the object - hence it becomes transparent.
+</p>
+
+<h2> See Also</h2>
+<ul><li> <a href="../Manual/SL-Pass.html">SL-Pass</a>
+</li><li> <a >SL-OffScreenPass</a>
+</li></ul>
+
+
+
+		<div class="navigation"><a href="SL-BindChannels.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-Fallback.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

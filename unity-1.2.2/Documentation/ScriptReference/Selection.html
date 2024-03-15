@@ -1,0 +1,69 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Selection"-->
+			<title>Unity Script Reference &ndash; Selection</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Selection</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Selection" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'> 	<div class="editorclass">This is an editor class. To use it you have to place your script in Assets/Editor inside your project folder. Editor classes are in the UnityEditor namespace so you need to add "import UnityEditor;" in the beginning of the script.</div></p>
+   <p class='first'> Access to the selection in the editor.</p>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#transforms'>transforms</a></p>
+<p><a href='#activeTransform'>activeTransform</a></p>
+<p><a href='#gameObjects'>gameObjects</a></p>
+<p><a href='#activeGameObject'>activeGameObject</a></p>
+<p><a href='#activeObject'>activeObject</a></p>
+<p><a href='#objects'>objects</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#GetTransforms'>GetTransforms</a></p>
+<p><a href='#GetFiltered'>GetFiltered</a></p>
+</span>
+<div class='tocclear'></div>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="transforms"></a><h3><span class="full-name">Selection.</span>transforms</h3><div class="synopsis"><a href="Transform.html" class="classlink">Transform</a>[] transforms</div>
+   <p class='details'> Returns the top level selection, excluding prefabs.
+This is the most common selection type when working with scene objects.</p>
+	<a name="activeTransform"></a><h3><span class="full-name">Selection.</span>activeTransform</h3><div class="synopsis"><a href="Transform.html" class="classlink">Transform</a> activeTransform</div>
+   <p class='details'> Returns the active transform. (The one shown in the inspector)
+This will never return prefabs or non-modifyable objects.</p>
+	<a name="gameObjects"></a><h3><span class="full-name">Selection.</span>gameObjects</h3><div class="synopsis"><a href="GameObject.html" class="classlink">GameObject</a>[] gameObjects</div>
+   <p class='details'> Returns the actual game object selection. Includes prefabs, non-modifyable objects.
+When working with objects that are primarily in a scene, it is strongly recommended to use <a href="Selection.html#transforms" class="itemlink">Selection.transforms</a> instead.</p>
+	<a name="activeGameObject"></a><h3><span class="full-name">Selection.</span>activeGameObject</h3><div class="synopsis"><a href="GameObject.html" class="classlink">GameObject</a> activeGameObject</div>
+   <p class='details'> Returns the active game object. (The one shown in the inspector)
+It will also return game objects that might be prefabs or non-modifyable objects.</p>
+	<a name="activeObject"></a><h3><span class="full-name">Selection.</span>activeObject</h3><div class="synopsis"><a href="Object.html" class="classlink">Object</a> activeObject</div>
+   <p class='details'> Returns the actual object selection. Includes prefabs, non-modifyable objects.
+When working with objects that are primarily in a scene, it is strongly recommended to use <a href="Selection.html#activeTransform" class="itemlink">Selection.activeTransform</a> instead.</p>
+	<a name="objects"></a><h3><span class="full-name">Selection.</span>objects</h3><div class="synopsis"><a href="Object.html" class="classlink">Object</a>[] objects</div>
+   <p class='details'> The actual unfiltered selection.
+You can also assign objects to the selection</p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="GetTransforms"></a><h3><span class="full-name">Selection.</span>GetTransforms</h3><div class="synopsis"><a href="Transform.html" class="classlink">Transform</a>[] GetTransforms (<a href="SelectionMode.html" class="classlink">SelectionMode</a> mode)</div>
+   <p class='details'> Allows for fine grained control of the selection type using the <a href="SelectionMode.html" class="classlink">SelectionMode</a> bitmask.</p>
+	<a name="GetFiltered"></a><h3><span class="full-name">Selection.</span>GetFiltered</h3><div class="synopsis"><a href="Object.html" class="classlink">Object</a>[] GetFiltered (<span class="standard_type">Type</span> type, <a href="SelectionMode.html" class="classlink">SelectionMode</a> mode)</div>
+   <p class='details'> Returns the current selection filtered by type and mode.
+Only objects derived from type will be returned.
+if <span class="variable">type</span> is a subclass of <a href="Component.html" class="classlink">Component</a> or <a href="GameObject.html" class="classlink">GameObject</a> the full <a href="SelectionMode.html" class="classlink">SelectionMode</a> is supported.
+if <span class="variable">type</span> does not subclass from <a href="Component.html" class="classlink">Component</a> or <a href="GameObject.html" class="classlink">GameObject</a> (eg. <a href="LodMesh.html" class="classlink">LodMesh</a> or <a href="ScriptableObject.html" class="classlink">ScriptableObject</a>) only <a href="SelectionMode.html#ExcludePrefab" class="itemlink">SelectionMode.ExcludePrefab</a>, <a href="SelectionMode.html#Editable" class="itemlink">SelectionMode.Editable</a>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">import UnityEditor;<br/>// <a href="MenuItem.html" class="classlink">MenuItem</a> adds a menu item <span class="keyword">in</span> the <a href="GameObject.html" class="classlink">GameObject</a> menu<br/>// and executes the following function when clicked<br/>@<a href="MenuItem.html" class="classlink">MenuItem</a> ("<a href="GameObject.html" class="classlink">GameObject</a>/Apply values")<br/><span class="keyword">static</span> function ApplyHardcodedValues ()<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Get all selected game objects that we are allowed to modify!<br/>&nbsp;&nbsp;&nbsp;&nbsp;var gos = <a href="Selection.html#GetFiltered" class="itemlink">Selection.GetFiltered</a>(<a href="GameObject.html" class="classlink">GameObject</a>, <a href="SelectionMode.html#Editable" class="itemlink">SelectionMode.Editable</a>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Change the values of all<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span> (var go <span class="keyword">in</span> gos) <br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Change the layer of the game object to 2<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go.layer = 2;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;// Get all selected rigid bodies that we are allowed to modify!<br/>&nbsp;&nbsp;&nbsp;&nbsp;var bodies = <a href="Selection.html#GetFiltered" class="itemlink">Selection.GetFiltered</a>(<a href="Rigidbody.html" class="classlink">Rigidbody</a>, <a href="SelectionMode.html#Editable" class="itemlink">SelectionMode.Editable</a>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Change the values of all<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span> (var body <span class="keyword">in</span> bodies) <br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Change the layer of the game object to 2<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body.mass = 5;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

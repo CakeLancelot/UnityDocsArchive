@@ -1,0 +1,57 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="CharacterController"-->
+			<title>Unity Script Reference &ndash; CharacterController</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class CharacterController</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class CharacterController" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Collider.html" class="classlink">Collider</a></div></p>
+   <p class='first'> A CharacterController allows you to easily do movement constrained by collisions,</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#radius'>radius</a></p>
+<p><a href='#height'>height</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Functions</p><p><a href='#Move'>Move</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Messages Sent</p><p><a href='#OnControllerColliderHit'>OnControllerColliderHit</a></p>
+<p><a href='#OnControllerControllerHit'>OnControllerControllerHit</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> without having to deal with a rigidbody.  <p class="basic"/>A CharacterController is not affected by forces and will only move when you call the Move funtion.
+It will then carry out the movement but be constrained by collisions.</p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="radius"></a><h3><span class="full-name">CharacterController.</span>radius</h3><div class="synopsis"><span class="standard_type">float</span> radius</div>
+   <p class='details'> The radius of the character's capsule<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">var controller : CharacterController = GetComponent(CharacterController);<br/>controller.radius = 0.3;</div></td></tr></table></p>
+	<a name="height"></a><h3><span class="full-name">CharacterController.</span>height</h3><div class="synopsis"><span class="standard_type">float</span> height</div>
+   <p class='details'> The height of the character's capsule<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Set the controller height to 2.0<br/>var controller : CharacterController = GetComponent(CharacterController);<br/>controller.height = 2.0;</div></td></tr></table></p>
+   <a name="Methods"></a><h2 class="script-section">Methods</h2>
+	<a name="Move"></a><h3><span class="full-name">CharacterController.</span>Move</h3><div class="synopsis"><a href="CollisionFlags.html" class="classlink">CollisionFlags</a> Move (<a href="Vector3.html" class="classlink">Vector3</a> motion)</div>
+   <p class='details'> Attempts to move the controller by <span class="variable">motion</span>.
+<a href="CollisionFlags.html" class="classlink">CollisionFlags</a> is the summary of collisions that occurred during the Move.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">/// This script moves the character controller forward <br/>/// and sideways based on the arrow keys.<br/>/// It also jumps when pressing space.<br/>/// Make sure to attach a character controller to the same game object.<br/>var speed = 6.0;<br/>var jumpSpeed = 8.0;<br/>var gravity = 20.0;<br/><br/><span class="keyword">private</span> var moveDirection = <a href="Vector3.html#zero" class="itemlink">Vector3.zero</a>;<br/><span class="keyword">private</span> var grounded : boolean = false;<br/><br/>function FixedUpdate() {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (grounded) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// We are grounded, so recalculate<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// move direction directly from axes<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moveDirection = <a href="Vector3.html" class="classlink">Vector3</a>(<a href="Input.html#GetAxis" class="itemlink">Input.GetAxis</a>("Horizontal"), 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                        <a href="Input.html#GetAxis" class="itemlink">Input.GetAxis</a>("Vertical"));<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moveDirection = transform.TransformDirection(moveDirection);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moveDirection *= speed;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Input.html#GetButton" class="itemlink">Input.GetButton</a> ("Jump")) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moveDirection.y = jumpSpeed;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;// Apply gravity<br/>&nbsp;&nbsp;&nbsp;&nbsp;moveDirection.y -= gravity * <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Move the controller<br/>&nbsp;&nbsp;&nbsp;&nbsp;var controller : CharacterController = GetComponent(CharacterController);<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;var flags = controller.Move(moveDirection * <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;grounded = (flags & <a href="CollisionFlags.html#CollidedBelow" class="itemlink">CollisionFlags.CollidedBelow</a>) != 0;<br/>}</div></td></tr></table></p>
+   <a name="Messages Sent"></a><h2 class="script-section">Messages Sent</h2>
+	<a name="OnControllerColliderHit"></a><h3><span class="full-name">CharacterController.</span>OnControllerColliderHit</h3><div class="synopsis"><span class="standard_type">void</span> OnControllerColliderHit (<a href="ControllerColliderHit.html" class="classlink">ControllerColliderHit</a> hit)</div>
+   <p class='details'> OnControllerColliderHit is called when the controller hits a collider while performing a Move.
+This can be used to push objects when they collide with the character<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Push all rigdibodies forward when running into them!<br/>function OnControllerColliderHit (hit: <a href="ControllerColliderHit.html" class="classlink">ControllerColliderHit</a>)<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;var body : <a href="Rigidbody.html" class="classlink">Rigidbody</a> = hit.collider.rigidbody;<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Only rigid bodies<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (body)<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var normal = transform.TransformDirection(<a href="Vector3.html#forward" class="itemlink">Vector3.forward</a>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body.AddForce(normal * hit.moveLength * 5, <a href="ForceMode.html#VelocityChange" class="itemlink">ForceMode.VelocityChange</a>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+	<a name="OnControllerControllerHit"></a><h3><span class="full-name">CharacterController.</span>OnControllerControllerHit</h3><div class="synopsis"><span class="standard_type">void</span> OnControllerControllerHit (<a href="ControllerControllerHit.html" class="classlink">ControllerControllerHit</a> hit)</div>
+   <p class='details'> OnControllerControllerHit is called when the controller hits another controller while performing a Move.</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

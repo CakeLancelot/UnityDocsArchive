@@ -1,0 +1,288 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Color Correction Curves</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Color Correction Curves</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-ImageEffects.html">Image Effect Scripts</a> &gt; <a href="../Components/script-ColorCorrectionCurves.html">Color Correction Curves</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Color Correction Curves</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><span class='doc-keyword'>Color Correction Curves</span> make color adjustments using curves for each color channel. Depth based adjustments allow you to vary the color adjustment according to a pixel's distance from the camera. For example, objects on a landscape typically get more desaturated with distance due to the effect of particles in the atmosphere scattering. Selective adjustments can also be applied, so you can swap a target color in the scene for another color of your own choosing.
+</p>
+<p class='vspace'>As with the other <a href="../Components/comp-ImageEffects.html">image effects</a>, this effect is only available in Unity Pro and you must have the <a href="../Manual/HOWTO-InstallStandardAssets.html">Pro Standard Assets</a> installed before it becomes available.
+</p>
+<div class='vspace'></div><h2>Properties</h2>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Mode</span></td><td  align='left'>Chose between advanced or simple configuration modes.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Red</span></td><td  align='left'>The red channel curve.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Green</span></td><td  align='left'>The green channel curve.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Blue</span></td><td  align='left'>The blue channel curve.</td></tr>
+</table>
+<div class='vspace'></div><table width='100%'><tr ><td  align='left'><span class='doc-prop'>Red (Depth)</span></td><td  align='left'>The red channel curve for depth based correction.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Green (Depth)</span></td><td  align='left'>The green channel curve for depth based correction.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Blue (Depth)</span></td><td  align='left'>The blue channel curve for depth based correction.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Blend Curve</span></td><td  align='left'>Defines how blending between the foreground and background color correction is performed.</td></tr>
+</table>
+<div class='vspace'></div><table width='100%'><tr ><td  align='left'><span class='doc-prop'>Selective Color Correction</span></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Enable</span></td><td  align='left'>Enables the optional selective color correction.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Key</span></td><td  align='left'>The key color for selective color correction.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Target</span></td><td  align='left'>The target color for selective color correction.</td></tr>
+</table>
+<div class='vspace'></div><h2>Understanding Curves</h2>
+<p>Curves offer a powerful way to enhance an image and can be used to increase or decrease contrast, add a tint or create psychedelic color effects. Curves work on each of the red, green and blue color channels separately and are based around the idea of mapping each input brightness level (ie, the original brightness value of a pixel) to an output level of your choosing. The relationship between the input and output levels can be shown on a simple graph:-
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/script-ColorCorrectionCurves-0.jpg' /></div>
+<p class='vspace'>The horizontal axis represents the input level and the vertical represents the output level. Any point on the line specifies the output value that a given input is mapped to during processing. When the "curve" is the default straight line running from bottom-left to top-right, the input value is mapped to an identical output value, which will leave the pixel unchanged. However, the curve can be redrawn to re-map the brightness levels as required. A simple example is when the line goes diagonally from top-left to bottom-right:-
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/script-ColorCorrectionCurves-1.jpg' /></div>
+<p class='vspace'>In this case, the pixel's brightness will be inverted; 0% will map to 100%, 25% to 75% and vice versa. If this is applied to all color channels then the image will be like a photographic negative of the original.
+</p>
+<div class='vspace'></div><h3>Contrast</h3>
+<p>Most of the detail in an image is conveyed by the difference in brightness levels between pixels, regardless of their colour. Pixels that differ by less than about 2% brightness are likely to be indistinguishable but above this, the greater the difference, the greater the impression of detail. The spread of brightness values in the image is referred to as its contrast.
+</p>
+<p class='vspace'>If a shallow slope is used for the curve, rather than the corner-to-corner diagonal then the full range of input values will be squeezed into a narrower range of output values:-
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/script-ColorCorrectionCurves-2.jpg' /></div>
+<p class='vspace'>This has the effect of reducing the contrast, since the differences between pixel values in the output are necessarily smaller than those in the input (indeed, two slightly different input values may actually get mapped to the same output value). Note that since the image no longer spans the full range of output values, it is possible to slide the curve up and down the range, resulting in an image which is brighter or darker overall (the average brightness is sometimes called the "sit" point and is the parameter adjusted by the brightness control on a TV set). Reduced contrast can give the impression of gloom, fog or a dazzling light source in a scene, depending on the overall brightness.
+</p>
+<p class='vspace'>It is not necessary to reduce the contrast across the whole range of brightness levels. The curve's slope can vary along its length, with the shallower parts corresponding to ranges of reduced contrast. In between the shallow parts, the slope may be steeper than the default, and the contrast will actually increase in these ranges. Changing the curve like this gives a useful way to increase contrast in some parts of the image while reducing it in areas where the detail is less important:-
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/script-ColorCorrectionCurves-3.jpg' /></div>
+<div class='vspace'></div><h3>Colour Effects</h3>
+<p>If the curves are set identically for each color channel (red, green and blue) then the changes will mainly affect the brightness of pixels while their colors remain relatively unchanged. However, if the curves are set differently for each channel then the colors can change dramatically. Many complex interactions between the color channels are possible but some basic insight can be gained from the following diagram:-
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/script-ColorCorrectionCurves-4.jpg' /></div>
+<p class='vspace'>As explained in the section above, a reduction of contrast can accompany an increase or reduction in the overall brightness. If, say, the red channel is brightened then a red tint will be visible in the image. If it is darkened then the image will be tinted towards cyan (since this color is obtained by combining the other two primaries, green and blue).
+</p>
+<div class='vspace'></div><h3>Depth-Based Color Correction</h3>
+<p>Colors often appear slightly different when viewed at a distance. For example, in a landscape scene, colors tend to get desaturated by atmospheric light scattering. This kind of effect can be created using depth-based color correction. When this is enabled, two sets of color curves become available, one for the camera's near clipping plane and the other for the far clipping plane. The actual correction applied to an object depends on its distance from the camera; the normalized distance between the two clipping planes is used as an interpolation parameter between the two sets of color curves. The exact type of interpolation is specified by an additional blending curve, which maps the normalised distance to an interpolation value in much the same way that a color curve maps an input to an output. By default, this curve is a straight diagonal which results in linear interpolation between the two color corrections. However, it can be modified to bias the correction according to distance.
+</p>
+<div class='vspace'></div><h3>Selective Color Correction</h3>
+<p>Using this setting, it is possible to replace a particular color in the original image (referred to as the "key") and replace it with a chosen target color. Using a single exact color for the key would tend to introduce visual artifacts and so a range is used instead. The resulting color is an interpolation between the key and target colors, depending on how close the original image pixel is to the specified key color.
+</p>
+<div class='vspace'></div><h2>Editing Curves</h2>
+<p>Clicking on one of the curves in the inspector will open an editing window:-
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/script-ColorCorrectionCurves-5.jpg' /></div>
+<p class='vspace'>At the bottom of the window are a number of presets for common curves. However, you can also alter the curve by manipulating the key points. Right clicking on the curve line will add a new key point which can be dragged around with the mouse. If you right click on one of the points, you will see a contextual menu that gives several options for editing the curve. As well as allowing you to delete the key, there are four options that determine how it will affect the shape of the curve:-
+</p>
+<div class='vspace'></div><ul><li>Auto: the curve will pass through the point and its shape will be adjusted to keep the curvature smooth between neighbouring points.
+<div class='vspace'></div></li><li>Free Smooth: the tangent of the curve can be edited using handles attached to the key point.
+<div class='vspace'></div></li><li>Flat: Free Smooth mode is enabled and the tangent is set horizontally.
+<div class='vspace'></div></li><li>Broken: The key point has tangent handles as with Free Smooth mode but the handles on the left and right of the curve can be moved separately to create a sharp break rather than a smooth curve.
+</li></ul><p class='vspace'>Below these options are a few settings that control how a point's tangent handles behave:-
+</p>
+<div class='vspace'></div><ul><li>Free: Broken mode is enabled for the curve at the specified tangent.
+<div class='vspace'></div></li><li>Linear: The curve between the key point and its neighbour is set to a straight line.
+<div class='vspace'></div></li><li>Constant: A flat horizontal line is drawn from the curve to its neighbour and the vertical displacement occurs as a sharp step.
+</li></ul><div class='vspace'></div><h2>Hardware support</h2>
+<p>This effect requires a graphics card with pixel shaders (2.0) or OpenGL ES 2.0. Additionally, depth texture support is required. PC: NVIDIA cards since 2004 (GeForce 6), AMD cards since 2004 (Radeon 9500), Intel cards since 2006 (GMA X3000); Mobile: OpenGL ES 2.0 with depth texture support; Consoles: Xbox 360, PS3.
+</p>
+<p class='vspace'>All image effects automatically disable themselves when they can not run on end-users graphics card.
+</p>
+</p><small>Page last updated: 2011-09-28</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

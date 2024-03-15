@@ -1,0 +1,76 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Physics"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Physics" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-DynamicsGroup.html%22%3EPhysics%3C%2Fa%3E" -->
+		<h1>Physics</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-DynamicsGroup.html">Physics</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-LineRenderer.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-Rigidbody.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Unity has the next-generation Ageia PhysX physics engine built-in. This allows for unique emergent behaviour and is generally very cool.
+</p>
+
+<h2>Basics</h2>
+<p>To put an object under physics control, simply add a Rigidbody to it. When you do this, the object will be affected by gravity, and can collide with other objects in the world.
+</p>
+
+
+<h2> Components</h2>
+<p>Select a component below to see the details:
+</p>
+
+<h3>Physics Control</h3>
+<ul><li> <a href="../Components/class-Rigidbody.html">Rigidbody</a> - Rigid bodies put objects under physics control. After adding a rigid body,
+</li><li> <a href="../Components/class-ConstantForce.html">Constant Force</a> - A utility component that adds a constant force to a rigid body. Great for rockets and other quick functionality.
+</li></ul>
+
+<h3>Colliders</h3>
+<ul><li> <a href="../Components/class-SphereCollider.html">Sphere Collider</a> - use for sphere-shaped objects.
+</li><li> <a href="../Components/class-BoxCollider.html">Box Collider</a> - use for box-shaped objects.
+</li><li> <a href="../Components/class-CapsuleCollider.html">Capsule Collider</a> - use for capsule-like (a cylinder with half-sphere ends) objects.
+</li><li> <a href="../Components/class-MeshCollider.html">Mesh Collider</a> - takes the graphical <a href="../Components/class-Mesh.html">mesh</a> and uses it as a collision shape.
+</li><li> <a href="../Components/class-PhysicMaterial.html">Physic Material</a> - contains settings allowing objects to interact properly with each other (friction etc.).
+</li></ul>
+
+<h3>Joints</h3>
+<ul><li> <a href="../Components/class-HingeJoint.html">Hinge Joint</a> - Used to make door hinges.
+</li><li> <a href="../Components/class-SpringJoint.html">Spring Joint</a> - A spring-like joint.
+</li><li> <a href="../Components/class-FixedJoint.html">Fixed Joint</a> - use to &quot;lock&quot; objects together.
+</li></ul>
+
+<h3>Special functionality</h3>
+<ul><li> <a href="../Components/class-CharacterController.html">Character Controller</a> and <a href="../Components/class-CharacterJoint.html">Character Joint</a> - Used to make character controllers.
+</li><li> <a href="../Components/class-WheelCollider.html">Wheel Collider</a> - A special collider for grounded vehicles.
+</li></ul>
+
+
+
+
+		<div class="navigation"><a href="class-LineRenderer.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-Rigidbody.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

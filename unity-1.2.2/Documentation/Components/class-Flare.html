@@ -1,0 +1,86 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title=" Flare"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title=" Flare" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-AssetsGroup.html%22%3EAssets%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-Flare.html%22%3E%20Flare%3C%2Fa%3E" navigation="%3Ca%20href%3D%22class-LodMesh.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22class-Font.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1> Flare</h1>
+		<p><a href="index.html">Components</a> &gt; <a href="comp-AssetsGroup.html">Assets</a> &gt; <a href="class-Flare.html"> Flare</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="class-LodMesh.html"><img src="../images/prev.png"></a><a href="class-Font.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+<p>Flare objects are the sources for lens flares. You choose a <b>flare</b> from the project folder for your <b>lens flare</b> in your scenes - like you choose textures for your scene mesh object.
+</p>
+
+<p>Unity ships with a bunch of pre-made flares. If you want to add one of these to your scene, Use a <a href="../Components/class-LensFlare.html">LensFlare</a> component.
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Elements</nobr></b></td><td> A list of each image making up the flare. For a description, see Flare Element properties, below.
+</td></tr><tr><td><b><nobr>Fade In</nobr></b></td><td> If enabled, the flare will fade up to full strength when it becomes visible and fade out when it doesn't.
+</td></tr><tr><td><b><nobr>Zoom In</nobr></b></td><td> If enabled, the elements scale up when the flare becomes visible and scale down again when it doesn't.
+</td></tr><tr><td><b><nobr>FlareTexture</nobr></b></td><td> A texture containing images used by this flare.
+</td></tr><tr><td><b><nobr>Texture Layout</nobr></b></td><td> How the individual flare element images are laid out inside the flare texture.<br><!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Flare-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Flare-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</td></tr><tr><td><b><nobr>Use Fog</nobr></b></td><td> If enabled, the flare will fade away with distance fog. This is used for small flares
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+<p>A flare consists of multiple elements, arranged along a line. One point of the line goes through the lens flare object in the scene, the other goes through the screen center. The elements are strung out on this line.
+</p>
+
+<p><!--  -->
+</p>
+
+<h2>Flare Element Properties</h2>
+<p>Each element of a flare can be tweaked in a number of ways. Each index of the <b>Elements</b> array reveal the following properties.
+</p>
+
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Image Index</nobr></b></td><td> Which sub-image to use from the flare texture.
+</td></tr><tr><td><b><nobr>Rotate</nobr></b></td><td> If enabled, down on the image will always face the center of the screen, making the image spin as the flare moves around on the screen.
+</td></tr><tr><td><b><nobr>Use Light Color</nobr></b></td><td> Pick up the color from a light source?
+</td></tr><tr><td><b><nobr>Zoom</nobr></b></td><td> Make the flare size dependant on brightness?
+</td></tr><tr><td><b><nobr>Position</nobr></b></td><td> The position of the element along the line going from the light position, through the screen center (0 = light, 1 = screen center)
+</td></tr><tr><td><b><nobr>Size</nobr></b></td><td> The size of the element
+</td></tr><tr><td><b><nobr>Aspect</nobr></b></td><td> Aspect ratio of the element. If larger than 1, the element is tall &amp; thin. If smaller than one, the element is low and fat.
+</td></tr><tr><td><b><nobr>Angle</nobr></b></td><td> Angle of rotation of the flare elements
+</td></tr><tr><td><b><nobr>Color</nobr></b></td><td> Color tint of the element
+<p></td></tr></tr></table>
+</p>
+
+<h2> Flare Textures</h2>
+<p>For performace resons, all elements of one flare share the same texture. This texture contains a collection of the different images that get combined. The <b>Texture Layout</b> defines how the images are laid out in the <b>Flare Texture</b>. The following layouts are available:
+<dl><dt>1 Large 4 Small</dt><dd> Designed for large sun-style flare where you need one of the flare elements to have a higher fidelity than the others.<br><!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Flare-2.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Flare-2.jpg"></td></tr></table></p><!-- #EndLibraryItem --><br>This is designed to be used with textures that are twice as high as they are wide. <!--The numbers in the figure above are the elements' <b>Image Index</b> value.--></dd><dt>1 Large 2 Medium 8 small</dt><dd> Designed for complex flares that require 1 high-definition, 2 medium &amp; 8 small ones. <br><!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Flare-3.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Flare-3.jpg"></td></tr></table></p><!-- #EndLibraryItem --><br> This is used in the 50mm Zoom Flare where the 2 medium ones are the rainbow-colored circles.</dd><dt>1 texture</dt><dd> A single image.<br><!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Flare-4.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Flare-4.jpg"></td></tr></table></p><!-- #EndLibraryItem --></dd><dt>2x2 grid</dt><dd> A simple 2x2 grid.<br><!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Flare-5.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Flare-5.jpg"></td></tr></table></p><!-- #EndLibraryItem --></dd><dt>3x3 grid</dt><dd> A simple 3x3 grid.<br><!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Flare-6.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Flare-6.jpg"></td></tr></table></p><!-- #EndLibraryItem --></dd><dt>4x4 grid</dt><dd> A simple 4x4 grid.<br><!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Flare-7.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Flare-7.jpg"></td></tr></table></p><!-- #EndLibraryItem --></dd></dl>
+</p>
+
+<h2> Hints</h2>
+<ul><li> If you use many different flares, try to pack them into 1 flare texture as that will render faster.
+</li></ul>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

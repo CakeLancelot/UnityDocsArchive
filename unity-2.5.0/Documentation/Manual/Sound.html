@@ -1,0 +1,204 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Sound</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Sound</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Creating Gameplay.html">Creating Gameplay</a> &gt; <a href="../Manual/Sound.html">Sound</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Character-Animation.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Game Interface Elements.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Sound</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			<div class='vspace'></div><h1>Audio Listener</h1>
+<p>The <span class='doc-keyword'>Audio Listener</span> acts as a microphone-like device. It receives input from any given <a href="../Components/class-AudioSource.html">Audio Source</a> in the scene and plays sounds through the computer speakers.  It is traditionally attached to the Main <a href="../Components/class-Camera.html">Camera</a>.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Sound-0.jpg' /><br /><em>The Audio Listener, attached to the Main Camera</em></div>
+<div class='vspace'></div><h2>Properties</h2>
+<p>The Audio Listener has no properties.  It simply must be added to work.  It is always added to the Main Camera by default.
+</p>
+<div class='vspace'></div><h2>Details</h2>
+<p>The Audio Listener works in conjunction with <a href="../Components/class-AudioSource.html">Audio Sources</a>, allowing you to create the aural experience for your games.  When the Audio Listener is attached to a <span class='doc-keyword'><span class='wikiword'>GameObject</span></span> in your scene, any Sources that are close enough to the Listener will be picked up and output to the computer's speakers.  Each scene can only have 1 Audio Listener to work properly.
+</p>
+<p class='vspace'>As long as the Sources are in mono format, the Listener will automatically position the sound correctly in the stereo field, at the correct volume.  Stereo Sources will automatically play in both speakers.  For example, if your character walks off a street into a night club, the night club's music should probably be stereo, while the individual voices of characters in the club should be mono with their realistic positioning being handled by Unity.
+</p>
+<p class='vspace'>You should attach the Audio Listener to either the Main Camera or to the <span class='wikiword'>GameObject</span> that represents the player. Try both to find what suits your game best.
+</p>
+<div class='vspace'></div><h2>Hints</h2>
+<ul><li>Each scene can only have one Audio Listener.
+</li><li>You access the project-wide audio settings using the <a href="../Components/class-AudioManager.html">Audio Manager</a>, found in the <span class='doc-menu'>Edit-&gt;Project Settings-&gt;Audio</span> menu.
+</li><li>View the <a href="../Components/class-AudioClip.html">Audio Clip</a> Component page for more information about Mono vs Stereo sounds.
+</li></ul><h1>Audio Source</h1>
+<p>The <span class='doc-keyword'>Audio Source</span> takes an <a href="../Components/class-AudioClip.html">Audio Clip</a> and plays it from a position in the world.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Sound-1.jpg' /><br /><em>The Audio Source in the <span class='doc-keyword'>Scene View</span> and <span class='doc-keyword'>Inspector</span></em></div>
+<div class='vspace'></div><h2>Properties</h2>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Audio Clip</span></td><td  align='left'>Reference to the sound clip file that will be played</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Play On Awake</span></td><td  align='left'>If enabled, the sound will start playing the moment the scene launches. If disabled, you need to start it using the <span class='doc-prop'>Play()</span> command from scripting.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Volume</span></td><td  align='left'>How loud the sound is at a distance of 1 world unit (1 meter) from the <span class='doc-keyword'>Audio Listener</span>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Pitch</span></td><td  align='left'>Amount of change in pitch due to slowdown/speed up of the <span class='doc-prop'>Audio Clip</span>.  Value 1 is normal playback speed.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Min Volume</span></td><td  align='left'>The minimum value of the sound. No matter how far away you get, the sound will not get softer than this value.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Max Volume</span></td><td  align='left'>How loud the sound gets at the loudest. No matter how close you get, the sound will never get louder than this value.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Rolloff Factor</span></td><td  align='left'>How fast the sound fades. The higher the value, the closer the Listener has to be before hearing the sound.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Loop</span></td><td  align='left'>Enable this to make the <span class='doc-prop'>Audio Clip</span> loop when it reaches the end.</td></tr>
+</table>
+<div class='vspace'></div><h2>Creating Audio Sources</h2>
+<p>Audio Sources don't do anything without an assigned <span class='doc-prop'>Audio Clip</span>.  The Clip is the actual sound file that will be played back.  The Source is like a controller for starting and stopping playback of that clip, and modifying other audio properties.
+</p>
+<p class='vspace'>To create a new Audio Source:
+</p><ol><li>Import your audio files into your Unity Project.  These are now Audio Clips.
+</li><li>Go to <span class='doc-menu'><span class='wikiword'>GameObject</span>-&gt;Create Empty</span> from the menubar.
+</li><li>With the new <span class='wikiword'>GameObject</span> selected, select <span class='doc-menu'>Component-&gt;Audio-&gt;Audio Source</span>.
+</li><li>Assign the <span class='doc-prop'>Audio Clip</span> property of the Audio Source Component in the Inspector.
+</li></ol><div class='vspace'></div><h2>Hints</h2>
+<ul><li>The key to a nice sound environment is tweaking the <span class='doc-prop'>Rolloff Factor</span>.
+</li><li>3D audio effects will only work for mono Audio Clips. Stereo Audio Clips will be mixed as-is into the sound output.
+</li></ul><h1>Audio Clip</h1>
+<p><span class='doc-keyword'>Audio Clips</span> are used by <a href="../Components/class-AudioSource.html">Audio Sources</a> to represent the audio asset imported into Unity.  Unity supports both Mono and Stereo audio assets.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Sound-2.jpg' /><br /><em>The Audio Clip <span class='doc-keyword'>Inspector</span></em></div>
+<p class='vspace'>Audio Clips just work. The only thing you should have to do with them is reference them from within <a href="../Components/class-AudioSource.html">Audio Sources</a>.
+</p>
+<div class='vspace'></div><h2>Properties</h2>
+<p>Sound assets only have read-only properties.  Some of these properties can be changed in the <a href='#ImportSettings'>Import Settings</a>
+</p>
+<div class='vspace'></div><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Format</span></td><td  align='left'>The format the sound is stored in. Unity supports 4 raw formats and one compressed:</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Mono 8 bit</span></span></td><td  align='left'>8 bit uncompressed mono PCM audio</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Mono 16 bit</span></span></td><td  align='left'>16 bit uncompressed mono PCM audio</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Stereo 8 bit</span></span></td><td  align='left'>8 bit uncompressed stereo PCM audio</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Stereo 16 bit</span></span></td><td  align='left'>16 bit uncompressed stereo PCM audio</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Ogg Vorbis</span></span></td><td  align='left'>Ogg Vorbis encoded stereo or mono audio</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Length</span></td><td  align='left'>The duration of the sound file in seconds.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Frequency</span></td><td  align='left'>The sampling frequency of the file.</td></tr>
+</table>
+<div class='vspace'></div><h2>Importing Audio Assets</h2>
+<p>Unity features support for two types of audio: <span class='doc-keyword'>Uncompressed Audio</span> or <span class='doc-keyword'>Ogg Vorbis</span>.  Any type of audio file you import into your project will be converted to one of these formats.
+</p>
+<div class='vspace'></div><h3>File Type Conversion</h3>
+<table width='100%'><tr ><td  align='left'><span class='doc-prop'>.AIFF</span></td><td  align='left'>Converted to uncompressed audio on import, best for short sound effects.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>.WAV</span></td><td  align='left'>Converted to uncompressed audio on import, best for short sound effects.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>.<span class='wikiword'>MP3</span></span></td><td  align='left'>Converted to Ogg Vorbis on import, best for longer music tracks.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>.OGG</span></td><td  align='left'>Compressed audio format, best for longer music tracks.</td></tr>
+</table>
+<p class='vspace'><a name='ImportSettings' id='ImportSettings'></a>
+</p><h3>Import Settings</h3>
+<p>If you are importing a file that is not already compressed as Ogg Vorbis, you have a number of options in the <span class='doc-keyword'>Import Settings</span> of the Audio Clip in the <span class='doc-keyword'>Inspector</span>.  Here, you can compress the Clip into Ogg Vorbis format, force it into Mono or Stereo playback, and tweak other options.  There are positives and negatives for both Ogg Vorbis and uncompressed audio.  Each has its own ideal usage scenarios, and you generally should not use either one exclusively.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Sound-3.jpg' /><br /><em>The Audio Clip Import Settings</em></div>
+<div class='vspace'></div><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Audio Format</span></td><td  align='left'>Only available if the file was initially saved in an uncompressed format.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Uncompressed</span></span></td><td  align='left'>Best for short sound effects.  For more info, jump to the <a href='#UsingUncompressedAudio'>using uncompressed audio section.</a></td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Ogg Vorbis</span></span></td><td  align='left'>Best for longer audio files like music.  For more info, jump to the <a href='#UsingOggVorbis'>using Ogg Vorbis section.</a></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Channels</span></td><td  align='left'>You can force the sound to play back in Mono or Stereo. This is important for <a href='#PositionalAudio'>using Positional Audio</a>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Bitrate</span></td><td  align='left'>Set the bitrate to optimize file size of compressed Ogg Vorbis Clip``</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Decompress on load</span></td><td  align='left'>If enabled, this Clip will be decompressed into memory when the containing level is loaded.  This is important for <a href='#OggPerformance'>optimizing player experience</a>.</td></tr>
+</table>
+<p class='vspace'><a name='PositionalAudio' id='PositionalAudio'></a>
+</p><h2>Using Positional Audio</h2>
+<p>Positional audio is the placement and volume of sounds across the computer speakers.  It simulates distance and location of sounds by fading volume and panning across speakers.  Unity supports Positional audio, but only mono Audio Clips are played positionally.  Stereo sounds are always at the volume and panning determined by the asset file.  For this reason, mono Clips are best for sound effects, and stereo Clips are best for music.
+</p>
+<p class='vspace'>There are special cases, like if you wanted music playing from two unique in-game speaker environment objects.  The closer you move your character to one of the speakers, the louder the music will get.  This setup would require the speaker music in mono format.
+</p>
+<p class='vspace'>If you have an Audio Clip that is in stereo, but you want to use it positionally, change the <span class='doc-prop'>Channels</span> property to <span class='doc-prop'>Force Mono</span> in the Import Settings.  This allows you to be very creative with how you use audio in your game.
+</p>
+<p class='vspace'><a name='UsingUncompressedAudio' id='UsingUncompressedAudio'></a>
+</p><h2>When to use Uncompressed Audio</h2>
+<p><b>If you are creating a web player game, do not use uncompressed audio.  Only use Ogg Vorbis.</b>
+</p>
+<p class='vspace'>Uncompressed has the benefit of being quick to play without increasing CPU taxation.  This is because it does not need to be decompressed before it can be played.  However, uncompressed audio is quite large so it will increase the size of your player.  Usually short Clips like sound effects are good for uncompressed audio, unless you are publishing a web player.  If you are publishing a web player, you don't want to increase the file size any more than is absolutely necessary so you basically won't use uncompressed audio, unless you have a few crucial sounds that are shorter than 0.5 seconds.  Clips that Uncompressed audio should usually be either 22khz or 11khz. Ideally you should not use 44khz since that takes up too much disk space and the quality difference is not very audible.
+</p>
+<p class='vspace'><a name='UsingOggVorbis' id='UsingOggVorbis'></a>
+</p><h2>When to use Ogg Vorbis</h2>
+<p><b>If you are creating a web player game, always use Ogg Vorbis.</b>
+</p>
+<p class='vspace'>Ogg Vorbis files have the benefit of being compressed, which minimizes the amount of disk space they consume.  This means that you can include long audio files without making a huge increase in the file size of your player.  However, before they can be played back they must be decompressed.  This takes time and processor cycles.  Frequency of Ogg Vorbis files should be 44khz, because playback will be faster than files with a 22khz frequency.
+</p>
+<p class='vspace'><a name='OggPerformance' id='OggPerformance'></a>
+</p><h3>Loading Ogg Vorbis files</h3>
+<p>If you're using Ogg Vorbis, you have an option to choose when the Clip will be decompressed.  The option is set in the Import Settings:
+</p>
+<div class='vspace'></div><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'><span class='wikiword'>DecompressOnLoad</span></span> enabled</td><td  align='left'>Decompress and load the Clip into RAM when the player is loading.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'><span class='wikiword'>DecompressOnLoad</span></span> disabled (Live decompression)</td><td  align='left'>Decompress and play the Clip real-time when the Clip is triggered to start.</td></tr>
+</table>
+<p class='vspace'>Decompressing on load is the most common.  It means that the levels containing the Clip will take longer to load initially, and it will use up more of the end-user's RAM.  Live decompression does not load the Clip data into RAM at level load.  Instead, it requires the CPU to decompress the sound real-time.  This means it is more CPU intensive rather than RAM intensive.
+</p>
+<p class='vspace'>To summarize, enable decompression on load as much as possible, and definitely for all short Clips.  Pick live decompression for longer Clips like music tracks.  All Ogg Vorbis Clips using live decompression will increase CPU usage.  It can use a substantial amount of CPU to live decompress multiple Clips at once, so you should avoid playing more than 2 live decompression Clips at once.
+</p>
+<div class='vspace'></div><h1>Hints</h1>
+<ul><li>There is not much of a reason to import your own .ogg files.  Create your sounds in AIFF or WAV format, then you can compress them if you want to right inside the Import Settings.
+</li><li>Stereo sounds are always played as-is. If you want to use attenuation and other 3D audio effects, force your Clip to be mono in the Import Settings.
+</li></ul>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Character-Animation.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Game Interface Elements.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,183 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Master Server</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Master Server</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Network Reference Guide.html">Network Reference Guide</a> &gt; <a href="../Components/net-MasterServer.html">Master Server</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/net-NetworkLevelLoad.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/net-MasterServerBuild.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Master Server</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>The Master Server is a meeting place for games that are actively seeking clients, and player clients who want to connect to them. Its purpose is also to hide IP address and port details and perform technical tasks around setting up network connections which might otherwise not be possible, like firewall handling and NAT punch-through.
+</p>
+<p class='vspace'>Each individual running game server provide a <span class='doc-keyword'>Game Type</span> to the Master Server. All games with a matching <span class='doc-keyword'>Game Type</span> are gathered together so that compatible clients can easily view them. When a player connects and queries the Master Server for their matching <span class='doc-keyword'>Game Type</span>, useful information on the server is displayed for the player to see.  This helps the player decide which server to connect to. This includes the <span class='doc-keyword'>Game Name</span>, player count and whether or not a password is needed. The two functions used to transmit this data are <a class='urllink' href='../ScriptReference/MasterServer.RegisterHost.html' rel='nofollow'>MasterServer.RegisterHost()</a> for the Server, and <a class='urllink' href='../ScriptReference/MasterServer.RequestHostList.html' rel='nofollow'>MasterServer.RequestHostList()</a> for the player client.
+</p>
+<p class='vspace'>When calling <span class='doc-prop'>RegisterHost()</span>, you need to pass three arguments - <em>gameTypeName</em> (which is the previously mentioned <span class='doc-keyword'>Game Type</span>), <em>gameName</em> and <em>comment</em> - for the host being registered. <span class='doc-prop'>RequestHostList()</span> takes as an argument the <em>gameTypeName</em> of the hosts you are interested in connecting to. All the registered hosts of that type will then be sent to the requesting client. This is an asynchronous operation and the actual host list can be retrieved with <span class='doc-prop'>PollHostList()</span> which returns the list when it has arrived.
+</p>
+<p class='vspace'>The NAT punchthrough portion of the Master Server is actually done by a separate entity called the <span class='doc-keyword'>Facilitator</span>. The central Unity Master Server is also running a Facilitator in addition to being a game lobby so it is OK to think of these functionalities as simply Master Server functionalities in that context.
+</p>
+<p class='vspace'>The <span class='doc-keyword'>Game Type</span> you set for your game should be unique for your game. This is to prevent clients running a completely different game from seeing your servers and trying to connect to them. So don't use "Game1" or anything generic like that as the <span class='doc-prop'>gameTypeName</span>. Be specific and unique.  If you have different versions of your game out, you could use the comment field to relay that information. That way the client will know if their version is incompatible with some servers in the host list. The comment field can also be used to relay any information you desire. It is a binary data field and can store objects, you just need to cast them properly yourself.
+</p>
+<p class='vspace'>More advanced functionality can be done by using the comment field and customizing the Master Server so that it will use that information itself. For example you could reserve the first 10 bytes of the comment field for a password and then extract the password in the Master Server when it receives the host update. It can compare and reject the host update if appropriate (password check fails). Of course this would require editing of the Master Server source code itself, but this can be downloaded and modified.  For more information about this, skip down the page to the <a href='#advanced'>Advanced Section</a>.
+</p>
+<div class='vspace'></div><h2>Registering a game</h2>
+<p>Before registering a game it is important to set the NAT functionality properly by setting <a class='urllink' href='../ScriptReference/Network-useNat.html' rel='nofollow'>Network.useNat</a> to true or false depending on the networking capabilities of the host.  The user hosting the game <em>should</em> know if he has a NAT address or not and if the game port is connectable on the public internet, so before hosting the game he will indicate if NAT assistance is needed or not.
+</p>
+<p class='vspace'>A server might be started with code similar to this:
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+function OnGUI() {
+	if (GUILayout.Button ("Start Server"))
+	{
+		// Use NAT punchthrough if no public IP present
+		Network.useNat = !Network.HavePublicAddress();
+		Network.InitializeServer(32, 25002);
+		MasterServer.RegisterHost("MyUniqueGameType", "JohnDoes game", "l33t game for all");
+	}
+}
+</pre>
+<p class='vspace'>Here we just decide if NAT punchthrough is needed based on if the machine has a public address or not. There is a more involved function available called <a class='urllink' href='../ScriptReference/Network.TestConnection.html' rel='nofollow'>Network.TestConnection()</a> which can tell you if the host machine can do NAT or not. It also does connectivity testing for public IP addresses to see if a firewall is blocking the game port. Machines which have public IP addresses always pass the NAT test but if the test fails then the host will <b>NOT</b> be connectable to NAT clients. In such a case the user needs to be informed that in order to host a game he needs to set up port forwarding if possible. Usually people with cheap broadband connections will have a NAT address and not be able to set up port forwarding (as they don't have a personal public IP address at all). In these cases, if the NAT test fails, the user should be informed that running a server is inadvisable as no one but clients on the same local network will be able to connect.
+</p>
+<p class='vspace'>If a host enables NAT functionality without needing it, no harm is done and it will still be connectable, however, client which cannot do NAT punchthrough will think they cannot connect to him as he has NAT enabled. 
+</p>
+<div class='vspace'></div><h3>Connecting to a game</h3>
+<p>The host information, <span class='doc-prop'>HostData</span>, object sent during host registrations or queries contains the following information:
+</p><table width='100%'><tr ><td  align='left'>boolean</td><td  align='left'><span class='doc-prop'>useNat</span></td><td  align='left'>Indicates if the host uses NAT punchthrough.</td></tr>
+<tr ><td  align='left'>String</td><td  align='left'><span class='doc-prop'>gameType</span></td><td  align='left'>The game type of the host.</td></tr>
+<tr ><td  align='left'>String</td><td  align='left'><span class='doc-prop'>gameName</span></td><td >The game name of the host.</td></tr>
+<tr ><td  align='left'>int</td><td  align='left'><span class='doc-prop'>connectedPlayers</span></td><td >The amount of currently connected players/clients.</td></tr>
+<tr ><td  align='left'>int</td><td  align='left'><span class='doc-prop'>playerLimit</span></td><td >The maximum amount of allowed concurrent players/clients.</td></tr>
+<tr ><td  align='left'>String[]</td><td  align='left'><span class='doc-prop'>IP</span></td><td >The internal IP address of the host. On a server with a public address the external and internal addresses are the same. This is an array as when connecting internally, all the IP addresses associated with all the active interfaces of the machine need to be checked.</td></tr>
+<tr ><td  align='left'>int</td><td  align='left'><span class='doc-prop'>port</span></td><td >The port of the host.</td></tr>
+<tr ><td  align='left'>boolean</td><td  align='left'><span class='doc-prop'>passwordProtected</span></td><td >Indicates if you need to supply a password to be able to connect to this host.</td></tr>
+<tr ><td  align='left'>String</td><td  align='left'><span class='doc-prop'>comment</span></td><td >Any comment which was set during host registration.</td></tr>
+</table>
+<p class='vspace'>This information can be used by clients to connect the the host in the correct manner, like for example with or without NAT punchthrough. The connect routine might look something like this:
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+function Awake() {
+	MasterServer.RequestHostList("MadBubbleSmashGame");
+}
+
+function OnGUI() {
+	var data : HostData[] = MasterServer.PollHostList();
+	// Go through all the hosts in the host list
+	for (var element in data)
+	{
+		GUILayout.BeginHorizontal();	
+		var name = element.gameName + " " + element.connectedPlayers + " / " + element.playerLimit;
+		GUILayout.Label(name);	
+		GUILayout.Space(5);
+		var hostInfo;
+		hostInfo = "[";
+		for (var host in element.ip)
+			hostInfo = hostInfo + host + ":" + element.port + " ";
+		hostInfo = hostInfo + "]";
+		GUILayout.Label(hostInfo);	
+		GUILayout.Space(5);
+		GUILayout.Label(element.comment);
+		GUILayout.Space(5);
+		GUILayout.FlexibleSpace();
+		if (GUILayout.Button("Connect"))
+		{
+			// Set NAT functionality based on the host information
+			Network.useNat = element.useNat;
+			if (Network.useNat)
+				print("Using Nat punchthrough to connect to host");
+			else
+				print("Connecting directly to host");
+			Network.Connect(element.ip, element.port);			
+		}
+		GUILayout.EndHorizontal();	
+	}
+}
+</pre>
+<p class='vspace'>This example code prints out all the relevant information of the hosts returned by the Master Server. Other useful data like ping information or geographic location of hosts can be added to this.
+</p>
+<div class='vspace'></div><h2>NAT punchthrough</h2>
+<p>Bear in mind that NAT punchthrough will not work 100% of the time so certain machines are not suited to run as servers as some clients can connect to them and certain client might have trouble connecting to any NAT server.
+</p>
+<p class='vspace'>By default NAT punch through is done with the help of the Master Server but this functionality does not need to rely on the Master Server. The Facilitator is the one who is actually used for the NAT punchthrough routine. If two machines are connected to the Facilitator, one can directly connect to the other if as long as it uses the external IP and port. The Master Server is used to provide this external IP and port information which is otherwise hard to determine. That is why the Master Server and Facilitator are so tightly integrated. The Master Server and Facilitator have the same IP address by default, to change either one use the <a class='urllink' href='../ScriptReference/MasterServer-ipAddress.html' rel='nofollow'>MasterServer.ipAddress</a>, <a class='urllink' href='../ScriptReference/MasterServer-port.html' rel='nofollow'>MasterServer.port</a>, <a class='urllink' href='../ScriptReference/Network-natFacilitatorIP.html' rel='nofollow'>Network.natFacilitatorIP</a> and <a class='urllink' href='../ScriptReference/Network-natFacilitatorPort.html' rel='nofollow'>Network.natFacilitatorPort</a>
+</p>
+<p class='vspace'><a name='advanced' id='advanced'></a>
+</p><h2>Advanced</h2>
+<p>The Master Server is a completely separate entity from the Unity editor itself. It can be deployed on Windows, Linux and Mac OS, and anyone can have their own Master Server. Unity Technologies has a dedicated Master Server available for anyone to use which is the default server used. 
+</p>
+<p class='vspace'>There might be cases where you want do modify how the Master Server handles information and how it communicates. Maybe you need to do some optimizations of how the Master Server handles host data information from the individual game servers. Maybe you need to limit how many hosts the clients will receive when they request the host list, either numerically or through some kind of filter like location. This would mostly be bandwidth optimizations but anything can be done as long as it communicates properly with the Unity player.
+</p>
+<p class='vspace'>To perform any of these modifications, you must build, deploy, and host your own Master Server. Information about how to do this can be found on the <a href="../Components/net-MasterServerBuild.html">Master Server Build page</a>.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/net-NetworkLevelLoad.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/net-MasterServerBuild.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

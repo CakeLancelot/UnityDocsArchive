@@ -1,0 +1,80 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" Unity's Rendering Pipeline"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title=" Unity's Rendering Pipeline" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced.html%22%3EAdvanced%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Shaders.html%22%3EShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-RenderPipeline.html%22%3E%20Unity's%20Rendering%20Pipeline%3C%2Fa%3E" -->
+		<h1> Unity's Rendering Pipeline</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced.html">Advanced</a> &gt; <a href="Shaders.html">Shaders</a> &gt; <a href="SL-RenderPipeline.html"> Unity's Rendering Pipeline</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="SL-Fallback.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-Attenuation.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Shaders define both how an object looks by itself (it's material properties) and how it reacts to the light. Because lighting calculations must be built into the shader, and there are many possible light types, writing quality shaders that &quot;just work&quot; is an involved task. This document describes the pecularities of Unity's lighting&amp;rendering pipeline and how the shaders need to be written to support all the different lights.
+</p>
+
+<h2> Light types and modes</h2>
+
+<p>In Unity, a <a href="../Components/class-Light.html">Light</a> can be Directional, Point or Spot light. Additionally, Ambient light level can be specified in <a href="../Components/class-RenderSettings.html">Render Settings</a>.
+</p>
+
+<p>When any object is rendered, the lights that illuminate it are determined; and each light is chosen to render in <i>Vertex</i> or <i>Pixel</i> lighting mode. Per-pixel lighting usually looks a lot better, but is more expensive to render as well. So for each object, only some amount (specified in <a href="../Components/class-QualitySettings.html">Quality Settings</a>) of brightest lights are rendered in Pixel mode, while the remaining are rendered using Vertex lighting. When no lights are shining on an object, it is rendered in <i>None</i> mode.
+</p>
+
+<p>Each object is then rendered in the following way:
+</p>
+<ul><li> If there are any Vertex lights shining on it, they are all rendered at once. This renders all &quot;vertex&quot; passes in the shader, and the shader is expected to take both vertex lighting and ambient light into account here.
+</li><li> If there are no Vertex lights shining on it, a shader is executed once, to take ambient light into account. This renders all &quot;none&quot; passes in the shader.
+</li><li> After that, the pixel lighting is added on top. Usually all &quot;pixel&quot; passes in the shader are rendered for each pixel light. This is the main reason why pixel lights are more expensive - because they have to render object for each light separately, instead of for all lights at once.
+<ul><li> A pixel-lit shader pass can be written in a way that supports more than one light at a time. Unity renders as much pixel lights at once as the shader can handle, but due to hardware limits and authoring complexity most often pixel lit shader passes operate on one light at a time.
+</li></ul></li></ul>
+
+<p>Each pass in a shader communicates it's lighting type (pixel, vertex etc.) via <a href="../Manual/SL-NameAndTags.html">Tags</a>.
+</p>
+
+<h2> Vertex Lights</h2>
+
+<p>Vertex lights are rendered using &quot;vertex&quot; passes (see <a href="../Manual/SL-NameAndTags.html">pass tags</a>). All lights are rendered at once, using a fixed function OpenGL lighting model (<a class="wiki"  href="http://en.wikipedia.org/wiki/Blinn-Phong_shading">Blinn-Phong</a>). It is not possible to use vertex programs with vertex lights because vertex programs and fixed function lighting can be used at the same time. Note that it is still possible to use fragment programs, reading the interpolated diffuse and specular lighting colors.
+</p>
+
+<p>In summary, vertex lighting is calculated automatically. All you do in a shader is use the calculated diffuse/specular colors, either in a fragment program or in the texture combiner setup. Vertex lights do not support light cookies.
+</p>
+
+<h2> Pixel Lights</h2>
+
+<p>Implementing a pixel lighting shader part is much more involved, mostly because there are different light types (directional, point, spot) and a shader must be able to process all of them. For pixel lights you also want to write a custom vertex program (using fixed function OpenGL lighting does not make sense - you could just use vertex lights and get much better performance) where you must calculate the lighting yourself.
+</p>
+
+<p>If you implement pixel lighting passes in the shader, most often you want to implement passes for the case when no lights are shining (ambient pass) as well. See <a href="../Manual/SL-NameAndTags.html">Pass Tags</a> for details.
+</p>
+
+<p>The details of implementing light types in custom shaders are described in <a href="../Manual/SL-Attenuation.html">Attenuation and Cookies for Pixel Lights</a>.
+</p>
+
+
+
+		<div class="navigation"><a href="SL-Fallback.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-Attenuation.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

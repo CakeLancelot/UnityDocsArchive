@@ -1,0 +1,50 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Physics.Raycast"-->
+			<title>Unity Script Reference &ndash; Physics.Raycast</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<script language="JavaScript" src="UnityDoc.js"></script>
+<body>
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>Raycast</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+	<!-- #TemplateEndEditable -->
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-top.lbi" --><!-- #EndLibraryItem --><div class="left-menu-container"><ul class="left-menu"><li><span class="left-menu-heading">Menu</span></li><li><a class="left-menu-item" href="index.html">Overview</a></li><li><a class="left-menu-item" href="20_class_hierarchy.html">Class Hierarchy</a></li><li><a class="left-menu-item" href="10_reference.html">Reference</a></li><li><span class="left-menu-seperator"></span></li><li><a class="left-menu-heading" href="Physics.html">Physics</a></li><li><a class="left-menu-item" href="Physics.html">Class Members</a></li><li><span class="left-menu-subheading">Class Variables</span></li><li><a class="left-menu-item" href="Physics.bounceTreshold.html">bounceTreshold</a></li><li><a class="left-menu-item" href="Physics.gravity.html">gravity</a></li><li><a class="left-menu-item" href="Physics.maxAngularVelocity.html">maxAngularVelocity</a></li><li><a class="left-menu-item" href="Physics.minPenetrationForPenalty.html">minPenetrationForPenalty</a></li><li><a class="left-menu-item" href="Physics.sleepAngularVelocity.html">sleepAngularVelocity</a></li><li><a class="left-menu-item" href="Physics.sleepVelocity.html">sleepVelocity</a></li><li><a class="left-menu-item" href="Physics.solverIterationCount.html">solverIterationCount</a></li><li><span class="left-menu-subheading">Class Functions</span></li><li><a class="left-menu-item" href="Physics.IgnoreCollision.html">IgnoreCollision</a></li><li><a class="left-menu-item" href="Physics.Linecast.html">Linecast</a></li><li><a class="left-menu-item" href="Physics.OverlapSphere.html">OverlapSphere</a></li><li><span class="left-menu-item left-menu-current">Raycast</span></li></ul></div>
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-middle.lbi" --><!-- #EndLibraryItem -->	<div id="Raycast" class="manual-entry"><h3><span class="full-name">Physics.</span>Raycast</h3><div class="synopsis">bool Raycast (<a href="Vector3.html" class="classlink">Vector3</a> origin, <a href="Vector3.html" class="classlink">Vector3</a> direction, float distance = <a href="Mathf.Infinity.html?from=Physics" class="itemlink">Mathf.Infinity</a>, int layerMask = kDefaultRaycastLayers)</div>
+   <p class="details"> Casts a ray against all colliders in the scene.
+The ray starts at <span class="variable">origin</span> and is directed along <span class="variable">direction</span>.
+The length of the ray is <span class="variable">distance</span>.
+Returns true when if ray hits any collider.
+<a href="../ScriptingConcepts/Layers.html" class="classlink">Layer mask</a> is used to selectively ignore colliders when casting a ray. </p><div class="code">function Update () {<br/>    var hit : <a href="RaycastHit.html" class="classlink">RaycastHit</a>;<br/>    var fwd = transform.TransformDirection (<a href="Vector3.forward.html?from=Physics" class="itemlink">Vector3.forward</a>);<br/>    if (<a href="Physics.Raycast.html" class="itemlink">Physics.Raycast</a> (transform.position, fwd, 10)) {<br/>        print ("There is something in front of the object!");<br/>    }<br/>}</div><p class="details"></p>
+</div>	<div id="Raycast" class="manual-entry"><h3><span class="full-name">Physics.</span>Raycast</h3><div class="synopsis">bool Raycast (<a href="Vector3.html" class="classlink">Vector3</a> origin, <a href="Vector3.html" class="classlink">Vector3</a> direction, out <a href="RaycastHit.html" class="classlink">RaycastHit</a> hitInfo, float distance = <a href="Mathf.Infinity.html?from=Physics" class="itemlink">Mathf.Infinity</a>, int layerMask = kDefaultRaycastLayers)</div>
+   <p class="details"> Casts a ray against all colliders in the scene.
+The ray starts at <span class="variable">origin</span> and is directed along <span class="variable">direction</span>.
+The length of the ray is <span class="variable">distance</span>.
+Returns true if the ray hits any collider.
+If true is returned, <span class="variable">hitInfo</span> will contain more information about where the collider was hit (<span class="seealso"><b>See Also:</b> <a href="RaycastHit.html" class="classlink">RaycastHit</a>).</p><div class="code">function Update () {<br/>    var hit : <a href="RaycastHit.html" class="classlink">RaycastHit</a>;<br/>    if (<a href="Physics.Raycast.html" class="itemlink">Physics.Raycast</a> (transform.position, <a href="Vector3.down.html?from=Physics" class="itemlink">Vector3.down</a>, hit)) {<br/>        distanceToGround = hit.distance;<br/>    }<br/>}</span>
+</div><p class="details"><a href="../ScriptingConcepts/Layers.html" class="classlink">Layer mask</a> is used to selectively ignore colliders when casting a ray.</p>
+</div>	<div id="Raycast" class="manual-entry"><h3><span class="full-name">Physics.</span>Raycast</h3><div class="synopsis">bool Raycast (<a href="Ray.html" class="classlink">Ray</a> ray, float distance = <a href="Mathf.Infinity.html?from=Physics" class="itemlink">Mathf.Infinity</a>, int layerMask = kDefaultRaycastLayers)</div>
+   <p class="details"> Same as above using <span class="variable">ray.origin</span> and <span class="variable">ray.direction</span> instead of <span class="variable">origin</span> and <span class="variable">direction</span>.</p><div class="code">var ray = <a href="Camera.main.html?from=Physics" class="itemlink">Camera.main</a>.ScreenPointToRay (<a href="Input.mousePosition.html?from=Physics" class="itemlink">Input.mousePosition</a>);<br/>if (<a href="Physics.Raycast.html" class="itemlink">Physics.Raycast</a> (ray, 100)) {<br/>    print ("Hit something");<br/>}</div><p class="details"></p>
+</div>	<div id="Raycast" class="manual-entry"><h3><span class="full-name">Physics.</span>Raycast</h3><div class="synopsis">bool Raycast (<a href="Ray.html" class="classlink">Ray</a> ray, out <a href="RaycastHit.html" class="classlink">RaycastHit</a> hitInfo, float distance = <a href="Mathf.Infinity.html?from=Physics" class="itemlink">Mathf.Infinity</a>, int layerMask = kDefaultRaycastLayers)</div>
+   <p class="details"> Same as above using <span class="variable">ray.origin</span> and <span class="variable">ray.direction</span> instead of <span class="variable">origin</span> and <span class="variable">direction</span>.</p><div class="code">var ray = <a href="Camera.main.html?from=Physics" class="itemlink">Camera.main</a>.ScreenPointToRay (<a href="Input.mousePosition.html?from=Physics" class="itemlink">Input.mousePosition</a>);<br/>var hit : <a href="RaycastHit.html" class="classlink">RaycastHit</a>;<br/>if (<a href="Physics.Raycast.html" class="itemlink">Physics.Raycast</a> (ray, hit, 100)) {<br/>    <a href="Debug.DrawLine.html?from=Physics" class="itemlink">Debug.DrawLine</a> (ray.origin, hit.point);<br/>}</div><p class="details"></p>
+</div>	
+	</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

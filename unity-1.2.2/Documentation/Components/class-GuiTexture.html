@@ -1,0 +1,56 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="GUI Texture"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="GUI Texture" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-RenderingGroup.html%22%3ERendering%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-GuiTexture.html%22%3EGUI%20Texture%3C%2Fa%3E" navigation="%3Ca%20href%3D%22class-LensFlare.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22class-GuiText.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>GUI Texture</h1>
+		<p><a href="index.html">Components</a> &gt; <a href="comp-RenderingGroup.html">Rendering</a> &gt; <a href="class-GuiTexture.html">GUI Texture</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="class-LensFlare.html"><img src="../images/prev.png"></a><a href="class-GuiText.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+
+<p>GUI Textures are displayed as flat images in 2D. Positioning and scaling is done using the x and y components of the position and scale properties of the Transform component attached to the same game object. The positioning is relative to the screen width and height.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-GuiTexture-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-GuiTexture-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Texture</nobr></b></td><td> The image used by the GUI Texture.
+</td></tr><tr><td><b><nobr>Color</nobr></b></td><td> The color can be used to tint the image drawn on screen.
+</td></tr><tr><td><b><nobr>Pixel Inset</nobr></b></td><td> Used for pixel-based control of the scaling and positioning of the GUI Texture. <br/>When position and scale are set to to 0 the <i>Pixel Inset</i> parameters define the lower-left and upper right pixel coordinates of the image. If position and/or scale are set to different values, the pixel position of each corner will follow the following formulas. <br/><tt><i>lowerLeft</i>=(screenWidth*position.x - screenWidth*scale.x/2 + <b>Xmin</b>, screenHeight*position.y - screenHeight*scale.y/2 + <b>Ymin</b>)<br/><i>upperRight</i>=(screenWidth*position.x + screenWidth*scale.x/2 + <b>Xmax</b>, screenHeight*position.y + screenHeight*scale.y/2 + <b>Ymax</b>)
+</td></tr><tr><td><b><nobr>Left Border, Right Border,<br/> Top Border, Bottom Border</nobr></b></td><td> The number of pixels not to scale with the texture at each edge of the image.  As you rarely know the resolution your game runs in, chances are your GUI will get scaled. Some GUI textures have a border at the edge that is meant to be an exact number of pixels. In order for this to work, set the border sizes to match those from the texture.
+<p></td></tr></tr></table>
+</p>
+
+
+
+
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

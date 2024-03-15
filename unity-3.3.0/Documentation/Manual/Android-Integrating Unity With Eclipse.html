@@ -1,0 +1,329 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Integrating Unity with Eclipse</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Integrating Unity with Eclipse</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/android-GettingStarted.html">Getting Started with Android Development</a> &gt; <a href="../Manual/Android-Integrating Unity With Eclipse.html">Integrating Unity with Eclipse</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Android-Devices That Have Been Tested.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Android-Launch an Android Application from a Unity Application.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Integrating Unity with Eclipse</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Please not that every care has been taken to make this guide as friendly as possible to new users. However it will be a lot simpler to follow if you are at least familiar with using eclipse, the java programming language and have some knowledge of the android sdk.
+</p>
+<p class='vspace'>To be able to use unity android with eclipse you will first need to have Eclipse configured for use with Android. There is great guide on how to do this in the <a class='urllink' href='http://developer.android.com/sdk/eclipse-adt.html#installing' rel='nofollow'>android developer documentation</a>.
+</p><h2>Unity as a Library</h2>
+<p>Once you have eclipse installed and up to date you have to follow a few steps to get your unity project set up as a library in eclipse.
+</p>
+<div class='vspace'></div><ul><li>Create a new empty unity project and build it for android. It does not matter at this point if the unity project contains any code or other assets. This part of the process is in no way future proof and will be subject to change with future release of unity android.
+</li><li>Navigate to your new project folder and then into the Temp folder. In there is a folder called staging area.
+</li><li>Copy the staging area folder and place it somewhere in your file system that you can use as a holding area. This holding area should not be in your eclipse workspace as it will lead to errors.
+</li><li>Open Eclipse and create a new Android Project using File --&gt; New --&gt; Project.
+</li><li>Select Android Project then click next.
+</li><li>This will be the library part of your project so name the project accordingly to avoid any confusion.
+</li><li>You will also want to select the option to create project from an existing source. This source being the files you copied to the folder you are using as a holding area. If you select the Staging Area folder then click OK you will see that eclipse has filled in the relevant fields for you.
+</li><li>click finish on the project creation wizard.
+</li><li>Finally right click the root folder in the Package explorer tab in Eclipse and select the Properties option then the android tab. Check the "Is Library" check box, click Apply and then OK.
+</li></ul><p class='vspace'>This completes the steps that you need to carry out to have your unity project addressed as a library in eclipse.
+</p>
+<div class='vspace'></div><h2>Java Project</h2>
+<p>The next step is to create the eclipse project that will form the executable part of the project.
+</p>
+<div class='vspace'></div><ul><li>Create another new android project.
+</li><li>Name the project and select the Build Target and Min SDK Version to be the same as the Library project that you created.
+</li><li>Make sure that the package name is the same as the bundle identifier in your unity project otherwise you can get problems with conflicting files in the generated java files in your project.
+</li><li>Now the library you created needs to be added to the project, you do this by right clicking the JavaProject and selecting properties.
+</li><li>You then need to Select Android and click add. A window should then popup select the library project that was created and click ok. Once you are back in the main window click apply.
+</li><li>Now select Java Build Path from the list on the left and click add external jar. A window will now popup you need to navigate to your unity install directory and in Unity\Editor\Data\PlaybackEngines\androidplayer\bin there will be a file called classes.jar. Double click that and then click on ok.
+</li></ul><p class='vspace'>This sets up a basic Java Project that is now linked to your unity project and the relevant libraries that we will later need.
+</p>
+<div class='vspace'></div><h2>Moving the Projects Assets</h2>
+<p>This is the important part to get your unity content into the Java Project so that it will display when you later build and run your Java Project.
+You now need to move all the files in the assets folder in the library project into the new project. This is because Android does not allow assets to be used in libraries. The best way to do this is from within the Eclipse IDE. If you expand the assets files within both parts of the package explorer and simply drag the bin and libs folders from the library part of your project to the other. This last step needs to repeated everytime your unity project is rebuilt or maybe you could write a script to handle moving the files everytime you build the project automatically. This could also be achieved using symlinks or junctions. 
+At this point when you run the from the eclipse ide you will be asked which type of project that you want to run. Select android and click ok. After eclipse builds the project it will deploy it to your connected android device and you should see a hello world style application running.
+</p>
+<div class='vspace'></div><h2>Getting Your Unity Content Running</h2>
+<p>To get your unity project you need to make a few changes to the java source code. In your eclipse project there will be one source file (.java) open this file. The contents of this file will resemble something like this.
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+package com.Unity3D.EclipseIntegration;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class EclipseIntegration extends Activity {
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+    }
+}
+</pre>
+<p class='vspace'>We need to change this. The first thing is to change the base class of the object. It should now instead extend UnityPlayerActivity. You will notice that when you do this that it is red underlined proclaiming errors. This is simply missing import directives in the file. The eclipse shortcut to auto resolve this is ctrl+shift+o. The fiel should now have the import statement.
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+import com.unity3d.player.UnityPlayerActivity;
+</pre>
+<p class='vspace'>If you run in this state you will see that you now have a full screen hello world application. This is not what you want we need one more change to get your unity content running.
+</p>
+<p class='vspace'>In the onCreate function there is one line that is overriding the unity view in the android application. If you delete the line.
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+setContentView(R.layout.main);
+</pre>
+<p class='vspace'>The complete file should now look like this.
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+package com.Unity3D.EclipseIntegration;
+
+import android.os.Bundle;
+
+import com.unity3d.player.UnityPlayerActivity;
+
+public class EclipseIntegration extends UnityPlayerActivity {
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+}
+</pre>
+<p class='vspace'>If you run it now you will see your unity content running on your android device.
+</p>
+</p><small>Page last updated: 2011-02-20</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Android-Devices That Have Been Tested.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Android-Launch an Android Application from a Unity Application.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

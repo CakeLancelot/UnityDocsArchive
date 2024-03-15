@@ -1,0 +1,162 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Blend</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Blend</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/Shaders.html">Shaders</a> &gt; <a href="../Manual/SL-Shader.html">Shader</a> &gt; <a href="../Manual/SL-SubShader.html">SubShaders</a> &gt; <a href="../Manual/SL-Pass.html">Pass</a> &gt; <a href="../Manual/SL-Blend.html">Blend</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/SL-AlphaTest.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/SL-NameAndTags.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Blend</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Blending is used to make transparent objects.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/SL-Blend-0.jpg' /></div>
+<p class='vspace'>When graphics are rendered, after all shaders have executed and all textures have been applied, the pixels are written to the screen. How they are combined with what is already there is controlled by the Blend command.
+</p>
+<div class='vspace'></div><h2>Syntax</h2>
+<dl><dt>Blend Off</dt><dd> Turn off blending
+</dd><dt>Blend <em><span class='wikiword'>SrcFactor</span></em> <em><span class='wikiword'>DstFactor</span></em></dt><dd> Configure &amp; enable blending. The generated color is multiplied by the <b><span class='wikiword'>SrcFactor</span></b>. The color already on screen is multiplied by <b><span class='wikiword'>DstFactor</span></b> and the two are added together.
+</dd></dl><div class='vspace'></div><h2>Properties</h2>
+<p>All following properties are valid for both <span class='wikiword'>SrcFactor</span> &amp; <span class='wikiword'>DstFactor</span>. <b>Source</b> refers to the calculated color, <b>Destination</b> is the color already on the screen.
+</p>
+<div class='vspace'></div><table width='100%'><tr ><td  align='left'><b>One</b></td><td  align='left'>The value of one - use this to let either the source or the destination color come through fully.</td></tr>
+<tr ><td  align='left'><b>Zero</b></td><td  align='left'>The value zero - use this to remove either the source or the destination values.</td></tr>
+<tr ><td  align='left'><b><span class='wikiword'>SrcColor</span></b></td><td  align='left'>The value of this stage is multiplied by the source color value.</td></tr>
+<tr ><td  align='left'><b><span class='wikiword'>SrcAlpha</span></b></td><td  align='left'>The value of this stage is multiplied by the source alpha value.</td></tr>
+<tr ><td  align='left'><b><span class='wikiword'>DstColor</span></b></td><td  align='left'>The value of this stage is multiplied by frame buffer source color value.</td></tr>
+<tr ><td  align='left'><b><span class='wikiword'>DstAlpha</span></b></td><td  align='left'>The value of this stage is multiplied by frame buffer source alpha value.</td></tr>
+<tr ><td  align='left'><b><span class='wikiword'>OneMinusSrcColor</span></b></td><td  align='left'>The value of this stage is multiplied by (1 - source color).</td></tr>
+<tr ><td  align='left'><b><span class='wikiword'>OneMinusSrcAlpha</span></b></td><td  align='left'>The value of this stage is multiplied by (1 - source alpha).</td></tr>
+<tr ><td  align='left'><b><span class='wikiword'>OneMinusDstColor</span></b></td><td  align='left'>The value of this stage is multiplied by (1 - destination color).</td></tr>
+<tr ><td  align='left'><b><span class='wikiword'>OneMinusDstAlpha</span></b></td><td  align='left'>The value of this stage is multiplied by (1 - destination alpha).</td></tr>
+</table>
+<div class='vspace'></div><h2>Details</h2>
+<p>Below are the most common blend types:
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+Blend SrcAlpha OneMinusSrcAlpha     // Alpha blending
+Blend One One                       // Additive
+Blend One OneMinusDstColor          // Soft Additive
+Blend DstColor Zero                 // Multiplicative
+Blend DstColor SrcColor             // 2x Multiplicative
+</pre>
+<div class='vspace'></div><h2>Example</h2>
+<p>Here is a small example shader that adds a texture to whatever is on the screen already:
+</p>
+<div class='vspace'></div><pre class='codelisting'>Shader "Simple Additive" {
+    Properties {
+        _MainTex ("Texture to blend", 2D) = "black" {}
+    }
+    SubShader {
+        Blend One One
+        SetTexture [_MainTex] { combine texture }
+    }
+}</pre>
+<p class='vspace'>And a more complex one, Glass. This is a two-pass shader:
+</p><ol><li>The first pass renders a lit, alpha-blended texture on to the screen. The alpha channel decides the transparency.
+</li><li>The second pass renders a reflection cubemap on top of the alpha-blended window, using additive transparency.
+</li></ol><div class='vspace'></div><pre class='codelisting'>Shader "Glass" {
+    Properties {
+        _Color ("Main Color", Color) = (1,1,1,1)
+        _MainTex ("Base (RGB) Transparency (A)", 2D) = "white" {}
+        _Reflections ("Base (RGB) Gloss (A)", Cube) = "skybox" { TexGen CubeReflect }
+    }
+    SubShader {
+        Pass {
+            Tags {"Queue" = "Transparent" }
+            Blend SrcAlpha OneMinusSrcAlpha
+            Material {
+                Diffuse [_Color]
+            }
+            Lighting On
+            SetTexture [_MainTex] {
+                combine texture * primary double, texture * primary
+            }
+        }
+        Pass {
+            Blend One One
+            Material {
+                Diffuse [_Color]
+            }
+            Lighting On
+            SetTexture [_Reflections] {
+                combine texture
+                Matrix [_Reflection]
+            }
+        }
+    }
+} </pre>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/SL-AlphaTest.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/SL-NameAndTags.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

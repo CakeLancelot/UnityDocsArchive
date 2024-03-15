@@ -1,0 +1,438 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Trouble Shooting</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Trouble Shooting</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/TroubleShooting.html">Trouble Shooting</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Trouble Shooting</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>This section addresses common problems that can arise when using Unity. Each platform is dealt with separately below.
+</p>
+<p class='vspace'><a name='DesktopTroubleShooting' id='DesktopTroubleShooting'></a>
+</p><a class='desktopRef' id='desktopRef' href="javascript:ShowHideDiv('desktopRef','specific-desktop','Desktop');"> <h1> <img class='figure' src='../Images/manual/TroubleShooting-0.jpg' /> Desktop </h1> </a>
+<div class='specific-desktop' style='display: block;' id='specific-desktop' > 
+<h2>In MonoDevelop, the Debug button is greyed out!</h2>
+<ul><li>This means that MonoDevelop was unable to find the Unity executable. In the MonoDevelop preferences, go to the Unity/Debugger section and then browse to where your Unity executable is located.
+</li></ul><div class='vspace'></div><h2>Is there a way to get rid of the welcome page in MonoDevelop?</h2>
+<ul><li>Yes. In the MonoDevelop preferences, go to the Visual Style section, and uncheck "Load welcome page on startup".
+</li></ul><div class='vspace'></div><h2>Geforce 7300GT on OSX 10.6.4</h2>
+<ul><li>Deferred rendering is disabled because materials are not displayed correctly for Geforce 7300GT on OX 10.6.4; This happens because of buggy video drivers.
+</li></ul><div class='vspace'></div><h2>On Windows x64, Unity crashes when my script throws a NullReferenceException</h2>
+<ul><li>Please apply <a class='urllink' href='http://support.microsoft.com/kb/976038' rel='nofollow'>Windows Hotfix #976038</a>.
+</li></ul><p class='vspace'><a name='DesktopShadowTroubleShooting' id='DesktopShadowTroubleShooting'></a>
+</p><h2>Graphics</h2>
+<h3>Slow framerate and/or visual artifacts.</h3>
+<ul><li>This may occur if your video card drivers are not up to date. Make sure you have the latest official drivers from your card vendor.
+</li></ul><div class='vspace'></div><h2>Shadows</h2>
+<h3>I see no shadows at all!</h3>
+<ul><li>Shadows are a <span class='doc-keyword'>Unity Pro</span> only feature, so without Unity Pro you won't get shadows. Simpler shadow methods, like using a <a href="../Components/class-Projector.html">Projector</a>, are still possible, of course.
+</li><li>Shadows also require certain graphics hardware support. See <a href="../Manual/Shadows.html">Shadows</a> page for details.
+</li><li>Check if shadows are not completely disabled in <a href="../Components/class-QualitySettings.html">Quality Settings</a>.
+</li><li><b>Shadows are currently not supported for Android and iOS mobile platforms.</b>
+</li></ul><div class='vspace'></div><h3>Some of my objects do not cast or receive shadows</h3>
+<p>An object's <a href="../Components/class-MeshRenderer.html">Renderer</a> must have <span class='doc-prop'>Receive Shadows</span> enabled for shadows to be rendered onto it. Also, an object must have <span class='doc-prop'>Cast Shadows</span> enabled in order to cast shadows on other objects (both are on by default).
+</p>
+<p class='vspace'>Only opaque objects cast and receive shadows. This means that objects using the built-in <a href="../Components/shader-TransparentFamily.html">Transparent</a> or Particle shaders will not cast shadows. In most cases it is possible to use <a href="../Components/shader-TransparentCutoutFamily.html">Transparent Cutout</a> shaders for objects like fences, vegetation, etc. If you use custom written <a href="../Manual/Shaders.html">Shaders</a>, they have to be pixel-lit and use the <a href="../Components/SL-SubshaderTags.html">Geometry render queue</a>. Objects using <span class='doc-prop'>VertexLit</span> shaders do not receive shadows but are able to cast them.
+</p>
+<p class='vspace'>Only <span class='doc-keyword'>Pixel lights</span> cast shadows. If you want to make sure that a light always casts shadows no matter how many other lights are in the scene, then you can set it to <span class='doc-prop'>Force Pixel</span> render mode (see the <a href="../Components/class-Light.html">Light</a> reference page).
+</p>
+<div class='vspace'></div></div>
+<p><a name='iPhoneTroubleShooting' id='iPhoneTroubleShooting'></a>
+</p><a class='iosRef' id='iosRef' href="javascript:ShowHideDiv('iosRef','specific-ios', 'iOS');"><h1><img class='figure' src='../Images/manual/TroubleShooting-1.jpg' /> iOS</h1></a>
+<div class='specific-ios' style='display: block;' id='specific-ios' > 
+<h1>Troubleshooting on iOS devices</h1>
+<p>There are some situations with iOS where your game can work perfectly in the Unity editor but then doesn't work or maybe doesn't even start on the actual device.
+The problems are often related to code or content quality. This section describes the most common scenarios.
+</p>
+<div class='vspace'></div><h2>Xcode 3.2.x fails to build the application with the error "libiPhone-lib.a, missing required architecture i386 in file Undefined symbols: "Register_UnityEngine_Input_GetMouseButtonDown()", referenced from: RegisterAllStrippedInternalCalls()     in RegisterMonoModules.o</h2>
+<p>This build error usually happens when a non-simulator SDK is selected in the <a href="../Components/class-PlayerSettings.html">Player Settings</a> but a simulator SDK is selected in Xcode. The SDK settings in Unity and Xcode must be consistent.
+</p>
+<div class='vspace'></div><h2>Xcode 4.x fails to build the application with the error "No architectures to compile for (ARCHS=armv6, VALID_ARCHS=i386)."</h2>
+<p>Currently Unity has limited support for Xcode 4.x and some manual effort is required to build the final application. The Build &amp; Run command will open the generated Xcode project but it won't select the appropriate build target and target device. If you are building for a test on the device you should select the "Unity-iPhone" build target and an iOS device connected to your Mac. If you are building for testing on the simulator (which requires the right SDK selection as described above) then you should select the "Unity-iPhone-simulator" target and the appropriate simulator device. 
+</p>
+<div class='vspace'></div><h2>The game stops responding after a while. Xcode shows "interrupted" in the status bar.</h2>
+<p>There are a number of reasons why this may happen. Typical causes include:
+</p><ol><li>Scripting errors such as using uninitialized variables, etc.
+</li><li>Using 3rd party Thumb compiled native libraries. Such libraries trigger a known problem in the iOS SDK linker and might cause random crashes.
+</li><li>Using generic types with value types as parameters (eg, List&lt;int&gt;, List&lt;SomeStruct&gt;, List&lt;SomeEnum&gt;, etc) for serializable script properties.
+</li><li>Using reflection when managed code stripping is enabled.
+</li><li>Errors in the native plugin interface (the managed code method signature does not match the native code function signature).
+</li></ol><p>Information from the XCode Debugger console can often help detect these problems (Xcode menu: <span class='doc-prop'>Run &gt; Console</span>).
+</p>
+<div class='vspace'></div><h2>The Xcode console shows "Program received signal:  &#8220;SIGBUS&#8221; or EXC_BAD_ACCESS error.</h2>
+<p>This message typically appears on iOS devices when your application receives a NullReferenceException. There two ways to figure out where the fault happened: 
+</p><h4>Managed stack traces</h4>
+<p>Since version 3.4 Unity includes software-based handling of the NullReferenceException. The AOT compiler includes quick checks for null references each time a method or variable is accessed on an object. This feature affects script performance which is why it is enabled only for development builds (for basic license users it is enough to enable the "development build" option in the Build Settings dialog, while iOS pro license users additionally need to enable the "script debugging" option).
+If everything was done right and the fault actually is occurring in .NET code then you won't see EXC_BAD_ACCESS anymore. Instead, the .NET exception text will be printed in the Xcode console (or else your code will just handle it in a "catch" statement). Typical output might be:
+</p><pre class='codelisting'>
+Unhandled Exception: System.NullReferenceException: A null value was found where an object instance was required.
+  at DayController+$handleTimeOfDay$121+$.MoveNext () [0x0035a] in DayController.js:122 
+</pre>
+<p class='vspace'>This indicates that the fault happened in the handleTimeOfDay method of the DayController class, which works as a coroutine. Also if it is script code then you will generally be told the exact line number (eg, "DayController.js:122"). The offending line might be something like the following:
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+ Instantiate(_imgwww.assetBundle.mainAsset);
+</pre>
+<p class='vspace'>This might happen if, say, the script accesses an asset bundle without first checking that it was downloaded correctly.
+</p>
+<div class='vspace'></div><h4>Native stack traces</h4>
+<p>Native stack traces are a much more powerful tool for fault investigation but using them requires some expertise. Also, you generally can't continue after these native (hardware memory access) faults happen. To get a native stack trace, type <span class='doc-prop'>thread apply all bt</span> into the Xcode Debugger Console. Carefully inspect the printed stack traces - they may contain hints about where the error occurred. You might see something like:
+</p><pre class='codelisting'>
+...
+Thread 1 (thread 11523): 
+#0 0x006267d0 in OptionsMenu_Start () 
+#1 0x002e4160 in wrapper_runtime_invoke_object_runtime_invoke_void__this___object_intptr_intptr_intptr () 
+#2 0x00a1dd64 in mono_jit_runtime_invoke (method=0x18b63bc, obj=0x5d10cb0, params=0x0, exc=0x2fffdd34) at /Users/mantasp/work/unity/unity-mono/External/Mono/mono/mono/mini/mini.c:4487
+#3 0x0088481c in MonoBehaviour::InvokeMethodOrCoroutineChecked ()
+...
+</pre>
+<p>First of all you should find the stack trace for <b>"Thread 1"</b>, which is the main thread. The very first lines of the stack trace will point to the place where the error occurred. In this example, the trace indicates that the NullReferenceException happened inside the <em>"OptionsMenu"</em> script's <em>"Start"</em> method. Looking carefully at this method implementation would reveal the cause of the problem. Typically, NullReferenceExceptions happen inside the <span class='doc-prop'>Start</span> method when incorrect assumptions are made about initialization order.
+In some cases only a partial stack trace is seen on the Debugger Console:
+</p><pre class='codelisting'>
+Thread 1 (thread 11523): 
+#0 0x0062564c in start ()
+</pre>
+<p>This indicates that native symbols were stripped during the Release build of the application. The full stack trace can be obtained with the following procedure:
+</p><ul><li>Select Debug configuration in the Xcode project.
+</li><li>Clean all targets.
+</li><li>Build and run. 
+</li><li>Get stack traces again as described above. 
+</li></ul><div class='vspace'></div><h2>EXC_BAD_ACCESS starts occurring when an external library is linked to the Unity iOS application.</h2>
+<p>This usually happens when an external library is compiled with the ARM Thumb instruction set. Currently such libraries are not compatible with Unity. The problem can be solved easily by recompiling the library without Thumb instructions. You can do this for the library's Xcode project with the following steps:
+</p><ul><li>in Xcode, select <em>"Project"</em> &gt; <em>"Edit active target"</em> from the menu
+</li><li>in the <em>"Target Info"</em> dialog, select <em>"Configuration: All Configurations"</em>
+</li><li>in the search field enter : <em>"thumb"</em> 
+</li><li>a <em>"Compile for Thumb"</em> setting will appear; uncheck it and rebuild the library.
+</li></ul><p class='vspace'>If the library source is not available you should ask the supplier for a non-thumb version of the library.
+</p>
+<div class='vspace'></div><h2>The Xcode console shows "WARNING -&gt; applicationDidReceiveMemoryWarning()" and the application crashes immediately afterwards</h2>
+<p>(Sometimes you might see a message like <em>Program received signal:  “0”</em>.)
+This warning message is often not fatal and merely indicates that iOS is low on memory and is asking applications to free up some memory. Typically, background processes like Mail will free some memory and your application can continue to run. However, if your application continues to use memory or ask for more, the OS will eventually start killing applications and yours could be one of them. Apple does not document what memory usage is safe, but empirical observations show that applications using less than 25 MB of RAM (or 80 MB for 3rd generation devices) do not have any memory usage problems. Applications using 40 MB of RAM may have memory problems on 1-2nd generation devices and may require a device restart to run properly.
+The main metric you should rely on is how much RAM your application uses. Your application memory usage consists of three major components:
+</p><ul><li>application code (the OS needs to load and keep your application code in RAM)
+</li><li>native heap (used by the engine to store its state, your assets, etc. in RAM)
+</li><li>managed heap (used by your Mono runtime to keep C# or JavaScript objects)
+</li></ul><p>Your application memory usage can be tracked by two Xcode Instruments tools: <span class='doc-prop'>Activity Monitor</span> and <span class='doc-prop'>Object Allocations</span>. You can start one or the other from the Xcode Run menu: <span class='doc-prop'>Run &gt; Start with Performance Tool &gt; Activity Monitor</span> and <span class='doc-prop'>Run &gt; Start with Performance Tool &gt; Object Allocations</span>. The first tool shows all process statistics including <span class='doc-prop'>Real memory</span> which can be regarded as the total amount of RAM used by your application. 
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/TroubleShooting-2.jpg' /> </div>
+<p class='vspace'><b>Note:</b> The <a href="../Manual/iphone-InternalProfiler.html">internal profiler</a> shows only the heap allocated by .NET scripts. Total memory usage can be determined via Xcode Instruments as shown above. This figure includes the application binary (which will be loaded into memory and uses about 7 MB), some standard framework buffers, Unity engine internal state buffers, the .NET runtime heap (number printed by internal profiler), and some other miscellaneous stuff.<br />
+</p>
+<p class='vspace'>The other tool displays all allocations made by your application and includes both native heap and managed heap statistics (don't forget to check the <span class='doc-prop'>Created and still living</span> box to get the current state of the application). The important statistic is the <span class='doc-prop'>Net bytes</span> value.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/TroubleShooting-3.jpg' /></div>
+<p class='vspace'>To keep memory usage low:
+</p><ul><li>Reduce the application binary size by using the strongest iOS stripping options (Advanced license feature), and avoid unnecessary dependencies on different .NET libraries. See the <a href="../Components/class-PlayerSettings.html">player settings</a> and <a href="../Manual/iphone-playerSizeOptimization.html">player size optimization</a> manual pages for further details.
+</li><li>Reduce the size of your content. Use PVRTC compression for textures and use low poly models. See the manual page about <a href="../Manual/Reducing File size.html">reducing file size</a> for more information.
+</li><li>Don't allocate more memory than necessary in your scripts. Track mono heap size and usage with the <a href="../Manual/iphone-InternalProfiler.html">internal profiler</a>
+</li><li><b>Note:</b> with Unity 3.0, the scene loading implementation has changed significantly and now all scene assets are preloaded. This results in fewer hiccups when instantiating game objects. If you need more fine-grained control of asset loading and unloading during gameplay, you should use <a class='urllink' href='../ScriptReference/Resources.Load.html' rel='nofollow'>Resources.Load</a> and <a class='urllink' href='../ScriptReference/Object.Destroy.html' rel='nofollow'>Object.Destroy</a>.
+</li></ul><p class='vspace'>Querying the OS about the amount of free memory may seem like a good idea to evaluate how well your application is performing. However, the free memory statistic is likely to be unreliable since the OS uses a lot of dynamic buffers and caches. The only reliable approach is to keep track of memory consumption for your application and use that as the main metric. Pay attention to how the graphs from the tools described above change over time, especially after loading new levels.
+</p>
+<div class='vspace'></div><h2>The game runs correctly when launched from Xcode but crashes while loading the first level when launched manually on the device.</h2>
+<p>There could be several reasons for this. You need to inspect the device logs to get more details. Connect the device to your Mac, launch Xcode and select <span class='doc-prop'>Window &gt; Organizer</span> from the menu. Select your device in the Organizer's left toolbar, then click on the "Console" tab and review the latest messages carefully. Additionally, you may need to investigate crash reports. You can find out how to obtain crash reports here: <a class='urllink' href='http://developer.apple.com/iphone/library/technotes/tn2008/tn2151.html' rel='nofollow'>http://developer.apple.com/iphone/library/technotes/tn2008/tn2151.html</a>.
+</p>
+<div class='vspace'></div><h2>The Xcode Organizer console contains the message "killed by SpringBoard".</h2>
+<p>There is a poorly-documented time limit for an iOS application to render its first frames and process input. If your application exceeds this limit, it will be killed by SpringBoard. This may happen in an application with a first scene which is too large, for example. To avoid this problem, it is advisable to create a small initial scene which just displays a splash screen, waits a frame or two with <span class='doc-keyword'>yield</span> and then starts loading the real scene. This can be done with code as simple as the following:
+</p><pre class='codelisting'> 
+function Start () {
+    yield;
+    Application.LoadLevel("Test");
+}
+</pre>
+<div class='vspace'></div><h2>Type.GetProperty() / Type.GetValue() cause crashes on the device</h2>
+<p>Currently <span class='doc-prop'>Type.GetProperty()</span> and <span class='doc-prop'>Type.GetValue()</span> are supported only for the <span class='doc-prop'>.NET 2.0 Subset</span> profile. You can select the .NET API compatibility level in the <a href="../Components/class-PlayerSettings.html">Player Settings</a>. 
+</p>
+<p class='vspace'><b>Note:</b> <span class='doc-prop'>Type.GetProperty()</span> and <span class='doc-prop'>Type.GetValue()</span> might be incompatible with managed code stripping and might need to be excluded (you can supply a custom non-strippable type list during the stripping process to accomplish this). For further details, see the <a href="../Manual/iphone-playerSizeOptimization.html">iOS player size optimization guide</a>.
+</p>
+<div class='vspace'></div><h2>The game crashes with the error message "ExecutionEngineException: Attempting to JIT compile method 'SometType`1&lt;SomeValueType&gt;:.ctor ()' while running with --aot-only."</h2>
+<p>The Mono .NET implementation for iOS is based on AOT (ahead of time compilation to native code) technology, which has its limitations. It compiles only those generic type methods (where a value type is used as a generic parameter) which are explicitly used by other code. When such methods are used only via reflection or from native code (ie, the serialization system) then they get skipped during AOT compilation. The AOT compiler can be hinted to include code by adding a dummy method somewhere in the script code. This can refer to the missing methods and so get them compiled ahead of time.
+</p><pre class='codelisting'>
+void _unusedMethod()
+{
+    var tmp = new SomeType&lt;SomeValueType&gt;();
+}
+</pre>
+<p><b>Note:</b> value types are basic types, enums and structs.
+</p>
+<div class='vspace'></div><h2>Various crashes occur on the device when a combination of System.Security.Cryptography and managed code stripping is used</h2>
+<p>.NET Cryptography services rely heavily on reflection and so are not compatible with managed code stripping since this involves static code analysis. Sometimes the easiest solution to the crashes is to exclude the whole <span class='doc-prop'>System.Security.Crypography</span> namespace from the stripping process.
+</p>
+<p class='vspace'>The stripping process can be customized by adding a custom <span class='doc-prop'>link.xml</span> file to the <span class='doc-prop'>Assets</span> folder of your Unity project. This specifies which types and namespaces should be excluded from stripping. Further details can be found in the <a href="../Manual/iphone-playerSizeOptimization.html">iOS player size optimization guide</a>.
+</p>
+<div class='vspace'></div><h3>link.xml</h3>
+<pre class='codelisting'>
+&lt;linker&gt;
+       &lt;assembly fullname="mscorlib"&gt;
+               &lt;namespace fullname="System.Security.Cryptography" preserve="all"/&gt;
+       &lt;/assembly&gt;
+&lt;/linker&gt;
+
+</pre>
+<div class='vspace'></div><h2>"Ran out of trampolines of type 1/2" runtime error</h2>
+<p>This error usually happens if you use lots of recursive generics. You can hint to the AOT compiler to allocate more trampolines of type 1 or type 2. Additional AOT compiler command line options can be specified in the "Other Settings" section of the <a href="../Components/class-PlayerSettings.html#iOS">Player Settings</a>. For type 1 trampolines, specify <span class='doc-prop'>nrgctx-trampolines=ABCD</span>, where ABCD is the number of new trampolines required (i.e. 4096). For type 2 trampolines specify <span class='doc-prop'>nimt-trampolines=ABCD</span>.
+</p>
+<div class='vspace'></div><h2>"PlayerLoop called recursively!" error occurs when using Cocoa via a native function called from a script</h2>
+<p>Some operations with the UI will result in iOS redrawing the window immediately (the most common example is adding a UIView with a UIViewController to the main UIWindow). If you call a native function from a script, it will happen inside Unity's PlayerLoop, resulting in PlayerLoop being called recursively. In such cases, you should consider using the <a class='urllink' href='http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSObject_Class/Reference/Reference.html#//apple_ref/occ/instm/NSObject/performSelectorOnMainThread:withObject:waitUntilDone:' rel='nofollow'>performSelectorOnMainThread</a> method with waitUntilDone set to false. It will inform iOS to schedule the operation to run between Unity's PlayerLoop calls.
+</p>
+<div class='vspace'></div><h2>UIScrollView stops scrolling sometimes or scrolls wrong</h2>
+<p>It is difficult to get CADisplayLink and UIScrollView to work together. The simplest solution is to set
+<code class='escaped'>#define USE_DISPLAY_LINK_IF_AVAILABLE 0</code> 
+in AppController.mm
+</p>
+<div class='vspace'></div><h2>Profiler or Debugger unable to see game running on iOS device</h2>
+<ul><li>Check that you have built a Development build, and ticked the "Enable Script Debugging" and "Autoconnect profiler" boxes (as appropriate).
+</li><li>The application running on the device will make a multicast broadcast to 225.0.0.222 on UDP port 54997.  Check that your network settings allow this traffic.  Then, the profiler will make a connection to the remote device on a port in the range 55000 - 55511 to fetch profiler data from the device.  These ports will need to be open for UDP access.
+</li></ul><div class='vspace'></div></div>
+<p><a name='AndroidTroubleShooting' id='AndroidTroubleShooting'></a>
+</p><a class='androidRef' id='androidRef' href="javascript:ShowHideDiv('androidRef','specific-android', 'Android');"><h1><img class='figure' src='../Images/manual/TroubleShooting-4.jpg' /> Android</h1></a>
+<div class='specific-android' style='display: block;' id='specific-android' > 
+<h1>Troubleshooting Android development</h1>
+<h2>Unity fails to install your application to your device</h2>
+<ol><li>Verify that your computer can actually see and communicate with the device. See the <a href="../Manual/Publishing Builds.html">Publishing Builds</a> page for further details.
+</li><li>Check the error message in the Unity console. This will often help diagnose the problem.
+</li></ol><p class='vspace'>If you get an error saying "Unable to install APK, protocol failure" during a build then this indicates that the device is connected to a low-power USB port (perhaps a port on a keyboard or other peripheral). If this happens, try connecting the device to a USB port on the computer itself.
+</p>
+<div class='vspace'></div><h2>Your application crashes immediately after launch.</h2>
+<ol><li>Ensure that you are not trying to use <a href="../Components/class-PlayerSettings.html#Android">NativeActivity</a> with devices that do not support it.
+</li><li>Try removing any native plugins you have.
+</li><li>Try disabling stripping.
+</li><li>Use <span class='doc-keyword'>adb logcat</span> to get the crash report from your device.
+</li></ol><div class='vspace'></div><h2>Building DEX Failed</h2>
+<p>This an error which will produce a message like the following:-
+</p><pre class='codelisting'>
+Building DEX Failed!
+G:\Unity\JavaPluginSample\Temp/StagingArea&gt; java -Xmx1024M 
+-Djava.ext.dirs="G:/AndroidSDK/android-sdk_r09-windows\platform-tools/lib/" 
+-jar "G:/AndroidSDK/android-sdk_r09-windows\platform-tools/lib/dx.jar" 
+--dex --verbose --output=bin/classes.dex bin/classes.jar plugins
+Error occurred during initialization of VM
+Could not reserve enough space for object heap
+Could not create the Java virtual machine.
+</pre>
+<p class='vspace'>This is usually caused by having the wrong version of Java installed on your machine. Updating your Java installation to the latest version will generally solve this issue.
+</p>
+<div class='vspace'></div><h2>The game crashes after a couple of seconds when playing video</h2>
+<p>Make sure <code>Settings-&gt;Developer Options-&gt;Don't keep activities</code> isn't enabled on the phone. The video player is its own activity and therefore the regular game activity will be destroyed if the video player is activated.
+</p>
+<div class='vspace'></div><h2>My game quits when I press the sleep button</h2>
+<p>Change the <code>&lt;activity&gt;</code> tag in the <code>AndroidManifest.xml</code> to contain <code>&lt;android:configChanges&gt;</code> tag as described <a class='urllink' href='http://developer.android.com/guide/topics/manifest/activity-element.html#config' rel='nofollow'>here</a>.
+</p>
+<p class='vspace'>An example activity tag might look something like this:-
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+&lt;activity android:name=".AdMobTestActivity"
+                  android:label="@string/app_name"
+                  android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+</pre>
+<div class='vspace'></div></div>
+</p><small>Page last updated: 2012-01-12</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

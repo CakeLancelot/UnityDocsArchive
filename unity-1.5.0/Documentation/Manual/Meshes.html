@@ -1,0 +1,55 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Meshes"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="Meshes" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Graphics.html%22%3EGraphics%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Meshes.html%22%3EMeshes%3C%2Fa%3E" -->
+		<h1>Meshes</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Graphics.html">Graphics</a> &gt; <a href="Meshes.html">Meshes</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Graphics.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Particle Systems.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>At the core of any 3D game are <i>Meshes</i> - objects consisting of triangles, with textures applied.
+</p>
+
+<p>Meshes in Unity are passed through <i>render pipeline</i>. Although there may be many variations, most often a pipeline consists of a <a href="../Components/class-MeshFilter.html"> Mesh Filter</a> and a <a href="../Components/class-MeshRenderer.html"> Mesh Renderer</a>:
+</p>
+<ul><li> The filter loads mesh from mesh asset. Regular meshes use a Mesh Filter, while skinned meshes use a <a href="../Components/class-SkinnedMeshFilter.html"> Skinned Mesh Filter</a>.
+</li><li> The renderer displays it at the Game Object's position.
+</li><li> The appearance of the mesh is controlled through renderer's <a > Materials</a>.
+</li></ul>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Meshes-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/Meshes-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>A <a href="../Components/class-MeshFilter.html"> Mesh Filter</a> together with <a href="../Components/class-MeshRenderer.html"> Mesh Renderer</a> makes the model appear on screen. Car model courtesy of ATI Technologies Inc.</i>
+</p>
+
+
+
+		<div class="navigation"><a href="Graphics.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Particle Systems.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

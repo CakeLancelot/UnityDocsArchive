@@ -1,0 +1,135 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Using Depth Textures</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Using Depth Textures</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/SL-Reference.html">ShaderLab Reference</a> &gt; <a href="../Components/SL-AdvancedTopics.html">Advanced ShaderLab topics</a> &gt; <a href="../Components/SL-DepthTextures.html">Using Depth Textures</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/SL-ShaderReplacement.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/SL-BuiltinValues.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Using Depth Textures</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>It is possible to create <a href="../Components/class-RenderTexture.html">Render Textures</a> where each pixel contains a high precision "depth" value (see <a class='urllink' href='../ScriptReference/RenderTextureFormat.Depth.html' rel='nofollow'>RenderTextureFormat.Depth</a>). This is mostly used when some effects need scene's depth to be available (for example, soft particles, screen space ambient occlusion, translucency would all need scene's depth).
+</p>
+<p class='vspace'>Depth textures in Unity are implemented differently on different platforms.
+</p><ul><li>On <span class='wikiword'>Direct3D</span> 9 (Windows), depth texture is a single channel 32 bit floating point texture ("<span class='wikiword'>R32F</span>" <span class='wikiword'>Direct3D</span> format).
+<ul><li>Graphics card must support floating point render textures in order for them to work.
+</li><li>The texture can hold arbitrary floating point number in each pixel.
+</li><li>When rendering into the depth texture, <a href="../Components/SL-ShaderPrograms.html">fragment program</a> must output the value needed.
+</li><li>When reading from depth texture, red component of the color contains the high precision value.
+</li></ul></li><li>On <span class='wikiword'>OpenGL</span> (Mac OS X), depth texture is the native <span class='wikiword'>OpenGL</span> depth texture (see <a class='urllink' href='http://www.opengl.org/registry/specs/ARB/depth_texture.txt' rel='nofollow'>ARB_depth_texture</a>).
+<ul><li>Graphics card must support <span class='wikiword'>OpenGL</span> 1.4 or <a class='urllink' href='http://www.opengl.org/registry/specs/ARB/depth_texture.txt' rel='nofollow'>ARB_depth_texture</a> extension.
+</li><li>Pixel values in the texture range from 0 to 1 with a nonlinear distribution. Precision is usually 24 or 16 bits, depending on depth buffer used.
+</li><li>Depth texture corresponds to Z buffer contents that are rendered, it <b>does not</b> use the result from the fragment program.
+</li><li>When reading from depth texture, a high precision value in 0..1 range is returned. If you need to get distance from the camera, or otherwise linear value, you should compute that manually.
+</li></ul></li></ul><div class='vspace'></div><h2>Using depth texture helper macros</h2>
+<p>Most of the time depth textures are used to render depth from the camera. <code><span class='wikiword'>UnityCG</span>.cginc</code> helper include file contains some macros to deal with the above complexity in this case:
+</p><ul><li><span class='doc-prop'>TRANSFER_EYEDEPTH(o)</span>: computes eye space depth of the vertex and outputs it in <span class='doc-prop'>o</span>. Use it in a vertex program when rendering into a depth texture. On <span class='wikiword'>OpenGL</span> this macro does nothing at all, because Z buffer value is rendered implicitly.
+</li><li><span class='doc-prop'>OUTPUT_EYEDEPTH(i)</span>: returns eye space depth from <span class='doc-prop'>i</span>. Use it in a fragment program when rendering into a depth texture. On <span class='wikiword'>OpenGL</span> this macro always returns zero, because Z buffer value is rendered implicitly.
+</li><li><span class='doc-prop'>COMPUTE_EYEDEPTH(i)</span>: computes eye space depth of the vertex and outputs it in <span class='doc-prop'>o</span>. Use it in a vertex program when <b>not</b> rendering into a depth texture.
+</li><li><span class='doc-prop'>DECODE_EYEDEPTH(i)</span>: given high precision value from depth texture <span class='doc-prop'>i</span>, returns corresponding eye space depth. This macro just returns <span class='doc-prop'>i*<span class='wikiword'>FarPlane</span></span> on <span class='wikiword'>Direct3D</span>. On <span class='wikiword'>OpenGL</span> it linearizes and expands the value to match camera's range.
+</li></ul><p class='vspace'>For example, this shader would render depth of its objects:
+</p><pre class='codelisting'>
+Shader "Render Depth" {
+SubShader {
+    Tags { "RenderType"="Opaque" }
+    Pass {
+        Fog { Mode Off }
+CGPROGRAM
+#pragma vertex vert
+#pragma fragment frag
+#include "UnityCG.cginc"
+
+struct v2f {
+    float4 pos : POSITION;
+    float depth : TEXCOORD0;
+};
+
+v2f vert( appdata_base v ) {
+    v2f o;
+    o.pos = mul(glstate.matrix.mvp, v.vertex);
+    TRANSFER_EYEDEPTH(o.depth);
+    return o;
+}
+
+half4 frag(v2f i) : COLOR {
+    OUTPUT_EYEDEPTH(i.depth);
+}
+ENDCG
+    }
+} 
+}
+</pre>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/SL-ShaderReplacement.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/SL-BuiltinValues.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

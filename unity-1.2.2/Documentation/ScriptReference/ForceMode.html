@@ -1,0 +1,52 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="ForceMode"-->
+			<title>Unity Script Reference &ndash; ForceMode</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>enum ForceMode</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="enum ForceMode" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> Option for how to apply a force using <a href="Rigidbody.html#AddForce" class="itemlink">Rigidbody.AddForce</a></p>
+<span class='toc'><p class='tocheader'>Values</p><p><a href='#Force'>Force</a></p>
+<p><a href='#VelocityChange'>VelocityChange</a></p>
+<p><a href='#Acceleration'>Acceleration</a></p>
+<p><a href='#Impulse'>Impulse</a></p>
+</span>
+<div class='tocclear'></div>
+   <a name="Values"></a><h2 class="script-section">Values</h2>
+	<a name="Force"></a><h3><span class="full-name">ForceMode.</span>Force</h3><div class="synopsis"></div>
+   <p class='details'> Add a force to the rigid body.
+The higher the mass of a rigidbody the more force you need to move it around.
+The parameter has unit of mass * distance/ time^2</p>
+	<a name="VelocityChange"></a><h3><span class="full-name">ForceMode.</span>VelocityChange</h3><div class="synopsis"></div>
+   <p class='details'> Makes the object change it's velocity by the given amount.
+The applied effect is not dependent on the mass of the object.
+The parameter has unit of distance / time.</p>
+	<a name="Acceleration"></a><h3><span class="full-name">ForceMode.</span>Acceleration</h3><div class="synopsis"></div>
+   <p class='details'> Adds a force to the rigid body factoring out the mass of the body.
+In contrast to <a href="ForceMode.html#Force" class="itemlink">ForceMode.Force</a> it will move the rigidbody the same way regardless of the ridibody's mass.
+The parameter has unit of distance/ time^2.</p>
+	<a name="Impulse"></a><h3><span class="full-name">ForceMode.</span>Impulse</h3><div class="synopsis"></div>
+   <p class='details'> parameter has unit of mass * distance /time
+The parameter has unit of mass * distance /time</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

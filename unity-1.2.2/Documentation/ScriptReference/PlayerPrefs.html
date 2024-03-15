@@ -1,0 +1,54 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="PlayerPrefs"-->
+			<title>Unity Script Reference &ndash; PlayerPrefs</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class PlayerPrefs</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class PlayerPrefs" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> Class for storing and accessing player preferences between sessions.</p>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#SetInt'>SetInt</a></p>
+<p><a href='#GetInt'>GetInt</a></p>
+<p><a href='#SetFloat'>SetFloat</a></p>
+<p><a href='#GetFloat'>GetFloat</a></p>
+<p><a href='#SetString'>SetString</a></p>
+<p><a href='#GetString'>GetString</a></p>
+</span>
+<div class='tocclear'></div>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="SetInt"></a><h3><span class="full-name">PlayerPrefs.</span>SetInt</h3><div class="synopsis"><span class="standard_type">void</span> SetInt (<span class="standard_type">string</span> key, <span class="standard_type">int</span> value)</div>
+   <p class='details'> Sets the value of the preference identified by <span class="variable">key</span>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code"><a href="PlayerPrefs.html#SetInt" class="itemlink">PlayerPrefs.SetInt</a>("Player Score", 10);</div></td></tr></table></p>
+	<a name="GetInt"></a><h3><span class="full-name">PlayerPrefs.</span>GetInt</h3><div class="synopsis"><span class="standard_type">int</span> GetInt (<span class="standard_type">string</span> key, <span class="standard_type">int</span> defaultValue = 0)</div>
+   <p class='details'> Returns the value corresponding to <span class="variable">key</span> in the preference file if it exists.
+If it doesn't exist, sets the value of <span class="variable">key</span> to <span class="variable">defaultValue</span> in the preferences file and returns <span class="variable">defaultValue</span>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">print (<a href="PlayerPrefs.html#GetInt" class="itemlink">PlayerPrefs.GetInt</a>("Player Score"));</div></td></tr></table></p>
+	<a name="SetFloat"></a><h3><span class="full-name">PlayerPrefs.</span>SetFloat</h3><div class="synopsis"><span class="standard_type">void</span> SetFloat (<span class="standard_type">string</span> key, <span class="standard_type">float</span> value)</div>
+   <p class='details'> Sets the value of the preference identified by <span class="variable">key</span>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">print (<a href="PlayerPrefs.html#SetFloat" class="itemlink">PlayerPrefs.SetFloat</a>("Player Score", 10.0));</div></td></tr></table></p>
+	<a name="GetFloat"></a><h3><span class="full-name">PlayerPrefs.</span>GetFloat</h3><div class="synopsis"><span class="standard_type">float</span> GetFloat (<span class="standard_type">string</span> key, <span class="standard_type">float</span> defaultValue = 0.0F)</div>
+   <p class='details'> Returns the value corresponding to <span class="variable">key</span> in the preference file if it exists.
+If it doesn't exist, sets the value of <span class="variable">key</span> to <span class="variable">defaultValue</span> in the preferences file and returns <span class="variable">defaultValue</span>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">print (<a href="PlayerPrefs.html#GetFloat" class="itemlink">PlayerPrefs.GetFloat</a>("Player Score"));</div></td></tr></table></p>
+	<a name="SetString"></a><h3><span class="full-name">PlayerPrefs.</span>SetString</h3><div class="synopsis"><span class="standard_type">void</span> SetString (<span class="standard_type">string</span> key, <span class="standard_type">string</span> value)</div>
+   <p class='details'> Sets the value of the preference identified by <span class="variable">key</span>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code"><a href="PlayerPrefs.html#SetString" class="itemlink">PlayerPrefs.SetString</a>("Player Name", "Foobar");</div></td></tr></table></p>
+	<a name="GetString"></a><h3><span class="full-name">PlayerPrefs.</span>GetString</h3><div class="synopsis"><span class="standard_type">string</span> GetString (<span class="standard_type">string</span> key, <span class="standard_type">string</span> defaultValue = "")</div>
+   <p class='details'> Returns the value corresponding to <span class="variable">key</span> in the preference file if it exists.
+If it doesn't exist, sets the value of <span class="variable">key</span> to <span class="variable">defaultValue</span> in the preferences file and returns <span class="variable">defaultValue</span>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">print (<a href="PlayerPrefs.html#GetString" class="itemlink">PlayerPrefs.GetString</a>("Player Name"));</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

@@ -1,0 +1,249 @@
+.main {
+	padding-left:5px;
+	padding-right:5px;
+}
+.classlink {
+	color: #CC0000;
+	text-decoration:none;
+}
+li .classlink {
+	color: red;
+	font-weight: normal;
+}
+li .classlink:visited {
+	color: darkred;
+	font-weight: normal;
+}
+h1 a.classlink {
+	text-decoration: none;
+	color: darkred;
+}
+.itemlink {
+	color: #cc0000;
+	text-decoration:none;
+}
+.itemlink:visited {
+	color: darkgreen;
+}
+body {
+	background-color:    white;
+	margin-top:   0px;
+	margin-left:   0px;
+	margin-bottom:   0px;
+	margin-right:   0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+th {
+	border-bottom: 1px solid #c9c9c9;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+dt {
+	font-weight: bold;
+}
+
+h1{
+	font-size:    20px;
+	color:   #CC0000;
+	margin-bottom: 1px;
+	clear: both;
+}
+
+h2 {
+	font-size:    20px;
+	color:   #CC0000;
+	font-weight: bold;
+	clear: both;
+	margin-bottom: 1px;
+		border-top-width: 1px;
+		border-top-style: solid;
+		border-color:#c9c9c9;
+		margin-top:20px;
+}
+
+h3 {
+	font-size:    12px;
+//	font-family:   Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	clear: both;
+	margin-top: 15px;
+	margin-bottom: 1px;
+}
+p {
+	padding-top: 0px;
+	margin-top: 0px;
+	margin-bottom:10px;
+}
+
+p.details {
+	padding-top: 0px;
+	margin-top: 0px;
+	padding-left:20px;
+	padding-right:20px;
+	margin-bottom:10px;
+}
+p.basic {
+}
+p.first {
+	margin-top: 10px;
+}
+.toplink {
+}
+
+.synopsis {
+	font: normal 11px "monaco";
+	padding-left: 100px;
+	text-indent:-80px;
+	margin-bottom:1em;
+}
+.synopsis .doc-comment {
+	font: italic 12px;
+}
+.synopsis:before {
+	font: bold 12px;
+//		content: "Synopsis: ";
+}
+.editorclass:before {
+	font-weight: bold;
+	content: "Note: ";
+}
+.superclass {
+//		margin-top: -1.5em;
+//		margin-left: -2em;
+}
+.superclass:before {
+	font-weight: bold;
+	content: "Inherits from: ";
+}
+.code {
+	font-family: "monaco", "Courier", "Courier New";
+	font-size: 7pt;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 7px;
+	background-color: #eee;
+	color: #222;
+	border:1px solid;
+	border-color:#c9c9c9;
+	white-space: pre;
+}
+.toc {
+	width:180;
+	font-size:12px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	float: left;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	vertical-align: top;
+	text-align: left;
+//			border-collapse: collapse;
+	font-weight:bold;
+}
+.tocclear {
+	clear: both;
+}
+.toc p {
+	margin-bottom:0px;
+	margin-left: 10px;
+}
+.toc p.tocheader {
+	background-color: white;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-right-style: none;
+	border-left-style: none;
+	border-top-style: none;
+	border-color:    #c9c9c9;
+	margin-left: 10px;
+	text-align: left;
+	font-size: 12px;
+}
+.toc a {
+	color: #cc0000;
+	font-weight: normal;
+	text-decoration:none;	
+}
+
+// NAVIGATION BAR STUFF
+
+
+td.doctitle {
+	height:50px;
+}
+
+.doctitle h1 {
+	color:   #CC0000;
+	font-size:24px;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+.doctitle p {
+	padding:0px 5px;
+	font-size:12px;
+	font-weight:bold;
+	color:    #666666;
+}
+
+.doctitle a {
+	color:    #666666;
+}
+
+.doctitle a:hover {
+	color:    #CC0000;
+	text-decoration:none;
+}
+
+.titlebar {
+	width: 100%;
+	border-width:0px;
+	margin-bottom:20px;
+	padding: 0px;
+	border-collapse: collapse;
+}
+
+.navbuttons {
+	text-align:right;
+	width:194px;
+	padding: 0px;
+	white-space: nowrap;
+}
+
+.variable {
+		font-style: italic;
+}
+
+.parameter {
+		font-style: italic;
+}
+
+.full-name {
+	display: none;
+}
+
+// CONTENTS
+// -------------------------------------------------
+.contents p {
+	margin:0px 20px;
+}
+
+.contents a {
+	text-decoration:none;
+	color:#cc0000;
+	margin:0px 20px;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+// NAVLINKS
+.nlinks p {
+	font-weight:bold;
+}

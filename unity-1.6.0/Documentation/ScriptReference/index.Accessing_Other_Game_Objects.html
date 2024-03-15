@@ -1,0 +1,152 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Overview: Accessing Other Game Objects"-->
+			<title>Unity Script Reference &ndash; Overview: Accessing Other Game Objects</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+</head>
+<body>
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Script Reference" title="Overview%3A%20Accessing%20Other%20Game%20Objects" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EScripting%3C%2Fa%3E" -->
+		<td class="doctitle" height="50">
+			<span class="heading">Overview: Accessing Other Game Objects</span>
+			<span class="text"></span>
+			<p><a href="index.html">Scripting</a></p>
+		</td>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	<td class="navbuttons" rowspan='2'>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="600" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-top.lbi" --><!-- #EndLibraryItem --><div class="left-menu-container"><ul class="left-menu"><li>
+<form class="apisearch" action="30_search.html" method="GET">
+	<input type="search" name="q" placeholder="Search" autosave="Unity Reference" results="5" class="sbox" id="q" />
+				
+	<script type="text/javascript" language="JavaScript">
+	<!--
+	function detect() {
+		// simplify things
+		var agent 	= navigator.userAgent.toLowerCase();
+		
+		// detect platform
+		this.isMac		= (agent.indexOf('mac') != -1);
+		this.isWin		= (agent.indexOf('win') != -1);
+		this.isWin2k	= (this.isWin && (
+				agent.indexOf('nt 5') != -1));
+		this.isWinSP2	= (this.isWin && (
+				agent.indexOf('xp') != -1 || 
+				agent.indexOf('sv1') != -1));
+		this.isOther	= (
+				agent.indexOf('unix') != -1 || 
+				agent.indexOf('sunos') != -1 || 
+				agent.indexOf('bsd') != -1 ||
+				agent.indexOf('x11') != -1 || 
+				agent.indexOf('linux') != -1);
+		
+		// detect browser
+		this.isSafari	= (agent.indexOf('safari') != -1);
+		this.isSafari2 = (this.isSafari && (parseFloat(agent.substring(agent.indexOf("applewebkit/")+"applewebkit/".length,agent.length).substring(0,agent.substring(agent.indexOf("applewebkit/")+"applewebkit/".length,agent.length).indexOf(' '))) >=  300));
+		this.isOpera	= (agent.indexOf('opera') != -1);
+		this.isNN		= (agent.indexOf('netscape') != -1);
+		this.isIE		= (agent.indexOf('msie') != -1);
+	}
+	var browser = new detect();
+	var str = "Search";
+	var q=document.getElementById('q');
+	if (!browser.isSafari2) {q.value=str;q.onfocus=function(){q.value="";q.style.color="#000";};}
+	//-->
+	</script>
+</form>
+</li><li><span class="left-menu-heading">Menu</span></li><li><a title="Scripting overview" class="left-menu-item" href="index.html">Overview</a></li><li><a title="List of scripting classes" class="left-menu-item" href="20_class_hierarchy.html">Runtime Classes</a></li><li><a title="Classes for extending Unity editor" class="left-menu-item" href="20_class_hierarchy.Editor_Classes.html">Editor Classes</a></li><li><a title="List of enumerations" class="left-menu-item" href="20_class_hierarchy.Enumerations.html">Enumerations</a></li><li><a title="Alphabetical index" class="left-menu-item" href="10_reference.html">Index</a></li><li><span class="left-menu-seperator"></span></li><li><a class="left-menu-heading" href="index.html">Scripting Overview</a></li><li><a title="Common Operations" class="left-menu-item" href="index.Common_Operations.html">Common Operations</a></li><li><a title="Keeping Track of Time" class="left-menu-item" href="index.Keeping_Track_of_Time.html">Time</a></li><li><a title="Accessing Other Components" class="left-menu-item" href="index.Accessing_Other_Components.html">Accessing Components</a></li><li><span title="Accessing Other Game Objects" class="left-menu-item left-menu-current">Accessing Objects</span></li><li><a title="Vectors" class="left-menu-item" href="index.Vectors.html">Vectors</a></li><li><a title="Member Variables & Global Variables" class="left-menu-item" href="index.Member_Variables_26_Global_Variables.html">Variables</a></li><li><a title="Instantiate" class="left-menu-item" href="index.Instantiate.html">Instantiate</a></li><li><a title="Coroutines & Yield" class="left-menu-item" href="index.Coroutines_26_Yield.html">Coroutines & Yield</a></li><li><a title="Writing Scripts in C#" class="left-menu-item" href="index.Writing_Scripts_in_Csharp.html">Using C#</a></li><li><a title="The most important classes" class="left-menu-item" href="index.The_most_important_classes.html">Important Classes</a></li><li><a title="Script compilation (Advanced)" class="left-menu-item" href="index.Script_compilation_28Advanced29.html">Script Compilation</a></li></ul></div>
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-middle.lbi" --><!-- #EndLibraryItem --><div class="pre-next-link"><b>Previous:</b> <a href="index.Accessing_Other_Components.html">Accessing Components</a> <b>Next:</b> <a href="index.Vectors.html">Vectors</a></div>
+   <p class="basic"> 
+</p><p class="basic">
+Most advanced game code does not only manipulate a single object. The Unity scripting interface has various ways to find and access other game objects and components there-in.
+In the following we assume there is a script named OtherScript.js attached to game objects in the scene.</p><div class="code"><br/>var foo = 5;<br/>function DoSomething ( param : String) {<br/>    print(param + " with foo: " + foo);<br/>}
+</div><p class="basic">
+<b>1. Through inspector assignable references.</b>
+</p><p class="basic">
+You can assign variables to any object type through the inspector:
+	</p><div class="code"><span class="comment">// Translate the object dragged on the target slot</span>
+var target : <a href="Transform.html" class="classlink">Transform</a>;<br/>function Update () {<br/>    target.Translate(0, 1, 0);<br/>}
+</div><p class="basic">
+You can also expose references to other objects to the inspector.
+Below you can drag a game object that contains the OtherScript on the target slot in the inspector.</p><div class="code"><span class="comment">// Set foo DoSomething on the target variable assigned in the inspector.</span>
+var target : OtherScript;<br/>function Update () {<br/>    <span class="comment">// Set foo variable of the target object</span>
+    target.foo = 2;<br/>    <span class="comment">// Call do something on the target</span>
+    target.DoSomething("Hello");<br/>}
+</div><p class="basic">
+<b>2. Located through the object hierarchy.</b>
+</p><p class="basic">
+You can find child and parent objects to an existing object through the <a href="Transform.html" class="classlink">Transform</a> component of a game object:
+</p><div class="code"><span class="comment">// Find the child "Hand" of the game object </span>
+<span class="comment">// we attached the script to</span>
+transform.Find("Hand").Translate(0, 1, 0);
+</div><p class="basic">
+Once you have found the transform in the hierarchy, you can use <a href="Component.GetComponent.html?from=index" class="itemlink">GetComponent</a> to get to other scripts.</p><div class="code"><span class="comment">// Find the child named "Hand".</span>
+<span class="comment">// On the OtherScript attached to it, set foo to 2.</span>
+transform.Find("Hand").GetComponent(OtherScript).foo = 2;<br/><br/><span class="comment">// Find the child named "Hand".</span>
+<span class="comment">// Call DoSomething on the OtherScript attached to it.</span>
+transform.Find("Hand").GetComponent(OtherScript).DoSomething("Hello");<br/><br/><span class="comment">// Find the child named "Hand".</span>
+<span class="comment">// Then apply a force to the rigidbody attached to the hand.</span>
+transform.Find("Hand").rigidbody.AddForce(0, 10, 0);
+</div><p class="basic">
+You can loop over all children:</p><div class="code"><span class="comment">// Moves all transform children 10 units upwards!</span>
+for (var child : <a href="Transform.html" class="classlink">Transform</a> in transform) {<br/>    child.Translate(0, 1, 0);<br/>}
+</div><p class="basic">
+</p><p class="basic">
+See the documentation for the <a href="Transform.html" class="classlink">Transform</a> class for further information.
+</p><p class="basic">
+<b>3. Located by name or Tag.</b>
+</p><p class="basic">
+You can search for game objects with certain tags using <a href="GameObject.FindWithTag.html?from=index" class="itemlink">GameObject.FindWithTag</a> and <a href="GameObject.FindGameObjectsWithTag.html?from=index" class="itemlink">GameObject.FindGameObjectsWithTag</a>.
+Use <a href="GameObject.Find.html?from=index" class="itemlink">GameObject.Find</a> to find a game object by name.
+</p><div class="code">function Start ()<br/>{<br/>    <span class="comment">// By name</span>
+    var go = <a href="GameObject.Find.html?from=index" class="itemlink">GameObject.Find</a>("SomeGuy");<br/>    go.transform.Translate(0, 1, 0);<br/><br/>    <span class="comment">// By tag</span>
+    var player = <a href="GameObject.FindWithTag.html?from=index" class="itemlink">GameObject.FindWithTag</a>("Player");<br/>    player.transform.Translate(0, 1, 0);<br/>    <br/>}
+</div><p class="basic">
+You can use GetComponent on the result to get to any script or component on the found game object</p><div class="code">function Start ()<br/>{<br/>    <span class="comment">// By name</span>
+    var go = <a href="GameObject.Find.html?from=index" class="itemlink">GameObject.Find</a>("SomeGuy");<br/>    go.GetComponent(OtherScript).DoSomething();<br/><br/>    <span class="comment">// By tag</span>
+    var player = <a href="GameObject.FindWithTag.html?from=index" class="itemlink">GameObject.FindWithTag</a>("Player");<br/>    player.GetComponent(OtherScript).DoSomething();<br/>}
+</div><p class="basic">
+Some special objects like the main camera have shorts cuts using <a href="Camera-main.html?from=index" class="itemlink">Camera.main</a>.
+</p><p class="basic">
+<b>4. Passed as parameters.</b>
+</p><p class="basic">
+Some event messages contain detailed information on the event. For instance, trigger events pass the <a href="Collider.html" class="classlink">Collider</a> component of the colliding object to the handler function.
+</p><p class="basic">
+OnTriggerStay gives us a reference to a collider. From the collider we can get to it's attached rigidbody.</p><div class="code">function OnTriggerStay( other : <a href="Collider.html" class="classlink">Collider</a> ) {<br/>    <span class="comment">// If the other collider also has a rigidbody</span>
+    <span class="comment">// apply a force to it!</span>
+    if (other.rigidbody) {<br/>        other.rigidbody.AddForce(0, 2, 0);<br/>    }<br/>}
+</div><p class="basic">
+Or we can get to any component attached to the same game object as the collider.</p><div class="code">function OnTriggerStay( other : <a href="Collider.html" class="classlink">Collider</a> ) {<br/>    <span class="comment">// If the other collider has a OtherScript attached</span>
+    <span class="comment">// call DoSomething on it.</span>
+    <span class="comment">// Most of the time colliders won't have this script attached,</span>
+    <span class="comment">// so we need to check first to avoid null reference exceptions.</span>
+    if (other.GetComponent(OtherScript)) {<br/>        other.GetComponent(OtherScript).DoSomething();<br/>    }<br/>}
+</div><p class="basic">
+Note that by suffixing the <span class="variable">other</span> variable in the above example, you can access any component inside the colliding object.
+</p><p class="basic">
+<b>5. All scripts of one Type</b>
+</p><p class="basic">
+Find any object of one class or script name using <a href="Object.FindObjectsOfType.html?from=index" class="itemlink">Object.FindObjectsOfType</a> or find the first object of one type using <a href="Object.FindObjectOfType.html?from=index" class="itemlink">Object.FindObjectOfType</a>.</p><div class="code">function Start ()<br/>{<br/>    <span class="comment">// Find the OtherScript which is attached to any game object in the scene.</span>
+    var other : OtherScript = FindObjectOfType(OtherScript);<br/>    other.DoSomething();<br/>}
+</div><p class="basic">
+</p><p class="basic">
+</p>
+	
+	</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

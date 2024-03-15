@@ -1,0 +1,112 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Using Components"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title="Using Components" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Building%20Scenes.html%22%3EBuilding%20Scenes%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Using%20Components.html%22%3EUsing%20Components%3C%2Fa%3E" -->
+		<h1>Using Components</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Building Scenes.html">Building Scenes</a> &gt; <a href="Using Components.html">Using Components</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="GameObjects.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Prefabs.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p><b>Components</b> are the nuts &amp; bolts of objects and behaviors in a game.  A Game Object is a container for one or many Components.  To use Components, you select a Game Object and use the <i>Components</i> menu.  Any Component you select from this menu will be added to the selected Game Object.  You can add Components to Game Objects in Hierarchy View, or Prefabs in the Project View.
+</p>
+
+<p>By default, all Game Objects automatically have a <b>Transform Component</b>.  This is because the Transform dictates where the Game Object is located, and how it is rotated and scaled.  Without a Transform Component, the Game Object would essentially not exist in the world.  Therefore each must have one.
+</p>
+
+<p><img class='figure' src='images/Using Components-0.jpg' /><br>
+<i>An empty Game Object</i>
+</p>
+
+<p>You can always see which Components are attached to the selected Game Object in the Inspector.  As you add, remove, and change Components, the Inspector will update to show you the current Components in the Game Object.  You can click on the Component header in the Inspector to expand or contract the properties of the Component.
+</p>
+
+<h2>Adding Components</h2>
+
+<p>We will add a Rigidbody Component to an empty Game Object.  You can follow along if you like.  Use <b>GameObject -> Create Empty</b> to create a new Game Object.  With the empty Game Object selected, use <b>Component -> Physics -> Rigidbody</b> to add a Rigidbody Component.
+</p>
+
+<p><img class='figure' src='images/Using Components-1.jpg' /><br>
+<i>The same Game Object with a Rigidbody attached</i>
+</p>
+
+<p>You can attach any number or combination of Components to a single Game Object.  Any script you write is also a Component.  You should be aware that some Components require others to work properly.  For example, any Joint Component requires a Rigidbody to be attached as well.  In this case, adding a Joint will automatically add a Rigidbody if one does not already exist.  Another example; Particle Systems use a Particle Emitter, Particle Animator, and Particle Renderer.  Adding one will not add all three.
+</p>
+
+<p>If you want to know more about using a particular Component, you can read about any of them in the <a class="wiki"  href="../Components/index.html">Component Reference</a>.  You can also access the reference page for a Component from Unity by clicking on the small <b>?</b> on the header of the Component in the Inspector.
+</p>
+
+
+<h2>Editing Components</h2>
+
+<p>One of the great aspects of Components is flexibility.  When you attach a Component to a Game Object, there are different values or <b>Properties</b> in the Component that can be adjusted in the editor while building a game, or by scripts when running the game.  There are two main types of Properties: <b>Values</b> and <b>References</b>.
+</p>
+
+<p>Please take a look at the image below.  It is an empty Game Object with an Audio Source Component attached.  All the values of the Audio Source in the Inspector are the default values.
+</p>
+
+<p><img class='figure' src='images/Using Components-2.jpg' />
+</p>
+
+<p>This Component contains a single Reference property, and seven Value properties.  When this Audio Source begins playing, it will attempt to play the audio file that is referenced in the <b>Audio Clip</b> property.  If no reference is made, the Component will attempt to play a non-existent file, and an error will occur.  Before the Audio Source can play, you must reference the correct type of file within the Inspector.  This is as easy as dragging an audio file from the Project View onto the Reference Property.
+</p>
+
+<p><img class='figure' src='images/Using Components-3.jpg' /><br>
+<i>Now a sound effect file is referenced in the <b>Audio Clip</b> property</i>
+</p>
+
+<p>Components can include references to any other type of Component, file, or Game Object.  For any of these, you just need to drag &amp; drop the appropriate reference to the property.  This type of referencing is very quick and powerful, especially when using scripting.  To learn more about using scripts and properties, please view the Scripting Tutorial on the <a href="../Manual/Tutorials.html">Tutorials</a> page.
+</p>
+
+<p>The seven remaining properties on the Audio Clip are all Value properties.  These can all be adjusted simply by clicking on them and pressing the Enter key.  You can then enter any value you like using the keyboard, and press Enter to save the value.
+</p>
+
+<ul><li>You can also option- or right-click and drag on numeric properties to scroll values quickly
+</li></ul>
+
+<p>The Value properties on the Audio Clip are all numeric, but some properties can be strings as well.  For example, the GUI Text Component contains a <b>Text</b> property, which accepts alphanumeric characters.
+</p>
+
+<p><img class='figure' src='images/Using Components-4.jpg' /><br>
+<i>Some values can contain text, like the <b>Text</b> property in the GUI Text Component</i>
+</p>
+
+<h3>Testing out Properties</h3>
+
+<p>While your game is in Play Mode, you are free to change properties in any Game Object's Inspector.  For example, you might want to experiment with different heights of jumping.  If you set a Jump Height property in a script, you can enter Play Mode, change the value, and press the jump button to see what happens.  Then without exiting Play Mode you can change it again and see the results within seconds.  When you exit Play Mode, your properties will revert to their pre-Play Mode values, so you don't lose any work.  This workflow gives you incredible power to experiment, adjust, and refine your gameplay without investing a lot of time in iteration cycles.  Try it out with any property in Play Mode.  We think you'll be impressed.
+</p>
+
+<h2>Removing Components</h2>
+
+<p>If you want to remove a Component, option- or right-click on its header in the Inspector, and choose <b>Remove Component</b>.  All the property values will be lost and this cannot be undone, so be completely sure you want to remove the Component before you do.
+</p>
+
+
+
+		<div class="navigation"><a href="GameObjects.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Prefabs.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

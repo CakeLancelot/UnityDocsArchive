@@ -1,0 +1,252 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Light Probes</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Light Probes</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/Lightmapping.html">Lightmapping Quickstart</a> &gt; <a href="../Manual/LightProbes.html">Light Probes</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Light Probes</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Although lightmapping adds greatly to the realism of a scene, it has the disadvantage that non-static objects in the scene are less realistically rendered and can look disconnected as a result. It isn't possible to calculate lightmapping for moving objects in real time but it is possible to get a similar effect using <span class='doc-keyword'>light probes</span>. The idea is that the lighting is sampled at strategic points in the scene, denoted by the positions of the probes. The lighting at any position can then be approximated by interpolating between the samples taken by the nearest probes. The interpolation is fast enough to be used during gameplay and helps avoid the disconnection between the lighting of moving objects and static lightmapped objects in the scene.
+</p>
+<div class='vspace'></div><h2>Adding Light probes</h2>
+<p>The Light Probe Group component (menu: <span class='doc-menu'>Component -&gt; Rendering -&gt; Light Probe Group</span>) can be added to any available object in the scene. The inspector can be used to add new probes to the group. The probes appear in the scene as yellow spheres which can be positioned in the same manner as GameObjects. Selected probes can also be duplicated with the usual keyboard shortcut (ctrl+d/cmd+d).
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/LightProbes-0.jpg' /></div>
+<div class='vspace'></div><h2>Choosing Light Probe positions</h2>
+<p>Remember to <b>place probes where you want to sample light or sample darkness</b>. The probes need to <b>form a volume</b> within the scene for the space subdivision to work properly.
+</p>
+<p class='vspace'>The simplest approach to positioning is to arrange them in a regular 3D grid pattern. While this setup is simple and effective, it is likely to consume a lot of memory (each light probe is essentially a spherical, panoramic HDR image of the view from the sample point). It is worth noting that probes are only needed for regions that players, NPCs or other dynamic objects can actually move to. Also, since lighting conditions are interpolated for positions between probes, it is not necessary to use lots of them across areas where the light doesn't change very much. For example, a large area of uniform shadow would not need a large number of probes and neither would a brightly lit area far away from reflective objects. Probes are generally needed where the lighting conditions change abruptly, for instance at the edge of a shadow area or in places where pieces of scenery have different colors.
+</p>
+<p class='vspace'>In some cases, the infrastructure of the game can be useful in choosing light probe positions. For example, a racing game typically uses waypoints around the track for AI and other purposes. These are likely to be good candidates for probe positions and it would likely be straightforward to set these positions from an editor script. Similarly, navigation meshes typically define the areas that can be reached by players and these also lend themselves to automated positioning of probes.
+</p>
+<p class='vspace'>Here light probes have been baked over surfaces where our characters can walk on, but only where there are interesting lighting changes to capture:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/LightProbes-1.jpg' /></div>
+<div class='vspace'></div><h2>Flat 2D levels</h2>
+<p>As it is now, the light probe system can't bake a completely flat probe cloud. So even if all your characters move only on a plane, you still have to take care to position at least some probes in a higher layer, so that a volume is formed and interpolation can work properly.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/LightProbes-2.jpg' /><br /><em><b>Good</b>: This is the original probe placement. The characters can move up the ramps and up onto the boxes, so it's good to sample lighting up there as well.</em></div>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/LightProbes-3.jpg' /><br /><em><b>Good</b>: Here we assume the characters can only move on the plane. Still, there's a couple of probes placed a little bit higher, so that a volume is formed and thin cell are avoided.</em></div>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/LightProbes-4.jpg' /><br /><em><b>Bad</b>: The probes are placed too flat, which creates really long and thin cells and produces unintuitive interpolation results.</em></div>
+<div class='vspace'></div><h2>Using Light Probes</h2>
+<p>To allow a mesh to receive lighting from the probe system, you should enable the Use Light Probes option on its MeshRenderer:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/LightProbes-5.jpg' /></div>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/LightProbes-6.jpg' /></div>
+<p class='vspace'>The probe interpolation requires a point in space to represent the position of the mesh that is receiving light. By default, the centre of the mesh's bounding box is used but it is possible to override this by dragging a Transform to the MeshRenderer's Light Probe Anchor property (this Transform's position will be used as the interpolation point instead). This may be useful when an object contains two separate adjoining meshes; if both meshes are lit individually according to their bounding box positions then the lighting will be discontinuous at the place where they join. This can be prevented by using the same Transform (for example the parent or a child object) as the interpolation point for both MeshRenderers.
+</p>
+<p class='vspace'>When an object using light probes is the active selected object in the Light Probes Scene View mode, its interpolated probe will be rendered on top of it for preview. The interpolated probe is the one used for rendering the object and is connected with 4 thin blue lines (3 when outside of the probe volume) to the probes it is being interpolated between:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/LightProbes-7.jpg' /></div>
+<div class='vspace'></div><h2>Dual Lightmaps vs. Single Lightmaps mode</h2>
+<p>In Single Lightmaps mode all static lighting (including lights set to 'Auto' lightmapping mode) is baked into the light probes.
+</p>
+<p class='vspace'>In Dual Lightmaps mode light probes will store lighting in the same configuration as 'Near' lightmaps, i.e. full illumination from sky lights, emissive materials, area lights and 'Baked Only' lights, but only indirect illumination from 'Auto' lights. Thanks to that the object can be lit in real-time with the 'Auto' lights and take advantage of dynamic elements such as real-time shadows, but at the same time receive indirect lighting added to the scene by these lights.
+</p>
+</p><small>Page last updated: 2012-01-17</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

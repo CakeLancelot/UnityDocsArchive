@@ -1,0 +1,111 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Network Instantiate</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Network Instantiate</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Network Reference Guide.html">Network Reference Guide</a> &gt; <a href="../Components/net-NetworkInstantiate.html">Network Instantiate</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/net-StateSynchronization.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/net-NetworkLevelLoad.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Network Instantiate</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><a class='urllink' href='../ScriptReference/Network.Instantiate.html' rel='nofollow'>Network Instantiate</a> lets you Instantiate a prefab on all clients in a very easy to use way.  When a player calls <span class='doc-prop'>Network.Instantiate()</span>, they control any Input commands on that <span class='wikiword'>GameObject</span>.  All the setup and handling is performed under the hood, so all you need to do to assign control is make each player call <span class='doc-prop'>Network.Instantiate()</span> on the <span class='wikiword'>GameObject</span> they should control.
+</p>
+<p class='vspace'><a href="../Manual/Instantiating Prefabs.html">Instantiating prefabs</a> is one of the most important concepts in Unity. Network Instantiate is an extension to it, which lets you with a single function call instantiate an object across all machines on the network.
+</p>
+<p class='vspace'>The argument list for <span class='doc-prop'>Network.Instantiate()</span> is as follows:
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+static function Instantiate (prefab : Object, position : Vector3, rotation : Quaternion, group : int) : Object
+</pre>
+<p class='vspace'>Like Instantiate the first three parameters describe the prefab to be instantiated and the position and rotation of where it should be placed. Additionally the group is passed in as an argument. Usually you just pass in 0 as the group. The group number allows you to group together network messages which allows you to filter them if so desired.
+</p>
+<div class='vspace'></div><h2>Technical Details</h2>
+<p>Behind the scenes, Network Instantiate is simply a convenience function built around RPC calls. It serializes an identifier of the prefab that is to be instantiated, serializes all allocated <span class='doc-prop'><span class='wikiword'>NetworkViewID</span></span>'s, serializes the position, and send it across the network using an <a href="../Components/net-RPCDetails.html">RPC call</a>. <span class='doc-prop'>Network.Instantiate()</span> will always buffer the Instantiate call in the <a href="../Components/net-RPCDetails.html">RPC buffer</a>, this also means it can be removed from the buffer in the same way as other RPC calls.
+</p>
+<p class='vspace'>In essence this is a regular instantiation that is performed on all clients and automatically buffered. Players that join after the instantiation was performed will also receive the <span class='doc-prop'>Instantiate</span> call.
+</p>
+<div class='vspace'></div><h2>Communication Groups</h2>
+<p>Communication groups are important to differentiate communication and disable receiving/sending to some clients.
+</p>
+<p class='vspace'>For example, two connected players might be in separate room without being able to meet. Thus there is no reason to transfer state of the two player avatars and depending on your situation. You could have one group for game data and one for chat communication. The game data group might be blocked when loading a level but the chat group kept open so players can communicate.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/net-StateSynchronization.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/net-NetworkLevelLoad.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,84 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Shader"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="Shader" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced%20(for%20technical%20guys).html%22%3EAdvanced%20(for%20technical%20guys)%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Shaders.html%22%3EShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-Shader.html%22%3EShader%3C%2Fa%3E" -->
+		<h1>Shader</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced (for technical guys).html">Advanced (for technical guys)</a> &gt; <a href="Shaders.html">Shaders</a> &gt; <a href="SL-Shader.html">Shader</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="ShaderTut2.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-Properties.html">Next<img src="../images/next.png"></a></div>
+
+			
+<p>The Shader is the root object of a shader file. Each file must define one (and only one) shader. It specifies how any objects whose material uses this shader is rendered.
+</p>
+
+<h2> Syntax</h2>
+<p><dl><dt><code><b>Shader</b> &quot;<i>name</i>&quot; <b>{</b> [Properties] Subshaders [Fallback] <b>}</b></code></dt><dd> Defines a shader. It will appear in the material inspector listed under <b>name</b>. Shaders optionally can define a list of <b>properties</b> that show up as material settings. After this comes a list of SubShaders, and optionally a fallback.</dd></dl>
+</p>
+
+<h2> Details</h2>
+
+<h3> Properties</h3>
+
+<p>Shaders can have a list of <a href="../Manual/SL-Properties.html">properties</a>. Any properties declared in a shader are shown in the material inspector inside Unity. Typical properties are the object color, textures, or just arbitrary values to be used by the shader.
+</p>
+
+<h3> SubShaders &amp; Fallback</h3>
+
+<p>Each shader is comprised of a list of <a href="../Manual/SL-SubShader.html">sub-shaders</a>. You must have at least one. When loading a shader, Unity will go through the list of subshaders, and pick the first one that is supported by the end user's machine. If no subshaders are supported, Unity will try to use <a href="../Manual/SL-Fallback.html">fallback shader</a>.
+</p>
+
+<p>Different graphic cards have different capabilities. This raises an eternal issue for game developers; you want your game to look great on the latest hardware, but don't want it to be available only to those 3% of the population. This is where subshaders come in. Create one subshader that has all the fancy graphic effects you can dream of, then add more subshaders for older cards. These subshaders may implement the effect you want in a slower way, or they may choose not to implement some details.
+</p>
+
+<h2> Examples</h2>
+
+<p>Here is one of the simplest shaders possible:
+<pre class='codelisting'>
+// colored vertex lithing
+Shader &quot;simple&quot; {
+    // a single color property
+    Properties {
+        _Color (&quot;Main Color&quot;, Color) = (1,.5,.5,1)
+    }
+    // define one subshader
+    SubShader {
+        Pass {
+            Material {
+                Diffuse [_Color]
+            }
+            Lighting On
+        }
+    }
+}
+</pre>
+This shader defines a color property <i>_Color</i> (that shows up in material inspector as <i>Main Color</i>) with a default value of <code>(1, 0.5, 0.5, 1)</code>. Then a single subshader is defined. The subshader consists of one <a href="../Manual/SL-Pass.html">Pass</a> that turns on vertex lighting and sets up basic material for it.
+</p>
+
+
+
+		<div class="navigation"><a href="ShaderTut2.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-Properties.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

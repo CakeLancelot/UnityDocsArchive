@@ -1,0 +1,117 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - GameObjects</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">GameObjects</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Building Scenes.html">Building Scenes</a> &gt; <a href="../Manual/GameObjects.html">GameObjects</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Building Scenes.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Using Components.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>GameObjects</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><span class='doc-keyword'><span class='wikiword'>GameObjects</span></span> are the most important objects in Unity.  It is very important to understand what a <span class='wikiword'>GameObject</span> is, and how it can be used.  This page will explain all that for you.
+</p>
+<div class='vspace'></div><h2>What are <span class='wikiword'>GameObjects</span>?</h2>
+<p>Every object in your game is a <span class='wikiword'>GameObject</span>.  However, <span class='wikiword'>GameObjects</span> don't do anything on their own.  They need special properties before they can become a character, an environment, or a special effect.  But every one of these objects does so many different things.  If every object is a <span class='wikiword'>GameObject</span>, how do we differentiate an interactive power-up object from a static room?  What makes these <span class='wikiword'>GameObjects</span> different from each other?
+</p>
+<p class='vspace'>The answer to this question is that <span class='wikiword'>GameObjects</span> are containers.  They are empty boxes which can hold the different pieces that make up a lightmapped island or a physics-driven car.  So to really understand <span class='wikiword'>GameObjects</span>, you have to understand these pieces; they are called <span class='doc-keyword'>Components</span>.  Depending on what kind of object you want to create, you will add different combinations of Components to the <span class='wikiword'>GameObject</span>.  Think of a <span class='wikiword'>GameObject</span> as an empty cooking pot, and Components as different ingredients that make up your recipe of gameplay.  You can read more about Components <a href="../Manual/Using Components.html">here</a>, but we recommend you finish reading this page first.
+</p>
+<div class='vspace'></div><h2>The <span class='wikiword'>GameObject</span>-Component Relationship</h2>
+<p>We now know that a <span class='wikiword'>GameObject</span> contains Components.  We'll explore this relationship by discussing the most common Component -- the <span class='doc-prop'>Transform</span> Component.  With any Unity Scene open, create a new <span class='wikiword'>GameObject</span> (using <span class='doc-menu'>Shift-Command-N</span>), select it and take a look at the <span class='doc-keyword'>Inspector</span>.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/GameObjects-0.jpg' /><br /><em>The Inspector of an Empty <span class='wikiword'>GameObject</span></em></div>
+<p class='vspace'>You'll notice there are two distinct headers in the Inspector: "<span class='wikiword'>GameObject</span>" and "Transform".  Everything beneath the "<span class='wikiword'>GameObject</span>" header is information about the <span class='wikiword'>GameObject</span> itself.  You will notice that the only item is the name of the <span class='wikiword'>GameObject</span>.  The "Transform" header is information about the Transform Component.  That's right, when you create a new <span class='wikiword'>GameObject</span>, it automatically has a Transform Component included.  You might conclude that all <span class='wikiword'>GameObjects</span> have a Transform Component.  You're right, they do.  It is impossible to create a <span class='wikiword'>GameObject</span> in Unity that does not have a Transform Component.  The Transform Component provides unique functionality to all <span class='wikiword'>GameObjects</span>, so we'll discuss it a little bit more now.
+</p>
+<div class='vspace'></div><h3>The Transform Component</h3>
+<p>The Transform Component is one of the most important Components.  It defines the <span class='wikiword'>GameObject</span>'s position, rotation, and scale in the game world/Scene View.  If a <span class='wikiword'>GameObject</span> did not have a Transform Component, it would be nothing more than some information in the computer's memory.  It effectively would not exist in the world.  If you would like to learn more about the Transform Component, please read the <a href="../Components/class-Transform.html">Transform Component Reference page</a>.  The Transform Component also enables a concept called <span class='doc-keyword'>Parenting</span>, which is utilized through the <span class='doc-keyword'>Unity Editor</span> and is a critical part of working with <span class='wikiword'>GameObjects</span>.
+</p>
+<div class='vspace'></div><h3>Parenting</h3>
+<p>The idea behind Parenting is that you can make the Transform values of one <span class='wikiword'>GameObject</span> completely dependent on a different <span class='wikiword'>GameObject</span>. Simply, one <span class='wikiword'>GameObject</span> moves around with another.  When a <span class='wikiword'>GameObject</span> is a <span class='doc-keyword'>Parent</span> of another <span class='wikiword'>GameObject</span>, the <span class='doc-keyword'>Child</span> <span class='wikiword'>GameObject</span> will move, rotate, and scale exactly as its Parent does.  You can create a Parent by dragging any <span class='wikiword'>GameObject</span> in the <span class='doc-keyword'>Hierarchy View</span> onto another. This will create a Parent-Child relationship between the two <span class='wikiword'>GameObjects</span>. The functionality is similar to a folder hierarchy in the Finder, where one <span class='wikiword'>GameObject</span> is contained within another.
+</p>
+<p class='vspace'>It is worth pointing out that the Transform values in the Inspector of any Child <span class='wikiword'>GameObject</span> are displayed relative to the Parent's Transform values.  These are also called the <span class='doc-keyword'>Local Coordinates</span>.  Through scripting, you can access the <span class='doc-keyword'>Global Coordinates</span> as well as the Local Coordinates.
+</p>
+<p class='vspace'>A <span class='wikiword'>GameObject</span> can have any number of Children, but only one Parent. Children can also be Parents of other <span class='wikiword'>GameObjects</span>. You can quickly tell if a <span class='wikiword'>GameObject</span> is a Parent by looking at its name in the Hierarchy View.  If it has an arrow to the left of its name, it is a Parent.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/GameObjects-1.jpg' /><br /><em>A real-world example of a Parent-Child hierarchy.  All the <span class='wikiword'>GameObjects</span> with arrows to the left are Parents.</em></div>
+<p class='vspace'>Remember that all of this Parenting functionality is executed by the <span class='wikiword'>GameObject</span>'s Transform Component, not by the <span class='wikiword'>GameObject</span> itself.
+</p>
+<div class='vspace'></div><h2>The <span class='wikiword'>GameObject</span>-Script Relationship</h2>
+<p>When you create a <span class='doc-keyword'>script</span> and and attach it to a <span class='wikiword'>GameObject</span>, the script appears in the <span class='wikiword'>GameObject</span>'s Inspector just like a Component.  This is because scripts become Components when they are saved.  In technical terms, a script compiles as a type of Component, and is treated like any other Component by the Unity engine.
+</p>
+<p class='vspace'>Any public variables you declare in your script will appear editable or linkable in the Inspector of their <span class='wikiword'>GameObject</span>.  When you are writing a script, you can directly access any member of the <span class='doc-prop'><span class='wikiword'>GameObject</span></span> class.  You can see a list of all the <span class='doc-prop'><span class='wikiword'>GameObject</span></span> class members <a href="../Components/class-GameObject.html">here</a>.  If any of the indicated classes are attached to the <span class='wikiword'>GameObject</span> as a Component, you can access that Component directly through the script by simply typing the member name.  For example, typing <span class='doc-prop'>transform</span> is equivalent to <span class='doc-prop'>gameObject.transform</span>.  The <span class='doc-prop'>gameObject</span> is assumed by the compiler, unless you specifically reference a different <span class='wikiword'>GameObject</span>.
+</p>
+<p class='vspace'>Typing <span class='doc-prop'>this</span> will be accessing the script Component that you are writing.  Typing <span class='doc-prop'>this.gameObject</span> is referring to the <span class='wikiword'>GameObject</span> that the script is attached to.  You can access the same <span class='wikiword'>GameObject</span> by simply typing <span class='doc-prop'>gameObject</span>.  Logically, typing <span class='doc-prop'>this.transform</span> is the same as typing <span class='doc-prop'>transform</span>.  If you want to access a Component that is not included as a <span class='wikiword'>GameObject</span> member, you have to use <span class='doc-prop'>gameObject.<span class='wikiword'>GetComponent</span>()</span> which is explained on the next page.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Building Scenes.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Using Components.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

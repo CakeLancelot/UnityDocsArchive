@@ -1,0 +1,64 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Particle Renderer"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Particle Renderer" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-ParticlesGroup.html%22%3EParticle%20systems%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-ParticleRenderer.html%22%3EParticle%20Renderer%3C%2Fa%3E" navigation="%3Ca%20href%3D%22class-TrailRenderer.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22class-LineRenderer.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>Particle Renderer</h1>
+		<p><a href="index.html">Components</a> &gt; <a href="comp-ParticlesGroup.html">Particle systems</a> &gt; <a href="class-ParticleRenderer.html">Particle Renderer</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="class-TrailRenderer.html"><img src="../images/prev.png"></a><a href="class-LineRenderer.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+<p>The Particle Renderer renders the particle system on screen.
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Material</nobr></b></td><td> A list of materials. Currenttly, only the first slot is used. This points to the material that defines all rendering properties.
+</td></tr><tr><td><b><nobr>Stretch Particles</nobr></b></td><td> Choose the rendering method for the particles.
+<dl><dt>Billboard</dt><dd> The particles are rendered towards the camera.</dd><dt>Stretched</dt><dd> The Particles are facing in their direction of motion. </dd><dt>SortedBillboard</dt><dd> The particles are sorted by depth. Use this when using a blending material</dd></dl>
+</td></tr><tr><td><b><nobr>Length Scale</nobr></b></td><td> If Stretch Particles is set to Stretched, this value determins hom long the particles are in their direction of motion.
+</td></tr><tr><td><b><nobr>Velocity Scale</nobr></b></td><td> How much the particle speed makes the particle be more stretched.
+</td></tr><tr><td><b><nobr>Camera Velocity Scale</nobr></b></td><td> How much the camera motion is factored in when determining particle stretching.
+</td></tr><tr><td><b><nobr>Animtex Count X, <br> Animtex Count Y</nobr></b></td><td> If either of these are set, the UV coordinates of the particles will be generated for use with a tile animated texture. See Animated Textures, below.
+</td></tr><tr><td><b><nobr>Animtex Speed</nobr></b></td><td> How many times to loop the animation sequence.
+<p></td></tr></tr></table>
+</p>
+
+<h3> Details</h3>
+
+<h4> Animated textures</h4>
+<p>Particle systems can be rendered with an animated tile texture. To use this feature, make the texture out of a grid of images. As the particles go thorough their life cycle, they will cycle through the images. This is good for adding more life to your particles, or making small rotating debris pieces.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Use particle materials with the Particle Renderer.
+</li></ul>
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

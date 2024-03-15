@@ -1,0 +1,60 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Debug"-->
+			<title>Unity Script Reference &ndash; Debug</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Debug</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Debug" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> Class containing methods to ease debugging while developing a game.</p>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#isDebugBuild'>isDebugBuild</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#DrawLine'>DrawLine</a></p>
+<p><a href='#DrawRay'>DrawRay</a></p>
+<p><a href='#Break'>Break</a></p>
+<p><a href='#Log'>Log</a></p>
+</span>
+<div class='tocclear'></div>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="isDebugBuild"></a><h3><span class="full-name">Debug.</span>isDebugBuild</h3><div class="synopsis"><span class="standard_type">bool</span> isDebugBuild</div>
+   <p class='details'> In the Build Settings ... dialog there is a check box called "strip debug symbols".
+If it is checked isDebugBuild will be off.
+In the editor <span class="variable">isDebugBuild</span> always returns true.
+It is recommended to remove all calls to <a href="Debug.html#Log" class="itemlink">Debug.Log</a> when deploying a game, this way you can
+easily deploy beta builds with debug prints and final builds without.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Log some debug information only if this is a debug build<br/>if (<a href="Debug.html#isDebugBuild" class="itemlink">Debug.isDebugBuild</a>) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Debug.html#Log" class="itemlink">Debug.Log</a> ("Something bad happened!");<br/>}</div></td></tr></table></p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="DrawLine"></a><h3><span class="full-name">Debug.</span>DrawLine</h3><div class="synopsis"><span class="standard_type">void</span> DrawLine (<a href="Vector3.html" class="classlink">Vector3</a> start, <a href="Vector3.html" class="classlink">Vector3</a> end, <a href="Color.html" class="classlink">Color</a> color = <a href="Color.html#white" class="itemlink">Color.white</a>)</div>
+   <p class='details'> Draws a line from the <span class="variable">point</span> start to <span class="variable">end</span> with color.
+The line will be drawn in the scene view of the editor.
+If gizmo drawing is enabled in the game view, the line will also be drawn there.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Draws a red line from the the world-space origin to the point (1, 0, 0)<br/>function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Debug.html#DrawLine" class="itemlink">Debug.DrawLine</a> (<a href="Vector3.html#zero" class="itemlink">Vector3.zero</a>, <span class="keyword">new</span> <a href="Vector3.html" class="classlink">Vector3</a> (1, 0, 0), <a href="Color.html#red" class="itemlink">Color.red</a>);<br/>}</div></td></tr></table></p>
+	<a name="DrawRay"></a><h3><span class="full-name">Debug.</span>DrawRay</h3><div class="synopsis"><span class="standard_type">void</span> DrawRay (<a href="Vector3.html" class="classlink">Vector3</a> start, <a href="Vector3.html" class="classlink">Vector3</a> dir, <a href="Color.html" class="classlink">Color</a> color = <a href="Color.html#white" class="itemlink">Color.white</a>)</div>
+   <p class='details'> Draws a line from <span class="variable">start</span> to <span class="variable">start</span> + <span class="variable">dir</span> with color.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Draws a 10 meter long green line from the position<br/>// forward along the transform's z-axis.<br/>function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;var forward = transform.TransformDirection(<a href="Vector3.html#forward" class="itemlink">Vector3.forward</a>) * 10;<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Debug.html#DrawRay" class="itemlink">Debug.DrawRay</a> (transform.position, forward * 10, <a href="Color.html#green" class="itemlink">Color.green</a>);<br/>}</div></td></tr></table></p>
+	<a name="Break"></a><h3><span class="full-name">Debug.</span>Break</h3><div class="synopsis"><span class="standard_type">void</span> Break ()</div>
+   <p class='details'> Pauses the editor.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code"><a href="Debug.html#Break" class="itemlink">Debug.Break</a>();</div></td></tr></table></p>
+	<a name="Log"></a><h3><span class="full-name">Debug.</span>Log</h3><div class="synopsis"><span class="standard_type">void</span> Log (object message)</div>
+   <p class='details'> Logs <span class="variable">message</span> to the Unity Console.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code"><a href="Debug.html#Log" class="itemlink">Debug.Log</a> ("Hello");</div></td></tr></table></p>
+	<a name="Log"></a><h3><span class="full-name">Debug.</span>Log</h3><div class="synopsis"><span class="standard_type">void</span> Log (object message, <a href="Object.html" class="classlink">Object</a> context)</div>
+   <p class='details'> Logs <span class="variable">message</span> to the Unity Console.
+When you select the error in the console a connection to the context <a href="Object.html" class="classlink">Object</a> will be drawn.
+This is very useful if you want know on which object an error occurrs.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code"><a href="Debug.html#Log" class="itemlink">Debug.Log</a> ("Hello", gameObject);</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

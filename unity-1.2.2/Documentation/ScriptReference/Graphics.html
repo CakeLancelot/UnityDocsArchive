@@ -1,0 +1,62 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Graphics"-->
+			<title>Unity Script Reference &ndash; Graphics</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Graphics</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Graphics" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> Raw interface to Unity's drawing functions (PRO only)</p>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#supportsVertexProgram'>supportsVertexProgram</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#DrawQuad'>DrawQuad</a></p>
+<p><a href='#DrawQuad2'>DrawQuad2</a></p>
+<p><a href='#DrawMesh'>DrawMesh</a></p>
+<p><a href='#DrawMesh2'>DrawMesh2</a></p>
+<p><a href='#DrawMeshRaw'>DrawMeshRaw</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> This is the high-level shortcut into the optimized mesh drawing functionality of Unity.</p>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="supportsVertexProgram"></a><h3><span class="full-name">Graphics.</span>supportsVertexProgram</h3><div class="synopsis"><span class="standard_type">bool</span> supportsVertexProgram</div>
+   <p class='details'> Does this machine support vertex program? <b>(Read Only)</b>
+Returns true if the machine supports ''hardware'' vertex programs. returns false if not</p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="DrawQuad"></a><h3><span class="full-name">Graphics.</span>DrawQuad</h3><div class="synopsis"><span class="standard_type">void</span> DrawQuad (<a href="Material.html" class="classlink">Material</a> material, <a href="Vector3.html" class="classlink">Vector3</a> center, <span class="standard_type">float</span> size)</div>
+   <p class='details'> Draw a billboarded quad, with a given <span class="variable">material</span>, with all channels available.
+Use this to draw any billboard, with full bumpmapping.
+The quad is drawn at the worldpsace position <span class="variable">center</span> and has a given <span class="variable">size</span>.</p>
+	<a name="DrawQuad2"></a><h3><span class="full-name">Graphics.</span>DrawQuad2</h3><div class="synopsis"><span class="standard_type">void</span> DrawQuad2 (<a href="Vector3.html" class="classlink">Vector3</a> center, <span class="standard_type">float</span> size)</div>
+   <p class='details'> Draw a billboarded quad, with the current active material, with all channels available.
+Use this to draw any billboard, with full bumpmapping.</p>
+	<a name="DrawMesh"></a><h3><span class="full-name">Graphics.</span>DrawMesh</h3><div class="synopsis"><span class="standard_type">void</span> DrawMesh (<a href="LodMesh.html" class="classlink">LodMesh</a> mesh, <a href="Material.html" class="classlink">Material</a> material, <a href="Vector3.html" class="classlink">Vector3</a> position, <a href="Quaternion.html" class="classlink">Quaternion</a> rotation)</div>
+   <p class='details'> Draw a <span class="variable">mesh</span> at a given <span class="variable">position</span>, with a given <span class="variable">rotation</span>.
+This function will assign the <span class="variable">material</span>, set up the modelview matrix and draw the object.
+Any passes defined in the material's <a href="Shader.html" class="classlink">Shader</a> will be drawn. The mesh is not affected by scene lights.</p>
+	<a name="DrawMesh2"></a><h3><span class="full-name">Graphics.</span>DrawMesh2</h3><div class="synopsis"><span class="standard_type">void</span> DrawMesh2 (<a href="LodMesh.html" class="classlink">LodMesh</a> mesh, <a href="Vector3.html" class="classlink">Vector3</a> position, <a href="Quaternion.html" class="classlink">Quaternion</a> rotation)</div>
+   <p class='details'> Draw a <span class="variable">mesh</span> at a given <span class="variable">position</span>, with a given <span class="variable">rotation</span>.
+This function will set up the modelview matrix and draw the mesh.</p>
+	<a name="DrawMeshRaw"></a><h3><span class="full-name">Graphics.</span>DrawMeshRaw</h3><div class="synopsis"><span class="standard_type">void</span> DrawMeshRaw (<a href="LodMesh.html" class="classlink">LodMesh</a> mesh)</div>
+   <p class='details'> Draw a mesh.
+This function draws a mesh. The currently set material and modelview matrix is used.</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

@@ -1,0 +1,96 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Behind the Scenes</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Behind the Scenes</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Working with Assets.html">Working with Assets</a> &gt; <a href="../Manual/Behind the Scenes.html">Behind the Scenes</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Asset Server.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Creating Gameplay.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Behind the Scenes</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Unity automatically imports assets for you and manages all kinds of <span class='doc-keyword'>metadata</span> for you. How does this all work?
+</p>
+<p class='vspace'>When you place an Asset like a texture in the <span class='doc-keyword'>Assets</span> folder, Unity will first detect that a new file it doesn't know about has been added. A new unique identifier will be given to the asset and Unity will then start importing it. Unity processes every imported asset. When you see a texture in the <span class='doc-keyword'>Project View</span>, this is already a processed asset.
+</p>
+<p class='vspace'>This way you can attach a lot of metadata to an imported asset. For example in the texture's import settings you can tell the texture to use mip maps. Photoshop of course doesn't support mip maps, thus the need for metadata. All metadata for each asset is stored in the <span class='doc-keyword'>Library</span> folder.  As a user, you should never have to manually alter the Library folder.
+</p>
+<p class='vspace'>In Unity you can organize and move Assets around however you like from the Project View. Unity automatically tracks all movements of files and references to other assets. You <b>must</b> move the files inside of Unity. You can easily do this via drag &amp; drop in Project View. But if you move an object in the Explorer (Windows) or Finder (OS X), Unity will not detect the move. It will treat it like a if new asset was created and another one deleted. Thus if you move an asset in the OS file manager, connections to the asset will be lost.
+</p>
+<p class='vspace'>The Library folder is critical to your project. Unity manages the Library folder for you automatically. Thus you should never move files around in it or touch it. But still it is critical to your project. If you delete it, all your connections to assets will be lost.
+</p>
+<p class='vspace'>When backing up a project, <b>always</b> back up the project folder-level, containing both the <span class='doc-keyword'>Assets</span> and <span class='doc-keyword'>Library</span> folders!
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Asset Server.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Creating Gameplay.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

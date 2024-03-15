@@ -1,0 +1,82 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="GUI Text"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="GUI Text" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-RenderingGroup.html%22%3ERendering%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-GuiText.html%22%3EGUI%20Text%3C%2Fa%3E" -->
+		<h1>GUI Text</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-RenderingGroup.html">Rendering</a> &gt; <a href="class-GuiText.html">GUI Text</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-GuiTexture.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-Skybox.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>GUI Text displays text of any font you import in screen coordinates.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-GuiText-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-GuiText-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The GUI Text</i>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Text</nobr></b></td><td> The string of text to display.
+</td></tr><tr><td><b><nobr>Anchor</nobr></b></td><td> Which point of the text shares the position of the Transform.
+</td></tr><tr><td><b><nobr>Alignment</nobr></b></td><td> How multiple lines are aligned within the GUIText.
+</td></tr><tr><td><b><nobr>Line Spacing</nobr></b></td><td> How much space will be in-between lines of text.
+</td></tr><tr><td><b><nobr>Tab Size</nobr></b></td><td> How much space will be inserted for a tab '\t' character. As a multiplum of the space character offset.
+</td></tr><tr><td><b><nobr>Font</nobr></b></td><td> The <a href="../Components/class-Font.html">font</a> to use when rendering the text.
+</td></tr><tr><td><b><nobr>Material</nobr></b></td><td> Reference to the Material containing the characters to be drawn. If set, this property overrides the one in the <a href="../Components/class-Font.html">Font</a> asset.
+</td></tr><tr><td><b><nobr>Pixel Correct</nobr></b></td><td> If enabled, all text characters will be drawn in the size of the imported font texture. If disabled, the characters will be resized based on the transform's scale.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+
+<p>GUI Texts are used to print text onto the screen in 2D. The camera has to have a <a href="../Components/class-GUILayer.html">GUI Layer</a> attached in order to render the text.  Cameras include a GUI Layer by default, so don't remove it if you want to display a GUI Text.  GUI Texts are positioned using only the X and Y axes.  Rather than being positioned in World Coordinates, GUI Texts are positioned in Screen Coordinates, where (0,0) is the bottom-left and (1,1) is the top-right corner of the screen
+</p>
+
+<p>To import a font see the <a href="../Components/class-Font.html">Font class</a>.
+</p>
+
+<h3>Pixel Correct</h3>
+
+<p>By default Fonts are rendered pixel correct. This makes them look crisp and they will stay the same size in pixels independent of the screen resolution.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+When entering text into the <b>Text</b> property, you can create a line break by holding <i>Alt</i> and pressing <i>Return</i>.
+</li><li>You can download free true type fonts from <a class="wiki"  href="http://www.1001freefonts.com/fonts/afonts.htm">http://www.1001freefonts.com/fonts/afonts.htm</a> (download the windows fonts since they contain true type fonts).
+</li><li>If you are scripting the <b>Text</b> property, you can add line breaks by inserting the escape character &quot;\n&quot; in your strings.
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="class-GuiTexture.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-Skybox.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

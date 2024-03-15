@@ -1,0 +1,294 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Learning the Interface</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Learning the Interface</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Unity Basics.html">Unity Basics</a> &gt; <a href="../Manual/Learning the Interface.html">Learning the Interface</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Unity Basics.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Asset Workflow.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Learning the Interface</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+
+<div class='vspace'></div><div class='specific-iphone' > 
+<p>Let's begin learning Unity.  If you have not yet opened Unity, you can launch it by double-clicking the Unity icon inside your <span class='doc-menu'>Applications-&gt;Unity</span> folder.  When it launches for the first time, you will see a screen like this:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-0.jpg' /></div>
+<p><em>The default project when Unity launches.  If you have opened any example projects, your screen may look different</em>
+</p>
+<p class='vspace'>There is a lot to learn, so take the time you need to observe and understand the interface.  We will walk through each interface element together.
+</p>
+<div class='vspace'></div><h2>First Glance</h2>
+<p>Each section of the main window is called a <span class='doc-keyword'>View</span>.  There are several types of Views in Unity, but you may not need to see them all at once.  Different <span class='doc-keyword'>Layout modes</span> contain different arrangements of the Views.  You can observe the combinations of Views by clicking on the Layout drop-down selector, in the upper-right hand corner of the window, and clicking on a different Layout name.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-1.jpg' /></div>
+<p><em>Layout mode selector drop-down</em>
+</p>
+<p class='vspace'>For now, please click the Layout selector, highlight <span class='doc-keyword'>Animation</span>, and click again to switch to Animation layout. You can also use <span class='doc-menu'>Window-&gt;Layouts-&gt;Animation</span> from the menu.  The Animation layout contains all the views, and is the best way to introduce them all.
+</p>
+<p class='vspace'>You can immediately tell which View is which by looking at the name displayed in the upper-left corner of the View.  The different Views are:
+</p>
+<div class='vspace'></div><ul><li><span class='doc-keyword'>Scene View</span> - used for placing game objects.
+</li><li><span class='doc-keyword'>Game View</span> - representation of how the game will look when run.
+</li><li><span class='doc-keyword'>Hierarchy</span> - a list of all the game objects currently in the scene.
+</li><li><span class='doc-keyword'>Project</span> - all the assets &amp; resources available in the open project.
+</li><li><span class='doc-keyword'>Inspector</span> - displays details and properties of the currently highlighted object.
+</li><li><span class='doc-keyword'>Timeline</span> - used to create basic animations on a timeline for the currently highlighted object.
+</li></ul><div class='vspace'></div><h2>Scene View</h2>
+<div><img class='figure' src='../Images/manual/Learning the Interface-2.jpg' /><br /><em>The <span class='doc-keyword'>Scene View</span></em></div>
+<p class='vspace'><span class='doc-keyword'>Scene View</span> is your interactive sandbox. You will use the Scene View to select and position environments, the player, the camera, enemies, and all other <span class='doc-keyword'><span class='wikiword'>GameObjects</span></span>. Maneuvering and manipulating objects within the Scene View are some of the most important functions in Unity. It is your best way to look at your game world through the eyes of a designer instead of a player.  You have free range to move and manipulate objects in the Scene View, but there are some basic commands you should know to use Scene View effectively.
+</p>
+<p class='vspace'>The first command you should know is the <span class='doc-keyword'>Frame Selected</span> command.  This command will focus your Scene View on the game object you currently have selected.  To use it, click on any object in the <span class='doc-keyword'>Hierarchy</span>, move your mouse over the Scene View, and press <b>F</b> on the keyboard.  Scene View window will move to focus on the selected object. This command is extremely useful, and you will use it often while putting your scenes together.
+</p>
+<div class='vspace'></div><h3>Manipulating in Scene View</h3>
+<p>There is a <span class='doc-keyword'>Toolbar</span> above the Scene View that contains the Layout mode selector.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-3.jpg' /><br /><em>The Toolbar</em></div>
+<p class='vspace'>Although this Toolbar is not attached to the Scene View window, the four Tools on the left side are used to navigate around in the Scene View and manipulate the <span class='wikiword'>GameObjects</span> inside it while the two in the middle are used to control how and where the pivot point for selected objects is shown. The first tool from the left is the <span class='doc-keyword'>View Tool</span> which is described further below. The three buttons next to the <span class='doc-keyword'>View Tool</span> in the Toolbar are the <span class='doc-keyword'>Manipulation Tools</span> and the two buttons in the middle are the <span class='doc-keyword'>Handle Position Tool</span>.  
+</p>
+<p class='vspace'>Highlighting any of the <span class='doc-keyword'>Manipulation Tools</span> will allow you to move, rotate, or scale your <span class='wikiword'>GameObjects</span> interactively.  When you have one of these tools selected, you can click on any <span class='wikiword'>GameObject</span> in the Scene View window to select it.  Now press <b>F</b> to frame the object in the center of your view.
+</p>
+<p class='vspace'>The different Manipulation Tools are:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-4.jpg' /><br /><em>Translate Tool - Hotkey "W"</em></div>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-5.jpg' /><br /><em>Rotate Tool - Hotkey "E"</em></div>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-6.jpg' /><br /><em>Scale Tool - Hotkey "R"</em></div>
+<p class='vspace'>When you have a Game Object selected, you will see a <span class='doc-keyword'>Gizmo</span>  drawn around the three dimensional axes X, Y, and Z.  Each of the Manipulation Tools has a different Gizmo that is drawn around the <span class='wikiword'>GameObject</span>.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-7.jpg' /><br /><em>Translate Gizmo</em></div>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-8.jpg' /><br /><em>Rotate Gizmo</em></div>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-9.jpg' /><br /><em>Scale Gizmo</em></div>
+<div class='vspace'></div><ul><li>Click and drag any axis on your current Gizmo to translate, rotate, or scale the <span class='doc-keyword'>Transform</span> component of the currently selected <span class='wikiword'>GameObject</span>.
+</li><li>You can also click and drag in the center of the Gizmo to manipulate the object on multiple axes at once.
+</li><li>If you have a three button mouse, you can click the middle button to adjust the last-adjusted axis without clicking directly on it.
+</li></ul><p class='vspace'>For more information on transforming <span class='wikiword'>GameObjects</span>, please view the <a href="../Components/class-Transform.html">Transform Component</a> page.
+</p>
+<p class='vspace'>The <span class='doc-keyword'>Handle Position Tool</span> is used to control how and where the pivot point of an object, or a group of selected objects, is displayed. 
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-10.jpg' /><br /><em>Handle Position Tool</em></div>
+<p class='vspace'>Choosing Center means that the pivot point will be drawn at the center of the current selection while choosing Pivot means the actual pivot point will be used.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-11.jpg' /><br /><em>Handle position set to Center, the center of the selection is used</em></div>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-12.jpg' /><br /><em>Handle position set to Pivot, the actual pivot point of the selection is used</em></div>
+<div class='vspace'></div><h3>Navigating in Scene View</h3>
+<p>There are different ways to look around your scene depending on the kind of mouse you are using.
+</p>
+<div class='vspace'></div><h4>Three-button mouse</h4>
+<p>We recommend that you use a three-button mouse with Unity.
+</p>
+<div class='vspace'></div><ul><li>To use <span class='doc-keyword'>Orbit mode</span>, hold down Option and drag with the left mouse button pressed.
+</li><li>To use <span class='doc-keyword'>Drag mode</span>, hold down Option and drag with the middle button pressed.
+</li><li>To use <span class='doc-keyword'>Zoom mode</span>, hold down Option and drag with the right button pressed. If you have a mouse with a scroll wheel, you can use that instead.
+</li></ul><div class='vspace'></div><h4>One-button mouse</h4>
+<p>If you don't have a three-button mouse, you will have to use the <span class='doc-keyword'>View Tool</span> to navigate the scene.  Click the left-most button in the toolbar with the hand on it.  This is the View Tool, and its different modes allow you to travel within the Scene View using a single-button mouse.  When this tool is selected, you must use the left mouse button to navigate.
+</p>
+<div class='vspace'></div><ul><li>To use <span class='doc-keyword'>Orbit mode</span>, hold down Option and click-drag the mouse.
+</li><li>To use <span class='doc-keyword'>Drag mode</span>, click-drag the mouse.
+</li><li>To use <span class='doc-keyword'>Zoom mode</span>, hold down <span class='doc-menu'>Command</span> and click-drag the mouse.
+</li></ul><div class='vspace'></div><h4>Trackpad</h4>
+<p>The shortcuts for using a trackpad are identical to the single-button mouse shortcuts.  We have also included keyboard shortcuts to each of the tools in the Toolbar, so you don't have to do too much maneuvering on the trackpad.
+</p>
+<div class='vspace'></div><h4>View Tool modes</h4>
+<div><img class='figure' src='../Images/manual/Learning the Interface-13.jpg' />  </div>
+<p><em>View Tool in Drag Mode - Hotkey "Q"</em>
+</p>
+<p class='vspace'>With <span class='doc-keyword'>Drag Mode</span> selected, move your mouse over the Scene View and click-drag the mouse.  This will move your view up, down, left, and right.  You will also need to access the <span class='doc-keyword'>Orbit</span> and <span class='doc-keyword'>Zoom Modes</span> to make the most use of the View Tool.  To enter Orbit Mode, keep the View Tool selected and hold the Option key.  Now click &amp; drag your mouse, and see how the view rotates around.  Also notice how the View Tool icon has changed from a hand to an eye.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-14.jpg' /><br /><em>View Tool in Orbit Mode - Option key</em></div>
+<p class='vspace'>Finally, you can access the Zoom Mode by holding the <span class='doc-menu'>Command</span> key.  In this mode, clicking and dragging the mouse will zoom your view forward and backward.  Notice that the icon for Zoom Mode is a magnifying glass.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-15.jpg' /><br /><em>View Tool in Zoom Mode - Command key</em></div>
+<p class='vspace'>Using the View Tool modes and dragging the mouse is the fundamental way of navigating in Scene View.
+</p>
+<div class='vspace'></div><h3>Scene View Control Bar</h3>
+<p>All of the Views have a different <span class='doc-keyword'>Control Bar</span> at the top of the window.  The Scene View Control Bar has the most options, and it looks like this:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-16.jpg' /><br /><em>Scene View Control Bar</em></div>
+<p class='vspace'>The first drop-down is the View Selector. Expanding this will let you change the current View to any other, and back again. All the Views have this selector, and it comes in very handy when you want to create your own custom layout on the Unity interface.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-17.jpg' /><br /><em>Every View has a View Selector</em></div>
+<p class='vspace'>The next drop-down is the <span class='doc-keyword'>Draw Mode</span> for the Scene View. You can choose to view all objects in the Scene View as Textured, Wireframe, or Textured with Wireframe overlay. This has no effect on your game when it is published.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-18.jpg' /><br /><em>Draw Mode drop-down</em></div>
+<p class='vspace'>The third drop-down is the <span class='doc-keyword'>Render Mode</span> for the Scene View. You can choose to view the RGB or the Alpha value of all objects in the scene. Again, this will not affect your published game.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-19.jpg' /><br /><em>Render Mode drop-down</em></div>
+<p class='vspace'>The next item on the Control Bar is a series of three buttons.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-20.jpg' /><br /><em>Three buttons on the Scene View Control Bar</em></div>
+<p class='vspace'>The left button toggles generic lighting on and off. When the button is disabled, you will see plain lighting on your entire scene. When it is enabled, you will see the effects of the light objects you have placed. Having this button enabled will allow you to see the lighting your game will use when it is published.
+</p>
+<p class='vspace'>The middle button will toggle various effects on and off, such as the <span class='doc-keyword'>Scene View Grid</span>, <span class='doc-keyword'>Skyboxes</span>, and <span class='doc-keyword'>GUI Elements</span>. Keeping the button enabled will allow you to see your game as it will look when published.
+</p>
+<p class='vspace'>The right button toggles <span class='doc-keyword'>Orthographic Mode</span>. Turning this on removes all perspective from the Scene View.  This button will not affect how your game will look when published. Orthographic Mode is useful for precise placement of objects.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-21.jpg' /><br /><em>Perspective camera.</em></div>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-22.jpg' /><br /><em>Orthographic camera. Objects do not get smaller with distance here!</em></div>
+<p class='vspace'>The next drop-down is the <span class='doc-keyword'>Direction</span> drop-down. It moves the Scene View to the rotation you choose.
+</p>
+<p class='vspace'>The last drop-down is the <span class='doc-keyword'>Layers</span> drop-down. You can use it to selectively view objects assigned to different Layers. For more information on Layers, view <a href="../Components/Layers.html">this page</a>. This will not have an effect on your published game.
+</p>
+<div class='vspace'></div><h2>Game View</h2>
+<div><img class='figure' src='../Images/manual/Learning the Interface-23.jpg' /><br /><em>Game View -- What you'll see when playing your game</em></div>
+<p class='vspace'>The <span class='doc-keyword'>Game View</span> is rendered using information from the Camera(s) in your game. This view will show you what will be seen when you are playing your game. You can see the Game View change when you translate or rotate the main camera in the scene.
+</p>
+<p class='vspace'>You will need to use one or more <span class='doc-keyword'>Cameras</span> to control what the player actually sees when they are playing your game. For more information about Cameras, please view the <a href="../Components/class-Camera.html">Camera Component page</a>.
+</p>
+<div class='vspace'></div><h3>The Play Buttons &amp; Status Bar</h3>
+<p>The buttons to play, pause, and step through your game are immediately beneath the Game View. At any time while you're building a scene, you can enter <span class='doc-keyword'>Play Mode</span> and see how your game is working.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-24.jpg' /><br /><em>The Play buttons and Status Bar</em></div>
+<p class='vspace'>Press the <span class='doc-menu'>Play Button</span> to enter Play mode. While your scene is in Play mode, you can still move, rotate, add, and delete objects. You can also change variable settings. Any changes you make while in Play mode are temporary, and will be reset when you exit Play mode. You can exit by clicking the Play button again. When in Play mode, you can Pause and Step your game. Pausing and then inspecting your scene is a great way to figure out what's going on, and if you have a problem, what's amiss.
+</p>
+<p class='vspace'>The Status Bar area to the right serves multiple purposes. It will provide context-sensitive messages and tips, error messages, and statements printed from scripts. If there is a problem with your game, keeping an eye on the Status Bar is the best way to find the error. You can double-click on the Status Bar to bring up the Console window, which has all script or run-time errors visible.
+</p>
+<div class='vspace'></div><h3>Game View Control Bar</h3>
+<p>Immediately to the right of the View drop-down on the control bar is the <span class='doc-keyword'>Aspect Drop-down</span>. Here, you can force the aspect ratio of the Game View window to different values. This will affect the positioning of any GUI Elements you have inside Unity. It can be used to test how your game will look on monitors with different aspect ratios.
+</p>
+<p class='vspace'>Furthest to the right on this Control Bar is the <span class='doc-menu'>Gizmos Button</span>. This controls whether user-drawn <a class='urllink' href='../ScriptReference/Gizmos.html' rel='nofollow'>Gizmos</a> are shown in the game view.
+</p>
+<div class='vspace'></div><h2>Project View</h2>
+<div><img class='figure' src='../Images/manual/Learning the Interface-25.jpg' /><br /><em>Project View -- where all your asset files are stored</em></div>
+<p class='vspace'>When you create a project, a group of folders are generated. One of these is called the <span class='doc-keyword'>Assets</span> folder.  The <span class='doc-keyword'>Project View</span> gives a look into the project's Assets folder. If you were to open the Assets folder itself, you would find that all the items there can be seen inside the Project View. The difference is that inside Project View, you will create and link objects together.  Those relationships are stored elsewhere in the group of project folders. Moving assets from within the Project View will maintain and update the relationships between files. Moving assets from within the Finder will break the relationships. Therefore, you should only use the Finder to add files to the Assets folder. Any other actions with assets should be performed within Project View.
+</p>
+<div class='vspace'></div><h3>Importing Objects</h3>
+<p>Once you have created an asset (3D model, image file, sound effect, or script), you can use the Finder to put the asset right into your project's Assets folder. Unity can be open while you do this. As soon as you change focus back to Unity, the new asset will be detected and imported automatically. The asset is now available in the Project View.
+</p>
+<p class='vspace'>For more information about working with assets, skip ahead to the <a href="../Manual/Asset Workflow.html">Asset Workflow</a> manual page.
+</p>
+<div class='vspace'></div><h3>Creating Assets</h3>
+<p>Use the <span class='doc-keyword'>Create Drop-down</span> on the Control Bar to see a drop-down list of objects you can create.  Alternatively, you can Control-click or right-click inside the Project View window to bring up the same drop-down list.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-26.jpg' /><br /><em>The Create drop-down list</em></div>
+<div class='vspace'></div><h3>Organizing the Project View</h3>
+<p>Use the Create Drop-down to create folders in the Project View. You can then rename and use folders just as you would in the Finder, and drag any asset in the Project View into the folder. For example, you could create a folder called <span class='doc-menu'>Scripts</span> and keep all your script files inside it.
+</p>
+<p class='vspace'>Whichever folder you have highlighted when you use the Create drop-down will contain the new object when it is created. Use nested folders to keep your Project View neat and tidy.
+</p>
+<p class='vspace'><b>Note:</b> If you hold the <span class='doc-menu'>Alt</span> key while you expand or contract a directory, all subdirectories will also be expanded or contracted.  This way if your Project View is getting cluttered, you can Alt-click one of the top level folders to make the View cleaner when you expand it again.
+</p>
+<div class='vspace'></div><h3>Import Settings</h3>
+<p>There is an <span class='doc-keyword'>Import Settings</span> button on the Control Bar, next to the Create Drop-down.  Depending on the type of asset that is highlighted when the button is clicked, a different set of options will appear in the Import Settings pop-up window. For more information about Import Settings, please read the page on <a href="../Manual/Importing Assets.html">Importing Assets</a>.
+</p>
+<div class='vspace'></div><h3>Project View Control Bar</h3>
+<p>The Settings button will bring up the import settings for the asset you currently have selected.
+</p>
+<p class='vspace'>The Create drop-down selector will create the item you select within the directory you have selected. Creating folders is a great and quick way to organize your Project View.
+</p>
+<div class='vspace'></div><h2>Hierarchy</h2>
+<div><img class='figure' src='../Images/manual/Learning the Interface-27.jpg' /><br /><em>Hierarchy -- All the objects currently in the scene</em></div>
+<p class='vspace'>The <span class='doc-keyword'>Hierarchy</span> displays every <span class='wikiword'>GameObject</span> that exists in the currently open .unity <span class='doc-keyword'>Scene File</span>. It is used to select and group objects. As objects are added and removed from the scene, they will appear and disappear from the Hierarchy as well. This way, if you cannot see all the objects at once in the Scene View, you can use the Hierarchy to select and inspect them.
+</p>
+<div class='vspace'></div><h3>Object Hierarchies</h3>
+<p>Unity uses a concept called <span class='doc-keyword'>Parenting</span>. Any <span class='wikiword'>GameObject</span> can become the parent or child of any other <span class='wikiword'>GameObject</span>.  A child will inherit the movement and rotation of its parent. Parenting is very useful for organizing environments, characters, interface elements, or just to keep scenes tidy. To make a <span class='wikiword'>GameObject</span> the child of another, click and drag it onto the object you wish to become its parent, all in the Hierarchy. You will see a triangular arrow appear to the left of the new parent <span class='wikiword'>GameObject</span>. You can now expand and contract the parent to see its children in the Hierarchy without affecting your game.
+</p>
+<div class='vspace'></div><h3>Show Prefab Button</h3>
+<p>When this button on the Control Bar is enabled, any instance of a <span class='doc-keyword'>Prefab</span> that is selected in the Hierarchy View will show a visual reference to its Prefab in the Project View. This is especially useful if you change names of Prefab instances inside the scene.
+</p>
+<div class='vspace'></div><h2>Inspector</h2>
+<div><img class='figure' src='../Images/manual/Learning the Interface-28.jpg' /><br /><em>Inspector -- Details about settings for the selected object</em></div>
+<p class='vspace'>The <span class='doc-keyword'>Inspector</span> displays some basic information about your currently selected <span class='wikiword'>GameObject</span>, as well as the <span class='doc-keyword'>Components</span> it contains and their properties. It is where you set up the functionality of the <span class='wikiword'>GameObjects</span> in your scene.  When creating engaging gameplay, you'll do lots of trial-and-error tweaking within the Inspector.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-29.jpg' /><br /><em>The Inspector shows information about the currently selected object and its settings.</em></div>
+<p class='vspace'>Every <span class='wikiword'>GameObject</span> contains a number of different Components. When you are viewing a <span class='wikiword'>GameObject</span> in the Inspector, each Component has its own mini title bar. For example, every <span class='wikiword'>GameObject</span> contains a Transform Component. The settings and variables of every Component in the <span class='wikiword'>GameObject</span> can be changed in the Inspector.
+</p>
+<div class='vspace'></div><h2>The Structure of <span class='wikiword'>GameObjects</span></h2>
+<p>The Components inside the <span class='wikiword'>GameObject</span> are what defines what the <span class='wikiword'>GameObject</span> is and does. Think of a new <span class='wikiword'>GameObject</span> as an empty canvas, and each Component is a different shade of paint. As you combine and set up different Components, you are painting the behavior of your <span class='wikiword'>GameObject</span>. Certain Components, just like certain colors of paint, work very well together, while other combinations do not.
+</p>
+<p class='vspace'>Components can be added to your Game Objects by using the <span class='doc-menu'>Component</span> menu:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-30.jpg' /></div>
+<p class='vspace'>For a complete and detailed guide to Unity's Components, please use the <a href="../Components/Components.html">Component Reference</a>.
+</p>
+<p class='vspace'>Additionally, all the Components will display a tiny question mark beside their name in the Inspector.  Click this question mark to load the documentation reference page for that Component.
+</p>
+<div class='vspace'></div><h2>Timeline View</h2>
+<p>The <span class='doc-keyword'>Timeline</span> View is used to create animations for the currently selected object. Unity will import files containing animations, but you can use the Timeline View to make basic animations without a 3D animation application.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-31.jpg' /><br /><em>Timeline View will help you make animations for your Game Object</em></div>
+<p class='vspace'>For more information about using the Timeline View, please read the <a href="../Manual/Animation.html">Animation</a> page.
+</p>
+<div class='vspace'></div><h2>Adjusting the View Layout</h2>
+<p>Now that you know about all the different Views, you can create your own arrangement of Views that fits your style of working. Please look again at the Layout drop-down.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-32.jpg' /><br /><em>The Layout drop-down lets you choose or save different View Layouts</em></div>
+<p class='vspace'>Try choosing different Layouts to get an idea of what is possible. Now, choose <span class='doc-menu'>New Layout</span> from the drop-down and give it a unique name.
+</p>
+<p class='vspace'>To customize this Layout, you will need to <span class='doc-keyword'>Split</span> and <span class='doc-keyword'>Combine</span> Views.  To do this, control-click or right-click on any dividing line between Views, or on any View Control Bar. When your mouse is over a dividing line, you can click and drag back and forth to change the sizes of the divided Views. Experiment to find the way you like the interface.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Learning the Interface-33.jpg' /><br /><em>A completely custom Layout</em></div>
+<p class='vspace'>You can toggle any View in and out of full-screen mode. Hover the mouse over a View and press the <span class='doc-menu'>Spacebar</span>. This maximizes the current View and hides all other views temporarily. This allows you to see your view in more detail when you need the extra screen size. To return to normal view, simply press the space bar again.
+</p></div>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Unity Basics.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Asset Workflow.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

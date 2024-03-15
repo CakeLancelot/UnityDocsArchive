@@ -1,0 +1,128 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Scripting Concepts" title="Layers"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Scripting Concepts" title="Layers" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EScripting%20Concepts%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Layers.html%22%3ELayers%3C%2Fa%3E" -->
+		<h1>Layers</h1>
+		<p ><a href="index.html">Scripting Concepts</a> &gt; <a href="Layers.html">Layers</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="index.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RigidbodySleeping.html">Next<img src="../images/next.png"></a></div>
+
+			<h2>Layers</h2>
+
+<p>Layers are most commonly used by Cameras to render only a part of the scene, and by Lights to illuminate only parts of the scene.
+But they can also used by raycasting to selectively ignore colliders.
+</p>
+
+<h3>Creating Layers</h3>
+
+<p>The first step is to create a new layer, which we can then assign to a game object.
+To create a new layer, open the Edit menu and select Project Settings -&gt; Tags.
+</p>
+
+<p>We create a new layer in one of the empty User Layers. We choose layer 8.
+</p>
+
+<p><img class='figure' src='images/Layers-0.jpg' />
+</p>
+
+<h3>Assigning Layers</h3>
+
+<p>Now that you have created a new layer. You have to assign the layer to one of the game objects.
+</p>
+
+<p><img class='figure' src='images/Layers-1.jpg' />
+</p>
+
+<p>In the tag manager we assigned the Player layer to be in layer 8.
+</p>
+
+<h3>Drawing only a part of the scene with the camera's culling mask</h3>
+
+<p>Using the camera's culling mask, you can selectively render objects which are in one particular layer.
+To do this, select the camera that should selectively render objects.
+</p>
+
+<p>Modify the culling mask by checking or unchecking layers in the culling mask property.
+</p>
+
+<p><img class='figure' src='images/Layers-2.jpg' />
+</p>
+
+<h3>Casting Rays Selectively</h3>
+
+<p>Using layers you can cast rays and ignore colliders in specific layers.
+For example you might want to cast a ray only against the player layer and ignore all other colliders.
+</p>
+
+<p>The Physics.Raycast function takes a bitmask, where each bit determines if a layer will be ignored or not.
+If all bits in the layerMask are on, we will collide against all colliders.
+If the layerMask = 0, we will never find any collisions with the ray.
+</p>
+
+<p><pre class='codelisting'>
+// bit shift the index of the layer to get a bit mask
+var layerMask = 1 &lt;&lt; 8;
+// Does the ray intersect any objects which are in the player layer.
+if (Physics.Raycast (transform.position, Vector3.forward, Mathf.Infinity, layer))
+  print (&quot;The ray hit the player&quot;);
+</pre>
+</p>
+
+<p>In the real world you want to the inverse of that however. We want to cast a ray against all colliders except those in the player layer.
+<pre class='codelisting'>
+function Update ()
+{
+  // Bit shift the index of the layer (8) to get a bit mask
+  var layerMask = 1 &lt;&lt; 8;
+  // This would cast rays only against colliders in layer 8.
+  // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
+  layerMask = ~layerMask;
+
+  var hit : RaycastHit;
+  // Does the ray intersect any objects excluding the player layer
+  if (Physics.Raycast (transform.position, transform.TransformDirection (Vector3.forward), hit, Mathf.Infinity, layerMask))
+  {
+    Debug.DrawRay (transform.position, transform.TransformDirection (Vector3.forward) * hit.distance, Color.yellow);
+    print (&quot;Did Hit&quot;);
+  }
+  else
+  {
+    Debug.DrawRay (transform.position, transform.TransformDirection (Vector3.forward) *1000, Color.white);
+    print (&quot;Did not Hit&quot;);
+  }
+}
+</pre>
+</p>
+
+<p>When you don't pass a layerMask to the Raycast function, it will only ignore colliders that use the IgnoreRaycast layer.
+This is the easiest way to ignore some colliders when casting a ray.
+</p>
+
+
+
+		<div class="navigation"><a href="index.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RigidbodySleeping.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

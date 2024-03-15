@@ -1,0 +1,71 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Mesh Morpher"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Mesh Morpher" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-MeshGroup.html%22%3E%20Meshes%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-MeshMorpher.html%22%3EMesh%20Morpher%3C%2Fa%3E" -->
+		<h1>Mesh Morpher</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-MeshGroup.html"> Meshes</a> &gt; <a href="class-MeshMorpher.html">Mesh Morpher</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-MeshFilter.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-TextMesh.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>The Mesh morpher filter takes a number of meshes and morphs between them over time.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-MeshMorpher-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-MeshMorpher-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The Mesh Morpher Component</i>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Enabled</nobr></b></td><td> If enabled, the Mesh Morpher cycles between the different frames automatically.
+</td></tr><tr><td><b><nobr>Speed</nobr></b></td><td> How many frames the mesh morpher goes through in one second.
+</td></tr><tr><td><b><nobr>Meshes</nobr></b></td><td> A list of meshes to cycle through.
+<dl><dt>Size</dt><dd> Number of meshes available to morph between</dd><dt>Element 0</dt><dd> Reference to a Mesh to be used at this stage of the morph</dd></dl>
+</td></tr><tr><td><b><nobr>Frame</nobr></b></td><td> The frame currently shown.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+<p>The Mesh Morpher works a lot like the Mesh Filter. You want to have a <a href="../Components/class-MeshRenderer.html">Mesh Renderer</a> as the other filter in the object.
+</p>
+
+
+<h2>Hints</h2>
+<p><ul><li>
+You can modify the <b>Frame</b> directly to control the speed of the morph.
+</li><li>The number of Vertices and Polygons should be identical across all the meshes being morphed, in order to avoid fragmented transitions.
+</li><li>You need to make sure that your 3D modeller saves the vertices in the same order for all meshes.
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="class-MeshFilter.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-TextMesh.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,271 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - RPC Details</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">RPC Details</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/net-RPCDetails.html">RPC Details</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>RPC Details</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><span class='doc-keyword'>Remote Procedure Calls</span> (RPCs) let you call functions on a remote machine. Invoking an RPC is similar to calling a normal function and almost as easy but there are some important differences to understand.
+</p>
+<div class='vspace'></div><ol><li>An RPC call can have as many parameters as you like but the network bandwidth involved will increase with the number and size of parameters. You should keep parameters to a minimum in order to get the best performance.
+<div class='vspace'></div></li><li>Unlike a normal function call, an RPC needs an additional parameter to denote the recipients of the RPC request. There are several possible RPC call modes to cover all common use cases. For example, you can easily invoke the RPC function on all connected machines, on the server alone, on all clients but the one sending the RPC call or on a specific client.
+</li></ol><p class='vspace'>RPC calls are usually used to execute some event on all clients in the game or pass event information specifically between two parties, but you can be creative and use them however you like. For example, a server for a game which only starts after four clients have connected could send an RPC call to all clients as soon as the fourth one connects, thus starting the game. A client could send RPC calls to everyone to signal that he picked up an item. A server could send an RPC to a particular client to initialize him right after he connects, for example, to give him his player number, spawn location, team color, etc. A client could in turn send an RPC only to the server to specify his starting options, such as the color he prefers or the items he has bought.
+</p>
+<div class='vspace'></div><h2>Using RPCs</h2>
+<p>A function must be marked as an RPC before it can be invoked remotely. This is done by prefixing the function in the script with an RPC attribute:-
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+// All RPC calls need the @RPC attribute!
+@RPC
+function PrintText (text : String)
+{
+    Debug.Log(text);
+}
+</pre>
+<p class='vspace'>All network communication is handled by NetworkView components, so you must attach one to the object whose script declares the RPC functions before they can be called.
+</p>
+<div class='vspace'></div><h2>Parameters</h2>
+<p>You can use the following variable types as parameters to RPCs:-
+</p>
+<div class='vspace'></div><ul><li>int
+</li><li>float
+</li><li>string
+</li><li>NetworkPlayer
+</li><li>NetworkViewID
+</li><li>Vector3
+</li><li>Quaternion
+</li></ul><p class='vspace'>For example, the following code invokes an RPC function with a single string parameter:-
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+networkView.RPC ("PrintText", RPCMode.All, "Hello world");
+</pre>
+<p class='vspace'>The first parameter of <span class='doc-prop'>RPC()</span> is the name of the function to be invoked while the second determines the targets on which it will be invoked. In this case we invoke the RPC call on everyone who is connected to the server (but the call will not be buffered to wait for clients who connect later - see below for further details about buffering).
+</p>
+<p class='vspace'>All parameters after the first two are the ones that will be passed to the RPC function and be sent across the network. In this case, "Hello World" will be sent as a parameter and be passed as the text parameter in the PrintText function.
+</p>
+<p class='vspace'>You can also access an extra internal parameter, a <a class='urllink' href='../ScriptReference/NetworkMessageInfo.html' rel='nofollow'>NetworkMessageInfo</a> struct which holds additional information, such as where the RPC call came from. This information will be passed automatically, so the PrintText function shown above will be can be declared as:-
+</p>
+<div class='vspace'></div><pre class='codelisting'>
+@RPC
+function PrintText (text : String, info : NetworkMessageInfo)
+{
+    Debug.Log(text + " from " + info.sender);
+}
+</pre>
+<p class='vspace'>...while being invoked the same way as before.
+</p>
+<p class='vspace'>As mentioned above, a Network View must be attached to any GameObject which has a script containing RPC functions. If you are using RPCs exclusively (ie, without state synchronisation) then the Network View's <span class='doc-prop'>State Synchronization</span> can be set to <span class='doc-prop'>Off</span>.
+</p>
+<div class='vspace'></div><h2>RPC Buffer</h2>
+<p>RPC calls can also be buffered. Buffered RPC calls are stored up and executed in the order they were issued for each new client that connects.  This can be a useful way to ensure that a latecoming player gets all necessary information to start. A common scenario is that every player who joins a game should first load a specific level. You could send the details of this level to all connected players but also buffer it for any who join in the future. By doing this, you ensure that the new player receives the level information just as if he had been present from the start.
+</p>
+<p class='vspace'>You can also remove calls from the RPC buffer when necessary. Continuing the example above, the game may have moved on from the starting level by the time a new player joins, so you could remove the original buffered RPC and send a new one to request the new level.
+</p>
+</p><small>Page last updated: 2011-11-18</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

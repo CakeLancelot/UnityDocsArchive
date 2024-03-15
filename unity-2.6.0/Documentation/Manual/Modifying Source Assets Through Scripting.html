@@ -1,0 +1,137 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Modifying Source Assets Through Scripting</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Modifying Source Assets Through Scripting</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/Modifying Source Assets Through Scripting.html">Modifying Source Assets Through Scripting</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Loading Resources at Runtime.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Update Order.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Modifying Source Assets Through Scripting</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<h2>Automatic Instantiation</h2>
+<p>Usually when you want to make a modification to any sort of game asset, you want it to happen at runtime and you want it to be temporary.  For example, if your character picks up an invincibility power-up, you might want to change the <span class='doc-keyword'>shader</span> of the <span class='doc-keyword'>material</span> for the player character to visually demonstrate the invincible state.  This action involves modifying the material that's being used.  This modification is not permanent because we don't want the material to have a different shader when we exit <span class='doc-keyword'>Play Mode</span>.
+</p>
+<p class='vspace'>However, it is possible in Unity to write scripts that will permanently modify a source asset.  Let's use the above material example as a starting point.
+</p>
+<p class='vspace'>To temporarily change the material's shader, we change the <span class='doc-prop'>shader</span> property of the <span class='doc-prop'>material</span> component.
+</p>
+<div class='vspace'></div><pre>	private var invincibleShader = Shader.Find ("Specular");
+
+	function <span class='wikiword'>StartInvincibility</span> {
+		<a class='urllink' href='../ScriptReference/Renderer.html' rel='nofollow'>renderer</a>.<a class='urllink' href='../ScriptReference/Renderer-material.html' rel='nofollow'>material</a>.shader = invincibleShader;
+	}
+</pre><p class='vspace'>When using this script and exiting Play Mode, the state of the <span class='doc-prop'><a class='urllink' href='../ScriptReference/Material.html' rel='nofollow'>material</a></span> will be reset to whatever it was before entering Play Mode initially. This happens because whenever renderer.material is accessed, the material is automatically instantiated and the instance is returned.  This instance is simultaneously and automatically applied to the renderer.  So you can make any changes that your heart desires without fear of permanence.
+</p>
+<div class='vspace'></div><h2>Direct Modification</h2>
+<h3>IMPORTANT NOTE</h3>
+<p>The method presented below will modify actual source asset files used within Unity. These modifications are not undoable. Use them with caution.
+</p>
+<p class='vspace'>Now let's say that we don't want the material to reset when we exit play mode.  For this, you can use <a class='urllink' href='../ScriptReference/Renderer-sharedMaterial.html' rel='nofollow'>renderer.sharedMaterial</a>.  The sharedMaterial property will return the actual asset used by this renderer (and maybe others).
+</p>
+<p class='vspace'>The code below will permanently change the material to use the Specular shader.  It will not reset the material to the state it was in before Play Mode.
+</p>
+<div class='vspace'></div><pre>	private var invincibleShader = Shader.Find ("Specular");
+
+	function <span class='wikiword'>StartInvincibility</span> {
+		<a class='urllink' href='../ScriptReference/Renderer.html' rel='nofollow'>renderer</a>.<a class='urllink' href='../ScriptReference/Renderer-sharedMaterial.html' rel='nofollow'>sharedMaterial</a>.shader = invincibleShader;
+	}
+</pre><p class='vspace'>As you can see, making any changes to a sharedMaterial can be both useful and risky.  Any change made to a sharedMaterial will be permanent, and not undoable.
+</p>
+<div class='vspace'></div><h2>Applicable Class Members</h2>
+<p>The same formula described above can be applied to more than just materials.  The full list of assets that follow this convention is as follows:
+</p>
+<div class='vspace'></div><ul><li>Materials: renderer.material and renderer.sharedMaterial
+</li><li>Meshes: meshFilter.mesh and meshFilter.sharedMesh
+</li><li>Physic Materials: collider.material and collider.sharedMaterial
+</li></ul><div class='vspace'></div><h2>Direct Assignment</h2>
+<p>If you declare a public variable of any above class: Material, Mesh, or Physic Material, and make modifications to the asset using that variable instead of using the relevant class member, you will not receive the benefits of automatic instantiation before the modifications are applied.
+</p>
+<div class='vspace'></div><h2>Assets that are not automatically instantiated</h2>
+<div class='specific-no-iphone' > 
+<p>There are two different assets that are never automatically instantiated when modifying them.
+</p>
+<div class='vspace'></div><ul><li><a class='urllink' href='../ScriptReference/Texture2D.html' rel='nofollow'>Texture2D</a>
+</li><li><a class='urllink' href='../ScriptReference/TerrainData.html' rel='nofollow'>TerrainData</a>
+</li></ul><p class='vspace'>Any modifications made to these assets through scripting are always permanent, and never undoable.  So if you're changing your terrain's heightmap through scripting, you'll need to account for instantiating and assigning values on your own.  Same goes for Textures.  If you change the pixels of a texture file, the change is permanent.
+</p></div>
+
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Loading Resources at Runtime.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Update Order.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

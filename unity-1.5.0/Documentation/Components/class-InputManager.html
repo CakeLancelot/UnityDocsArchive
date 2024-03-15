@@ -1,0 +1,100 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Input Manager"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Input Manager" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-ManagerGroup.html%22%3EManagers%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-InputManager.html%22%3EInput%20Manager%3C%2Fa%3E" -->
+		<h1>Input Manager</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-ManagerGroup.html">Managers</a> &gt; <a href="class-InputManager.html">Input Manager</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-TimeManager.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-PhysicsManager.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>The Input Manager is where you define all the different input axes and game actions for your project.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-InputManager-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-InputManager-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The Input Manager Inspector</i>
+</p>
+
+<p>To see the Input Manager choose: <b>Edit -&gt; Project Settings -&gt; Input</b>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Axes</nobr></b></td><td> Contains all the defined input axes for the current project.
+</td></tr><tr><td><b><nobr>    Size</nobr></b></td><td> the number of different input axes in this project.
+</td></tr><tr><td><b><nobr>    Element 0, 1, ...</nobr></b></td><td> The particular axis you are currently modifying.
+</td></tr><tr><td><b><nobr>        Name</nobr></b></td><td> The string that refers to the axis in the game launcher and through scripting.
+</td></tr><tr><td><b><nobr>        Descriptive Name</nobr></b></td><td> A detailed definition of the <b>Positive Button</b> function that is displayed in the game launcher.
+</td></tr><tr><td><b><nobr>        Descriptive Negative Name</nobr></b></td><td> A detailed definition of the <b>Negative Button</b> function that is displayed in the game launcher.
+</td></tr><tr><td><b><nobr>        Negative Button</nobr></b></td><td> The button that will send a negative value to the axis.
+</td></tr><tr><td><b><nobr>        Positive Button</nobr></b></td><td> The button that will send a positive value to the axis.
+</td></tr><tr><td><b><nobr>        Alt Negative Button</nobr></b></td><td> The secondary button that will send a negative value to the axis.
+</td></tr><tr><td><b><nobr>        Alt Positive Button</nobr></b></td><td> The secondary button that will send a positive value to the axis.
+</td></tr><tr><td><b><nobr>        Gravity</nobr></b></td><td> How fast will the input recenter. Only used when the type is <i>key / mouse button</i>
+</td></tr><tr><td><b><nobr>        Dead</nobr></b></td><td> Any positive or negative values that are less than this number will register as zero.  Useful for joysticks.
+</td></tr><tr><td><b><nobr>        Sensitivity</nobr></b></td><td> For keyboard input, a larger value will result in faster response time. A lower value will be more smooth. For Mouse delta the value will scale the actual mouse delta.
+</td></tr><tr><td><b><nobr>        Snap</nobr></b></td><td> If enabled, the axis value will be immediately reset to zero after it receives opposite inputs. Only used when the type is <i>key / mouse button</i>
+</td></tr><tr><td><b><nobr>        Invert</nobr></b></td><td> If enabled, the positive buttons will send negative values to the axis, and vice versa.
+</td></tr><tr><td><b><nobr>        Type</nobr></b></td><td> Use Key / Mouse Button for any kind of buttons, Mouse Movement for mouse delta and scrollwheels, Joystick axis for analog joystick axes and Window movement for when the user shakes the window.
+</td></tr><tr><td><b><nobr>        Axis</nobr></b></td><td> Axis of input from the device (joystick, mouse, gamepad, etc.)
+</td></tr><tr><td><b><nobr>        Joy Num</nobr></b></td><td> Which joystick should be used. By default this is set to retrieve the input from all joysticks. This is only used for input axes and not buttons.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+
+<p>All the axes that you set up in the Input Manager serve two purposes:
+</p>
+<ul><li>They allow you to reference your inputs by axis name in scripting
+</li><li>They allow the players of your game to customize the controls to their liking
+</li></ul>
+
+<p>All defined axes will be presented to the player in the game launcher, where they will see its name, detailed description, and default buttons.  From here, they will have the option to change any of the buttons defined in the axes.  Therefore, it is best to write your scripts making use of axes instead of individual buttons, as the player may want to customize the buttons for your game.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-InputManager-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-InputManager-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The game launcher input window that is displayed when your built game is run</i>
+</p>
+
+<p>See also: <a href="../Manual/Input.html">Input</a>
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Axes are not the best place to define &quot;hidden&quot; or secret functions, as they will be displayed very clearly to the player in the game launcher.
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="class-TimeManager.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-PhysicsManager.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

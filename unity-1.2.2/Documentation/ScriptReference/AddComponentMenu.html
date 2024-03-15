@@ -1,0 +1,43 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="AddComponentMenu"-->
+			<title>Unity Script Reference &ndash; AddComponentMenu</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class AddComponentMenu</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class AddComponentMenu" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass">Attribute</div></p>
+   <p class='first'> The AddComponentMenu attribute allows you to place a script anywhere in the "<a href="Component.html" class="classlink">Component</a>" menu, instead of just the "<a href="Component.html" class="classlink">Component</a>->Scripts" menu.</p>
+<span class='toc'><p class='tocheader'>Constructors</p><p><a href='#AddComponentMenu'>AddComponentMenu</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> You use this to organize the <a href="Component.html" class="classlink">Component</a> menu better, this way improving workflow when adding scripts.
+Important notice: You need to restart 
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// C# example:<br/>[AddComponentMenu("<a href="Transform.html" class="classlink">Transform</a>/Follow <a href="Transform.html" class="classlink">Transform</a>")]<br/><span class="keyword">class</span> FollowTransform : <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a><br/>{<br/>}</div></td></tr></table></p>
+   <a name="Constructors"></a><h2 class="script-section">Constructors</h2>
+	<a name="AddComponentMenu"></a><h3><span class="full-name">AddComponentMenu.</span>AddComponentMenu</h3><div class="synopsis">AddComponentMenu (<span class="standard_type">string</span> menuName)</div>
+   <p class='details'> The script will be placed in the component menu according to <span class="variable">menuName</span>. <span class="variable">menuName</span> is the path to the component
+"Rendering/DoSomething"
+if <span class="variable">menuName</span> is "" the component will be hidden from the menu.
+if <span class="variable">menuName</span> is "" the component will be hidden from the menu.</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

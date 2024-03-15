@@ -1,0 +1,113 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Particle Collider</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Particle Collider</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-ParticlesGroup.html">Particle Components</a> &gt; <a href="../Components/class-WorldParticleCollider.html">Particle Collider</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-TrailRenderer.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/comp-RenderingGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Particle Collider</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>The <span class='doc-keyword'>World Particle Collider</span> is used to collide particles against other <span class='doc-keyword'>Colliders</span> in the scene.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-WorldParticleCollider-0.jpg' /><br /><em>A <span class='doc-keyword'>Particle System</span> colliding with a <span class='doc-keyword'>Mesh Collider</span></em></div>
+<div class='vspace'></div><h2>Properties</h2>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Bounce Factor</span></td><td  align='left'>Particles can be accelerated or slowed down when they collide against other objects. This factor is similar to the <span class='doc-keyword'>Particle Animator's</span> <span class='doc-prop'>Damping</span> property.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Collision Energy Loss</span></td><td  align='left'>Amount of energy (in seconds) a particle should lose when colliding. If the energy goes below 0, the particle is killed.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Min Kill Velocity</span></td><td  align='left'>If a particle's <span class='doc-prop'>Velocity</span> drops below <span class='doc-prop'>Min Kill Velocity</span> because of a collision, it will be eliminated.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Collides with</span></td><td  align='left'>Which <a href="../Components/Layers.html">Layers</a> the particle will collide against.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Send Collision Message</span></td><td  align='left'>If enabled, every particle sends out a collision message that you can catch through scripting.</td></tr>
+</table>
+<div class='vspace'></div><h2>Details</h2>
+<p>To create a Particle System with Particle Collider:
+</p><ol><li>Create a Particle System using <span class='doc-menu'><span class='wikiword'>GameObject</span>-&gt;Create Other-&gt;Particle System</span>
+</li><li>Add the Particle Collider using <span class='doc-menu'>Component-&gt;Particles-&gt;World Particle Collider</span>
+</li></ol><div class='vspace'></div><h3>Messaging</h3>
+<p>If <span class='doc-prop'>Send Collision Message</span> is enabled, any particles that are in a collision will send the message <span class='doc-prop'><span class='wikiword'>OnParticleCollision</span>()</span> to  both the particle's <span class='doc-keyword'><span class='wikiword'>GameObject</span></span> and the <span class='wikiword'>GameObject</span> the particle collided with.
+</p>
+<div class='vspace'></div><h2>Hints</h2>
+<ul><li><span class='doc-prop'>Send Collision Message</span> can be used to simulate bullets and apply damage on impact.
+</li><li>Particle Collision Detection is slow when used with a lot of particles. Use Particle Collision Detection wisely.
+</li><li>Message sending introduces a large overhead and shouldn't be used for normal Particle Systems.
+</li></ul>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-TrailRenderer.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/comp-RenderingGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

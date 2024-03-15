@@ -1,0 +1,56 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Joint"-->
+			<title>Unity Script Reference &ndash; Joint</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Joint</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Joint" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Component.html" class="classlink">Component</a></div></p>
+   <p class='first'> Joint is the base class for all joints.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#breakForce'>breakForce</a></p>
+<p><a href='#breakTorque'>breakTorque</a></p>
+<p><a href='#axis'>axis</a></p>
+<p><a href='#anchor'>anchor</a></p>
+<p><a href='#connectedBody'>connectedBody</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> <span class="seealso"><b>See Also:</b> <a href="HingeJoint.html" class="classlink">HingeJoint</a></span></p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="breakForce"></a><h3><span class="full-name">Joint.</span>breakForce</h3><div class="synopsis"><span class="standard_type">float</span> breakForce</div>
+   <p class='details'> The force that needs to be applied for this joint to break.
+The force might come from collisions with other objects, forces applied with rigidbody.AddTorque or from other joints.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Makes the joint break when a force larger than 10 is applied<br/>hingeJoint.breakForce = 10;<br/>// Makes the joint unbreakable<br/>hingeJoint.breakForce = <a href="Mathf.html#Infinity" class="itemlink">Mathf.Infinity</a>;</div></td></tr></table></p>
+	<a name="breakTorque"></a><h3><span class="full-name">Joint.</span>breakTorque</h3><div class="synopsis"><span class="standard_type">float</span> breakTorque</div>
+   <p class='details'> The torque that needs to be applied for this joint to break.
+The torque might come from collisions with other objects, forces applied with rigidbody.AddTorque or from other joints.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Makes the joint break when a torque larger than 10 is applied<br/>hingeJoint.breakTorque = 10;<br/>// Makes the joint unbreakable<br/>hingeJoint.breakTorque = <a href="Mathf.html#Infinity" class="itemlink">Mathf.Infinity</a>;</div></td></tr></table></p>
+	<a name="axis"></a><h3><span class="full-name">Joint.</span>axis</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> axis</div>
+   <p class='details'> The Direction of the axis around which the body is constrained.
+The Axis is defined in local space.	<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">hingeJoint.axis = <a href="Vector3.html#up" class="itemlink">Vector3.up</a>;</div></td></tr></table></p>
+	<a name="anchor"></a><h3><span class="full-name">Joint.</span>anchor</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> anchor</div>
+   <p class='details'> The Position of the anchor around which the joints motion is constrained.
+The Position is defined in local space.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">hingeJoint.anchor = <a href="Vector3.html" class="classlink">Vector3</a> (2, 0, 0);</div></td></tr></table></p>
+	<a name="connectedBody"></a><h3><span class="full-name">Joint.</span>connectedBody</h3><div class="synopsis"><a href="Rigidbody.html" class="classlink">Rigidbody</a> connectedBody</div>
+   <p class='details'> A reference to another rigid body this joint connects to.
+If not set, the joint connects the object to the world.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Connects the joint to the world instead of another rigid body<br/>hingeJoint.connectedBody = null;
+*<br/>// Connects the joint to another body<br/>var otherBody : <a href="Rigidbody.html" class="classlink">Rigidbody</a>;<br/>hingeJoint.connectedBody = otherBody;</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

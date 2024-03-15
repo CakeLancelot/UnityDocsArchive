@@ -1,0 +1,128 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Particle Renderer</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Particle Renderer</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-ParticlesGroup.html">Particle Components</a> &gt; <a href="../Components/class-ParticleRenderer.html">Particle Renderer</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><a href='../ScriptReference/ParticleRenderer.html' title='Go to ParticleRenderer Scripting Doc'>Switch to Scripting</a><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-ParticleAnimator.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-TrailRenderer.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Particle Renderer</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>The <span class='doc-keyword'>Particle Renderer</span> renders the <span class='doc-keyword'>Particle System</span> on screen.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-ParticleRenderer-0.jpg' /><br /><em>The Particle Renderer <span class='doc-keyword'>Inspector</span></em></div>
+<div class='vspace'></div><h2>Properties</h2>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Materials</span></td><td  align='left'>Reference to a list of <span class='doc-keyword'>Materials</span> that will be displayed in the position of each individual particle.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Camera Velocity Scale</span></td><td  align='left'>The amount of stretching that is applied to the Particles based on <a href="../Components/class-Camera.html">Camera</a> movement.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Stretch Particles</span></td><td  align='left'>Determines how the particles are rendered.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Billboard</span></span></td><td  align='left'>The particles are rendered as if facing the camera.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Stretched</span></span></td><td  align='left'>The particles are facing the direction they are moving.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'><span class='wikiword'>SortedBillboard</span></span></span></td><td  align='left'>The particles are sorted by depth. Use this when using a blending material.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Length Scale</span></td><td  align='left'>If <span class='doc-prop'>Stretch Particles</span> is set to <span class='doc-prop'>Stretched</span>, this value determines how long the particles are in their direction of motion.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Velocity Scale</span></td><td  align='left'>If <span class='doc-prop'>Stretch Particles</span> is set to <span class='doc-prop'>Stretched</span>, this value determines the rate at which particles will be stretched, based on their movement speed.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>UV Animation</span></td><td  align='left'>If either of these are set, the UV coordinates of the particles will be generated for use with a tile animated texture. See the section on <a href='#AnimatedTextures'>Animated Textures</a> below.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>X Tile</span></span></td><td  align='left'>Number of frames located across the X axis.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Y Tile</span></span></td><td  align='left'>Number of frames located across the Y axis.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Cycles</span></span></td><td  align='left'>How many times to loop the animation sequence.</td></tr>
+</table>
+<div class='vspace'></div><h2>Details</h2>
+<p>Particle Renderers are required for any Particle Systems to be displayed on the screen.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-ParticleRenderer-1.jpg' /><br /><em>A Particle Renderer makes the Gunship's engine exhaust appear on the screen</em></div>
+<div class='vspace'></div><h3>Choosing a Material</h3>
+<p>When setting up a Particle Renderer it is very important to use an appropriate material and shader. Most of the time you want to use a Material with one of the built-in Particle Shaders. There are some premade materials in the <span class='doc-menu'>Standard Assets-&gt;Particles-&gt;Sources</span> folder.
+</p>
+<p class='vspace'>Creating a new material is easy:
+</p><ol><li>Select <span class='doc-menu'>Assets-&gt;Create Other-&gt;Material</span> from the menu bar.
+</li><li>The <a href="../Components/class-Material.html">Material</a> has a shader popup, choose one of the shaders in the Particles group. Eg. <span class='doc-menu'>Particles-&gt;Multiply</span>.
+</li><li>Now assign a Texture. The different shaders use the alpha channel of the textures slightly differently, but most of the time a value of black will make it invisible and white in the alpha channel will display it on screen.
+</li></ol><div class='vspace'></div><h3>Distorting particles</h3>
+<p>By default particles are rendered billboarded. That is simple square sprites. This is good for smoke and explosions and most other particle effects.
+</p>
+<p class='vspace'>Particles can be made to either stretch with the velocity. This is useful for sparks, lightning or laser beams. <span class='doc-prop'>Length Scale</span> and <span class='doc-prop'>Velocity Scale</span> affects how long the stretched particle will be.
+</p>
+<p class='vspace'><span class='doc-prop'>Sorted Billboard</span> can be used to make all particles sort by depth. Sometimes this is necessary, mostly when using <span class='doc-menu'>Alpha Blended</span> particle shaders. This can be expensive and should only be used if it really makes a quality difference when rendering.
+</p>
+<p class='vspace'><a name='AnimatedTextures' id='AnimatedTextures'></a>
+</p>
+<div class='vspace'></div><h3>Animated textures</h3>
+<p>Particle Systems can be rendered with an animated tile texture. To use this feature, make the texture out of a grid of images. As the particles go through their life cycle, they will cycle through the images. This is good for adding more life to your particles, or making small rotating debris pieces.
+</p>
+<div class='vspace'></div><h2>Hints</h2>
+<ul><li>Use Particle Shaders with the Particle Renderer.
+</li></ul>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-ParticleAnimator.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-TrailRenderer.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

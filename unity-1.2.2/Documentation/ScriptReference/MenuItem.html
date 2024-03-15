@@ -1,0 +1,56 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="MenuItem"-->
+			<title>Unity Script Reference &ndash; MenuItem</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class MenuItem</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class MenuItem" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass">System.Attribute</div></p>
+   <p class='details'> 	<div class="editorclass">This is an editor class. To use it you have to place your script in Assets/Editor inside your project folder. Editor classes are in the UnityEditor namespace so you need to add "import UnityEditor;" in the beginning of the script.</div></p>
+   <p class='first'> The MenuItem attribute allows you to add MenuItem's to the main menu and inspector context menus.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#menuItem'>menuItem</a></p>
+<p><a href='#validate'>validate</a></p>
+<p><a href='#priority'>priority</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Constructors</p><p><a href='#MenuItem'>MenuItem</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> Only static functions can use the MenuItem attribute.   <p class="basic"/>To create a hotkey you can use the following special characters '%', '#', '&', '%', '^', '_'.  <p class="basic"/>'%' means command, '#' means shift, '&' means alt, '^' means control.
+Eg. To create a menu with hotkey cmd-alt-g use "<a href="GameObject.html" class="classlink">GameObject</a>/Do Something %&g". To create a menu with hot key g and no keymodifiers pressed use "<a href="GameObject.html" class="classlink">GameObject</a>/Do Something _g".<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// javascript example:<br/>import UnityEditor;<br/>// Add menu named "Do Something" to the main menu<br/>@MenuItem ("<a href="GameObject.html" class="classlink">GameObject</a>/Do Something")<br/><span class="keyword">static</span> function DoSomething () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Debug.html#Log" class="itemlink">Debug.Log</a> ("Perform operation");<br/>}<br/><br/>// Validate the menu item.<br/>// The item will be disabled if no transform is selected.<br/>@MenuItem ("<a href="GameObject.html" class="classlink">GameObject</a>/Do Something", true)<br/><span class="keyword">static</span> function ValidateDoSomething () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> !<a href="Selection.html#activeTransform" class="itemlink">Selection.activeTransform</a>;<br/>}<br/><br/>// Validate the menu item.<br/>// The item will be disabled if no transform is selected.<br/>@MenuItem ("<a href="GameObject.html" class="classlink">GameObject</a>/Do Something", true)<br/><span class="keyword">static</span> function ValidateDoSomething () : String {<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> !<a href="Selection.html#activeTransform" class="itemlink">Selection.activeTransform</a>;<br/>}<br/><br/>// Add menu named "Do Something" to the main menu <br/>// and give it a shortcut cmd-o<br/>@MenuItem ("<a href="GameObject.html" class="classlink">GameObject</a>/Do Something %o")<br/><span class="keyword">static</span> function DoSomething () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Debug.html#Log" class="itemlink">Debug.Log</a> ("Perform operation");<br/>}<br/><br/>// Add context menu named "Do Something" to context menu<br/>@MenuItem ("CONTEXT/<a href="Rigidbody.html" class="classlink">Rigidbody</a>/Do Something")<br/><span class="keyword">static</span> function DoSomething (<a href="MenuCommand.html" class="classlink">MenuCommand</a> command) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;var body : <a href="Rigidbody.html" class="classlink">Rigidbody</a> = command.context;<br/>&nbsp;&nbsp;&nbsp;&nbsp;body.mass = 5;<br/>}
+</div></td></tr></table><table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// C# example:<br/>using UnityEditor;<br/>using UnityEngine;<br/><span class="keyword">class</span> MenuTest : <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a> {<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Add menu named "Do Something" to the main menu<br/>&nbsp;&nbsp;&nbsp;&nbsp;[MenuItem ("<a href="GameObject.html" class="classlink">GameObject</a>/Do Something")]<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">static</span> <span class="standard_type">void</span> DoSomething () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Debug.html#Log" class="itemlink">Debug.Log</a> ("Perform operation");<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;// Validate the menu item.<br/>&nbsp;&nbsp;&nbsp;&nbsp;// The item will be disabled if no transform is selected.<br/>&nbsp;&nbsp;&nbsp;&nbsp;[MenuItem ("<a href="GameObject.html" class="classlink">GameObject</a>/Do Something", true)]<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">static</span> <span class="standard_type">bool</span> ValidateDoSomething () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> !<a href="Selection.html#activeTransform" class="itemlink">Selection.activeTransform</a>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;// Validate the menu item.<br/>&nbsp;&nbsp;&nbsp;&nbsp;// The item will be disabled if no transform is selected.<br/>&nbsp;&nbsp;&nbsp;&nbsp;[MenuItem ("<a href="GameObject.html" class="classlink">GameObject</a>/Do Something", true)]<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">static</span> <span class="standard_type">string</span> ValidateDoSomething () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> !<a href="Selection.html#activeTransform" class="itemlink">Selection.activeTransform</a>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;// Add menu named "Do Something" to the main menu <br/>&nbsp;&nbsp;&nbsp;&nbsp;// and give it a shortcut cmd-o<br/>&nbsp;&nbsp;&nbsp;&nbsp;[MenuItem ("<a href="GameObject.html" class="classlink">GameObject</a>/Do Something %o")]<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">static</span> <span class="standard_type">void</span> DoSomething () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Debug.html#Log" class="itemlink">Debug.Log</a> ("Perform operation");<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;// Add context menu named "Do Something" to context menu<br/>&nbsp;&nbsp;&nbsp;&nbsp;[MenuItem ("CONTEXT/<a href="Rigidbody.html" class="classlink">Rigidbody</a>/Do Something")]<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">static</span> <span class="standard_type">void</span> DoSomething (<a href="MenuCommand.html" class="classlink">MenuCommand</a> command) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Rigidbody.html" class="classlink">Rigidbody</a> body = (<a href="Rigidbody.html" class="classlink">Rigidbody</a>)command.context;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body.mass = 5;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="menuItem"></a><h3><span class="full-name">MenuItem.</span>menuItem</h3><div class="synopsis"><span class="standard_type">string</span> menuItem</div>
+   <p class='details'> </p>
+	<a name="validate"></a><h3><span class="full-name">MenuItem.</span>validate</h3><div class="synopsis"><span class="standard_type">bool</span> validate</div>
+   <p class='details'> </p>
+	<a name="priority"></a><h3><span class="full-name">MenuItem.</span>priority</h3><div class="synopsis"><span class="standard_type">int</span> priority</div>
+   <p class='details'> </p>
+   <a name="Constructors"></a><h2 class="script-section">Constructors</h2>
+	<a name="MenuItem"></a><h3><span class="full-name">MenuItem.</span>MenuItem</h3><div class="synopsis">MenuItem (<span class="standard_type">string</span> itemName, <span class="standard_type">bool</span> isValidateFunction, <span class="standard_type">int</span> priority)</div>
+   <p class='details'> </p>
+	&nbsp;<div class="synopsis">MenuItem (<span class="standard_type">string</span> itemName, <span class="standard_type">bool</span> isValidateFunction)</div>
+   <p class='details'> </p>
+	&nbsp;<div class="synopsis">MenuItem (<span class="standard_type">string</span> itemName)</div>
+   <p class='details'> </p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

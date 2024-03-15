@@ -1,0 +1,479 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Optimizing Graphics Performance</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Optimizing Graphics Performance</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/iphone-GettingStarted.html">Getting Started with iOS Development</a> &gt; <a href="../Manual/iphone-performance.html">Optimizing Performance in iOS.</a> &gt; <a href="../Manual/iPhone Optimizing Graphics Performance.html">Optimizing Graphics Performance</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/iphone-performance.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/iphone-DrawCall-Batching.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Optimizing Graphics Performance</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><a name='DesktopOptimizingGraphicsPerformance' id='DesktopOptimizingGraphicsPerformance'></a>
+</p><a class='desktopRef' id='desktopRef' href="javascript:ShowHideDiv('desktopRef','specific-desktop','Desktop');"> <h1> <img class='figure' src='../Images/manual/iPhone Optimizing Graphics Performance-0.jpg' /> Desktop </h1> </a>
+<div class='specific-desktop' style='display: block;' id='specific-desktop' > 
+<p>Making your game run smoothly is critical to its success.  Thankfully Unity is there for you!  We have spent a lot of time and energy making Unity iOS run fast on a wide variety of hardware. Below are some simple guidelines to maximizing the speed of your game.
+</p>
+<div class='vspace'></div><h2>In Summary - Combine, Combine, Combine</h2>
+<ul><li>If you care about performance, combine meshes.
+</li><li>If you care about performance, make sure all of your combined meshes also share the same material and texture.
+</li><li>The <a href="../Manual/Profiler.html">Profiler</a> and <a href="../Manual/RenderingStatistics.html">Rendering Statistics</a> window are very helpful!
+</li></ul><div class='vspace'></div><h3>In Detail:</h3>
+<p>Modern graphics cards are really good at pushing a lot of polygons, but they have quite a bit of overhead for every batch that you submit to the graphics card. So if you have a 100-triangle object it is going to be just as expensive to render as a 1500-triangle object. The "sweet spot" for optimal rendering performance is somewhere around 1500-4000 triangles per mesh.
+</p>
+<p class='vspace'>You only pay a rendering cost for objects that have a <span class='doc-keyword'>Mesh Renderer</span> attached. And you only pay for those that are within the view frustum. There is no rendering cost from having a lot of empty <span class='doc-keyword'>GameObjects</span> in your scene.
+</p>
+<div class='vspace'></div><ul><li>The best way to improve rendering performance is to combine objects together so each mesh has around 1500 or more triangles and uses only one <span class='doc-keyword'>Material</span> for the entire mesh.
+</li></ul><p class='vspace'>It is important to understand that just combining two objects which don't share a material does not give you any performance increase at all. If you want to combine effectively, you need to make sure your mesh uses only one material after you have combined it.
+</p>
+<p class='vspace'>There is, however, one thing to be aware of when combining objects: if you use a lot of small lights in your scene, it might make sense to combine only objects that are close to each other.
+</p>
+<p class='vspace'>The rendering cost for a mesh that has multiple materials is the same as having multiple renderers for each material. The most common reason why you have multiple materials is that two meshes don't share the same textures. So, if you want to optimize rendering performance, you need to make sure that the objects you combine share textures.
+</p>
+<div class='vspace'></div><ul><li>Unity is very good at pushing lots of polygons. Unity uploads all geometry to the graphics card for good cache utilization and optimal data alignment.
+</li><li>You simply have to make sure that the graphics card doesn't have to handle large numbers of batches.
+</li><li>If you use <a href="../Components/RenderTech-ForwardRendering.html">Forward rendering path</a>, the number of <span class='doc-keyword'>Pixel Lights</span> affecting an object heavily affects performance.
+</li></ul><div class='vspace'></div><h2>Pixel Lights in Forward Rendering Path</h2>
+<p><em>Note: this applies only to <a href="../Components/RenderTech-ForwardRendering.html">Forward rendering path</a>.</em>
+</p>
+<p class='vspace'>If you use pixel lighting, then each <code>GameObject</code> has to be rendered as many times as there are pixel lights that affect the object. If you combine two objects that are very far apart, it might increase the size of the object and now you have a lot of lights affecting this big object. If your objects were separate however, the light won't have to be applied on the part of the mesh which is far away. This can result in rendering the combined mesh as many times as the uncombined mesh (thus not saving anything).  For this reason, you should keep <code>GameObjects</code> that are very far away as individual Meshes.
+</p>
+<p class='vspace'>When rendering a mesh, Unity finds all lights surrounding the mesh. It then figures out what lights affect the mesh the most. The <a href="../Components/class-QualitySettings.html">QualitySettings</a> are used to modify how many of the lights end up as pixel lights and how many as vertex lights.
+</p>
+<p class='vspace'>Every light calculates its importance based on how far away it is from the mesh and how intense it is.
+</p>
+<p class='vspace'>Some lights are more important than others depending on the game context. For this reason, every light has a <span class='doc-prop'>Render Mode</span> setting which can be set to <span class='doc-prop'>Important</span> or <span class='doc-prop'>Not Important</span>.
+</p>
+<p class='vspace'>Imagine the player's car with head lights driving through the night. The head lights are the most important light in the game. For this reason, the head lights Render Mode should be set to <span class='doc-prop'>Important</span>.
+</p>
+<p class='vspace'>If you have a light that is not very important and also visually doesn't gain much from being a pixel light, set the lights Render Mode to <span class='doc-prop'>Not Important</span>. This way, you don't waste rendering performance or lose any visual quality.
+</p>
+<div class='vspace'></div><h2>Per-Layer Cull Distances</h2>
+<p>You might want to cull small objects earlier to reduce number of draw calls. For example, small rocks and debris could be made invisible at much smaller distance than large buildings. To do that, put small objects into a <a href="../Components/Layers.html">separate layer</a> and setup per-layer cull distances using the <a class='urllink' href='../ScriptReference/Camera-layerCullDistances.html' rel='nofollow'>Camera.layerCullDistances</a> script function.
+</p>
+<div class='vspace'></div><h2>Shadows</h2>
+<p>If you are deploying for Desktop platforms then you should pay attention to shadows; shadows are generally expensive. They can add a lot of performance overhead to your game if they are not used correctly. For more details about shadows, please read the <a href="../Manual/Shadows.html">Shadows page</a>.
+</p>
+<p class='vspace'><b>Note:</b> Remember that shadows are not currently supported on iOS or Android devices.
+</p>
+<div class='vspace'></div><h2>See Also</h2>
+<ul><li class='toclink'><a href="../Manual/Modeling Optimized Characters.html">Modeling Optimized Characters</a>
+</li><li class='toclink'><a href="../Manual/RenderingStatistics.html">Rendering Statistics Window</a>
+</li></ul></div>
+<p><a name='iPhoneOptimizingGraphicsPerformance' id='iPhoneOptimizingGraphicsPerformance'></a>
+</p><a class='iosRef' id='iosRef' href="javascript:ShowHideDiv('iosRef','specific-ios', 'iOS');"><h1><img class='figure' src='../Images/manual/iPhone Optimizing Graphics Performance-1.jpg' /> iOS</h1></a>
+<div class='specific-ios' style='display: block;' id='specific-ios' > 
+<p>If you want to optimize your content for iOS, then it is beneficial for you to <a href="../Manual/iphone-Hardware.html">learn more about iOS hardware devices</a>.
+</p>
+<div class='vspace'></div><h2>Alpha-Testing</h2>
+<p>Contrary to the desktop, alpha-testing (or use of <span class='doc-keyword'>discard</span> / <span class='doc-keyword'>clip</span> operation in pixel shader) is very expensive on iOS. If you can replace your alpha-test shader with alpha-blend, do so. If you absolutely need to use alpha-testing, then you should keep areas of visible alpha-tested pixels to a minimum.
+</p>
+<div class='vspace'></div><h2>Vertex Performance</h2>
+<p>Generally you should aim at 40K or less vertices visible per frame when targeting iPhone 3GS or newer devices. You should aim at 10K or less vertices visible per frame when targeting older devices equipped with MBX GPU, such as: iPhone, iPhone 3G, iPod Touch 1st and 2nd Generation.
+</p>
+<div class='vspace'></div><h2>Lighting Performance</h2>
+<p>Per-pixel dynamic lighting will add significant cost to every affected pixel and can lead to rendering object in multiple passes. Avoid having more than one <span class='doc-keyword'>Pixel Light</span> affecting any single object, prefer it to be a directional light. Note that <span class='doc-keyword'>Pixel Light</span> is a light which has a <span class='doc-prop'>Render Mode</span> setting set to <span class='doc-prop'>Important</span>.
+</p>
+<p class='vspace'>Per-vertex dynamic lighting can add significant cost to vertex transformations. Avoid multiple lights affecting single objects. Bake lighting for static objects.
+</p>
+<div class='vspace'></div><h2>Optimize Model Geometry</h2>
+<p>When optimizing the geometry of a model, there are two basic rules:
+</p><ul><li>Don't use excessive amount of faces if you don't have to
+</li><li>Keep the number of UV mapping seams and hard edges as low as possible
+</li></ul><p class='vspace'>Note that the actual number of vertices that graphics hardware has to process is usually not the same as what is displayed in a 3D application. Modeling applications usually display the geometric vertex count, i.e. number of points that make up a model.
+</p>
+<p class='vspace'>For a graphics card however, some vertices have to be split into separate ones. If a vertex has multiple normals (it's on a "hard edge"), or has multiple UV coordinates, or has multiple vertex colors, it has to be split. So the vertex count you see in Unity is almost always different from the one displayed in 3D application.
+</p>
+<div class='vspace'></div><h2>Texture Compression</h2>
+<p>Use iOS native <a href="../Components/class-Texture2D.html">PVRT compression formats</a>. They will not only decrease the size of your textures (resulting in faster load times and smaller memory footprint), but also can dramatically increase your rendering performance! Compressed texture requires only a fraction of memory bandwidth compared to full blown 32bit RGBA textures. For performance comparison check <a href="../Manual/iphone-Hardware.html">iOS Hardware Guide</a>.
+</p>
+<p class='vspace'>Some images are prone to visual artifacts in alpha channels of PVRT compressed textures. In such case you might want to tweak PVRT compression parameters directly in your imaging software. You can do that by installing <span class='doc-prop'>PVR export plugin</span> or using <a class='urllink' href='http://www.imgtec.com/powervr/insider/powervr-pvrtextool.asp' rel='nofollow'><span class='doc-prop'>PVRTexTool</span></a> from Imagination Tech -- creators of PVRT format. Resulting compressed image with <span class='doc-prop'>.pvr</span> extension will be imported by Unity Editor as is and manually specified compression parameters will be preserved.
+</p>
+<p class='vspace'>If PVRT compression formats do not deliver enough visual quality and you need extra crisp imaging (for example UI textures), then you should consider using 16bit texture over full 32bit RGBA texture. At least you will reduce memory bandwidth by half.
+</p>
+<div class='vspace'></div><h2>Tips for writing well performing shaders</h2>
+<p>Although GPUs fully support pixel and vertex shaders since iPhone 3GS, do not expect to grab a desktop shader with complex per-pixel functionality and run it on iOS device at 30 frames per second. Most often shaders will have to be hand optimized, calculations and texture reads kept to a minimum in order to achieve good frame rates.
+</p>
+<div class='vspace'></div><h3>Complex arithmetic operations</h3>
+<p>Arithmetic operations such as <span class='doc-keyword'>pow</span>, <span class='doc-keyword'>exp</span>, <span class='doc-keyword'>log</span>, <span class='doc-keyword'>cos</span>, <span class='doc-keyword'>sin</span>, <span class='doc-keyword'>tan</span> etc heavily tax GPU. Rule of thumb is to have not more than one such operation per fragment. Consider that sometimes lookup textures could be a better alternative.
+</p>
+<p class='vspace'>Do NOT try to roll your own <span class='doc-keyword'>normalize</span>, <span class='doc-keyword'>dot</span>, <span class='doc-keyword'>inversesqrt</span> operations however. Always use built-in ones -- this was driver will generate much better code for you.
+</p>
+<p class='vspace'>Keep in mind that <span class='doc-keyword'>discard</span> operation will make your fragments slower.
+</p>
+<div class='vspace'></div><h3>Floating point operations</h3>
+<p>Always specify precision of the floating point variables while writing custom shaders. It is <b>crucial</b> to pick smallest possible format in order to achieve best performance.
+</p>
+<p class='vspace'>If shader is written in GLSL ES, then precision is specified as following:
+</p><ul><li><span class='doc-keyword'>highp</span> - full 32 bits floating point format, well suitable for vertex transformations, slowest
+</li><li><span class='doc-keyword'>mediump</span> - reduced 16 bits floating point format, well suitable for texture UV coordinates, roughly <b>x2</b> faster than <span class='doc-keyword'>highp</span>
+</li><li><span class='doc-keyword'>lowp</span> - 10 bits fixed point format, well suitable for colors, lighting calculation and other high performant operations, roughly <b>x4</b> faster than <span class='doc-keyword'>highp</span>
+</li></ul><p class='vspace'>If shader is written in CG or it is a surface shader, then precision is specified as following:
+</p><ul><li><span class='doc-keyword'>float</span> - analogous to <span class='doc-keyword'>highp</span> in GLSL ES, slowest
+</li><li><span class='doc-keyword'>half</span> - analogous to <span class='doc-keyword'>mediump</span> in GLSL ES, roughly <b>x2</b> faster than <span class='doc-keyword'>float</span>
+</li><li><span class='doc-keyword'>fixed</span> - analogous to <span class='doc-keyword'>lowp</span> in GLSL ES, roughly <b>x4</b> faster than <span class='doc-keyword'>float</span>
+</li></ul><p class='vspace'>For more details about general shader performance, please read the <a href="../Components/SL-ShaderPerformance.html">Shader Performance page</a>.
+</p>
+<div class='vspace'></div><h3>Hardware documentation</h3>
+<p>Take your time to study Apple documentations on 
+<a class='urllink' href='http://developer.apple.com/library/ios/#documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/OpenGLESPlatforms/OpenGLESPlatforms.html%23//apple_ref/doc/uid/TP40008793-CH106-SW6' rel='nofollow'>hardware</a> and <a class='urllink' href='http://developer.apple.com/library/ios/#documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/BestPracticesforShaders/BestPracticesforShaders.html' rel='nofollow'>best practices for writing shaders</a>. Note that we would suggest to be more aggressive with floating point precision hints however.
+</p>
+<div class='vspace'></div><h2>Bake Lighting into Lightmaps</h2>
+<p>Bake your scene static lighting into textures using Unity built-in <a href="../Manual/Lightmapping.html">Lightmapper</a>. The process of generating a lightmapped environment takes only a little longer than just placing a light in the scene in Unity, <b>but</b>:
+</p><ul><li>It is going to run a lot faster (2-3 times for eg. 2 pixel lights)
+</li><li>And look a lot better since you can bake global illumination and the lightmapper can smooth the results
+</li></ul><div class='vspace'></div><h2>Share Materials</h2>
+<p>If a number of objects being rendered by the same camera uses the same material, then Unity iOS will be able to employ a large variety of internal optimizations such as:
+</p><ul><li>Avoiding setting various render states to OpenGL ES.
+</li><li>Avoiding calculation of different parameters required to setup vertex and pixel processing
+</li><li>Batching small moving objects to reduce draw calls
+</li><li>Batching both big and small objects with enabled "static" property to reduce draw calls
+</li></ul><p class='vspace'>All these optimizations will save you precious CPU cycles. Therefore, putting extra work to combine textures into single atlas and making number of objects to use the same material will always pay off. Do it!
+</p>
+<div class='vspace'></div><h2>Simple Checklist to make Your Game Faster</h2>
+<ul><li>Keep vertex count below:
+<ul><li>40K per frame when targeting iPhone 3GS and newer devices (with SGX GPU)
+</li><li>10K per frame when targeting older devices (with MBX GPU)
+</li></ul></li><li>If you're using built-in shaders, peek ones from Mobile category. Keep in mind that <span class='doc-keyword'>Mobile/VertexLit</span> is currently the fastest shader.
+</li><li>Keep the number of different materials per scene low - share as many materials between different objects as possible.
+</li><li>Set <span class='doc-keyword'>Static</span> property on a non-moving objects to allow internal optimizations.
+</li><li>Use PVRTC formats for textures when possible, otherwise choose 16bit textures over 32bit.
+</li><li>Use combiners or pixel shaders to mix several textures per fragment instead of multi-pass approach.
+</li><li>If writing custom shaders, always use smallest possible floating point format:
+<ul><li><span class='doc-keyword'>fixed</span> / <span class='doc-keyword'>lowp</span> -- perfect for color, lighting information and normals,
+</li><li><span class='doc-keyword'>half</span> / <span class='doc-keyword'>mediump</span> -- for texture UV coordinates,
+</li><li><span class='doc-keyword'>float</span> / <span class='doc-keyword'>highp</span> -- avoid in pixel shaders, fine to use in vertex shader for vertex position calculations.
+</li></ul></li><li>Minimize use of complex mathematical operations such as <span class='doc-keyword'>pow</span>, <span class='doc-keyword'>sin</span>, <span class='doc-keyword'>cos</span> etc in pixel shaders.
+</li><li>Do not use <span class='doc-keyword'>Pixel Lights</span> when it is not necessary -- choose to have only a single (preferably directional) pixel light affecting your geometry.
+</li><li>Do not use dynamic lights when it is not necessary -- choose to bake lighting instead.
+</li><li>Choose to use less textures per fragment.
+</li><li>Avoid alpha-testing, choose alpha-blending instead.
+</li><li>Do not use fog when it is not necessary.
+</li><li>Learn benefits of Occlusion culling and use it to reduce amount of visible geometry and draw-calls in case of complex static scenes with lots of occlusion. Plan your levels to benefit from Occlusion culling.
+</li><li>Use skyboxes to "fake" distant geometry.
+</li></ul><div class='vspace'></div><h2>See Also</h2>
+<ul><li><a href="../Manual/iphone-performance.html">Optimizing iOS Performance</a>
+</li><li><a href="../Manual/iphone-Hardware.html">iOS Hardware Guide</a>
+</li><li><a href="../Manual/iphone-DrawCall-Batching.html">iOS Automatic Draw Call Batching</a>
+</li><li><a href="../Manual/Modeling Optimized Characters.html">Modeling Optimized Characters</a>
+</li><li><a href="../Manual/RenderingStatistics.html#RenderingStatisticsIPhone">Rendering Statistics</a>
+</li></ul></div>
+<p class='vspace'><a name='AndroidOptimizingGraphicsPerformance' id='AndroidOptimizingGraphicsPerformance'></a>
+</p><a class='androidRef' id='androidRef' href="javascript:ShowHideDiv('androidRef','specific-android', 'Android');"><h1><img class='figure' src='../Images/manual/iPhone Optimizing Graphics Performance-2.jpg' /> Android</h1></a>
+<div class='specific-android' style='display: block;' id='specific-android' > 
+<h2>Lighting Performance</h2>
+<p>Per-pixel dynamic lighting will add significant cost to every affected pixel and can lead to rendering object in multiple passes. Avoid having more than one <span class='doc-keyword'>Pixel Light</span> affecting any single object, prefer it to be a directional light. Note that <span class='doc-keyword'>Pixel Light</span> is a light which has a <span class='doc-prop'>Render Mode</span> setting set to <span class='doc-prop'>Important</span>.
+</p>
+<p class='vspace'>Per-vertex dynamic lighting can add significant cost to vertex transformations. Avoid multiple lights affecting single objects. Bake lighting for static objects.
+</p>
+<div class='vspace'></div><h2>Optimize Model Geometry</h2>
+<p>When optimizing the geometry of a model, there are two basic rules:
+</p><ul><li>Don't use excessive amount of faces if you don't have to
+</li><li>Keep the number of UV mapping seams and hard edges as low as possible
+</li></ul><p class='vspace'>Note that the actual number of vertices that graphics hardware has to process is usually not the same as what is displayed in a 3D application. Modeling applications usually display the geometric vertex count, i.e. number of points that make up a model.
+</p>
+<p class='vspace'>For a graphics card however, some vertices have to be split into separate ones. If a vertex has multiple normals (it's on a "hard edge"), or has multiple UV coordinates, or has multiple vertex colors, it has to be split. So the vertex count you see in Unity is almost always different from the one displayed in 3D application.
+</p>
+<div class='vspace'></div><h2>Texture Compression</h2>
+<p>All Android devices with support for OpenGL ES 2.0 also support the <a href="../Components/class-Texture2D.html">ETC1 compression format</a>; it's therefore encouraged to whenever possible use ETC1 as the prefered texture format.
+Using compressed textures is important not only to decrease the size of your textures (resulting in faster load times and smaller memory footprint), but can also increase your rendering performance dramatically! Compressed textures require only a fraction of memory bandwidth compared to full blown 32bit RGBA textures.
+</p>
+<p class='vspace'>If targeting a specific graphics architecture, such as the Nvidia Tegra or Qualcomm Snapdragon, it may be worth considering using the proprietary compression formats available on those architectures. The Android Market also allows filtering based on supported texture compression format, meaning a distribution archive (.apk) with for example <a href="../Components/class-Texture2D.html">DXT compressed textures</a> can be prevented for download on a device which doesn't support it.
+</p>
+<div class='vspace'></div><h2>Enable Mip Maps</h2>
+<p>As a rule of thumb, always have <a href="../Components/class-Texture2D.html">Generate Mip Maps</a> enabled. In the same way Texture Compression can help limit the amount of texture data transfered when the GPU is rendering, a mip mapped texture will enable the GPU to use a lower-resolution texture for smaller triangles.
+The only exception to this rule is when a texel (texture pixel) is known to map 1:1 to the rendered screen pixel, as with UI elements or in a pure 2D game.
+</p>
+<div class='vspace'></div><h2>Tips for writing well performing shaders</h2>
+<p>Although all Android OpenGL ES 2.0 GPUs fully support pixel and vertex shaders, do not expect to grab a desktop shader with complex per-pixel functionality and run it on Android device at 30 frames per second. Most often shaders will have to be hand optimized, calculations and texture reads kept to a minimum in order to achieve good frame rates.
+</p>
+<div class='vspace'></div><h3>Complex arithmetic operations</h3>
+<p>Arithmetic operations such as <span class='doc-keyword'>pow</span>, <span class='doc-keyword'>exp</span>, <span class='doc-keyword'>log</span>, <span class='doc-keyword'>cos</span>, <span class='doc-keyword'>sin</span>, <span class='doc-keyword'>tan</span> etc heavily tax GPU. Rule of thumb is to have not more than one such operation per fragment. Consider that sometimes lookup textures could be a better alternative.
+</p>
+<p class='vspace'>Do NOT try to roll your own <span class='doc-keyword'>normalize</span>, <span class='doc-keyword'>dot</span>, <span class='doc-keyword'>inversesqrt</span> operations however. Always use built-in ones -- this was driver will generate much better code for you.
+</p>
+<p class='vspace'>Keep in mind that <span class='doc-keyword'>discard</span> operation will make your fragments slower.
+</p>
+<div class='vspace'></div><h3>Floating point operations</h3>
+<p>Always specify precision of the floating point variables while writing custom shaders. It is <b>crucial</b> to pick smallest possible format in order to achieve best performance.
+</p>
+<p class='vspace'>If shader is written in GLSL ES, then precision is specified as following:
+</p><ul><li><span class='doc-keyword'>highp</span> - full 32 bits floating point format, well suitable for vertex transformations, slowest
+</li><li><span class='doc-keyword'>mediump</span> - reduced 16 bits floating point format, well suitable for texture UV coordinates, roughly <b>x2</b> faster than <span class='doc-keyword'>highp</span>
+</li><li><span class='doc-keyword'>lowp</span> - 10 bits fixed point format, well suitable for colors, lighting calculation and other high performant operations, roughly <b>x4</b> faster than <span class='doc-keyword'>highp</span>
+</li></ul><p class='vspace'>If shader is written in CG or it is a surface shader, then precision is specified as following:
+</p><ul><li><span class='doc-keyword'>float</span> - analogous to <span class='doc-keyword'>highp</span> in GLSL ES, slowest
+</li><li><span class='doc-keyword'>half</span> - analogous to <span class='doc-keyword'>mediump</span> in GLSL ES, roughly <b>x2</b> faster than <span class='doc-keyword'>float</span>
+</li><li><span class='doc-keyword'>fixed</span> - analogous to <span class='doc-keyword'>lowp</span> in GLSL ES, roughly <b>x4</b> faster than <span class='doc-keyword'>float</span>
+</li></ul><p class='vspace'>For more details about general shader performance, please read the <a href="../Components/SL-ShaderPerformance.html">Shader Performance page</a>. Quoted performance figures are based on the PowerVR graphics architecture, available in devices such as the Samsung Nexus S. Other hardware architectures may experience less (or more) benefit from using reduced register precision.
+</p>
+<div class='vspace'></div><h2>Bake Lighting into Lightmaps</h2>
+<p>Bake your scene static lighting into textures using Unity built-in <a href="../Manual/Lightmapping.html">Lightmapper</a>. The process of generating a lightmapped environment takes only a little longer than just placing a light in the scene in Unity, <b>but</b>:
+</p><ul><li>It is going to run a lot faster (2-3 times for eg. 2 pixel lights)
+</li><li>And look a lot better since you can bake global illumination and the lightmapper can smooth the results
+</li></ul><div class='vspace'></div><h2>Share Materials</h2>
+<p>If a number of objects being rendered by the same camera uses the same material, then Unity Android will be able to employ a large variety of internal optimizations such as:
+</p><ul><li>Avoiding setting various render states to OpenGL ES.
+</li><li>Avoiding calculation of different parameters required to setup vertex and pixel processing
+</li><li>Batching small moving objects to reduce draw calls
+</li><li>Batching both big and small objects with enabled "static" property to reduce draw calls
+</li></ul><p class='vspace'>All these optimizations will save you precious CPU cycles. Therefore, putting extra work to combine textures into single atlas and making number of objects to use the same material will always pay off. Do it!
+</p>
+<div class='vspace'></div><h2>Simple Checklist to make Your Game Faster</h2>
+<ul><li>If you're using built-in shaders, peek ones from Mobile category. Keep in mind that <span class='doc-keyword'>Mobile/VertexLit</span> is currently the fastest shader.
+</li><li>Keep the number of different materials per scene low - share as many materials between different objects as possible.
+</li><li>Set <span class='doc-keyword'>Static</span> property on a non-moving objects to allow internal optimizations.
+</li><li>Use ETC1 format for textures when possible, otherwise choose 16bit textures over 32bit for uncompressed texture data.
+</li><li>Use mipmaps.
+</li><li>Use combiners or pixel shaders to mix several textures per fragment instead of multi-pass approach.
+</li><li>If writing custom shaders, always use smallest possible floating point format:
+<ul><li><span class='doc-keyword'>fixed</span> / <span class='doc-keyword'>lowp</span> -- perfect for color, lighting information and normals,
+</li><li><span class='doc-keyword'>half</span> / <span class='doc-keyword'>mediump</span> -- for texture UV coordinates,
+</li><li><span class='doc-keyword'>float</span> / <span class='doc-keyword'>highp</span> -- avoid in pixel shaders, fine to use in vertex shader for vertex position calculations.
+</li></ul></li><li>Minimize use of complex mathematical operations such as <span class='doc-keyword'>pow</span>, <span class='doc-keyword'>sin</span>, <span class='doc-keyword'>cos</span> etc in pixel shaders.
+</li><li>Do not use <span class='doc-keyword'>Pixel Lights</span> when it is not necessary -- choose to have only a single (preferably directional) pixel light affecting your geometry.
+</li><li>Do not use dynamic lights when it is not necessary -- choose to bake lighting instead.
+</li><li>Choose to use less textures per fragment.
+</li><li>Avoid alpha-testing, choose alpha-blending instead.
+</li><li>Do not use fog when it is not necessary.
+</li><li>Learn benefits of Occlusion culling and use it to reduce amount of visible geometry and draw-calls in case of complex static scenes with lots of occlusion. Plan your levels to benefit from Occlusion culling.
+</li><li>Use skyboxes to "fake" distant geometry.
+</li></ul><div class='vspace'></div><h2>See Also</h2>
+<ul><li><a href="../Manual/Optimizing Graphics Performance.html#iPhoneOptimizingGraphicsPerformance">iPhone Optimizing Graphics Performance</a> (for when the graphics architecture is known to be Imagination Tech's PowerVR.)
+</li></ul></div>
+</p><small>Page last updated: 2011-05-24</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/iphone-performance.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/iphone-DrawCall-Batching.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

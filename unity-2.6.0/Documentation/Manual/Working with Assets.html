@@ -1,0 +1,113 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Working with Assets</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Working with Assets</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Working with Assets.html">Working with Assets</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Terrains.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Importing Assets.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Working with Assets</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>A large part of making a game is utilizing your asset source files in your <span class='doc-keyword'><span class='wikiword'>GameObjects</span></span>. This goes for textures, models, sound effects and behaviour scripts. Using the <span class='doc-keyword'>Project View</span> inside Unity, you have quick access to all the files that make up your game:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Working with Assets-0.jpg' /><br /><em>The Project View displays all source files and created <span class='doc-keyword'>Prefabs</span></em></div>
+<p class='vspace'>This view shows the organization of files in your project's Assets folder. Whenever you update one of your asset files, the changes are immediately reflected in your game!
+</p>
+<p class='vspace'>To import an asset file into your project, move the file into <span class='doc-menu'>(your Project folder)-&gt;Assets</span> in the Finder, and it will automatically be imported into Unity. To apply your assets, simply drag the asset file from the Project View window into the <span class='doc-keyword'>Hierarchy</span> or <span class='doc-keyword'>Scene View</span>.  If the asset is meant to be applied to another object, drag the asset over the object.
+</p>
+<div class='vspace'></div><h2>Hints</h2>
+<ul><li>When backing up a project folder <b>always</b> back up both <em>Library</em> and <em>Assets</em> folders. The Library folder contains all meta data and all the connections between objects, thus if the Library folder gets lost, you will lose references from scenes to assets. Easiest is just to back up the whole project folder containing both the Assets and Library folder.
+</li><li>Rename and move files to your heart's content inside Project View; nothing will break.
+</li><li><b>Never</b> rename or move anything from the Finder or another program; everything will break. In short, Unity stores lots of metadata for each asset (things like import settings, cached versions of compressed textures, etc.) and if you move a file externally, Unity can no longer associate metadata with the moved file.
+</li></ul><p class='vspace'>Continue reading for more information:
+</p>
+<div class='vspace'></div><ul><li class='toclink'><a href="../Manual/Importing Assets.html">Importing Assets</a>
+</li><li class='toclink'><a href="../Manual/Meshes.html">Meshes</a>
+</li><li class='toclink'><a href="../Manual/Materials.html">Materials and Shaders</a>
+</li><li class='toclink'><a href="../Manual/Textures.html">Texture 2D</a>
+</li><li class='toclink'><a href="../Manual/Video Files.html">Movie Texture</a>
+</li><li class='toclink'><a href="../Manual/Audio Files.html">Audio Files</a>
+</li><li class='toclink'><a href="../Manual/Scripting.html">Using Scripts</a>
+</li><li class='toclink'><a href="../Manual/Asset Server.html">Asset Server Guide</a>
+</li><li class='toclink'><a href="../Manual/Behind the Scenes.html">Behind the Scenes</a>
+</li></ul>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Terrains.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Importing Assets.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

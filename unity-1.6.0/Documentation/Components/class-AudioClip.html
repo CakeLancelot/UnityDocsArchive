@@ -1,0 +1,93 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Audio Clip"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Components" title="Audio Clip" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-AssetsGroup.html%22%3EAsset%20components%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-AudioClip.html%22%3EAudio%20Clip%3C%2Fa%3E" -->
+		<h1>Audio Clip</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-AssetsGroup.html">Asset components</a> &gt; <a href="class-AudioClip.html">Audio Clip</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><a href='../ScriptReference/AudioClip.html' title='Go to AudioClip Scripting Doc'><img src="../Images/SwitchScripting.png" width="66" height="51" /></a><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-Mesh.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-Font.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Audio Clips are used by <a href="../Components/class-AudioSource.html">Audio Sources</a> to represent the audio asset imported into Unity.
+</p>
+
+<p><img class='figure' src='images/class-AudioClip-0.jpg' />
+</p>
+
+<p><i>The Audio Clip</i>
+</p>
+
+<p>Audio Clips just work.  The only thing you should have to do with them is reference them from within <a href="../Components/class-AudioSource.html">Audio Sources</a>.
+</p>
+
+<h2>Properties</h2>
+<p>Sound assets only have 3 read-only properties.
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Format </nobr></b></td><td> The format the sound is stored in. Unity supports 4 raw formats and one compressed.
+<dl><dt>Mono 8 bit</dt><dd> 8 bit uncompressed mono PCM audio</dd><dt>Mono 16 bit</dt><dd> 16 bit uncompressed mono PCM audio</dd><dt>Stereo 8 bit</dt><dd> 8 bit uncompressed stereo PCM audio</dd><dt>Stereo 16 bit</dt><dd> 16 bit uncompressed stereo PCM audio</dd><dt>Ogg Vorbis</dt><dd> Ogg Vorbis encoded stereo or mono audio</dd></dl>
+</td></tr><tr><td><b><nobr>Length</nobr></b></td><td> The duration of the sound file in seconds.
+</td></tr><tr><td><b><nobr>Frequency</nobr></b></td><td> The sampling frequency of the file.
+</td></tr></tr></table>
+</p>
+
+<h2>Supported sound formats</h2>
+<p>Unity currently supports the following file formats:
+</p>
+
+<p><dl><dt><b>AIFF</b></dt><dd> Both mono and stereo. The sound will be stored as-is inside the player-data. No compression will be attempted.</dd><dt><b>WAV</b></dt><dd> Both mono and stereo. The sound will be stored as-is inside the player-data. No compression will be attempted.</dd><dt><b>MP3</b></dt><dd> Mono and stereo. Note that the audio will be uncompressed in the editor and stored uncompressed in the player. If you want to conserve space, use Ogg Vorbis files instead.</dd><dt><b>Ogg Vorbis</b></dt><dd> Both mono and stereo. The file will be stored compressed in the player-data and streamed on the fly. When using Ogg vorbis it is recommended to always use 44khz frequency.</dd></dl>
+</p>
+
+<h2> Stereo or Mono?</h2>
+<p>Stereo sounds are always played as is. They are not faded out over distance and they do not have panning. This makes them optimal for music and ambient sources.
+</p>
+
+<p>Mono sounds always fade out over distance and do panning. This is good for all effects requiring 3D positional sound.
+</p>
+
+<h2> Choosing the right format</h2>
+
+<p>For music you should always use the ogg vorbis format. The frequency should be 44khz and it should be stereo. (44 khz is recommended since playback will be faster than with 22khz)
+</p>
+
+<p>Short audio clips  (eg. foot steps, bullet explosion) you should use <b>AIFF</b> or <b>WAV</b> with mono and either 22khz or 11khz. Usually you should not use 44khz since that takes up too much disk space and the quality difference is not hearable.
+</p>
+
+<p>Long audio clips should use ogg vorbis and mono. A good rule of thumb is that if a sound file is more than 200k uncompressed, then it makes sense to use ogg vorbis and stream the sound instead (when using ogg vorbis, always choose 44khz).
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Stereo sounds are always played as-is. If you want to use attenuation and other 3D audio effects, use mono sounds.
+</li><li>You can get a free Ogg Vorbis converter from <a class="wiki"  href="http://sbooth.org/Max">http://sbooth.org/Max</a> (Mac) or from <a class="wiki"  href="http://www.rarewares.org/ogg.html">http://www.rarewares.org/ogg.html</a> (Windows)
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="class-Mesh.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-Font.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,245 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Texturing"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title="Texturing" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced.html%22%3EAdvanced%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Shaders.html%22%3EShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-Shader.html%22%3EShader%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-SubShader.html%22%3ESubShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-Pass.html%22%3E%20Pass%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-SetTexture.html%22%3ETexturing%3C%2Fa%3E" -->
+		<h1>Texturing</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced.html">Advanced</a> &gt; <a href="Shaders.html">Shaders</a> &gt; <a href="SL-Shader.html">Shader</a> &gt; <a href="SL-SubShader.html">SubShaders</a> &gt; <a href="SL-Pass.html"> Pass</a> &gt; <a href="SL-SetTexture.html">Texturing</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="SL-CullAndDepth.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-Fog.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>After the basic vertex lighting has been calculated, textures are applied. In ShaderLab this is done using <b>SetTexture</b> command.
+</p>
+
+<p>Note that if you use <a > fragment programs</a>, all texture combiner modes are ignored. You only need to write empty <i>SetTexture</i> command.
+</p>
+
+<p><map name="GraffleExportTexture">
+</p>
+<p><tt> <area shape=rect coords="110,15,182,42" href="tiki-index.php?page=SL-Culling"></tt>
+</p>
+<p><tt> <area shape=rect coords="20,15,92,42" href="tiki-index.php?page=SL-Material"></tt>
+</p>
+<p><tt> <area shape=rect coords="380,15,452,42" href="tiki-index.php?page=SL-AlphaTest"></tt>
+</p>
+<p><tt> <area shape=rect coords="470,15,542,42" href="tiki-index.php?page=SL-Blend"></tt>
+</p>
+<p><tt> <area shape=rect coords="290,15,362,42" href="tiki-index.php?page=SL-Fog"></tt>
+</map>
+<img class='figure' src='images/SL-SetTexture-0.jpg' />
+</p>
+
+<p>Texturing is the place to do old-style combiner effects. You can have multiple SetTexture commands inside a pass - all textures are applied in sequence, like layers in a painting program. SetTexture commands must be placed at the end of a <a href="../Manual/SL-Pass.html">Pass</a>.
+</p>
+
+<h2>Syntax</h2>
+<p><dl><dt><b>SetTexture</b> <i>[TexturePropertyName]</i> <b>{</b> <i>Texture Block</i> <b>}</b></dt><dd> Assigns a texture. <i>TextureName</i> must be defined as a texture property. How to apply the texture is defined inside the <i>TextureBlock</i>.</dd></dl>
+</p>
+
+<h3> Texture Block</h3>
+<p>The texture block controls how the texture is applied.
+</p>
+
+<p><dl><dt>combine <i>src1</i> * <i>src2</i></dt><dd> Multiplies src1 and src2 together. The result will be darker than either input.</dd><dt>combine <i>src1</i> + <i>src2</i></dt><dd> Adds  src1 and src2 together. The result will be lighter than either input.</dd><dt>combine <i>src1</i> - <i>src2</i></dt><dd>  Subtracts src2 from src1.</dd><dt>combine <i>src1</i> +- <i>src2</i></dt><dd> Adds src1 to src2, then subtracts 0.5 (a signed add).</dd><dt>combine <i>src1</i> lerp (<i>src2</i>) <i>src3</i></dt><dd> Alphablends between src1 and src3, using the alpha of src2.</dd><dt>combine <i>src1</i> * <i>src2</i> + <i>src3</i></dt><dd> Multiplies src1 with the alpha component of src2, then adds src3.</dd><dt>combine <i>src1</i> * <i>src2</i> +- <i>src3</i></dt><dd> Multiplies src1 with the alpha component of src2, then does a signed add with src3.</dd><dt>combine <i>src1</i> * <i>src2</i> - <i>src3</i></dt><dd>  Multiplies src1 with the alpha component of src2, then subtracts src3.</dd></dl>
+</p>
+
+<p><dl><dt></dt><dd>All the <b>src</b> properties can be either one of <i>previous</i>, <i>constant</i>, <i>primary</i> or <i>texture</i>. </dd><dt></dt><dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Previous</b> is the the result of the previous SetTexture.</dd><dt></dt><dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Primary</b> is the color from the <a href="../Manual/SL-Material.html">lighting calculation</a> or the vertex color if it is <a href="../Manual/SL-BindChannels.html">bound</a>.</dd><dt></dt><dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Texture</b> is the color of the texture specified by <i>[_TextureName]</i> in the SetTexture (see above).</dd><dt></dt><dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Constant</b> is the color specified in <b>ConstantColor</b>, described below.</dd></dl>
+<dl><dt></dt><dd> The formula specified above can optionally be followed by the keywords <b>Double</b> or <b>Quad</b> to make the resulting color 2x or 4x as bright.</dd></dl>
+<dl><dt>ConstantColor <i>color</i></dt><dd> Defines a constant color that can be used in the values above.</dd></dl>
+</p>
+
+<h2> Details</h2>
+
+<p>Older graphics cards use a layered approach to textures. The textures are applied one after each other, modifying the color that will be written to the screen. For each texture, the texture is typically combined with the result of the previous operation.
+</p>
+
+<p><img class='figure' src='images/SL-SetTexture-1.jpg' />
+</p>
+
+<h3> Separate Alpha &amp; Color blending</h3>
+<p>By default, the combiner formula is used for calculating both the RGB and alpha component of the color settexture. Optionally, you can specify a separate formula for the alpha calculation. This looks like this:
+</p>
+
+<p><pre class='codelisting'>
+SetTexture [_MainTex] { combine previous * texture, previous + texture }
+</pre>
+</p>
+
+<p>Here, we multiply the RGB colors and add the alpha.
+</p>
+
+<h3> Specular highlights</h3>
+<p>By default the <b>primary</b> color is the sum of the diffuse, ambient and specular colors (as defined in the <a href="../Manual/SL-Material.html">Lighting calculation</a>). If you specify <b>SeperateSpecular On</b> in the pass options, the specular color will be added in <i>after</i> the combiner calculation, rather than before. This is the default behavior of the built-in VertexLit shader.
+</p>
+
+<h3> Graphic cards</h3>
+<p>The combiner options are supported by the following graphic cards: NVidia TNT, NVidia GeForce (all versions), ATI Rage, ATI Radeon (all versions). The number of <b>SetTexture</b> blocks you can have is also dependant on the card:
+</p>
+
+<p><dl><dt>ATI Rage</dt><dd>2 SetTexture commands only. Does not support the following combiner modes - combine&nbsp;src1&nbsp;*&nbsp;src2&nbsp;+&nbsp;src3, combine&nbsp;src1&nbsp;*&nbsp;src2&nbsp;+-&nbsp;src3 or combine&nbsp;src1&nbsp;*&nbsp;src2&nbsp;-&nbsp;src3.</dd><dt>ATI Radeon 7500</dt><dd> 3 SetTexture commands. Supports all combiner modes</dd><dt>ATI Radeon 8500, 9000, 9200</dt><dd> 6 SetTexture commands. Supports all combiner modes</dd><dt>ATI Radeon 9500 and above</dt><dd> 8 SetTexture commands.</dd><dt>NVidia TNT, GeForce 1, GeForce 2, GeForce 4MX</dt><dd> 2 SetTexture commands. Supports all the combiner modes.</dd><dt>All later NVidia graphic cards</dt><dd> 4 SetTexture. Supports all the combiner modes.</dd></dl>
+</p>
+
+<h2> Examples</h2>
+
+<h3> Alpha Blending Two Textures</h3>
+<p>This small examples takes two textures. First it sets the first combiner to just take the <b>_MainTex</b>, then is uses the alpha channel of <b>_BlendTex</b> to fade in the RGB colors of <b>_BlendTex</b>
+<pre class='codelisting'>
+Shader "Examples/2 Alpha Blended Textures" {
+	Properties {
+		_MainTex ("Base (RGB)", 2D) = "white" {}
+		_BlendTex ("Alpha Blended (RGBA) ", 2D) = "white" {}
+	}
+	SubShader {
+		Pass {
+			// Apply base texture
+			SetTexture [_MainTex] { 
+				combine texture
+			}
+			// Blend in the alpha texture using the lerp operator
+			SetTexture [_BlendTex] { 
+				combine texture lerp (texture) previous
+			}
+		}
+	} 
+}
+</pre>
+</p>
+
+<h3> Alpha Controlled Self-illumination</h3>
+<p>This shader uses the alpha component of the <b>_MainTex</b> to decide where to apply lighting. It does this by applying the texture to two stages; In the first stage, the alpha value of the texture is used to blend between the vertex color and solid white. In the second stage, the RGB values of the texture are multiplied in.
+</p>
+
+<p><pre class='codelisting'>
+Shader "Examples/Self-Illumination" {
+	Properties {
+		_MainTex ("Base (RGB) Self-Illumination (A)", 2D) = "white" {}
+	}
+	SubShader {
+		Pass {
+			// Set up basic white vertex lighting
+			Material {
+				Diffuse (1,1,1,1)
+				Ambient (1,1,1,1)
+			}
+			Lighting On
+			
+			// Use texture alpha to blend up to white (= full illumination)
+			SetTexture [_MainTex] {
+				constantColor (1,1,1,1)
+				combine constant lerp(texture) previous
+			}
+			// Multiply in texture
+			SetTexture [_MainTex] {
+				combine previous * texture
+			}
+		}
+	} 
+}
+</pre>
+</p>
+
+<p>We can do something else for free here, though; instead of blending to solid white, we can add a self-illumination color and blend to that. Note the use of <b>ConstantColor</b> to get a _SolidColor from the properties into the texture blending.
+</p>
+
+<p><pre class='codelisting'>
+Shader "Examples/Self-Illumination 2" {
+	Properties {
+		_IlluminCol ("Self-Illumination color (RGB)", Color) = (1,1,1,1)
+		_MainTex ("Base (RGB) Self-Illumination (A)", 2D) = "white" {}
+	}
+	SubShader {
+		Pass {
+			// Set up basic white vertex lighting
+			Material {
+				Diffuse (1,1,1,1)
+				Ambient (1,1,1,1)
+			}
+			Lighting On
+			
+			// Use texture alpha to blend up to white (= full illumination)
+			SetTexture [_MainTex] {
+				// Pull the color property into this blender
+				constantColor [_IlluminCol] 
+				// And use the texture's alpha to blend between it and 
+				// vertex color
+				combine constant lerp(texture) previous
+			}
+			// Multiply in texture
+			SetTexture [_MainTex] {
+				combine previous * texture
+			}
+		}
+	} 
+}
+</pre>
+</p>
+
+<p>And finally, we take all the lighting properties of the vertexlit shader and pull that in:
+<pre class='codelisting'>
+Shader "Examples/Self-Illumination 3" {
+	Properties {
+		_IlluminCol ("Self-Illumination color (RGB)", Color) = (1,1,1,1)
+		_Color ("Main Color", Color) = (1,1,1,0)
+		_SpecColor ("Spec Color", Color) = (1,1,1,1)
+		_Emission ("Emmisive Color", Color) = (0,0,0,0)
+		_Shininess ("Shininess", Range (0.01, 1)) = 0.7
+		_MainTex ("Base (RGB)", 2D) = "white" {}
+	}
+
+	SubShader {
+		Pass {
+			// Set up basic vertex lighting
+			Material {
+				Diffuse [_Color]
+				Ambient [_Color]        
+				Shininess [_Shininess]
+				Specular [_SpecColor]
+				Emission [_Emission]    
+			}
+			Lighting On
+			
+			// Use texture alpha to blend up to white (= full illumination)
+			SetTexture [_MainTex] {
+				constantColor [_IlluminCol] 
+				combine constant lerp(texture) previous
+			}
+			// Multiply in texture
+			SetTexture [_MainTex] {
+				combine previous * texture
+			}
+		}
+	} 
+}
+</pre>
+</p>
+
+
+
+
+		<div class="navigation"><a href="SL-CullAndDepth.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-Fog.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

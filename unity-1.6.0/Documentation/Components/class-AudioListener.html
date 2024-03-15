@@ -1,0 +1,70 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Audio Listener"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Components" title="Audio Listener" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-AudioGroup.html%22%3EAudio%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-AudioListener.html%22%3EAudio%20Listener%3C%2Fa%3E" -->
+		<h1>Audio Listener</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-AudioGroup.html">Audio</a> &gt; <a href="class-AudioListener.html">Audio Listener</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><a href='../ScriptReference/AudioListener.html' title='Go to AudioListener Scripting Doc'><img src="../Images/SwitchScripting.png" width="66" height="51" /></a><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="comp-AudioGroup.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-AudioSource.html">Next<img src="../images/next.png"></a></div>
+
+			
+<p>The Audio Listener acts as a microphone-like device. It receives input from any given <a href="../Components/class-AudioSource.html">Audio Source</a> in the scene and plays sounds through the computer speakers.  It is traditionally attached to the main <a href="../Components/class-Camera.html">Camera</a>.
+</p>
+
+<p><img class='figure' src='images/class-AudioListener-0.jpg' />
+</p>
+
+<p><i>The Audio Listener, attached to the Main Camera</i>
+</p>
+
+<h2>Properties</h2>
+<p>The Audio Listener has no properties.  It simply must be added to work.
+</p>
+
+<h2>Details</h2>
+<p>The Audio Listener works in conjunction with <a href="../Components/class-AudioSource.html">Audio Sources</a>, allowing you to create the aural experience of your games.  When the Audio Listener is attached to an object in your scene, any Sources that are close enough to the Listener will be picked up and played through the player's computer speakers.  Each scene can only have 1 Audio Listener to work properly.
+</p>
+
+<p>As long as the Sources are in mono format, the Listener will automatically position the sound in the correct speaker, at the correct volume.  Stereo Sources will automatically play in both speakers.  For example, if your character walks off a street into a night club, the night club's music should probably be stereo, while the individual voices of characters in the club should be mono.
+</p>
+
+<p>You should attach the Audio Listener to either the main camera or to the game object that represents the player. Try both to find what suits your game best.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Each scene can only have one Audio Listener.
+</li><li>You access the project-wide audio settings using the <a href="../Components/class-AudioManager.html">AudioManager</a>, found in the Edit-&gt;Project Settings-&gt;Audio menu.
+</li></ul>
+</p>
+
+
+
+
+
+		<div class="navigation"><a href="comp-AudioGroup.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-AudioSource.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

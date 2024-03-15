@@ -1,0 +1,143 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" Importing 3D models"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title=" Importing 3D models" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Assets.html%22%3EAssets%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Imported%20Scenes.html%22%3E%20Importing%203D%20models%3C%2Fa%3E" -->
+		<h1> Importing 3D models</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Assets.html">Assets</a> &gt; <a href="Imported Scenes.html"> Importing 3D models</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Textures.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Sound files.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Meshes make up a large part of your 3D worlds. You don't build your meshes in Unity, but in another application.
+</p>
+
+<p>In Unity, we have done everything in our power to make this process as simple as possible. There are a lot of details, but the following should hold:
+</p>
+
+<h1> How do I import objects from my 3D app?</h1>
+
+<p>Unity supports importing from a lot of 3D applications. Choose the one you're working with below:
+</p>
+<ul><li> <a href="../Manual/HOWTO-ImportObjectMaya.html">Maya</a>
+</li><li> <a href="../Manual/HOWTO-ImportObjectCinema4D.html">Cinema 4D</a>
+</li><li> <a href="../Manual/HOWTO-ImportObjectMax.html">3D Studio MAX</a>
+</li><li> <a href="../Manual/HOWTO-ImportObjectCheetah3D.html">Cheetah3D</a>
+</li><li> <a href="../Manual/HOWTO-ImportObjectModo.html">Modo</a>
+</li><li> <a href="../Manual/HOWTO-importObjectLightwave.html">Lightwave</a>
+</li><li> <a href="../Manual/HOWTO-ImportObjectBlender.html">Blender</a>
+</li></ul>
+
+<h2> Other applications</h2>
+<p>Unity can read <b>.FBX</b>, <b>.3DS</b>, <b>.dxf</b> and <b>.obj</b> files, so if your program can export to this format you're home free. FBX exporters for popular 3D packages can be found <a class="wiki"  href="http://autodesk.com/fbx">here</a>.
+</p>
+
+<h2>Hints</h2>
+<ul><li> Store textures in a folder called <b>Textures</b> next to the exported mesh. This will guarantee that Unity can always find the Texture and automatically connect the Texture to the Material. For more information, see the <a href="../Components/class-Texture2D.html">Textures</a> reference.
+</li></ul>
+
+<h2>See Also</h2>
+<ul><li> <a href="../Manual/HOWTO-bumpmap.html">How do I use bump maps?</a>
+</li><li> <a href="../Components/class-Mesh.html">Mesh Import Settings</a>
+</li><li> <a href="../Manual/HOWTO-FixZAxisIsUp.html">Fixing a mesh that has the z-axis facing upwards</a>
+</li></ul>
+
+<h2> Textures</h2>
+<p>Unity will attempt to hook up materials to your imported scenes - Basically, just place textures in a folder called 'Textures' next to the sccene file, or in any folder above it.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Imported Scenes-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/Imported Scenes-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<h2> Import settings.</h2>
+<p>To access the importing settings for a 3D scene file, click the <b>Settings</b> button in the project window, or control-click a scene file and select <b>Import Settings...</b>.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Imported Scenes-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/Imported Scenes-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Share Materials</nobr></b></td><td> Enable this to generate material files near the found texture files. When enabled,  different scenes will share the same material settings when they use the same textures. For the precise rules, see Material Generation below.
+</td></tr><tr><td><b><nobr>One Material for...</nobr></b></td><td> This will generate materials per scene, so only this scene uses them.
+</td></tr><tr><td><b><nobr>Don't generate materials</nobr></b></td><td> This will not generate materials at all.
+</td></tr><tr><td><b><nobr>Mesh Scale Factor</nobr></b></td><td> Unity's physics system expects 1 meter in the game world to be 1 unit in the imported file. If you like to model at a different scale, this is the place to fix it.
+</td></tr><tr><td><b><nobr>Meshes have colliders</nobr></b></td><td> If this is enabled, your meshes will be imported with Mesh Colliders automatically attached. This is recommended for background geometry, but never for geometry you move about. For more info see Colliders below.
+</td></tr><tr><td><b><nobr>Automatically calculate normals</nobr></b></td><td> Enable this to automatically generate normals for the imported geometry. If enabled, the <b>Smoothing Angle</b> sets how sharp an edge has to be to be treated as a hard edge.
+</td></tr><tr><td><b><nobr>Swap primary and secondary uv channel</nobr></b></td><td> Use this if Lightmapped shaders pick up wrong UV channels.
+</td></tr><tr><td><b><nobr>Animation options</nobr></b></td><td> Controls how animations are imported.
+<dl><dt>No Animation</dt><dd> No animation or skinning is imported.</dd><dt>Animation in root</dt><dd> Animations are stored in the scene's transform root objects. Use this when animating anything that has a hierarchy.</dd><dt>Animation in original roots</dt><dd> Animations are stored in root objects of your animation package (these might be different from root objects in Unity).</dd><dt>Animation stored in nodes</dt><dd> Animations are stored together with the objects they animate. Use this when you have a complex animation setup and want full scripting control.</dd></dl>
+</td></tr><tr><td><b><nobr>Bake IK &amp; simulation</nobr></b></td><td> When using IK or simulation in your animation package, enable this. Unity will convert to FK on import.
+</td></tr><tr><td><b><nobr>Keyframe reduction</nobr></b></td><td> Perform keyframe reduction on imported animations. You should always use this, as it takes less memory and is faster.
+</td></tr><tr><td><b><nobr>Split animation into multiple clips</nobr></b></td><td> If you have multiple animations in a single file, here you can split it into multiple clips.
+<p></td></tr></tr></table>
+</p>
+
+<h3> Material Generation</h3>
+
+<p>Materials are found based on the following rules:
+</p>
+
+<ul><li> Unity gets the name of the main diffuse material bound to the objects in the scene.
+</li><li> Unity looks for a material with this name in a Folder called 'Materials' next to the scene.
+</li><li> Unity goes up the project folders, looking for the Material in each 'Materials' folder along the way.
+</li></ul>
+
+<p>If Unity can't find the Material, it tries to create one from the texture:
+</p>
+
+<ul><li> Unity checks for a texture with the correct name in the same folder as the scene.
+</li><li> Unity checks for a texture with the correct name in a folder called 'Textures' next to the scene.
+</li><li> Unity goes up the project folders, looking for the correct texture in each 'Textures' folder along the way.
+</li><li> If Unity finds the texture, it creates a 'Materials' folder next to it and creates a material in there.
+</li></ul>
+
+<h3> Colliders</h3>
+
+<p>Unity features two primary types of colliders: Mesh colliders and Primitive colliders. Mesh colliders are imported together with your geometry and are used for background objects. When you enable <b>Meshes Have Colliders</b> in the import settings, the mesh becomes solid as far as the physics system is concerned.
+</p>
+
+<p>If you are moving the object around (a car for example), you can not use mesh colliders. Instead, you will have to use primitive colliders. In this case you should disable the <b>Meshes Have Colliders</b> setting.
+</p>
+
+<h3> Animations</h3>
+
+<p>Animations are automatically imported from the scene. For more details about animation import options see <a href="../Manual/Character-Animation.html">Character-Animation</a> chapter.
+</p>
+
+<h2>Hints</h2>
+
+<p><ul><li>
+Merge your meshes together. Make them share materials and textures. This has a huge performance benefit.
+</li><li>If you need to set up your objects further in Unity (adding physics, scripts or other coolness), save yourself a world of pain and name your objects properly in your 3D application. Working with lots of <i>pCube17</i> or <i>Box42</i>-like objects is not fun.
+</li><li>Make your meshes be centered on the world origin in your 3D app. This will make them easier to place in Unity.
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="Textures.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Sound files.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

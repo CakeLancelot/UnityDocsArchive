@@ -1,0 +1,70 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Cubemap Texture"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Cubemap Texture" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-AssetsGroup.html%22%3EAsset%20components%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-CubemapTexture.html%22%3ECubemap%20Texture%3C%2Fa%3E" -->
+		<h1>Cubemap Texture</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-AssetsGroup.html">Asset components</a> &gt; <a href="class-CubemapTexture.html">Cubemap Texture</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-Material.html"><img src="../images/prev.png">Previous</a> </div>
+
+			
+
+<p>Cubemap Texture is a collection of six square textures, put onto faces of imaginary cube. Most often they are used to display infinitely faraway reflections on objects, similar to how <a href="../Components/class-Skybox.html">Skybox</a> displays faraway scenery in the background. <i>Reflective</i> builtin shaders in Unity use Cubemaps to display reflection.
+</p>
+
+<p>You create Cubemap in one of two ways:
+</p>
+<ol><li> Use <b>Assets -&gt; Create -&gt; Cubemap</b>, set its properties and then drag six <a href="../Components/class-Texture2D.html">Texture</a> assets onto corresponding cubemap &quot;faces&quot;.
+</li><li> Use <a href="../Components/class-Texture2D.html">Texture</a> Import Settings to create a Cubemap from a single square texture.
+</li></ol>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-CubemapTexture-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-CubemapTexture-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>A mountains cubemap displayed as reflection on the sphere</i>
+</p>
+
+<h2>Properties</h2>
+
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
++X/-X</nobr></b></td><td> Textures for right and left cube faces.
+</td></tr><tr><td><b><nobr>+Y/-Y</nobr></b></td><td> Textures for top and bottom cube faces.
+</td></tr><tr><td><b><nobr>+Z/-Z</nobr></b></td><td> Textures for front and back cube faces.
+</td></tr><tr><td><b><nobr>Texture size</nobr></b></td><td> Edge length in pixels that will be used for a single cubemap face. Source textures will be internally scaled to fit this size, there is no need to scale them manually.
+</td></tr><tr><td><b><nobr>Mipmap</nobr></b></td><td> Enable to create mipmaps.
+</td></tr><tr><td><b><nobr>Texture format</nobr></b></td><td> Format of the created cubemap.
+<p></td></tr></tr></table>
+</p>
+
+<h2>See Also</h2>
+
+
+
+
+
+		<div class="navigation"><a href="class-Material.html"><img src="../images/prev.png">Previous</a> </div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

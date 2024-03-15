@@ -1,0 +1,100 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Networking for iPhone</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Networking for iPhone</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Network Reference Guide.html">Network Reference Guide</a> &gt; <a href="../Components/iphone-Networking.html">Networking for iPhone</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/Network Reference Guide.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/net-HighLevelOverview.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Networking for iPhone</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Unity iPhone Networking engine is fully compatible to Unity Networking, so all your networking code should work on iPhone. However you may want to re-engineer your code and adapt it for Wi-Fi or even cellular networks. Moreover iPhone networking chip may also be the bottleneck as even in high performance Wi-Fi networks pings between iPhones (or between the iPhone and the desktop) are about 40-60 ms.
+</p>
+<p class='vspace'>Using Networking you can create a game that can be played simultaneously from desktop and iPhone over Wi-Fi or cellular networks. In latter case your game server should have public IP (accessible through internet). 
+</p>
+<p class='vspace'><b>Note:</b>
+EDGE / 3G data connections go to sleep very quickly when no data is sent. Thus sometimes you may need to "wake-up" networking. Just make WWW class connection to your site (and yield 
+until it finishes) before making Unity networking connection..
+</p>
+<div class='vspace'></div><h2>Network stripping</h2>
+<p>By default Networking component is included to your game. You should uncheck "Enable Unity Networking" in Player Settings if you do not use Networking component as this reduces your game size.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/iphone-Networking-0.jpg' /></div>
+<p class='vspace'>However even when you disable Unity Networking for iPhone, your networking code will still work in the Editor.
+</p>
+<p class='vspace'>When Unity Networking is disabled, Editor will generate dummy networking library and add it to final Xcode project. Otherwise fully functional networking library will be used. If networking is disabled but you still use networking components or API calls, project will still compile and run, but it's networking functionality will not work. Disabling network saves about 400 kilobytes of final uncompressed binary.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/Network Reference Guide.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/net-HighLevelOverview.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

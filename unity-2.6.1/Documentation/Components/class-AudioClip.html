@@ -1,0 +1,128 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Audio Clip</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Audio Clip</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-AssetsGroup.html">Asset Components</a> &gt; <a href="../Components/class-AudioClip.html">Audio Clip</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><a href='../ScriptReference/AudioClip.html' title='Go to AudioClip Scripting Doc'>Switch to Scripting</a><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/comp-AssetsGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-Cubemap.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Audio Clip</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<div class='specific-no-iphone' > 
+<p><span class='doc-keyword'>Audio Clips</span> are used by <a href="../Components/class-AudioSource.html">Audio Sources</a> to represent the audio asset imported into Unity.  Unity supports both Mono and Stereo audio assets. Unity supports importing the following audio file formats: <b>.aif</b>, <b>.wav</b>, <b>.mp3</b>, and <b>.ogg</b>.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-AudioClip-0.jpg' /><br /><em>The Audio Clip <span class='doc-keyword'>Inspector</span></em></div>
+<div class='vspace'></div><h2>Properties</h2>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Audio Format</span></td><td  align='left'>The specific format that will be used for the sound at runtime.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Native</span></span></td><td  align='left'>Larger file size, higher quality.  Best for very short sound effects.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Compressed</span></span></td><td  align='left'>Smaller file size, lower/variable quality.  Best for medium length sound effects and music.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>3D Sound</span></td><td  align='left'>If enabled, the sound will play back in 3D space.  In Unity 2.6, both Mono and Stereo sounds can be played in 3D</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Force to mono</span></td><td  align='left'>If enabled, the stereo audio clip will be condensed to a single channel mono sound.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Decompress On Load</span></td><td  align='left'>If enabled, this clip will be loaded into memory as soon as the scene containing it is loaded.  It is suggested that you leave this on, otherwise your game may have reduced performance as the sound is decompressed real-time at runtime.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Compression</span></td><td  align='left'>Amount of Compression to be applied to a <span class='doc-prop'>Compressed</span> clip. Statistics about file size can be seen beneath the slider. It is suggested to drag the slider to a place that leaves the playback "good enough" but still at a small enough size to meet your file size/distribution needs.</td></tr>
+</table>
+<div class='vspace'></div><h2>Importing Audio Assets</h2>
+<p>Unity supports both Compressed and Uncompressed Audio.  Any type of file except .mp3 will be initially imported as Uncompressed. MP3 and Compressed audio files must be decompressed by the CPU while the game is running, but are smaller in file size.  Native formats have the benefit of being higher fidelity without increasing CPU taxation, but create much larger files.
+</p>
+<p class='vspace'>As a general rule of thumb, Compressed audio is best for long files like background music or dialog, and uncompressed is better for short sound effects that are under two seconds.  However...
+</p>
+<p class='vspace'><b>If you are creating a web player game, you should Compress as much of your audio as possible.</b> This will help you attain the smallest file size for webplayer downloads.  If you tweak the amount of Compression, the difference in sound quality won't be noticeable.
+</p>
+<p class='vspace'><a name='PositionalAudio' id='PositionalAudio'></a>
+</p><h2>Using 3D Audio</h2>
+<p>If an audio clip is marked as a <span class='doc-prop'>3D Sound</span> then it will be played back to simulate its position in the game world's 3D space. 3D sounds simulate distance and location of sounds by fading volume and panning across speakers.  Unity supports 3D audio, and any stereo or mono clip can be played back in 3D space.  However, mono 3D sounds are the most common.
+</p>
+<p class='vspace'><a name='OggPerformance' id='OggPerformance'></a>
+</p><h2>Loading Compressed Audio</h2>
+<p>Compressed audio files have an option to choose when the Clip will be decompressed.  The option is set in the Import Settings:
+</p>
+<div class='vspace'></div><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Decompress On Load</span> enabled</td><td  align='left'>Decompress and load the Clip into RAM when the player is loading.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Decompress On Load</span> disabled (Live decompression)</td><td  align='left'>Decompress and play the Clip real-time when the Clip is triggered to start.</td></tr>
+</table>
+<p class='vspace'>Decompressing on load is the most commonly used option, and shouldn't really be disabled unless you have a special case.  It means that the levels containing the Clip will take longer to load initially, and it will use up more of the end-user's RAM.  Live decompression does not load the Clip data into RAM at level load.  Instead, it requires the CPU to decompress the sound real-time.  This means it is more CPU intensive rather than RAM intensive.
+</p>
+<p class='vspace'>To summarize, enable decompression on load as much as possible, and definitely for all short Clips.  Pick live decompression for longer Clips like music tracks.  All Ogg Vorbis Clips using live decompression will increase CPU usage.  It can use a substantial amount of CPU to live decompress multiple Clips at once, so you should avoid playing more than 2 live decompression Clips at once.
+</p></div>
+<div class='vspace'></div>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/comp-AssetsGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-Cubemap.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

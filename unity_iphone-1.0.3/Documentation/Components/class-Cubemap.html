@@ -1,0 +1,104 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Cubemap Texture</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Cubemap Texture</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-AssetsGroup.html">Asset Components</a> &gt; <a href="../Components/class-Cubemap.html">Cubemap Texture</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><a href='../ScriptReference/Cubemap.html' title='Go to Cubemap Scripting Doc'>Switch to Scripting</a><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-AudioClip.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-Flare.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Cubemap Texture</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>A <span class='doc-keyword'>Cubemap Texture</span> is a collection of six separate square Textures that are put onto the faces of an imaginary cube. Most often they are used to display infinitely faraway reflections on objects, similar to how <a href="../Components/class-Skybox.html">Skybox</a> displays faraway scenery in the background. The <a href="../Components/shader-ReflectiveFamily.html">Reflective</a> built-in shaders in Unity use Cubemaps to display reflection.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Cubemap-0.jpg' /><br /><em>A mountain scene Cubemap displayed as a reflection on this sphere</em></div>
+<p class='vspace'>You create Cubemap in one of several ways:
+</p><ol><li>Use <span class='doc-menu'>Assets-&gt;Create-&gt;Cubemap</span>, set its properties, and drag six <a href="../Components/class-Texture2D.html">Texture</a> assets onto corresponding Cubemap "faces".
+</li><li>Use the <a href="../Components/class-Texture2D.html">Texture</a> Import Settings to create a Cubemap from a single imported texture asset.
+</li><li>Render your scene into a cubemap from script. Code example in <a class='urllink' href='../ScriptReference/Camera.RenderToCubemap.html' rel='nofollow'>Camera.RenderToCubemap</a> page contains a script for rendering cubemaps straight from the editor.
+</li></ol><div class='vspace'></div><h2>Properties</h2>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Right (+X)</span></td><td  align='left'>Texture for the right global side of the Cubemap face.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Left (-X)</span></td><td  align='left'>Texture for the up global side of the Cubemap face.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Top (+Y)</span></td><td  align='left'>Texture for the top global side of the Cubemap face.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Bottom (-Y)</span></td><td  align='left'>Texture for the bottom global side of the Cubemap face.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Front (+Z)</span></td><td  align='left'>Texture for the forward global side of the Cubemap face.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Back (-Z)</span></td><td  align='left'>Texture for the rear global side of the Cubemap face.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Face Size</span></td><td  align='left'>Width and Height in pixels across each individual Cubemap face. Textures will be internally scaled to fit this size, there is no need to manually scale the assets.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Mipmap</span></td><td  align='left'>Enable to create mipmaps.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Format</span></td><td  align='left'>Format of the created cubemap.</td></tr>
+</table>
+<div class='vspace'></div>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-AudioClip.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-Flare.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

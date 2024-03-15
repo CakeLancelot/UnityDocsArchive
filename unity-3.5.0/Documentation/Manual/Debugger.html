@@ -1,0 +1,279 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Debugger</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Debugger</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/Debugging.html">Debugging</a> &gt; <a href="../Manual/Debugger.html">Debugger</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Debugger</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>The Unity Debugger lets you inspect your code at runtime. For example, it can help you determine when a function is called and with which values. Furthermore, it allows you to look at the value of scripts' variables at a given time while running your game. You can locate bugs or logic problems in your scripts by executing them step by step.
+</p>
+<p class='vspace'>Unity uses the MonoDevelop IDE to debug the scripts in your game. You can debug all the languages supported by the engine (JavaScript, C#, and Boo).
+</p>
+<p class='vspace'>Note that the debugger has to load all your code and all symbols, so bear in mind that this can have a small impact on the performance of your game during execution.  Typically, this overhead is not large enough to affect the game framerate.
+<br clear='all' />
+<br clear='all' />
+</p><div><img class='figure' src='../Images/manual/Debugger-0.jpg' /><br clear='all' /></div>
+<p><em>MonoDevelop window debugging a script in unity.</em>
+<br clear='all' />
+<br clear='all' />
+<br clear='all' />
+</p><h2>Debugging in Unity.</h2>
+<p>On Windows, users must choose to install MonoDevelop as part of the Unity installation (selected by default).
+</p>
+<div class='vspace'></div><ul><li>If you haven't used MonoDevelop with your project before, synchronize your MonoDevelop project. This will open your project inside MonoDevelop.
+</li></ul><div>      <img class='figure' src='../Images/manual/Debugger-1.jpg' /></div>
+<p><br clear='all' />
+<br clear='all' />
+</p><ul><li>Set the necessary breakpoints on your scripts by clicking the lines that you want to analyze.
+</li></ul><div>      <img class='figure' src='../Images/manual/Debugger-2.jpg' /></div>
+<p><br clear='all' />
+<br clear='all' />
+</p>
+<div class='vspace'></div><ul><li>Launch Unity or your player.
+<ul><li>Unity: Ensure you have "Allow attached debugging" checked in the Preferences window.
+</li><li>Players: Ensure that you have built your player with the "Development build" and "Allow script debugging" options enabled.
+</li></ul></li><li>Open your project in MonoDevelop.
+</li><li>In MonoDevelop, click the Attach button in the toolbar, or choose <b>Attach</b> from the <b>Run</b> menu.
+</li><li>From the dialog that appears, choose the item you wish to debug.
+</li><li><b>Notes:</b>
+<ul><li>Currently supported debugging targets: Unity editors, desktop standalone players, Android and iOS players
+</li><li>If your player is set not to run in the background (the default), you may need to focus your player for a few seconds in order for it to appear in the list.
+</li><li>Android and iOS players need to have networking enabled when script debugging is enabled. All players need to be on the same network subnet as the computer running MonoDevelop.
+</li></ul></li></ul><p class='vspace'><br clear='all' />
+</p><div>      <img class='figure' src='../Images/manual/Debugger-3.jpg' /></div>
+<p><br clear='all' />
+<br clear='all' />
+</p>
+<p class='vspace'><br clear='all' />
+<br clear='all' />
+</p><dl><dd><ul><li>When you enter play mode, your script code will execute in the debugger.
+</li><li>When a breakpoint occurs, script execution will stop, and you will be able to use MonoDevelop to step over, into, and out of your script methods, inspect your variables, examine the call stack, etc.
+<ul><li><em>Note:</em> When you're done debugging a toplevel method (e.g. <code>Update()</code>), or you just want to jump to the next breakpoint, you will experience better debugger performance by using the <b>Continue</b> command instead of stepping out or over the end of your function.
+</li></ul></li></ul></dd></dl><div>      <img class='figure' src='../Images/manual/Debugger-4.jpg' /></div>
+<div>      <img class='figure' src='../Images/manual/Debugger-5.jpg' /></div>
+<p><br clear='all' />
+<br clear='all' />
+</p>
+<div class='vspace'></div><ul><li>When you're done debugging, click the Detach or Stop buttons in the toolbar, or choose <b>Detach</b> or <b>Stop</b> from the <b>Run</b> menu.
+</li></ul><div class='vspace'></div><h2>Hints.</h2>
+<ul><li>If you add a watch to the <b><em>this</em></b> object, you can inspect the internal values (position, scale, rotation...) of the GameObject to which the script is attached.
+</li></ul><p><br clear='all' />
+<br clear='all' />
+</p><div class='specific-ios' style='display: block;' id='specific-ios' > 
+<h2>iOS remote debugging instructions</h2>
+<p>In addition to the instructions described above, Unity iOS applications require some additional steps for successful debugging:
+</p><ol><li>Attach your iDevice to your WiFi network (the same requirement as for remote profiling). 
+</li><li>Hit build &amp; run in the Unity editor. 
+</li><li>When the application builds, installs &amp; launches via Xcode, click <span class='doc-prop'>Stop</span> in Xcode. 
+</li><li>Manually find &amp; launch your application on your iDevice. (<b>Note:</b> if the application is launched via Xcode you won't be able to resume after reaching a breakpoint).
+</li><li>When the app is running on the device, switch to MonoDevelop and click on the attach icon in the debugging toolbar. Select your device from the available instances list (if there are several instances shown, then select the bottom one).
+</li></ol><p><br clear='all' />
+</p></div> 
+</p><small>Page last updated: 2011-05-23</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

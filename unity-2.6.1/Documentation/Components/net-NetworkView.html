@@ -1,0 +1,107 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Network Views</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Network Views</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Network Reference Guide.html">Network Reference Guide</a> &gt; <a href="../Components/net-NetworkView.html">Network Views</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/net-UnityNetworkElements.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/net-RPCDetails.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Network Views</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Network Views are the vehicle used to share data across the network.  They allow two kinds of network communication: <span class='doc-keyword'>State Synchronization</span> and <span class='doc-keyword'>Remote Procedure Calls</span>.
+</p>
+<p class='vspace'>When you have many clients running the same game, each client has a set of objects which all together make up the game itself. To make two or more clients seem identical, these objects need to be synchronized by sharing data. This is called <span class='doc-keyword'>State Synchronization</span>.  Synchronizing the state of every object in the game requires a massive amount of data, easily too much data to be practically sent across the network and keep your game playable. To address this, Network Views are used to specify what data will be shared, and therefore which objects will be synchronized. Each Network View watches a specific part of an object and makes sure it is synchronized with the same object on other clients.  More information about State Synchronization can be found on the <a href="../Components/net-StateSynchronization.html">State Synchronization page</a>.
+</p>
+<p class='vspace'>There are other network scenarios like when you want to send out the position of an object or respawn an item for someone to pick up.  Because these are one-time, infrequent operations, it does not make sense to synchronize the state of the involved objects.  Instead, you use a <span class='doc-keyword'>Remote Procedure Call</span> to tell the clients or server to perform an operation. More information about Remote Procedure Calls can be found on the <a href="../Components/net-RPCDetails.html">RPC Details page</a>.
+</p>
+<div class='vspace'></div><h2>Technical Details</h2>
+<p>Network Views are identified across the Network by <span class='doc-prop'>NetworkViewID</span>'s. A <span class='doc-prop'>NetworkViewID</span> is basically a unique identifier of an object that all networked machines agree on. It is implemented as a 128 bit number but is automatically compressed down to 16 bit when transferred over the network where possible.
+</p>
+<p class='vspace'>Each packet that arrives on the client side needs to be applied to a specific Network View. The <span class='doc-prop'>NetworkViewID</span> uniquely identifies to which Network View it belongs. Using the <span class='doc-prop'>NetworkViewID</span>, Unity can find the right Network View, unpack the data and finally apply the incoming packet to the Network View's observed object.
+</p>
+<p class='vspace'>More details about using Network Views in the Editor can be found on the  <a href="../Components/class-NetworkView.html">Network View Component Reference page</a>.
+</p>
+<p class='vspace'>If you use <a class='urllink' href='../ScriptReference/Network.Instantiate.html' rel='nofollow'>Network.Instantiate()</a> to create your Networked objects, you do not need to worry about allocating Network Views and assigning them yourself appropriately.  It will all work automatically under the hood.
+</p>
+<p class='vspace'>However, you can manually control the NetworkViewID<span class='doc-prop'>s of each Network View by using <a class='urllink' href='../ScriptReference/Network.AllocateViewID.html' rel='nofollow'>Network.AllocateViewID</a>. The Scripting Reference documentation shows an example of how an object can be manually instantiated on every client with an RPC function and then the NetworkViewID manually set with </span>AllocateViewID``.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/net-UnityNetworkElements.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/net-RPCDetails.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

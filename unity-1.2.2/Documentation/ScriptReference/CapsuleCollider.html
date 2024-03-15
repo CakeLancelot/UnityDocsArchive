@@ -1,0 +1,53 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="CapsuleCollider"-->
+			<title>Unity Script Reference &ndash; CapsuleCollider</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class CapsuleCollider</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class CapsuleCollider" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Collider.html" class="classlink">Collider</a></div></p>
+   <p class='first'> A capsule-shaped primitive collider.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#center'>center</a></p>
+<p><a href='#radius'>radius</a></p>
+<p><a href='#height'>height</a></p>
+<p><a href='#direction'>direction</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> Capsules are cylinders with a half-sphere at each end.  <p class="basic"/><span class="seealso"><b>See Also:</b> <a href="BoxCollider.html" class="classlink">BoxCollider</a>, <a href="SphereCollider.html" class="classlink">SphereCollider</a>, DynamicsMaterial, RigidBody</span></p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="center"></a><h3><span class="full-name">CapsuleCollider.</span>center</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> center</div>
+   <p class='details'> The center of the capsule, measured in the object's local space. <table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Reset the center to the transform's position<br/>collider.center = <a href="Vector3.html#zero" class="itemlink">Vector3.zero</a>;</div></td></tr></table></p>
+	<a name="radius"></a><h3><span class="full-name">CapsuleCollider.</span>radius</h3><div class="synopsis"><span class="standard_type">float</span> radius</div>
+   <p class='details'> The radius of the sphere, measured in the object's local space.
+The capsule's radius will be scaled by the transform's scale.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">collider.radius = 1;</div></td></tr></table></p>
+	<a name="height"></a><h3><span class="full-name">CapsuleCollider.</span>height</h3><div class="synopsis"><span class="standard_type">float</span> height</div>
+   <p class='details'> The height of the capsule meased in the object's local space.
+The capsule's height will be scaled by the transform's scale.
+Note that the height is the actual height including the half-spheres at each end.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">collider.height = 5;</div></td></tr></table></p>
+	<a name="direction"></a><h3><span class="full-name">CapsuleCollider.</span>direction</h3><div class="synopsis"><span class="standard_type">int</span> direction</div>
+   <p class='details'> The direction of the capsule.
+0 -> Capsule height is along the x-axis.
+1 -> Capsule height is along the y-axis.
+2 -> Capsule height is along the z-axis.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Make the capsule height be along the x-axis<br/>collider.direction = 0;</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

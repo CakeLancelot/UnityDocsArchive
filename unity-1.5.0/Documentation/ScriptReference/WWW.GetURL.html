@@ -1,0 +1,43 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="WWW.GetURL"-->
+			<title>Unity Script Reference &ndash; WWW.GetURL</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<script language="JavaScript" src="UnityDoc.js"></script>
+<body>
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>GetURL</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+	<!-- #TemplateEndEditable -->
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-top.lbi" --><!-- #EndLibraryItem --><div class="left-menu-container"><ul class="left-menu"><li><span class="left-menu-heading">Menu</span></li><li><a class="left-menu-item" href="index.html">Overview</a></li><li><a class="left-menu-item" href="20_class_hierarchy.html">Class Hierarchy</a></li><li><a class="left-menu-item" href="10_reference.html">Reference</a></li><li><span class="left-menu-seperator"></span></li><li><a class="left-menu-heading" href="WWW.html">WWW</a></li><li><a class="left-menu-item" href="WWW.html">Class Members</a></li><li><span class="left-menu-subheading">Variables</span></li><li><a class="left-menu-item" href="WWW.data.html">data</a></li><li><a class="left-menu-item" href="WWW.error.html">error</a></li><li><a class="left-menu-item" href="WWW.isDone.html">isDone</a></li><li><a class="left-menu-item" href="WWW.size.html">size</a></li><li><a class="left-menu-item" href="WWW.texture.html">texture</a></li><li><span class="left-menu-subheading">Functions</span></li><li><a class="left-menu-item" href="WWW.LoadImageIntoTexture.html">LoadImageIntoTexture</a></li><li><span class="left-menu-subheading">Class Functions</span></li><li><a class="left-menu-item" href="WWW.EscapeURL.html">EscapeURL</a></li><li><a class="left-menu-item" href="WWW.GetTextureFromURL.html">GetTextureFromURL</a></li><li><span class="left-menu-item left-menu-current">GetURL</span></li><li><a class="left-menu-item" href="WWW.UnEscapeURL.html">UnEscapeURL</a></li></ul></div>
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-middle.lbi" --><!-- #EndLibraryItem -->	<div id="GetURL" class="manual-entry"><h3><span class="full-name">WWW.</span>GetURL</h3><div class="synopsis">string GetURL (string url, bool includeHeader=false)</div>
+   <p class="details"> Fetches the contents of web page <span class="variable">url</span>. Supports both HTTP and FTP addresses.
+The entire data is returned in a string.
+</p><p class="details">
+The function will block the execution of the game until the data has been downloaded.
+If <span class="variable">includeHeader</span> is set to true, the returned string will also include
+the HTTP response headers from the web server.
+</p><p class="details">
+Any parsing of the returned data is up to you.</p><div class="code">var oteeHomePage = <a href="WWW.GetURL.html" class="itemlink">WWW.GetURL</a>("http:<span class="comment">//www.otee.dk/");</span>
+</div><p class="details"></p>
+</div>	
+	</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

@@ -1,0 +1,232 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Shaders: Getting started</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Shaders: Getting started</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/Shaders.html">Shaders</a> &gt; <a href="../Manual/ShaderTut1.html">Shaders: Getting started</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Shaders.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/ShaderTut2.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Shaders: Getting started</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>This tutorial will teach you how you can create your own shaders and make you game look a lot better!
+</p>
+<p class='vspace'>Unity is equipped with a powerful shading and material language called <span class='doc-keyword'><span class='wikiword'>ShaderLab</span></span>. In style it is similar to <span class='wikiword'>CgFX</span> and <span class='wikiword'>Direct3D</span> Effects languages - it describes everything needed to display a <span class='doc-keyword'>Material</span>, not just plain vertex/pixel shaders.
+</p>
+<p class='vspace'>Shaders describe properties that are exposed in Unity's <a href="../Components/class-Material.html">Material Inspector</a> and multiple shader implementations (<span class='doc-keyword'><span class='wikiword'>SubShaders</span></span>) targeted at different graphics hardware capabilities, each describing complete graphics hardware rendering state, fixed function pipeline setup or vertex/fragment programs to use. Vertex and fragment programs are written in high-level Cg programming language or low-level shader assembly.
+</p>
+<p class='vspace'>In this tutorial we describe how to write shaders in <span class='wikiword'>ShaderLab</span> using both fixed function and programmable pipelines. We assume that the reader has a basic understanding of <a class='urllink' href='http://opengl.org/documentation/red_book' rel='nofollow'>OpenGL</a> or <span class='wikiword'>Direct3D</span> render states, fixed function and programmable pipelines and has some knowledge of <a class='urllink' href='http://developer.nvidia.com/page/cg_main.html' rel='nofollow'>Cg</a> or <a class='urllink' href='http://www.opengl.org/documentation/glsl' rel='nofollow'>GLSL</a> programming languages. Some additional shader tutorials can be found on <a class='urllink' href='http://shadertech.com/articles' rel='nofollow'>shadertech website</a>.
+</p>
+<div class='vspace'></div><h2>Getting started</h2>
+<p>To create a new shader, either choose <span class='doc-menu'>Assets-&gt;Create-&gt;Shader</span> from the menubar, or duplicate an existing shader, and work from that. The new shader can be edited by double-clicking it in the <span class='doc-keyword'>Project View</span>.
+</p>
+<p class='vspace'>We'll start with a very basic shader:
+</p>
+<div class='vspace'></div><pre class='codelisting'>Shader "Tutorial/Basic" {
+    Properties {
+        _Color ("Main Color", Color) = (1,0.5,0.5,1)
+    }
+    SubShader {
+        Pass {
+            Material {
+                Diffuse [_Color]
+            }
+            Lighting On
+        }
+    }
+} </pre>
+<p class='vspace'>This simple shader demonstrates one of the most basic shaders possible. It defines a color property called <span class='doc-prop'>Main Color</span> and assigns it a default value of rose-like color (red=100% green=50% blue=50% alpha=100%). It then renders the object by invoking a <span class='doc-keyword'>Pass</span> and in that pass setting the diffuse material component to the property <span class='doc-prop'>_Color</span> and turning on the vertex lighting.
+</p>
+<p class='vspace'>To test this shader, create a new material, select the shader from the drop-down menu (<span class='doc-menu'>Tutorial-&gt;Basic</span>) and assign the Material to some object. Tweak the color in the Material Inspector and watch the changes. Time to move onto more complex things!
+</p>
+<div class='vspace'></div><h2>Basic Vertex Lighting</h2>
+<p>If you open an existing complex shader, it can be a bit hard to get a good overview. To get you started, we will dissect the built-in <span class='doc-keyword'><span class='wikiword'>VertexLit</span></span> shader that ships with Unity. This shader uses fixed function pipeline to do standard per-vertex lighting.
+</p>
+<div class='vspace'></div><pre class='codelisting'>Shader "VertexLit" {
+    Properties {
+        _Color ("Main Color", Color) = (1,1,1,0.5)
+        _SpecColor ("Spec Color", Color) = (1,1,1,1)
+        _Emission ("Emmisive Color", Color) = (0,0,0,0)
+        _Shininess ("Shininess", Range (0.01, 1)) = 0.7
+        _MainTex ("Base (RGB)", 2D) = "white" { }
+    }
+
+    SubShader {
+        Pass {
+            Material {
+                Diffuse [_Color]
+                Ambient [_Color]
+                Shininess [_Shininess]
+                Specular [_SpecColor]
+                Emission [_Emission]
+            }
+            Lighting On
+            SeperateSpecular On
+            SetTexture [_MainTex] {
+                constantColor [_Color]
+                Combine texture * primary DOUBLE, texture * constant
+            }
+        }
+    }
+} </pre>
+<p class='vspace'>All shaders start with the keyword <span class='doc-prop'><a href="../Components/SL-Shader.html">Shader</a></span> followed by a string that represents the name of the shader. This is the name that is shown in the <span class='doc-keyword'>Inspector</span>. All code for this shader must be put within the curly braces after it: <span class='doc-prop'>{ }</span> (called a block).
+</p>
+<div class='vspace'></div><ul><li>The name should be short and descriptive. It does not have to match the <b>.shader</b> file name.
+</li><li>To put shaders in submenus in Unity, use slashes - e.g. <span class='doc-prop'><span class='wikiword'>MyShaders</span>/Test</span> would be shown as <span class='doc-menu'>Test</span> in a submenu called <span class='doc-menu'><span class='wikiword'>MyShaders</span></span>, or <span class='doc-menu'><span class='wikiword'>MyShaders</span>-&gt;Test</span>.
+</li></ul><p class='vspace'>The shader is composed of a <span class='doc-prop'>Properties</span> block followed by <span class='doc-prop'><span class='wikiword'>SubShader</span></span> blocks. Each of these is described in sections below.
+</p>
+<div class='vspace'></div><h2>Properties</h2>
+<p>At the beginning of the shader block you can define any properties that artists can edit in the <a href="../Components/class-Material.html">Material Inspector</a>. In the <em><span class='wikiword'>VertexLit</span></em> example the properties look like this:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/ShaderTut1-0.jpg' /></div>
+<p class='vspace'>The properties are listed on separate lines within the <span class='doc-prop'><a href="../Components/SL-Properties.html">Properties</a></span> block. Each property starts with the internal name (<span class='doc-prop'>Color</span>, <span class='doc-prop'><span class='wikiword'>MainTex</span></span>). After this in parentheses comes the name shown in the inspector and the type of the property. After that, the default value for this property is listed:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/ShaderTut1-1.jpg' /></div>
+<p class='vspace'>The list of possible types are in the <a href="../Components/SL-Properties.html">Properties Reference</a>. The default value depends on the property type. In the example of a color, the default value should be a four component vector.
+</p>
+<p class='vspace'>We now have our properties defined, and are ready to start writing the actual shader.
+</p>
+<div class='vspace'></div><h2>The Shader Body</h2>
+<p>Before we move on, let's define the basic structure of a shader file.
+</p>
+<p class='vspace'>Different graphic hardware has different capabilities. For example, some graphics cards support fragment programs and others don't; some can lay down four textures per pass while the others can do only two or one; etc. To allow you to make full use of whatever hardware your user has, a shader can contain multiple <span class='doc-keyword'><span class='wikiword'>SubShaders</span></span>. When Unity renders a shader, it will go over all subshaders and use the first one that the hardware supports.
+</p>
+<div class='vspace'></div><pre class='codelisting'>Shader "Structure Example" {
+    Properties { /* ...shader properties... }
+    SubShader {
+    	// ...subshader that uses vertex/fragment programs...
+    }
+    SubShader {
+    	// ...subshader that uses four textures per pass...
+    }
+    SubShader {
+    	// ...subshader that uses two textures per pass...
+    }
+    SubShader {
+    	// ...subshader that might look ugly but runs on anything :)
+    }
+} </pre>
+<p class='vspace'>This system allows Unity to support all existing hardware and maximize the quality on each one. It does, however, result in some long shaders.
+</p>
+<p class='vspace'>Inside each <span class='wikiword'>SubShader</span> block you set the rendering state shared by all passes; and define rendering passes themselves. A complete list of available commands can be found in the <a href="../Components/SL-SubShader.html">SubShader Reference</a>.
+</p>
+<div class='vspace'></div><h2>Passes</h2>
+<p>Each subshader is a collection of passes. For each pass, the object geometry is rendered, so there must be at least one pass. Our <span class='wikiword'>VertexLit</span> shader has just one pass:
+</p>
+<div class='vspace'></div><pre class='codelisting'>// ...snip...
+Pass {
+    Material {
+        Diffuse [_Color]
+        Ambient [_Color]
+        Shininess [_Shininess]
+        Specular [_SpecColor]
+        Emission [_Emission]
+    }
+    Lighting On
+    SeperateSpecular On
+    SetTexture [_MainTex] {
+        constantColor [_Color]
+        Combine texture * primary DOUBLE, texture * constant
+    }
+}
+// ...snip... </pre>
+<p class='vspace'>Any commands defined in a pass configures the graphics hardware to render the geometry in a specific way.
+</p>
+<p class='vspace'>In the example above we have a <span class='doc-prop'><a href="../Components/SL-Material.html">Material</a></span> block that binds our property values to the fixed function lighting material settings. The command <span class='doc-prop'>Lighting On</span> turns on the standard vertex lighting, and <span class='doc-prop'><span class='wikiword'>SeperateSpecular</span> On</span> enables the use of a separate color for the specular highlight.
+</p>
+<p class='vspace'>All of these command so far map very directly to the fixed function <span class='wikiword'>OpenGL/Direct3D</span> hardware model. Consult <a class='urllink' href='http://opengl.org/documentation/red_book' rel='nofollow'>OpenGL red book</a> for more information on this.
+</p>
+<p class='vspace'>The next command, <span class='doc-prop'><a href="../Components/SL-SetTexture.html">SetTexture</a></span>, is very important. These commands define the textures we want to use and how to mix, combine and apply them in our rendering. <span class='doc-prop'><span class='wikiword'>SetTexture</span></span> command is followed by the property name of the texture we would like to use (<span class='doc-prop'>_MainTex</span> here) This is followed by a <span class='doc-keyword'>combiner block</span> that defines how the texture is applied. The commands in the combiner block are executed for each pixel that is rendered on screen.
+</p>
+<p class='vspace'>Within this block we set a constant color value, namely the Color of the Material, <span class='doc-prop'>_Color</span>. We'll use this constant color below.
+</p>
+<p class='vspace'>In the next command we specify how to mix the texture with the color values. We do this with the <span class='doc-prop'>Combine</span> command that specifies how to blend the texture with another one or with a color. Generally it looks like this:
+</p><pre>    <span class='doc-prop'>Combine</span> <span class='doc-keyword'><span class='wikiword'>ColorPart</span></span>, <span class='doc-keyword'><span class='wikiword'>AlphaPart</span></span>
+</pre><p class='vspace'>Here <span class='doc-prop'><span class='wikiword'>ColorPart</span></span> and <span class='doc-prop'><span class='wikiword'>AlphaPart</span></span> define blending of color (RGB) and alpha (A) components respectively. If <span class='doc-prop'><span class='wikiword'>AlphaPart</span></span> is omitted, then it uses the same blending as <span class='doc-prop'><span class='wikiword'>ColorPart</span></span>.
+</p>
+<p class='vspace'>In our <span class='wikiword'>VertexLit</span> example:
+</p><pre>    <span class='doc-prop'>Combine</span> texture * primary DOUBLE<b>,</b> texture * constant
+</pre><p class='vspace'>Here <span class='doc-prop'>texture</span> is the color coming from the current texture (here <span class='doc-prop'>_MainTex</span>). It is multiplied (*) with the <span class='doc-prop'>primary</span> vertex color.  Primary color is the vertex lighting color, calculated from the Material values above. Finally, the result is multiplied by two to increase lighting intensity (<span class='doc-prop'>DOUBLE</span>). The alpha value (after the comma) is <span class='doc-prop'>texture</span> multiplied by <span class='doc-prop'>constant</span> value (set with <span class='doc-prop'>constantColor</span> above). Another often used combiner mode is called <span class='doc-prop'>previous</span> (not used in this shader). This is the result of any previous <span class='doc-prop'><span class='wikiword'>SetTexture</span></span> step, and can be used to combine several textures and/or colors with each other.
+</p>
+<div class='vspace'></div><h2>Summary</h2>
+<p>Our <span class='wikiword'>VertexLit</span> shader configures standard vertex lighting and sets up the texture combiners so that the rendered lighting intensity is doubled.
+</p>
+<p class='vspace'>We could put more passes into the shader, they would get rendered one after the other. For now, though, that is not nessesary  as we have the desired effect. We only need one <span class='wikiword'>SubShader</span> as we make no use of any advanced features - this particular shader will work on any graphics card that Unity supports.
+</p>
+<p class='vspace'>The <span class='wikiword'>VertexLit</span> shader is one of the most basic shaders that we can think of. We did not use any hardware specific operations, nor did we utilize any of the more special and cool commands that <span class='wikiword'>ShaderLab</span> and Cg has to offer.
+</p>
+<p class='vspace'>In the <a href="../Manual/ShaderTut2.html">next chapter</a> we'll proceed by explaining how to write custom vertex &amp; fragment programs using Cg language.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Shaders.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/ShaderTut2.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

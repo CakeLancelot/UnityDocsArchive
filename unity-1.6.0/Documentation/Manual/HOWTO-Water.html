@@ -1,0 +1,104 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="How do I use Water?"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title="How do I use Water?" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22FAQ.html%22%3EFAQ%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Graphics%20how-tos.html%22%3EGraphics%20how-tos%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOWTO-Water.html%22%3EHow%20do%20I%20use%20Water%3F%3C%2Fa%3E" -->
+		<h1>How do I use Water?</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="FAQ.html">FAQ</a> &gt; <a href="Graphics how-tos.html">Graphics how-tos</a> &gt; <a href="HOWTO-Water.html">How do I use Water?</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="HOWTO-FixZAxisIsUp.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HOWTO-Lightmap.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Unity includes several water prefabs (including needed shaders, scripts and art assets) among it's <a href="../Manual/HOWTO-InstallStandardAssets.html">standard asset packages</a>. Indie version includes a basic water, while Unity Pro includes a reflective and reflective+refractive water prefabs.
+</p>
+
+<p><img class='figure' src='images/HOWTO-Water-0.jpg' />
+</p>
+
+<p><i>Reflective&amp;Refractive water on the left, Reflective water on the right</i>
+</p>
+
+<h2>Water setup</h2>
+
+<p>In most cases you just drag a prefab into your scene (make sure to have the <a href="../Manual/HOWTO-InstallStandardAssets.html">standard assets installed</a>):
+</p>
+<ul><li> Unity Indie has <b>Daylight Water</b> and <b>Nighttime Water</b> in <i>Standard Assets/Water</i>.
+</li><li> Unity Pro has <b>Daylight Reflective Water</b>, <b>Nighttime Reflective Water</b> and <b> Reflective-Refractive Water</b> in <i>Pro Standard Assets/Water</i> (but it needs some assets from <i>Standard Assets/Water</i> as well).
+</li></ul>
+
+<p>The prefab uses oval-shaped mesh for the water. If you need to use different <a href="../Components/class-Mesh.html">Mesh</a> the easiest way is just changing it in Mesh Filter of water object:
+</p>
+
+<p><img class='figure' src='images/HOWTO-Water-1.jpg' />
+</p>
+
+
+<h2>Creating water from scratch (Advanced)</h2>
+
+<p>The simple water in Unity Indie does not require any special setup; the most you can do is tweak values of the material. The rest of this section will describe how to setup reflective and/or refractive water from scratch (without using prefabs described above).
+</p>
+
+<p>Water needs:
+</p>
+<ul><li> A geometry of the water. This should be flat mesh, oriented horizontally. UV coordinates are not required. The water game object should use Water layer.
+</li><li> One of water materials to render with (''FX/WaterPlane ...&quot;).
+</li><li> A camera and a RenderTexture for the reflections. Refractive water needs additional camera and render texture.
+<ul><li> The camera(s) should be placed exactly on the water plane, and transform's y-axis should point upwards.
+</li><li> Cameras should exclude Water layer from their culling mask. This makes water itself not visible in reflections/refractions.
+</li><li> Target textures should be setup accordingly (e.g. reflections render texture for reflection camera).
+</li><li> Attach <i>Pro Standard Assets/Water/Sources/ReflectionRenderTexture</i> script to the cameras. This script places the controlled camera into correct position (e.g. for reflection camera it reflects main camera along water plane), sets up the correct culling mode and sets up oblique projection matrix so that geometry gets properly clipped along water plane.
+</li></ul></li><li> In water material, the render textures connected to corresponding properties.
+</li></ul>
+
+<h2>Properties in water materials</h2>
+<p>These properties are used in Reflective&amp;Refractive water shader. Most of them are used in other water shaders as well.
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Wave scale</nobr></b></td><td> Scaling of waves bumpmap. The smaller the value, the larger water waves.
+</td></tr><tr><td><b><nobr> Reflection/refraction distort</nobr></b></td><td> how much reflection/refraction is distorted by the waves bumpmap.
+</td></tr><tr><td><b><nobr> Refraction color</nobr></b></td><td> additional tint for refraction.
+</td></tr><tr><td><b><nobr> Environment reflection/refraction</nobr></b></td><td> render textures for real-time reflection and refraction.
+</td></tr><tr><td><b><nobr> Bumpmap</nobr></b></td><td> Defines the shape of the waves. The final waves are produced by combining two these bumpmaps, each scrolling at different direction, scale and speed. The second bumpmap is twice smaller than the first one.
+</td></tr><tr><td><b><nobr> Wave speed</nobr></b></td><td> Scrolling speed for first bumpmap (1st and 2nd numbers) and the second bumpmap (3rd and 4th numbers).
+</td></tr><tr><td><b><nobr> Fresnel</nobr></b></td><td> A texture with alpha channel controlling the Fresnel efffect - how much reflection vs. refraction is visible, based on viewing angle.
+</td></tr></tr></table>
+</p>
+
+<p>The rest of properties are not used by Reflective&amp;Refractive shader by itself, but need to be set up in case user's video card does not suppor it and must fallback to the simpler shader:
+</p>
+
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Color ramp/cube and fresnel</nobr></b></td><td> A texture that defines water color (RGB) and Fresnel effect (A) based on viewing angle.
+</td></tr><tr><td><b><nobr> Horizon color</nobr></b></td><td> The color of the water at horizon. <i>(Used only in the simple water shader)</i>
+</td></tr><tr><td><b><nobr> Fallback texture</nobr></b></td><td> Texture used to represent the water on really old video cards, if none of better looking shaders can't run on it.
+<p></td></tr></tr></table>
+</p>
+
+
+
+
+		<div class="navigation"><a href="HOWTO-FixZAxisIsUp.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HOWTO-Lightmap.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,47 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="RaycastCollider"-->
+			<title>Unity Script Reference &ndash; RaycastCollider</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class RaycastCollider</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class RaycastCollider" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Collider.html" class="classlink">Collider</a></div></p>
+   <p class='first'> A line based collider.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#center'>center</a></p>
+<p><a href='#length'>length</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> Raycast colliders are mainly used to model cars
+because they offer more accurate collision detection.
+A Raycast collider always casts one ray downwards the local z-axis.
+Raycast colliders are most useful when used in combination 
+with physic materials that are setup to be springy.
+<span class="seealso"><b>See Also:</b> <a href="BoxCollider.html" class="classlink">BoxCollider</a>, <a href="SphereCollider.html" class="classlink">SphereCollider</a>, DynamicsMaterial, RigidBody</span></p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="center"></a><h3><span class="full-name">RaycastCollider.</span>center</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> center</div>
+   <p class='details'> The center of the capsule, measured in the object's local space. <table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Reset the center to the transform's position<br/>collider.center = <a href="Vector3.html#zero" class="itemlink">Vector3.zero</a>;</div></td></tr></table></p>
+	<a name="length"></a><h3><span class="full-name">RaycastCollider.</span>length</h3><div class="synopsis"><span class="standard_type">float</span> length</div>
+   <p class='details'> The length of the ray cast measured in local space.
+The length will be scaled by the transform's scale.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">collider.height = 2;</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

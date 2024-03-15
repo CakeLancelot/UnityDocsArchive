@@ -1,0 +1,126 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Lightmapped Shader Family</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Lightmapped Shader Family</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Built-in Shader Guide.html">Built-in Shader Guide</a> &gt; <a href="../Components/shader-LightmapFamily.html">Lightmapped Shader Family</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/shader-ReflectiveBumpedVertexLit.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/shader-LightmapVertexLit.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Lightmapped Shader Family</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><span class='doc-keyword'>Lightmapped</span> shaders are like <span class='doc-keyword'>Self-Illuminated shaders</span> on steroids. They use a secondary <span class='doc-prop'>Lightmap</span> texture that defines light "emitted" from the object onto itself (and nothing else).  The <span class='doc-prop'>Lightmap</span> texture also uses the secondary UV map of the mesh for controlling the placement of light, which can differ from the primary UV map.  These shaders allows you to use baked colored light, radiosity with color bleeding and other interesting effects.
+</p>
+<p class='vspace'>In-game lights add on top of the illumination that is present in the lightmap. For example, the scene in the following pages with no lights at all looks like below. All the illumination on the model comes only from the lightmap.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/shader-LightmapFamily-0.jpg' /> <br /><em>Scene with lightmap and no in-game lights</em></div>
+<div class='vspace'></div><h2><a href="../Components/shader-LightmapVertexLit.html">Lightmapped Vertex-Lit</a></h2>
+<div><a href="../Components/shader-LightmapVertexLit.html"><img class='figure' src='../Images/manual/shader-LightmapFamily-1.jpg' /></a></div>
+<p class='vspace'><strong>Assets needed:</strong>
+</p><ul><li>One <span class='doc-prop'>Base</span> texture, no alpha channel required
+</li><li>One <span class='doc-prop'>Lightmap</span> texture, no alpha channel required
+</li></ul><p class='vspace'><a href="../Components/shader-LightmapVertexLit.html">&#187; More details</a>
+</p>
+<div class='vspace'></div><h2><a href="../Components/shader-LightmapDiffuse.html">Lightmapped Diffuse</a></h2>
+<div><a href="../Components/shader-LightmapDiffuse.html"><img class='figure' src='../Images/manual/shader-LightmapFamily-2.jpg' /></a></div>
+<p class='vspace'><strong>Assets needed:</strong>
+</p><ul><li>One <span class='doc-prop'>Base</span> texture, no alpha channel required
+</li><li>One <span class='doc-prop'>Lightmap</span> texture, no alpha channel required
+</li></ul><p class='vspace'><a href="../Components/shader-LightmapDiffuse.html">&#187; More details</a>
+</p>
+<div class='vspace'></div><h2><a href="../Components/shader-LightmapSpecular.html">Lightmapped Specular</a></h2>
+<div><a href="../Components/shader-LightmapSpecular.html"><img class='figure' src='../Images/manual/shader-LightmapFamily-3.jpg' /></a></div>
+<p class='vspace'><strong>Assets needed:</strong>
+</p><ul><li>One <span class='doc-prop'>Base</span> texture with alpha channel for Specular Map
+</li><li>One <span class='doc-prop'>Lightmap</span> texture, no alpha channel required
+</li></ul><p class='vspace'><a href="../Components/shader-LightmapSpecular.html">&#187; More details</a>
+</p>
+<div class='vspace'></div><h2><a href="../Components/shader-LightmapBumpedDiffuse.html">Lightmapped Bumped</a></h2>
+<div><a href="../Components/shader-LightmapBumpedDiffuse.html"><img class='figure' src='../Images/manual/shader-LightmapFamily-4.jpg' /></a></div>
+<p class='vspace'><strong>Assets needed:</strong>
+</p><ul><li>One <span class='doc-prop'>Base</span> texture, no alpha channel required
+</li><li>One <span class='doc-prop'>Bumpmap</span> normal map, no alpha channel required
+</li><li>One <span class='doc-prop'>Lightmap</span> texture, no alpha channel required
+</li></ul><p class='vspace'><a href="../Components/shader-LightmapBumpedDiffuse.html">&#187; More details</a>
+</p>
+<div class='vspace'></div><h2><a href="../Components/shader-LightmapBumpedSpecular.html">Lightmapped Bumped Specular</a></h2>
+<div><a href="../Components/shader-LightmapBumpedSpecular.html"><img class='figure' src='../Images/manual/shader-LightmapFamily-5.jpg' /></a></div>
+<p class='vspace'><strong>Assets needed:</strong>
+</p><ul><li>One <span class='doc-prop'>Base</span> texture with alpha channel for Specular Map
+</li><li>One <span class='doc-prop'>Bump</span> normal map, no alpha channel required
+</li><li>One <span class='doc-prop'>Lightmap</span> texture, no alpha channel required
+</li></ul><p class='vspace'><a href="../Components/shader-LightmapBumpedSpecular.html">&#187; More details</a>
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/shader-ReflectiveBumpedVertexLit.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/shader-LightmapVertexLit.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

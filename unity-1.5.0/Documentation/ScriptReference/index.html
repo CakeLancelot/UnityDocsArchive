@@ -1,0 +1,65 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Scripting - An Overview"-->
+			<title>Unity Script Reference &ndash; Scripting - An Overview</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<script language="JavaScript" src="UnityDoc.js"></script>
+<body>
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>Scripting - An Overview</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+	<!-- #TemplateEndEditable -->
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="Scripting - An Overview" path="" navigation="" --><!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-top.lbi" --><!-- #EndLibraryItem --><div class="left-menu-container"><ul class="left-menu"><li><span class="left-menu-heading">Menu</span></li><li><span class="left-menu-item left-menu-current">Overview</span></li><li><a class="left-menu-item" href="20_class_hierarchy.html">Class Hierarchy</a></li><li><a class="left-menu-item" href="10_reference.html">Reference</a></li><li><span class="left-menu-seperator"></span></li></ul></div>
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-middle.lbi" --><!-- #EndLibraryItem -->   <p class="basic"> This is a short overview of how scripting inside Unity works.<br/></p>
+<span class='toc'><p class='tocheader'>Subsections</p><p><a href="index.Common_Operations.html">Common Operations</a></p>
+<p><a href="index.Keeping_Track_of_Time.html">Keeping Track of Time</a></p>
+<p><a href="index.Accessing_Other_Components.html">Accessing Other Components</a></p>
+<p><a href="index.Accessing_Other_Game_Objects.html">Accessing Other Game Objects</a></p>
+<p><a href="index.Vectors.html">Vectors</a></p>
+<p><a href="index.Member_Variables.html">Member Variables</a></p>
+<p><a href="index.Instantiate.html">Instantiate</a></p>
+<p><a href="index.Coroutines_or_the_Yield_Statement.html">Coroutines or the Yield Statement</a></p>
+<p><a href="index.Writing_Scripts_in_Csharp_or_Boo.html">Writing Scripts in C# or Boo</a></p>
+<p><a href="index.The_most_important_classes.html">The most important classes</a></p>
+<p><a href="index.Script_compilation_28Advanced29.html">Script compilation (Advanced)</a></p>
+</span><div class='tocclear'></div>
+   <p class="basic"> 
+Scripting inside Unity consists of <a href="../Manual/Scripting.html" class="classlink">attaching custom script objects</a> called behaviours to game objects. Different functions inside the script objects are called on certain events. The most used ones being
+the following:
+</p><p class="basic">
+<dl>
+<dt>Update:</dt>
+<dd>This function is called before rendering a frame. This is where most game behaviour code goes, except physics code.</dd>
+<dt>FixedUpdate:</dd>
+<dd>This function is called once every physics time step. This is the place to do physics-based game behaviour.</dd>
+<dt>Code outside any function:</dt>
+<dd>Code outside functions is run when the object is loaded. This can be used to initialise the state of the script.</dd>
+</dl>
+</p><p class="basic">
+<em>Note: This document assumes you are using Javascript, but see at the end of this page for information about how to apply this to scripts written in C# or Boo.</em>
+</p><p class="basic">
+You can also define event handlers. These all have names starting with On, (i.e. OnCollisionEnter). To see the full list of predefined events, see the documentation for <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a>.
+</p><p class="basic">
+</p>
+	
+	</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

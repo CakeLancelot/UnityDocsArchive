@@ -1,0 +1,216 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Tree</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Tree</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-RenderingGroup.html">Rendering Components</a> &gt; <a href="../Components/class-Tree.html">Tree</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-Skybox.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/comp-TransformationGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Tree</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><span class='doc-keyword'>Tree</span> allows you to create and edit procedural trees. Example trees:
+</p><div><img class='figure' src='../Images/manual/class-Tree-0.jpg' /><br /></div>
+<h1>Tree Editor</h1>
+<p>The Tree Editor is split into several different panels. 
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Tree-1.jpg' /><br /></div>
+<div class='vspace'></div><h1>Hierachy view</h1>
+<p>The hierachy view is where you start building your tree. It shows a schematic representation of the tree, where each box is a group of nodes. By selecting one of the groups in the hierachy you can modify it's properties. You may also add or remove groups by clicking one of the buttons displayed immediately above the hierachy.
+</p>
+<div class='vspace'></div><table width='100%'><tr ><td  align='left'><span class='doc-prop'>Add Leaves</span></td><td >Add a leaf group to the currently selected group. Once the leaf group is added, you can modify it from the panel below the hierachy view.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Add Branches</span></td><td >Add a branch group to the currently selected group. Once the branch group is added, you can modify it from the panel below the hierachy view.</td></tr>
+<tr ><td ><span class='doc-prop'>Delete Selected</span></td><td >Deletes the currently selected node, group or spline point.</td></tr>
+</table>
+<div class='vspace'></div><h1>Tree Editing Tools </h1>
+<p>While the Tree Editor works with procedural elements, you can at any time decide to modify them by hand to achieve the exact shape you want. By using the Tree Editing Tools, you can quickly and easily adjust the shape.
+Once you have edited a group by hand, it will be locked so that certain procedural properties are no longer available. You can however always revert a group to be procedural by clicking the button displayed below the editing tools.
+</p>
+<div class='vspace'></div><table width='100%'><tr ><td  align='left'><span class='doc-prop'>Move</span></td><td >Select a node or spline point in the scene view, and drag it around. Movement always happens on a plane perpendicular to the viewing direction.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Rotate</span></td><td >Select a node or spline point in the scene view and drag to rotate it. Rotation always happens around an axis parallel to the viewing direction.</td></tr>
+<tr ><td ><span class='doc-prop'>Free Hand Drawing</span></td><td >Click on a spline node, and drag mouse to draw a new shape. Release the mouse to complete the drawing.	Drawing always happens on a plane perpendicular to the viewing direction.</td></tr>
+</table>
+<div class='vspace'></div><h1>Tree Properties</h1>
+<p>Every tree has a root node, which controls global properties for the tree. This is the least complex group type, but it holds some valuable properties that control the rendering and generation of the entire tree.
+</p>
+<div class='vspace'></div><h2>Distribution (Tree Root Group)</h2>
+<p>Here you can adjust global properties for the tree. Add parts to the tree in the Hierachy View above.
+</p>
+<div class='vspace'></div><table width='100%'><tr ><td  align='left'><span class='doc-prop'>Tree Seed</span></td><td >The global seed for the tree, changing this will affect the entire tree. Use it to randomize your tree, while keeping the general structure of it.</td></tr>
+<tr ><td ><span class='doc-prop'>Area Spread</span></td><td >Adjusts the spreading of trunk nodes, only has an effect if you have more than one trunk. Useful if you are creating a small patch of bamboo as an example.</td></tr>
+</table>
+<div class='vspace'></div><h2>Geometry (Tree Root Group)</h2>
+<p>The geometry tab allows you to modify properties related to the geometric construction of your tree.
+</p>
+<div class='vspace'></div><table width='100%'><tr ><td ><span class='doc-prop'>Ambient Occlusion</span></td><td >Select whether you want the editor to compute ambient occlusion for the tree. While changing a tree property ambient occlusion is always hidden, and won't be computed until you finish the changes. Ambient occlusion can greatly improve the visual quality of your tree, but it does take a short while to compute, so you may disable it until you are happy with your tree.</td></tr>
+<tr ><td ><span class='doc-prop'>LOD Quality</span></td><td >Defines the level-of-detail for the entire tree. A low value will make the tree less complex, a high value will make the tree more complex. Check the statistics in the hierachy view, to see the current complexity of the mesh. Depending on the type of tree and your target platform you may need to adjust this property, to make the tree fit within your polygon budget. With careful creation of art assets and a little planning you can produce good looking trees 	with relatively few polygons.</td></tr>
+</table>
+<div class='vspace'></div><h1>Branch Group Properties</h1>
+<p>Branch groups generate branch and frond geometry.
+</p>
+<div class='vspace'></div><h2>Distribution (Branch Group)</h2>
+<p>Here you can adjust the count of branches in the group and the placement of them. Use the curves to fine tune placement, rotation and scale. The curves are relative to the parent branch, or to the area spread if this is a trunk.
+</p>
+<div class='vspace'></div><table width='100%'><tr ><td  align='left'><span class='doc-prop'>Group Seed</span></td><td >The seed for this group of branches. Modify to vary procedural generation.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Frequency</span></td><td >The frequency of this group of branches. This adjusts the number of branches created for each parent branch.</td></tr>
+<tr ><td ><span class='doc-prop'>Distribution</span></td><td >Select the way the branches are distributed along their parent.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Twirl</span></td><td >Twirl around the parent branch.</td></tr>
+<tr ><td ><span class='doc-prop'>Whorled Step</span></td><td >Defines how many nodes are in each whorled step, when using Whorled distribution. In real plants this is normaly a Fibonacci number.</td></tr>
+<tr ><td ><span class='doc-prop'>Growth Scale</span></td><td >Defines the scaling of nodes along the parent node. Use the curve to adjust, and the slider to fade the effect in and out.</td></tr>
+<tr ><td ><span class='doc-prop'>Growth Angle</span></td><td >Defines the initial angle of growth compared to the parent. Use the curve to adjust, and the slider to fade the effect in and out.</td></tr>
+</table>
+<div class='vspace'></div><h2>Geometry (Branch Group)</h2>
+<p>Here you can select what type of geometry is generated for this branch group, and which materials are applied. LOD Quality Multiplier allows you to adjust the quality of this group, relative to the Tree LOD Quality.
+</p>
+<div class='vspace'></div><table width='100%'><tr ><td  align='left'><span class='doc-prop'>LOD Multiplier</span></td><td >Allows you to tweak the LOD level of this branch group, so that it is either higher or lower quality than the rest of the tree.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Geometry Mode</span></td><td >Select which type of geometry is generated for this branch group.</td></tr>
+<tr ><td ><span class='doc-prop'>Branch Material</span></td><td >Select the primary material for the branches.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Break Material</span></td><td >Select the material used for capping broken branches.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Frond Material</span></td><td >Select the material used for fronds.</td></tr>
+</table>
+<div class='vspace'></div><h2>Shape (Branch Group)</h2>
+<p>Here you can adjust the shape and growth of the branches. Use the curves to fine tune the shape, all curves are relative to the branch itself.
+</p>
+<div class='vspace'></div><table width='100%'><tr ><td  align='left'><span class='doc-prop'>Length</span></td><td >Adjusts the length of the branches</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Radius</span></td><td >Adjusts the radius of the branches, use the curve to fine-tune the radius along the length of the branches.</td></tr>
+<tr ><td ><span class='doc-prop'>Is Length Relative</span></td><td >Determines whether the radius of the branches are affected by the length</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Cap Smoothing</span></td><td >Makes the cap/tip of the branches more or less round. Useful for cactii.</td></tr>
+<tr ><th  align='left'>Growth</th><th >Adjusts the growth of the branches</th></tr>
+<tr ><td  align='left'><span class='doc-prop'>Crinklyness</span></td><td >Adjusts how crinkly/crooked the branches are, use the curve to fine-tune.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Seek Sun/Ground</span></td><td >Adjusts how the branches are affected by gravity/sunlight, use the curve to fine-tune.</td></tr>
+<tr ><th  align='left'>Surface Noise</th><th >Adjusts the surface noise of the branches.</th></tr>
+<tr ><td  align='left'><span class='doc-prop'>Noise</span></td><td >Overall noise factor, use the curve to fine-tune.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Noise Scale U</span></td><td >Scale of the noise around the branch, lower values will give a more wobbly look, while higher values gives a more stochastic look.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Noise Scale V</span></td><td >Scale of the noise along the branch, lower values will give a more wobbly look, while higher values gives a more stochastic look.</td></tr>
+<tr ><th  align='left'>Flare</th><th >Defines flares at the root of the tree. Only valid for trunks.</th></tr>
+<tr ><td  align='left'><span class='doc-prop'>Flare Radius</span></td><td >The radius of the flares, this is added to the main radius, so a zero value means no flares.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Flare Height</span></td><td >Defines how far up the trunk the flares start.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Flare Noise</span></td><td >Defines the noise of the flares, lower values will give a more wobbly look, while higher values gives a more stochastic look.</td></tr>
+<tr ><th  align='left'>Welding</th><th >Defines the welding of branches onto their parent branch. Only valid for secondary branches.</th></tr>
+<tr ><td  align='left'><span class='doc-prop'>Weld Height</span></td><td >Defines how far up the branch the weld spreading starts.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Weld Spread Top</span></td><td >The spread factor on the top-side of the branch, compared to it's parent branch. A value of zero means no spreading.</td></tr>
+<tr ><td ><span class='doc-prop'>Weld Spread Bottom</span></td><td >The spread factor on the bottom-side of the branch, compared to it's parent branch. A value of zero means no spreading.</td></tr>
+</table>
+<div class='vspace'></div><h2>Breaking (Branch Group)</h2>
+<p>Here you can break branches.
+</p><table width='100%'><tr ><td  align='left'><span class='doc-prop'>Break Chance</span></td><td >Chance of a branch breaking. Ie. 0.0 = no branches are broken, 0.5 = half of the branches are broken, 1.0 = all the branches are broken.</td></tr>
+<tr ><td ><span class='doc-prop'>Break Location</span></td><td >This range defines where the branches will be broken. Relative to the length of the branch.</td></tr>
+</table>
+<div class='vspace'></div><h2>Fronds (Branch Group)</h2>
+<p>Here you can adjust the number of fronds and their properties. This tab is only available if you have frond geometry enabled in the <span class='doc-prop'>Geometry</span> tab.
+</p><table width='100%'><tr ><td  align='left'><span class='doc-prop'>Frond Count</span></td><td >Defines the number of fronds per branch. Fronds are always evenly spaced around the branch.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Frond Width</span></td><td >The width of the fronds, use the curve to adjust the specific shape along the length of the branch.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Frond Range</span></td><td >Defines the starting and ending point of the fronds.</td></tr>
+<tr ><td ><span class='doc-prop'>Frond Rotation</span></td><td >Defines rotation around the parent branch.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Frond Crease</span></td><td >Adjust to crease / fold the fronds.</td></tr>
+</table>
+<div class='vspace'></div><h2>Animation (Branch Group)</h2>
+<pre> Here you can adjust the parameters used for animating this group of branches. In editor mode the wind is always coming from the same direction, and wind zones are not active.
+</pre><table width='100%'><tr ><td  align='left'><span class='doc-prop'>Main Wind</span></td><td >Primary wind effect. This creates a soft swaying motion, and is typically the only parameter needed for primary branches.</td></tr>
+<tr ><td ><span class='doc-prop'>Main Turbulence</span></td><td >Secondary turbulence effect. Produces more stochastic motion, which is individual per branch. Typically used for branches with fronds, such as ferns and palms.</td></tr>
+<tr ><td ><span class='doc-prop'>Edge Turbulence</span></td><td >Turbulence along the edge of fronds. Useful for ferns, palms, etc.</td></tr>
+</table>
+<div class='vspace'></div><h1>Leaf Group Properties</h1>
+<p>Leaf groups generate leaf geometry. Either from primitives or from user created meshes.
+</p>
+<div class='vspace'></div><h2>Distribution (Leaf Group)</h2>
+<p>Here you can adjust the count of leaves in the group and the placement of them. Use the curves to fine tune placement, rotation and scale. The curves are relative to the parent branch.
+</p><table width='100%'><tr ><td  align='left'><span class='doc-prop'>Group Seed</span></td><td >The seed for this group of leaves. Modify to vary procedural generation.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Frequency</span></td><td >The frequency of this group of leaves. This adjusts the number of branches created for each parent branch.</td></tr>
+<tr ><td ><span class='doc-prop'>Distribution</span></td><td >Select the way the leaves are distributed along their parent.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Twirl</span></td><td >Twirl around the parent branch.</td></tr>
+<tr ><td ><span class='doc-prop'>Whorled Step</span></td><td >Defines how many nodes are in each whorled step, when using Whorled distribution. In real plants this is normaly a Fibonacci number.</td></tr>
+<tr ><td ><span class='doc-prop'>Growth Scale</span></td><td >Defines the scaling of nodes along the parent node. Use the curve to adjust, and the slider to fade the effect in and out.</td></tr>
+<tr ><td ><span class='doc-prop'>Growth Angle</span></td><td >Defines the initial angle of growth compared to the parent. Use the curve to adjust, and the slider to fade the effect in and out.</td></tr>
+</table>
+<div class='vspace'></div><h2>Geometry (Leaf Group)</h2>
+<p>Here you can select what type of geometry is generated for this leaf group, and which materials are applied. If you use a custom mesh, its materials will be used.
+</p><table width='100%'><tr ><td ><span class='doc-prop'>Geometry Mode</span></td><td >Select the type of geometry created. You can use a custom mesh, by selecting the Mesh option, ideal for flowers etc.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Material</span></td><td >The material used for the leaves.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Mesh</span></td><td >The mesh used for the leaves.</td></tr>
+</table>
+<div class='vspace'></div><h2>Shape (Leaf Group)</h2>
+<p>Here you can adjust the shape and growth of the leaves.
+</p><table width='100%'><tr ><td  align='left'><span class='doc-prop'>Size</span></td><td >Adjusts the size of the leaves, use the range to adjust minimum and maximum size.</td></tr>
+<tr ><td ><span class='doc-prop'>Perpendicular Align</span></td><td >Adjusts whether the leaves are aligned perpendicular to the parent branch,</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Horizontal Align</span></td><td >Adjusts whether the leaves are aligned horizontally.</td></tr>
+</table>
+<div class='vspace'></div><h2>Animation (Leaf Group)</h2>
+<p>Here you can adjust the parameters used for animating this group of leaves. In editor mode the wind is always coming from the same direction, and wind zones are not active. If you select too high values for Main Wind and Main Turbulence the leaves may float away from the branches.
+</p><table width='100%'><tr ><td  align='left'><span class='doc-prop'>Main Wind</span></td><td >Primary wind effect. Usually this should be kept to zero or low values for leaves, to avoid them floating away from the parent branch.</td></tr>
+<tr ><td ><span class='doc-prop'>Main Turbulence</span></td><td >Secondary turbulence effect. Usually this should be kept to a low values for leaves.</td></tr>
+<tr ><td ><span class='doc-prop'>Edge Turbulence</span></td><td >Defines how much wind turbulence occurs along the edges of the leaves.</td></tr>
+</table>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-Skybox.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/comp-TransformationGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

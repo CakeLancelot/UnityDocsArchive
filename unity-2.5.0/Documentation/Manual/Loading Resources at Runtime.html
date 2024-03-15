@@ -1,0 +1,100 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Loading Resources at Runtime</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Loading Resources at Runtime</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/Loading Resources at Runtime.html">Loading Resources at Runtime</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Advanced.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Modifying Source Assets Through Scripting.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Loading Resources at Runtime</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>There are a number of scenarios where you want to include some kind of asset in your finished game that is not included inside the primary game executable; standalone or web player.  One scenario is to slim a webplayer download size, and dynamically download and instantiate individual objects or items.  This way only the relevant and needed objects are used by the end-user.  Another scenario might be for downloadable content like additional weapons, environments, characters, or even full levels.
+</p>
+<p class='vspace'>In Unity Pro, you can choose between two options for accomplishing these tasks: <span class='doc-keyword'>Asset Bundles</span>, and <span class='doc-keyword'>Resource Folders</span>.  Unity Indie license holders can use <span class='doc-keyword'>Resource Folders</span> only.
+</p>
+<div class='vspace'></div><h2>Asset Bundles (Unity Pro-only)</h2>
+<p>An Asset Bundle is an external collection of assets.  You can have many Asset Bundles and therefore many different external collections of assets.  These files exist outside of the built Unity player, usually sitting on a web server for end-users to access dynamically. 
+</p>
+<p class='vspace'>To build an Asset Bundle, you call <a class='urllink' href='../ScriptReference/BuildPipeline.BuildAssetBundle.html' rel='nofollow'>BuildPipeline.BuildAssetBundle()</a> from inside a script.  In the arguments, you specify an array of <span class='doc-keyword'>Objects</span> to be included in the built file, along with some other options.  This will build a file that you can later load dynamically in the runtime by using <a class='urllink' href='../ScriptReference/AssetBundle.Load.html' rel='nofollow'>AssetBundle.Load()</a>.
+</p>
+<div class='vspace'></div><h2>Resource Folders (Indie and Pro)</h2>
+<p>Resource Folders are collections of assets that are included in the built Unity player, but are not necessarily linked to any <span class='wikiword'>GameObject</span> in the Inspector.
+</p>
+<p class='vspace'>To put anything into a Resource Folder, you simply create a new folder inside the <span class='doc-keyword'>Project View</span>, and name the folder "Resources".  You can have multiple Resource Folders organized differently in your Project.  Whenever you want to load an asset from one of these folders, you call <a class='urllink' href='../ScriptReference/Resources.Load.html' rel='nofollow'>Resources.Load()</a>.
+</p>
+<p class='vspace'>If your target deployable is a Streaming Web Player, you can define which scene will include everything in your Resource Folders.  You do this in the <span class='doc-keyword'>Player Settings</span>, accessible via <span class='doc-menu'>Edit-&gt;Project Settings-&gt;Player</span>.  Set the <span class='doc-prop'>First Streamed Level With Resources</span> parameter, and all assets in your Resource Folders will be loaded when this level streams in to the end-user.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Advanced.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Modifying Source Assets Through Scripting.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

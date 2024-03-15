@@ -1,0 +1,138 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Optimizing Graphics Performance</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Optimizing Graphics Performance</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/Optimizing Graphics Performance.html">Optimizing Graphics Performance</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Shadow Size Details.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Modeling Optimized Characters.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Optimizing Graphics Performance</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Making your game run smoothly is of prime importance to its success.  Thankfully Unity is there for you!  We have spent a lot of time and energy making it run fast on a wide variety of hardware. Below are some simple guidelines to maximizing the speed of your game.
+</p>
+<div class='vspace'></div><h2>In summary - combine, combine, combine</h2>
+<ul><li>If you care about performance, combine meshes.
+</li><li>If you care about performance, make sure all your combined meshes also share the same material and texture.
+</li><li><a href="../Manual/Profiler.html">Profiler</a> and <a href="../Manual/RenderingStatistics.html">Rendering Statistics</a> window are very helpful!
+</li></ul><div class='vspace'></div><h3>In detail:</h3>
+<p>Modern graphics cards are really good at pushing a lot of polygons, but they have quite a bit of overhead for every batch that you submit to the graphics card. So if you have a 100-triangle object it is going to be just as expensive to render as a 1500-triangle object. The sweet spot for optimal rendering performance is somewhere around 1500-4000 triangles per mesh.
+</p>
+<p class='vspace'>You only pay a rendering cost for objects that have a <span class='doc-keyword'>Mesh Renderer</span> attached. And you only pay for those that are within the view frustum. There is no rendering cost from having a lot of empty <span class='doc-keyword'><span class='wikiword'>GameObjects</span></span> in your scene.
+</p>
+<div class='vspace'></div><ul><li>The best way to improve rendering performance is to combine objects together so each mesh has around 1500 or more triangles and uses only one <span class='doc-keyword'>Material</span> for the entire mesh.
+</li></ul><p class='vspace'>It is important to understand that just combining two objects which don't share a material does not give you any performance increase at all. If you want to combine effectively, you need to make sure your mesh uses only one material after you have combined it.
+</p>
+<p class='vspace'>There is one thing to be aware of when combining objects though: if you use a lot of small lights in your scene, it might make sense to combine only objects that are close to each other.
+</p>
+<p class='vspace'>The rendering cost for a mesh that has multiple materials is the same as having multiple renderers for each material. The most common reason why you have multiple materials is because two meshes don't share the same textures. So, if you want to optimize rendering performance, you need to make sure that the objects you combine share textures.
+</p>
+<div class='vspace'></div><ul><li>Unity is very good at pushing lots of polygons. Unity uploads all geometry to the graphics card for good cache utilization and optimal data alignment.
+</li><li>You simply have to make sure that the graphics card doesn't have to handle large numbers of batches.
+</li><li>The number of <span class='doc-keyword'>Pixel Lights</span> affecting an object heavily affects performance.
+</li></ul><p class='vspace'>If you want to have the best performance and don't care about Bumpmapping or Pixel Lighting, go to <span class='doc-menu'>Edit-&gt;Render Settings...</span> and set <span class='doc-prop'>Pixel Light Count</span> to zero. This will simply use vertex lighting for all objects. This means all geometry will be rendered only once per frame. This is an extremely useful LOD setting, so your game can run fine on older graphics cards.
+</p>
+<div class='vspace'></div><h2>Pixel lights</h2>
+<p>If you use pixel lighting, then each <span class='wikiword'>GameObject</span> has to be rendered as many times as there are pixel lights that affect the object. If you combine two objects that are very far apart, it might increase the size of the object and now you have a lot of lights affecting this big object. If your objects were separate however, the light wouldn't have to be applied on the part of the mesh which is far away. This can result in rendering the combined mesh as many times as the uncombined mesh thus you didn't save anything.  For this reason, you should keep <span class='wikiword'>GameObjects</span> that are very far away as individual Meshes.
+</p>
+<p class='vspace'>When rendering a mesh, Unity finds all lights surrounding the mesh. It then figures out what lights affect the mesh the most. The <span class='doc-menu'>Edit-&gt;Render Settings</span> are used to modify how many of the lights end up as pixel lights and how many as vertex lights.
+</p>
+<p class='vspace'>Every light calculates its importance based on how far away it is from the mesh and how intense it is.
+</p>
+<p class='vspace'>Some lights are more important than others depending on the game context. For this reason, every light has a <span class='doc-prop'>Render Mode</span> setting which can be set to <span class='doc-prop'>Force Pixel</span> or <span class='doc-prop'>Force Vertex</span>.
+</p>
+<p class='vspace'>Imagine the player's car with head lights driving through the night. The head light is the most important light in the game. For this reason, the head lights Render Mode should be set to <span class='doc-prop'>Force Pixel</span>.
+</p>
+<p class='vspace'>If you have a light that isn't very important and also visually doesn't gain much from being a pixel light, set the lights Render Mode to "Force Vertex". This way you don't waste rendering performance or lose any visual quality.
+</p>
+<div class='vspace'></div><h2>Per-layer cull distances</h2>
+<p>You might want to cull small objects earlier to reduce number of draw calls. For example, small rocks and debris could be made invisible at much smaller distance than large buildings. To do that, put small objects into a <a href="../Components/Layers.html">separate layer</a> and setup per-layer cull distances using <a class='urllink' href='../ScriptReference/Camera-layerCullDistances.html' rel='nofollow'>Camera.layerCullDistances</a> script function.
+</p>
+<div class='vspace'></div><div class='specific-no-iphone' > 
+<h2>Shadows</h2>
+<p>Shadows are generally expensive.  They can add a lot of performance overhead to your game if they are not used correctly.  For more details about shadows, please read the <a href="../Manual/Shadows.html">Shadows page</a>.
+</p></div>
+<div class='vspace'></div><h2>See Also</h2>
+<ul><li class='toclink'><a href="../Manual/Modeling Optimized Characters.html">Modeling Optimized Characters</a>
+</li><li class='toclink'><a href="../Manual/OptimizeForIntegratedCards.html">Optimizing for integrated graphics cards</a>
+</li><li class='toclink'><a href="../Manual/RenderingStatistics.html">Rendering Statistics Window</a>
+</li></ul>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Shadow Size Details.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Modeling Optimized Characters.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

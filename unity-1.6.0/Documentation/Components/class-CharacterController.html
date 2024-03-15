@@ -1,0 +1,109 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Character Controller"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Components" title="Character Controller" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-DynamicsGroup.html%22%3EPhysics%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-CharacterController.html%22%3ECharacter%20Controller%3C%2Fa%3E" -->
+		<h1>Character Controller</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-DynamicsGroup.html">Physics</a> &gt; <a href="class-CharacterController.html">Character Controller</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><a href='../ScriptReference/CharacterController.html' title='Go to CharacterController Scripting Doc'><img src="../Images/SwitchScripting.png" width="66" height="51" /></a><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-Rigidbody.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-BoxCollider.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>The Character Controller is mainly used for third-person or first-person player control that does not make use of rigidbody physics.
+</p>
+
+<p><img class='figure' src='images/class-CharacterController-0.jpg' />
+</p>
+
+<p><i>The Character Controller</i>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Height</nobr></b></td><td> The character's capsule collider height.  Changing this will scale the collider along the Y axis in both positive and negative directions.
+</td></tr><tr><td><b><nobr>Radius</nobr></b></td><td> Length of the capsule collider's radius.  This is essentially the width of the collider.
+</td></tr><tr><td><b><nobr>Slope Limit</nobr></b></td><td> Limits the collider to only climb slopes that are equal to or less than the indicated value.
+</td></tr><tr><td><b><nobr>Step Offset</nobr></b></td><td> The character will step up a stair only if it is closer to the ground than the indicated value.
+</td></tr><tr><td><b><nobr>Min Move Distance</nobr></b></td><td> If the character tries to move below the indicated value, it will not move at all. This can be used to reduce jitter. In most situations this value should be left at 0.
+</td></tr><tr><td><b><nobr>Skin width</nobr></b></td><td> Two colliders can penetrate each other as deep as their skin width. Larger skin widths reduce jitter. Low skin width can cause the character to get stuck. A good value is to make this value 10% of the radius.
+</td></tr><tr><td><b><nobr>Center</nobr></b></td><td> This will move the capsule collider in world space, and won't affect how the character pivots.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+
+<p>The traditional Doom first person controls are not physically realistic. The character runs 90 miles per hour, comes to halt immediately and turns on a dime. Because it is so unrealistic, use of rigidbodies and physics to create this behavior is impractical and will feel wrong. The solution is the specialized Character Controller. It is simply a capsule shaped collider which can be told to move in some direction from a script. The controller will then carry out the movement but be constrained by collisions. It will slide along walls, walk up stairs (if they are lower than <b>Step Offset</b>) and walk on slopes within the <b>Slope Limit</b>.
+</p>
+
+<p>The Controller does not react to forces on its own and it does not automatically push rigidbodies away.
+</p>
+
+<p>If you want to push rigidbodies or objects with the Character Controller, you can apply forces to any objects that are collided with in the OnControllerColliderHit() function through scripting.
+</p>
+
+<p>On the other hand, if you want your player character to be affected by physics then you might be better off using a {class-Rigidbody|rigidbody} instead of the Character Controller.
+</p>
+
+<h3>Fine-tuning your character</h3>
+
+<p>You can modify the <b>Height</b> and <b>Radius</b> to fit your character's mesh. It is recommended to always use around 2 meters for a human-like character. You can also modify the <b>Center</b> of the capsule in case your pivot point is not at the center of character.
+</p>
+
+<p><b>Step Offset</b> can affect this too, make sure that this value is between 0.1 and 0.4 for a 2 meter sized human.
+</p>
+
+<p><b>Slope Limit</b> should not be too smaller. Often using a value of 90 degrees works most robust. This will not make your character be able to climb up walls due to the capsule shape.
+</p>
+
+<h3>Don't get stuck</h3>
+
+<p>The <b>Skin Width</b> is one of the most critical properties to get right when tuning your Character Controller.
+If your character gets stuck it is most likely because your <b>Skin Width</b> is too small. The <b>Skin Width</b> will let objects slightly penetrate the controller but it removes jitter and prevents it from getting stuck.
+It's good practice to keep your <b>Skin Width</b> at least greater than 0.01 and more than 10% of the <b>Radius</b>.
+</p>
+
+<p>It is recommended to keep <b>Min Move Distance</b> at zero.
+</p>
+
+<p>See the Character Controller script reference <a class="wiki"  href="../ScriptReference/CharacterController.html ">here</a>
+</p>
+
+<p>You can download an <b><a class="wiki"  href="http://www.unity3d.com/examples/index.html">example project</a></b> showing pre-setup animated and moving character controllers <a class="wiki"  href="http://www.unity3d.com/examples/index.html">here</a>.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Try adjusting your <b>Skin Width</b> if you find your character getting stuck frequently.
+</li><li>The Character Controller can affect objects using physics if you write your own scripts.
+</li><li>The Character Controller can not be affected by objects through physics.
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="class-Rigidbody.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-BoxCollider.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,120 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Draw Call Batching</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Draw Call Batching</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/iphone-GettingStarted.html">Getting Started with iPhone Development</a> &gt; <a href="../Manual/iphone-performance.html">Optimizing iPhone Performance</a> &gt; <a href="../Manual/iphone-Optimizing-Graphics.html">Optimizing Graphics Performance</a> &gt; <a href="../Manual/iphone-DrawCall-Batching.html">Draw Call Batching</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/iphone-Optimizing-Graphics.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/iphone-ModelingOptimizedCharacters.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Draw Call Batching</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>To draw an object on the screen the engine has to issue a draw call to graphics API (<span class='wikiword'>OpenGL</span> ES in case of the iPhone). Every single draw call requires significant  work to be executed inside the graphics API. Therefore each draw call causes significant performance overhead on the CPU side.
+</p>
+<p class='vspace'>Unity is smart enough to combine a number of objects at the run-time and draw them together with a single draw call. This operation is called "batching". The more objects Unity can batch together the better rendering performance you will get.
+</p>
+<p class='vspace'>Built-in batching support in Unity has significant benefit over simply combining geometry in the modeling tool (or using <span class='wikiword'>CombineChildren</span> script from the Standard Assets package). Batching in Unity is executed after the visibility determination step, therefore the engine can cull each objects individually thus keeping amount of rendered geometry at the same level as it would without batching. Combining geometry in the modeling tool on the other hand prevents effecient culling and results in much higher amount of geometry being rendered.
+</p>
+<div class='vspace'></div><h2>Materials</h2>
+<p>Only objects sharing the same material can be batched together. Therefore if you want to achieve good batching, you need to share as many materials among different objects as possible.
+</p>
+<p class='vspace'>If you have two identical materials which differ only in textures, you can combine those textures into a single big texture - process often called <a class='urllink' href='http://en.wikipedia.org/wiki/Texture_atlas' rel='nofollow'><em>Texture Atlasing</em></a>. Once textures are in the same atlas you can use single material instead.
+</p>
+<p class='vspace'>If you need to access shared material properties from the scripts, then it is important to note that modifying <a class='urllink' href='../ScriptReference/Renderer-material.html' rel='nofollow'>Renderer.material</a> will create a copy of the material. Instead you should use <a class='urllink' href='../ScriptReference/Renderer-sharedMaterial.html' rel='nofollow'>Renderer.sharedMaterial</a> to keep material shared.
+</p>
+<div class='vspace'></div><h2>Dynamic batching</h2>
+<p>Unity can automatically batch moving objects into the same draw call, if they share the same material. Batching dynamic objects has certain overhead <b>per vertex</b>, therefore batching is applied only to meshes containing less than <b>300</b> vertices.
+</p>
+<p class='vspace'>Dynamic batching is done automatically and does not require any additional effort on your side.
+</p>
+<div class='vspace'></div><h2>Static batching</h2>
+<p>Static batching on the other hand allows the engine to reduce draw calls for geometry of any size provided it does not move and shares the same material. Static batching is significantly more efficient than dynamic batching. You should prefer static batching as it will require less CPU power.
+</p>
+<p class='vspace'>In order to take advantage of static batching you need explicitly specify that certain objects are static and will <b>not</b> move, rotate or scale in the game. There are several ways to do that:
+</p><ul><li>You can mark objects as static using the Static checkbox in the Inspector:
+</li></ul><div><img class='figure' src='../Images/manual/iphone-DrawCall-Batching-0.jpg' /><br /><em>The Static checkbox in the Inspector</em></div>
+<ul><li>Or you can call <a class='urllink' href='../ScriptReference/StaticBatchingUtility.Combine.html' rel='nofollow'>StaticBatchingUtility.Combine</a> function specifying an array of static objects or their parent at the run-time.
+</li></ul><p class='vspace'>Using static batching will require additional memory to store combined geometry. If several objects shared the same geometry before static batching, then a copy of geometry will be created for each object either in the Editor or at the run-time. That might not always be a good idea - sometimes you will have to sacrifice rendering performance by avoiding static batching for some objects to keep smaller memory footprint. For example marking trees as static in a dense forest level can have serious memory impact.
+</p>
+<p class='vspace'>Static batching is only available in Unity iPhone Advanced.
+</p>
+<div class='vspace'></div><h3>Advanced Tips</h3>
+<ul><li>Although static objects can not be moved they can be enabled or disabled at the run-time.
+</li><li>If you call <a class='urllink' href='../ScriptReference/StaticBatchingUtility.Combine.html' rel='nofollow'>StaticBatchingUtility.Combine</a> function to prepare some static objects for batching, then you can not move them in respect to each other. However you <b>can</b> move them together by moving their parent.
+</li></ul><div class='vspace'></div><h2>Further Reading</h2>
+<ul><li><a href="../Manual/iphone-InternalProfiler.html">Measuring performance with the Built-in Profiler</a>
+</li><li><span style='font-size: 110%; font-weight: bold; color: yellow; background-color: red; padding: 2px;'>Rendering Statistics</span>
+</li></ul><div class='vspace'></div>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/iphone-Optimizing-Graphics.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/iphone-ModelingOptimizedCharacters.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

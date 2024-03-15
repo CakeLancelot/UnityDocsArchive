@@ -1,0 +1,70 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Animation"-->
+			<title>Unity Script Reference &ndash; Animation</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Animation</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Animation" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Component.html" class="classlink">Component</a></div></p>
+   <p class='first'> Interface for playing animations by name.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#clip'>clip</a></p>
+<p><a href='#playAutomatically'>playAutomatically</a></p>
+<p><a href='#isPlaying'>isPlaying</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Functions</p><p><a href='#Play'>Play</a></p>
+<p><a href='#GetClip'>GetClip</a></p>
+<p><a href='#Stop'>Stop</a></p>
+<p><a href='#IsPlaying'>IsPlaying</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> Animation references AnimationClips and provides a simple interface for playing animations by name.</p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="clip"></a><h3><span class="full-name">Animation.</span>clip</h3><div class="synopsis"><a href="AnimationClip.html" class="classlink">AnimationClip</a> clip</div>
+   <p class='details'> The default animation.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">animation.Play(animation.clip.length);<br/>// Wait <span class="keyword">for</span> the animation to have finished<br/>yield <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a> (animation.clip.length);</div></td></tr></table></p>
+	<a name="playAutomatically"></a><h3><span class="full-name">Animation.</span>playAutomatically</h3><div class="synopsis"><span class="standard_type">bool</span> playAutomatically</div>
+   <p class='details'> Should <a href="Animation.html#clip" class="itemlink"> clip property</a> start playing AnimationComponent's clip property automatically on startup.</p>
+	<a name="isPlaying"></a><h3><span class="full-name">Animation.</span>isPlaying</h3><div class="synopsis"><span class="standard_type">bool</span> isPlaying</div>
+   <p class='details'> Are we playing any animations?<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Plays an animation only if we are not playing it already.<br/>function OnMouseEnter() {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (!animation.isPlaying)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animation.Play();<br/>}</div></td></tr></table></p>
+   <a name="Methods"></a><h2 class="script-section">Methods</h2>
+	<a name="Play"></a><h3><span class="full-name">Animation.</span>Play</h3><div class="synopsis"><span class="standard_type">bool</span> Play (<a href="AnimationPlayMode.html" class="classlink">AnimationPlayMode</a> mode = <a href="AnimationPlayMode.html#Stop" class="itemlink">AnimationPlayMode.Stop</a>)</div>
+   <p class='details'> Play <a href="Animation.html#clip" class="itemlink"> clip property</a>.
+Returns true if the animation is available.
+if <span class="variable">mode</span> is Stop, it will stop all animations that were started with this component before playing
+if <span class="variable">mode</span> is Queue, it will wait with playing the animation until all other animations have completed playing
+if <span class="variable">mode</span> is Mix, it will only replace animations that animate the same component. This is used to mix animations on separate body parts.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Plays the default animation and stops <br/>// all animations that were playing before<br/>animation.Play();<br/><br/>// Makes the default animation repeat 3 times.<br/>animation.Play(<a href="AnimationPlayMode.html#Queue" class="itemlink">AnimationPlayMode.Queue</a>);<br/>animation.Play(<a href="AnimationPlayMode.html#Queue" class="itemlink">AnimationPlayMode.Queue</a>);<br/>animation.Play(<a href="AnimationPlayMode.html#Queue" class="itemlink">AnimationPlayMode.Queue</a>);</div></td></tr></table></p>
+	&nbsp;<div class="synopsis"><span class="standard_type">bool</span> Play (<span class="standard_type">string</span> name, <a href="AnimationPlayMode.html" class="classlink">AnimationPlayMode</a> mode = <a href="AnimationPlayMode.html#Stop" class="itemlink">AnimationPlayMode.Stop</a>)</div>
+   <p class='details'> Play the clip named <span class="variable">name</span>.
+if <span class="variable">mode</span> is StopAll, it will stop all animations that were started with this component before playing
+if <span class="variable">mode</span> is Queue, it will wait with playing the animation until all other animations have completed playing
+if <span class="variable">mode</span> is Mix, it will only replace animations that animate the same component. This is used to mix animations on separate body parts.
+Returns false if the animation named <span class="variable">name</span> couldn't be found.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Plays the clip named "walk".<br/>animation.Play("walk");<br/>// Queues the run animation to play after the walk<br/>animation.Play("run", <a href="AnimationPlayMode.html#Queue" class="itemlink">AnimationPlayMode.Queue</a>);</div></td></tr></table></p>
+	<a name="GetClip"></a><h3><span class="full-name">Animation.</span>GetClip</h3><div class="synopsis"><a href="AnimationClip.html" class="classlink">AnimationClip</a> GetClip (<span class="standard_type">string</span> name)</div>
+   <p class='details'> Returns the animation clip named <span class="variable">name</span>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">print (animation.GetClip("walk").length);</div></td></tr></table></p>
+	<a name="Stop"></a><h3><span class="full-name">Animation.</span>Stop</h3><div class="synopsis"><span class="standard_type">void</span> Stop ()</div>
+   <p class='details'> Stops all playing animations that were started with this Animation.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">animation.Stop();</div></td></tr></table></p>
+	&nbsp;<div class="synopsis"><span class="standard_type">void</span> Stop (<span class="standard_type">string</span> name)</div>
+   <p class='details'> Stops an animation named <span class="variable">name</span>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">animation.Stop("walk");</div></td></tr></table></p>
+	<a name="IsPlaying"></a><h3><span class="full-name">Animation.</span>IsPlaying</h3><div class="synopsis"><span class="standard_type">bool</span> IsPlaying (<span class="standard_type">string</span> name)</div>
+   <p class='details'> Is the animation named <span class="variable">name</span> playing?<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Plays an animation only if we are not playing it already.<br/>function OnMouseEnter() {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (!animation.IsPlaying("mouseOverEffect"))<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animation.Play("mouseOverEffect");<br/>}</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

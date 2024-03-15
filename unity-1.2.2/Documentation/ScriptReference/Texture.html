@@ -1,0 +1,61 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Texture"-->
+			<title>Unity Script Reference &ndash; Texture</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Texture</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Texture" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Object.html" class="classlink">Object</a></div></p>
+   <p class='first'> Class for texture handling.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#width'>width</a></p>
+<p><a href='#height'>height</a></p>
+<p><a href='#filterMode'>filterMode</a></p>
+<p><a href='#anisoLevel'>anisoLevel</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#masterTextureLimit'>masterTextureLimit</a></p>
+<p><a href='#anisotropicFiltering'>anisotropicFiltering</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> Use this class to set the maximum texturing quality</p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="width"></a><h3><span class="full-name">Texture.</span>width</h3><div class="synopsis"><span class="standard_type">int</span> width</div>
+   <p class='details'> The width of the texture in pixels <b>(Read Only)</b><table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Print texture size to the Console<br/>print("size is " + texture.width + " by " + texture.height + " pixels");</div></td></tr></table></p>
+	<a name="height"></a><h3><span class="full-name">Texture.</span>height</h3><div class="synopsis"><span class="standard_type">int</span> height</div>
+   <p class='details'> The height of the texture in pixels <b>(Read Only)</b></p>
+	<a name="filterMode"></a><h3><span class="full-name">Texture.</span>filterMode</h3><div class="synopsis"><a href="FilterMode.html" class="classlink">FilterMode</a> filterMode</div>
+   <p class='details'> </p>
+	<a name="anisoLevel"></a><h3><span class="full-name">Texture.</span>anisoLevel</h3><div class="synopsis"><span class="standard_type">int</span> anisoLevel</div>
+   <p class='details'> Get and Set the anisotropic filtering level for this texture.</p>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="masterTextureLimit"></a><h3><span class="full-name">Texture.</span>masterTextureLimit</h3><div class="synopsis"><span class="standard_type">int</span> masterTextureLimit</div>
+   <p class='details'> Limits the texture quality of all textures.
+High texture limits save graphics memory and make old graphics cards run your game faster at the expense of visual quality.
+A texture limit  of 0 uploads textures at the highest resolution to the graphics card.
+A texture limit of 1 uploads textures half the original size, 2 uploads textures at a quarter of the original size.</p>
+	<a name="anisotropicFiltering"></a><h3><span class="full-name">Texture.</span>anisotropicFiltering</h3><div class="synopsis"><a href="AnisotropicFiltering.html" class="classlink">AnisotropicFiltering</a> anisotropicFiltering</div>
+   <p class='details'> Anisotropic filtering looks better on textures when viewed at an angle, but comes at a cost in the graphics hardware.
+'<a href="AnisotropicFiltering.html#Enable" class="itemlink">AnisotropicFiltering.Enable</a>' uses the anisotropic filtering value specified in the texture. (Default)
+'<a href="AnisotropicFiltering.html#Disable" class="itemlink">AnisotropicFiltering.Disable</a>' disables anisotropic filtering on all textures.
+'<a href="AnisotropicFiltering.html#ForceEnable" class="itemlink">AnisotropicFiltering.ForceEnable</a>' enables anisotropic filtering on all textures.</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

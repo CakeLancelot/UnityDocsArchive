@@ -1,0 +1,268 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Optimizing the Size of the Built iOS Player</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Optimizing the Size of the Built iOS Player</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/iphone-GettingStarted.html">Getting Started with iOS Development</a> &gt; <a href="../Manual/iphone-performance.html">Optimizing Performance in iOS.</a> &gt; <a href="../Manual/iphone-playerSizeOptimization.html">Optimizing the Size of the Built iOS Player</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Optimizing the Size of the Built iOS Player</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>The two main ways of reducing the size of the player are by changing the <span class='doc-keyword'>Active Build Configuration</span> within Xcode and by changing the <span class='doc-keyword'>Stripping Level</span> within Unity.
+</p>
+<div class='vspace'></div><h2>Building in Release Mode</h2>
+<p>You can choose between the <span class='doc-keyword'>Debug</span> and <span class='doc-keyword'>Release</span> options on the <span class='doc-keyword'>Active Build Configuration</span> drop-down menu in Xcode. Building as <span class='doc-keyword'>Release</span> instead of <span class='doc-keyword'>Debug</span> can reduce the size of the built player by as much as 2-3MB, depending on the game.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/iphone-playerSizeOptimization-0.jpg' /><br /><em>The Active Build Configuration drop-down</em></div>
+<p class='vspace'>In Release mode, the player will be built without any debug information, so if your game crashes or has other problems there will be no stack trace information available for output. This is fine for deploying a finished game but you will probably want to use Debug mode during development.
+</p>
+<div class='vspace'></div><h2>iOS Stripping Level (Advanced License feature)</h2>
+<p>The size optimizations activated by stripping work in the following way:-
+</p>
+<div class='vspace'></div><ol><li><span class='doc-keyword'>Strip assemblies</span> level: the scripts' bytecode is analyzed so that classes and methods that are not referenced from the scripts can be removed from the DLLs and thereby excluded from the AOT compilation phase. This optimization reduces the size of the main binary and accompanying DLLs and is safe as long as no reflection is used.
+<div class='vspace'></div></li><li><span class='doc-keyword'>Strip ByteCode</span> level: any .NET DLLs (stored in the Data folder) are stripped down to metadata only. This is possible because all the code is already precompiled during the AOT phase and linked into the main binary.
+<div class='vspace'></div></li><li><span class='doc-keyword'>Use micro mscorlib</span> level: a special, smaller version of mscorlib is used. Some components are removed from this library, for example, Security, Reflection.Emit, Remoting, non Gregorian calendars, etc. Also, interdependencies between internal components are minimized. This optimization reduces the main binary and mscorlib.dll size but it is not compatible with some System and System.Xml assembly classes, so use it with care.
+</li></ol><p class='vspace'>These levels are cumulative, so level 3 optimization implicitly includes levels 2 and 1, while level 2 optimization includes level 1.
+</p>
+<p class='vspace'><b>Note:</b> <span class='doc-prop'>Micro mscorlib</span> is a heavily stripped-down version of the core library. Only those items that are required by the Mono runtime in Unity remain. Best practice for using micro mscorlib is not to use any classes or other features of .NET that are not required by your application. GUIDs are a good example of something you could omit; they can easily be replaced with custom made pseudo GUIDs and doing this would result in better performance and app size. 
+</p>
+<div class='vspace'></div><h2>Tips</h2>
+<h3>How to Deal with Stripping when Using Reflection</h3>
+<p>Stripping depends highly on static code analysis and sometimes this can't be done effectively, especially when dynamic features like reflection are used. In such cases, it is necessary to give some hints as to which classes shouldn't be touched. Unity supports a per-project custom stripping <em>blacklist</em>. Using the blacklist is a simple matter of creating a <span class='doc-prop'>link.xml</span> file and placing it into the <span class='doc-prop'>Assets</span> folder. An example of the contents of the <span class='doc-prop'>link.xml</span> file follows. Classes marked for preservation will not be affected by stripping:-
+</p><pre class='codelisting'>
+&lt;linker&gt;
+       &lt;assembly fullname="System.Web.Services"&gt;
+               &lt;type fullname="System.Web.Services.Protocols.SoapTypeStubInfo" preserve="all"/&gt;
+               &lt;type fullname="System.Web.Services.Configuration.WebServicesConfigurationSectionHandler" preserve="all"/&gt;
+       &lt;/assembly&gt;
+
+       &lt;assembly fullname="System"&gt;
+               &lt;type fullname="System.Net.Configuration.WebRequestModuleHandler" preserve="all"/&gt;
+               &lt;type fullname="System.Net.HttpRequestCreator" preserve="all"/&gt;
+               &lt;type fullname="System.Net.FileWebRequestCreator" preserve="all"/&gt;
+       &lt;/assembly&gt;
+&lt;/linker&gt;
+</pre> 
+<p class='vspace'><b>Note:</b> it can sometimes be difficult to determine which classes are getting stripped in error even though the application requires them. You can often get useful information about this by running the stripped application on the simulator and checking the Xcode console for error messages.
+</p>
+<div class='vspace'></div><h3>Simple Checklist for Making Your Distribution as Small as Possible</h3>
+<ol><li>Minimize your assets: enable PVRTC compression for textures and reduce their resolution as far as possible. Also, minimize the number of uncompressed sounds. There are some additional tips for file size reduction <a href="../Manual/Reducing File size.html">here</a>.
+</li><li>Set the iOS Stripping Level to <span class='doc-keyword'>Use micro mscorlib</span>.
+</li><li>Set the script call optimization level to <span class='doc-keyword'>Fast but no exceptions</span>.
+</li><li>Don't use anything that lives in System.dll or System.Xml.dll in your code. These libraries are <b>not</b> compatible with micro mscorlib.
+</li><li>Remove unnecessary code dependencies.
+</li><li>Set the  API Compatibility Level to <span class='doc-keyword'>.Net 2.0 subset</span>. Note that .Net 2.0 subset has limited compatibility with other libraries.
+</li><li>Set the Target Platform to <span class='doc-keyword'>armv6 (OpenGL ES1.1)</span>.
+</li><li>Don't use JS Arrays.
+</li><li>Avoid generic containers in combination with value types, including structs.
+</li></ol><div class='vspace'></div><h3>Can I produce apps of less than 20 megabytes with Unity?</h3>
+<p>Yes. An empty project would take about 13 MB in the AppStore if all the size optimizations were turned off. This gives you a budget of about 7MB for compressed assets in your game. If you own an Advanced License (and therefore have access to the stripping option), the empty scene with just the main camera can be reduced to about 6 MB in the AppStore (zipped and DRM attached) and you will have about 14 MB available for compressed assets.  
+</p>
+<div class='vspace'></div><h3>Why did my app increase in size after being released to the AppStore?</h3>
+<p>When they publish your app, Apple first encrypt the binary file and then compresses it via zip. Most often Apple's DRM increases the binary size by about 4 MB or so. As a general rule, you should expect the final size to be approximately equal to the size of the zip-compressed archive of all files (except the executable) plus the size of the uncompressed executable file.
+</p>
+</p><small>Page last updated: 2011-11-07</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

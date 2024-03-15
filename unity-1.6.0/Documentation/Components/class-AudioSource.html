@@ -1,0 +1,67 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Audio Source"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Components" title="Audio Source" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-AudioGroup.html%22%3EAudio%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-AudioSource.html%22%3EAudio%20Source%3C%2Fa%3E" -->
+		<h1>Audio Source</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-AudioGroup.html">Audio</a> &gt; <a href="class-AudioSource.html">Audio Source</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><a href='../ScriptReference/AudioSource.html' title='Go to AudioSource Scripting Doc'><img src="../Images/SwitchScripting.png" width="66" height="51" /></a><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-AudioListener.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="comp-GameObjectGroup.html">Next<img src="../images/next.png"></a></div>
+
+			
+<p>The Audio Source takes an <a href="../Components/class-AudioClip.html">Audio Clip</a> and plays it from a position in the world.
+</p>
+
+<p><img class='figure' src='images/class-AudioSource-0.jpg' />
+</p>
+
+<p><i>The Audio Source in the scene view and Inspector</i>
+</p>
+
+<h2> Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Audio Clip</nobr></b></td><td> Reference to the sound clip file that will be played
+</td></tr><tr><td><b><nobr>Play On Awake</nobr></b></td><td> If enabled, the sound will start playing the moment the scene launches. If disabled, you need to start it using the Play() command from scripting.
+</td></tr><tr><td><b><nobr>Volume</nobr></b></td><td> How loud the sound is at 1 world unit's (1 meter) distance from Audio Listener.
+</td></tr><tr><td><b><nobr>Min Volume</nobr></b></td><td> The minimum value of the sound. No matter how far away you get, the sound will get softer.
+</td></tr><tr><td><b><nobr>Max Volume</nobr></b></td><td> How loud the sound gets at the loudest. No matter how close you get, the sound will never get louder.
+</td></tr><tr><td><b><nobr>Rolloff Factor</nobr></b></td><td> How fast the sound fades. the higher the value, the shorter the range the Listener can hear the sound.
+</td></tr><tr><td><b><nobr>Loop</nobr></b></td><td> Enable this to make the <b>Audio Clip</b> loop when it finishes playing.
+<p></td></tr></tr></table>
+</p>
+
+<h2> Hints</h2>
+<p><ul><li>
+The key to a nice sound environment is tweaking the <b>Rolloff Factor</b>.
+</li><li>The 3D audio effects will only work for mono audio clips. Stereo audio clips will be mixed as-is into the sound output.
+</li></ul>
+</p>
+
+
+
+
+		<div class="navigation"><a href="class-AudioListener.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="comp-GameObjectGroup.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

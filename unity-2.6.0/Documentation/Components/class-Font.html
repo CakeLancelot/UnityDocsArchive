@@ -1,0 +1,125 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Font</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Font</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-AssetsGroup.html">Asset Components</a> &gt; <a href="../Components/class-Font.html">Font</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><a href='../ScriptReference/Font.html' title='Go to Font Scripting Doc'>Switch to Scripting</a><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-Flare.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-Material.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Font</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><span class='doc-keyword'>Fonts</span> can be created or imported for use in either the <a href="../Components/class-GuiText.html">GUI Text</a> or the <a href="../Components/class-TextMesh.html">Text Mesh</a> <span class='doc-keyword'>Components</span>.
+</p>
+<div class='vspace'></div><h2>Importing True Type Font files (.ttf)</h2>
+<p>To add a Font to your project you need to place the <b>.ttf</b> file in your Assets folder. Unity will then automatically import it. You have to make sure that the font has a <b>.ttf</b> extension otherwise Unity will not recognize it.
+</p>
+<p class='vspace'>To change the <span class='doc-prop'>Size</span> of the font, highlight it in the <span class='doc-keyword'>Project View</span> and you have a number of options in the <span class='doc-keyword'>Import Settings</span> in the <span class='doc-keyword'>Inspector</span>.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Font-0.jpg' /><br /><em>Import Settings for a font</em></div>
+<div class='vspace'></div><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Font Size</span></td><td  align='left'>The size of the font, based on the sizes set in any word processor</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Characters</span></td><td  align='left'>The text encoding of the font.  You can force the font to display only upper- or lower-case characters here</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Font Rendering</span></td><td  align='left'>The amount of anti-aliasing applied to the font</td></tr>
+</table>
+<p class='vspace'>After you import the font, you can expand the font in Project View to see that it has auto-generated some assets.  Two assets are created during import: "font material" and "font texture".  You can alter the "font material" to change the font's color, but you shouldn't alter the "font texture" at all.
+</p>
+<div class='vspace'></div><h2>Unicode support</h2>
+<p>Unity has full unicode support. Unicode text allows you to display German, French, Danish or Japanese characters that are usually not supported in an ASCII character set. You can also enter a lot of different special purpose characters like arrow signs or the option key sign, if your font supports it.
+</p>
+<p class='vspace'>To use unicode characters, choose <span class='doc-prop'>Unicode</span> from the <span class='doc-prop'>Characters</span> drop-down in the Import Settings.  You can now display unicode characters with this font.  If you are using a <span class='doc-keyword'><span class='wikiword'>GUIText</span></span> or <span class='doc-keyword'>Text Mesh</span>, you can enter unicode characters into the Component's <span class='doc-prop'>Text</span> field in the Inspector.
+</p>
+<p class='vspace'>You can also use unicode characters if you want to set the displayed text from scripting.  The Javascript and C# compilers fully support Unicode based scripts. You simply have to save your scripts with UTF-16 encoding.  In <span class='doc-keyword'>Unitron</span>, this can be done by opening the script and choosing <span class='doc-menu'>Text-&gt;Text Encoding-&gt;Unicode (UTF 16)</span>.  Now you can add unicode characters to a string in your script and they will display as expected in <span class='doc-keyword'><span class='wikiword'>UnityGUI</span></span>, a <span class='wikiword'>GUIText</span>, or a Text Mesh.
+</p>
+<div class='vspace'></div><h2>Changing Font Color</h2>
+<p>There are different ways to change the color of your displayed font, depending on how the font is used.
+</p>
+<div class='vspace'></div><h3><span class='wikiword'>GUIText</span> &amp; Text Mesh</h3>
+<p>If you are using a <span class='wikiword'>GUIText</span> or a Text Mesh, you can change its color by altering the <span class='doc-prop'>Text Color</span> of the font's auto-generated <span class='doc-keyword'>Material</span> in the <span class='doc-keyword'>Inspector</span>.  This is called the "font material".
+</p>
+<div class='vspace'></div><h3><span class='wikiword'>UnityGUI</span></h3>
+<p>If you are using <span class='wikiword'>UnityGUI</span> scripting to display your font, you have much more control over the font's color under different circumstances.  To change the font's color, you create a <span class='doc-keyword'><span class='wikiword'>GUISkin</span></span> from <span class='doc-menu'>Assets-&gt;Create-&gt;GUI Skin</span>, and define the color for the specific control state, e.g. <span class='doc-menu'>Label-&gt;Normal-&gt;Text Color</span>.  For more details, please read the <a href="../Components/class-GUISkin.html">GUI Skin page</a>.
+</p>
+<div class='vspace'></div><h2>Hints</h2>
+<ul><li>To display an imported font select the font and choose <span class='doc-menu'><span class='wikiword'>GameObject</span>-&gt;Create Other-&gt;3D Text</span>.
+</li><li>Using only lower or upper case characters reduces generated texture size.
+</li></ul>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-Flare.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-Material.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

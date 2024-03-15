@@ -1,0 +1,82 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Glow image effect"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Glow image effect" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-ImageEffects.html%22%3EImage%20Effects%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22script-GlowEffect.html%22%3EGlow%20image%20effect%3C%2Fa%3E" -->
+		<h1>Glow image effect</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-ImageEffects.html">Image Effects</a> &gt; <a href="script-GlowEffect.html">Glow image effect</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="comp-ImageEffects.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="script-BlurEffect.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Glow (sometimes called <i>Bloom</i>) can dramatically enhance the rendered image by making overbright parts &quot;glow&quot; (e.g. sun, light sources, strong highlights).
+</p>
+
+<p>Unity includes a Glow image postprocessing effect, and all builtin shaders are made to support it nicely. As with all image effects, Glow is available in Unity Pro only. Make sure to have the <a href="../Manual/HOWTO-InstallStandardAssets.html">Pro Standard Assets installed</a>.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/script-GlowEffect-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/script-GlowEffect-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Glow effect applied to the scene</i>
+</p>
+
+<h2>Details</h2>
+
+<p>Glow uses the alpha channel of the final image to represent &quot;color brightness&quot;. All colors are treated as RGB, multiplied by the alpha channel. You can view the contents of the alpha channel in SceneView.
+</p>
+
+<p>All builtin shaders write the following information to alpha:
+</p>
+<ul><li> Main texture's alpha multiplied by main color's alpha (not affected by lighting).
+</li><li> Specular and Glossy shaders add specular highlight multiplied by specular color's alpha.
+</li><li> Alpha (translucent) shaders do not modify alpha channel at all.
+</li><li> Particle shaders do not modify alpha channel, except for Particles/Multiply which darkens anything that is in alpha.
+</li></ul>
+
+<p>Most of the time you'll want to do this to get reasonable glow:
+</p>
+<ul><li> Set material's main color alpha to zero <b>or</b> use a texture with zero alpha channel. In the latter case, you can put non-zero alpha in the texture to cause these parts to glow.
+</li><li> Set the specular color alpha for Specular/Glossy shaders to be 100%.
+</li><li> Keep in mind what alpha the camera clears to (if it clears to a solid color), or what alpha the skybox material uses.
+</li><li> Add the Glow image effect to the camera. Tweak <i>Glow Intensity</i> and <i>Blur Iterations</i> values, you can also take a look at the comments in the shader script source.
+</li></ul>
+
+<h2>Tips:</h2>
+<ul><li> Use the alpha rendering mode in the scene view toolbar to quickly see which objects output different values to the alpha channel.
+</li><li> You need to attach the image effect to the camera while edit mode. To see the effect you have to go into playmode afterwards.
+</li></ul>
+
+
+<p>Glow works on graphics cards with support for pixel shaders. Eg. GeForce FX 5200 or Radeon 8500 and up.
+All image effects automatically disable themselves when they can not run on an end-users graphics card.
+</p>
+
+
+
+		<div class="navigation"><a href="comp-ImageEffects.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="script-BlurEffect.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

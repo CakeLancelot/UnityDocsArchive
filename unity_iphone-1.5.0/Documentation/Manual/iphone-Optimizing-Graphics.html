@@ -1,0 +1,144 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Optimizing Graphics Performance</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Optimizing Graphics Performance</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/iphone-GettingStarted.html">Getting Started with iPhone Development</a> &gt; <a href="../Manual/iphone-performance.html">Optimizing iPhone Performance</a> &gt; <a href="../Manual/iphone-Optimizing-Graphics.html">Optimizing Graphics Performance</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/iphone-performance.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/iphone-DrawCall-Batching.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Optimizing Graphics Performance</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>If you want to optimize your content for iPhone, then it is beneficial for you to <a href="../Manual/iphone-Hardware.html">learn more about the iPhone hardware</a>.
+</p>
+<div class='vspace'></div><h2>Depth buffer</h2>
+<p>You always have to clear depth AND color buffers to achieve best performance. Note that such clear operation comes for free, if subsequent opaque geometry will cover the screen.
+</p>
+<div class='vspace'></div><h2>Alpha-testing</h2>
+<p>Contrary to your desktop experience alpha-testing is very expensive on iPhone. If you can replace your alpha-test shader with alpha-blend, do that. Make sure your alpha-blended shaders do NOT contain "a very small cut-off value" alpha-test based "optimization" as such "optimization" will have negative performance impact on iPhone.
+</p>
+<p class='vspace'>If you absolutely need to use alpha-testing, make sure to minimize its usage.
+</p>
+<div class='vspace'></div><h2>Vertex performance</h2>
+<p>One of the main problems with the <span class='wikiword'>OpenGL</span> ES implementation on iPhone is that it will copy vertex data for each draw call every frame. That usually eats around 1/3 of the frame time on the CPU and wastes memory bandwidth. Keep your vertex budget as low as possible.
+</p>
+<p class='vspace'>Generally you should aim at 5K-10K vertices visible per frame.
+</p>
+<p class='vspace'>Per-vertex dynamic lighting can add significant cost to vertex transformations. Avoid multiple lights affecting single objects. Bake lighting for static objects.
+</p>
+<div class='vspace'></div><h2>Optimize model geometry</h2>
+<p>When optimizing the geometry of a model, there are two basic rules:
+</p><ul><li>Don't use excessive amount of faces if you don't have to.
+</li><li>Keep the number of UV mapping seams and hard edges as low as possible.
+</li></ul><p class='vspace'>Note that the actual number of vertices that graphics hardware has to process is usually not the same as displayed in a 3D application. Modeling applications usually display the geometric vertex count, i.e. number of points that make up a model.
+</p>
+<p class='vspace'>For a graphics card however, some vertices have to be split into separate ones. If a vertex has multiple normals (it's on a "hard edge"), or has multiple UV coordinates, or multiple vertex colors, it has to be split. So the vertex count you see in Unity is almost always different from the one displayed in 3D application.
+</p>
+<div class='vspace'></div><h2>Texture compression</h2>
+<p>Use iPhone native <a href="../Components/class-Texture2D.html">PVRT compression formats</a>. They will not only decrease the size of your textures (resulting in faster load times and smaller memory footprint), but also can dramatically increase your rendering performance! Compressed texture requires only a fraction of memory bandwidth compared to full blown 32bit RGBA textures. For performance comparison check <a href="../Manual/iphone-Hardware.html">iPhone Hardware Guide</a>.
+</p>
+<p class='vspace'>If PVRTC formats do not deliver enough visual quality and you need extra crisp imaging (for example UI textures), then you should consider using 16bit texture over full 32bit RGBA texture. At least you will reduce memory bandwidth by half.
+</p>
+<div class='vspace'></div><h2>Bake lighting</h2>
+<p>Bake ligthing either into lightmaps or vertex colors. Maya has good builtin lightmapping tools. Unity can import secondary UV maps or vertex colors from Maya. The process of generating a lightmapped environment takes a little longer than just placing a light in the scene in Unity, <b>but</b>:
+</p><ul><li>it's going to run a lot faster (2-3 times for eg. 2 lights)
+</li><li>and look a lot better since you can bake global illumination and the ligthmapper can smooth the results.
+</li></ul><div class='vspace'></div><h2>Share materials</h2>
+<p>If a number of objects being rendered by the same camera uses the same material, then Unity iPhone will be able to employ a large variety of internal optimizations such as:
+</p><ul><li>avoid setting various render states to <span class='wikiword'>OpenGL</span> ES.
+</li><li>avoid calculation of different parameters required to setup vertex and pixel processing
+</li><li>batch small moving objects to reduce draw calls
+</li><li>batch both big and small objects with enabled "static" property to reduce draw calls
+</li></ul><p class='vspace'>All these optimizations will save you precious CPU cycles. Therefore putting extra work to combine textures into single atlas and making number of objects to use the same material will always pay off. Do it!
+</p>
+<div class='vspace'></div><h2>Simple checklist to make your game faster</h2>
+<ul><li>Keep vertex count below 10K per frame.
+</li><li>Keep number of different materials per scene low - share as many materials between different objects as possible.
+</li><li>Set <span class='doc-prop'>Static</span> property on a non-moving objects to allow internal optimizations.
+</li><li>Use PVRTC texture compression where possible, otherwise prefer 16bit textures over 32bit.
+</li><li>Use combiners to mix two textures per fragment instead of multi-pass approach.
+</li><li>Prefer single texture instead of two per fragment.
+</li><li>Do not use dynamic lights when it is not necessary, prefer baking lighting instead.
+</li><li>Avoid alpha-testing, prefer alpha-blending instead.
+</li><li>Learn benefits of Occlusion culling and use it to reduce amount of visible geometry and draw-calls in case of complex static scenes with lots of occlusion. Plan your levels to benefit from Occlusion culling.
+</li><li>Use skyboxes to "fake" distant geometry.
+</li></ul><div class='vspace'></div><h2>See Also</h2>
+<ul><li><a href="../Manual/iphone-performance.html">Optimizing iPhone Performance</a>
+</li><li><a href="../Manual/iphone-Hardware.html">iPhone Hardware Guide</a>
+</li><li><a href="../Manual/iphone-DrawCall-Batching.html">iPhone Automatic Draw Call Batching</a>
+</li><li><a href="../Manual/Modeling Optimized Characters.html">Modeling Optimized Characters</a>
+</li><li><a href="../Manual/RenderingStatistics.html">Rendering Statistics</a>
+</li></ul><div class='vspace'></div>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/iphone-performance.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/iphone-DrawCall-Batching.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

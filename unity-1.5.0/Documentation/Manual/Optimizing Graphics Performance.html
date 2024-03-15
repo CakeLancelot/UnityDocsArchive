@@ -1,0 +1,97 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Optimizing Graphics Performance"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="Optimizing Graphics Performance" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced%20(for%20technical%20guys).html%22%3EAdvanced%20(for%20technical%20guys)%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Optimizing%20Graphics%20Performance.html%22%3EOptimizing%20Graphics%20Performance%3C%2Fa%3E" -->
+		<h1>Optimizing Graphics Performance</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced (for technical guys).html">Advanced (for technical guys)</a> &gt; <a href="Optimizing Graphics Performance.html">Optimizing Graphics Performance</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Reducing File size.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HOW-TOs.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Making your game run smoothly is of prime importance to its success. Thankfully Unity is there with you. We have spent a lot of time and energy making it run fast on a wide variety of hardware. Below are some simple guidelines to maximizing the speed of your game.
+</p>
+
+<h2> In summary - combine, combine, combine</h2>
+
+<ul><li> If you care about performance, combine meshes.
+</li><li> If you care about performance make sure all your combined meshes also share the same material and texture.
+</li></ul>
+
+<h2> In detail:</h2>
+
+<p>Todays graphics cards are really good at pushing a lot of polygons but they have quite some overhead for every batch that you submit to the graphics card. So if you have a 100 triangle object it is going to be just as expensive to render as a 1500 poly object. The sweet spot for optimal rendering performance is somewhere around 1500-4000 triangles per mesh.
+</p>
+
+<p>You only pay rendering cost for objects that have a mesh renderer attached. And you only pay for those that are within the view frustum. There is no attached rendering cost to having a lot of empty game objects in your scene.
+</p>
+
+<ul><li> The best way to improve rendering performance, is to combine objects together so each mesh has around 1500 or more triangles and uses only one material for the entire mesh.
+</li></ul>
+
+<p>There is one thing to be aware of when combining objects though.
+If you use a lot of small lights in your scene, it might make sense to combine only objects that are close to each other.
+</p>
+
+<p>The rendering cost for a mesh that has multiple materials is the same as having multiple renderers for each material. The most common reason why you have multiple materials is because two meshes don't share the same textures. So if you want to optimize rendering performance you need to make sure that the objects you combine share textures.
+</p>
+
+
+<ul><li> Unity is very good at pushing lots of polygons. Unity uploads all geometry to the graphics card for good cache utilization and optimal data alignment.
+</li><li> You simply have to make sure that the graphics card doesn't have to handle a huge amount of batches.
+</li><li> The number of pixel lights affecting an object heavily affects performance.
+</li></ul>
+
+<p>If you want to have the best performance and don't care about bumpmapping or per pixel lighting just go to Edit -&gt; Render Settings ... and set pixel light count to zero. This will simply use vertex lighting for all objects.
+This means all geometry will be rendered only once every frame. This is an extremely useful LOD setting, so your game can run fine on older graphics cards.
+</p>
+
+<h3> Pixel lights</h3>
+
+<p>If you use pixel lighting, then we have to render every object as many times as we have pixel lights that affect the object.
+If you combine two objects that are very far apart, it might increase the size of the object and now you have a lot of lights affecting this big object. If your objects were seperate however, the light wouldn't have to be applied on the part of the mesh which is far away. This can result in rendering the combined mesh as many times as the uncombined mesh thus you didn't save anything.
+</p>
+
+<p>When rendering a mesh unity finds all lights surrounding the mesh. It then figures out what lights affect the mesh the most. The Edit -&gt; Render Settings are used to modify how many of the lights end up as pixel lights and how many as vertex lights.
+</p>
+
+<p>Every light calculates it's importance based on how far away it is from the mesh and how intense it is.
+</p>
+
+<p>Some lights are more important than others depending on the game context. For this every light has a Render Mode setting which can be set to &quot;Force Pixel&quot; or &quot;Force Vertex&quot;.
+</p>
+
+<p>Imagine the player's car with head lights driving through the night. The head light is the most important light in the game. Thus set the head lights Render Mode to &quot;Force Pixel&quot;.
+</p>
+
+<p>If you have a light that isn't very important and also visually doesn't gain much from being a pixel light, set the lights Render Mode to &quot;Force Vertex&quot;. This way you don't waste rendering performance without gaining any visual quality.
+</p>
+
+
+
+		<div class="navigation"><a href="Reducing File size.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HOW-TOs.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

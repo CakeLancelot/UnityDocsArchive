@@ -1,0 +1,77 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Time"-->
+			<title>Unity Script Reference &ndash; Time</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Time</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Time" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> This class is the interface to get time information out from Unity.</p>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#time'>time</a></p>
+<p><a href='#timeSinceLevelLoad'>timeSinceLevelLoad</a></p>
+<p><a href='#deltaTime'>deltaTime</a></p>
+<p><a href='#fixedTime'>fixedTime</a></p>
+<p><a href='#fixedDeltaTime'>fixedDeltaTime</a></p>
+<p><a href='#smoothDeltaTime'>smoothDeltaTime</a></p>
+<p><a href='#timeScale'>timeScale</a></p>
+<p><a href='#frameCount'>frameCount</a></p>
+<p><a href='#realtimeSinceStartup'>realtimeSinceStartup</a></p>
+<p><a href='#captureFramerate'>captureFramerate</a></p>
+</span>
+<div class='tocclear'></div>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="time"></a><h3><span class="full-name">Time.</span>time</h3><div class="synopsis"><span class="standard_type">float</span> time</div>
+   <p class='details'> The time this frame has started. This is the time since the start of the game.  <p class="details"/>When called from inside <a href="MonoBehaviour.html" class="classlink">MonoBehaviour's</a> FixedUpdate, returns <a href="Time.html#fixedTime" class="itemlink"> fixedTime property</a>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Instantiates a projectile off every 0.5 seconds,<br/>// if the Fire1 button (default is ctrl) is pressed.<br/>var projectile : <a href="GameObject.html" class="classlink">GameObject</a>;<br/>var fireRate = 0.5;<br/><span class="keyword">private</span> var nextFire = 0.0;<br/>function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Input.html#GetButton" class="itemlink">Input.GetButton</a> ("Fire1") && <a href="Time.html#time" class="itemlink">Time.time</a> > nextFire) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nextFire = <a href="Time.html#time" class="itemlink">Time.time</a> + fireRate;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clone = Instantiate (projectile, transform.position, transform.rotation);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+	<a name="timeSinceLevelLoad"></a><h3><span class="full-name">Time.</span>timeSinceLevelLoad</h3><div class="synopsis"><span class="standard_type">float</span> timeSinceLevelLoad</div>
+   <p class='details'> The time this frame has started. This is the time since the last level has been loaded.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Sets the gui text to the time it took the player to complete the level<br/>function PlayerCompletedGame() {<br/>&nbsp;&nbsp;&nbsp;&nbsp;guiText.text = <a href="Time.html#timeSinceLevelLoad" class="itemlink">Time.timeSinceLevelLoad</a>.ToString();<br/>}</div></td></tr></table></p>
+	<a name="deltaTime"></a><h3><span class="full-name">Time.</span>deltaTime</h3><div class="synopsis"><span class="standard_type">float</span> deltaTime</div>
+   <p class='details'> The time it took to complete the last frame.
+Use this function to make your game frame rate independent.  <p class="details"/>When do i use <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a>?
+If you add or subtract to a value every frame chances are you should multiply with <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a>.
+When you multiply with <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a> you essentially express:
+I want to move this object 10 meters per second instead of 10 meters per frame.  <p class="details"/>When called from inside FixedUpdate, deltaTime returns the fixed framerate delta time.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Move the object 10 meters per second!<br/>&nbsp;&nbsp;&nbsp;&nbsp;var translation = <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a> * 10;<br/>&nbsp;&nbsp;&nbsp;&nbsp;transform.Translate (0, 0, translation);<br/>}</div></td></tr></table></p>
+	<a name="fixedTime"></a><h3><span class="full-name">Time.</span>fixedTime</h3><div class="synopsis"><span class="standard_type">float</span> fixedTime</div>
+   <p class='details'> The fixed frame rate time.
+Fixed time is updated in regular interval's of <a href="Time.html#fixedDeltaTime" class="itemlink"> fixedDeltaTime property</a> until to <a href="Time.html#time" class="itemlink"> time property</a> is reached.</p>
+	<a name="fixedDeltaTime"></a><h3><span class="full-name">Time.</span>fixedDeltaTime</h3><div class="synopsis"><span class="standard_type">float</span> fixedDeltaTime</div>
+   <p class='details'> The interval at which physics and other fixed frame rate updates are performed.
+It is recommended to use <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a> instead because it automatically
+returns the right deltaTime if you are inside a FixedUpdate function or Update function.</p>
+	<a name="smoothDeltaTime"></a><h3><span class="full-name">Time.</span>smoothDeltaTime</h3><div class="synopsis"><span class="standard_type">float</span> smoothDeltaTime</div>
+   <p class='details'> A smoothed out delta time</p>
+	<a name="timeScale"></a><h3><span class="full-name">Time.</span>timeScale</h3><div class="synopsis"><span class="standard_type">float</span> timeScale</div>
+   <p class='details'> The scale with which time is passing. This can be used for slow motion effects.  <p class="details"/>If timeScale is 1.0 time is passing as fast as real time.
+If time is 0.5 time is passing slower than realtime.  <p class="details"/>If timeScale is set 0 the game is basically paused if all your functions are
+frame rate independent.  <p class="details"/>If you lower timeScale it is recommended to also lower fixedDeltaTime by the same amount.  <p class="details"/>FixedUpdate functions will not be called when timeScale is set to zero.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Toggles the time scale between 1 and 0.7<br/>// whenever the user hits the Fire1 button.<br/>function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Input.html#GetButtonDown" class="itemlink">Input.GetButtonDown</a> ("Fire1")) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Time.html#timeScale" class="itemlink">Time.timeScale</a> == 1.0) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Time.html#timeScale" class="itemlink">Time.timeScale</a> = 0.7;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Time.html#timeScale" class="itemlink">Time.timeScale</a> = 1.0;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Adjust fixed delta time according to timescale<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// The fixed delta time will now be 0.02 frames per real-time second<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Time.html#fixedDeltaTime" class="itemlink">Time.fixedDeltaTime</a> = 0.02 * <a href="Time.html#timeScale" class="itemlink">Time.timeScale</a>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+	<a name="frameCount"></a><h3><span class="full-name">Time.</span>frameCount</h3><div class="synopsis"><span class="standard_type">int</span> frameCount</div>
+   <p class='details'> A counter keeping track of the number of frames that have passed.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Makes sure that RecalculateValue only performs<br/>// some operations once per frame and no more.<br/><span class="keyword">static</span> <span class="keyword">private</span> var lastRecalculation = -1;<br/><span class="keyword">static</span> function RecalculateValue ()<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (lastRecalculation == <a href="Time.html#frameCount" class="itemlink">Time.frameCount</a>)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;PerformSomeCalculations();<br/>}</div></td></tr></table></p>
+	<a name="realtimeSinceStartup"></a><h3><span class="full-name">Time.</span>realtimeSinceStartup</h3><div class="synopsis"><span class="standard_type">float</span> realtimeSinceStartup</div>
+   <p class='details'> The real time since the game started.
+In almost all cases you can and should use <a href="Time.html#time" class="itemlink">Time.time</a> instead.  <p class="details"/>/realTimeSinceStartup/ returns the time since startup, free of <a href="Time.html#timeScale" class="itemlink">Time.timeScale</a>.
+<span class="variable">realTimeSinceStartup</span> also keeps increasing while the player is paused (in the background).
+Using <span class="variable">realTimeSinceStartup</span> is useful when you want to pause the game by setting timeScale to zero,
+but still want to be able to measure time somehow.
+Use <a href="Time.html#realTimeSinceStartup" class="itemlink">Time.realTimeSinceStartup</a> with care, in almost all cases you can and should use <a href="Time.html#time" class="itemlink">Time.time</a> instead.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Prints the time since start up.<br/>print(<a href="Time.html#realtimeSinceStartup" class="itemlink">Time.realtimeSinceStartup</a>);</div></td></tr></table></p>
+	<a name="captureFramerate"></a><h3><span class="full-name">Time.</span>captureFramerate</h3><div class="synopsis"><span class="standard_type">int</span> captureFramerate</div>
+   <p class='details'> <table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code"><a href="Time.html#captureFramerate" class="itemlink">Time.captureFramerate</a> = 25;</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

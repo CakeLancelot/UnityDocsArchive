@@ -1,0 +1,103 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Web Player Debugging</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Web Player Debugging</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/Advanced.html">Advanced</a> &gt; <a href="../Manual/Web Player Debugging.html">Web Player Debugging</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Publishing active content.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Plugins.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Web Player Debugging</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>There might be times during development when you need to obtain information from the logs of a webplayer you've built.  Usually you need to see these files when your web player has experienced some problem, and you need to see where exactly the problem occurred.
+</p>
+<div class='vspace'></div><h2>Mac OS X Log Location</h2>
+<p>On Mac OS X, all web player log files are output to the console log: <span class='doc-menu'>~/Library/Logs/Unity/Player.log</span>. This log can be accessed via standard <span class='doc-menu'>Console.app</span> utility application, or from Unity editor menu <span class='doc-menu'>Help -&gt; Open Player console log</span>.
+</p>
+<div class='vspace'></div><h2>Windows Log Location</h2>
+<p>On Windows, the web player log files are stored in the TEMP directory.  This can vary slightly from computer to computer.  Most commonly, the files are located in <span class='doc-menu'>C:\Documents and Settings\<b>(current user)</b>\Local Settings\temp\<span class='wikiword'>UnityWebPlayer</span>\log</span>
+</p>
+<p class='vspace'><b>Please note:</b> The Local Settings folder is hidden by default.  In order to see it, you must enable viewing of hidden folders from <span class='doc-menu'>Tools-&gt;Folder Options...-&gt;View (tab)</span>.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Web Player Debugging-0.jpg' /><br /><em>Enabling viewing of hidden folders in Windows XP</em></div>
+<p class='vspace'>Inside this folder, you will see text files that begin with either "log_" or "manager_".  Viewing these files will show you all the Debug.Log calls.  You can safely delete the files inside this folder at any time.
+</p>
+<div class='vspace'></div><h2>Windows <span class='wikiword'>Vista/IE7</span> Location</h2>
+<p>If the user is running Vista and using <span class='wikiword'>IE7</span> <b>and</b> UAC is enabled, the log files will be located in a different place.  This is due to the "enhanced" security of Windows Vista and <span class='wikiword'>IE7</span>.  That location is <span class='doc-menu'>C:\Users\<b>(current user)</b>\<span class='wikiword'>AppData</span>\Local\Temp\Low\<span class='wikiword'>UnityWebPlayer</span>\log</span>
+</p>
+<p class='vspace'><b>Please note:</b> The <span class='wikiword'>AppData</span> folder is hidden by default.  In order to see it, you must enable viewing of hidden folders from <span class='doc-menu'>Tools-&gt;Folder Options...-&gt;View (tab)</span>.  The Tools menu is hidden by default, but can be displayed by pressing the Alt key once.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Web Player Debugging-1.jpg' /><br /><em>Enabling viewing of hidden folders in Windows Vista</em></div>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Publishing active content.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Plugins.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,211 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" Shaders: Vertex and Fragment Programs"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title=" Shaders: Vertex and Fragment Programs" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced%20(for%20technical%20guys).html%22%3EAdvanced%20(for%20technical%20guys)%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Shaders.html%22%3EShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22ShaderTut2.html%22%3E%20Shaders%3A%20Vertex%20and%20Fragment%20Programs%3C%2Fa%3E" -->
+		<h1> Shaders: Vertex and Fragment Programs</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced (for technical guys).html">Advanced (for technical guys)</a> &gt; <a href="Shaders.html">Shaders</a> &gt; <a href="ShaderTut2.html"> Shaders: Vertex and Fragment Programs</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="ShaderTut1.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-Shader.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Lets start with a small recap of the general structure of a shader:
+</p>
+
+<p><pre class='codelisting'>Shader &quot;ShaderName&quot;{
+ {
+  Properties {
+    _Variable (&quot;name in Unitys material&quot;, type) = default value
+  }
+  Setup Renderstates that should apply to the whole category.
+  SubShader {
+    Setup rendering passes here, using fixed function or vertex/fragment programs.
+    Pass {
+    }
+    .
+    Pass {
+    }
+  }
+  SubShader {
+    This subshader should run of ARB cards with no vertex/fragment programs.
+    Setup the rendering passes with fixed function commands.
+    Pass {
+    }
+    .
+  }
+  FallBack &quot; VertexLit&quot;, 1
+}
+</pre>
+To start at the end, we introduce a new command:
+</p>
+
+<p><tt> FallBack &quot; VertexLit&quot;, 1</tt>
+</p>
+
+<p>This command can be used at the end of a shader that might not work on every kind of hardware. It makes sure that another shader is used, if no subshader in the current shader can run. If you don't do this, you will get a fabulous sold gray on cards not supported by your shader.
+</p>
+
+<p>We will now discuss the different commands and scopes one by one, emphasising on what is possible with each command. We start with the Properties:
+</p>
+
+<p><pre class='codelisting'>Properties {
+    _Variable (&quot;name in Unitys material&quot;, type) = default value
+}
+</pre>
+</p>
+
+<p>As mentioned above _Variable is the variable name, followed by the textstring name and type in parentheses. The variable name should allways begin with an underscore, but otherwise you can use any combination of letters and numbers for the name. The text name is completely free - here you can use any combination of characters. The type should be one of the following types allowed in shaders:
+</p>
+
+<p><table class="wikitable"><tr><td class="wikicell" >Color </td><td class="wikicell" >Four component color value - (1,1,1,1).</td></tr><tr><td class="wikicell" >2d </td><td class="wikicell" > 2D texture - &quot;white&quot;</td></tr><tr><td class="wikicell" >Cube </td><td class="wikicell" > Cubemap - &quot;&quot;</td></tr><tr><td class="wikicell" >Range </td><td class="wikicell" >Floating point value with a specified range - 0.5 </td></tr></table>
+</p>
+
+<p>The default value depends on which type the programmer specified. In the type table above we give examples on which default values one could use. The default value &quot;white&quot; specifies a white texture image. Another supported value is &quot;bump&quot; which is a blue texture, ie. a bumpmap with no bumps but just regular normals.
+</p>
+
+<p>All the variables declared in the Properties scope will  be passed in from the material setting in Unity, and can be used in the body of the shader.
+</p>
+
+<p>The next command is the Category. This is a shortcut for defining commonly used shader settings. Any command issued here will be the default in this block. You can override them in a sub-block. In that case the new command becomes valid any blocks contained within. The following state change commands are the ones most commonly used:
+</p>
+
+<p><table class="wikitable"><tr><td class="wikicell" >Blend </td><td class="wikicell" > Set the blending mode. Example: Blend One One</td></tr><tr><td class="wikicell" >Lighting </td><td class="wikicell" > Enable or Disable Lighting. Example: Lighting ON</td></tr><tr><td class="wikicell" >Fog </td><td class="wikicell" >Set fog state. Example Fog _fogStart</td></tr></table>
+</p>
+
+<p>For a complete list of commands see the Reference Chart.
+</p>
+
+<p>The SubShaders should be used to differentiate between different hardware capabilites as discussed earlier. Hence, the different subshaders you use indirectly specifies which render path will be chosen, and how many resources the shader will use during rendering. The subshader can use render state commands, and have any number of passes.
+</p>
+
+<p>A quick way of building subshaders is to use passes defined by other subshaders; the command UsePass does just that, so you can reuse shader code in a neat fasion. As an example the following command calls the pass with the name BASE from the glossy shader:
+</p>
+
+<p><tt> UsePass &quot; Glossy/BASE&quot;</tt>
+</p>
+
+<p>In order for the UsePass to work, a name must be given to the pass one wishes to use. The command: Name &quot;passName&quot; within a pass gives the name passName to the respective pass.
+</p>
+
+<h1> Vertex and fragment programs</h1>
+<p>We descriped a pass that just used a single combine instruction earlier. Now it is time to demonstrate how we can use a vertex and a fragment program in our pass. The following code demonstrates the more advanced pass of the build in BumpSpec shader, that performs bump mapping with specular highlighting.
+</p>
+
+<p><pre class='codelisting'>Pass { 
+	Name &quot;PPL&quot;	
+	// 0-tex lights.
+	Tags {
+		&quot;LightMode&quot; = &quot;Pixel&quot; 
+		&quot;LightTexCount&quot; = &quot;012&quot;
+	}
+CGPROGRAM
+// profiles arbfp1
+// fragment frag
+// fragmentoption ARB_fog_exp2
+// fragmentoption ARB_precision_hint_fastest
+
+// vertex vert
+// autolight 7
+#include &quot;UnityCG.cginc&quot;
+#include &quot;AutoLight.cginc&quot; 
+
+struct appdata {
+	float4 vertex;
+	float4 tangent;
+	float3 normal;
+	float4 texcoord;
+};
+
+struct v2f { 
+	// Data that should be used by the vertex program and send to the fragment program
+}; 
+
+v2f vert (appdata v) {
+	return v2f data;
+}
+
+uniform sampler2D _BumpMap;
+uniform float _Shininess;
+float4 frag (v2f2 i, LIGHTDECL(TEXUNIT2))  : COLOR  {
+	return color to screen; 
+}
+</pre>
+</p>
+
+<p>Here we have omittet the actual code in the vertex and fragment programs to save space and keep it easy to read. The tag command in the pass specifies when this pass should be run, namely only when the lightmode is set to per pixel lighting, and when there is more than 0, 1 or 2 pixel lights in the scene. Other examples would be: &quot;LightMode&quot; = &quot;None&quot; or &quot;LightMode&quot; = &quot;Vertex&quot;. See all configurations in the Reference Chart.
+</p>
+
+<p>The next token: CGPROGRAM specifies that the following code is a program written in Nvidias C for Graphics (commonly known as Cg). The following lines specify that we have a fragment program called frag, we use the arbfp1 profile for the program and we set the two options ARB_fog_exp2 and ARB_precision_hint_fastest. We also have a vertex program called vert and we use the autolight option. (what is the  autolight option?)
+In order to use the Cg language we also need to include the following two files:
+</p>
+
+<p><tt> #include &quot;UnityCG.cginc&quot;</tt>
+</p>
+<p><tt> #include &quot;AutoLight.cginc&quot;</tt>
+</p>
+
+<p>The struct appdata is now created. If the names and types specified here are used, the appropriate values are automatically bound to the variables specified in the struct. They are then ready for use in the vertex program. If the programmer wishes to use them in the fragment program she must output them to it herself.
+The vertex program can now be put in. It is ofcause totally depending on the effect, but one command must allways be called:
+</p>
+
+<p><tt> o.hPosition = mul (glstate.matrix.mvp, v.vertex);</tt>
+</p>
+
+<p>It multiplies the current vertex position with the modelview matrix, called the clip space transformation.
+</p>
+
+<p>After the vertex program is done, the programmer should specify the variables used in the fragment program. This is done by the commands:
+</p>
+
+<p><tt> uniform sampler2D _BumpMap;</tt>
+</p>
+<p><tt> uniform float _Shininess;</tt>
+</p>
+
+<p>Here we specify the texture variable _BumpMap and floating point value _Shininess. These values is automatically set to the value specified in the material settings in Unity, because these were bound in the Properties step. They can then be directly accessed in the fragment program.
+</p>
+
+<p>After the fragment program it is important to specify the textures used by setting them. This should be done as the last thing in the pass scope. Setting the _BumpMap texture specified above should be done like this:
+</p>
+
+<p><tt> SetTexture [_BumpMap]{combine primary texture}</tt>
+</p>
+
+<p>You can now put in other passes as needed, or simply end this shader with some &quot;}&quot; charaters, and the shader is hopefully ready to run. If it does not compile, an error messag will be output int the bottom of the screen, telling you what and where the errors are.
+</p>
+
+<p>We have now demonstrated how advanced shader programs can be generated in a few easy steps. This can help you to take the full advantage of Unity and recieve optimal rendering results. We have a forum for shader at www.otee.dk/forum/ so go there to get help with your shaders!
+</p>
+
+<p>Happy programming, and enjoy the power of Unity and Shaderlab.
+</p>
+
+
+
+
+		<div class="navigation"><a href="ShaderTut1.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-Shader.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

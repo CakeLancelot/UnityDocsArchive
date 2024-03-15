@@ -1,0 +1,51 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" How do I make a Splash Screen"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title=" How do I make a Splash Screen" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOW-TOs.html%22%3EHOW-TOs%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Graphics%20how-tos.html%22%3EGraphics%20how-tos%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22HOWTO-SplashScreen.html%22%3E%20How%20do%20I%20make%20a%20Splash%20Screen%3C%2Fa%3E" navigation="%3Ca%20href%3D%22HOWTO-MeshParticleEmitter.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22HOWTO-ColorCorrection.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1> How do I make a Splash Screen</h1>
+		<p><a href="index.html">Unity Manual</a> &gt; <a href="HOW-TOs.html">HOW-TOs</a> &gt; <a href="Graphics how-tos.html">Graphics how-tos</a> &gt; <a href="HOWTO-SplashScreen.html"> How do I make a Splash Screen</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="HOWTO-MeshParticleEmitter.html"><img src="../images/prev.png"></a><a href="HOWTO-ColorCorrection.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+
+<p>Here's how to do a splash screen or any other type of full-screen image in Unity. This HOWTO takes care to work for multiple different resolutions and aspect ratios.
+</p>
+
+<table><tr><td><div class='cbox'><div class='cbox-data'>
+<ol><li> First you need a big texture. Remember that textures have to be power of two in size. You might for example use 1024x512 as this fits most screens.
+</li><li> Make a box using the &quot;GameObject-&gt;Create Other-&gt;Cube&quot; menu item.
+</li><li> Scale it to be in 16:9 format by switching the Inspector to &quot;Full&quot; mode, then entering 16 and 9 as the first two value in the Scale:<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/HOWTO-SplashScreen-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/HOWTO-SplashScreen-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</li><li> Put the texture on a cube and make a camera to point at it. Place the camera at such a distance so that the cube is still visible on a widescreen.
+</li><li> Apply the texture to the box by dragging it on.
+</li></ol>
+
+<p></div></div></td></tr></table>
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,1219 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+			<title>Unity Script Reference &ndash; AndroidJNI</title>
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="docs.css" type="text/css" />
+<script type="text/javascript" src="../Images/jquery-1.4.2.js"></script>
+<script type="text/javascript" src="../Images/jquery.cookie.js"></script>
+
+<style>
+/* 
+Unity standard fonts 
+*/
+body{ font-family:Helvetica, Arial, sans-serif; font-size:.9em; }
+
+/*
+simple format for code, using fixed width
+and a nice border
+*/
+pre { font-family:"Courier New", Courier, monospace; font-size:.8em; }
+pre { padding:10px; margin:10px; border:1px #d8d8d8 solid; }
+pre { -moz-border-radius:10px; -webkit-border-radius:10px; }
+pre { background:#f8f8f8; }
+
+/*
+aligns the selection dialog on the top right
+*/
+.selectLang { margin-right:10px; text-align:right; float:right; }
+
+
+.cSelect,
+.cSelect ul,
+.cSelect li { font-size:12px; }
+
+/*.cSelect { border:1px solid #d0d0d0; }
+.cSelect { background:#ddf; }*/
+/*
+.cSelect { -moz-border-radius:10px; -webkit-border-radius:10px; }*/
+
+.cSelect { display:inline-block; position:relative; float:right; margin-right:20px;}
+.cSelect { padding-top:.4em; padding-bottom:.2em;}
+.cSelect-Selected,
+.cSelect-ArrowDown,
+.cSelect li { cursor:pointer; }
+
+.cSelect,
+.roundTop { -webkit-border-top-left-radius:10px; -webkit-border-top-right-radius:10px; }
+.cSelect,
+.roundTop { -moz-border-radius-topleft:10px; -moz-border-radius-topright:10px; }
+
+.roundBottom,
+.cSelect ul { -webkit-border-bottom-left-radius:10px; -webkit-border-bottom-right-radius:10px; }
+.roundBottom,
+.cSelect ul { -moz-border-radius-bottomleft:10px; -moz-border-radius-bottomright:10px; }
+
+
+.cSelectWidth { width:10em; display:block;}
+
+.cSelect-wrapper { position:relative; }
+
+.cSelect ul { background:#fff; padding:0px; margin:0px; display:inline-block; }
+.cSelect ul { z-index:10; position:absolute; top:1.3em; }
+.cSelect ul { padding-bottom:.5em; padding-top:.5em; padding-left:0px; padding-right:0px; }
+/*.cSelect ul { border:1px solid #d0d0d0; }*/
+
+
+.cSelect li { padding:.1em; margin:0px; text-align:right; list-style-type:none; }
+.cSelect li { padding-left:.7em; padding-right:24px; }
+
+.cSelect-highlight { background:#f0f0f0; }
+
+.cSelect-Selected { margin-left:.5em; margin-right:.5em; text-align:right; float:right; width:75%}
+
+.cSelect-ArrowDown { width:18px; height:18px; display:inline-block; float:right}
+.cSelect-ArrowDown { background:url('../Images/down-arrow.png'); text-align:center; }
+.cSelect-ArrowDown { -moz-border-radius:9px; -webkit-border-radius:9px; }
+
+.monoCompatibility-roweven { background-color:#DCDDDF; }
+.monoCompatibility-rowodd { background-color:#F3F3F4; }
+.monoCompatibility-cell { border:1px solid #ffffff;}
+
+
+</style>
+</head>
+
+<body>
+
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">AndroidJNI</td>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Scripting"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Scripting"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Scripting"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting&nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+					<!-- #TemplateBeginEditable name="path" -->
+						<a href="index.html">Scripting</a> &gt <a href='20_class_hierarchy.html'>Runtime Classes</a> &gt <a href='AndroidJNI.html'>AndroidJNI</a>
+					<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="scriprefmain">
+		<span class="heading">
+			<!-- #TemplateBeginEditable name="title" -->
+				AndroidJNI
+			<!-- #TemplateEndEditable -->	
+		</span>
+<!-- #TemplateBeginEditable name="details" -->
+	<span class="text"></span>
+<!-- #TemplateEndEditable -->	
+
+	<!-- #TemplateBeginEditable name="manual-top-nav" --><div class="left-menu-container"><ul class="left-menu"><li>
+<form class="apisearch" action="30_search.html" method="GET">
+	<input type="search" name="q" placeholder="Search" autosave="Unity Reference" results="5" class="sbox" id="q" />
+				
+	<script type="text/javascript" language="JavaScript">
+	<!--
+	function detect() {
+		// simplify things
+		var agent 	= navigator.userAgent.toLowerCase();
+		
+		// detect platform
+		this.isMac		= (agent.indexOf('mac') != -1);
+		this.isWin		= (agent.indexOf('win') != -1);
+		this.isWin2k	= (this.isWin && (
+				agent.indexOf('nt 5') != -1));
+		this.isWinSP2	= (this.isWin && (
+				agent.indexOf('xp') != -1 || 
+				agent.indexOf('sv1') != -1));
+		this.isOther	= (
+				agent.indexOf('unix') != -1 || 
+				agent.indexOf('sunos') != -1 || 
+				agent.indexOf('bsd') != -1 ||
+				agent.indexOf('x11') != -1 || 
+				agent.indexOf('linux') != -1);
+		
+		// detect browser
+		this.isSafari	= (agent.indexOf('safari') != -1);
+		this.isSafari2 = (this.isSafari && (parseFloat(agent.substring(agent.indexOf("applewebkit/")+"applewebkit/".length,agent.length).substring(0,agent.substring(agent.indexOf("applewebkit/")+"applewebkit/".length,agent.length).indexOf(' '))) >=  300));
+		this.isOpera	= (agent.indexOf('opera') != -1);
+		this.isNN		= (agent.indexOf('netscape') != -1);
+		this.isIE		= (agent.indexOf('msie') != -1);
+	}
+	var browser = new detect();
+	var str = "Search";
+	var q=document.getElementById('q');
+	if (!browser.isSafari2) {q.value=str;q.onfocus=function(){q.value="";q.style.color="#000";};}
+	//-->
+	</script>
+</form>
+</li><li><span class="left-menu-heading">Menu</span></li><li><a title="Scripting overview" class="left-menu-item" href="index.html">Overview</a></li><li><a title="List of scripting classes" class="left-menu-item" href="20_class_hierarchy.html">Runtime Classes</a></li><li><a title="List of attributes" class="left-menu-item left-menu-indent" href="20_class_hierarchy.Attributes.html">Attributes</a></li><li><a title="List of enumerations" class="left-menu-item left-menu-indent" href="20_class_hierarchy.Enumerations.html">Enumerations</a></li><li><a title="Classes for extending Unity editor" class="left-menu-item" href="20_class_hierarchy.Editor_Classes.html">Editor Classes</a></li><li><a title="List of editor enumerations" class="left-menu-item left-menu-indent" href="20_class_hierarchy.Editor_Enumerations.html">Enumerations</a></li><li><a title="Scripting change history" class="left-menu-item" href="40_history.html">History</a></li><li><a title="Alphabetical index" class="left-menu-item" href="10_reference.html">Index</a></li><li><span class="left-menu-seperator"></span></li><li><a title="List of scripting classes" class="left-menu-heading" href="20_class_hierarchy.html">Runtime Classes</a></li><li><a class="left-menu-item" href="AccelerationEvent.html">AccelerationEvent</a></li><li><a class="left-menu-item" href="AndroidInput.html">AndroidInput</a></li><li><span class="left-menu-item left-menu-current">AndroidJNI</span></li><li><a class="left-menu-item" href="AndroidJNIHelper.html">AndroidJNIHelper</a></li><li><a class="left-menu-item" href="AndroidJavaClass.html">AndroidJavaClass</a></li><li><a class="left-menu-item" href="AndroidJavaObject.html">AndroidJavaObject</a></li><li><a class="left-menu-item" href="Animation.html">Animation</a></li><li><a class="left-menu-item" href="AnimationClip.html">AnimationClip</a></li><li><a class="left-menu-item" href="AnimationCurve.html">AnimationCurve</a></li><li><a class="left-menu-item" href="AnimationEvent.html">AnimationEvent</a></li><li><a class="left-menu-item" href="AnimationState.html">AnimationState</a></li><li><a class="left-menu-item" href="Application.html">Application</a></li><li><a class="left-menu-item" href="Array.html">Array</a></li><li><a class="left-menu-item" href="AssetBundle.html">AssetBundle</a></li><li><a class="left-menu-item" href="AssetBundleRequest.html">AssetBundleRequest</a></li><li><a class="left-menu-item" href="AsyncOperation.html">AsyncOperation</a></li><li><a class="left-menu-item" href="AudioChorusFilter.html">AudioChorusFilter</a></li><li><a class="left-menu-item" href="AudioClip.html">AudioClip</a></li><li><a class="left-menu-item" href="AudioDistortionFilter.html">AudioDistortionFilter</a></li><li><a class="left-menu-item" href="AudioEchoFilter.html">AudioEchoFilter</a></li><li><a class="left-menu-item" href="AudioHighPassFilter.html">AudioHighPassFilter</a></li><li><a class="left-menu-item" href="AudioListener.html">AudioListener</a></li><li><a class="left-menu-item" href="AudioLowPassFilter.html">AudioLowPassFilter</a></li><li><a class="left-menu-item" href="AudioReverbFilter.html">AudioReverbFilter</a></li><li><a class="left-menu-item" href="AudioReverbZone.html">AudioReverbZone</a></li><li><a class="left-menu-item" href="AudioSettings.html">AudioSettings</a></li><li><a class="left-menu-item" href="AudioSource.html">AudioSource</a></li><li><a class="left-menu-item" href="Behaviour.html">Behaviour</a></li><li><a class="left-menu-item" href="BitStream.html">BitStream</a></li><li><a class="left-menu-item" href="BoneWeight.html">BoneWeight</a></li><li><a class="left-menu-item" href="Bounds.html">Bounds</a></li><li><a class="left-menu-item" href="BoxCollider.html">BoxCollider</a></li><li><a class="left-menu-item" href="Caching.html">Caching</a></li><li><a class="left-menu-item" href="Camera.html">Camera</a></li><li><a class="left-menu-item" href="CapsuleCollider.html">CapsuleCollider</a></li><li><a class="left-menu-item" href="CharacterController.html">CharacterController</a></li><li><a class="left-menu-item" href="CharacterJoint.html">CharacterJoint</a></li><li><a class="left-menu-item" href="Cloth.html">Cloth</a></li><li><a class="left-menu-item" href="ClothRenderer.html">ClothRenderer</a></li><li><a class="left-menu-item" href="ClothSkinningCoefficient.html">ClothSkinningCoefficient</a></li><li><a class="left-menu-item" href="Collider.html">Collider</a></li><li><a class="left-menu-item" href="Collision.html">Collision</a></li><li><a class="left-menu-item" href="Color.html">Color</a></li><li><a class="left-menu-item" href="CombineInstance.html">CombineInstance</a></li><li><a class="left-menu-item" href="Component.html">Component</a></li><li><a class="left-menu-item" href="ConfigurableJoint.html">ConfigurableJoint</a></li><li><a class="left-menu-item" href="ConstantForce.html">ConstantForce</a></li><li><a class="left-menu-item" href="ContactPoint.html">ContactPoint</a></li><li><a class="left-menu-item" href="ControllerColliderHit.html">ControllerColliderHit</a></li><li><a class="left-menu-item" href="Coroutine.html">Coroutine</a></li><li><a class="left-menu-item" href="Cubemap.html">Cubemap</a></li><li><a class="left-menu-item" href="Debug.html">Debug</a></li><li><a class="left-menu-item" href="DetailPrototype.html">DetailPrototype</a></li><li><a class="left-menu-item" href="Event.html">Event</a></li><li><a class="left-menu-item" href="FixedJoint.html">FixedJoint</a></li><li><a class="left-menu-item" href="Flare.html">Flare</a></li><li><a class="left-menu-item" href="Font.html">Font</a></li><li><a class="left-menu-item" href="GL.html">GL</a></li><li><a class="left-menu-item" href="GUI.html">GUI</a></li><li><a class="left-menu-item" href="GUIContent.html">GUIContent</a></li><li><a class="left-menu-item" href="GUIElement.html">GUIElement</a></li><li><a class="left-menu-item" href="GUILayer.html">GUILayer</a></li><li><a class="left-menu-item" href="GUILayout.html">GUILayout</a></li><li><a class="left-menu-item" href="GUILayoutOption.html">GUILayoutOption</a></li><li><a class="left-menu-item" href="GUILayoutUtility.html">GUILayoutUtility</a></li><li><a class="left-menu-item" href="GUISettings.html">GUISettings</a></li><li><a class="left-menu-item" href="GUISkin.html">GUISkin</a></li><li><a class="left-menu-item" href="GUIStyle.html">GUIStyle</a></li><li><a class="left-menu-item" href="GUIStyleState.html">GUIStyleState</a></li><li><a class="left-menu-item" href="GUIText.html">GUIText</a></li><li><a class="left-menu-item" href="GUITexture.html">GUITexture</a></li><li><a class="left-menu-item" href="GUIUtility.html">GUIUtility</a></li><li><a class="left-menu-item" href="GameObject.html">GameObject</a></li><li><a class="left-menu-item" href="GeometryUtility.html">GeometryUtility</a></li><li><a class="left-menu-item" href="Gizmos.html">Gizmos</a></li><li><a class="left-menu-item" href="Graphics.html">Graphics</a></li><li><a class="left-menu-item" href="Hashtable.html">Hashtable</a></li><li><a class="left-menu-item" href="HingeJoint.html">HingeJoint</a></li><li><a class="left-menu-item" href="HostData.html">HostData</a></li><li><a class="left-menu-item" href="Input.html">Input</a></li><li><a class="left-menu-item" href="InteractiveCloth.html">InteractiveCloth</a></li><li><a class="left-menu-item" href="Joint.html">Joint</a></li><li><a class="left-menu-item" href="JointDrive.html">JointDrive</a></li><li><a class="left-menu-item" href="JointLimits.html">JointLimits</a></li><li><a class="left-menu-item" href="JointMotor.html">JointMotor</a></li><li><a class="left-menu-item" href="JointSpring.html">JointSpring</a></li><li><a class="left-menu-item" href="Keyframe.html">Keyframe</a></li><li><a class="left-menu-item" href="LayerMask.html">LayerMask</a></li><li><a class="left-menu-item" href="LensFlare.html">LensFlare</a></li><li><a class="left-menu-item" href="Light.html">Light</a></li><li><a class="left-menu-item" href="LightmapData.html">LightmapData</a></li><li><a class="left-menu-item" href="LightmapSettings.html">LightmapSettings</a></li><li><a class="left-menu-item" href="LineRenderer.html">LineRenderer</a></li><li><a class="left-menu-item" href="LocationInfo.html">LocationInfo</a></li><li><a class="left-menu-item" href="MasterServer.html">MasterServer</a></li><li><a class="left-menu-item" href="Material.html">Material</a></li><li><a class="left-menu-item" href="MaterialPropertyBlock.html">MaterialPropertyBlock</a></li><li><a class="left-menu-item" href="Mathf.html">Mathf</a></li><li><a class="left-menu-item" href="Matrix4x4.html">Matrix4x4</a></li><li><a class="left-menu-item" href="Mesh.html">Mesh</a></li><li><a class="left-menu-item" href="MeshCollider.html">MeshCollider</a></li><li><a class="left-menu-item" href="MeshFilter.html">MeshFilter</a></li><li><a class="left-menu-item" href="MeshRenderer.html">MeshRenderer</a></li><li><a class="left-menu-item" href="MonoBehaviour.html">MonoBehaviour</a></li><li><a class="left-menu-item" href="MovieTexture.html">MovieTexture</a></li><li><a class="left-menu-item" href="Network.html">Network</a></li><li><a class="left-menu-item" href="NetworkMessageInfo.html">NetworkMessageInfo</a></li><li><a class="left-menu-item" href="NetworkPlayer.html">NetworkPlayer</a></li><li><a class="left-menu-item" href="NetworkView.html">NetworkView</a></li><li><a class="left-menu-item" href="NetworkViewID.html">NetworkViewID</a></li><li><a class="left-menu-item" href="Object.html">Object</a></li><li><a class="left-menu-item" href="OcclusionArea.html">OcclusionArea</a></li><li><a class="left-menu-item" href="Particle.html">Particle</a></li><li><a class="left-menu-item" href="ParticleAnimator.html">ParticleAnimator</a></li><li><a class="left-menu-item" href="ParticleEmitter.html">ParticleEmitter</a></li><li><a class="left-menu-item" href="ParticleRenderer.html">ParticleRenderer</a></li><li><a class="left-menu-item" href="Path.html">Path</a></li><li><a class="left-menu-item" href="PhysicMaterial.html">PhysicMaterial</a></li><li><a class="left-menu-item" href="Physics.html">Physics</a></li><li><a class="left-menu-item" href="Ping.html">Ping</a></li><li><a class="left-menu-item" href="Plane.html">Plane</a></li><li><a class="left-menu-item" href="PlayerPrefs.html">PlayerPrefs</a></li><li><a class="left-menu-item" href="PlayerPrefsException.html">PlayerPrefsException</a></li><li><a class="left-menu-item" href="Profiler.html">Profiler</a></li><li><a class="left-menu-item" href="Projector.html">Projector</a></li><li><a class="left-menu-item" href="QualitySettings.html">QualitySettings</a></li><li><a class="left-menu-item" href="Quaternion.html">Quaternion</a></li><li><a class="left-menu-item" href="Random.html">Random</a></li><li><a class="left-menu-item" href="Ray.html">Ray</a></li><li><a class="left-menu-item" href="RaycastHit.html">RaycastHit</a></li><li><a class="left-menu-item" href="Rect.html">Rect</a></li><li><a class="left-menu-item" href="RectOffset.html">RectOffset</a></li><li><a class="left-menu-item" href="RenderSettings.html">RenderSettings</a></li><li><a class="left-menu-item" href="RenderTexture.html">RenderTexture</a></li><li><a class="left-menu-item" href="Renderer.html">Renderer</a></li><li><a class="left-menu-item" href="Resolution.html">Resolution</a></li><li><a class="left-menu-item" href="Resources.html">Resources</a></li><li><a class="left-menu-item" href="Rigidbody.html">Rigidbody</a></li><li><a class="left-menu-item" href="Screen.html">Screen</a></li><li><a class="left-menu-item" href="ScriptableObject.html">ScriptableObject</a></li><li><a class="left-menu-item" href="Security.html">Security</a></li><li><a class="left-menu-item" href="Shader.html">Shader</a></li><li><a class="left-menu-item" href="SkinnedCloth.html">SkinnedCloth</a></li><li><a class="left-menu-item" href="SkinnedMeshRenderer.html">SkinnedMeshRenderer</a></li><li><a class="left-menu-item" href="Skybox.html">Skybox</a></li><li><a class="left-menu-item" href="SoftJointLimit.html">SoftJointLimit</a></li><li><a class="left-menu-item" href="SphereCollider.html">SphereCollider</a></li><li><a class="left-menu-item" href="SplatPrototype.html">SplatPrototype</a></li><li><a class="left-menu-item" href="SpringJoint.html">SpringJoint</a></li><li><a class="left-menu-item" href="StaticBatchingUtility.html">StaticBatchingUtility</a></li><li><a class="left-menu-item" href="String.html">String</a></li><li><a class="left-menu-item" href="SystemInfo.html">SystemInfo</a></li><li><a class="left-menu-item" href="Terrain.html">Terrain</a></li><li><a class="left-menu-item" href="TerrainCollider.html">TerrainCollider</a></li><li><a class="left-menu-item" href="TerrainData.html">TerrainData</a></li><li><a class="left-menu-item" href="TextAsset.html">TextAsset</a></li><li><a class="left-menu-item" href="TextMesh.html">TextMesh</a></li><li><a class="left-menu-item" href="Texture.html">Texture</a></li><li><a class="left-menu-item" href="Texture2D.html">Texture2D</a></li><li><a class="left-menu-item" href="Time.html">Time</a></li><li><a class="left-menu-item" href="Touch.html">Touch</a></li><li><a class="left-menu-item" href="TrailRenderer.html">TrailRenderer</a></li><li><a class="left-menu-item" href="Transform.html">Transform</a></li><li><a class="left-menu-item" href="Tree.html">Tree</a></li><li><a class="left-menu-item" href="TreeInstance.html">TreeInstance</a></li><li><a class="left-menu-item" href="TreePrototype.html">TreePrototype</a></li><li><a class="left-menu-item" href="Vector2.html">Vector2</a></li><li><a class="left-menu-item" href="Vector3.html">Vector3</a></li><li><a class="left-menu-item" href="Vector4.html">Vector4</a></li><li><a class="left-menu-item" href="WWW.html">WWW</a></li><li><a class="left-menu-item" href="WWWForm.html">WWWForm</a></li><li><a class="left-menu-item" href="WaitForEndOfFrame.html">WaitForEndOfFrame</a></li><li><a class="left-menu-item" href="WaitForFixedUpdate.html">WaitForFixedUpdate</a></li><li><a class="left-menu-item" href="WaitForSeconds.html">WaitForSeconds</a></li><li><a class="left-menu-item" href="WheelCollider.html">WheelCollider</a></li><li><a class="left-menu-item" href="WheelFrictionCurve.html">WheelFrictionCurve</a></li><li><a class="left-menu-item" href="WheelHit.html">WheelHit</a></li><li><a class="left-menu-item" href="YieldInstruction.html">YieldInstruction</a></li><li><a class="left-menu-item" href="iPhoneInput.html">iPhoneInput</a></li><li><a class="left-menu-item" href="iPhoneKeyboard.html">iPhoneKeyboard</a></li><li><a class="left-menu-item" href="iPhoneSettings.html">iPhoneSettings</a></li><li><a class="left-menu-item" href="iPhoneUtils.html">iPhoneUtils</a></li></ul></div>
+	<!-- #TemplateEndEditable -->
+			<!-- #TemplateBeginEditable name="body" -->
+		   <p class="first"> 'Raw' JNI interface to Android Dalvik (Java) VM from Mono (CS/JS)</p>
+   <a name="Class Functions0"></a>
+   <div class="script-section-softheading">Class Functions</div>
+
+			<table class="class-member-list">
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.AttachCurrentThread.html">AttachCurrentThread</a></td><td>
+			   <p class="class-member-description"> Attaches the current thread to a Java (Dalvik) VM.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.DetachCurrentThread.html">DetachCurrentThread</a></td><td>
+			   <p class="class-member-description"> Detaches the current thread from a Java (Dalvik) VM.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetVersion.html">GetVersion</a></td><td>
+			   <p class="class-member-description"> Returns the version of the native method interface.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.FindClass.html">FindClass</a></td><td>
+			   <p class="class-member-description"> This function loads a locally-defined class.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.FromReflectedMethod.html">FromReflectedMethod</a></td><td>
+			   <p class="class-member-description"> Converts a <tt>java.lang.reflect.Method</tt> or <tt>java.lang.reflect.Constructor</tt> object to a method ID.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.FromReflectedField.html">FromReflectedField</a></td><td>
+			   <p class="class-member-description"> Converts a <tt>java.lang.reflect.Field</tt> to a field ID.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.ToReflectedMethod.html">ToReflectedMethod</a></td><td>
+			   <p class="class-member-description"> Converts a method ID derived from clazz to a <tt>java.lang.reflect.Method</tt> or <tt>java.lang.reflect.Constructor</tt> object.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.ToReflectedField.html">ToReflectedField</a></td><td>
+			   <p class="class-member-description"> Converts a field ID derived from cls to a <tt>java.lang.reflect.Field</tt> object.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetSuperclass.html">GetSuperclass</a></td><td>
+			   <p class="class-member-description"> If <tt>clazz</tt> represents any class other than the class <tt>Object</tt>, then this function returns the object that represents the superclass of the class specified by <tt>clazz</tt>.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.IsAssignableFrom.html">IsAssignableFrom</a></td><td>
+			   <p class="class-member-description"> Determines whether an object of <tt>clazz1</tt> can be safely cast to <tt>clazz2</tt>.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.Throw.html">Throw</a></td><td>
+			   <p class="class-member-description"> Causes a <tt>java.lang.Throwable</tt> object to be thrown.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.ThrowNew.html">ThrowNew</a></td><td>
+			   <p class="class-member-description"> Constructs an exception object from the specified class with the <tt>message</tt> specified by message and causes that exception to be thrown.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.ExceptionOccurred.html">ExceptionOccurred</a></td><td>
+			   <p class="class-member-description"> Determines if an exception is being thrown</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.ExceptionDescribe.html">ExceptionDescribe</a></td><td>
+			   <p class="class-member-description"> Prints an exception and a backtrace of the stack to the <tt>logcat</tt></p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.ExceptionClear.html">ExceptionClear</a></td><td>
+			   <p class="class-member-description"> Clears any exception that is currently being thrown.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.FatalError.html">FatalError</a></td><td>
+			   <p class="class-member-description"> Raises a fatal error and does not expect the VM to recover. This function does not return.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.PushLocalFrame.html">PushLocalFrame</a></td><td>
+			   <p class="class-member-description"> Creates a new local reference frame, in which at least a given number of local references can be created.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.PopLocalFrame.html">PopLocalFrame</a></td><td>
+			   <p class="class-member-description"> Pops off the current local reference frame, frees all the local references, and returns a local reference in the previous local reference frame for the given <tt>result</tt> object.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.NewGlobalRef.html">NewGlobalRef</a></td><td>
+			   <p class="class-member-description"> Creates a new global reference to the object referred to by the <tt>obj</tt> argument.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.DeleteGlobalRef.html">DeleteGlobalRef</a></td><td>
+			   <p class="class-member-description"> Deletes the global reference pointed to by <tt>obj</tt>.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.NewLocalRef.html">NewLocalRef</a></td><td>
+			   <p class="class-member-description"> Creates a new local reference that refers to the same object as <tt>obj</tt>.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.DeleteLocalRef.html">DeleteLocalRef</a></td><td>
+			   <p class="class-member-description"> Deletes the local reference pointed to by <tt>obj</tt>.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.IsSameObject.html">IsSameObject</a></td><td>
+			   <p class="class-member-description"> Tests whether two references refer to the same Java object.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.EnsureLocalCapacity.html">EnsureLocalCapacity</a></td><td>
+			   <p class="class-member-description"> Ensures that at least a given number of local references can be created in the current thread.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.AllocObject.html">AllocObject</a></td><td>
+			   <p class="class-member-description"> Allocates a new Java object without invoking any of the constructors for the object.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.NewObject.html">NewObject</a></td><td>
+			   <p class="class-member-description"> Constructs a new Java object. The method ID indicates which constructor method to invoke. This ID must be obtained by calling GetMethodID() with <init> as the method name and void (V) as the return type.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetObjectClass.html">GetObjectClass</a></td><td>
+			   <p class="class-member-description"> Returns the class of an object.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.IsInstanceOf.html">IsInstanceOf</a></td><td>
+			   <p class="class-member-description"> Tests whether an object is an instance of a class.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetMethodID.html">GetMethodID</a></td><td>
+			   <p class="class-member-description"> Returns the method ID for an instance (nonstatic) method of a class or interface.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetFieldID.html">GetFieldID</a></td><td>
+			   <p class="class-member-description"> Returns the field ID for an instance (nonstatic) field of a class.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetStaticMethodID.html">GetStaticMethodID</a></td><td>
+			   <p class="class-member-description"> Returns the method ID for a static method of a class.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetStaticFieldID.html">GetStaticFieldID</a></td><td>
+			   <p class="class-member-description"> Returns the field ID for a static field of a class.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.NewStringUTF.html">NewStringUTF</a></td><td>
+			   <p class="class-member-description"> Constructs a new <tt>java.lang.String</tt> object from an array of characters in modified UTF-8 encoding.		</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetStringUTFLength.html">GetStringUTFLength</a></td><td>
+			   <p class="class-member-description"> Returns the length in bytes of the modified UTF-8 representation of a string.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetStringUTFChars.html">GetStringUTFChars</a></td><td>
+			   <p class="class-member-description"> Returns a managed string object representing the string in modified UTF-8 encoding.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallStringMethod.html">CallStringMethod</a></td><td>
+			   <p class="class-member-description"> Calls an instance (nonstatic) Java method defined by <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallObjectMethod.html">CallObjectMethod</a></td><td>
+			   <p class="class-member-description"> Calls an instance (nonstatic) Java method defined by <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallIntMethod.html">CallIntMethod</a></td><td>
+			   <p class="class-member-description"> Calls an instance (nonstatic) Java method defined by <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallBooleanMethod.html">CallBooleanMethod</a></td><td>
+			   <p class="class-member-description"> Calls an instance (nonstatic) Java method defined by <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallShortMethod.html">CallShortMethod</a></td><td>
+			   <p class="class-member-description"> Calls an instance (nonstatic) Java method defined by <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallByteMethod.html">CallByteMethod</a></td><td>
+			   <p class="class-member-description"> Calls an instance (nonstatic) Java method defined by <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallCharMethod.html">CallCharMethod</a></td><td>
+			   <p class="class-member-description"> Calls an instance (nonstatic) Java method defined by <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallFloatMethod.html">CallFloatMethod</a></td><td>
+			   <p class="class-member-description"> Calls an instance (nonstatic) Java method defined by <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallDoubleMethod.html">CallDoubleMethod</a></td><td>
+			   <p class="class-member-description"> Calls an instance (nonstatic) Java method defined by <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallLongMethod.html">CallLongMethod</a></td><td>
+			   <p class="class-member-description"> Calls an instance (nonstatic) Java method defined by <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallVoidMethod.html">CallVoidMethod</a></td><td>
+			   <p class="class-member-description"> Calls an instance (nonstatic) Java method defined by <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetStringField.html">GetStringField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of an instance (nonstatic) field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetObjectField.html">GetObjectField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of an instance (nonstatic) field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetBooleanField.html">GetBooleanField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of an instance (nonstatic) field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetByteField.html">GetByteField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of an instance (nonstatic) field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetCharField.html">GetCharField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of an instance (nonstatic) field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetShortField.html">GetShortField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of an instance (nonstatic) field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetIntField.html">GetIntField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of an instance (nonstatic) field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetLongField.html">GetLongField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of an instance (nonstatic) field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetFloatField.html">GetFloatField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of an instance (nonstatic) field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetDoubleField.html">GetDoubleField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of an instance (nonstatic) field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetStringField.html">SetStringField</a></td><td>
+			   <p class="class-member-description"> This function sets the value of an instance (nonstatic) field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetObjectField.html">SetObjectField</a></td><td>
+			   <p class="class-member-description"> This function sets the value of an instance (nonstatic) field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetBooleanField.html">SetBooleanField</a></td><td>
+			   <p class="class-member-description"> This function sets the value of an instance (nonstatic) field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetByteField.html">SetByteField</a></td><td>
+			   <p class="class-member-description"> This function sets the value of an instance (nonstatic) field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetCharField.html">SetCharField</a></td><td>
+			   <p class="class-member-description"> This function sets the value of an instance (nonstatic) field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetShortField.html">SetShortField</a></td><td>
+			   <p class="class-member-description"> This function sets the value of an instance (nonstatic) field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetIntField.html">SetIntField</a></td><td>
+			   <p class="class-member-description"> This function sets the value of an instance (nonstatic) field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetLongField.html">SetLongField</a></td><td>
+			   <p class="class-member-description"> This function sets the value of an instance (nonstatic) field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetFloatField.html">SetFloatField</a></td><td>
+			   <p class="class-member-description"> This function sets the value of an instance (nonstatic) field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetDoubleField.html">SetDoubleField</a></td><td>
+			   <p class="class-member-description"> This function sets the value of an instance (nonstatic) field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallStaticStringMethod.html">CallStaticStringMethod</a></td><td>
+			   <p class="class-member-description"> Invokes a static method on a Java object, according to the specified <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallStaticObjectMethod.html">CallStaticObjectMethod</a></td><td>
+			   <p class="class-member-description"> Invokes a static method on a Java object, according to the specified <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallStaticIntMethod.html">CallStaticIntMethod</a></td><td>
+			   <p class="class-member-description"> Invokes a static method on a Java object, according to the specified <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallStaticBooleanMethod.html">CallStaticBooleanMethod</a></td><td>
+			   <p class="class-member-description"> Invokes a static method on a Java object, according to the specified <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallStaticShortMethod.html">CallStaticShortMethod</a></td><td>
+			   <p class="class-member-description"> Invokes a static method on a Java object, according to the specified <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallStaticByteMethod.html">CallStaticByteMethod</a></td><td>
+			   <p class="class-member-description"> Invokes a static method on a Java object, according to the specified <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallStaticCharMethod.html">CallStaticCharMethod</a></td><td>
+			   <p class="class-member-description"> Invokes a static method on a Java object, according to the specified <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallStaticFloatMethod.html">CallStaticFloatMethod</a></td><td>
+			   <p class="class-member-description"> Invokes a static method on a Java object, according to the specified <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallStaticDoubleMethod.html">CallStaticDoubleMethod</a></td><td>
+			   <p class="class-member-description"> Invokes a static method on a Java object, according to the specified <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallStaticLongMethod.html">CallStaticLongMethod</a></td><td>
+			   <p class="class-member-description"> Invokes a static method on a Java object, according to the specified <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.CallStaticVoidMethod.html">CallStaticVoidMethod</a></td><td>
+			   <p class="class-member-description"> Invokes a static method on a Java object, according to the specified <tt>methodID</tt>, optionally passing an array of arguments (<tt>args</tt>) to the method.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetStaticStringField.html">GetStaticStringField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of a static field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetStaticObjectField.html">GetStaticObjectField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of a static field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetStaticBooleanField.html">GetStaticBooleanField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of a static field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetStaticByteField.html">GetStaticByteField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of a static field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetStaticCharField.html">GetStaticCharField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of a static field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetStaticShortField.html">GetStaticShortField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of a static field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetStaticIntField.html">GetStaticIntField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of a static field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetStaticLongField.html">GetStaticLongField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of a static field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetStaticFloatField.html">GetStaticFloatField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of a static field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetStaticDoubleField.html">GetStaticDoubleField</a></td><td>
+			   <p class="class-member-description"> This function returns the value of a static field of an object. 	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetStaticStringField.html">SetStaticStringField</a></td><td>
+			   <p class="class-member-description"> This function ets the value of a static field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetStaticObjectField.html">SetStaticObjectField</a></td><td>
+			   <p class="class-member-description"> This function ets the value of a static field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetStaticBooleanField.html">SetStaticBooleanField</a></td><td>
+			   <p class="class-member-description"> This function ets the value of a static field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetStaticByteField.html">SetStaticByteField</a></td><td>
+			   <p class="class-member-description"> This function ets the value of a static field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetStaticCharField.html">SetStaticCharField</a></td><td>
+			   <p class="class-member-description"> This function ets the value of a static field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetStaticShortField.html">SetStaticShortField</a></td><td>
+			   <p class="class-member-description"> This function ets the value of a static field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetStaticIntField.html">SetStaticIntField</a></td><td>
+			   <p class="class-member-description"> This function ets the value of a static field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetStaticLongField.html">SetStaticLongField</a></td><td>
+			   <p class="class-member-description"> This function ets the value of a static field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetStaticFloatField.html">SetStaticFloatField</a></td><td>
+			   <p class="class-member-description"> This function ets the value of a static field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetStaticDoubleField.html">SetStaticDoubleField</a></td><td>
+			   <p class="class-member-description"> This function ets the value of a static field of an object.	</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.ToBooleanArray.html">ToBooleanArray</a></td><td>
+			   <p class="class-member-description"> Convert a managed array of System.Boolean to a Java array of <tt>boolean</tt>.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.ToByteArray.html">ToByteArray</a></td><td>
+			   <p class="class-member-description"> Convert a managed array of System.Byte to a Java array of <tt>byte</tt>.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.ToCharArray.html">ToCharArray</a></td><td>
+			   <p class="class-member-description"> Convert a managed array of System.Char to a Java array of <tt>char</tt>.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.ToShortArray.html">ToShortArray</a></td><td>
+			   <p class="class-member-description"> Convert a managed array of System.Int16 to a Java array of <tt>short</tt>.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.ToIntArray.html">ToIntArray</a></td><td>
+			   <p class="class-member-description"> Convert a managed array of System.Int32 to a Java array of <tt>int</tt>.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.ToLongArray.html">ToLongArray</a></td><td>
+			   <p class="class-member-description"> Convert a managed array of System.Int64 to a Java array of <tt>long</tt>.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.ToFloatArray.html">ToFloatArray</a></td><td>
+			   <p class="class-member-description"> Convert a managed array of System.Single to a Java array of <tt>float</tt>.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.ToDoubleArray.html">ToDoubleArray</a></td><td>
+			   <p class="class-member-description"> Convert a managed array of System.Double to a Java array of <tt>double</tt>.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.ToObjectArray.html">ToObjectArray</a></td><td>
+			   <p class="class-member-description"> Convert a managed array of System.IntPtr, representing Java objects, to a Java array of <tt>java.lang.Object</tt>.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.FromBooleanArray.html">FromBooleanArray</a></td><td>
+			   <p class="class-member-description"> Convert a Java array of <tt>boolean</tt> to a managed array of System.Boolean.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.FromByteArray.html">FromByteArray</a></td><td>
+			   <p class="class-member-description"> Convert a Java array of <tt>byte</tt> to a managed array of System.Byte.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.FromCharArray.html">FromCharArray</a></td><td>
+			   <p class="class-member-description"> Convert a Java array of <tt>char</tt> to a managed array of System.Char.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.FromShortArray.html">FromShortArray</a></td><td>
+			   <p class="class-member-description"> Convert a Java array of <tt>short</tt> to a managed array of System.Int16.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.FromIntArray.html">FromIntArray</a></td><td>
+			   <p class="class-member-description"> Convert a Java array of <tt>int</tt> to a managed array of System.Int32.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.FromLongArray.html">FromLongArray</a></td><td>
+			   <p class="class-member-description"> Convert a Java array of <tt>long</tt> to a managed array of System.Int64.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.FromFloatArray.html">FromFloatArray</a></td><td>
+			   <p class="class-member-description"> Convert a Java array of <tt>float</tt> to a managed array of System.Single.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.FromDoubleArray.html">FromDoubleArray</a></td><td>
+			   <p class="class-member-description"> Convert a Java array of <tt>double</tt> to a managed array of System.Double.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.FromObjectArray.html">FromObjectArray</a></td><td>
+			   <p class="class-member-description"> Convert a Java array of <tt>java.lang.Object</tt> to a managed array of System.IntPtr, representing Java objects.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetArrayLength.html">GetArrayLength</a></td><td>
+			   <p class="class-member-description"> Returns the number of elements in the array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.NewBooleanArray.html">NewBooleanArray</a></td><td>
+			   <p class="class-member-description"> Construct a new primitive array object.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.NewByteArray.html">NewByteArray</a></td><td>
+			   <p class="class-member-description"> Construct a new primitive array object.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.NewCharArray.html">NewCharArray</a></td><td>
+			   <p class="class-member-description"> Construct a new primitive array object.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.NewShortArray.html">NewShortArray</a></td><td>
+			   <p class="class-member-description"> Construct a new primitive array object.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.NewIntArray.html">NewIntArray</a></td><td>
+			   <p class="class-member-description"> Construct a new primitive array object.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.NewLongArray.html">NewLongArray</a></td><td>
+			   <p class="class-member-description"> Construct a new primitive array object.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.NewFloatArray.html">NewFloatArray</a></td><td>
+			   <p class="class-member-description"> Construct a new primitive array object.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.NewDoubleArray.html">NewDoubleArray</a></td><td>
+			   <p class="class-member-description"> Construct a new primitive array object.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.NewObjectArray.html">NewObjectArray</a></td><td>
+			   <p class="class-member-description"> Constructs a new array holding objects in class <tt>clazz</tt>. All elements are initially set to <tt>obj</tt>.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetBooleanArrayElement.html">GetBooleanArrayElement</a></td><td>
+			   <p class="class-member-description"> Returns the value of one element of a primitive array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetByteArrayElement.html">GetByteArrayElement</a></td><td>
+			   <p class="class-member-description"> Returns the value of one element of a primitive array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetCharArrayElement.html">GetCharArrayElement</a></td><td>
+			   <p class="class-member-description"> Returns the value of one element of a primitive array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetShortArrayElement.html">GetShortArrayElement</a></td><td>
+			   <p class="class-member-description"> Returns the value of one element of a primitive array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetIntArrayElement.html">GetIntArrayElement</a></td><td>
+			   <p class="class-member-description"> Returns the value of one element of a primitive array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetLongArrayElement.html">GetLongArrayElement</a></td><td>
+			   <p class="class-member-description"> Returns the value of one element of a primitive array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetFloatArrayElement.html">GetFloatArrayElement</a></td><td>
+			   <p class="class-member-description"> Returns the value of one element of a primitive array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetDoubleArrayElement.html">GetDoubleArrayElement</a></td><td>
+			   <p class="class-member-description"> Returns the value of one element of a primitive array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.GetObjectArrayElement.html">GetObjectArrayElement</a></td><td>
+			   <p class="class-member-description"> Returns an element of an <tt>Object</tt> array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetBooleanArrayElement.html">SetBooleanArrayElement</a></td><td>
+			   <p class="class-member-description"> Sets the value of one element in a primitive array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetByteArrayElement.html">SetByteArrayElement</a></td><td>
+			   <p class="class-member-description"> Sets the value of one element in a primitive array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetCharArrayElement.html">SetCharArrayElement</a></td><td>
+			   <p class="class-member-description"> Sets the value of one element in a primitive array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetShortArrayElement.html">SetShortArrayElement</a></td><td>
+			   <p class="class-member-description"> Sets the value of one element in a primitive array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetIntArrayElement.html">SetIntArrayElement</a></td><td>
+			   <p class="class-member-description"> Sets the value of one element in a primitive array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetLongArrayElement.html">SetLongArrayElement</a></td><td>
+			   <p class="class-member-description"> Sets the value of one element in a primitive array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetFloatArrayElement.html">SetFloatArrayElement</a></td><td>
+			   <p class="class-member-description"> Sets the value of one element in a primitive array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetDoubleArrayElement.html">SetDoubleArrayElement</a></td><td>
+			   <p class="class-member-description"> Sets the value of one element in a primitive array.</p>
+</td></tr>
+			
+				<tr><td class="class-member-list-name"><a href="AndroidJNI.SetObjectArrayElement.html">SetObjectArrayElement</a></td><td>
+			   <p class="class-member-description"> Sets an element of an <tt>Object</tt> array.</p>
+</td></tr>
+			</table>
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->
+		
+			<!-- #TemplateEndEditable -->	
+			
+	</div><!-- #TemplateEndEditable -->
+    <script type="text/javascript">
+
+    //prevent an error on older versions of IE(x) < IE7 who did not have a javascript console.
+    if (typeof console == "undefined" || typeof console.log == "undefined") var console = { log: function() {} };
+
+
+    var $j = jQuery.noConflict();
+    $j(document).ready(function($){
+
+    	var languages = [];
+    	function getCookie(cookieName){
+    //a wrapper, because google chrome does not allow for security reasons cookies on local files.
+    //an option can be set while loading chrome to allow cookies on local files
+    		try {
+    			return $.cookie(cookieName);
+    		}catch(e){
+    			console.log(e);
+    		}
+    	}
+
+    	function setCookie(cookieName, cookieValue){
+    //a wrapper, because google chrome does not allow for security reasons cookies on local files.
+    //an option can be set while loading chrome to allow cookies on local files
+    		try{
+    			return $.cookie(cookieName, cookieValue);
+    		}catch(e){
+    			console.log(e);
+    		}
+    	}
+    
+    /*
+    decectLangauges looks at all of the div(s) containing a class of "code"
+    it then creates a list of languages in that list to generate the drop down.
+    to ad a language, ad an example with that language defined 
+    in the attribute "code_lang_name" for that div
+    */
+    	function detectLanguages(){
+    		languages = [];
+    		$("div.code").each(
+    			function(){
+    				var isThere = false;
+    //set the value of the attribute
+    				var isNewLang = $(this).attr("code_lang_name");
+    				for ( i in languages ){
+    					if( isNewLang == languages[i] ){
+    						isThere = true;
+    					}
+    				}				
+    				if( !isThere ){
+    //adds a new language to the stack/ array
+    				   languages.push(isNewLang);
+    				}
+    			});
+    		console.log("languages detected", languages);
+    	}
+    
+    //execute the function detectLanguages just after we defined it, this should only happen once and on page load after the document object model is ready
+    	detectLanguages();
+
+    	function buildListCSelect(){
+    //finds the doc element with an id of selectedLangauge, base on css3 rules, then removes all children
+    		$(".cSelect ul").empty();
+    		$(".cSelect .cSelect-Selected").text("");
+    		var langCookie = getCookie("codeLanguage");		
+    		for( i in languages ){
+    //inserts a new child with the included html
+    			$(".cSelect ul").append("<li>" + languages[i] + "</li>");
+    		}
+    
+    //if the cookie is there, set that item to selected.
+    		for( i in languages ){
+    			if(langCookie !== null && languages[i] == langCookie){
+    				$(".cSelect .cSelect-Selected").text(languages[i]);
+    			}
+    		}
+
+    		if( $(".cSelect .cSelect-Selected").text().length == 0){
+    			var first = $(".cSelect li:first").text();
+    			$(".cSelect .cSelect-Selected").text(first);
+    		}
+
+    	}
+    	buildListCSelect();
+    
+    	function showCSelectedLanguage(){
+    		var selected = $(".cSelect .cSelect-Selected:first").text();
+    		var langAvail = false;
+    		var langCookie = getCookie("codeLanguage");
+    		for( i in languages ){
+    			if(langCookie == languages[i]){
+    				langAvail = true;
+    			}
+    		}
+    		if(langAvail) {
+    			selected = langCookie;
+    		} else {
+    			console.log("the language stored in the cookie is not availible", langCookie);
+    		}
+    		$("div.code[code_lang_name]").hide();
+    		$("div.code[code_lang_name='"+ selected +"']").show();
+    	}
+    	showCSelectedLanguage(); //set the default.
+           $(".cSelect").addClass("roundBottom");
+    	$(".cSelect ul").hide();
+    /* 	$(".cSelect").hover(
+     		function(){
+     			$(this).find("ul").show();
+     		},
+     		function(){
+     			$(this).find("ul").hide();
+     		}
+     	);
+*/
+    	$(".cSelect").hover(
+    		function(){
+    			$(document).unbind("click.cSelect");
+    		},
+    		function(){
+    			$(document).bind("click.cSelect", function(event){
+                                   $(".cSelect").addClass("roundBottom");
+    				$(".cSelect ul").hide();
+    				$(this).unbind(event);
+    			});
+    		}
+    	);
+
+
+    	$(".cSelect li").hover(
+    		function(){
+    			$(this).addClass("cSelect-highlight");
+    		},
+    		function(){
+    			$(this).removeClass("cSelect-highlight");
+    		}
+    	);
+
+    	var suppress = false;
+    	function enable(){
+    		suppress = false;
+    	}
+
+
+    	$(".cSelect li").click(function(){
+    		var value = $(this).text();
+    		console.log( "new selection ", value );
+    		$(this).parents(".cSelect").find(".cSelect-Selected").text(value);
+    		suppress = true;
+                   $(".cSelect").addClass("roundBottom");
+    		$(".cSelect ul").hide();
+    		$(this).parents(".cSelect").trigger("change");
+    		setTimeout(enable, 300 );
+    	});
+
+
+           $(".cSelect-ArrowDown")
+     		.add(".cSelect-Selected")
+     		.add(".cSelect").click(
+     		function(){
+     			var visible = $(this).parents(".cSelect").find("ul").css("display") == "block" ? true : false;
+     			if( !visible ){
+     				$(this).parents(".cSelect").removeClass("roundBottom");
+     				$(this).parents(".cSelect").find("ul").show();
+     			}else{
+     				$(this).parents(".cSelect").addClass("roundBottom");
+     				$(".cSelect ul").hide();
+     			}
+     		});
+
+
+    	$(".cSelect").click(function(){if(!suppress){}});
+ 
+    	$(".cSelect").change(function(){
+    		console.log("selected",$(this).find(".cSelect-Selected").text());
+    		selected = $(this).find(".cSelect-Selected").text();
+    		$(".cSelect").find(".cSelect-Selected").text(selected);
+    		$("div.code[code_lang_name]").hide();
+    		$("div.code[code_lang_name='"+ selected +"']").show();
+    		setCookie("codeLanguage", selected);
+    	});
+    });
+    </script>
+</body>
+</html><!-- #EndTemplate -->
+

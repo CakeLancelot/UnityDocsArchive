@@ -1,0 +1,60 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" UsePass"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title=" UsePass" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced.html%22%3EAdvanced%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Shaders.html%22%3EShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-Shader.html%22%3EShader%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-SubShader.html%22%3ESubShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-UsePass.html%22%3E%20UsePass%3C%2Fa%3E" -->
+		<h1> UsePass</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced.html">Advanced</a> &gt; <a href="Shaders.html">Shaders</a> &gt; <a href="SL-Shader.html">Shader</a> &gt; <a href="SL-SubShader.html">SubShaders</a> &gt; <a href="SL-UsePass.html"> UsePass</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="SL-BindChannels.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-GrabPass.html">Next<img src="../images/next.png"></a></div>
+
+			
+<p>The UsePass command uses named passes from another shader.
+</p>
+
+<h2>Syntax</h2>
+<p><dl><dt><b>UsePass</b> &quot;<i>Shader/Name</i>&quot; </dt><dd> Inserts all passes with a given name from a given shader. <i>Shader/Name</i> contains the name of the shader and the name of the pass, separated by a slash character.</dd></dl>
+</p>
+
+<h2>Details</h2>
+
+<p>Some of the shaders could reuse existing passes from other shaders, reducing code duplication. For example, in most pixel lit shaders the ambient or vertex lighting passes are the same as in the corresponding VertexLit shaders. The UsePass command does just that - it includes a given pass from another shader. As an example the following command uses the pass with the name <i>&quot;BASE&quot;</i> from the builtin <i>Glossy</i> shader:
+</p>
+
+<p><tt>    &nbsp;&nbsp;&nbsp;&nbsp;<b>UsePass</b> &quot; Glossy/BASE&quot;</tt>
+</p>
+
+<p>In order for UsePass to work, a name must be given to the pass one wishes to use. The <a href="../Manual/SL-NameAndTags.html">Name</a> command inside the pass gives it a name:
+</p>
+
+<p><tt>    &nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b> &quot;<i>MyPassName</i>&quot;</tt>
+</p>
+
+
+
+
+		<div class="navigation"><a href="SL-BindChannels.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-GrabPass.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

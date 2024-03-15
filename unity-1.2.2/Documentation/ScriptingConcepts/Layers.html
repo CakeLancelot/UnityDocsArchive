@@ -1,0 +1,103 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Scripting Concepts" title="Layers"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Scripting Concepts" title="Layers" path="%3Ca%20href%3D%22index.html%22%3EScripting%20Concepts%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Layers.html%22%3ELayers%3C%2Fa%3E" navigation="%3Ca%20href%3D%22index.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E " -->
+		<h1>Layers</h1>
+		<p><a href="index.html">Scripting Concepts</a> &gt; <a href="Layers.html">Layers</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="index.html"><img src="../images/prev.png"></a> </div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			<h2>Layers</h2>
+
+<p>Layers are most commonly used by raycasting to selectively ignore colliders.
+But they can also be used by cameras to render only a part of the scene.
+</p>
+
+<p>The first step is to create a new layer, which we can then assign to a game object.
+To create a new layer, open the Edit menu and select Project Settings -&gt; Tags.
+</p>
+
+<p>We create a new layer in one of the empty User Layers. We choose layer 8.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Layers-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/Layers-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>Now that you have created a new layer. You have to assign the layer to one of the game objects.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Layers-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/Layers-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>In the tag manager we assigned the Player layer to be in layer 8.
+This means if we want to only cast a ray against the player layer and ignore all other colliders.
+We have to do this:
+</p>
+
+<p>The Physics.Raycast function takes a bitmask, where each bit determines if a layer will be ignored or not.
+If all bits in the layerMask are on, we will collide against all colliders.
+If the layerMask = 0, we will never find any collisions with the ray.
+</p>
+
+<p><pre class='codelisting'>
+// bit shift the index of the layer to get a bit mask
+var layerMask = 1 &lt;&lt; 8;
+// Does the ray intersect any objects which are in the player layer.
+if (Physics.Raycast (transform.position, Vector3.forward, Mathf.Infinity, layer))
+  print (&quot;The ray hit the player&quot;);
+</pre>
+</p>
+
+<p>In the real world you want to the inverse of that however. We want to cast a ray against all colliders except those in the player layer.
+<pre class='codelisting'>
+function Update ()
+{
+  // bit shift the index of the layer to get a bit mask
+  // then flip all bits
+  var layerMask = ~(1 &lt;&lt; 8);
+  var hit : RaycastHit;
+  // Does the ray intersect any objects excluding the player layer
+  if (Physics.Raycast (transform.position, transform.TransformDirection (Vector3.forward), hit, Mathf.Infinity, layerMask))
+  {
+    Debug.DrawRay (transform.position, transform.TransformDirection (Vector3.forward) * hit.distance, Color.yellow);
+    print (&quot;Did Hit&quot;);
+  }
+  else
+  {
+    Debug.DrawRay (transform.position, transform.TransformDirection (Vector3.forward) *1000, Color.white);
+    print (&quot;Did not Hit&quot;);
+  }
+}
+</pre>
+</p>
+
+<p>When you don't pass a layerMask to the Raycast function, it will only ignore colliders that use the IgnoreRaycast layer.
+This is the easiest way to ignore some colliders when casting a ray.
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

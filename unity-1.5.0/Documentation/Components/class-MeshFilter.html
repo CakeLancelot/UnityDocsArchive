@@ -1,0 +1,58 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Mesh Filter"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Mesh Filter" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-MeshGroup.html%22%3E%20Meshes%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-MeshFilter.html%22%3EMesh%20Filter%3C%2Fa%3E" -->
+		<h1>Mesh Filter</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-MeshGroup.html"> Meshes</a> &gt; <a href="class-MeshFilter.html">Mesh Filter</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="comp-MeshGroup.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-MeshMorpher.html">Next<img src="../images/next.png"></a></div>
+
+			
+<p>The <b>Mesh Filter</b> takes a mesh from your assets and inserts it into the rendering <a href="../Components/class-Pipeline.html">pipeline</a>. Later on, a <a href="../Components/class-MeshRenderer.html">Mesh Renderer</a> receives the mesh and draws it, so it will appear on the screen.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-MeshFilter-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-MeshFilter-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>A <b>Mesh Filter</b> combined with a <b>Mesh Renderer</b> makes the model appear on screen. Car model courtesy of ATI Technologies Inc.</i>
+</p>
+
+<p>When importing mesh assets, Unity automatically creates a <b>Mesh Filter</b> or a <a href="../Components/class-SkinnedMeshFilter.html">Skinned Mesh Filter</a>, depending on whether the mesh is skinned or not.
+</p>
+
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Mesh</nobr></b></td><td> Reference to a <a href="../Components/class-Mesh.html">Mesh</a> that is inserted into the pipeline. The mesh is stored in your project.
+<p></td></tr></tr></table>
+</p>
+
+<p>To see the mesh in your scene, add a <a href="../Components/class-MeshRenderer.html">Mesh Renderer</a> to the game object.  It should be added automatically, but you will have to manually re-add it if you remove it from your object.  If the <b>Mesh Renderer</b> is not present, the object will still exist in your scene (and computer memory) but it will not be drawn.
+</p>
+
+
+
+		<div class="navigation"><a href="comp-MeshGroup.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-MeshMorpher.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

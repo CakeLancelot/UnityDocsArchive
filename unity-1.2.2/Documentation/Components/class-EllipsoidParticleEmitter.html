@@ -1,0 +1,63 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title=" Ellipsoid Particle Emitter"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title=" Ellipsoid Particle Emitter" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-ParticlesGroup.html%22%3EParticle%20systems%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-EllipsoidParticleEmitter.html%22%3E%20Ellipsoid%20Particle%20Emitter%3C%2Fa%3E" navigation="%3Ca%20href%3D%22comp-ParticlesGroup.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22class-MeshParticleEmitter.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1> Ellipsoid Particle Emitter</h1>
+		<p><a href="index.html">Components</a> &gt; <a href="comp-ParticlesGroup.html">Particle systems</a> &gt; <a href="class-EllipsoidParticleEmitter.html"> Ellipsoid Particle Emitter</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="comp-ParticlesGroup.html"><img src="../images/prev.png"></a><a href="class-MeshParticleEmitter.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+<p>The Ellipsoid Particle Emitter spawns particles inside a sphere. Use the ellipsoid property below to scale &amp; stretch the sphere.
+</p>
+<h2> Properties</h2>
+
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+ Emit</nobr></b></td><td> Is the particle active?
+</td></tr><tr><td><b><nobr>Min &amp; Max Size</nobr></b></td><td> The minimum &amp; maximum size of the particles at the time when they are spawned.
+</td></tr><tr><td><b><nobr>Min &amp; Max Energy</nobr></b></td><td> The minimum &amp; maximum lifetime of the particles, measured in seconds.
+</td></tr><tr><td><b><nobr>Min &amp; Max Emission</nobr></b></td><td> The minimum &amp; maximum number of particles
+</td></tr><tr><td><b><nobr>World Velocity</nobr></b></td><td> The starting speed of particles in world space.
+</td></tr><tr><td><b><nobr>Local Velocity</nobr></b></td><td> The starting speed of particles, measured in the object's orientation.
+</td></tr><tr><td><b><nobr>Rnd Velocity</nobr></b></td><td> A random amount that is added to the velocity.
+</td></tr><tr><td><b><nobr>Emitter Velocity Scale</nobr></b></td><td> How much of the emitter's speed does the particles inherit?
+</td></tr><tr><td><b><nobr>Simulate In World Space</nobr></b></td><td> If enabled, the particles don't move when the emitter moves. If false, when you move the emitter, the particles follow it around.
+</td></tr><tr><td><b><nobr>One Shot</nobr></b></td><td> If enabled, the particle numbers specified by min &amp; max emission is spawned all at once. If disabled, the particles are generated in a long stream.
+Ellipsoid</td></tr><tr><td><b><nobr>MinEmitterRange</nobr></b></td><td> Decides an empty area in the center of the sphere - use this to make particles appear on the edge of the sphere.
+<p></td></tr></tr></table>
+</p>
+<h2>Details</h2>
+<p>All velocities are added together.
+</p>
+<h2>Hints</h2>
+<p><ul><li>
+Be careful of using many large particles. This can seriously hinder performance on low-level machines. Always try to use the minimum number of particles to attain an effect.
+</li></ul>
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,115 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title=" Particle Animator"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title=" Particle Animator" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-ParticlesGroup.html%22%3EParticle%20systems%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-ParticleAnimator.html%22%3E%20Particle%20Animator%3C%2Fa%3E" -->
+		<h1> Particle Animator</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-ParticlesGroup.html">Particle systems</a> &gt; <a href="class-ParticleAnimator.html"> Particle Animator</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-MeshParticleEmitter.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-WorldParticleCollider.html">Next<img src="../images/next.png"></a></div>
+
+			
+<p>Particle Animators move your particles over time, you use them to apply wind, drag &amp; color cycling to your particle systems.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-ParticleAnimator-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-ParticleAnimator-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The Particle Animator</i>
+</p>
+
+<h2> Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Does Animate Color</nobr></b></td><td> If enabled, particles cycle their color over their lifetime.
+</td></tr><tr><td><b><nobr>Color Animation</nobr></b></td><td> The 5 colors particles go through. All particles cycle over this - if some have a shorter life span than others, they will animate faster.
+</td></tr><tr><td><b><nobr>World Rotation Axis</nobr></b></td><td> An optional world-space axis the particles rotate around. Use this to make advanced spell effects or give caustic bubbles some life.
+</td></tr><tr><td><b><nobr>Local Rotation Axis</nobr></b></td><td> An optional local-space axis the particles rotate around. Use this to make advanced spell effects or give caustic bubbles some life.
+</td></tr><tr><td><b><nobr>Size Grow</nobr></b></td><td> Use this to make particles grow in size over their lifetime. As randomized forces will spread your particles out, it is often nice to make them grow in size so they don't fall apart.
+Use this to make smoke rise upwards, to simulate wind, etc.
+</td></tr><tr><td><b><nobr>Rnd Force</nobr></b></td><td> A random force added to particles every frame. Use this to make smoke become more alive.
+</td></tr><tr><td><b><nobr>Force</nobr></b></td><td> The force being applied every frame to the particles, measure relative to the world.
+</td></tr><tr><td><b><nobr>Damping</nobr></b></td><td> How much particles are slowed every frame. A value of 1 gives no damping, while less makes them slow down.
+</td></tr><tr><td><b><nobr>Autodestruct</nobr></b></td><td> If enabled, the GameObject attached to the Particle Animator will be destroyed when all particles disappear.
+<p></td></tr></tr></table>
+</p>
+
+<h2> Details</h2>
+
+<p>Particle Animators allow your particle systems to be dynamic.  They allow you to change the color of your particles, apply forces and rotation, and choose to destroy them when they are finished emitting.  For more information about Particle Systems, reference <a href="../Components/class-MeshParticleEmitter.html">Mesh Particle Emitters</a>, <a href="../Components/class-EllipsoidParticleEmitter.html">Ellipsoid Particle Emitters</a>, and <a href="../Components/class-ParticleRenderer.html">Particle Renderers</a>.
+</p>
+
+<h3>Animating Color</h3>
+
+<p>If you would like your particles to change colors or fade in/out, enable them to <b>Animate Color</b> and specify the colors for the cycle.  Any particle system that animates color will cycle through the 5 colors you choose.  The speed at which they cycle will be determined by the Emitter's <b>Energy</b> value.
+</p>
+
+<p>If you want your particles to fade in rather than instantly appear, set your first or last color to have a low Alpha value.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-ParticleAnimator-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-ParticleAnimator-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>An <b>Animating Color</b> Particle System</i>
+</p>
+
+<h3>Rotation Axes</h3>
+
+<p>Setting values in either the Local or World <b>Rotation Axes</b> will cause all spawned particles to rotate around the indicated axis (with the <b>Transform's</b> position as the center).  The greater the value is entered on one of these axes, the faster the rotation will be.
+</p>
+
+<p>Setting values in the Local Axes will cause the rotating particles to adjust their rotation as the <b>Transform's</b> rotation changes, to match its local axes.
+</p>
+
+<p>Setting values in the World Axes will cause the particles' rotation to be consistent, regardless of the <b>Transform's</b> rotation.
+</p>
+
+<h3>Forces &amp; Damping</h3>
+
+<p>You use force to make particles accelerate in the direction specified by the force.
+</p>
+
+<p>Damping (Drag) can be used to decelerate or accelerate without changing their direction.<br />
+A value of 1 means no damping is applied, the particles will not slow down or accelerate.<br />
+A value of 0 means particles will stop immediately.<br />
+A value of 2 means particles will double their speed every second.
+</p>
+
+<h3>Destroying Objects attached to Particles</h3>
+
+<p>You can destroy the Particle System and any attached Game Object by enabling the <b>AutoDestruct</b> property.  For example, if you have an oil drum, you can attach a Particle System that has <b>Emit</b> disabled and <b>AutoDestruct</b> enabled.  On collision, you enable the Particle Emitter.  The explosion will occur and after it is over, the Particle System and the oil drum will be destroyed and removed from the scene.
+</p>
+
+<h2> Hints</h2>
+<p><ul><li>
+Use the color animation to make your particles fade in &amp; out over their lifetime - otherwise, you will get nasty-looking pops.
+</li><li>Use the rotation axes to make whirlpool-like swirly motions.
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="class-MeshParticleEmitter.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-WorldParticleCollider.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

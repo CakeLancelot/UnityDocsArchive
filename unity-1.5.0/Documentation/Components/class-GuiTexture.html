@@ -1,0 +1,107 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="GUI Texture"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="GUI Texture" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-RenderingGroup.html%22%3ERendering%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-GuiTexture.html%22%3EGUI%20Texture%3C%2Fa%3E" -->
+		<h1>GUI Texture</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-RenderingGroup.html">Rendering</a> &gt; <a href="class-GuiTexture.html">GUI Texture</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-LensFlare.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-GuiText.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>GUI Textures are displayed as flat images in 2D. They are made especially for User Interface elements, buttons, or decorations.  Their positioning and scaling is performed along the x and y axes only, and they are measured in Screen Coordinates, rather than World Coordinates.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-GuiTexture-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-GuiTexture-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The GUI Texture</i>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Texture</nobr></b></td><td> Reference to the <a href="../Components/class-Texture2D.html">Texture2D</a> that will be used as the texture's display.
+</td></tr><tr><td><b><nobr>Color</nobr></b></td><td> Value that will tint the <b>Texture</b> drawn on screen.
+</td></tr><tr><td><b><nobr>Pixel Inset</nobr></b></td><td> Used for pixel-level control of the scaling and positioning of the GUI Texture. All values are measured relative to the position of the GUI Texture's <b>Transform</b>.
+</td></tr><tr><td><b><nobr>    Xmin</nobr></b></td><td> Left-most pixel position of the texture.
+</td></tr><tr><td><b><nobr>    Ymin</nobr></b></td><td> Bottom-most pixel position of the texture.
+</td></tr><tr><td><b><nobr>    Xmax</nobr></b></td><td> Right-most pixel position of the texture.
+</td></tr><tr><td><b><nobr>    Ymax</nobr></b></td><td> Top-most pixel position of the texture.
+</td></tr><tr><td><b><nobr>Left Border</nobr></b></td><td> Number of pixels from the left that are not affected by scale.
+</td></tr><tr><td><b><nobr>Right Border</nobr></b></td><td> Number of pixels from the right that are not affected by scale.
+</td></tr><tr><td><b><nobr>Top Border</nobr></b></td><td> Number of pixels from the top that are not affected by scale.
+</td></tr><tr><td><b><nobr>Bottom Border</nobr></b></td><td> Number of pixels from the bottom that are not affected by scale.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+
+<p>To create a gui texture
+</p>
+<ol><li> Select a texture in the project view
+</li><li> Choose <b>Game Object -&gt; Create Other -&gt; GUI Texture</b>
+</li></ol>
+
+
+<p>GUI Textures are perfect for presenting game interface backgrounds, buttons, or other elements to the player.  Through scripting, you can easily provide visual feedback for different &quot;states&quot; of the texture &mdash; when the mouse is hovering over the texture, or is actively clicking it for example.  Here is the basic breakdown of how the GUI Texture is calculated:
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-GuiTexture-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-GuiTexture-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>Here's a real-world example of GUI Texture at work from Unity forum member Bampf's game <span style="text-decoration:underline;">Pawns</span>.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-GuiTexture-2.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-GuiTexture-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<h3>Borders</h3>
+
+<p>The number of pixels that will not scale with the texture at each edge of the image.  As you rarely know the resolution your game runs in, chances are your GUI will get scaled. Some GUI textures have a border at the edge that is meant to be an exact number of pixels. In order for this to work, set the border sizes to match those from the texture.
+</p>
+
+<h3>Pixel Inset</h3>
+
+<p>The purpose of the <b>Pixel Inset</b> is to prevent textures from scaling with screen resolution, and keeping thim in a fixed pixel size. This allows you to render a texture without any scaling.  This means that players who run your game in higher resolutions will see your textures in smaller areas of the screen, allowing them to have more screen real-estate for your gameplay graphics.
+</p>
+
+<p>To use it effectively, you need to set the scale of the GUI Texture's <b>Transform</b> to 0, 0, 0. Now, the <b>Pixel Inset</b> is in full control of the texture's size and you can set the <b>Pixel Inset</b> values to be the exact pixel size of your texture.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+<b>GUI Textures</b> are great for making menu screens, or pause/escape menu screens.
+</li><li>You should use <b>Pixel Inset</b> on any GUI Textures that you want to be a specific number of pixels for the width and height.
+</li></ul>
+</p>
+
+
+
+
+
+		<div class="navigation"><a href="class-LensFlare.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-GuiText.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

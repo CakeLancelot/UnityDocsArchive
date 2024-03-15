@@ -1,0 +1,89 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title=" Text Mesh"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Components" title=" Text Mesh" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-MeshGroup.html%22%3E%20Meshes%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-TextMesh.html%22%3E%20Text%20Mesh%3C%2Fa%3E" -->
+		<h1> Text Mesh</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-MeshGroup.html"> Meshes</a> &gt; <a href="class-TextMesh.html"> Text Mesh</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><a href='../ScriptReference/TextMesh.html' title='Go to TextMesh Scripting Doc'><img src="../Images/SwitchScripting.png" width="66" height="51" /></a><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-MeshMorpher.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-MeshRenderer.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>This components generates 3D geometry that displays text strings.
+</p>
+
+<p><img class='figure' src='images/class-TextMesh-0.jpg' />
+</p>
+
+<p><i>The Text Mesh</i>
+</p>
+
+<p>You can create a new Text Mesh from <b>Game Object -&gt; Create Other -&gt; 3D Text</b>.
+</p>
+
+<h2> Properties</h2>
+
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Text</nobr></b></td><td> The text that will be rendered
+</td></tr><tr><td><b><nobr>Offset Z</nobr></b></td><td> How far should the text be offset from the transform.position.z when drawing
+</td></tr><tr><td><b><nobr>Character Size</nobr></b></td><td> The size of each character (This scales the whole text)
+</td></tr><tr><td><b><nobr>Line Spacing</nobr></b></td><td> How much space will be in-between lines of text.
+</td></tr><tr><td><b><nobr>Anchor</nobr></b></td><td> Which point of the text shares the position of the Transform.
+</td></tr><tr><td><b><nobr>Alignment</nobr></b></td><td> How multiple lines are aligned within the GUIText.
+</td></tr><tr><td><b><nobr>Tab Size</nobr></b></td><td> How much space will be inserted for a tab '\t' character. As a multiplum of the space character offset.
+</td></tr><tr><td><b><nobr>Font</nobr></b></td><td> The <a href="../Components/class-Font.html">font</a> to use when rendering the text.
+<p></td></tr></tr></table>
+</p>
+
+<h2> Details</h2>
+
+<p>Text Meshes can be used for rendering road signs, graffiti etc.  The Text Mesh places text in the 3D scene. To make generic 2D text for GUIs, use a <a href="../Components/class-GuiText.html">GUI Text</a> component instead.
+</p>
+
+<p>Follow these steps to create a Text Mesh with a custom Font:
+<table><tr><td><div class='cbox'><div class='cbox-data'>
+<ol><li> Import a font by dragging a true type font - a .ttf file - from the finder into the project view.
+</li><li> Select the imported font in the project view.
+</li><li> Choose <b>Game Object -&gt; Create Other -&gt; 3D Text</b>.
+</li></ol>
+
+</div></div></td></tr></table>
+You have now created a text mesh with your custom true type font.  You can scale the text and move it around using the scene view's Transform controls.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+When entering text into the <b>Text</b> property, you can create a line break by holding <i>Alt</i> and pressing <i>Return</i>.
+</li><li>You can download free true type fonts from <a class="wiki"  href="http://www.1001freefonts.com/fonts/afonts.htm">http://www.1001freefonts.com/fonts/afonts.htm</a> (download the windows fonts since they contain true type fonts).
+</li><li>If you are scripting the <b>Text</b> property, you can add line breaks by inserting the escape character &quot;\n&quot; in your strings.
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="class-MeshMorpher.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-MeshRenderer.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

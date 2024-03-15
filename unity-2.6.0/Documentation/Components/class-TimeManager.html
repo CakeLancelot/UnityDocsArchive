@@ -1,0 +1,115 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Time Manager</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Time Manager</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-ManagerGroup.html">Settings Managers</a> &gt; <a href="../Components/class-TimeManager.html">Time Manager</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-TagManager.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/comp-MeshGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Time Manager</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<div class='specific-no-iphone' > 
+<div><img class='figure' src='../Images/manual/class-TimeManager-0.jpg' /><br /><em>The Time Manager</em></div>
+</div>
+
+<div class='vspace'></div><h2>Properties</h2>
+<div class='specific-no-iphone' > 
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Fixed Timestep</span></td><td  align='left'>A framerate-independent interval that dictates when physics calculations and <span class='doc-prop'><span class='wikiword'>FixedUpdate</span>()</span> events are performed.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Time Scale</span></td><td  align='left'>The speed at which time progress. Change this value to simulate bullet-time effects. A value of 1 means real-time. A value of .5 means half speed; a value of 2 is double speed.</td></tr>
+</table></div>
+<div class='vspace'></div>
+<div class='vspace'></div><h2>Details</h2>
+<h3>Fixed Timestep</h3>
+<p>Fixed time stepping is very important for stable physics simulation. Not all computers are made equal, and different hardware configurations will run Unity games with varying performance.  Therefore, physics must be calculated independently of the game's frame rate.  Physics calculations like collision detection and Rigidbody movement are performed in discrete fixed time steps that are not dependent on frame rate. This makes the simulation more consistent across different computers or when changes in the frame rate occur. For example, the frame rate can drop due to an appearance of many game onscreen, or because the user launched another application in the background.
+</p>
+<p class='vspace'>Here's how the fixed time step is calculated.  Before every frame is drawn onscreen, Unity advances the fixed time by fixed delta time and performs physics calculations until it reaches the current time.  This directly correlates to the <span class='doc-prop'>Fixed Timestep</span> property.  The smaller the value of <span class='doc-prop'>Fixed Timestep</span>, the more frequently physics will be calculated.  The number of Fixed frames per second can be calculated by dividing 1 by <span class='doc-prop'>Fixed Timestep</span>.  Therefore, 1 / 0.02 = 50 fixed frames per second and 1 / 0.05 = 20 fixed frames per second.
+</p>
+<p class='vspace'>Simply put, a smaller fixed update value leads to more accurate physics simulation but is heavier on the CPU.
+</p>
+<div class='vspace'></div>
+<div class='vspace'></div><div class='specific-no-iphone' > 
+<h2>Hints</h2>
+<ul><li>Give the player control over time by changing <span class='doc-prop'>Time Scale</span> dynamically through scripting.
+</li></ul></div>
+<div class='vspace'></div>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-TagManager.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/comp-MeshGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,97 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Render Settings"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Render Settings" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-ManagerGroup.html%22%3EManagers%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-RenderSettings.html%22%3ERender%20Settings%3C%2Fa%3E" -->
+		<h1>Render Settings</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-ManagerGroup.html">Managers</a> &gt; <a href="class-RenderSettings.html">Render Settings</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-PlayerSettings.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="comp-AssetsGroup.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>The Render Settings contain default values for a range of visual elements in your scene, like Lights and Skyboxes.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-RenderSettings-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-RenderSettings-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The Render Settings</i>
+</p>
+
+<p>To see the Player Settings choose:
+<b>Edit -&gt; Render Settings</b>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Fog</nobr></b></td><td> If enabled, fog will be drawn throughout your scene.
+</td></tr><tr><td><b><nobr>Fog Color</nobr></b></td><td> Color of the <b>Fog</b>.
+</td></tr><tr><td><b><nobr>Fog Density</nobr></b></td><td> Density of the <b>Fog</b>.
+</td></tr><tr><td><b><nobr>Ambient</nobr></b></td><td> Color of the scene's ambient light.
+</td></tr><tr><td><b><nobr>Skybox Material</nobr></b></td><td> Default skybox that will be rendered if no cameras have a skybox attached.
+</td></tr><tr><td><b><nobr>Halo Strength</nobr></b></td><td> Size of all light halos in relation to their <b>Range</b>.
+</td></tr><tr><td><b><nobr>Flare Strength</nobr></b></td><td> Intensity of all flares in the scene.
+</td></tr><tr><td><b><nobr>Halo Texture</nobr></b></td><td> Reference to a Texture2D that will appear as the glow for all Halos in lights.
+</td></tr><tr><td><b><nobr>Specular Texture</nobr></b></td><td> Reference to a Cube map that defines how specular highlights are drawn. If null the specular lookup is used.
+</td></tr><tr><td><b><nobr>Spot Cookie</nobr></b></td><td> Reference to a Texture2D that will appear as the cookie mask for all Spot lights.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+
+<p>The Render Settings is used to define some common visual aspects of all the scenes in your project.  It can be a great help if your entire game takes place outdoors.  You can assign a single <b>Skybox Material</b> in the Render Settings, and then you don't have to worry about setting any Skyboxes on your individual scene cameras.
+</p>
+
+<p>Likewise, if you want common rendering properties across all scenes except one or two properties of a particular scene, you can override those properties by changing the settings of the individual element.  <b>Fog</b> and <b>Ambient</b> properties are specific to the open scene, and do not apply to the whole project.
+</p>
+
+<h3>Fog</h3>
+
+<p>Enabling <b>Fog</b> will give a misty haze to your scene.  This both increases performance on lower-end machines and adds ambience.  You can adjust the look and color of the Fog with <b>Fog Density</b> and <b>Fog Color</b>, respectively.
+</p>
+
+<p>Adding fog is often used to optimize performance by making sure that far away objects fade out and are not drawn.  Please note that enabling fog is not enough to enable this performance optimization. To do that you also need to adjust your <a href="../Components/class-Camera.html">Camera's</a> <b>Far Clip Plane</b>. So that geometry far away will not be drawn. It is best to tweak the fog to look correct first. Then make the <a href="../Components/class-Camera.html">Camera's</a> far clip plane smaller until you see the geometry being clipped away before the fog fades it out.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-RenderSettings-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-RenderSettings-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Fog is enabled in this scene from Forest Johnson's Racing Game</i>
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+Don't under-estimate the visual impact your game can make by thoughtfully tweaking the Render Settings
+</li></ul>
+</p>
+
+
+
+
+
+		<div class="navigation"><a href="class-PlayerSettings.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="comp-AssetsGroup.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,58 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Scripting - An Overview.Vectors"-->
+			<title>Unity Script Reference &ndash; Scripting - An Overview.Vectors</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<script language="JavaScript" src="UnityDoc.js"></script>
+<body>
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>Vectors</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+	<!-- #TemplateEndEditable -->
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="Vectors" path="" navigation="" --><!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-top.lbi" --><!-- #EndLibraryItem --><div class="left-menu-container"><ul class="left-menu"><li><span class="left-menu-heading">Menu</span></li><li><a class="left-menu-item" href="index.html">Overview</a></li><li><a class="left-menu-item" href="20_class_hierarchy.html">Class Hierarchy</a></li><li><a class="left-menu-item" href="10_reference.html">Reference</a></li><li><span class="left-menu-seperator"></span></li><li><a class="left-menu-heading" href="index.html">Scripting - An Overview</a></li><li><a class="left-menu-item" href="index.Common_Operations.html">Common Operations</a></li><li><a class="left-menu-item" href="index.Keeping_Track_of_Time.html">Keeping Track of Time</a></li><li><a class="left-menu-item" href="index.Accessing_Other_Components.html">Accessing Other Components</a></li><li><a class="left-menu-item" href="index.Accessing_Other_Game_Objects.html">Accessing Other Game Objects</a></li><li><span class="left-menu-item left-menu-current">Vectors</span></li><li><a class="left-menu-item" href="index.Member_Variables.html">Member Variables</a></li><li><a class="left-menu-item" href="index.Instantiate.html">Instantiate</a></li><li><a class="left-menu-item" href="index.Coroutines_or_the_Yield_Statement.html">Coroutines or the Yield Statement</a></li><li><a class="left-menu-item" href="index.Writing_Scripts_in_Csharp_or_Boo.html">Writing Scripts in C# or Boo</a></li><li><a class="left-menu-item" href="index.The_most_important_classes.html">The most important classes</a></li><li><a class="left-menu-item" href="index.Script_compilation_28Advanced29.html">Script compilation (Advanced)</a></li></ul></div>
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-middle.lbi" --><!-- #EndLibraryItem --><div class="pre-next-link"><b>Previous:</b> <a href="index.Accessing_Other_Game_Objects.html">Accessing Other Game Objects</a> <b>Next:</b> <a href="index.Member_Variables.html">Member Variables</a></div>
+   <p class="basic"> Unity uses the <a href="Vector3.html" class="classlink">Vector3</a> class throughout to represent all 3D vectors. The individual components of a 3D vector can be accessed through it's x, y and z member variables.
+</p><div class="code">var aPosition : <a href="Vector3.html" class="classlink">Vector3</a>;<br/>aPosition.x = 1;<br/>aPosition.y = 1;<br/>aPosition.z = 1;
+</div><p class="basic">
+You can also use the <a href="Vector3.html" class="classlink">Vector3</a> constructor function to initialise all components at once.
+</p><div class="code">var aPosition = <a href="Vector3.html" class="classlink">Vector3</a>(1, 1, 1);
+</div><p class="basic">
+<a href="Vector3.html" class="classlink">Vector3</a> also defines some common values as constants.
+</p><div class="code">var direction = <a href="Vector3.up.html?from=index" class="itemlink">Vector3.up</a>; <span class="comment">// the same as <a href="Vector3.html" class="classlink">Vector3</a>(0, 1, 0);</span>
+</div><p class="basic">
+Operations on single vectors are accessed the following way:
+</p><div class="code">someVector.Normalize();
+</div><p class="basic">
+And operations using multiple vectors are done using <a href="Vector3.html" class="classlink">Vector3</a> class functions:
+</p><div class="code">theDistance = <a href="Vector3.Distance.html?from=index" class="itemlink">Vector3.Distance</a>(oneVector, otherVector);
+</div><p class="basic">
+(Note that you have to write <span class="variable"><a href="Vector3.html" class="classlink">Vector3</a>.</span> in front of the function name to tell Javascript where to find the function. This applies to all class functions.)
+</p><p class="basic">
+You can also use the common math operators to manipulate vectors:
+</p><div class="code">combined = vector1 + vector2;
+</div><p class="basic">
+See the documentation on the <a href="Vector3.html" class="classlink">Vector3</a> class for the full list of operations and properties available.
+</p><p class="basic">
+</p>
+	
+	</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

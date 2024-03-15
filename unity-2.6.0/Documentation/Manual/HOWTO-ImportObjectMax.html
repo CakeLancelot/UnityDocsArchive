@@ -1,0 +1,142 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Importing Objects From 3D Studio Max</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Importing Objects From 3D Studio Max</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/FAQ.html">FAQ</a> &gt; <a href="../Manual/HOWTO-importObject.html">How do I import objects from my 3D app?</a> &gt; <a href="../Manual/HOWTO-ImportObjectMax.html">Importing Objects From 3D Studio Max</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/HOWTO-ImportObjectCinema4D.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/HOWTO-ImportObjectCheetah3D.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Importing Objects From 3D Studio Max</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>If you make your 3D objects in 3dsMax, you can save your .max files directly into your <span class='doc-keyword'>Project</span> or export them into Unity using the <b>Autodesk .FBX</b> format.  <b>Saving them in the original .max format is recommended.</b>
+</p>
+<div class='vspace'></div><h2>Unity currently imports from 3ds Max</h2>
+<ol><li>All nodes with position, rotation and scale. Pivot points and Names are also imported.
+</li><li>Meshes with vertex colors, normals and one or <a href='#twouvs'>two UV sets</a>.
+</li><li>Materials with diffuse texture and color. Multiple materials per mesh.
+</li><li>Animations.
+</li><li><a href='#bones'>Bone based animations</a>.
+</li></ol><div class='vspace'></div><h2>To manually export to FBX from 3DS Max</h2>
+<ol><li>Download the latest fbx exporter from <a class='urllink' href='http://autodesk.com/fbx' rel='nofollow'>Autodesk website</a> and install it.
+</li><li>Export your scene (<span class='doc-menu'>File-&gt;Export</span> or <span class='doc-menu'>File-&gt;Export Selected</span>) in <b>.fbx</b> format. Using default export options should be okay.
+</li><li>Move the exported fbx file into your Unity project folder.
+</li><li>When you switch back into Unity, the <b>.fbx</b> file is imported automatically.
+</li><li>Drag the file from the <span class='doc-keyword'>Project View</span> into the <span class='doc-keyword'>Scene View</span>.
+</li></ol><div class='vspace'></div><h2>Exporter options</h2>
+<p>Using default FBX exporter options (that basically export everything) should be okay in all cases.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/HOWTO-ImportObjectMax-0.jpg' /></div>
+<p class='vspace'><em>Default FBX exporter options (for fbx plugin version 2009.3)</em>
+</p>
+<p class='vspace'><a name='bones' id='bones'></a>
+</p><h2>Exporting Bone-based Animations</h2>
+<p>There is a procedure you should follow when you want to export bone-based animations:
+</p>
+<div class='vspace'></div><ol><li>Set up the bone structure as you please.
+</li><li>Create the animations you want, using FK and/or IK
+</li><li>Select all bones and/or IK solvers
+</li><li>Go to <span class='doc-menu'>Motion-&gt;Trajectories</span> and press <span class='doc-menu'>Collapse</span>. Unity makes a key filter, so the amount of keys you export is irrelevant
+</li><li>"Export" or "Export selected" as newest FBX format
+</li><li>Drop the FBX file into <span class='doc-keyword'>Assets</span> as usual
+</li><li>In Unity you must reassign the Texture to the Material in the root bone
+</li></ol><p class='vspace'>When exporting a bone hierarchy with mesh and animations from 3ds Max to Unity, the <span class='wikiword'>GameObject</span> hierarchy produced will correspond to the hierarchy you can see in "Schematic view" in 3ds Max. One difference is Unity will place a <span class='wikiword'>GameObject</span> as the new root, containing the animations, and will place the mesh and material information in the root bone.
+</p>
+<p class='vspace'>If you prefer to have animation and mesh information in the same Unity <span class='wikiword'>GameObject</span>, go to the Hierarchy view in 3ds Max, and parent the mesh node to a bone in the bone hierarchy. 
+</p>
+<p class='vspace'><a name='twouvs' id='twouvs'></a>
+</p><h2>Exporting Two UV Sets for Lightmapping</h2>
+<p>3ds Max' Render To Texture and automatic unwrapping functionality can be used to create <a href="../Components/shader-LightmapFamily.html">lightmaps</a>. Usually one UV set is used for main texture and/or bumpmaps, and another UV set is used for the lightmap texture. For both UV sets to come through properly, the material in 3ds Max has to be Standard and both Diffuse (for main texture) and Self-Illumination (for lightmap) map slots have to be set up:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/HOWTO-ImportObjectMax-1.jpg' /></div>
+<p><em>Material setup for Lightmapping in 3ds Max, using self-illumination map</em>
+</p>
+<p class='vspace'>Note that if object uses a Shell material type, then current Autodesk's FBX exporter will <b>not export <span class='wikiword'>UVs</span> correctly</b>.
+</p>
+<p class='vspace'>Alternatively, you can use Multi/Sub Object material type and setup two sub-materials, using the main texture and the lightmap in their diffuse map slots, like shown below. However, if faces in your model use different sub-material <span class='wikiword'>IDs</span>, this will result in multiple materials being imported, which is not optimal for performance.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/HOWTO-ImportObjectMax-2.jpg' /></div>
+<p><em>Alternate Material setup for Lightmapping in 3ds Max, using multi/sub object material</em>
+</p>
+<div class='vspace'></div><h2>Troubleshooting</h2>
+<p>If you have any issues with importing some models: ensure that you have the latest FBX plugin installed. It can be downloaded <a class='urllink' href='http://autodesk.com/fbx' rel='nofollow'>Autodesk website</a>.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/HOWTO-ImportObjectCinema4D.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/HOWTO-ImportObjectCheetah3D.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

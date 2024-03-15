@@ -1,0 +1,116 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Material"-->
+			<title>Unity Script Reference &ndash; Material</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Material</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Material" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Object.html" class="classlink">Object</a></div></p>
+   <p class='first'> The material class.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#shader'>shader</a></p>
+<p><a href='#color'>color</a></p>
+<p><a href='#mainTexture'>mainTexture</a></p>
+<p><a href='#passCount'>passCount</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Constructors</p><p><a href='#Material'>Material</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Functions</p><p><a href='#SetColor'>SetColor</a></p>
+<p><a href='#GetColor'>GetColor</a></p>
+<p><a href='#SetVector'>SetVector</a></p>
+<p><a href='#GetVector'>GetVector</a></p>
+<p><a href='#SetTexture'>SetTexture</a></p>
+<p><a href='#GetTexture'>GetTexture</a></p>
+<p><a href='#SetMatrix'>SetMatrix</a></p>
+<p><a href='#GetMatrix'>GetMatrix</a></p>
+<p><a href='#SetFloat'>SetFloat</a></p>
+<p><a href='#GetFloat'>GetFloat</a></p>
+<p><a href='#Lerp'>Lerp</a></p>
+<p><a href='#SetPass'>SetPass</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> This class opens up all properties from a material, allowing you to animate them.
+in order to get a material from an object, use the <a href="Renderer.html#material" class="itemlink">Renderer's material property</a>.</p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="shader"></a><h3><span class="full-name">Material.</span>shader</h3><div class="synopsis"><a href="Shader.html" class="classlink">Shader</a> shader</div>
+   <p class='details'> The shader used by the material.</p>
+	<a name="color"></a><h3><span class="full-name">Material.</span>color</h3><div class="synopsis"><a href="Color.html" class="classlink">Color</a> color</div>
+   <p class='details'> The main material color.</p>
+	<a name="mainTexture"></a><h3><span class="full-name">Material.</span>mainTexture</h3><div class="synopsis"><a href="Texture.html" class="classlink">Texture</a> mainTexture</div>
+   <p class='details'> The main texture</p>
+	<a name="passCount"></a><h3><span class="full-name">Material.</span>passCount</h3><div class="synopsis"><span class="standard_type">int</span> passCount</div>
+   <p class='details'> How many passes are in this material.</p>
+   <a name="Constructors"></a><h2 class="script-section">Constructors</h2>
+	<a name="Material"></a><h3><span class="full-name">Material.</span>Material</h3><div class="synopsis">Material (<span class="standard_type">string</span> contents)</div>
+   <p class='details'> Create a temporary material.
+If you have a script which implements a custom special effect, you implement all the graphic setup
+using shaders & materials. Use this function to create a custom shader & material inside your script.
+After creating the material, use <a href="#SetColor" class="itemlink">SetColor</a>, <a href="#SetTexture " class="itemlink">SetTexture </a>to populate the values.</p>
+	&nbsp;<div class="synopsis">Material (<a href="Shader.html" class="classlink">Shader</a> shader)</div>
+   <p class='details'> Create a temporary material.
+If you have a script which implements a custom special effect, you implement all the graphic setup
+using shaders & materials. Use this function to create a custom shader & material inside your script.
+After creating the material, use <a href="#SetColor" class="itemlink">SetColor</a>, <a href="#SetTexture " class="itemlink">SetTexture </a>to populate the values.</p>
+   <a name="Methods"></a><h2 class="script-section">Methods</h2>
+	<a name="SetColor"></a><h3><span class="full-name">Material.</span>SetColor</h3><div class="synopsis"><span class="standard_type">void</span> SetColor (<span class="standard_type">string</span> propertyName, <a href="Color.html" class="classlink">Color</a> color)</div>
+   <p class='details'> Set a named color value.
+Many shaders have more than one color. Use SetColor to change the <span class="variable">propertyName</span> color.
+"_Color" is the main color of a material.
+"_SpecColor" is the specular color of a material.
+"_Emission" is the emissive color of a material
+"_ReflectColor" is the reflection color of the material.</p>
+	<a name="GetColor"></a><h3><span class="full-name">Material.</span>GetColor</h3><div class="synopsis"><a href="Color.html" class="classlink">Color</a> GetColor (<span class="standard_type">string</span> propertyName)</div>
+   <p class='details'> Get a named color value.
+Use GetColor to get the <span class="variable">propertyName</span> color from the material.</p>
+	<a name="SetVector"></a><h3><span class="full-name">Material.</span>SetVector</h3><div class="synopsis"><span class="standard_type">void</span> SetVector (<span class="standard_type">string</span> propertyName, <a href="Vector4.html" class="classlink">Vector4</a> vector)</div>
+   <p class='details'> Set a named vector value.
+Many shaders have more than one color. Use SetColor to change the <span class="variable">propertyName</span> color.
+"_Color" is the main color of a material.
+"_SpecColor" is the specular color of a material.
+"_Emission" is the emissive color of a material
+"_ReflectColor" is the reflection color of the material.</p>
+	<a name="GetVector"></a><h3><span class="full-name">Material.</span>GetVector</h3><div class="synopsis"><a href="Vector4.html" class="classlink">Vector4</a> GetVector (<span class="standard_type">string</span> propertyName)</div>
+   <p class='details'> Get a named vector value.
+Use GetColor to get the <span class="variable">propertyName</span> color from the material.</p>
+	<a name="SetTexture"></a><h3><span class="full-name">Material.</span>SetTexture</h3><div class="synopsis"><span class="standard_type">void</span> SetTexture (<span class="standard_type">string</span> propertyName, <a href="Texture.html" class="classlink">Texture</a> texture)</div>
+   <p class='details'> Assign a texture to the material.
+Assigns the <span class="variable">texture</span> to the <span class="variable">propertyName</span> value.</p>
+	<a name="GetTexture"></a><h3><span class="full-name">Material.</span>GetTexture</h3><div class="synopsis"><a href="Texture.html" class="classlink">Texture</a> GetTexture (<span class="standard_type">string</span> propertyName)</div>
+   <p class='details'> Read a texture from the material.
+Assigns the <span class="variable">texture</span> to the <span class="variable">propertyName</span> value.</p>
+	<a name="SetMatrix"></a><h3><span class="full-name">Material.</span>SetMatrix</h3><div class="synopsis"><span class="standard_type">void</span> SetMatrix (<span class="standard_type">string</span> propertyName, <a href="Matrix4x4.html" class="classlink">Matrix4x4</a> matrix)</div>
+   <p class='details'> Set a named matrix in a shader.</p>
+	<a name="GetMatrix"></a><h3><span class="full-name">Material.</span>GetMatrix</h3><div class="synopsis"><a href="Matrix4x4.html" class="classlink">Matrix4x4</a> GetMatrix (<span class="standard_type">string</span> propertyName)</div>
+   <p class='details'> Set a named matrix in a shader.</p>
+	<a name="SetFloat"></a><h3><span class="full-name">Material.</span>SetFloat</h3><div class="synopsis"><span class="standard_type">void</span> SetFloat (<span class="standard_type">string</span> propertyName, <span class="standard_type">float</span> value)</div>
+   <p class='details'> Set a float value to the shader.</p>
+	<a name="GetFloat"></a><h3><span class="full-name">Material.</span>GetFloat</h3><div class="synopsis"><span class="standard_type">float</span> GetFloat (<span class="standard_type">string</span> propertyName)</div>
+   <p class='details'> Get a float value from the shader.</p>
+	<a name="Lerp"></a><h3><span class="full-name">Material.</span>Lerp</h3><div class="synopsis"><span class="standard_type">void</span> Lerp (Material start, Material end, <span class="standard_type">float</span> t)</div>
+   <p class='details'> Lerp all properties between two material.
+Makes all color and float values of a material be interpolated from <span class="variable">start</span> to <span class="variable">end</span>, 
+based on <span class="variable">t</span>. If <span class="variable">t</span> is 0, all values are taken from start. if <span class="variable">t</span> is 1, all values are taken from 
+end.</p>
+	<a name="SetPass"></a><h3><span class="full-name">Material.</span>SetPass</h3><div class="synopsis"><span class="standard_type">bool</span> SetPass (<span class="standard_type">int</span> pass)</div>
+   <p class='details'> Activate a numbered <span class="variable">pass</span> for rendering.</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

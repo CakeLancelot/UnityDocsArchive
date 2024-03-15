@@ -1,0 +1,102 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Audio Listener</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Audio Listener</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-AudioGroup.html">Audio Components</a> &gt; <a href="../Components/class-AudioListener.html">Audio Listener</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><a href='../ScriptReference/AudioListener.html' title='Go to AudioListener Scripting Doc'>Switch to Scripting</a><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/comp-AudioGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-AudioSource.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Audio Listener</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>The <span class='doc-keyword'>Audio Listener</span> acts as a microphone-like device. It receives input from any given <a href="../Components/class-AudioSource.html">Audio Source</a> in the scene and plays sounds through the computer speakers.  It is traditionally attached to the Main <a href="../Components/class-Camera.html">Camera</a>.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-AudioListener-0.jpg' /><br /><em>The Audio Listener, attached to the Main Camera</em></div>
+<div class='vspace'></div><h2>Properties</h2>
+<p>The Audio Listener has no properties.  It simply must be added to work.  It is always added to the Main Camera by default.
+</p>
+<div class='vspace'></div><h2>Details</h2>
+<p>The Audio Listener works in conjunction with <a href="../Components/class-AudioSource.html">Audio Sources</a>, allowing you to create the aural experience for your games.  When the Audio Listener is attached to a <span class='doc-keyword'><span class='wikiword'>GameObject</span></span> in your scene, any Sources that are close enough to the Listener will be picked up and output to the computer's speakers.  Each scene can only have 1 Audio Listener to work properly.
+</p>
+<p class='vspace'>As long as the Sources are in mono format, the Listener will automatically position the sound correctly in the stereo field, at the correct volume.  Stereo Sources will automatically play in both speakers.  For example, if your character walks off a street into a night club, the night club's music should probably be stereo, while the individual voices of characters in the club should be mono with their realistic positioning being handled by Unity.
+</p>
+<p class='vspace'>You should attach the Audio Listener to either the Main Camera or to the <span class='wikiword'>GameObject</span> that represents the player. Try both to find what suits your game best.
+</p>
+<div class='vspace'></div><h2>Hints</h2>
+<ul><li>Each scene can only have one Audio Listener.
+</li><li>You access the project-wide audio settings using the <a href="../Components/class-AudioManager.html">Audio Manager</a>, found in the <span class='doc-menu'>Edit-&gt;Project Settings-&gt;Audio</span> menu.
+</li><li>View the <a href="../Components/class-AudioClip.html">Audio Clip</a> Component page for more information about Mono vs Stereo sounds.
+</li></ul>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/comp-AudioGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-AudioSource.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

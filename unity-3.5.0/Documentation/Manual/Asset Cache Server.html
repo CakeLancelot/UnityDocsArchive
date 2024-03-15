@@ -1,0 +1,266 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Asset Cache Server (Team license only)</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body onLoad="DocLoaded();">
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Asset Cache Server (Team license only)</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Manual"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Manual"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Asset Import and Creation.html">Asset Import and Creation</a> &gt; <a href="../Manual/Asset Server.html">Asset Server (Pro Only)</a> &gt; <a href="../Manual/Asset Cache Server.html">Asset Cache Server (Team license only)</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">  </div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Asset Cache Server (Team license only)</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Unity has a completely automatic asset pipeline. Whenever a source asset like a <code>.psd</code> or an <code>.fbx</code> file is modified, Unity will detect the change and automatically reimport it. The best parts about the asset pipeline are the "hot reloading" functionality and the guarantee that all your source assets are always in sync with what you see. This feature also comes at a cost. Any asset that is modified has to be reimported right away. When working in large teams, after getting latest from Source Control, you often have to wait for a long time to re-import all the assets modified or created by other team members. Also, switching your project platform back and forth between desktop and mobile, will trigger a re-import of most assets. 
+</p>
+<p class='vspace'>The time it takes to import assets can be drastically reduced by caching the imported assets on the <span class='doc-keyword'>Cache Server</span>.
+</p>
+<p class='vspace'>Each asset import is cached based on 
+</p><ul><li>The asset file itself
+</li><li>The import settings
+</li><li>Asset importer version
+</li><li>The current platform. 
+</li></ul><p class='vspace'>If any of the above change, the asset gets reimported, otherwise it gets downloaded from the Cache Server.
+</p>
+<p class='vspace'>When you enable the cache server in the preferences, you can even share asset imports across multiple projects.
+</p>
+<p class='vspace'>Note that once the cache server is set up, this process is <em>completely automatic</em>, which means there are no additional workflow requirements. It will simply reduce the time it takes to import projects without getting in your way.
+</p>
+<div class='vspace'></div><h2>How to set up a <span class='doc-keyword'>Cache Server</span> (user)</h2>
+<p>Setting up the Cache Server couldn't be easier. All you need to do is click Use Cache Server in the preferences and tell the local machine's <span class='doc-keyword'>Unity Editor</span> where the <span class='doc-keyword'>Cache Server</span> is. 
+</p><div class='indent'><img class='figure' src='../Images/manual/Asset Cache Server-0.jpg' />
+</div><p class='vspace'>This can be found in <span class='doc-menu'>Unity-&gt;Preferences</span> on the Mac or <span class='doc-menu'>Edit-&gt;Preferences</span> on the PC. 
+</p>
+<p class='vspace'>If you are hosting the Cache Server on your local machine, specify <em>localhost</em> for the server address. However, due to hard drive size limitations, it is recommended you host the Cache Server on separate machine. 
+</p>
+<div class='vspace'></div><h2>How to set up a <span class='doc-keyword'>Cache Server</span> (admin)</h2>
+<p>Admins need to set up the <span class='doc-keyword'>Cache Server</span> machine that will host the cached assets. 
+</p>
+<p class='vspace'>You need to:
+</p><ul><li>Download the Cache Server <a class='urllink' href='http://netstorage.unity3d.com/unity/cacheserver.zip' rel='nofollow'>here</a>
+</li><li>Unzip the file, after which you should see something like this:
+</li></ul><div class='indent'><img class='figure' src='../Images/manual/Asset Cache Server-1.jpg' />
+</div><div class='vspace'></div><ul><li>Depending on your operating system, run the appropriate command script. 
+</li><li>You will see a terminal window, indicating that the Cache Server is running in the background
+</li></ul><div class='indent'><img class='figure' src='../Images/manual/Asset Cache Server-2.jpg' />
+</div><p class='vspace'>The <span class='doc-keyword'>Cache Server</span> needs to be on a reliable machine with very large storage (much larger than the size of the project itself, as there will likely be multiple versions of imported resources stored). 
+</p>
+<div class='vspace'></div><h2>Installing the Cache Server as a service</h2>
+<p>The provided <code>.sh</code> and <code>.cmd</code> scripts should be set-up as a service on the server.
+The cache server can be safely killed and restarted at any time, since it uses atomic file operations.
+</p>
+<div class='vspace'></div><h2>Cache Server Configuration</h2>
+<p>If you simply start the Cache Server by double clicking the script, it will create a "cache" directory next to the script, and keep it's data in there. The cache directory is allowed to grow to up to 50 GB. You can configure the size and the location of the data using command line options, like this:
+</p>
+<p class='vspace'><code>./RunOSX.command --path ~/mycachePath --size 2000000000</code>
+</p>
+<p class='vspace'><code>--path</code> lets you specify a cache location, and <code>--size</code> lets you specify the maximum cache size in bytes.
+</p>
+<div class='vspace'></div><h2>Recommendations for the machine hosting the Cache Server</h2>
+<p>We recommend equipping the machine with a lot of RAM. For best performance there is enough RAM to hold an entire imported project folder. In addition, it is best to have a machine with a fast hard drive and fast Ethernet connection. On the other hand, the Cache Server has very low CPU usage.
+</p>
+<p class='vspace'>One of the main distinctions between the Cache Server and version control is that its cached data can always be rebuilt locally. It is simply a tool for improving performance. For this reason it doesn't make sense to use a Cache Server over the internet. If you have a distributed team, we recommend that you place a seperate cache server in each location.
+</p>
+<div class='vspace'></div>
+</p><small>Page last updated: 2012-02-03</p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">  </div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,60 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Renderer"-->
+			<title>Unity Script Reference &ndash; Renderer</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Renderer</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Renderer" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Component.html" class="classlink">Component</a></div></p>
+   <p class='first'> General functionality for all renderers.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#material'>material</a></p>
+<p><a href='#sharedMaterial'>sharedMaterial</a></p>
+<p><a href='#bounds'>bounds</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Messages Sent</p><p><a href='#OnBecameVisible'>OnBecameVisible</a></p>
+<p><a href='#OnBecameInvisible'>OnBecameInvisible</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> This is the superclass for all renderers - use this class to access and modify the material of any
+object, mesh or particle.</p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="material"></a><h3><span class="full-name">Renderer.</span>material</h3><div class="synopsis"><a href="Material.html" class="classlink">Material</a> material</div>
+   <p class='details'> The <a href="Material.html" class="classlink">Material</a> of the object.
+Modifying the returned material will change the material of this renderer.  <p class="details"/>If the material is used by any other renderers,
+it will clone the shared material and assign it to the renderer.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">renderer.material.color = <a href="Color.html#red" class="itemlink">Color.red</a>;</div></td></tr></table></p>
+	<a name="sharedMaterial"></a><h3><span class="full-name">Renderer.</span>sharedMaterial</h3><div class="synopsis"><a href="Material.html" class="classlink">Material</a> sharedMaterial</div>
+   <p class='details'> The shared material of this renderer.
+It is not recommended to modify materials returned by renderer.sharedMaterials.
+If you want to modify the material of a renderer use renderer.material instead.  <p class="details"/>Modifying the sharedMaterial will change the appearance of all objects using this material.
+<a href="Renderer.html#sharedMaterial" class="itemlink">Renderer.sharedMaterial</a> will change materials that are stored in the project persistently too.</p>
+	<a name="bounds"></a><h3><span class="full-name">Renderer.</span>bounds</h3><div class="synopsis"><a href="Bounds.html" class="classlink">Bounds</a> bounds</div>
+   <p class='details'> The bounding volume of the renderer. This is the axis-aligned bounding box containing the mesh in world space.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Prints the left extreme point of the bounding volume on the x-axis<br/>print(renderer.bounds.min.x);<br/>// Prints the right extreme point of the bounding volume on the x-axis<br/>print(renderer.bounds.max.x);</div></td></tr></table></p>
+   <a name="Messages Sent"></a><h2 class="script-section">Messages Sent</h2>
+	<a name="OnBecameVisible"></a><h3><span class="full-name">Renderer.</span>OnBecameVisible</h3><div class="synopsis"><span class="standard_type">void</span> OnBecameVisible ()</div>
+   <p class='details'> OnBecameVisible is called when the renderer became visible by any camera.
+This message is sent to all scripts attached to the renderer.</p>
+	<a name="OnBecameInvisible"></a><h3><span class="full-name">Renderer.</span>OnBecameInvisible</h3><div class="synopsis"><span class="standard_type">void</span> OnBecameInvisible ()</div>
+   <p class='details'> OnBecameInvisible is called when the renderer is no longer visible by any camera.
+This message is sent to all scripts attached to the renderer.</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

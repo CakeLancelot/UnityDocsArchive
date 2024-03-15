@@ -1,0 +1,174 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Camera"-->
+			<title>Unity Script Reference &ndash; Camera</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Camera</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Camera" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Behaviour.html" class="classlink">Behaviour</a></div></p>
+   <p class='first'> A Camera is a device through which the player views the world.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#fieldOfView'>fieldOfView</a></p>
+<p><a href='#nearClipPlane'>nearClipPlane</a></p>
+<p><a href='#farClipPlane'>farClipPlane</a></p>
+<p><a href='#orthographicSize'>orthographicSize</a></p>
+<p><a href='#isOrthoGraphic'>isOrthoGraphic</a></p>
+<p><a href='#depth'>depth</a></p>
+<p><a href='#aspect'>aspect</a></p>
+<p><a href='#cullingMask'>cullingMask</a></p>
+<p><a href='#backgroundColor'>backgroundColor</a></p>
+<p><a href='#rect'>rect</a></p>
+<p><a href='#pixelRect'>pixelRect</a></p>
+<p><a href='#targetTexture'>targetTexture</a></p>
+<p><a href='#pixelWidth'>pixelWidth</a></p>
+<p><a href='#pixelHeight'>pixelHeight</a></p>
+<p><a href='#cameraToWorldMatrix'>cameraToWorldMatrix</a></p>
+<p><a href='#worldToCameraMatrix'>worldToCameraMatrix</a></p>
+<p><a href='#projectionMatrix'>projectionMatrix</a></p>
+<p><a href='#velocity'>velocity</a></p>
+<p><a href='#clearFlags'>clearFlags</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Functions</p><p><a href='#ResetWorldToCameraMatrix'>ResetWorldToCameraMatrix</a></p>
+<p><a href='#ResetProjectionMatrix'>ResetProjectionMatrix</a></p>
+<p><a href='#WorldToScreenPoint'>WorldToScreenPoint</a></p>
+<p><a href='#WorldToViewportPoint'>WorldToViewportPoint</a></p>
+<p><a href='#ViewportToWorldPoint'>ViewportToWorldPoint</a></p>
+<p><a href='#ScreenToWorldPoint'>ScreenToWorldPoint</a></p>
+<p><a href='#ScreenToViewportPoint'>ScreenToViewportPoint</a></p>
+<p><a href='#ViewportToScreenPoint'>ViewportToScreenPoint</a></p>
+<p><a href='#ViewportPointToRay'>ViewportPointToRay</a></p>
+<p><a href='#ScreenPointToRay'>ScreenPointToRay</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Messages Sent</p><p><a href='#OnPreCull'>OnPreCull</a></p>
+<p><a href='#OnPreRender'>OnPreRender</a></p>
+<p><a href='#OnPostRender'>OnPostRender</a></p>
+<p><a href='#OnRenderImage'>OnRenderImage</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#main'>main</a></p>
+<p><a href='#current'>current</a></p>
+<p><a href='#allCameras'>allCameras</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> 
+A screen space point is defined in pixels. The left-bottom of the screen is (0,0). The right-top is (screenWidth,screenHeight) The z position is between 0...1. 0 is on the near plane. 1 is on the far plane  <p class="basic"/>A viewport space point is normalized and relative to the camera The left-bottom of the camera is (0,0). The top-right is (1,1) The z position is between 0...1. 0 is on the near plane. 1 is on the far plane  <p class="basic"/>A world space point is defined in global coordinates (eg.  <a href="Transform.html#position" class="itemlink">Transform.position</a>)</p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="fieldOfView"></a><h3><span class="full-name">Camera.</span>fieldOfView</h3><div class="synopsis"><span class="standard_type">float</span> fieldOfView</div>
+   <p class='details'> The field of view of the camera in degrees.</p>
+	<a name="nearClipPlane"></a><h3><span class="full-name">Camera.</span>nearClipPlane</h3><div class="synopsis"><span class="standard_type">float</span> nearClipPlane</div>
+   <p class='details'> The near clipping plane distance.</p>
+	<a name="farClipPlane"></a><h3><span class="full-name">Camera.</span>farClipPlane</h3><div class="synopsis"><span class="standard_type">float</span> farClipPlane</div>
+   <p class='details'> The far clipping plane distance.</p>
+	<a name="orthographicSize"></a><h3><span class="full-name">Camera.</span>orthographicSize</h3><div class="synopsis"><span class="standard_type">float</span> orthographicSize</div>
+   <p class='details'> The top/bottom clipping plance distance when in ortho graphic mode</p>
+	<a name="isOrthoGraphic"></a><h3><span class="full-name">Camera.</span>isOrthoGraphic</h3><div class="synopsis"><span class="standard_type">bool</span> isOrthoGraphic</div>
+   <p class='details'> Is the camera ortho graphic or perspective?</p>
+	<a name="depth"></a><h3><span class="full-name">Camera.</span>depth</h3><div class="synopsis"><span class="standard_type">float</span> depth</div>
+   <p class='details'> Depth in the camera rendering order.
+The camera with the lowest depth is rendered first.</p>
+	<a name="aspect"></a><h3><span class="full-name">Camera.</span>aspect</h3><div class="synopsis"><span class="standard_type">float</span> aspect</div>
+   <p class='details'> The aspect ratio of the camera <b>(Read Only)</b>. 
+The aspect ratio is always the same as the screen's aspect ratio. 
+FIXME: is this also the case if we have a non-fullscreen camera?</p>
+	<a name="cullingMask"></a><h3><span class="full-name">Camera.</span>cullingMask</h3><div class="synopsis"><span class="standard_type">int</span> cullingMask</div>
+   <p class='details'> This is used to render parts of the scene selectively.
+If the rendered <a href="GameObject.html" class="classlink">GameObject's</a> layerMask AND the Camera's cullingMask is zero the game object will be invisible from this camera.</p>
+	<a name="backgroundColor"></a><h3><span class="full-name">Camera.</span>backgroundColor</h3><div class="synopsis"><a href="Color.html" class="classlink">Color</a> backgroundColor</div>
+   <p class='details'> The color with which the screen will be cleared if clear flags are set to clear color.</p>
+	<a name="rect"></a><h3><span class="full-name">Camera.</span>rect</h3><div class="synopsis"><a href="Rect.html" class="classlink">Rect</a> rect</div>
+   <p class='details'> Where on screen is the camera rendered in normalized coordinates.</p>
+	<a name="pixelRect"></a><h3><span class="full-name">Camera.</span>pixelRect</h3><div class="synopsis"><a href="Rect.html" class="classlink">Rect</a> pixelRect</div>
+   <p class='details'> Where on screen is the camera rendered in pixel coordinates</p>
+	<a name="targetTexture"></a><h3><span class="full-name">Camera.</span>targetTexture</h3><div class="synopsis"><a href="RenderTexture.html" class="classlink">RenderTexture</a> targetTexture</div>
+   <p class='details'> Where on screen is the camera rendered in pixel coordinates</p>
+	<a name="pixelWidth"></a><h3><span class="full-name">Camera.</span>pixelWidth</h3><div class="synopsis"><span class="standard_type">float</span> pixelWidth</div>
+   <p class='details'> How wide is the camera, in pixels.</p>
+	<a name="pixelHeight"></a><h3><span class="full-name">Camera.</span>pixelHeight</h3><div class="synopsis"><span class="standard_type">float</span> pixelHeight</div>
+   <p class='details'> How tall is the camera, in pixels.</p>
+	<a name="cameraToWorldMatrix"></a><h3><span class="full-name">Camera.</span>cameraToWorldMatrix</h3><div class="synopsis"><a href="Matrix4x4.html" class="classlink">Matrix4x4</a> cameraToWorldMatrix</div>
+   <p class='details'> The camera-to-world matrix <b>(Read Only)</b>.
+Use this to calculate where in the world as specific point is in camera space.</p>
+	<a name="worldToCameraMatrix"></a><h3><span class="full-name">Camera.</span>worldToCameraMatrix</h3><div class="synopsis"><a href="Matrix4x4.html" class="classlink">Matrix4x4</a> worldToCameraMatrix</div>
+   <p class='details'> The world-to-camera matrix.
+Use this to calculate the camera space position of objects.
+If you change this matrix, the camera no longer updates its rendering based on its postion. 
+This lasts until you call <a href="#ResetWorldToCameraMatrix." class="itemlink">ResetWorldToCameraMatrix.</a></p>
+	<a name="projectionMatrix"></a><h3><span class="full-name">Camera.</span>projectionMatrix</h3><div class="synopsis"><a href="Matrix4x4.html" class="classlink">Matrix4x4</a> projectionMatrix</div>
+   <p class='details'> Set a custom projection matrix.
+If you change this matrix, the camera no longer updates its rendering based on its field-of-view. 
+This lasts until you call <a href="#ResetProjectionMatrix." class="itemlink">ResetProjectionMatrix.</a></p>
+	<a name="velocity"></a><h3><span class="full-name">Camera.</span>velocity</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> velocity</div>
+   <p class='details'> Get the world-space speed of the camera over the last frame <b>(Read Only)</b>.</p>
+	<a name="clearFlags"></a><h3><span class="full-name">Camera.</span>clearFlags</h3><div class="synopsis"><a href="CameraClearFlags.html" class="classlink">CameraClearFlags</a> clearFlags</div>
+   <p class='details'> The bitmask determining what to clear:
+<a href="CameraClearFlags.html#Color" class="itemlink">CameraClearFlags.Color</a>, <a href="CameraClearFlags.html#Depth" class="itemlink">CameraClearFlags.Depth</a>, <a href="CameraClearFlags.html#Nothing" class="itemlink">CameraClearFlags.Nothing</a></p>
+   <a name="Methods"></a><h2 class="script-section">Methods</h2>
+	<a name="ResetWorldToCameraMatrix"></a><h3><span class="full-name">Camera.</span>ResetWorldToCameraMatrix</h3><div class="synopsis"><span class="standard_type">void</span> ResetWorldToCameraMatrix ()</div>
+   <p class='details'> Make the rendering position reflect the camera's position in the scene.
+Call this to undo the effect of setting <a href="#worldToCameraMatrix." class="itemlink">worldToCameraMatrix.</a></p>
+	<a name="ResetProjectionMatrix"></a><h3><span class="full-name">Camera.</span>ResetProjectionMatrix</h3><div class="synopsis"><span class="standard_type">void</span> ResetProjectionMatrix ()</div>
+   <p class='details'> Make the rendering position reflect the camera's position in the scene.
+Call this to undo the effect of setting <a href="#projectionMatrix." class="itemlink">projectionMatrix.</a></p>
+	<a name="WorldToScreenPoint"></a><h3><span class="full-name">Camera.</span>WorldToScreenPoint</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> WorldToScreenPoint (<a href="Vector3.html" class="classlink">Vector3</a> position)</div>
+   <p class='details'> Transforms <span class="variable">position</span> from world space into screen space.</p>
+	<a name="WorldToViewportPoint"></a><h3><span class="full-name">Camera.</span>WorldToViewportPoint</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> WorldToViewportPoint (<a href="Vector3.html" class="classlink">Vector3</a> position)</div>
+   <p class='details'> Transforms <span class="variable">position</span> from world space into viewport space.</p>
+	<a name="ViewportToWorldPoint"></a><h3><span class="full-name">Camera.</span>ViewportToWorldPoint</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> ViewportToWorldPoint (<a href="Vector3.html" class="classlink">Vector3</a> position)</div>
+   <p class='details'> Transforms <span class="variable">position</span> from viewport space into world space.</p>
+	<a name="ScreenToWorldPoint"></a><h3><span class="full-name">Camera.</span>ScreenToWorldPoint</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> ScreenToWorldPoint (<a href="Vector3.html" class="classlink">Vector3</a> position)</div>
+   <p class='details'> Transforms <span class="variable">position</span> from screen space into world space.</p>
+	<a name="ScreenToViewportPoint"></a><h3><span class="full-name">Camera.</span>ScreenToViewportPoint</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> ScreenToViewportPoint (<a href="Vector3.html" class="classlink">Vector3</a> position)</div>
+   <p class='details'> Transforms <span class="variable">position</span> from screen space into viewport space.</p>
+	<a name="ViewportToScreenPoint"></a><h3><span class="full-name">Camera.</span>ViewportToScreenPoint</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> ViewportToScreenPoint (<a href="Vector3.html" class="classlink">Vector3</a> position)</div>
+   <p class='details'> Transforms <span class="variable">position</span> from viewport space into screen space.</p>
+	<a name="ViewportPointToRay"></a><h3><span class="full-name">Camera.</span>ViewportPointToRay</h3><div class="synopsis"><a href="Ray.html" class="classlink">Ray</a> ViewportPointToRay (<a href="Vector3.html" class="classlink">Vector3</a> position)</div>
+   <p class='details'> Returns a ray in world space starting at the near plane of the camera at <span class="variable">position</span>.
+Any point on the ray corresponds to /position's/'s x, y coordinates on the screen. (viewPoint.z is ignored)</p>
+	<a name="ScreenPointToRay"></a><h3><span class="full-name">Camera.</span>ScreenPointToRay</h3><div class="synopsis"><a href="Ray.html" class="classlink">Ray</a> ScreenPointToRay (<a href="Vector3.html" class="classlink">Vector3</a> position)</div>
+   <p class='details'> Returns a ray in world space starting at the near plane of the camera at <span class="variable">position</span>.
+Any point on the ray corresponds to /position's/'s x, y coordinates on the viewport. (position.z is ignored)</p>
+   <a name="Messages Sent"></a><h2 class="script-section">Messages Sent</h2>
+	<a name="OnPreCull"></a><h3><span class="full-name">Camera.</span>OnPreCull</h3><div class="synopsis"><span class="standard_type">void</span> OnPreCull ()</div>
+   <p class='details'> OnPreCull is called before a camera culls the scene.
+This message is sent to all scripts attached to the camera.</p>
+	<a name="OnPreRender"></a><h3><span class="full-name">Camera.</span>OnPreRender</h3><div class="synopsis"><span class="standard_type">void</span> OnPreRender ()</div>
+   <p class='details'> OnPreRender is called before a camera starts rendering the scene.
+This message is sent to all scripts attached to the camera.</p>
+	<a name="OnPostRender"></a><h3><span class="full-name">Camera.</span>OnPostRender</h3><div class="synopsis"><span class="standard_type">void</span> OnPostRender ()</div>
+   <p class='details'> OnPostRender is called after a camera finished rendering the scene.
+This message is sent to all scripts attached to the camera.</p>
+	<a name="OnRenderImage"></a><h3><span class="full-name">Camera.</span>OnRenderImage</h3><div class="synopsis"><span class="standard_type">void</span> OnRenderImage (<a href="RenderTexture.html" class="classlink">RenderTexture</a> source, <a href="RenderTexture.html" class="classlink">RenderTexture</a> destination)</div>
+   <p class='details'> OnRenderImage is called after rendering is complete.
+It allows you to do image based effects by blitting from one render texture into another with shader based filters.
+This message is sent to all scripts attached to the camera.</p>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="main"></a><h3><span class="full-name">Camera.</span>main</h3><div class="synopsis">Camera main</div>
+   <p class='details'> The first enabled camera tagged "MainCamera".
+Returns null if there is no camera in the scene. <b>(Read Only)</b></p>
+	<a name="current"></a><h3><span class="full-name">Camera.</span>current</h3><div class="synopsis">Camera current</div>
+   <p class='details'> The camera we are currently rendering with.
+Most of the time you will want to use <a href="Camera.html#main" class="itemlink">Camera.main</a> instead.
+Use this function only when implementing one of the following events:
+<a href="MonoBehaviour.html#OnRenderImage" class="itemlink">MonoBehaviour.OnRenderImage</a>, <a href="MonoBehaviour.html#OnPreRender" class="itemlink">MonoBehaviour.OnPreRender</a>, <a href="MonoBehaviour.html#OnPostRender" class="itemlink">MonoBehaviour.OnPostRender</a></p>
+	<a name="allCameras"></a><h3><span class="full-name">Camera.</span>allCameras</h3><div class="synopsis">Camera[] allCameras</div>
+   <p class='details'> All enabled cameras in the scene.</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

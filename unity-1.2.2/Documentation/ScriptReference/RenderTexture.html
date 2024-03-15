@@ -1,0 +1,101 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="RenderTexture"-->
+			<title>Unity Script Reference &ndash; RenderTexture</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class RenderTexture</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class RenderTexture" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Texture.html" class="classlink">Texture</a></div></p>
+   <p class='first'> Render textures can be used for image based rendering effects or projectors.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#width'>width</a></p>
+<p><a href='#height'>height</a></p>
+<p><a href='#depth'>depth</a></p>
+<p><a href='#isPowerOfTwo'>isPowerOfTwo</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Constructors</p><p><a href='#RenderTexture'>RenderTexture</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Functions</p><p><a href='#Create'>Create</a></p>
+<p><a href='#Destroy'>Destroy</a></p>
+<p><a href='#IsCreated'>IsCreated</a></p>
+<p><a href='#SetGlobalShaderProperty'>SetGlobalShaderProperty</a></p>
+<p><a href='#SetBorderColor'>SetBorderColor</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#active'>active</a></p>
+<p><a href='#enabled'>enabled</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#GetTemporary'>GetTemporary</a></p>
+<p><a href='#ReleaseTemporary'>ReleaseTemporary</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> All rendering goes into the active RenderTexture (<a href="#active " class="itemlink">active </a>property).
+If the active RenderTexture is null everything is rendered in the main OpenGL window.
+Unity Pro only.</p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="width"></a><h3><span class="full-name">RenderTexture.</span>width</h3><div class="synopsis"><span class="standard_type">int</span> width</div>
+   <p class='details'> The width of the render texture in pixels. Note that unlike <a href="Texture.html#width" class="itemlink">Texture's width property</a>, this is both read and write -
+setting a value changes size.</p>
+	<a name="height"></a><h3><span class="full-name">RenderTexture.</span>height</h3><div class="synopsis"><span class="standard_type">int</span> height</div>
+   <p class='details'> The height of the render texture in pixels. Note that unlike <a href="Texture.html#height" class="itemlink">Texture's height property</a>, this is both read and write -
+setting a value changes size.</p>
+	<a name="depth"></a><h3><span class="full-name">RenderTexture.</span>depth</h3><div class="synopsis"><span class="standard_type">int</span> depth</div>
+   <p class='details'> The depth of the render texture in bits (0, 16, 24, 32 are supported)</p>
+	<a name="isPowerOfTwo"></a><h3><span class="full-name">RenderTexture.</span>isPowerOfTwo</h3><div class="synopsis"><span class="standard_type">bool</span> isPowerOfTwo</div>
+   <p class='details'> Is the size of the render texture constrained to power of two sizes?
+	When using image post processing effects, you should always disable this (use non-power of two textures).
+When using the render texture on normal shaders you should always enable this (use power of two textures).</p>
+   <a name="Constructors"></a><h2 class="script-section">Constructors</h2>
+	<a name="RenderTexture"></a><h3><span class="full-name">RenderTexture.</span>RenderTexture</h3><div class="synopsis">RenderTexture (<span class="standard_type">int</span> width, <span class="standard_type">int</span> height, <span class="standard_type">int</span> depth)</div>
+   <p class='details'> Creates a new RenderTexture.
+The render texture is set to be a non-power of two texture.</p>
+   <a name="Methods"></a><h2 class="script-section">Methods</h2>
+	<a name="Create"></a><h3><span class="full-name">RenderTexture.</span>Create</h3><div class="synopsis"><span class="standard_type">void</span> Create ()</div>
+   <p class='details'> Creates the drawing context of the RenderTexture</p>
+	<a name="Destroy"></a><h3><span class="full-name">RenderTexture.</span>Destroy</h3><div class="synopsis"><span class="standard_type">void</span> Destroy ()</div>
+   <p class='details'> Releases the drawing context of the RenderTexture</p>
+	<a name="IsCreated"></a><h3><span class="full-name">RenderTexture.</span>IsCreated</h3><div class="synopsis"><span class="standard_type">bool</span> IsCreated ()</div>
+   <p class='details'> Is the drawing context of the RenderTexture created?</p>
+	<a name="SetGlobalShaderProperty"></a><h3><span class="full-name">RenderTexture.</span>SetGlobalShaderProperty</h3><div class="synopsis"><span class="standard_type">void</span> SetGlobalShaderProperty (<span class="standard_type">string</span> propertyName)</div>
+   <p class='details'> Assigns this RenderTexture as a global shader property named <span class="variable">propertyName</span>.</p>
+	<a name="SetBorderColor"></a><h3><span class="full-name">RenderTexture.</span>SetBorderColor</h3><div class="synopsis"><span class="standard_type">void</span> SetBorderColor (<a href="Color.html" class="classlink">Color</a> color)</div>
+   <p class='details'> </p>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="active"></a><h3><span class="full-name">RenderTexture.</span>active</h3><div class="synopsis">RenderTexture active</div>
+   <p class='details'> The active render texture.
+All rendering goes into the active RenderTexture.
+If the active RenderTexture is null everything is rendered in the main OpenGL window.
+When a RenderTexture becomes active its rendering context is automatically created if it hasn't been created already.</p>
+	<a name="enabled"></a><h3><span class="full-name">RenderTexture.</span>enabled</h3><div class="synopsis"><span class="standard_type">bool</span> enabled</div>
+   <p class='details'> Is render texture enabled?
+When RenderTexture is disabled, no rendering contexts are created and
+rendering will always go into the main OpenGL window.</p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="GetTemporary"></a><h3><span class="full-name">RenderTexture.</span>GetTemporary</h3><div class="synopsis">RenderTexture GetTemporary (<span class="standard_type">int</span> width, <span class="standard_type">int</span> height, <span class="standard_type">int</span> depth = 0)</div>
+   <p class='details'> Allocate a temporary render buffer.
+This function is optimized for when you need a quick buffer to do some temporary calculations.
+Release it using <a href="RenderTexture.html#ReleaseTemporary" class="itemlink">RenderTexture.ReleaseTemporary</a> as soon as you're done with it, so another call can share the buffer.</p>
+	<a name="ReleaseTemporary"></a><h3><span class="full-name">RenderTexture.</span>ReleaseTemporary</h3><div class="synopsis"><span class="standard_type">void</span> ReleaseTemporary (RenderTexture temp)</div>
+   <p class='details'> Release a temporary buffer allocated with <a href="RenderTexture.html#GetTemporary" class="itemlink">RenderTexture.GetTemporary</a>
+Later calls to <a href="RenderTexture.html#GetTemporary" class="itemlink">RenderTexture.GetTemporary</a> will reuse the RenderTexture.
+When no one has requested the the temporary RenderTexture for a few frames it will get destroyed.</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

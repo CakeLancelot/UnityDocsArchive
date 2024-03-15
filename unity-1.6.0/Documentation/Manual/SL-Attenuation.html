@@ -1,0 +1,331 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title=" Attenuation and cookies for pixel lights"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title=" Attenuation and cookies for pixel lights" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced.html%22%3EAdvanced%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Shaders.html%22%3EShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-RenderPipeline.html%22%3E%20Unity's%20Rendering%20Pipeline%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22SL-Attenuation.html%22%3E%20Attenuation%20and%20cookies%20for%20pixel%20lights%3C%2Fa%3E" -->
+		<h1> Attenuation and cookies for pixel lights</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced.html">Advanced</a> &gt; <a href="Shaders.html">Shaders</a> &gt; <a href="SL-RenderPipeline.html"> Unity's Rendering Pipeline</a> &gt; <a href="SL-Attenuation.html"> Attenuation and cookies for pixel lights</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="SL-RenderPipeline.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-BuiltinValues.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>The different light types in Unity's pixel lighting pipeline are implemented using texture lookups to do the attenuation:
+</p>
+<ul><li> Directional lights can't attenuate, so they don't need any extra processing.
+<ul><li> If a cookie is set up, a directional light does one texture lookup into the cookie.
+</li></ul></li><li> Point lights don't need extra processing if attenuation is turned off. If attenuation is used, a texture lookup needs to be done. This is done by doing a single volume (3D) texture lookup; or by doing two (one 2D and one 1D) lookups if the graphics card does not support volume textures.
+<ul><li> If a cookie is set up, attenuation is always turned off and the light does one texture lookup into the cookie cubemap.
+</li></ul></li><li> Spot lights use two texture lookups: one to get the spotlight shape and another to do distance attenuation.
+<ul><li> If a cookie is set up, it is used to get spotlight shape. The light still uses two texture lookups.
+</li></ul></li></ul>
+
+<p>So each light can do zero, one or two texture lookups to take attenuation and light cookie into account. Taking various lookup texture types into account there are five combinations in total:
+</p>
+<ul><li> No texture lookups
+</li><li> A single lookup into a texture
+</li><li> A single lookup into a volume texture
+</li><li> A single lookup into a cubemap texture
+</li><li> Two texture lookups
+</li></ul>
+
+<h2> Attenuation in fragment programs</h2>
+
+<p>When using fragment programs, Unity helps setting these combinations up by providing some macros and definitions in <b>AutoLight.cginc</b> and <b>UnityCG.cginc</b> Cg include files. Then what you do is:
+</p>
+<ul><li> Use <i>// autolight 7</i> option at start of your CGPROGRAM block
+</li><li> Include the helper files: <i>#include &quot;AutoLight.cginc&quot;</i> and <i>#include &quot;UnityCG.cginc&quot;</i>
+</li><li> Declare two structures for passing information from a vertex to fragment program. The first is output by a vertex program; and the second is taken as an input in fragment program. The two structures should be identical otherwise, but the first one must contain a <i>float4 _LightCoord[2]</i> texcoord. Most convenient way is using a <i>V2F_LIGHT_COORDS(TEXCOORD<b>index</b>);</i> macro.
+</li><li> Output the first structure from a vertex program, using a <i>PASS_LIGHT_COORDS(<b>lighttexindex</b>);</i> macro to compute the attenuation lookup texture coordinates.
+</li><li> Input the first structure in a fragment program, and a <i>LIGHTDECL(TEXUNIT<b>lighttexindex</b>)</i> macro.
+</li><li> Finally, in a fragment program use <i>LIGHTATT</i> macro that returns a single float value for the light attenuation.
+</li><li> In <i>SetTexture</i> block after the Cg code, setup attenuation textures along your regular textures:
+<ul><li> <i>SetTexture [_LightTexture0] {} SetTexture [_LightTextureB0] {}</i>
+</li></ul></li></ul>
+
+<p>This is pretty complex, so a full shader example is in order. This shader fully shows how to use light attenuation textures in a fragment program. The rest of the shader is kept minimal - it exposes just a color and computes a simple diffuse lighting per-vertex.
+<pre class='codelisting'>
+Shader &quot;Light Attenuation&quot; {
+Properties {
+    _Color (&quot;Main Color&quot;, Color) = (1,1,1,0.5)
+}
+
+Category {
+    Blend AppSrcAdd AppDstAdd
+    Fog { Color [_AddFog] }
+    
+    // Fragment program cards
+    SubShader {
+        // Ambient pass
+        Pass {
+            Tags {&quot;LightMode&quot; = &quot;PixelOrNone&quot;}
+            Color [_PPLAmbient]
+            SetTexture [_Dummy] {constantColor [_Color] Combine primary DOUBLE, constant}
+        }
+        // Vertex lights
+        Pass { 
+            Tags {&quot;LightMode&quot; = &quot;Vertex&quot;}
+            Lighting On
+            Material {
+                Diffuse [_Color]
+                Emission [_PPLAmbient]
+            }
+            SetTexture [_Dummy] {constantColor [_Color] Combine primary DOUBLE, constant}
+        }
+        // Pixel lights
+        Pass {
+            Tags {
+                &quot;LightMode&quot; = &quot;Pixel&quot;
+                &quot;LightTexCount&quot; = &quot;012&quot; // this is the default as well
+            }
+CGPROGRAM
+// profiles arbfp1
+// vertex vert
+// fragment frag
+// autolight 7
+#include &quot;UnityCG.cginc&quot;
+#include &quot;AutoLight.cginc&quot;
+// fragmentoption ARB_fog_exp2
+// fragmentoption ARB_precision_hint_fastest
+
+// Define the two structures
+struct v2f {
+    V2F_POS_FOG;
+    float4 color : COLOR0;
+    // Pass light coords in two slots starting from TEXCOORD0.
+    // If we'd use some texcoords for ourselves, the index would
+    // be different.
+    V2F_LIGHT_COORDS(TEXCOORD0);
+};
+struct v2f2 { 
+    V2F_POS_FOG;
+    float4 color : COLOR0;
+};
+
+// Vertex program
+v2f vert (appdata_base v)
+{
+    v2f o;
+    PositionFog( v.vertex, o.pos, o.fog );
+    
+    // compute a simple diffuse per-vertex
+    float3 ldir = normalize( ObjSpaceLightDir( v.vertex ) );
+    float diffuse = dot( v.normal, ldir );
+    o.color = diffuse * _ModelLightColor[0] * 2;
+    
+    // compute&amp;pass texture coords for attenuation
+    PASS_LIGHT_COORDS(0); // 0 is the texture index, see SetTexture part below
+    return o;
+}
+
+// Fragment program
+// TEXUNIT0 is the texture index, see SetTexture part below
+float4 frag (v2f2 i, LIGHTDECL(TEXUNIT0))  : COLOR
+{
+    // Just multiply interpolated color with attenuation
+    return i.color * LIGHTATT;
+}
+ENDCG
+            // We don't use any textures ourselves,
+            // so attenuation textures start from 0
+            SetTexture [_LightTexture0] {}
+            SetTexture [_LightTextureB0] {}
+        }
+    }
+}
+
+Fallback &quot; VertexLit&quot;, 1
+}
+</pre>
+</p>
+
+<h2> Attenuation for older hardware</h2>
+
+<p>Writing pixel lit shaders for older hardware (that does not support fragment programs) is even more involved due to resource constraints and the fact that these shaders have to be written in an assembly-like language. In this
+case most often you write separate passes and shaders that support 0, 1 or 2 attenuation textures.
+</p>
+
+<p>For example, the above shader written for <a class="wiki"  href="http://oss.sgi.com/projects/ogl-sample/registry/ATI/text_fragment_shader.txt">ATI Fragment Shader</a> cards (Radeon 8500 and up) would be like the example below. Ambient and Vertex passes are still the same in this case, but there are separate Pixel passes for 0, 1 and 2 attenuation textures, with different shaders accordingly. In a real shader you'd implement both SubShaders in a single shader, and possibly a couple more for even older video cards <i>(gotta love all the different cards out there, right?)</i>.
+<pre class='codelisting'>
+Shader &quot;Light Attenuation&quot; {
+Properties {
+    _Color (&quot;Main Color&quot;, Color) = (1,1,1,0.5)
+}
+
+CGINCLUDE
+// This block will be pasted into all later cg program blocks
+#include &quot;UnityCG.cginc&quot;
+float4 Lighting( appdata_base v )
+{
+    // compute a simple diffuse per-vertex
+    float3 ldir = normalize( ObjSpaceLightDir( v.vertex ) );
+    float diffuse = dot( v.normal, ldir );
+    return diffuse * _ModelLightColor[0] * 2;
+}
+ENDCG
+
+Category {
+    Blend AppSrcAdd AppDstAdd
+    Fog { Color [_AddFog] }
+    
+    // ATI Fragment shader cards
+    SubShader {
+        // Ambient pass
+        Pass {
+            Name &quot;BASE&quot;
+            Tags {&quot;LightMode&quot; = &quot;PixelOrNone&quot;}
+            Color [_PPLAmbient]
+            SetTexture [_Dummy] {constantColor [_Color] Combine primary DOUBLE, constant}
+        }
+        // Vertex lights
+        Pass { 
+            Tags {&quot;LightMode&quot; = &quot;Vertex&quot;}
+            Lighting On
+            Material {
+                Diffuse [_Color]
+                Emission [_PPLAmbient]
+            }
+            SetTexture [_Dummy] {constantColor [_Color] Combine primary DOUBLE, constant}
+        }
+        
+        // Lights with 0 light textures
+        Pass {
+            Tags {
+                &quot;LightMode&quot; = &quot;Pixel&quot;
+                &quot;LightTexCount&quot; = &quot;0&quot;
+            }
+CGPROGRAM
+// vertex vert
+struct v2f {
+    V2F_POS_FOG;
+    float4 color : COLOR0;
+};
+v2f vert (appdata_base v)
+{
+    v2f o;
+    PositionFog( v.vertex, o.pos, o.fog );
+    o.color = Lighting( v );
+    return o;
+}
+ENDCG
+            Program &quot;&quot; {
+                SubProgram {
+                    &quot;!!ATIfs1.0
+                    StartOutputPass;
+                        MOV r0, color0; # just output color
+                    EndPass;
+                    &quot;
+                }
+            }
+        }
+        
+        // Lights with 1 light texture
+        Pass {
+            Tags {
+                &quot;LightMode&quot; = &quot;Pixel&quot;
+                &quot;LightTexCount&quot; = &quot;1&quot;
+            }
+
+CGPROGRAM
+// vertex vert
+struct v2f {
+    V2F_POS_FOG;
+    float4 color : COLOR0;
+    float4 LightCoord0 : TEXCOORD0; // one light texcoord
+};
+v2f vert (appdata_base v)
+{
+    v2f o;
+    PositionFog( v.vertex, o.pos, o.fog );
+    o.color = Lighting( v );
+    o.LightCoord0 = LIGHT_COORD( 0 ); // light texcoord
+    return o;
+}
+ENDCG
+            Program &quot;&quot; {
+                SubProgram {
+                    &quot;!!ATIfs1.0
+                    StartOutputPass;
+                        SampleMap r0, t0.str; # attenuation
+                        MUL r0, color0, r0.a; # multiply with color
+                    EndPass; 
+                    &quot;
+                }
+            }
+            SetTexture[_LightTexture0] {}
+        }
+        
+        // Lights with 2 light textures
+        Pass {
+            Tags {
+                &quot;LightMode&quot; = &quot;Pixel&quot;
+                &quot;LightTexCount&quot; = &quot;2&quot;
+            }
+CGPROGRAM
+// vertex vert
+struct v2f {
+    V2F_POS_FOG;
+    float4 color : COLOR0;
+    float4 LightCoord0 : TEXCOORD0; // two light texcoords
+    float4 LightCoordB0 : TEXCOORD1;
+};
+v2f vert (appdata_base v)
+{
+    v2f o;
+    PositionFog( v.vertex, o.pos, o.fog );
+    o.color = Lighting( v );
+    o.LightCoord0 = LIGHT_COORD( 0 );
+    o.LightCoordB0 = LIGHT_COORD( 1 );
+    return o;
+}
+ENDCG
+            Program &quot;&quot; {
+                SubProgram {
+                    &quot;!!ATIfs1.0
+                    StartOutputPass;
+                        SampleMap r0, t0.stq_dq; # attenuation1
+                        SampleMap r1, t1.stq_dq; # attenuation2
+                        MUL r0, color0, r0.a;
+                        MUL r0, r0, r1.a;
+                    EndPass; 
+                    &quot;
+                }
+            }
+            SetTexture[_LightTexture0] {}
+            SetTexture[_LightTextureB0] {}
+        }
+    }
+}
+
+Fallback &quot; VertexLit&quot;, 1
+}
+</pre>
+</p>
+
+
+
+		<div class="navigation"><a href="SL-RenderPipeline.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SL-BuiltinValues.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

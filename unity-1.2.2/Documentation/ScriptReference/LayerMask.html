@@ -1,0 +1,41 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="LayerMask"-->
+			<title>Unity Script Reference &ndash; LayerMask</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>struct LayerMask</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="struct LayerMask" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> LayerMask allow you to display the LayerMask popup menu in the inspector</p>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#operator int'>operator int</a></p>
+<p><a href='#operator LayerMask'>operator LayerMask</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> similar to those in the camera.cullingMask.
+<a href="../ScriptingConcepts/Layers.html" class="classlink">Layer masks</a> can be used selectively filter game objects for example when casting rays.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Casts a ray using the layer mask, which can be modified <span class="keyword">in</span> the inspector.<br/>var mask : LayerMask;<br/>if (<a href="Physics.html#Raycast" class="itemlink">Physics.Raycast</a>(<a href="Vector3.html#zero" class="itemlink">Vector3.zero</a>, <a href="Vector3.html#forward" class="itemlink">Vector3.forward</a>, <a href="Mathf.html#Infinity" class="itemlink">Mathf.Infinity</a>, mask)) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;print ("Hit something");<br/>}</div></td></tr></table></p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="operator int"></a><h3><span class="full-name">LayerMask.</span>operator int</h3><div class="synopsis"><span class="keyword">implicit</span> <span class="keyword">operator</span> <span class="standard_type">int</span> (LayerMask mask)</div>
+   <p class='details'> </p>
+	<a name="operator LayerMask"></a><h3><span class="full-name">LayerMask.</span>operator LayerMask</h3><div class="synopsis"><span class="keyword">implicit</span> <span class="keyword">operator</span> LayerMask (<span class="standard_type">int</span> intVal)</div>
+   <p class='details'> </p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

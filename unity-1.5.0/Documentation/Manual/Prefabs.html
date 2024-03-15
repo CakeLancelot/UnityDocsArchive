@@ -1,0 +1,115 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Prefabs"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="Prefabs" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Assets.html%22%3EAssets%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Prefabs.html%22%3EPrefabs%3C%2Fa%3E" -->
+		<h1>Prefabs</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Assets.html">Assets</a> &gt; <a href="Prefabs.html">Prefabs</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Sound files.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Game Logic.html">Next<img src="../images/next.png"></a></div>
+
+			
+<p>Prefabs are reusable game objects that are stored in the library. They can be inserted into many scenes, and any changes to the source prefab is immediately reflected in all scenes through the project.
+</p>
+
+<p>Prefabs are groups/hierarchies of game objects which can be instantiated.
+</p>
+
+<h2>Creating Prefabs</h2>
+<table><tr><td><div class='cbox'><div class='cbox-data'>
+<ol><li> Select the folder you want to create the prefab in.
+</li><li> Choose <b>Assets-&gt;Create-&gt;Prefab</b> from the main menu, or <b>Create-&gt;Prefab</b> from the project view context menu.
+</li><li> Drag&amp;Drop a game object from the hierarchy view on the created prefab in the project view.
+</li></ol>
+
+<p></div></div></td></tr></table>
+</p>
+
+<p>This will copy the dragged game objects - including it's transform hierarchy - into the prefab and make the game object in the hierarchy view inherit from the prefab.
+</p>
+
+<h2>Instantiating Prefabs</h2>
+<p>To copy a prefab into a scene, simply drag the prefab back into the scene view or the hierarchy pane. This copies all game objects in the prefab into the scene. These game objects now inherit from the prefab.
+</p>
+
+<p>Inheritance means that whenever the Prefab changes, changes are copied to the inheriting objects in the scene.
+</p>
+
+<p>All properties of inherited game objects have an override flag, shown as a checkbox in the inspector. If the override flag is set, changes in the Prefab will not affect this property, allowing you to make local modifications to game objects. The override flags are automatically set when you change the properties of the game object.
+</p>
+
+<p>There are some limitations to the changes you can make to inherited game objects. These are:
+</p>
+
+<ul><li> You cannot add a new component to an inheriting game object
+</li><li> You cannot remove a component from an inheriting game object
+</li><li> You cannot attach other game objects as children of an inheriting game object.
+</li></ul>
+
+<p>If you do any of these things, unity will ask you if you really want to disconnect the game object from its prefab. When a game object has been disconnected from its prefab, changes to the prefab will no longer affect the game object in the scene.
+</p>
+
+<p>You can later reconnect the game object to the Prefab.
+</p>
+
+<h2>Uploading Changes</h2>
+<p>When creating or editing complex prefabs, it makes sense to instantiate them in the scene and edit them there. Once you are done, select the root game object and choose <b>Game Object-&gt;Upload changes to Prefab</b> from the main menu. All your changes are then copied back to the prefab, and copied to any other inheriting objects in the scene.
+</p>
+
+<p>You can also use drag &amp; drop to upload your changes: Simply drag the game objects back to the prefab it came from.
+</p>
+
+<p>Uploading changes into a prefab can cause unwanted data loss if you drag the wrong gameobject into it, since the changes are immediately copied into any inheriting GameObjects. Thus Upload changes to prefab only works when the operation seems to be safe. Drag&amp;Drop asks you if you really want to perform a drag if it seems like you are about to change a prefab that might cause data loss.
+</p>
+
+<p>It is important that you change and upload an inherited game object and not any game object that never had a connection to the Prefab. If you do, any other inherited game objects will have their overriden values lost. (This is especially annoying for Transform positions)
+</p>
+
+<h2>Connecting game objects to prefabs</h2>
+<p>To make a game object in a scene connect to a prefab, hold alt and drag the prefab onto the game object. You can drag onto a game object only in the hierarchy view. After the drag the game object you dragged upon will inherit from the dragged prefab. The operation will not change the prefab at all, but add or remove components and child game objects from the game object you dragged upon.
+</p>
+
+<h2>Importing Prefabs</h2>
+<p>When importing meshes, unity automatically generates prefabs out of those meshes.
+Thus when you instantiate the prefab in unity and then change the imported scene in your 3d art package, all changes will be reflected in all instantiated prefabs.
+</p>
+
+
+<p>Sometimes you want to add scripts or components to the imported mesh and at the same time be able to place it several times in the scene quickly. For this you have to create another prefab:
+<table><tr><td><div class='cbox'><div class='cbox-data'>
+<ol><li> Drag the prefab generated from eg. an fbx file from the project view into the scene view or hierarchy view.
+</li><li> Modify the game object to your liking, add scripts, components etc.
+</li><li> Create a new prefab. Choose <b>Assets-&gt;Create-&gt;Prefab</b> from the main menu, or <b>Create-&gt;Prefab</b> from the project view context menu.
+</li><li> Drag the game object from the hierarchy view on the prefab.
+</li></ol>
+
+</div></div></td></tr></table>
+</p>
+
+
+
+		<div class="navigation"><a href="Sound files.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Game Logic.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

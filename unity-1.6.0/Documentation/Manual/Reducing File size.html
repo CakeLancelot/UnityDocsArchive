@@ -1,0 +1,102 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Reducing File Size"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title="Reducing File Size" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced.html%22%3EAdvanced%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Reducing%20File%20size.html%22%3EReducing%20File%20Size%3C%2Fa%3E" -->
+		<h1>Reducing File Size</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced.html">Advanced</a> &gt; <a href="Reducing File size.html">Reducing File Size</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="ShaderLab Cheat Sheet.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Web Player Deployment.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p><i>Premature optimization is the root of all evil</i>
+</p>
+
+<p><i>&ndash; Donald Knuth.</i>
+</p>
+
+<h3> Unity post-processes all imported assets</h3>
+<p>Unity always post-processes imported files, thus storing a file as a multi layered psd file instead of a jpg will make absolutely zero difference in the size of the player you will deploy. Save your files in the format you are working with (eg. .mb files, psd files, tiff files) to make your life easier.
+</p>
+
+<h3> Unity strips out unused assets</h3>
+<p>The amount of assets in your project folder does <b>not</b> influence the size of your built player. Unity is very smart about detecting which assets are used in your game and not. Unity follows all references to assets before building a game and builds a list of assets that need to be included in the game. Thus you can safely keep unused assets in your project folder.
+</p>
+
+<h3> Unity prints an overview of the used file size</h3>
+
+<p>After Unity has completed building a player, it prints an overview of what type of asset took up most file size, and it prints which assets were included in the build:
+</p>
+
+<p>To see it just open <b>/Applications/Utilities/Console.app</b>
+</p>
+
+<p><img class='figure' src='images/Reducing File size-0.jpg' />
+</p>
+
+<p><i>An overview of what took up space</i>
+</p>
+
+<h3> Optimizing texture size</h3>
+
+<p>Often textures take up most space in the build. The first thing to do is to turn on texture compression when building the player.
+</p>
+
+<p>If that doesnt get the size down, it is about reducing the size of the textures. The trick here is that you don't need to modfiy the actual source content. Simply select the texture in the project view and choose <b>Assets -&gt; Import Settings...</b>.
+</p>
+
+<p>Here you can specify the maximum texture size which will be used when importing the texture. It is a good idea to zoom in on an object that uses the texture, then adjust the maximum texture size until it starts looking worse in the scene view.
+</p>
+
+<p><img class='figure' src='images/Reducing File size-1.jpg' />
+</p>
+
+<p><i>Tuning texture size</i>
+</p>
+
+<h3> How much memory does my texture take up</h3>
+
+<p><table class="wikitable"><tr><td class="wikicell" ><div align="center"><b>Compression</b></td><td class="wikicell" ><b>Memory consumption</b></div></td></tr><tr><td class="wikicell" >DXTC1 RGB</td><td class="wikicell" >0.5 Bpp (bytes/pixel)</td></tr><tr><td class="wikicell" >DXTC3 RGBA</td><td class="wikicell" >1 Bpp</td></tr><tr><td class="wikicell" >DXTC5 RGBA</td><td class="wikicell" >1 Bpp</td></tr><tr><td class="wikicell" >RGB 16bit</td><td class="wikicell" >2 Bpp </td></tr><tr><td class="wikicell" >RGB 24bit</td><td class="wikicell" >3 Bpp</td></tr><tr><td class="wikicell" >Alpha 8bit</td><td class="wikicell" >1 Bpp</td></tr><tr><td class="wikicell" >RGBA 16bit</td><td class="wikicell" >2 Bpp</td></tr><tr><td class="wikicell" >RGBA 32bit</td><td class="wikicell" >4 Bpp</td></tr></table>
+</p>
+
+<p>To figure out total texture size: width * height * bpp.
+Add 33% if you have Mipmaps.
+</p>
+
+<p>When building a game there is a button <b>Compress textures</b>.
+</p>
+
+<p>By default Unity does not compress textures when importing, even if you choose DXTC compression. This is because compressing textures takes a long time and it is better to have fast iteration time when importing textures into your game. (You can  change this behaviour in the preferences though)
+</p>
+
+<p>The compress textures button in the build settings will make sure that all textures that have DXTC texturing enabled will actually be compressed, before building the player.
+</p>
+
+
+
+		<div class="navigation"><a href="ShaderLab Cheat Sheet.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Web Player Deployment.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

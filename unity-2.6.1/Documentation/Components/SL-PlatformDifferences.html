@@ -1,0 +1,126 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Platform Specific Rendering Differences</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Platform Specific Rendering Differences</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/SL-Reference.html">ShaderLab Reference</a> &gt; <a href="../Components/SL-AdvancedTopics.html">Advanced ShaderLab topics</a> &gt; <a href="../Components/SL-PlatformDifferences.html">Platform Specific Rendering Differences</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/SL-CameraDepthTexture.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/SL-ShaderLOD.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Platform Specific Rendering Differences</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>Unity runs on various platforms, and in some cases there are differences in how things behave. Most of the time Unity hides the differences from you, but sometimes you can still bump into them.
+</p>
+<div class='vspace'></div><h2>Render Texture Coordinates</h2>
+<p>Vertical texture coordinate conventions differ between Direct3D and OpenGL:
+</p><ul><li>In Direct3D, the coordinate is zero at the top, and increases downwards.
+</li><li>In OpenGL, the coordiante is zero at the bottom, and increases upwards.
+</li></ul><p class='vspace'>Most of the time this does not really matter, except when rendering into a <a href="../Components/class-RenderTexture.html">RenderTexture</a>. In that case, Unity internally flips rendering upside down when rendering into a texture on Direct3D, so that the conventions match between the platforms.
+</p>
+<p class='vspace'>One case where this does not happen, is when <a href="../Components/comp-ImageEffects.html">Image Effects</a> and Anti-Aliasing is used. In this case, Unity renders to screen to get anti-aliasing, and then "resolves" rendering into a RenderTexture for further processing with an Image Effect. The resulting source texture for an image effect is <em>not flipped upside down</em> on Direct3D (unlike all other Render Textures).
+</p>
+<p class='vspace'>If your Image Effect is a simple one (processes one texture at a time), this does not really matter, because <a class='urllink' href='../ScriptReference/Graphics.Blit.html' rel='nofollow'>Graphics.Blit</a> takes care of that.
+</p>
+<p class='vspace'>However, <b>if you're processing more than one RenderTexture together</b> in your Image Effect, most likely they will come out at different vertical orientations (only in Direct3D, and only when anti-aliasing is used). You need to manually "flip" the screen texture upside down in your vertex shader, like this:
+</p><pre class='codelisting'>
+// On D3D when AA is used, the main texture &amp; scene depth texture
+// will come out in different vertical orientations.
+// So flip sampling of the texture when that is the case (main texture
+// texel size will have negative Y).
+#if SHADER_API_D3D9
+if (_MainTex_TexelSize.y &lt; 0)
+        uv.y = 1-uv.y;
+#endif
+</pre>
+<p class='vspace'>Check out Edge Detection scene in <a class='urllink' href='http://unity3d.com/support/resources/example-projects/shader-replacement' rel='nofollow'>Shader Replacement sample project</a> for an example of this. Edge detection there uses both screen texture and Camera's <a href="../Components/SL-CameraDepthTexture.html">Depth+Normals texture</a>.
+</p>
+<div class='vspace'></div><h2>Non-power-of-two Render Textures</h2>
+<p><a href="../Components/class-RenderTexture.html">Render Textures</a> are often used for <a href="../Components/comp-ImageEffects.html">Image Effects</a>, and in that case RenderTexture sizes are often not powers of two. Such textures are called "rectangle textures" (RECT for short). Direct3D and OpenGL handle them differently:
+</p><ul><li>In Direct3D, RECT texture coordinates are just like for any other texture. They go from 0.0 to 1.0 over the texture.
+</li><li>In OpenGL, RECT texture coordinates are in pixels. They go from 0 to <code>width</code> horizontally, for example.
+</li></ul><p class='vspace'>When implementing your own image effects, usually you draw a quad using <a class='urllink' href='../ScriptReference/Graphics.Blit.html' rel='nofollow'>Graphics.Blit</a>, which uses 0.0-1.0 texture coordinates. Extra scaling for OpenGL is automatically applied in the texture matrix (when using fixed function T&amp;L); or has to be manually done in the vertex shader, using <code>TRANSFORM_TEX</code> macro, e.g. <code>o.uv=TRANSFORM_TEX(v.texcoord, _MainTex)</code>.
+</p>
+<p class='vspace'>When doing pixel-level offsets inside the shader, the difference also applies: offset of 1 is "one pixel" in OpenGL, while the same offset is "whole texture" in Direct3D. Scale the offsets manually using <code>*_TexelSize</code> built-in property, e.g.
+</p><pre class='codelisting'>
+// _MainTex_TexelSize.xy is the "one pixel" offset
+float4 _MainTex_TexelSize;
+</pre>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/SL-CameraDepthTexture.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/SL-ShaderLOD.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

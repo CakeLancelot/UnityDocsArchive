@@ -1,0 +1,111 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Self-Illuminated Parallax Diffuse</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Self-Illuminated Parallax Diffuse</td>
+			<td><table align="right"><tr>
+			<!-- #TemplateBeginEditable name="sections-nav" -->
+			<td class="Components"><a href="../Manual/index.html" title="Go to Unity manual" class="scripting-anchor"><img src="../images/spacer.gif" class="manual" border="0"><span class="manual-text">Manual</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../Components/index.html" title="Go to Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="reference" border="0"><span class="components-text">Reference</span></a><span class="docs-navigation">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+			<td class="Components"><a href="../ScriptReference/index.html" title="Go to Scripting Reference" class="scripting-anchor"><img src="../images/spacer.gif" class="scripting" border="0"><span class="scripting-text">Scripting &nbsp;&nbsp;</span></a></td>
+			<!-- #TemplateEndEditable -->	
+			</tr></table></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Built-in Shader Guide.html">Built-in Shader Guide</a> &gt; <a href="../Components/shader-SelfIllumFamily.html">Self-Illuminated Shader Family</a> &gt; <a href="../Components/shader-SelfIllumParallaxDiffuse.html">Self-Illuminated Parallax Diffuse</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!-- #TemplateBeginEditable name="switchLink" -->
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+					<!-- #TemplateEndEditable -->	
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/shader-SelfIllumBumpedSpecular.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/shader-SelfIllumParallaxSpecular.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Self-Illuminated Parallax Diffuse</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<div><img class='figure' src='../Images/manual/shader-SelfIllumParallaxDiffuse-0.jpg' /></div>
+<p class='vspace'>One consideration for this shader is that the alpha channel the normal map is used for both Illumination map and the height for the Parallax depth.
+</p>
+<div class='vspace'></div><h2>Self-Illuminated Properties</h2>
+<p>This shader allows you to define bright and dark parts of the object.  The alpha channel of a secondary texture will define areas of the object that "emit" light by themselves, even when no light is shining on it.  In the alpha channel, black is zero light, and white is full light emitted by the object.  Any scene lights will add illumination on top of the shader's illumination.  So even if your object does not emit any light by itself, it will still be lit by lights in your scene.
+</p>
+<p class='vspace'>This shader is similar to a <span class='doc-keyword'>Lightmapped</span> shader, but there are slight differences.  In this shader, the illumination map uses the same UV mapping as the main texture whereas the UVs can differ in a Lightmapped shader.  Lightmapped shaders can also "emit" colored light, while <span class='doc-keyword'>Self-Illuminated</span> emits monochrome light.  This shader is also a bit more compatible with older graphics cards than a Lightmapped shader.
+</p>
+<div class='vspace'></div><h2>Parallax Bumped Properties</h2>
+<p><span class='doc-keyword'>Parallax Bumped</span> is the same as regular <span class='doc-keyword'>Bumped</span>, but with a better simulation of "depth".  The extra depth effect is achieved through the use of a <span class='doc-keyword'>Height Map</span>.  The Height Map is contained in the alpha channel of the Bumpmap. In the alpha, black is zero depth and white is full depth. This is most often used in bricks/stones to better display the cracks between them.
+</p>
+<p class='vspace'>The Parallax mapping technique is pretty simple, so it can have artifacts and unusual effects. Specifically, very steep height transitions in the Height Map should be avoided.  Adjusting the <span class='doc-prop'>Height</span> value in the <span class='doc-keyword'>Inspector</span> can also cause the object to become distorted in an odd, unrealistic way.  For this reason, it is recommended that you use gradual Height Map transitions or keep the <span class='doc-prop'>Height</span> slider toward the shallow end.
+</p>
+<div class='vspace'></div><h2>Diffuse Properties</h2>
+<p>This shader is a <span class='doc-keyword'>Pixel-Lit</span> shader, which is more expensive than <span class='doc-keyword'>Vertex-Lit</span>.  Pixel lighting is expensive mostly because each object has to be drawn multiple times for each pixel light that shines on it. Vertex lights don't affect the shader in this way. Pixel lights support cookies, bumpmapping, and shadows while vertex lights do not. Pixel lights are also much less sensitive to tesselation of the models - if you have a cube using this shader, you can put point light very close to its surface and it will have nice round highlight.  This effect cannot be achieved with Vertex lighting.
+</p>
+<p class='vspace'>Diffuse computes a simple (Lambertian) lighting model. The lighting on the surface decreases as the angle between it and the light decreases. The lighting depends only on the this angle, and does not change as the camera moves or rotates around.
+</p>
+<div class='vspace'></div><h2>Performance</h2>
+<p>Generally, this shader is on the more expensive rendering side.  For more details, please view the <a href="../Components/shader-Performance.html">Shader Peformance page</a>.
+</p>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/shader-SelfIllumBumpedSpecular.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/shader-SelfIllumParallaxSpecular.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

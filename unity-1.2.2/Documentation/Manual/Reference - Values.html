@@ -1,0 +1,110 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Reference - Values"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="Reference - Values" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced%20(for%20technical%20guys).html%22%3EAdvanced%20(for%20technical%20guys)%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Shaders.html%22%3EShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Reference%20-%20Values.html%22%3EReference%20-%20Values%3C%2Fa%3E" navigation="%3Ca%20href%3D%22Reference%20-%20Structure.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22ShaderLab%20Cheat%20Sheet.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>Reference - Values</h1>
+		<p><a href="index.html">Unity Manual</a> &gt; <a href="Advanced (for technical guys).html">Advanced (for technical guys)</a> &gt; <a href="Shaders.html">Shaders</a> &gt; <a href="Reference - Values.html">Reference - Values</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="Reference - Structure.html"><img src="../images/prev.png"></a><a href="ShaderLab Cheat Sheet.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			<h2>Tags</h2>
+
+
+<h3>RenderQueue</h3>
+<p>Unity renders all objects in 4 render queues in order to make effects like transparency work properly. A Shader decides which render queue any objects using it belongs to.
+</p>
+
+<p><table class="wikitable"><tr><td class="wikicell" >Background</td><td class="wikicell"  colspan="2">This render queue is rendered before any others. It is used for skyboxes and the like.</td></tr><tr><td class="wikicell" >Geometry (default)</td><td class="wikicell"  colspan="2">This render queue is rendered in whatever way is fastest for the end user's hardware (sorted by shaders, textures in order to minimize state changes). This is where normal opaque geometry goes</td></tr><tr><td class="wikicell" >Transparent</td><td class="wikicell"  colspan="2">This render queue is rendered in back-to-front order. Anything alpha-blended should go here (glass, particle effects)</td></tr><tr><td class="wikicell" >overlay</td><td class="wikicell"  colspan="2">This render queue is meant for overlay effects. Anything rendered last should go here (e.g. lens flares)</td></tr></table>
+</p>
+
+
+<h3>LightMode</h3>
+
+<p><table class="wikitable"><tr><td class="wikicell" >VertexOnly(default)</td><td class="wikicell"  colspan="2"> This is executed once with the setup for vertexlighting</td></tr><tr><td class="wikicell" >Vertex</td><td class="wikicell"  colspan="2"> This is used if we have vertex lighted lights</td></tr><tr><td class="wikicell" >Pixel</td><td class="wikicell"  colspan="2"> This is executed if we have any lights that do pixelshading</td></tr><tr><td class="wikicell" >PixelOnly</td><td class="wikicell"  colspan="2"> This is executed if we have no vertex lights.  </td></tr><tr><td class="wikicell" >NoLights</td><td class="wikicell"  colspan="2"> This is executed if we have no lights at all</td></tr></table>
+<b>combinations</b>
+</p>
+
+<p><table class="wikitable"><tr><td class="wikicell" ><b>Light type</b> </td><td class="wikicell"  colspan="2"> <b>Passes rendered</b></td></tr><tr><td class="wikicell" >No lights </td><td class="wikicell"  colspan="2"> NoLights</td></tr><tr><td class="wikicell" >Vertex only</td><td class="wikicell"  colspan="2"> Vertex, VertexOnly</td></tr><tr><td class="wikicell" >Pixel only</td><td class="wikicell"  colspan="2"> Pixel, PixelOnly</td></tr><tr><td class="wikicell" >Both </td><td class="wikicell"  colspan="2">  vertex, pixel</td></tr></table>
+</p>
+
+<h3>LightCount</h3>
+<p>If LightType is Pixel or PixelOnly, this sets how many ppl lights are set up for each pass.
+If this is set to zero, the pass is executed once with no lights (good for doing a single pass after summing light contributions.
+<table class="wikitable"><tr><td class="wikicell" >LightCount</td><td class="wikicell"  colspan="2">How many lights can we do in 1 pass</td></tr></table>
+</p>
+
+
+<h3>LOD</h3>
+<p>Which level-of-detail this subshader is for. It works as follows:
+When we have to find a shader for a given LOD, we first try the requested LOD, then increase the LOD value until we find one that matches. We pick the first shader inside a LOD and use that for everything.
+<table class="wikitable"><tr><td class="wikicell" >0 Many passes, vertex programs</td><td class="wikicell"  colspan="2">This is as good as its going to get. We don\'t really care how many passes it takes to implement an effect</td></tr><tr><td class="wikicell" >1 Fewer passes, vertex programs</td><td class="wikicell"  colspan="2"> This is with vertex programs, as few passes as possible to get the effect we want. some slight degredation in graphics quality IS acceptable.</td></tr><tr><td class="wikicell" >2 No vertex programs</td><td class="wikicell"  colspan="2"> This is for cards like the Radeon7500 &amp; Geforce 2MX. try not to use vertex programs unless you have to (e.g. VP\'s for bumpmapping is fine, but otherwise try not). as many passes as it takes.</td></tr><tr><td class="wikicell" >3 No VP, few passes</td><td class="wikicell"  colspan="2"> Like 2, but as few passes as possible.</td></tr><tr><td class="wikicell" >4 Just get something on the screen</td><td class="wikicell"  colspan="2"> pref. in 1 pass. Vertex lighting only is the order of the day.</td></tr></table>
+</p>
+
+<p>The basic principle is that the artist chooses between hi / lo GFX quality, and the user a GFX level. The LOD is then calculated as follows by (artistQualitySetting + UserQualitySetting * 2)
+</p>
+<hr />
+<h2>Channels</h2>
+
+<p>Unity defines the following channel types for getting data into your shader. If you use these values as varying inputs to a Cg vertex program, they are mapped automatically
+<table class="wikitable"><tr><td class="wikicell" ><b>Channel name</b></td><td class="wikicell"  colspan="2"><b>Data type</b></td></tr><tr><td class="wikicell" >Vertex</td><td class="wikicell"  colspan="2">Vertex positions. Unless you are doing something strange, map this to the vertex target</td></tr><tr><td class="wikicell" >Normal</td><td class="wikicell"  colspan="2">The vertex normals. Map this to normal when using OpenGL lighting</td></tr><tr><td class="wikicell" >TexCoord</td><td class="wikicell"  colspan="2">The texture coordinates defined by geometry</td></tr><tr><td class="wikicell" >DiffuseDot3</td><td class="wikicell"  colspan="2">Vertex colors for doing the traditional Texture-space Unity bumpmapping</td></tr><tr><td class="wikicell" >SpecularDot3 (NI)</td><td class="wikicell"  colspan="2">Vertex colors for doing the specular Texture-space bumpmapping</td></tr><tr><td class="wikicell" >TangentBase</td><td class="wikicell"  colspan="2">Compressed quaternions for calculating the Diffuse &amp; specular DOT3 values in a vertex program</td></tr></table>
+</p>
+
+<hr />
+
+<h2> Properties</h2>
+<h3>Lighting setup</h3>
+<p><table class="wikitable"><tr><td class="wikicell" ><b>Property name</b> </td><td class="wikicell" > <b>Value</b> </td><td class="wikicell" > <b>Used for</b></td></tr><tr><td class="wikicell" >_SceneAmbient </td><td class="wikicell" > Scene ambient light value </td><td class="wikicell" > Getting the scene ambient light value</td></tr><tr><td class="wikicell" >_ModelAmbient* </td><td class="wikicell" > Ambient light for this model </td><td class="wikicell" > Normally used for ambient light contribution</td></tr><tr><td class="wikicell" >_MultiModelAmbient* </td><td class="wikicell" > Ambient light for this model in 1st pass, black in others </td><td class="wikicell" > Ambient lighting for pixel-lighted shaders</td></tr><tr><td class="wikicell" >_ModelLightColor0 - _ModelLightColorN* </td><td class="wikicell" > Lighted color for this model in 1st pass, black in others </td><td class="wikicell" > Diffuse &amp; specular lighting for pixel-lighted shaders</td></tr><tr><td class="wikicell" >_DOT3Light</td><td class="wikicell" >DOT3 light direction for objectspace bumpmaps</td><td class="wikicell" > Use this as a constant color when using objectspace bumpmaps</td></tr><tr><td class="wikicell" >_LightHackedDiffuse</td><td class="wikicell" >RGB = diffuse light, A = ambient</td><td class="wikicell" >Use this to multiply in the light and add a monochrome ambient for the SrcAlpha bumpmap trick (read 'practical per-pixel effects' for an explanation)</td></tr></table>
+</p>
+
+<h3>Fog setup</h3>
+
+<p>By default, the shaders are set up correctly regarding fog. When using multipass, you often want to change the fog value for each pass to avoid applying it multiple times.
+</p>
+
+<p><table class="wikitable"><tr><td class="wikicell" ><b>Property name</b></td><td class="wikicell"  colspan="2"><b>Value</b></td></tr><tr><td class="wikicell" >_FogColor</td><td class="wikicell"  colspan="2">The fog color</td></tr><tr><td class="wikicell" >_AddFog </td><td class="wikicell"  colspan="2"> Fog color used for Additive passes.</td></tr><tr><td class="wikicell" >_MultiplyFog </td><td class="wikicell"  colspan="2"> Fog color used for multiply passes.</td></tr><tr><td class="wikicell" >_FogStart</td><td class="wikicell"  colspan="2">The fog starting distance</td></tr><tr><td class="wikicell" >_FogEnd</td><td class="wikicell"  colspan="2">The fog end distance</td></tr><tr><td class="wikicell" >_FogDensity</td><td class="wikicell"  colspan="2">The fog density</td></tr></table>
+</p>
+
+<h3>Material setup</h3>
+
+<p>You can change the OpenGL material settings from within a shader using the following properties:
+</p>
+
+<p><table class="wikitable"><tr><td class="wikicell" ><b>Property name</b></td><td class="wikicell"  colspan="2"><b>Value</b></td></tr><tr><td class="wikicell" >Ambient</td><td class="wikicell"  colspan="2">The Ambient color</td></tr><tr><td class="wikicell" >Diffuse </td><td class="wikicell"  colspan="2"> Diffuse material color</td></tr><tr><td class="wikicell" >Specular </td><td class="wikicell"  colspan="2"> Specular material color</td></tr><tr><td class="wikicell" >Emissive</td><td class="wikicell"  colspan="2"> Emissive material color</td></tr><tr><td class="wikicell" >Shininess</td><td class="wikicell"  colspan="2">Shininess factor</td></tr></table>
+</p>
+
+<h3>Simple state commands</h3>
+<p><table class="wikitable"><tr><td class="wikicell" >Name string </td><td class="wikicell"  colspan="2"> Sets the name of this pass to string</td></tr><tr><td class="wikicell" >Color color </td><td class="wikicell"  colspan="2"> Sets the current color to color</td></tr><tr><td class="wikicell" >Blendcolor color </td><td class="wikicell"  colspan="2"> uses color  as the blending color</td></tr><tr><td class="wikicell" >Lighting bool </td><td class="wikicell"  colspan="2"> Turns OpenGL lighting on/off</td></tr><tr><td class="wikicell" >Colormask rgbflags  </td><td class="wikicell"  colspan="2">  Disables rendering to the color channels that are set. f.eks will no rendering to the alpha channel occur when writing Colormask Alpha</td></tr><tr><td class="wikicell" >Cull cullorient  </td><td class="wikicell"  colspan="2">  cullorient can be Front, Back or FrontAndBack and sets culling of those faces. It is also possible to write Cull false for no culling.</td></tr><tr><td class="wikicell" >Shademodel model  </td><td class="wikicell"  colspan="2">  Sets the shading model in OpenGL. Can be Smooth or Flat.</td></tr><tr><td class="wikicell" >Seperatespecular bool  </td><td class="wikicell"  colspan="2">  Turn Seperate specular on/off.</td></tr></table>
+</p>
+
+
+<h3>Misc. values - you mostly use these from Cg</h3>
+
+<p><table class="wikitable"><tr><td class="wikicell"  colspan="3"><b>float4 props</b></td></tr><tr><td class="wikicell" >_Time _SinTime _CosTime</td><td class="wikicell"  colspan="2">The time value in seconds, scaled by different factors  (.5t, t, 2t, 4t)</td></tr><tr><td class="wikicell" >_LightRange (r, rr, 1/r, 1/rr)</td><td class="wikicell"  colspan="2">The range of the current PerPixel light, as well as inverse, etc.</td></tr><tr><td class="wikicell"  colspan="3"><b>vector3 props</b></td></tr><tr><td class="wikicell" >_ObjectSpaceLightPos</td><td class="wikicell"  colspan="2"> Light position in object space</td></tr><tr><td class="wikicell" >_ObjectSpaceLightDir</td><td class="wikicell"  colspan="2"> Light direction in object space (what <i>exactly</i> is this for?)</td></tr><tr><td class="wikicell"  colspan="3"><b>float3x3 matrices</b></td></tr><tr><td class="wikicell" >_LightSpecularRotation</td><td class="wikicell"  colspan="2">Matrix to rotate a cubemap correctly for specular lighting</td></tr><tr><td class="wikicell"  colspan="3"><b>float4x4 matrices</b></td></tr><tr><td class="wikicell" >_World2Light _Light2World</td><td class="wikicell"  colspan="2">Matrices to get from object to world space</td></tr><tr><td class="wikicell" >_Object2World _World2Object</td><td class="wikicell"  colspan="2">Matrices to get from world to light space</td></tr><tr><td class="wikicell" >_Object2Light</td><td class="wikicell"  colspan="2">Shotcut - equiv. to ObjectToWorld * World2Light</td></tr><tr><td class="wikicell" >_SpotlightProjectionMatrix</td><td class="wikicell"  colspan="2">If the light is a spotlight, this is the matrix to apply to linear texgen in order to get into projection space</td></tr></table>
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

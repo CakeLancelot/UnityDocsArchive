@@ -1,0 +1,58 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Screen"-->
+			<title>Unity Script Reference &ndash; Screen</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Screen</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Screen" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> Access information about the display</p>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#resolutions'>resolutions</a></p>
+<p><a href='#showCursor'>showCursor</a></p>
+<p><a href='#width'>width</a></p>
+<p><a href='#height'>height</a></p>
+<p><a href='#fullScreen'>fullScreen</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#SetResolution'>SetResolution</a></p>
+</span>
+<div class='tocclear'></div>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="resolutions"></a><h3><span class="full-name">Screen.</span>resolutions</h3><div class="synopsis"><a href="Resolution.html" class="classlink">Resolution</a>[] resolutions</div>
+   <p class='details'> Returns a list of all supported fullscreen resolutions by the monitor.
+The list is sorted by width. Low resolutions come first.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">var resolutions : <a href="Resolution.html" class="classlink">Resolution</a>[] = <a href="Screen.html#resolutions" class="itemlink">Screen.resolutions</a>;<br/><br/><span class="keyword">for</span> (var res <span class="keyword">in</span> resolutions)<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;print(res.width);<br/>&nbsp;&nbsp;&nbsp;&nbsp;print(res.height);<br/>}<br/>// Switch to the lowest supported resolution<br/><a href="Screen.html#SetResolution" class="itemlink">Screen.SetResolution</a> (resolutions[0].width, resolutions[0].height, true);</div></td></tr></table></p>
+	<a name="showCursor"></a><h3><span class="full-name">Screen.</span>showCursor</h3><div class="synopsis"><span class="standard_type">bool</span> showCursor</div>
+   <p class='details'> Should the cursor be visible?
+The cursor will only be hidden in fullscreen mode.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Hide the cursor<br/><a href="Screen.html#showCursor" class="itemlink">Screen.showCursor</a> = false;</div></td></tr></table></p>
+	<a name="width"></a><h3><span class="full-name">Screen.</span>width</h3><div class="synopsis"><span class="standard_type">int</span> width</div>
+   <p class='details'> The width of the screen <b>(Read Only)</b>.</p>
+	<a name="height"></a><h3><span class="full-name">Screen.</span>height</h3><div class="synopsis"><span class="standard_type">int</span> height</div>
+   <p class='details'> The height of the screen <b>(Read Only)</b>.</p>
+	<a name="fullScreen"></a><h3><span class="full-name">Screen.</span>fullScreen</h3><div class="synopsis"><span class="standard_type">bool</span> fullScreen</div>
+   <p class='details'> Is the game running fullscreen?<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Toggle fullscreen<br/><a href="Screen.html#fullScreen" class="itemlink">Screen.fullScreen</a> = !<a href="Screen.html#fullScreen" class="itemlink">Screen.fullScreen</a>;</div></td></tr></table></p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="SetResolution"></a><h3><span class="full-name">Screen.</span>SetResolution</h3><div class="synopsis"><span class="standard_type">void</span> SetResolution (<span class="standard_type">int</span> width, <span class="standard_type">int</span> height, <span class="standard_type">bool</span> fullscreen, <span class="standard_type">int</span> preferredRefreshRate = 0)</div>
+   <p class='details'> Switches the resolution.
+If no matching resolution can be found the closest matching one will be used.
+If no <span class="variable">preferredRefreshRate</span> is 0 (default) unity will switch to the highest refresh rate supported by the monitor.
+If <span class="variable">preferredRefreshRate</span> is not 0 unity will use <span class="variable">preferredRefreshRate</span> if the monitor supports it.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Switch resolution to 640 x 480 full screen<br/><a href="Screen.html#SetResolution" class="itemlink">Screen.SetResolution</a> (640, 480, true);</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

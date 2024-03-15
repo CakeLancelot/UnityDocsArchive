@@ -1,0 +1,71 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Constant Force"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Components" title="Constant Force" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-DynamicsGroup.html%22%3EPhysics%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-ConstantForce.html%22%3EConstant%20Force%3C%2Fa%3E" -->
+		<h1>Constant Force</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-DynamicsGroup.html">Physics</a> &gt; <a href="class-ConstantForce.html">Constant Force</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><a href='../ScriptReference/ConstantForce.html' title='Go to ConstantForce Scripting Doc'><img src="../Images/SwitchScripting.png" width="66" height="51" /></a><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-FixedJoint.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-PhysicMaterial.html">Next<img src="../images/next.png"></a></div>
+
+			
+<p>The Constant Force component is a quick utility for adding constant forces to a rigidbody.
+This works great for one shot objects like rockets, if you don't want it to start with a large velocity but instead accelerate.
+</p>
+
+<p><img class='figure' src='images/class-ConstantForce-0.jpg' />
+</p>
+
+<p><i>A rocket propelled forward by the constant force component</i>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Force</nobr></b></td><td> The vector of a force to be applied in world space.
+</td></tr><tr><td><b><nobr>Relative Force</nobr></b></td><td> The vector of a force to be applied in the objects local space.
+</td></tr><tr><td><b><nobr>Torque</nobr></b></td><td> The vector of a torque, applied in world space. The object will begin spinning <i>around</i> this vector. The longer the vector is, the faster the rotation.
+</td></tr><tr><td><b><nobr>Relative Torque</nobr></b></td><td> The vector of a torque, applied in local space. The object will begin spinning <i>around</i> this vector. The longer the vector is, the faster the rotation.
+<p></td></tr></tr></table>
+</p>
+
+<h3> Details</h3>
+
+<p>To make a rocket that accelerates forward set the relative force to be along the positive z-axis. Then use the rigidbody's drag property to make it not exceed a some maximum velocity. (The higher the drag the lower the maximum velocity will be.)
+In the rigidbody also make sure to turn off gravity so that the rocket will always stay on it's path.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+To make an object flow upwards, add a constant force with the Force property having a positive Y value.
+</li><li>To make an object fly forwards,  add a constant force with the Relative Force property having a positive Z value.
+</li></ul>
+</p>
+
+
+
+
+		<div class="navigation"><a href="class-FixedJoint.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-PhysicMaterial.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

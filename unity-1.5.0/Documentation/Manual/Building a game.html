@@ -1,0 +1,75 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Building a game"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="Building a game" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Building%20a%20game.html%22%3EBuilding%20a%20game%3C%2Fa%3E" -->
+		<h1>Building a game</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Building a game.html">Building a game</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Scripting.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Advanced (for technical guys).html">Next<img src="../images/next.png"></a></div>
+
+			<p>You have finished making a game with one or more scenes in it. Now how do you build the publisher demo, beta version, or gold master?
+</p>
+
+<p>Use the 'File-&gt;Build Settings...' command. It pops up a list editor, where you assemble the .unity scene files that should go into the game.
+</p>
+
+<p>Drag &amp; drop scenes from the project view into the list of path names. Rearrange them by dragging. Remove them using the delete command (cmd-backspace).
+If you want to build a player with only one scene file, you can also build a player with no levels in the path name list, this will make Unity include only the scene you are currently working on.
+</p>
+
+<p>When you are happy with the contents of the game, select your build target and press the Build button. Unity will ask you where to save the game. It's that simple.
+</p>
+
+<h1> Inside the process</h1>
+
+<p><b>Note:</b> this is not necessary to understand. The game builder will place a copy of the player application where you want it. Then it will go through the list of scenes, open them in the editor one at a time and save a copy optimized for the player into the application package. It also calculates all the assets that are required by the different scenes and stores it in a seperate file, which is also placed inside the application package. Any game object in a scene that is tagged with 'EditorOnly' will be removed from the scene before writing the scene file into the game package.
+</p>
+
+<p>When the standalone or webplayer starts up the first level in the path name list will be loaded and the game will be started.
+</p>
+
+<p>Levels can be loaded via scripting using <a href="../ScriptReference/Application.html#LoadLevel">Application.LoadLevel</a>.
+This will load the new level and destroy all game objects in the old level.
+</p>
+
+<p>To prevent a game object to be destroyed when loading a new level use
+<a href="../ScriptReference/Object.html#DontDestroyOnLoad">Object.DontDestroyOnLoad</a>
+</p>
+
+<p>This is most commonly used to keep playing music while loading a level or a game controller script which keeps the game state and controls which levels to load.
+</p>
+
+<p>After the loading of a new level is finished the message: <a href="../ScriptReference/MonoBehaviour.html#LevelWasLoaded">LevelWasLoaded</a> will be sent to all active game objects.
+</p>
+
+<p>For more information on how to best create a game with multiple scenes, eg. a main menu, highscores and actual game levels see the Scripting Tutorial.pdf
+</p>
+
+
+
+		<div class="navigation"><a href="Scripting.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Advanced (for technical guys).html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

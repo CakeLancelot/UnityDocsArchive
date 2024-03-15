@@ -1,0 +1,120 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Animation</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Animation</td>
+			<td class="Manual" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Manual" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Manual" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Creating Gameplay.html">Creating Gameplay</a> &gt; <a href="../Manual/Animation.html">Animation</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Physics.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Character-Animation.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Animation</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<div class='vspace'></div><div class='specific-iphone' > 
+<h1>Animation</h1>
+<p><span class='doc-keyword'>Animations</span> are best imported from your 3D animation program, but can also be created inside Unity.  Unity's animation creation system is meant to be an aid for those who do not have access to a 3D animation program.  It is optimal for you to use an externally-created animation.
+</p>
+<p class='vspace'>To import an animation from your art package, just <a href="../Manual/HOWTO-importObject.html">drop in your model files</a>. When you place your model file in your Project folder's <span class='doc-keyword'>Assets</span> folder, it will automatically appear in the <span class='doc-keyword'>Project View</span> and you can drag it to the <span class='doc-keyword'>Scene View</span>. The animation on all objects in the scene are imported automatically and you will see the animation playing when you press the <span class='doc-menu'>Play</span> button.
+</p>
+<p class='vspace'>For more information about animating characters or importing animations see the <a href="../Manual/Character-Animation.html">Character Animation section</a>.
+</p>
+<div class='vspace'></div><h2>Timeline View</h2>
+<p>Unity allows you to use a <span class='doc-keyword'>Timeline View</span> to create and edit animations.  The Timeline has an actual keyframe viewer, and some controls.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Animation-0.jpg' /><br /><em>The Timeline has a keyframe section, control buttons, and keyframe start/end point settings</em></div>
+<p class='vspace'>1:0 is one second, not one minute.  Animations are played back at 60 frames per second.  So on the Timeline, each second is broken down into 60ths.  This format is standard time representation in most 3D animation packages as well as video editing applications.
+</p>
+<p class='vspace'>If you use the scrollwheel while the mouse is over the timeline, you'll see the timeline shrink/expand so you can set keyframes for longer animations.
+</p>
+<p class='vspace'>You can edit the two fields on the right directly, they represent start time and end time of the visible timeline duration.
+</p>
+<div class='vspace'></div><h2>Creating animations inside Unity</h2>
+<p>Here are the basic steps to create a new animation for a single GameObject:
+</p>
+<div class='vspace'></div><ol><li>Using the drop-down in the upper-right hand corner of the <span class='doc-keyword'>Editor</span>, switch to the Animation layout. This will display the Timeline. In the Timeline you can create and modify animations.<br /><br /><img class='figure' src='../Images/manual/Animation-1.jpg' /><br /><br />
+</li><li>Select the object you want to animate in the Scene or <span class='doc-keyword'>Hierarchy View</span>.
+</li><li>Click on the Record button in the Timeline.<br /><br /><img class='figure' src='../Images/manual/Animation-2.jpg' /><br /><br />
+</li><li>Select another time in the Timeline by clicking on it. Then move the object somewhere else and hit Record again.
+</li></ol><p class='vspace'>If you hit Play now, your object will follow the animation you just created.
+</p>
+<div class='vspace'></div><h2>Fine-tuning animations</h2>
+<p>By default only the <span class='doc-keyword'>Transform's</span> <span class='doc-prop'>Position</span>, <span class='doc-prop'>Rotation</span> and <span class='doc-prop'>Scale</span> are included in the animation. You can animate other properties if you like.  Using the Right-click context menu, you can set a keyframe for a property of any <span class='doc-keyword'>Component</span> currently attached to the GameObject.  Right-click on the Timeline and use the <span class='doc-menu'>Add Key With Attribute</span> menu item to set keyframes for other Component properties.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Animation-3.jpg' /><br /><em>The properties of every Component attached to the GameObject can be animated</em></div>
+<div class='vspace'></div><h2>Hints</h2>
+<ul><li>You can reposition a keyframe on the timeline by dragging it with the center mouse button.
+</li><li><span class='doc-prop'>Post Infinity</span> is used to define behaviour of the animation after the last keyframe. Right-click on the timeline and select <span class='doc-menu'>Post Infinity-&gt;Repeat</span> from the context menu.<br /><br /><img class='figure' src='../Images/manual/Animation-4.jpg' /><br /><br />
+</li><li>Sometimes it is useful to create animations which are shared among all objects. To do this, create an <span class='doc-keyword'>Animation Clip</span> from the Assets menu.<br /><br /><img class='figure' src='../Images/manual/Animation-5.jpg' /><br /><br />Next, drag the Animation Clip onto an object. Then, animate the object. Now you can drag the Animation Clip onto other objects.
+</li></ul></div>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Manual/Physics.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Character-Animation.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

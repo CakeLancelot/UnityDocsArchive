@@ -1,0 +1,60 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Projector"-->
+			<title>Unity Script Reference &ndash; Projector</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Projector</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Projector" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Behaviour.html" class="classlink">Behaviour</a></div></p>
+   <p class='first'> The Projector can be used to project any material onto the scene. Just like a real world Projector.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#nearClipPlane'>nearClipPlane</a></p>
+<p><a href='#farClipPlane'>farClipPlane</a></p>
+<p><a href='#fieldOfView'>fieldOfView</a></p>
+<p><a href='#aspectRatio'>aspectRatio</a></p>
+<p><a href='#isOrthoGraphic'>isOrthoGraphic</a></p>
+<p><a href='#orthoGraphicSize'>orthoGraphicSize</a></p>
+<p><a href='#ignoreLayers'>ignoreLayers</a></p>
+<p><a href='#material'>material</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> 
+It can be used to implement blob shadows. You could also project an animated texture or a render texture that films another part of the scene.  <p class="basic"/>The projector will render all objects in its frustum with the provided material.</p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="nearClipPlane"></a><h3><span class="full-name">Projector.</span>nearClipPlane</h3><div class="synopsis"><span class="standard_type">float</span> nearClipPlane</div>
+   <p class='details'> The near clip plane of the projection.</p>
+	<a name="farClipPlane"></a><h3><span class="full-name">Projector.</span>farClipPlane</h3><div class="synopsis"><span class="standard_type">float</span> farClipPlane</div>
+   <p class='details'> The far clip plane of the projection</p>
+	<a name="fieldOfView"></a><h3><span class="full-name">Projector.</span>fieldOfView</h3><div class="synopsis"><span class="standard_type">float</span> fieldOfView</div>
+   <p class='details'> The field of view of the projection</p>
+	<a name="aspectRatio"></a><h3><span class="full-name">Projector.</span>aspectRatio</h3><div class="synopsis"><span class="standard_type">float</span> aspectRatio</div>
+   <p class='details'> The aspect ratio of the projections</p>
+	<a name="isOrthoGraphic"></a><h3><span class="full-name">Projector.</span>isOrthoGraphic</h3><div class="synopsis"><span class="standard_type">bool</span> isOrthoGraphic</div>
+   <p class='details'> Is the projection orthographic? Instead of perspective.</p>
+	<a name="orthoGraphicSize"></a><h3><span class="full-name">Projector.</span>orthoGraphicSize</h3><div class="synopsis"><span class="standard_type">float</span> orthoGraphicSize</div>
+   <p class='details'> The orthographic size of the projection</p>
+	<a name="ignoreLayers"></a><h3><span class="full-name">Projector.</span>ignoreLayers</h3><div class="synopsis"><span class="standard_type">int</span> ignoreLayers</div>
+   <p class='details'> The layer mask<a href="../ScriptingConcepts/Layers.html" class="classlink">Layer mask</a></p>
+	<a name="material"></a><h3><span class="full-name">Projector.</span>material</h3><div class="synopsis"><a href="Material.html" class="classlink">Material</a> material</div>
+   <p class='details'> The material that every object being rendered will be projected onto</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

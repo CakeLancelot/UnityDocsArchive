@@ -1,0 +1,188 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Lighting and Rendering"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="Lighting and Rendering" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Graphics.html%22%3EGraphics%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Lighting%20and%20Rendering.html%22%3ELighting%20and%20Rendering%3C%2Fa%3E" navigation="%3Ca%20href%3D%22Materials%20and%20Shaders.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22Making%20a%20GUI.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>Lighting and Rendering</h1>
+		<p><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Graphics.html">Graphics</a> &gt; <a href="Lighting and Rendering.html">Lighting and Rendering</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="Materials and Shaders.html"><img src="../images/prev.png"></a><a href="Making a GUI.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			<p>This chapter deals with how to get graphics on the screen in the final game.
+</p>
+
+<p>The components discussed here are added through the 'Add Component—&gt;Rendering' menu in the game object inspector
+</p>
+
+
+<h1>Light</h1>
+<p>You use lights to illuminate your scenes - everything from the sun, to light from explosions are made with light components. Three basic light type exist:
+</p>
+<ul><li> <i>Point lights</i> shine from a location equally in all directions, like a light bulb.
+</li><li> <i>Directional lights</i> are placed infinitely far away and affect everything in the scene, like the sun.
+</li><li> <i>Spot lights</i> shine from a point in a direction and only illuminate objects within a cone - like the headlights of a car.
+</li></ul>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>Enabled</nobr></b></td><td> Is the light on or not?
+</td></tr><tr><td><b><nobr>Type</nobr></b></td><td> Which type of light is this
+<dl><dt>Directional</dt><dd> A light placed infinitely far away. Affects everything in the scene and has no attenuation.</dd><dt>Point</dt><dd> A light that shines equally in all directions from its location, affecting all objects within its <b>range</b>.</dd><dt>Spot</dt><dd> A light that has a cone (<b>Spot Angle</b>), and a <b>range</b>. Only objects within this region are affected by the light.</dd></dl>
+</td></tr><tr><td><b><nobr>Color</nobr></b></td><td> The light color
+</td></tr><tr><td><b><nobr>Attenuate</nobr></b></td><td> Does the light diminish with increasing distance? If disabled, objects' brightness will 'pop' as they enter and exit the light's region of influence. It can be useful to turn off when you want to do some special effects. If the light is directional, this property is ignored.
+</td></tr><tr><td><b><nobr>Range</nobr></b></td><td> How far does the light reach?
+</td></tr><tr><td><b><nobr>Spot Angle</nobr></b></td><td> If the light is a spotlight, this property determines the angle of the cone.
+</td></tr><tr><td><b><nobr>Cookie</nobr></b></td><td> You can assign a texture to a light. The alpha channel of this texture is used as a mask that determines how bright the light is at different places. If the light is a <b>spot</b> or a <b>directional</b> light, this must be a 2D texture. If the light is a <b>point</b> light, it must be a cubemap.
+<p></td></tr><tr><td><b><nobr>Render method</nobr></b></td><td> Is this light rendered as a vertex or pixel light. For a detailed description of this tradoff, see &quot;Performance Considerations&quot;, below. Options include</td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+<p>Unity supports 3 basic lighting types, with a lot of variation possible.
+</p>
+
+<p>You can assign a texture to be projected from any of these light types. This is known as a cookie. The cookie must supply an alpha mask that modulates the light amount. They are a great way af adding lots of complexity to a scene, and hence providing a lot of atmosphere.
+</p>
+
+<h3>Point Lights</h3>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>Point lights shine out from a point in all directions. They are the most common lights in computer games - typically used for explosions, light bulbs, etc.
+</p>
+
+<p>Cookies must be cubemaps with an alpha channel. This cubemap gets projected out in all directions.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-2.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+
+<h3>Spot Lights</h3>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-3.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>Spot lights only shine in one direction, in a cone.
+</p>
+
+<p>The cookie is projected down the cone of the spot light. This is good for light-through windows style effects. It is very important that the texture is black at the edges and its wrapping mode is set to <i>clamp</i>. For more info on this, see <a href="../Components/class-FileTexture.html">Texture</a>
+</p>
+
+
+<h3>Directional Lights</h3>
+<p>Directional lights are used mainly in outdoor scenes for sun &amp; moonlight.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-4.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-4.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>With a directional light, the cookie is projected down the center of the light's Z axis. If you want to stretch it out over a large area, set the wrapping mode to 'repeat'
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-5.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-5.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>The above is a great way to add some quick detail to large outdoor scenes. You can even slide the light slowly over the scene to give the impression of moving clouds.
+</p>
+
+<p>A complete description of the component, including:
+</p>
+<ul><li> Spot lights are most expensive, directional cheap, point lights in between
+</li></ul>
+
+
+<h3>Performance considerations</h3>
+<p>Lights can be rendered by two basic methods: Per-vertex lit and per-pixel lit. Vertex lighting only calculates the lighting at the vertrices of the game models, and interpolates the lighting over the surfaces of the models. Per-pixel lights are calculated at every screen pixel, and hence are much more expensive.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Lighting and Rendering-6.jpg%22" --><p><table><tr><td><img class="figure" src="images/Lighting and Rendering-6.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>Lights have a big impact on rendering speed - therefore a tradeoff has to be made betwen lighting quality and game speed. Since per-pixel lights are much more expensive than per-vertex lights, Unity will only render The brightest lights at per-pixel quality. The actual number of lights can be set as a property in the <a href="../Components/comp-LightManager.html">Light Manager</a>. Which lights are birghtest is determined on an object-by-object case. This means:
+</p>
+<ul><li> Huge objects will only get a few lights applied at high quality. If the player is far from these, local lights will be done at low quality. Hence, it is better to split huge objects up in a couple of small ones.
+</li></ul>
+
+<h2>Hints</h2>
+<p><ul><li>
+Spotlights with textures can be extremely effective for making light coming in from windows. In this case, disable attenuation, and set the range to just reach the floor.
+</li><li>Low-intensity point lights are good for providing depth to a scene.
+</li><li>Put a light near a particle system and assign a 'lighted' shader from the Particles group to its material. This works really well with projection textures.
+</li><li>For high performance, use the <i>Vertex Lit</i> shader. This shader only does per-vertex lighting, giving a much higher throughput on low-end cards.
+</li></ul>
+</p>
+<h1>Camera</h1>
+<p>Cameras are the devices which the player views the world through.
+</p>
+
+<p>You can have an unlimited number of cameras in a scene, and arrange and stack them using the View Size and Depth values, described below.
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>Field Of view</nobr></b></td><td> How wide the camera view angle is measured in degrees along the vertical axis
+</td></tr><tr><td><b><nobr>Background color</nobr></b></td><td> The clear color of the camera. Only has an effect if Color is enabled in <i>Clearing</i>
+</td></tr><tr><td><b><nobr>Clearing</nobr></b></td><td> Clearing decides what should be cleared
+<dl><dt>Color</dt><dd> clear the background color. Disable this if you have a skybox or other fullscreen effect in the background Depth</dd></dl>
+</td></tr><tr><td><b><nobr>Clipping</nobr></b></td><td> The distance to the near and far clipping planes.
+</td></tr><tr><td><b><nobr>View size</nobr></b></td><td> The size of the camera's viewport. Use this to limit the camera to a certain part of the screen. All values are between 0-1
+</td></tr><tr><td><b><nobr>Depth</nobr></b></td><td> The camera depth in the draw order. Cameras with the lowest numbers are drawn first.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+<p>A complete description of the component, including:
+</p>
+<ul><li> Depth order explanation
+</li><li> Near and far clipping planes
+</li></ul>
+
+<h2>Hints</h2>
+<p><ul><li>
+Use multiple cameras to increase the coolness of your game: try putting one in the tip of a player missile. Place it in one corner of the screnn and give it a higher <b>depth</b> value than the main camera.
+</li><li>To increase the sense of speed in a racing game, use a high field of view.
+</li></ul>
+</p>
+<h1>Skybox</h1>
+<p>Skyboxes are rendered before the main scene in order to give the impression of complex scenery at the horizon. They are a box of 6 textures, one for each primary direction.
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Material</nobr></b></td><td> The material used to render the skybox. This material should have the Skybox shader set, and each of the materials textures should be set up so it renders the correct texture.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+If you have a skybox assigned to a camera, you disable both Color &amp; Depth in camera's clear flags.
+</li></ul>
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

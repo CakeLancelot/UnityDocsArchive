@@ -1,0 +1,100 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Input"-->
+			<title>Unity Script Reference &ndash; Input</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Input</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Input" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='first'> Interface into the Input system.</p>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#mousePosition'>mousePosition</a></p>
+<p><a href='#anyKey'>anyKey</a></p>
+<p><a href='#anyKeyDown'>anyKeyDown</a></p>
+<p><a href='#inputString'>inputString</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Methods</p><p><a href='#GetAxis'>GetAxis</a></p>
+<p><a href='#GetButton'>GetButton</a></p>
+<p><a href='#GetButtonDown'>GetButtonDown</a></p>
+<p><a href='#GetKey'>GetKey</a></p>
+<p><a href='#GetKeyDown'>GetKeyDown</a></p>
+<p><a href='#GetMouseButton'>GetMouseButton</a></p>
+<p><a href='#GetMouseButtonDown'>GetMouseButtonDown</a></p>
+<p><a href='#ResetInputAxes'>ResetInputAxes</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> Use this class to read the axes set up in the <a href="../Manual/Input.html" class="classlink">Input Manager</a>.  <p class="basic"/>By default every project has the following axes defined:
+"Horizontal" and "Vertical" are mapped to joystick, a, w, s, d and the arrow keys.
+"Mouse X" and "Mouse Y" is mapped to mouse delta.
+"Fire1", "Fire2" "Fire3" is mapped to Ctrl, Alt, Cmd, three mouse and joystick button.
+New input axes can be added in the <a href="../Manual/Input.html" class="classlink">Input Manager</a>.  <p class="basic"/>If you are using the input for any kind of movement behaviour use <a href="Input.html#GetAxis" class="itemlink">Input.GetAxis</a>.
+It gives you smoothed and configurable input that can be mapped to keyboard, joystick and mouse.  <p class="basic"/>Use <a href="Input.html#GetButton" class="itemlink">Input.GetButton</a> for action like events. Don't use it for movement, <a href="Input.html#GetAxis" class="itemlink">Input.GetAxis</a> will make the script code smaller and simpler.</p>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="mousePosition"></a><h3><span class="full-name">Input.</span>mousePosition</h3><div class="synopsis"><a href="Vector3.html" class="classlink">Vector3</a> mousePosition</div>
+   <p class='details'> The mouse position in pixel coordinates.  <p class="details"/>The bottom-left of the screen or window is at 0 and 0.
+The top-right of the screen or window is at <a href="Screen.html#width" class="itemlink">Screen.width</a> and <a href="Screen.html#height" class="itemlink">Screen.height</a>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">var particle : <a href="GameObject.html" class="classlink">GameObject</a>;<br/>function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Input.html#GetButtonDown" class="itemlink">Input.GetButtonDown</a> ("Fire1")) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var ray = <a href="Camera.html#main" class="itemlink">Camera.main</a>.ScreenPointToRay (<a href="Input.html#mousePosition" class="itemlink">Input.mousePosition</a>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Physics.html#Raycast" class="itemlink">Physics.Raycast</a> (ray)) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instantiate (particle, transform.position, transform.rotation);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+	<a name="anyKey"></a><h3><span class="full-name">Input.</span>anyKey</h3><div class="synopsis"><span class="standard_type">bool</span> anyKey</div>
+   <p class='details'> Is any key held down?</p>
+	<a name="anyKeyDown"></a><h3><span class="full-name">Input.</span>anyKeyDown</h3><div class="synopsis"><span class="standard_type">bool</span> anyKeyDown</div>
+   <p class='details'> Returns true the first frame the user hits any key.
+It will not return true until the user has released all keys and pressed it any key again.</p>
+	<a name="inputString"></a><h3><span class="full-name">Input.</span>inputString</h3><div class="synopsis"><span class="standard_type">string</span> inputString</div>
+   <p class='details'> Returns the keyboard input entered this frame. Only ASCII characters are contained in the inputString.
+The string can contain two special characters which should be handled.
+Character "\b" represents backspace.
+Character "\n" represents return or enter.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Shows how to read typing input from the keyboard.<br/>// Eg. the user entering his name.<br/>// You need to attach this script to an text object.<br/>function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span> (var c : char <span class="keyword">in</span> <a href="Input.html#inputString" class="itemlink">Input.inputString</a>) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Backspace - Remove the last character<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (c == "\b") {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (guiText.text.Length != 0)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;guiText.text = guiText.text.Substring(0, guiText.text.Length - 1);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// End of entry<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (c == "\n") {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print ("User entered his name: " + guiText.text);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Normal text input - just append to the end<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;guiText.text += c;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+   <a name="Class Methods"></a><h2 class="script-section">Class Methods</h2>
+	<a name="GetAxis"></a><h3><span class="full-name">Input.</span>GetAxis</h3><div class="synopsis"><span class="standard_type">float</span> GetAxis (<span class="standard_type">string</span> axisName)</div>
+   <p class='details'> Returns the value of the virtual axis identified by <span class="variable">axisName</span>.
+The value will be in the range -1...1 for keyboard and joystick input.
+If the axis is setup to be delta mouse movement, the mouse delta is multiplied by the axis sensitivity and the range is not -1...1<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// A very simplistic car driving on the x-z plane.<br/>var speed = 10.0;<br/>var rotationSpeed = 100.0;<br/><br/>function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Get the horizontal and vertical axis.<br/>&nbsp;&nbsp;&nbsp;&nbsp;// By default they are mapped to the arrow keys.<br/>&nbsp;&nbsp;&nbsp;&nbsp;// The value is <span class="keyword">in</span> the range -1 to 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;var translation = <a href="Input.html#GetAxis" class="itemlink">Input.GetAxis</a> ("Vertical") * speed;<br/>&nbsp;&nbsp;&nbsp;&nbsp;var rotation = <a href="Input.html#GetAxis" class="itemlink">Input.GetAxis</a> ("Horizontal") * rotationSpeed;<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Make it move 10 meters per second instead of 10 meters per frame...<br/>&nbsp;&nbsp;&nbsp;&nbsp;translation *= <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;rotation *= <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Move translation along the object's z-axis<br/>&nbsp;&nbsp;&nbsp;&nbsp;transform.Translate (0, 0, translation);<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Rotate around our y-axis<br/>&nbsp;&nbsp;&nbsp;&nbsp;transform.Rotate (0, rotation, 0);<br/>}
+</div></td></tr></table><table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Performs a mouse look.<br/>var horizontalSpeed = 2.0;<br/>var verticalSpeed = 2.0;<br/>function Update ()<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Get the mouse delta. This is not <span class="keyword">in</span> the range -1 ... 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;var h = horizontalSpeed * <a href="Input.html#GetAxis" class="itemlink">Input.GetAxis</a> ("Mouse X");<br/>&nbsp;&nbsp;&nbsp;&nbsp;var v = verticalSpeed * <a href="Input.html#GetAxis" class="itemlink">Input.GetAxis</a> ("Mouse Y");<br/>&nbsp;&nbsp;&nbsp;&nbsp;transform.Rotate (v, h, 0);<br/>}</div></td></tr></table></p>
+	<a name="GetButton"></a><h3><span class="full-name">Input.</span>GetButton</h3><div class="synopsis"><span class="standard_type">bool</span> GetButton (<span class="standard_type">string</span> buttonName)</div>
+   <p class='details'> Returns true if the virtual button identified by <span class="variable">buttonName</span> is held down.
+Think auto fire. This will return true as long as the button is held down.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Instantiates a projectile off every 0.5 seconds,<br/>// if the Fire1 button (default is ctrl) is pressed.<br/>var projectile : <a href="GameObject.html" class="classlink">GameObject</a>;<br/>var fireRate = 0.5;<br/><span class="keyword">private</span> var nextFire = 0.0;<br/>function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Input.html#GetButton" class="itemlink">Input.GetButton</a> ("Fire1") && <a href="Time.html#time" class="itemlink">Time.time</a> > nextFire) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nextFire = <a href="Time.html#time" class="itemlink">Time.time</a> + fireRate;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clone = Instantiate (projectile, transform.position, transform.rotation);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}
+</div></td></tr></table>Use this only when implementing action like events eg. shooting a weapon.
+Use <a href="Input.html#GetAxis" class="itemlink">Input.GetAxis</a> for any kind of movement behaviour.</p>
+	<a name="GetButtonDown"></a><h3><span class="full-name">Input.</span>GetButtonDown</h3><div class="synopsis"><span class="standard_type">bool</span> GetButtonDown (<span class="standard_type">string</span> buttonName)</div>
+   <p class='details'> Returns true the first frame the user hits the virtual button identified by <span class="variable">buttonName</span>.
+It will not return true until the user has released the key and pressed it again.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Instantiates a projectile whenever the user hits the Fire1 Button.<br/>var projectile : <a href="GameObject.html" class="classlink">GameObject</a>;<br/>function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Input.html#GetButtonDown" class="itemlink">Input.GetButtonDown</a> ("Fire1")) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clone = Instantiate (projectile, transform.position, transform.rotation);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}
+</div></td></tr></table>Use this only when implementing action like events eg. shooting a weapon.
+Use <a href="Input.html#GetAxis" class="itemlink">Input.GetAxis</a> for any kind of movement behaviour.</p>
+	<a name="GetKey"></a><h3><span class="full-name">Input.</span>GetKey</h3><div class="synopsis"><span class="standard_type">bool</span> GetKey (<span class="standard_type">string</span> name)</div>
+   <p class='details'> Returns whether the key identified by <span class="variable">name</span> is held down. Think auto fire.  <p class="details"/>For the list of key identifier's see <a href="../Manual/Input.html" class="classlink">Input Manager</a>.
+When dealing with input it is recommended to use <a href="Input.html#GetAxis" class="itemlink">Input.GetAxis</a> and <a href="Input.html#GetButton" class="itemlink">Input.GetButton</a> instead
+since it allows end-users to configure the keys.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Input.html#GetKey" class="itemlink">Input.GetKey</a> ("up")) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print ("up arrow key is held down");<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Input.html#GetKey" class="itemlink">Input.GetKey</a> ("down")) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print ("down arrow key is held down");<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+	<a name="GetKeyDown"></a><h3><span class="full-name">Input.</span>GetKeyDown</h3><div class="synopsis"><span class="standard_type">bool</span> GetKeyDown (<span class="standard_type">string</span> name)</div>
+   <p class='details'> Returns true the first frame the user hits the key identified by <span class="variable">name</span>.
+It will not return true until the user has released the key and pressed it again.  <p class="details"/>For the list of key identifier's see <a href="../Manual/Input.html" class="classlink">Input Manager</a>.
+When dealing with input it is strongly recommended to use <a href="Input.html#GetAxis" class="itemlink">Input.GetAxis</a> and <a href="Input.html#GetButton" class="itemlink">Input.GetButton</a> instead
+since it allows end-users to configure the keys.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Input.html#GetKeyDown" class="itemlink">Input.GetKeyDown</a> ("up")) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print ("up key was pressed down");<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Input.html#GetKeyDown" class="itemlink">Input.GetKeyDown</a> ("down")) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print ("down key was pressed down");<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+	<a name="GetMouseButton"></a><h3><span class="full-name">Input.</span>GetMouseButton</h3><div class="synopsis"><span class="standard_type">bool</span> GetMouseButton (<span class="standard_type">int</span> button)</div>
+   <p class='details'> Returns whether the mouse button is held down.
+0 is left button, 1, is the right mouse button, 2 is the center button</p>
+	<a name="GetMouseButtonDown"></a><h3><span class="full-name">Input.</span>GetMouseButtonDown</h3><div class="synopsis"><span class="standard_type">bool</span> GetMouseButtonDown (<span class="standard_type">int</span> button)</div>
+   <p class='details'> Returns true the first frame the user hits the mouse button.
+It will not return true until the user has released the mouse button and pressed it again.
+0 is left button, 1, is the right mouse button, 2 is the center button</p>
+	<a name="ResetInputAxes"></a><h3><span class="full-name">Input.</span>ResetInputAxes</h3><div class="synopsis"><span class="standard_type">void</span> ResetInputAxes ()</div>
+   <p class='details'> 	Resets all input. After ResetInputAxes all axes return 0 and all buttons return 0 for one frame. 
+This can be useful when respawning the player and you don't want any input from keys that might still be held down.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code"><a href="Input.html#ResetInputAxes" class="itemlink">Input.ResetInputAxes</a>();</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

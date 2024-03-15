@@ -1,0 +1,65 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Light"-->
+			<title>Unity Script Reference &ndash; Light</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Light</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Light" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Behaviour.html" class="classlink">Behaviour</a></div></p>
+   <p class='first'> Interface for light components.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#type'>type</a></p>
+<p><a href='#color'>color</a></p>
+<p><a href='#attenuate'>attenuate</a></p>
+<p><a href='#range'>range</a></p>
+<p><a href='#spotAngle'>spotAngle</a></p>
+<p><a href='#cookie'>cookie</a></p>
+<p><a href='#flare'>flare</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Class Variables</p><p><a href='#pixelLightCount'>pixelLightCount</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> Use this to control all aspects of Unity's lights. The properties are an exact match for the values shown in the inspector.
+TODO: <a href="LightRenderMode.html" class="classlink">LightRenderMode</a></p>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="type"></a><h3><span class="full-name">Light.</span>type</h3><div class="synopsis"><a href="LightType.html" class="classlink">LightType</a> type</div>
+   <p class='details'> The type of light.
+Can be <a href="LightType.html#Spot" class="itemlink">LightType.Spot</a>, <a href="LightType.html#Directional" class="itemlink">LightType.Directional</a>, <a href="LightType.html#Point" class="itemlink">LightType.Point</a></p>
+	<a name="color"></a><h3><span class="full-name">Light.</span>color</h3><div class="synopsis"><a href="Color.html" class="classlink">Color</a> color</div>
+   <p class='details'> The color of the light</p>
+	<a name="attenuate"></a><h3><span class="full-name">Light.</span>attenuate</h3><div class="synopsis"><span class="standard_type">bool</span> attenuate</div>
+   <p class='details'> Should the light attenuate?</p>
+	<a name="range"></a><h3><span class="full-name">Light.</span>range</h3><div class="synopsis"><span class="standard_type">float</span> range</div>
+   <p class='details'> The range of the light</p>
+	<a name="spotAngle"></a><h3><span class="full-name">Light.</span>spotAngle</h3><div class="synopsis"><span class="standard_type">float</span> spotAngle</div>
+   <p class='details'> The angle in degrees of the light</p>
+	<a name="cookie"></a><h3><span class="full-name">Light.</span>cookie</h3><div class="synopsis"><a href="FileTexture.html" class="classlink">FileTexture</a> cookie</div>
+   <p class='details'> The cookie assigned to the light.
+If the cookie is a cube map, the light will become a point light.</p>
+	<a name="flare"></a><h3><span class="full-name">Light.</span>flare</h3><div class="synopsis"><a href="Flare.html" class="classlink">Flare</a> flare</div>
+   <p class='details'> The flare to use for this light.</p>
+   <a name="Class Variables"></a><h2 class="script-section">Class Variables</h2>
+	<a name="pixelLightCount"></a><h3><span class="full-name">Light.</span>pixelLightCount</h3><div class="synopsis"><span class="standard_type">int</span> pixelLightCount</div>
+   <p class='details'> How to render the light
+The number of pixel lights that should be rendered</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

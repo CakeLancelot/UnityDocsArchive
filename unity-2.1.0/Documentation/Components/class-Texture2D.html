@@ -1,0 +1,210 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - Texture 2D</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">Texture 2D</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-AssetsGroup.html">Asset Components</a> &gt; <a href="../Components/class-Texture2D.html">Texture 2D</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><a href='../ScriptReference/Texture2D.html' title='Go to Texture2D Scripting Doc'>Switch to Scripting</a><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-TextAsset.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/comp-AudioGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>Texture 2D</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p><span class='doc-keyword'>Textures</span> bring your <span class='doc-keyword'>Meshes</span>, <span class='doc-keyword'>Particles</span>, and interfaces to life! They are image or movie files that you lay over or wrap around your objects. As they are so important, they have a lot of properties. If reading this for the first time, jump down to <a href='#details'>Details</a>, and return to the actual settings when you need a reference.
+</p>
+<p class='vspace'>The shaders you use for your objects put specific requirements on which textures you need, but the basic principle is that you can put any image file inside your project. If it meets the size requirements (specified below), it will get imported and optimized for game use.  This extends to multi-layer Photoshop or TIFF files - they are flattened on import, so there is no size penalty for your game.
+</p>
+<div class='vspace'></div><h2>Properties</h2>
+<p>The <span class='doc-keyword'>Texture Inspector</span> looks a bit different from most others:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Texture2D-0.jpg' /></div>
+<p class='vspace'>The top section contains a few settings, and the bottom part contains a texture preview. The changes you make to the bottom part only affect the display, and not the texture itself.
+</p>
+<div class='vspace'></div><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Filtering Mode</span></td><td  align='left'>Selects how the Texture is filtered when it gets stretched by 3D transformations:</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>No Filtering</span></span></td><td  align='left'>The Texture becomes blocky up close</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Bilinear</span></span></td><td  align='left'>The Texture becomes blurry up close</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Trilinear</span></span></td><td  align='left'>Like Bilinear, but the Texture also blurs between the different mip levels</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Anisotropy</span></td><td  align='left'>Increases texture quality when viewing the texture at a steep angle. Good for floor and ground textures, see <a href='#anisotropy'>below</a>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Edge mode</span></td><td  align='left'>Selects how the Texture behaves when tiled:</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Repeat</span></span></td><td  align='left'>The Texture repeats (tiles) itself</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Clamp</span></span></td><td  align='left'>The Texture's edges get stretched</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Show Alpha</span></td><td  align='left'>If enabled, the Texture's alpha channel will be displayed</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Mip Level</span></td><td  align='left'>The current Mip Level that is displayed</td></tr>
+</table>
+<div class='vspace'></div><h2>Import Settings</h2>
+<p>Textures all come from image files in your <span class='doc-keyword'>Project Folder</span>. How they are imported is specified by the texture's <span class='doc-keyword'>Import Settings</span>. You change these by selecting the file texture in the <span class='doc-keyword'>Project View</span> and clicking the Import Settings button on the toolbar above:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Texture2D-1.jpg' /><br /><em>The Import Settings Button</em></div>
+<p class='vspace'>This brings up the import settings dialog:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Texture2D-2.jpg' /><br /><em>The Texture Import Settings dialog</em></div>
+<div class='vspace'></div><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Max. Texture Size</span></td><td  align='left'>The maximum imported texture size. A lot of artists prefer to work with huge textures - scale the texture down to a suitable size with this.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Texture Format</span></td><td >What internal representation is used for the texture. This is a tradeoff between size and quality. In the examples below we show the final size of a in-game texture of 256 by 256 pixels:</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>RGB Compressed <span class='wikiword'>DXT1</span></span></span></td><td  align='left'>Compressed RGB texture. This is the most common format for diffuse textures. 4 bits per pixel (32 KB for a 256x256 texture).</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>RGBA Compressed <span class='wikiword'>DXT5</span></span></span></td><td  align='left'>Compressed RGBA texture. This is the main format used for diffuse &amp; specular control textures. 1 byte/pixel (64 KB for a 256x256 texture).</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>RGB 16 bit</span></span></td><td  align='left'>65 thousand colors with no alpha. Compressed DXT formats use less memory and usually look better. 128 KB for a 256x256 texture.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>RGB 24 bit</span></span></td><td  align='left'>Truecolor but without alpha. 192 KB for a 256x256 texture.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Alpha 8 bit</span></span></td><td  align='left'>High quality alpha channel but without any color. 64 KB for a 256x256 texture.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>RGBA 16 bit</span></span></td><td  align='left'>Low-quality truecolor. Has 16 levels of red, green, blue and alpha. Compressed <span class='wikiword'>DXT5</span> format use less memory and usually look better. 128 KB for a 256x256 texture.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>RGBA 32 bit</span></span></td><td  align='left'>Truecolor with alpha - this is the highest quality. At 256 KB for a 256x256 texture, this one is expensive. Most of the time, <b><span class='wikiword'>DXT5</span></b> offers sufficient quality at a much smaller size. The main place this is used is for bump maps, as DXT compression there often carries a visible quality loss.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Build Alpha From Grayscale</span></td><td  align='left'>If enabled, an alpha transparency channel will be generated by the image's existing values of light &amp; dark.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Scale <span class='wikiword'>NonPower2</span> Sizes Up</span></td><td  align='left'>If enabled on textures that have non-power-of-two sizes, this will scale texture up to the nearest power-of-two size at import time. For more info see <a href='#texturesizes'>Texture Sizes</a> section below.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Generate Cube Map</span></td><td  align='left'>Generates a cubemap from the texture using different generation methods.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Generate Mip Maps</span></td><td  align='left'>Select this to enable mip-map generation. Mip maps are smaller versions of the texture that gets used when the texture is very small on screen. For more info, see <a href='#mipmaps'>Mip Maps</a> below.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Correct Gamma</span></td><td  align='left'>Select this to enable per-mip-level gamma correction.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Border Mip Maps</span></td><td  align='left'>Select this to avoid colors seeping out to the edge of the lower Mip levels. Used for light cookies (see below).</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Mip Map Filtering</span></td><td  align='left'>Two ways of mip map filtering is available to optimize image quality:</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Box</span></span></td><td  align='left'>The simplest way to fade out the mipmaps - the mip levels become smoother and smoother as they go down in size.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Kaiser</span></span></td><td  align='left'>A sharpening Kaiser algorithm is run on the mip maps as they go down in size. If your textures are too blurry in the distance, try this option.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Fade Out Mips</span></td><td  align='left'>Enable this to make the mipmaps fade to gray the mip levels progress. This is used for detail maps.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Fade Out start</span></td><td  align='left'>The first mip level to begin fading out at.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Fade Out End</span></td><td  align='left'>The mip level where the texture is completely grayed out.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Generate  Bump Map</span></td><td  align='left'>Enable this to turn the color channels into a format suitable for real-time bumpmapping. For more info, see <a href='#bumpmaps'>Bump Maps</a>, below.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Bumpyness</span></td><td  align='left'>Control the amount of bumpyness.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Filtering</span></td><td  align='left'>Determine how the bumpyness is calculated:</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Standard</span></span></td><td  align='left'>This generates normal maps that are quite smooth.</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Sobel</span></span></td><td  align='left'>The Sobel filter generates normal maps that are sharper than Standard.</td></tr>
+</table>
+<p class='vspace'><a name='details' id='details'></a>
+</p><h2>Details</h2>
+<div class='vspace'></div><h3>Supported Formats</h3>
+<p>Unity can read the following file formats: PSD, TIFF, JPG, TGA, PNG, GIF, BMP, IFF, PICT. It should be noted that Unity can import multi-layer PSD &amp; TIFF files just fine. They are flattened automatically on import but the layers are maintained in the assets themselves, so you don't lose any of your work when using these file types natively. This is important as it allows you to just have one copy of your textures that you can use from Photoshop, through your 3D modelling app and into Unity.
+</p>
+<p class='vspace'><a name='texturesizes' id='texturesizes'></a>
+</p><h3>Texture Sizes</h3>
+<p>Ideally texture sizes should be powers of two on the sides. These sizes are as follows: 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 or 2048 pixels. The textures do not have to be square, i.e. width can be different from height.
+</p>
+<p class='vspace'>It is possible to use other (non power of two) texture sizes with Unity. Non power of two texture sizes work best when used on <a href="../Components/class-GuiTexture.html">GUI Textures</a>, however if used on anything else they will be converted to an uncompressed RGBA 32 bit format. That means they will take up more video memory (compared to DXT compressed textures) and will be slightly slower to load. In general you'll use non power of two sizes only for making GUI.
+</p>
+<p class='vspace'>Non power of two texture assets can be scaled up at import time using a <span class='doc-prop'>Scale <span class='wikiword'>NonPower2</span> Sizes Up</span> option in the import settings. Then Unity will scale texture contents up to the next power of two, and in the game they will behave just like any other texture. So they can still be compressed and very fast to load.
+</p>
+<div class='vspace'></div><h3>UV Mapping</h3>
+<p>When mapping a 2D texture on to a 3D model, some sort of wrapping is done. This is called <span class='doc-keyword'>UV mapping</span> and is done in your 3D modelling app. Inside Unity, you can scale and move the texture using <a href="../Components/class-Material.html">Materials</a>. Scaling bump &amp; detail maps is especially useful.
+</p>
+<p class='vspace'><a name='mipmaps' id='mipmaps'></a>
+</p><h3>Mip Maps</h3>
+<p>Mip Maps are a list of progressively smaller versions of an image, used to optimise performance on real-time 3D engines. Objects that are far away from the camera use the smaller texture versions. Using mip maps uses 33% more memory, but not using them can be a huge performance loss. You should always you mipmaps for in-game textures; the only exceptions are textures that will never be minified (e.g. GUI textures).
+</p>
+<p class='vspace'><a name='bumpmaps' id='bumpmaps'></a>
+</p><h3>Bump Maps</h3>
+<p>Bump maps are used by bump map shaders to make low-polygon models look as if they contain more detail. Unity uses normal maps encoded as RGB images. You also have the option to generate a normal map from a grayscale height map image.
+</p>
+<div class='vspace'></div><h3>Detail Maps</h3>
+<p>If you want to do a terrain, you normally use your main texture to show where there are grass, rocks sand, etc... If your terrain has a decent size, you will end up with a very blurry terrain. <a href="../Manual/HOWTO-UseDetailTexture.html">Detail textures</a> hide this fact by fading in small details as your main texture get up close.
+</p>
+<p class='vspace'>When drawing detail textures, a neutral gray is invisible, white makes the main texture twice as bright and black makes the main texture completely black.
+</p>
+<div class='vspace'></div><h3>Cube Maps</h3>
+<p>If you want to use texture for reflection maps (e.g. use <span class='doc-prop'>Reflective</span> builtin shaders), you need to use <a href="../Components/class-Cubemap.html">Cubemap Textures</a>.
+</p>
+<p class='vspace'><a name='anisotropy' id='anisotropy'></a>
+</p><h3>Anisotropic filtering</h3>
+<p>Anisotropic filtering increases texture quality when viewed from a grazing angle, at some expense of rendering cost (the cost is entirely on the graphics card). Increasing anisotropy level is usually a good idea for ground and floor textures. In <a href="../Components/class-QualitySettings.html">Quality Settings</a> anisotropic filtering can be forced for all textures or disabled completely.
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Texture2D-3.jpg' /> <br /><em>No anisotropy used on the ground texture</em></div>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-Texture2D-4.jpg' /> <br /><em>Maximum anisotropy used on the ground texture</em></div>
+<div class='vspace'></div><h3>Light Cookies</h3>
+<p>An interesting way to add a lot of visual detail to your scenes is to use <span class='doc-keyword'>Cookies</span> - greyscale textures you use to control the precise look of in-game lighting. This is fantastic for making moving clouds and giving an impression of dense foilage. The <a href="../Components/class-Light.html">Light</a> page has more info on all this, but the main thing is that for textures to be usable for cookies, the following properties need to be set:
+</p>
+<p class='vspace'>For <span class='doc-keyword'>Spotlight</span> Cookies, use the following settings:
+</p>
+<div class='vspace'></div><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Texture Format</span></td><td  align='left'>Any setting that has an alpha channel: <span class='doc-prop'>Alpha 8 bit</span> (recommended), <span class='doc-prop'><span class='wikiword'>DXT5</span> RGBA</span>, <span class='doc-prop'>RGBA 16 bit</span> or <span class='doc-prop'>RGBA 32 bit</span>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Build Alpha from RGB Grayscale</span></td><td  align='left'>Enabled</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Generate Mip Maps</span></td><td  align='left'>Enabled</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Border Mip Maps</span></td><td  align='left'>Enabled</td></tr>
+</table>
+<p class='vspace'>You should keep the edges of you cookie texture solid black in order to get the proper effect. In the Texture Inspector, set the Edge Mode to <span class='doc-prop'>Clamp</span>.
+</p>
+<p class='vspace'>For <span class='doc-keyword'>Directional Lights</span>, use the following settings:
+</p>
+<div class='vspace'></div><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Texture Format</span></td><td  align='left'>Any setting that has an alpha channel: <span class='doc-prop'>Alpha 8 bit</span> (recommended), <span class='doc-prop'><span class='wikiword'>DXT5</span> RGBA</span>, <span class='doc-prop'>RGBA 16 bit</span> or <span class='doc-prop'>RGBA 32 bit</span>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Build Alpha from RGB Grayscale</span></td><td  align='left'>Enabled</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Generate Mip Maps</span></td><td  align='left'>Enabled</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Border Mip Maps</span></td><td  align='left'>Disabled</td></tr>
+</table><p>This texture will tile, so in the texture inspector, you must set the Edge Mode to <span class='doc-prop'>Repeat</span>.
+</p>
+<p class='vspace'>For <span class='doc-keyword'>Point Lights</span>, you need to use <span class='doc-keyword'>Cube Maps</span>. To generate one, either make six textures and assign them as described in <a href="../Components/class-Cubemap.html">Cubemap Textures</a> or generate one with the following settings:
+</p>
+<div class='vspace'></div><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Texture Format</span></td><td  align='left'>Any setting that has an alpha channel: <span class='doc-prop'>Alpha 8 bit</span> (recommended), <span class='doc-prop'><span class='wikiword'>DXT5</span> RGBA</span>, <span class='doc-prop'>RGBA 16 bit</span> or <span class='doc-prop'>RGBA 32 bit</span>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Generate Cube Map</span></td><td  align='left'>Any other setting than <span class='doc-prop'>None</span>.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Build Alpha from RGB Grayscale</span></td><td  align='left'>Enabled</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Generate Mip Maps</span></td><td  align='left'>Enabled</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Border Mip Maps</span></td><td  align='left'>Disabled</td></tr>
+</table>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/class-TextAsset.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/comp-AudioGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,231 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="MonoBehaviour"-->
+			<title>Unity Script Reference &ndash; MonoBehaviour</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class MonoBehaviour</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class MonoBehaviour" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Behaviour.html" class="classlink">Behaviour</a></div></p>
+   <p class='first'> MonoBehaviour is the base class every script derives from.</p>
+<span class='toc'><p class='tocheader'>Functions</p><p><a href='#Invoke'>Invoke</a></p>
+<p><a href='#InvokeRepeating'>InvokeRepeating</a></p>
+<p><a href='#CancelInvoke'>CancelInvoke</a></p>
+<p><a href='#IsInvoking'>IsInvoking</a></p>
+<p><a href='#StartCoroutine'>StartCoroutine</a></p>
+<p><a href='#StopCoroutine'>StopCoroutine</a></p>
+<p><a href='#StopAllCoroutines'>StopAllCoroutines</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Overridable Methods</p><p><a href='#Update'>Update</a></p>
+<p><a href='#LateUpdate'>LateUpdate</a></p>
+<p><a href='#FixedUpdate'>FixedUpdate</a></p>
+<p><a href='#Awake'>Awake</a></p>
+<p><a href='#Start'>Start</a></p>
+<p><a href='#Reset'>Reset</a></p>
+<p><a href='#OnMouseEnter'>OnMouseEnter</a></p>
+<p><a href='#OnMouseOver'>OnMouseOver</a></p>
+<p><a href='#OnMouseExit'>OnMouseExit</a></p>
+<p><a href='#OnMouseDown'>OnMouseDown</a></p>
+<p><a href='#OnMouseUp'>OnMouseUp</a></p>
+<p><a href='#OnMouseDrag'>OnMouseDrag</a></p>
+<p><a href='#OnTriggerEnter'>OnTriggerEnter</a></p>
+<p><a href='#OnTriggerExit'>OnTriggerExit</a></p>
+<p><a href='#OnTriggerStay'>OnTriggerStay</a></p>
+<p><a href='#OnCollisionEnter'>OnCollisionEnter</a></p>
+<p><a href='#OnCollisionExit'>OnCollisionExit</a></p>
+<p><a href='#OnCollisionStay'>OnCollisionStay</a></p>
+<p><a href='#OnParticleCollision'>OnParticleCollision</a></p>
+<p><a href='#OnBecameVisible'>OnBecameVisible</a></p>
+<p><a href='#OnBecameInvisible'>OnBecameInvisible</a></p>
+<p><a href='#OnLevelWasLoaded'>OnLevelWasLoaded</a></p>
+<p><a href='#OnPreCull'>OnPreCull</a></p>
+<p><a href='#OnPreRender'>OnPreRender</a></p>
+<p><a href='#OnPostRender'>OnPostRender</a></p>
+<p><a href='#OnRenderImage'>OnRenderImage</a></p>
+<p><a href='#OnDrawGizmosSelected'>OnDrawGizmosSelected</a></p>
+<p><a href='#OnDrawGizmos'>OnDrawGizmos</a></p>
+<p><a href='#OnApplicationPause'>OnApplicationPause</a></p>
+<p><a href='#OnApplicationQuit'>OnApplicationQuit</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> Using Javascript every script automatically derives from MonoBehaviour.
+When using C# or Boo you have to explicitly derive from MonoBehaviour.  <p class="basic"/><span class="seealso"><b>See Also:</b> The <a href="../Manual/Scripting.html" class="classlink">chapter on scripting</a> in the Manual.</span></p>
+   <a name="Methods"></a><h2 class="script-section">Methods</h2>
+	<a name="Invoke"></a><h3><span class="full-name">MonoBehaviour.</span>Invoke</h3><div class="synopsis"><span class="standard_type">void</span> Invoke (<span class="standard_type">string</span> methodName, <span class="standard_type">float</span> time)</div>
+   <p class='details'> Invokes the method <span class="variable">methodName</span> in time seconds.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Launches a projectile <span class="keyword">in</span> 2 seconds<br/>var projectile : <a href="Rigidbody.html" class="classlink">Rigidbody</a>;<br/>Invoke("LaunchProjectile", 2);<br/>function LaunchProjectile () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;instance = Instantiate(prefab);<br/>&nbsp;&nbsp;&nbsp;&nbsp;instance.velocity = <a href="Random.html#insideUnitSphere" class="itemlink">Random.insideUnitSphere</a> * 5;<br/>}</div></td></tr></table></p>
+	<a name="InvokeRepeating"></a><h3><span class="full-name">MonoBehaviour.</span>InvokeRepeating</h3><div class="synopsis"><span class="standard_type">void</span> InvokeRepeating (<span class="standard_type">string</span> methodName, <span class="standard_type">float</span> time, <span class="standard_type">float</span> repeatRate)</div>
+   <p class='details'> Invokes the method <span class="variable">methodName</span> in <span class="variable">time</span> seconds.
+After the first invocation repeats calling that function every <span class="variable">repeatRate</span> seconds.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Starting <span class="keyword">in</span> 2 seconds.<br/>// a projectile will be launched every 0.3 seconds<br/>var projectile : <a href="Rigidbody.html" class="classlink">Rigidbody</a>;<br/>InvokeRepeating("LaunchProjectile", 2, 0.3);<br/>function LaunchProjectile () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;instance = Instantiate(prefab);<br/>&nbsp;&nbsp;&nbsp;&nbsp;instance.velocity = <a href="Random.html#insideUnitSphere" class="itemlink">Random.insideUnitSphere</a> * 5;<br/>}</div></td></tr></table></p>
+	<a name="CancelInvoke"></a><h3><span class="full-name">MonoBehaviour.</span>CancelInvoke</h3><div class="synopsis"><span class="standard_type">void</span> CancelInvoke ()</div>
+   <p class='details'> Cancels all Invoke calls on this MonoBehaviour.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Starting <span class="keyword">in</span> 2 seconds.<br/>// a projectile will be launched every 0.3 seconds<br/>var projectile : <a href="Rigidbody.html" class="classlink">Rigidbody</a>;<br/>InvokeRepeating("LaunchProjectile", 2, 0.3);<br/><br/>// Cancels the repeating invoke call, <br/>// when the user pressed the ctrl button<br/>function Update() {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Input.html#GetButton" class="itemlink">Input.GetButton</a> ("Fire1")) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CancelInvoke();<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}<br/><br/>function LaunchProjectile () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;instance = Instantiate(prefab);<br/>&nbsp;&nbsp;&nbsp;&nbsp;instance.velocity = <a href="Random.html#insideUnitSphere" class="itemlink">Random.insideUnitSphere</a> * 5;<br/>}</div></td></tr></table></p>
+	&nbsp;<div class="synopsis"><span class="standard_type">void</span> CancelInvoke (<span class="standard_type">string</span> methodName)</div>
+   <p class='details'> Cancels all Invoke calls with name <span class="variable">methodName</span> on this behaviour.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Starting <span class="keyword">in</span> 2 seconds.<br/>// a projectile will be launched every 0.3 seconds<br/>var projectile : <a href="Rigidbody.html" class="classlink">Rigidbody</a>;<br/>InvokeRepeating("LaunchProjectile", 2, 0.3);<br/><br/>// Cancels the repeating invoke call, <br/>// when the user pressed the ctrl button<br/>function Update() {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (<a href="Input.html#GetButton" class="itemlink">Input.GetButton</a> ("Fire1")) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CancelInvoke("LaunchProjectile");<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}<br/><br/>function LaunchProjectile () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;instance = Instantiate(prefab);<br/>&nbsp;&nbsp;&nbsp;&nbsp;instance.velocity = <a href="Random.html#insideUnitSphere" class="itemlink">Random.insideUnitSphere</a> * 5;<br/>}</div></td></tr></table></p>
+	<a name="IsInvoking"></a><h3><span class="full-name">MonoBehaviour.</span>IsInvoking</h3><div class="synopsis"><span class="standard_type">bool</span> IsInvoking (<span class="standard_type">string</span> methodName)</div>
+   <p class='details'> Is any invoke on <span class="variable">methodName</span> pending?</p>
+	&nbsp;<div class="synopsis"><span class="standard_type">bool</span> IsInvoking ()</div>
+   <p class='details'> Is any invoke pending on this MonoBehaviour?</p>
+	<a name="StartCoroutine"></a><h3><span class="full-name">MonoBehaviour.</span>StartCoroutine</h3><div class="synopsis"><a href="Coroutine.html" class="classlink">Coroutine</a> StartCoroutine (<span class="standard_type">string</span> methodName, object value = null)</div>
+   <p class='details'> Starts a coroutine.
+The executation of a coroutine can be paused at any point using the yield statement.
+The yield return value specifies when the coroutine is resumed.
+Coroutines are excellent when modelling behaviour over several frames.
+Coroutines have virtually no performance overhead.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Start the coroutine and pass 5 as a parameter into the coroutine<br/>StartCoroutine ("MoveForwardWaitAndMoveUp", 5);<br/><br/>function MoveForwardWaitAndMoveUp (time) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;while (time > 0) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform.position += <a href="Vector3.html#right" class="itemlink">Vector3.right</a>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time -= <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Wait until next frame<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Wait <span class="keyword">for</span> 5 seconds<br/>&nbsp;&nbsp;&nbsp;&nbsp;yield <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a> (5);<br/>&nbsp;&nbsp;&nbsp;&nbsp;while (true) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform.position += <a href="Vector3.html#up" class="itemlink">Vector3.up</a>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Yield until next frame<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}
+</div></td></tr></table>StartCoroutine function always returns immediately.
+Sometimes you want to wait until a coroutine has finished execution.
+This is done by yielding the StartCoroutine method's return value.
+For example:<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// - prints "Starting 0.0"<br/>// - prints "WaitAndPrint 5.0"<br/>// - prints "Done 5.0"<br/>print ("Starting " + <a href="Time.html#time" class="itemlink">Time.time</a>);<br/>yield StartCoroutine ("WaitAndPrint");<br/>print ("Done " + <a href="Time.html#time" class="itemlink">Time.time</a>);<br/><br/>function WaitAndPrint () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;yield <a href="WaitForSeconds.html" class="classlink">WaitForSeconds</a> (5);<br/>&nbsp;&nbsp;&nbsp;&nbsp;print ("WaitAndPrint "+ <a href="Time.html#time" class="itemlink">Time.time</a>);<br/>}</div></td></tr></table></p>
+	<a name="StopCoroutine"></a><h3><span class="full-name">MonoBehaviour.</span>StopCoroutine</h3><div class="synopsis"><span class="standard_type">void</span> StopCoroutine (<span class="standard_type">string</span> methodName)</div>
+   <p class='details'> Stops all coroutines named <span class="variable">methodName</span> running on this behaviour.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function DoSomething () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;while (true) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}<br/>// Starts the coroutine<br/>StartCoroutine ("DoSomething");<br/>// Cancels the coroutine immediately afterwards.<br/>StopCoroutine ("DoSomething");</div></td></tr></table></p>
+	<a name="StopAllCoroutines"></a><h3><span class="full-name">MonoBehaviour.</span>StopAllCoroutines</h3><div class="synopsis"><span class="standard_type">void</span> StopAllCoroutines ()</div>
+   <p class='details'> Stops all coroutines running on this behaviour.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function DoSomething () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;while (true) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}<br/><br/>// Starts the coroutine<br/>StartCoroutine ("DoSomething");<br/>// Cancels the coroutine immediately afteerwards<br/>StopAllCoroutines();</div></td></tr></table></p>
+   <a name="Overridable Methods"></a><h2 class="script-section">Overridable Methods</h2>
+	<a name="Update"></a><h3><span class="full-name">MonoBehaviour.</span>Update</h3><div class="synopsis"><span class="standard_type">void</span> Update ()</div>
+   <p class='details'> Update is called every frame, if the MonoBehaviour is enabled.  <p class="details"/>Update is the most commonly used function to implement any kind of game behaviour.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Moves the object forward 1 meter a second<br/>function Update () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;transform.Translate(0, 0, <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a> * 1);<br/>}
+</div></td></tr></table>In order to get the elapsed time since last call to Update, use <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a>.
+This function is only called if the <a href="Behaviour.html" class="classlink">Behaviour</a> is enabled.
+Override this function in order to provide your component's functionality.</p>
+	<a name="LateUpdate"></a><h3><span class="full-name">MonoBehaviour.</span>LateUpdate</h3><div class="synopsis"><span class="standard_type">void</span> LateUpdate ()</div>
+   <p class='details'> LateUpdate is called every frame, if the <a href="Behaviour.html" class="classlink">Behaviour</a> is enabled.  <p class="details"/>LateUpdate is called after all Update functions have been called.
+This is useful to order script execution. For example a follow camera should always be implemented in LateUpdate
+because it tracks objects that might have moved inside Update.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Moves the object forward 1 meter a second<br/>function LateUpdate () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;transform.Translate(0, 0, <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a> * 1);<br/>}
+</div></td></tr></table>In order to get the elapsed time since last call to LateUpdate, use <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a>.
+This function is only called if the <a href="Behaviour.html" class="classlink">Behaviour</a> is enabled.
+Override this function in order to provide your component's functionality.</p>
+	<a name="FixedUpdate"></a><h3><span class="full-name">MonoBehaviour.</span>FixedUpdate</h3><div class="synopsis"><span class="standard_type">void</span> FixedUpdate ()</div>
+   <p class='details'> This function is called every fixed framerate frame, if the MonoBehaviour is enabled.  <p class="details"/>FixedUpdate should be used instead of Update when dealing with <a href="Rigidbody.html" class="classlink">Rigidbody</a>.
+For example when adding a force to a rigidbody, you have to apply the force every fixed 
+frame inside FixedUpdate instead of every frame inside Update.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Apply a upwards force to the rigid body every frame<br/>function FixedUpdate () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;rigidbody.AddForce (<a href="Vector3.html#up" class="itemlink">Vector3.up</a>);<br/>}
+</div></td></tr></table>In order to get the elapsed time since last call to Update, use <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a>
+This function is only called if the <a href="Behaviour.html" class="classlink">Behaviour</a> is enabled.
+Override this function in order to provide your component's functionality.</p>
+	<a name="Awake"></a><h3><span class="full-name">MonoBehaviour.</span>Awake</h3><div class="synopsis"><span class="standard_type">void</span> Awake ()</div>
+   <p class='details'> Awake is called when the script instance is being loaded.  <p class="details"/>Awake is used to initialize any variables or game state before the game starts.
+Awake is called only once during the lifetime of the script instance.
+Awake is called after all objects are initialized so you can safely
+speak to other objects or query them using eg. <a href="GameObject.html#FindGameObjectWithTag" class="itemlink">GameObject.FindGameObjectWithTag</a>.
+Awake is always called before any Start functions. This allows you to order initialization of scripts.  <p class="details"/>Note for C# and Boo users: use Awake instead of the constructor for initialization, as the serialized state of the component is undefined at construction time.
+Awake is called once, just like the constructor.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code"><span class="keyword">private</span> var target : <a href="GameObject.html" class="classlink">GameObject</a>;<br/>function Awake () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;target = <a href="GameObject.html#FindGameObjectWithTag" class="itemlink">GameObject.FindGameObjectWithTag</a> ("Player");<br/>}</div></td></tr></table></p>
+	<a name="Start"></a><h3><span class="full-name">MonoBehaviour.</span>Start</h3><div class="synopsis"><span class="standard_type">void</span> Start ()</div>
+   <p class='details'> Start is called just before any of the Update methods is called the first time.  <p class="details"/>Start is only called once in the lifetime of the behaviour.
+The difference between Awake and Start is that Start is only called if the script instance is enabled.
+This allows you to delay any initialization code, until it is really needed.
+Awake is always called before any Start functions. This allows you to order initialization of scripts.  <p class="details"/>The Start function is called after all Awake functions on all script instances have been called.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Initializes the target variable.<br/>// target is <span class="keyword">private</span> and thus not editable <span class="keyword">in</span> the inspector<br/><span class="keyword">private</span> var target : <a href="GameObject.html" class="classlink">GameObject</a>;<br/>function Start () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;target = <a href="GameObject.html#FindGameObjectWithTag" class="itemlink">GameObject.FindGameObjectWithTag</a> ("Player");<br/>}</div></td></tr></table></p>
+	<a name="Reset"></a><h3><span class="full-name">MonoBehaviour.</span>Reset</h3><div class="synopsis"><span class="standard_type">void</span> Reset ()</div>
+   <p class='details'> Reset is called when the user hits the Reset button in the inspector's context menu or when adding the component the firs time.  <p class="details"/>Reset is called only in editor mode. Reset is most commonly used to give good default values in the inspector<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Sets target to a default value.<br/>// This could be used <span class="keyword">in</span> a follow camera.<br/>var target : <a href="GameObject.html" class="classlink">GameObject</a>;<br/>function Reset () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Only set target if it is not assigned yet.<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (!target)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target = <a href="GameObject.html#FindGameObjectWithTag" class="itemlink">GameObject.FindGameObjectWithTag</a> ("Player");<br/>}</div></td></tr></table></p>
+	<a name="OnMouseEnter"></a><h3><span class="full-name">MonoBehaviour.</span>OnMouseEnter</h3><div class="synopsis"><span class="standard_type">void</span> OnMouseEnter ()</div>
+   <p class='details'> OnMouseEnter is called when the mouse entered the <a href="GUIElement.html" class="classlink">GUIElement</a> or <a href="Collider.html" class="classlink">Collider</a>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Attach this script to a mesh to make<br/>// it red when the mouse is over the mesh<br/>function OnMouseEnter () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;renderer.material.color = <a href="Color.html#red" class="itemlink">Color.red</a>;<br/>}
+</div></td></tr></table>This event is sent to all behaviour's attached to the <a href="Collider.html" class="classlink">Collider</a> or <a href="GUIElement.html" class="classlink">GUIElement</a>.</p>
+	<a name="OnMouseOver"></a><h3><span class="full-name">MonoBehaviour.</span>OnMouseOver</h3><div class="synopsis"><span class="standard_type">void</span> OnMouseOver ()</div>
+   <p class='details'> OnMouseOver is called every frame while the mouse is over the <a href="GUIElement.html" class="classlink">GUIElement</a> or <a href="Collider.html" class="classlink">Collider</a>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Fades the red component of the material to zero <br/>// while the mouse is over the mesh<br/>function OnMouseOver () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;renderer.material.color.r -= 0.1 * <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a>;<br/>}
+</div></td></tr></table>This event is sent to all behaviour's attached to the <a href="Collider.html" class="classlink">Collider</a> or <a href="GUIElement.html" class="classlink">GUIElement</a>.</p>
+	<a name="OnMouseExit"></a><h3><span class="full-name">MonoBehaviour.</span>OnMouseExit</h3><div class="synopsis"><span class="standard_type">void</span> OnMouseExit ()</div>
+   <p class='details'> OnMouseExit is called when the mouse is not any longer over the <a href="GUIElement.html" class="classlink">GUIElement</a> or <a href="Collider.html" class="classlink">Collider</a>.
+OnMouseExit balances out OnMouseEnter<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Fades the red component of the material to zero <br/>// while the mouse is over the mesh<br/>function OnMouseExit () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;renderer.material.color = <a href="Color.html#white" class="itemlink">Color.white</a>;<br/>}
+</div></td></tr></table>This event is sent to all behaviour's attached to the <a href="Collider.html" class="classlink">Collider</a> or <a href="GUIElement.html" class="classlink">GUIElement</a>.</p>
+	<a name="OnMouseDown"></a><h3><span class="full-name">MonoBehaviour.</span>OnMouseDown</h3><div class="synopsis"><span class="standard_type">void</span> OnMouseDown ()</div>
+   <p class='details'> OnMouseDown is called when the user has pressed the mouse button while over the <a href="GUIElement.html" class="classlink">GUIElement</a> or <a href="Collider.html" class="classlink">Collider</a>.
+This event is sent to all behaviour's of the <a href="Collider.html" class="classlink">Collider</a> or <a href="GUIElement.html" class="classlink">GUIElement</a>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Loads the level named "SomeLevel" as a response<br/>// to the user clicking on the object<br/>function OnMouseDown () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Application.html#LoadLevel" class="itemlink">Application.LoadLevel</a> ("SomeLevel");<br/>}</div></td></tr></table></p>
+	<a name="OnMouseUp"></a><h3><span class="full-name">MonoBehaviour.</span>OnMouseUp</h3><div class="synopsis"><span class="standard_type">void</span> OnMouseUp ()</div>
+   <p class='details'> OnMouseUp is called when the user has released the mouse button while over the <a href="GUIElement.html" class="classlink">GUIElement</a> or <a href="Collider.html" class="classlink">Collider</a>.
+OnMouseUp is only called if the mouse was pressed down while over the same <a href="GUIElement.html" class="classlink">GUIElement</a> or <a href="Collider.html" class="classlink">Collider</a>.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Loads the level named "SomeLevel" as a response<br/>// to the user clicking on the object<br/>function OnMouseUp () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Application.html#LoadLevel" class="itemlink">Application.LoadLevel</a> ("SomeLevel");<br/>}
+</div></td></tr></table>This event is sent to all behaviour's attached to the <a href="Collider.html" class="classlink">Collider</a> or <a href="GUIElement.html" class="classlink">GUIElement</a>.</p>
+	<a name="OnMouseDrag"></a><h3><span class="full-name">MonoBehaviour.</span>OnMouseDrag</h3><div class="synopsis"><span class="standard_type">void</span> OnMouseDrag ()</div>
+   <p class='details'> OnMouseDrag is called when the user has clicked on a <a href="GUIElement.html" class="classlink">GUIElement</a> or <a href="Collider.html" class="classlink">Collider</a> and is still holding down the mouse.
+OnMouseDrag is called every frame while the mouse is down.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Darken the material color while user holds down the mouse.<br/>function OnMouseDrag () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;renderer.material.color -= <a href="Color.html#white" class="itemlink">Color.white</a> * <a href="Time.html#deltaTime" class="itemlink">Time.deltaTime</a>;<br/>}</div></td></tr></table></p>
+	<a name="OnTriggerEnter"></a><h3><span class="full-name">MonoBehaviour.</span>OnTriggerEnter</h3><div class="synopsis"><span class="standard_type">void</span> OnTriggerEnter (<a href="Collider.html" class="classlink">Collider</a> other)</div>
+   <p class='details'> OnTriggerEnter is called when the <a href="Collider.html" class="classlink">Collider</a> <span class="variable">other</span> enters the <a href="../Components/class-BoxCollider.html" class="classlink">trigger</a>.
+This message is sent to the trigger collider and the rigidbody (or the collider if there is no rigidbody) that touches the trigger.
+Note that trigger events are only sent if one of the colliders also has a non-kinematic rigid body attached.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Destroy everything that enters the trigger<br/>function OnTriggerEnter (other : <a href="Collider.html" class="classlink">Collider</a>) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;Destroy(other.gameObject);<br/>}</div></td></tr></table></p>
+	<a name="OnTriggerExit"></a><h3><span class="full-name">MonoBehaviour.</span>OnTriggerExit</h3><div class="synopsis"><span class="standard_type">void</span> OnTriggerExit (<a href="Collider.html" class="classlink">Collider</a> other)</div>
+   <p class='details'> OnTriggerExit is called when the <a href="Collider.html" class="classlink">Collider</a> <span class="variable">other</span> has stopped touching the <a href="../Components/class-BoxCollider.html" class="classlink">trigger</a>.
+This message is sent to the trigger and the collider that touches the trigger.
+Note that trigger events are only sent if one of the colliders also has a non-kinematic rigid body attached.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Destroy everything that leaves the trigger<br/>function OnTriggerExit (other : <a href="Collider.html" class="classlink">Collider</a>) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;Destroy(other.gameObject);<br/>}</div></td></tr></table></p>
+	<a name="OnTriggerStay"></a><h3><span class="full-name">MonoBehaviour.</span>OnTriggerStay</h3><div class="synopsis"><span class="standard_type">void</span> OnTriggerStay (<a href="Collider.html" class="classlink">Collider</a> other)</div>
+   <p class='details'> OnTriggerStay is called once per frame for every <a href="Collider.html" class="classlink">Collider</a> <span class="variable">other</span> that is touching the <a href="../Components/class-BoxCollider.html" class="classlink">trigger</a>.
+This message is sent to the trigger and the collider that touches the trigger.
+Note that trigger events are only sent if one of the colliders also has a non-kinematic rigid body attached.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Applies an upwards force to all rigidbodies that enter the trigger.<br/>function OnTriggerStay (<a href="Collider.html" class="classlink">Collider</a> other) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (other.attachedRigidbody) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other.attachedRigidbody.AddForce(<a href="Vector3.html#up" class="itemlink">Vector3.up</a> * 10);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+	<a name="OnCollisionEnter"></a><h3><span class="full-name">MonoBehaviour.</span>OnCollisionEnter</h3><div class="synopsis"><span class="standard_type">void</span> OnCollisionEnter (<a href="Collision.html" class="classlink">Collision</a> collisionInfo)</div>
+   <p class='details'> OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider.
+In contrast to OnTriggerEnter, OnCollisionEnter is passed the <a href="Collision.html" class="classlink">Collision</a> class and not a <a href="Collider.html" class="classlink">Collider</a>.
+The <a href="Collision.html" class="classlink">Collision</a> class contains information about contact points, impactVelocity etc.
+If you don't use collisionInfo in the function, leave out the collisionInfo parameter as this avoids unneccessary calculations.
+Note that collision events are only sent if one of the colliders also has a non-kinematic rigid body attached.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function OnCollisionEnter(collision : <a href="Collision.html" class="classlink">Collision</a>) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;// <a href="Debug.html" class="classlink">Debug</a>-draw all contact points and normals<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span> (var contact : <a href="ContactPoint.html" class="classlink">ContactPoint</a> <span class="keyword">in</span> collision.contacts) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Debug.html#DrawRay" class="itemlink">Debug.DrawRay</a>(contact.point, contact.normal, <a href="Color.html#white" class="itemlink">Color.white</a>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Play a sound if the coliding objects had a big impact.		<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (collision.relativeVelocity.magnitude > 2)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;audio.Play();<br/>}</div></td></tr></table></p>
+	<a name="OnCollisionExit"></a><h3><span class="full-name">MonoBehaviour.</span>OnCollisionExit</h3><div class="synopsis"><span class="standard_type">void</span> OnCollisionExit (<a href="Collision.html" class="classlink">Collision</a> collisionInfo)</div>
+   <p class='details'> OnCollisionEnter is called when this collider/rigidbody has stopped touching another rigidbody/collider.
+In contrast to OnTriggerExit, OnCollisionExit is passed the <a href="Collision.html" class="classlink">Collision</a> class and not a <a href="Collider.html" class="classlink">Collider</a>.
+The <a href="Collision.html" class="classlink">Collision</a> class contains information about contact points, impactVelocity etc.
+If you don't use collisionInfo in the function, leave out the collisionInfo parameter as this avoids unneccessary calculations.
+Note that collision events are only sent if one of the colliders also has a non-kinematic rigid body attached.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function OnCollisionExit(collisionInfo : <a href="Collision.html" class="classlink">Collision</a>) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;print("No longer <span class="keyword">in</span> contact with " + collisionInfo.transform.name);<br/>}</div></td></tr></table></p>
+	<a name="OnCollisionStay"></a><h3><span class="full-name">MonoBehaviour.</span>OnCollisionStay</h3><div class="synopsis"><span class="standard_type">void</span> OnCollisionStay (<a href="Collision.html" class="classlink">Collision</a> collisionInfo)</div>
+   <p class='details'> OnCollisionEnter is called once per frame for every collider/rigidbody that is touching rigidbody/collider.
+In contrast to OnTriggerStay, OnCollisionStay is passed the <a href="Collision.html" class="classlink">Collision</a> class and not a <a href="Collider.html" class="classlink">Collider</a>.
+The <a href="Collision.html" class="classlink">Collision</a> class contains information about contact points, impactVelocity etc.
+If you don't use collisionInfo in the function, leave out the collisionInfo parameter as this avoids unneccessary calculations.
+Note that collision events are only sent if one of the colliders also has a non-kinematic rigid body attached.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">function OnCollisionStay(collisionInfo : <a href="Collision.html" class="classlink">Collision</a>) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;// <a href="Debug.html" class="classlink">Debug</a>-draw all contact points and normals<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span> (var contact : <a href="ContactPoint.html" class="classlink">ContactPoint</a> <span class="keyword">in</span> collision.contacts) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Debug.html#DrawRay" class="itemlink">Debug.DrawRay</a>(contact.point, contact.normal, <a href="Color.html#white" class="itemlink">Color.white</a>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+	<a name="OnParticleCollision"></a><h3><span class="full-name">MonoBehaviour.</span>OnParticleCollision</h3><div class="synopsis"><span class="standard_type">void</span> OnParticleCollision (<a href="GameObject.html" class="classlink">GameObject</a> other)</div>
+   <p class='details'> OnParticleCollision is called when a particle hits a collider.
+This can be used to apply damage to a game object when hit by particles.
+This message is sent to all scripts attached to the WorldParticleCollider and to the <a href="Collider.html" class="classlink">Collider</a> that was hit.
+The message is only sent if you enable sendCollisionMessage in the inspector of the WorldParticleCollider.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Applies a force to all rigid bodies that are hit by the particle.<br/>function OnParticleCollision (other : <a href="GameObject.html" class="classlink">GameObject</a>) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;var body = other.rigidbody;<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (body) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var direction = other.transform.position - transform.position;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction = direction.normalized;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body.AddForce (direction * 5);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+	<a name="OnBecameVisible"></a><h3><span class="full-name">MonoBehaviour.</span>OnBecameVisible</h3><div class="synopsis"><span class="standard_type">void</span> OnBecameVisible ()</div>
+   <p class='details'> OnBecameVisible is called when the renderer became visible by any camera.
+This message is sent to all scripts attached to the renderer.
+OnBecameVisible and OnBecameInvisible is useful to avoid computations that are only necessary when the object is visible.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Enables the behaviour when it is visible<br/>function OnBecameVisible () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;enabled = true;<br/>}</div></td></tr></table></p>
+	<a name="OnBecameInvisible"></a><h3><span class="full-name">MonoBehaviour.</span>OnBecameInvisible</h3><div class="synopsis"><span class="standard_type">void</span> OnBecameInvisible ()</div>
+   <p class='details'> OnBecameInvisible is called when the renderer is no longer visible by any camera.
+This message is sent to all scripts attached to the renderer.
+OnBecameVisible and OnBecameInvisible is useful to avoid computations that are only necessary when the object is visible.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Disables the behaviour when it is visible<br/>function OnBecameInvisible () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;enabled = false;<br/>}</div></td></tr></table></p>
+	<a name="OnLevelWasLoaded"></a><h3><span class="full-name">MonoBehaviour.</span>OnLevelWasLoaded</h3><div class="synopsis"><span class="standard_type">void</span> OnLevelWasLoaded (<span class="standard_type">int</span> level)</div>
+   <p class='details'> This function is called after a new level was loaded.
+<span class="variable">level</span> is the index of the level that was loaded.
+Use the menu item File->Build Settings... to see what scene the index refers to.
+<span class="seealso"><b>See Also:</b> <a href="Application.html#LoadLevel" class="itemlink">Application.LoadLevel</a><table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Prints "Wohoo" when level 13 is loaded.<br/>function OnLevelWasLoaded (level : <span class="standard_type">int</span>) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (level == 13) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print ("Wohoo");<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></span></p>
+	<a name="OnPreCull"></a><h3><span class="full-name">MonoBehaviour.</span>OnPreCull</h3><div class="synopsis"><span class="standard_type">void</span> OnPreCull ()</div>
+   <p class='details'> OnPreCull is called before a camera culls the scene.
+This message is sent to all scripts attached to the camera.</p>
+	<a name="OnPreRender"></a><h3><span class="full-name">MonoBehaviour.</span>OnPreRender</h3><div class="synopsis"><span class="standard_type">void</span> OnPreRender ()</div>
+   <p class='details'> OnPreRender is called before a camera starts rendering the scene.
+This message is sent to all scripts attached to the camera.</p>
+	<a name="OnPostRender"></a><h3><span class="full-name">MonoBehaviour.</span>OnPostRender</h3><div class="synopsis"><span class="standard_type">void</span> OnPostRender ()</div>
+   <p class='details'> OnPostRender is called after a camera finished rendering the scene.
+This message is sent to all scripts attached to the camera.</p>
+	<a name="OnRenderImage"></a><h3><span class="full-name">MonoBehaviour.</span>OnRenderImage</h3><div class="synopsis"><span class="standard_type">void</span> OnRenderImage (<a href="RenderTexture.html" class="classlink">RenderTexture</a> source, <a href="RenderTexture.html" class="classlink">RenderTexture</a> destination)</div>
+   <p class='details'> OnRenderImage is called after rendering is complete.
+It allows you to do image based effects by blitting from one render texture into another with shader based filters.
+This message is sent to all scripts attached to the camera.</p>
+	<a name="OnDrawGizmosSelected"></a><h3><span class="full-name">MonoBehaviour.</span>OnDrawGizmosSelected</h3><div class="synopsis"><span class="standard_type">void</span> OnDrawGizmosSelected ()</div>
+   <p class='details'> Implement this OnDrawGizmosSelected if you want to draw gizmos only if the object is selected.
+<a href="Gizmos.html" class="classlink">Gizmos</a> are drawn only when the object is selected. <a href="Gizmos.html" class="classlink">Gizmos</a> are not pickable.
+	This is used to ease setup. For example an explosion script could draw a sphere
+showing the explosion radius.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">var explosionRadius = 5.0;<br/>function OnDrawGizmosSelected () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;// Display the explosion radius when selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Gizmos.html#color" class="itemlink">Gizmos.color</a> = <a href="Color.html#white" class="itemlink">Color.white</a>;<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Gizmos.html#DrawSphere" class="itemlink">Gizmos.DrawSphere</a> (transform.position, explosionRadius);<br/>}</div></td></tr></table></p>
+	<a name="OnDrawGizmos"></a><h3><span class="full-name">MonoBehaviour.</span>OnDrawGizmos</h3><div class="synopsis"><span class="standard_type">void</span> OnDrawGizmos ()</div>
+   <p class='details'> Implement this OnDrawGizmos if you want to draw gizmos that are also pickable and always drawn.
+	This allows you to quickly pick important objects in your scene.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Draws the <a href="Light.html" class="classlink">Light</a> bulb icon at position of the object.<br/>function OnDrawGizmos () {<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Gizmos.html#DrawIcon" class="itemlink">Gizmos.DrawIcon</a> (transform.position, "<a href="Light.html#tiff" class="itemlink">Light.tiff</a>");<br/>}</div></td></tr></table></p>
+	<a name="OnApplicationPause"></a><h3><span class="full-name">MonoBehaviour.</span>OnApplicationPause</h3><div class="synopsis"><span class="standard_type">void</span> OnApplicationPause (<span class="standard_type">bool</span> pause)</div>
+   <p class='details'> Sent to all game objects when the player pauses.</p>
+	<a name="OnApplicationQuit"></a><h3><span class="full-name">MonoBehaviour.</span>OnApplicationQuit</h3><div class="synopsis"><span class="standard_type">void</span> OnApplicationQuit ()</div>
+   <p class='details'> Sent to all game objects before the application is quit.
+In the editor this is called when the user stops playmode.
+In the web player player it is call when the web view is closed.</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

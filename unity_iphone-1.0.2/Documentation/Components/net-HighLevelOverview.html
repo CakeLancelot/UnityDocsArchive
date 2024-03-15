@@ -1,0 +1,154 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<title>Unity - High Level Networking Concepts</title>
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/docs.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+	<td class="titleleft"><img src="../images/top/left.png"></td>
+	<td><a href="../../Documentation.html"><img src="../images/top/logo.png"></a></td>
+	<td class="titlemid">
+		<table><tr>
+			<td class="doctitle">High Level Networking Concepts</td>
+			<td class="Components" align="right"><a href="../Manual/index.html" title="Go to Unity manual"><img src="../images/spacer.gif" width="72" height="36" class="manual" border="0"></a></td>
+			<td class="Components" width="94"><a href="../Components/index.html" title="Go to Reference"><img src="../images/spacer.gif" width="94" height="36" class="reference" border="0"></a></td>
+			<td class="Components" width="82"><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../images/spacer.gif" width="82" height="36" class="scripting" border="0"></a></td>
+		</tr><tr>
+			<td colspan="4">
+				<table width="100%" class="docpath"><tr><td >
+		<!-- #TemplateBeginEditable name="path" -->
+					<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Network Reference Guide.html">Network Reference Guide</a> &gt; <a href="../Components/net-HighLevelOverview.html">High Level Networking Concepts</a>
+		<!-- #TemplateEndEditable -->	
+				</td>
+				</td><td class="switchlink">
+					<!--BeginSwitchLink--><!--EndSwitchLink-->
+				</td></tr></table>
+			</td>
+		</tr></table>
+	</td>
+	<td class="titleright" width="9"><img src="../images/top/right.png"></td>
+</tr></table>
+<div class="manual">
+	<div class="main">
+
+		<!-- #TemplateBeginEditable name="navigation" -->
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/Network Reference Guide.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/net-UnityNetworkElements.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="title" -->
+			<h1>High Level Networking Concepts</h1>
+		<!-- #TemplateEndEditable -->	
+		<!-- #TemplateBeginEditable name="body" -->
+			
+<p>The following information is a collection of concepts that are relevant to any kind of game network activity, and are not specific to Unity.  It will be very helpful for you to understand these concepts before you begin using Unity networking.
+</p>
+<div class='vspace'></div><h2>What is Networking?</h2>
+<p>The basic concept of networking is communication between multiple computers.  To do this you need a <span class='doc-keyword'>client</span> and a <span class='doc-keyword'>server</span>.  The server can either be a dedicated host machine for everyone, or a player running the game acting as the server for other players.  Once a server has been established and a client has connected to it, the two computers can exchange data necessary for a multiplayer network game.
+</p>
+<p class='vspace'>Creating a network game requires a lot of attention to some very specific details.  Even in Unity, where most actions are easy to design and create, networking remains extremely complex.  We chose to make networking in Unity very robust and flexible.  This means that you as the game creator need to make a lot of choices which you normally don't have to think about.  These choices will have a big effect on how you build your game, so it is best to make them as early as possible.  This means learning about these concepts and planning them as much as possible, keeping long-term implications in mind.
+</p>
+<div class='vspace'></div><h2>Networking Approaches</h2>
+<p>There are two common and proven approaches to structuring a network game. These approaches are called <span class='doc-keyword'>Authoritative Server</span> and <span class='doc-keyword'>Non-Authoritative Server</span>. Both approaches rely on a server connecting clients and passing information between them. Incidentally, they offer more privacy for end users since clients never actually connect directly with each other or have their IP addresses revealed to other clients.  
+</p>
+<div class='vspace'></div><h3>Authoritative Server</h3>
+<p>The authoritative server approach requires the server to perform all world simulation, application of game rules, and processing of client player input.  Each client sends their input (in the form of key presses or requested functions to perform) to the server and continuously receives the current state of the game from the server.  The client never performs any game logic changes itself.  Instead, it tells the server what it wants to do, and the server handles internal logic itself and informs the client exactly what has happened.
+</p>
+<p class='vspace'>Fundamentally, this is a layer of separation between what the player wants to do and what actually happens.  This allows the server to listen to what everyone wants to do, apply logic of game rules (which vary from game to game) and tell each client exactly what to do.  Think of this as "Player tells Server what they want to do --&gt; Server determines what happens --&gt; Server tells client players how to update".
+</p>
+<p class='vspace'>An advantage of using this approach is that it makes cheating much harder for clients. For example, they do not have the capabilities to tell the server (and thus all clients) "I killed your character" because of the technical limitations of the network communication. They can only tell the server "I fired my weapon" and the server determines whether or not a kill was made.
+</p>
+<p class='vspace'>Another example of an authoritative server would be the following for a physics game: "Player client sends input to the server --&gt; Server runs physics simulation and determines all collisions &amp; effects of collisions --&gt; Server sends updates of object positions to the player client".  This means that while each player client appears to be running a full physics simulation, they are not.  They are only receiving the result of the physics simulation that was performed by the server.
+</p>
+<p class='vspace'>With authoritative server local movement has no effect until the server has reacted to it, which can look unnatural to the player. So if you press the <em>go forward</em> button, nothing will happen for possibly 100 ms if there is a 50 ms trip time in each direction. To combat this a technique called <span class='doc-keyword'>Client Side Prediction</span> is used.  This guide will not explain Client Side Prediction in depth, as it is a very technical and specialized technique. Simply, it is a method of allowing each client to operate in the way that it believes it should, and receive corrections from the Server only if it calculates something incorrectly. The server can then override the actions of a client when it predicts something incorrectly.  For more information on Client Side Prediction, simply Google the term.
+</p>
+<p class='vspace'>Making the server authoritative requires a greater processing load on the server. Imagine the server receiving a variety of different processes and commands from 32 different players in an action game. He needs to process each user input and decide what is legal and not legal sometimes resolving conflicts between clients.
+</p>
+<div class='vspace'></div><h3>Non-Authoritative Server</h3>
+<p>A Non-Authoritative Server does not control the outcome of every user input. The clients themselves process user input and game logic locally, then send the result of any determined actions to the server. The server then synchronizes all actions with the world state. This is easier to implement from a design perspective, as the server really just relays messages between the clients, he does no extra processing above what the clients do.
+</p>
+<p class='vspace'>There is no need for any kind of <em>prediction</em> methods as they clients do all physics and events themselves and relay what happened to the server. They are the <em>owner</em> of their objects and are the only ones allow tho send local modifications of those objects to the network.
+</p>
+<div class='vspace'></div><h2>Methods of Network Communication</h2>
+<p>Now that we've covered the basic architectures of networked games, we will explore the lower-levels of how clients and servers can talk to each other.
+</p>
+<p class='vspace'>There are two relevant methods: <span class='doc-keyword'>Remote Procedure Calls</span> and <span class='doc-keyword'>State Synchronization</span>.  It is not uncommon to use both methods somehow in any particular game.
+</p>
+<div class='vspace'></div><h3>Remote Procedure Calls</h3>
+<p>Also called <span class='doc-keyword'><span class='wikiword'>RPCs</span></span>, Remote Procedure Calls are used to invoke functions on different machines across the network.  This can include the player's local game instance as well.  Clients can send <span class='wikiword'>RPCs</span> to the server, and the server can send <span class='wikiword'>RPCs</span> to one or more clients.  Most commonly, they are used for actions that happen infrequently.  For example, if a client flips a switch to open a door, it can send an RPC to the server telling it that the door has been opened.  The server can then send another RPC to all clients, invoking their local functions to open that same door. They are used for managing and executing individual events.
+</p>
+<div class='vspace'></div><h3>State Synchronization</h3>
+<p>State Synchronization is used to share data that is constantly changing.  The best example of this would be a player's position in an action game.  The player is always moving, running around, jumping, etc.  All the other players in the network, even the ones that are not controlling this player locally, need to know where he is, and what he is doing.  By constantly relaying data about this player's position, the game can accurately represent that position to the other players.
+</p>
+<p class='vspace'>This kind of data is regularly and frequently sent across the network.  Because this data is time-sensitive, and it requires time to travel across the internet tubes from one machine to another, it is important to reduce the amount of data that is sent as much as possible.  In simpler terms, state synchronization naturally requires a lot of bandwidth, so you should do everything you can to use the least amount of bandwidth that you can.
+</p>
+<div class='vspace'></div><h3>Connecting servers and clients together</h3>
+<p>How to connect servers and clients together can be a complex subject if all variables are to be considered. Machines can have private or public IP addresses and they can have local or external firewalls blocking access. Unity networking tries to provide methods for handling all situations but there is no \magic button\ for this.
+</p>
+<p class='vspace'>Private addresses are IP addresses which are not accessible directly from the internet, they are also called NAT addresses because of the method used to connect them to the internet (Network Address Translation). To explain this in greatly simplified terms, the private address goes through some local router which translates the address to a public address. This way a great number of private addresses can use a single public IP address to communicate with the internet. This is all good and fine until someone from the internet wants to initiate contact with a private address. He needs to go through the public address of the router which handles the private address and there is not way to do that except with a concept called NAT punchthrough. With NAT punchthrough some common server, called a facilitator, mediates communication in a way which allows a public address to contact a private address. This works by having the private address first contact the facilitator, which \punches\ a hole through the local router. The facilitator can now see the public IP address and port which the private address is using. Using this information any machine on the internet can now connect directly with the previously unconnectable private address. Bear in mind that this is a simplified explanation just to cover the basics.
+</p>
+<p class='vspace'>Public addresses are more simple. Here the primary danger is that connectivity is blocked by an internal or external firewall. Internal firewall is understood as a firewall running locally on the machine. In this case the user can be asked to open a port to make the game server accessible. An external firewall is understood as a firewall running on the networks router or something similar which is outside the control of the users. In this case there might be nothing to do about connectivity except attempting to use the NAT punchthrough method to \punch\ a hole through the firewall. During testing this did work but there is no research available to indicate how successful this is.
+</p>
+<p class='vspace'>The above mentioned connectivity issues affect servers and clients differently. Clients are more simple as they just need to contact a server, which is outgoing traffic. If the client has a public address this almost always works, outgoing traffic is seldom blocked except on corporate networks where access is very limited. If the client has a private address he can connect to all servers except server with private addresses which cannot do NAT punchthrough. More on this later. Servers are more complicated as they need to able to accept incoming connections from unknown sources. With a public address the server needs to have the game port open to the internet, not blocked by a firewall. If a port is not open and accessible to the internet the server cannot accept any connections from clients and is thus unusable. If the server has a private address he must be able to do NAT punchthrough, or no one can connect to him. Clients which cannot do NAT punchthrough will regardless not be able to connect to the server.
+</p>
+<p class='vspace'>Unity provides tools to test all these different connectivity situations. When everything is resolved and you want to start connecting servers and clients together, there are two methods. Direct connections by which a client needs to know the DNS name or IP address of the server or connections with help from the Master Server. The Master Server allows servers to advertise their presence to clients. The clients in that case do not need to know about any servers beforehand.
+</p>
+<div class='vspace'></div><h2>Minimizing Network Bandwidth</h2>
+<p>When working with State Synchronization across multiple clients, you don't necessarily need to synchronize every single detail in order to make objects appear synchronized. For example, when synchronizing a character avatar you only need to send its position and rotation between clients. Even though the character itself is much more complex and might contain a deep <span class='doc-keyword'>Transform</span> hierarchy, data about the entire hierarchy does not need to be shared.
+</p>
+<p class='vspace'>A lot of data in your game can be viewed as static and clients neither have to transfer it initially nor synchronize it. Using infrequent or one-time RPC calls should be sufficient to make a lot of your functionality work.  Take advantage of the data you know will exist in every installation of your game, and keep the client working on its own as much as possible.  For example, you know that assets like textures and meshes exist on all installations, and they usually don't change.  Therefore they never have to be synchronized.  This is a simple example, but it should get you thinking about what data is absolutely critical to share from one client to another.  This is the only data that you should ever share.
+</p>
+<p class='vspace'>This is not an easy thing to do, especially if you have never made a network game before.  Consider this: you can use a single RPC call with a level name to make all clients load the entire specified level and add their own networked elements automatically.  Structuring your game to make each client be as self-sufficient as possible will result in reduced bandwidth.
+</p>
+<div class='vspace'></div><h2>Multiplayer Game Performance</h2>
+<p>The physical location and performance of the server itself can greatly affect the playability of a game running on it. Clients which are located a continent away from the server may experience a great amount of lag.  That's just the way it is and there is really nothing one can do about that.  No matter how beefy the server hardware is, the distance data has to travel to and from the server will always be a factor in your game.  It's best if the server and clients are located on the same continent.
+</p>
+<div class='vspace'></div><h2>Extra Resources</h2>
+<p>We've collected some additional helpful links for learning about networking concepts.  We recommend that you read as many networking resources as possible.
+</p>
+<div class='vspace'></div><ul><li><a class='urllink' href='http://developer.valvesoftware.com/wiki/Source_Multiplayer_Networking' rel='nofollow'>http://developer.valvesoftware.com/wiki/Source_Multiplayer_Networking</a>
+</li><li><a class='urllink' href='http://developer.valvesoftware.com/wiki/Lag_Compensation' rel='nofollow'>http://developer.valvesoftware.com/wiki/Lag_Compensation</a>
+</li><li><a class='urllink' href='http://developer.valvesoftware.com/wiki/Working_With_Prediction' rel='nofollow'>http://developer.valvesoftware.com/wiki/Working_With_Prediction</a>
+</li><li><a class='urllink' href='http://www.gamasutra.com/resource_guide/20020916/lambright_01.htm' rel='nofollow'>http://www.gamasutra.com/resource_guide/20020916/lambright_01.htm</a>
+</li></ul>
+
+		<!-- #TemplateEndEditable -->	
+
+		<div class="nav">
+		<div class="nav-prev">
+			<a href='../Components/Network Reference Guide.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/net-UnityNetworkElements.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</div>
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -1,0 +1,111 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Component"-->
+			<title>Unity Script Reference &ndash; Component</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class Component</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class Component" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass"><a href="Object.html" class="classlink">Object</a></div></p>
+   <p class='first'> Base class for all stuff attached to GameObjects.</p>
+<span class='toc'><p class='tocheader'>Variables</p><p><a href='#transform'>transform</a></p>
+<p><a href='#rigidbody'>rigidbody</a></p>
+<p><a href='#camera'>camera</a></p>
+<p><a href='#light'>light</a></p>
+<p><a href='#animation'>animation</a></p>
+<p><a href='#constantForce'>constantForce</a></p>
+<p><a href='#renderer'>renderer</a></p>
+<p><a href='#audio'>audio</a></p>
+<p><a href='#guiText'>guiText</a></p>
+<p><a href='#guiElement'>guiElement</a></p>
+<p><a href='#collider'>collider</a></p>
+<p><a href='#hingeJoint'>hingeJoint</a></p>
+<p><a href='#particleEmitter'>particleEmitter</a></p>
+<p><a href='#gameObject'>gameObject</a></p>
+<p><a href='#active'>active</a></p>
+<p><a href='#tag'>tag</a></p>
+</span>
+<span class='toc'><p class='tocheader'>Functions</p><p><a href='#GetComponent'>GetComponent</a></p>
+<p><a href='#GetComponentInChildren'>GetComponentInChildren</a></p>
+<p><a href='#GetComponentsInChildren'>GetComponentsInChildren</a></p>
+<p><a href='#CompareTag'>CompareTag</a></p>
+<p><a href='#SendMessage'>SendMessage</a></p>
+<p><a href='#BroadcastMessage'>BroadcastMessage</a></p>
+</span>
+<div class='tocclear'></div>
+   <a name="Variables"></a><h2 class="script-section">Variables</h2>
+	<a name="transform"></a><h3><span class="full-name">Component.</span>transform</h3><div class="synopsis"><a href="Transform.html" class="classlink">Transform</a> transform</div>
+   <p class='details'> The <a href="Transform.html" class="classlink">Transform</a> attached to this <a href="GameObject.html" class="classlink">GameObject</a>. (null if there is none attached)<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">transform.Translate(1, 1, 1);</div></td></tr></table></p>
+	<a name="rigidbody"></a><h3><span class="full-name">Component.</span>rigidbody</h3><div class="synopsis"><a href="Rigidbody.html" class="classlink">Rigidbody</a> rigidbody</div>
+   <p class='details'> The <a href="Rigidbody.html" class="classlink">Rigidbody</a> attached to this <a href="GameObject.html" class="classlink">GameObject</a>. (null if there is none attached)</p>
+	<a name="camera"></a><h3><span class="full-name">Component.</span>camera</h3><div class="synopsis"><a href="Camera.html" class="classlink">Camera</a> camera</div>
+   <p class='details'> The <a href="Camera.html" class="classlink">Camera</a> attached to this <a href="GameObject.html" class="classlink">GameObject</a>. (null if there is none attached)</p>
+	<a name="light"></a><h3><span class="full-name">Component.</span>light</h3><div class="synopsis"><a href="Light.html" class="classlink">Light</a> light</div>
+   <p class='details'> The <a href="Light.html" class="classlink">Light</a> attached to this <a href="GameObject.html" class="classlink">GameObject</a>. (null if there is none attached)</p>
+	<a name="animation"></a><h3><span class="full-name">Component.</span>animation</h3><div class="synopsis"><a href="Animation.html" class="classlink">Animation</a> animation</div>
+   <p class='details'> The <a href="Animation.html" class="classlink">Animation</a> attached to this <a href="GameObject.html" class="classlink">GameObject</a>. (null if there is none attached)</p>
+	<a name="constantForce"></a><h3><span class="full-name">Component.</span>constantForce</h3><div class="synopsis"><a href="ConstantForce.html" class="classlink">ConstantForce</a> constantForce</div>
+   <p class='details'> The <a href="ConstantForce.html" class="classlink">ConstantForce</a> attached to this <a href="GameObject.html" class="classlink">GameObject</a>. (null if there is none attached)</p>
+	<a name="renderer"></a><h3><span class="full-name">Component.</span>renderer</h3><div class="synopsis"><a href="Renderer.html" class="classlink">Renderer</a> renderer</div>
+   <p class='details'> The <a href="Renderer.html" class="classlink">Renderer</a> attached to this <a href="GameObject.html" class="classlink">GameObject</a>. (null if there is none attached)</p>
+	<a name="audio"></a><h3><span class="full-name">Component.</span>audio</h3><div class="synopsis"><a href="AudioSource.html" class="classlink">AudioSource</a> audio</div>
+   <p class='details'> The <a href="AudioSource.html" class="classlink">AudioSource</a> attached to this <a href="GameObject.html" class="classlink">GameObject</a>. (null if there is none attached)<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">audio.Play();</div></td></tr></table></p>
+	<a name="guiText"></a><h3><span class="full-name">Component.</span>guiText</h3><div class="synopsis"><a href="GUIText.html" class="classlink">GUIText</a> guiText</div>
+   <p class='details'> The <a href="GUIText.html" class="classlink">GUIText</a> attached to this <a href="GameObject.html" class="classlink">GameObject</a>. (null if there is none attached)<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">guiText.text = "HelloWorld";</div></td></tr></table></p>
+	<a name="guiElement"></a><h3><span class="full-name">Component.</span>guiElement</h3><div class="synopsis"><a href="GUIElement.html" class="classlink">GUIElement</a> guiElement</div>
+   <p class='details'> The <a href="GUIElement.html" class="classlink">GUIElement</a> attached to this <a href="GameObject.html" class="classlink">GameObject</a>. (null if there is none attached)</p>
+	<a name="collider"></a><h3><span class="full-name">Component.</span>collider</h3><div class="synopsis"><a href="Collider.html" class="classlink">Collider</a> collider</div>
+   <p class='details'> The <a href="Collider.html" class="classlink">Collider</a> attached to this <a href="GameObject.html" class="classlink">GameObject</a>. (null if there is none attached)<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">collider.material.dynamicFriction = 1;</div></td></tr></table></p>
+	<a name="hingeJoint"></a><h3><span class="full-name">Component.</span>hingeJoint</h3><div class="synopsis"><a href="HingeJoint.html" class="classlink">HingeJoint</a> hingeJoint</div>
+   <p class='details'> The Hinge joint attached to this <a href="GameObject.html" class="classlink">GameObject</a>. (null if there is none attached)<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">hingeJoint.motor.targetVelocity = 5;</div></td></tr></table></p>
+	<a name="particleEmitter"></a><h3><span class="full-name">Component.</span>particleEmitter</h3><div class="synopsis"><a href="ParticleEmitter.html" class="classlink">ParticleEmitter</a> particleEmitter</div>
+   <p class='details'> The Particle emitter attached to this <a href="GameObject.html" class="classlink">GameObject</a>. (null if there is none attached)<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">particleEmitter.emit = true;</div></td></tr></table></p>
+	<a name="gameObject"></a><h3><span class="full-name">Component.</span>gameObject</h3><div class="synopsis"><a href="GameObject.html" class="classlink">GameObject</a> gameObject</div>
+   <p class='details'> The game object the component is attached to. (A component is always attached to a game object)<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">print (gameObject.name);</div></td></tr></table></p>
+	<a name="active"></a><h3><span class="full-name">Component.</span>active</h3><div class="synopsis"><span class="standard_type">bool</span> active</div>
+   <p class='details'> Is the <a href="GameObject.html" class="classlink">GameObject</a> active? Activates/Deactivates the <a href="GameObject.html" class="classlink">GameObject</a>.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Deactivates the game object.<br/>active = false;</div></td></tr></table></p>
+	<a name="tag"></a><h3><span class="full-name">Component.</span>tag</h3><div class="synopsis"><span class="standard_type">string</span> tag</div>
+   <p class='details'> The tag of this game object.
+A tag can be used to identify a game object.
+Tags must be declared in the tag manager before using them.</p>
+   <a name="Methods"></a><h2 class="script-section">Methods</h2>
+	<a name="GetComponent"></a><h3><span class="full-name">Component.</span>GetComponent</h3><div class="synopsis">Component GetComponent (<span class="standard_type">Type</span> type)</div>
+   <p class='details'> Returns the component of Type <span class="variable">type</span> if the game object has one attached, null if it doesn't.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Equivalent to: <a href="Transform.html" class="classlink">Transform</a> curTransform = transform;<br/>var curTransform : <a href="Transform.html" class="classlink">Transform</a> = GetComponent (<a href="Transform.html" class="classlink">Transform</a>);<br/> <br/>// You can access script components <span class="keyword">in</span> the same way as other components.<br/>var someScript : ExampleScript  = GetComponent (ExampleScript);<br/>someScript.DoSomething ();</div></td></tr></table></p>
+	<a name="GetComponentInChildren"></a><h3><span class="full-name">Component.</span>GetComponentInChildren</h3><div class="synopsis">Component GetComponentInChildren (<span class="standard_type">Type</span> t)</div>
+   <p class='details'> Returns the component of Type <span class="variable">type</span> in the <a href="GameObject.html" class="classlink">GameObject</a> or any of its children using depth first search.
+Only active components are returned.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">var script : ScriptName = GetComponentInChildren(ScriptName);<br/>script.DoSomething ();</div></td></tr></table></p>
+	<a name="GetComponentsInChildren"></a><h3><span class="full-name">Component.</span>GetComponentsInChildren</h3><div class="synopsis">Component[] GetComponentsInChildren (<span class="standard_type">Type</span> t)</div>
+   <p class='details'> Returns all components of Type <span class="variable">type</span> in the <a href="GameObject.html" class="classlink">GameObject</a> or any of its children.
+Only active components are returned.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Disable the spring on all HingeJoints <br/>// <span class="keyword">in</span> this game object and all its child game objects<br/>var hingeJoints = GetComponentsInChildren (<a href="HingeJoint.html" class="classlink">HingeJoint</a>);<br/><span class="keyword">for</span> (var joint : <a href="HingeJoint.html" class="classlink">HingeJoint</a> <span class="keyword">in</span> hingeJoints) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;joint.useSpring = false;<br/>}</div></td></tr></table></p>
+	<a name="CompareTag"></a><h3><span class="full-name">Component.</span>CompareTag</h3><div class="synopsis"><span class="standard_type">bool</span> CompareTag (<span class="standard_type">string</span> tag)</div>
+   <p class='details'> Is this game object tagged <span class="variable">tag</span>?<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Immediate death trigger.<br/>// Destroys any colliders that enter the trigger, if they are tagged player.<br/>function OnTriggerEnter (other : <a href="Collider.html" class="classlink">Collider</a>) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (other.CompareTag ("Player")) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Destroy (other.gameObject);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+	<a name="SendMessage"></a><h3><span class="full-name">Component.</span>SendMessage</h3><div class="synopsis"><span class="standard_type">void</span> SendMessage (<span class="standard_type">string</span> methodName, object value = null, <a href="SendMessageOptions.html" class="classlink">SendMessageOptions</a> options = <a href="SendMessageOptions.html#RequireReceiver" class="itemlink">SendMessageOptions.RequireReceiver</a>)</div>
+   <p class='details'> Calls the method named <span class="variable">methodName</span> on every <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a> in this game object.
+The receiving method can choose to ignore the argument by having zero arguments.
+if options is set to <a href="SendMessageOptions.html#RequireReceiver" class="itemlink">SendMessageOptions.RequireReceiver</a> an error is printed when the message is not picked up by any component.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// Calls the function ApplyDamage with a value of 5<br/>SendMessage ("ApplyDamage", 5);<br/><br/>// Every script attached to the game object <br/>// that has a ApplyDamage function will be called.<br/>function ApplyDamage (damage) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;print (damage);<br/>}</div></td></tr></table></p>
+	<a name="BroadcastMessage"></a><h3><span class="full-name">Component.</span>BroadcastMessage</h3><div class="synopsis"><span class="standard_type">void</span> BroadcastMessage (<span class="standard_type">string</span> methodName, object parameter = null, <a href="SendMessageOptions.html" class="classlink">SendMessageOptions</a> options = <a href="SendMessageOptions.html#RequireReceiver" class="itemlink">SendMessageOptions.RequireReceiver</a>)</div>
+   <p class='details'> Calls the method named <span class="variable">methodName</span> on every <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a> in this game object or any of its children.
+The receiving method can choose to ignore <span class="variable">parameter</span> by having zero arguments.
+if options is set to <a href="SendMessageOptions.html#RequireReceiver" class="itemlink">SendMessageOptions.RequireReceiver</a> an error is printed when the message is not picked up by any component.<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">/// Calls the function ApplyDamage with a value of 5<br/>BroadcastMessage ("ApplyDamage", 5);<br/><br/>// Every script attached to the game object and all its children<br/>// that has a ApplyDamage function will be called.<br/>function ApplyDamage (damage) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;print (damage);<br/>}</div></td></tr></table></p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

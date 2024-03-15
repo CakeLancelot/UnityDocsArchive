@@ -1,0 +1,45 @@
+<!-- #BeginTemplate "/Templates/manual-scriptref-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="Screen.SetResolution"-->
+			<title>Unity Script Reference &ndash; Screen.SetResolution</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<script language="JavaScript" src="UnityDoc.js"></script>
+<body>
+
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>SetResolution</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+	<!-- #TemplateEndEditable -->
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-top.lbi" --><!-- #EndLibraryItem --><div class="left-menu-container"><ul class="left-menu"><li><span class="left-menu-heading">Menu</span></li><li><a class="left-menu-item" href="index.html">Overview</a></li><li><a class="left-menu-item" href="20_class_hierarchy.html">Class Hierarchy</a></li><li><a class="left-menu-item" href="10_reference.html">Reference</a></li><li><span class="left-menu-seperator"></span></li><li><a class="left-menu-heading" href="Screen.html">Screen</a></li><li><a class="left-menu-item" href="Screen.html">Class Members</a></li><li><span class="left-menu-subheading">Class Variables</span></li><li><a class="left-menu-item" href="Screen.fullScreen.html">fullScreen</a></li><li><a class="left-menu-item" href="Screen.height.html">height</a></li><li><a class="left-menu-item" href="Screen.resolutions.html">resolutions</a></li><li><a class="left-menu-item" href="Screen.showCursor.html">showCursor</a></li><li><a class="left-menu-item" href="Screen.width.html">width</a></li><li><span class="left-menu-subheading">Class Functions</span></li><li><span class="left-menu-item left-menu-current">SetResolution</span></li></ul></div>
+	<!-- #BeginLibraryItem name="/Library/manual-scriptref-table-middle.lbi" --><!-- #EndLibraryItem -->	<div id="SetResolution" class="manual-entry"><h3><span class="full-name">Screen.</span>SetResolution</h3><div class="synopsis">void SetResolution (int width, int height, bool fullscreen, int preferredRefreshRate = 0)</div>
+   <p class="details"> Switches the resolution.
+</p><p class="details">
+If no matching resolution can be found the closest one will be used.	
+If <span class="variable">preferredRefreshRate</span> is 0 (default) Unity will switch to the highest refresh rate supported by the monitor.
+If <span class="variable">preferredRefreshRate</span> is not 0 Unity will use it if the monitor supports it, otherwise will choose
+the highest supported one.
+</p><p class="details">
+SetResolution calls are ignored in the web player. </p><div class="code"><span class="comment">// Switch to 640 x 480 fullscreen</span>
+<a href="Screen.SetResolution.html" class="itemlink">Screen.SetResolution</a> (640, 480, true);<br/><br/><span class="comment">// Switch to 640 x 480 fullscreen at 60 hz</span>
+<a href="Screen.SetResolution.html" class="itemlink">Screen.SetResolution</a> (640, 480, true, 60);<br/><br/><span class="comment">// Switch to 800 x 600 windowed</span>
+<a href="Screen.SetResolution.html" class="itemlink">Screen.SetResolution</a> (800, 600, false);</div><p class="details"></p>
+</div>	
+	</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

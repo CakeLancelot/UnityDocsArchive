@@ -1,0 +1,92 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Spring Joint"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Components" title="Spring Joint" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-DynamicsGroup.html%22%3EPhysics%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-SpringJoint.html%22%3ESpring%20Joint%3C%2Fa%3E" -->
+		<h1>Spring Joint</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-DynamicsGroup.html">Physics</a> &gt; <a href="class-SpringJoint.html">Spring Joint</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><a href='../ScriptReference/SpringJoint.html' title='Go to SpringJoint Scripting Doc'><img src="../Images/SwitchScripting.png" width="66" height="51" /></a><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-HingeJoint.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-FixedJoint.html">Next<img src="../images/next.png"></a></div>
+
+			
+<p>The Spring Joint groups together 2 Rigidbodies, constraining them to move like they are connected by a spring.
+</p>
+
+<p><img class='figure' src='images/class-SpringJoint-0.jpg' />
+</p>
+
+<p><i>The Spring Joint</i>
+</p>
+
+<h2>Properties</h2>
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Connected Body</nobr></b></td><td> Optional reference to the Rigidbody that the joint is dependent upon.
+</td></tr><tr><td><b><nobr>Anchor</nobr></b></td><td> Position in the object's local space (at rest) that defines the center of the joint.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X</nobr></b></td><td> Position of the joint's center along the X axis.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y</nobr></b></td><td> Position of the joint's center along the Y axis.
+</td></tr><tr><td><b><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Z</nobr></b></td><td> Position of the joint's center along the Z axis.
+</td></tr><tr><td><b><nobr>Spring</nobr></b></td><td> Strength of the spring.  The farther from the Anchor, the stronger the spring will pull.
+</td></tr><tr><td><b><nobr>Damper</nobr></b></td><td> Amount that the spring is reduced when active.
+</td></tr><tr><td><b><nobr>Min Distance</nobr></b></td><td> Distances greater than this will not cause the Spring to activate.
+</td></tr><tr><td><b><nobr>Max Distance</nobr></b></td><td> Distances less than this will not cause the Spring to activate.
+</td></tr><tr><td><b><nobr>Break Force</nobr></b></td><td> The force that needs to be applied for this joint to break.
+</td></tr><tr><td><b><nobr>Break Torque</nobr></b></td><td> The torque that needs to be applied for this joint to break.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Details</h2>
+
+<p>Spring Joints allow you to define a point in 3D space that any particular object is drawn to.  As an object travels further away from that point, the Spring Joint applies forces that will pull it back to its <b>Anchor</b> position.  This creates an effect very similar to a rubber band or a slingshot.
+</p>
+
+<h3>Connected Rigidbody</h3>
+<p>You do not need to connect a Rigidbody for your joint to work.  Use of <b>Connected Rigidbodies</b> depends on the situation, and the effect you are trying to achieve.  Generally, you should only connect a Rigidbody if your object is dependent on it <span style="text-decoration:underline;">and</span> the object will be moving and rotating.  If there is no <b>Connected Rigidbody</b>, your Spring will connect to the world.
+</p>
+
+<h3>Spring &amp; Damper</h3>
+
+<p><b>Spring</b> is the strength of the Joint's force that draws the object back toward its designated <b>Anchor</b>.  If this is 0, then there is no force that will pull on the object, and it will behave as if no Spring is attached at all.
+</p>
+
+<p><b>Damper</b> is the resistance encountered by the <b>Spring</b> force.  The lower this is, the springier the object will be.  As the <b>Damper</b> is increased, the amount of bounciness caused by the Spring will be reduced.
+</p>
+
+<h3>Min &amp; Max Distance</h3>
+
+<p>If the position of your object falls in-between the <b>Min &amp; Max Distances</b>, then the spring will not affect your object.  The position must be moved outside of these values for the Spring to activate.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+You do not need to assign a <b>Connected Body</b> to your joint for it to work.
+</li><li>Spring Joints require your object to have a <b>Rigidbody</b> attached
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="class-HingeJoint.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-FixedJoint.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

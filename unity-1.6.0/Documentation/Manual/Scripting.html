@@ -1,0 +1,148 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Scripting"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title="Scripting" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Working%20with%20Assets.html%22%3EAssets%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Scripting.html%22%3EScripting%3C%2Fa%3E" -->
+		<h1>Scripting</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Working with Assets.html">Assets</a> &gt; <a href="Scripting.html">Scripting</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Audio Files.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Creating Gameplay.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>This is a short introduction on how to add and scripts in a project.  For detailed information including the scripting API, please view the <a class="wiki"  href="../ScriptReference/index.html">Scripting Reference</a>.
+</p>
+
+<p>Scripting inside Unity is done by writing simple behaviour scripts in JavaScript, C# or Boo. You can use one or all scripting languages in a single project, there is no penalty for using more than one. This manual addresses scripting with JavaScript unless specifically stated otherwise.
+</p>
+
+
+<h2>Creating new scripts</h2>
+<p>To create a new script, open the <b>Assets -&gt; Create -&gt; JavaScript</b> (or C Sharp Script or Boo Script) from the main menu. This will create a new script called <b>NewBehaviourScript</b> and place it in the selected folder in Project View.  If no folder is selected in Project View, the script will be created at the root level.
+</p>
+
+<p><img class='figure' src='images/Scripting-0.jpg' />
+</p>
+
+<p>You can edit the script by double-clicking on it in the Project View.  This will launch <b>Unitron</b>, the script editor for Unity.
+</p>
+
+<p>These are the contents of a new, empty behaviour script:
+<pre class='codelisting'>
+function Update () {
+}
+</pre>
+</p>
+
+<p>A new, empty script does not do a lot on its own, so let's modify it a bit:
+<pre class='codelisting'>
+function Update () {
+    print(&quot;Hello World&quot;);
+}
+</pre>
+</p>
+
+<h2>Attaching scripts to objects</h2>
+
+<p>Save the above script and create a new object in a scene by opening <b>GameObject -&gt; Create Other -&gt; Cube</b>. This will create a cube Game Object in the scene.
+</p>
+
+<p><img class='figure' src='images/Scripting-1.jpg' />
+</p>
+
+<p>Now attach the script to the cube object either by dragging the script from the Project View onto the cube object (in the Scene or Hierarchy View) or by selecting the cube and then choosing the script from the <b>Component -&gt; Scripts -&gt; New Behaviour Script</b>.  If you have changed the name of your script, you will see the name you chose appear in the menu.
+</p>
+
+<p><img class='figure' src='images/Scripting-2.jpg' />
+</p>
+
+<p>Now, if you select the cube and look at the inspector, you will see that the script is now visible.
+</p>
+
+<p><img class='figure' src='images/Scripting-3.jpg' />
+</p>
+
+<p>Press Play to test your creation. You should see the text &quot;Hello World&quot; appear beside the Play/Pause/Step buttons. Exit play mode when you see it.
+</p>
+
+<p><img class='figure' src='images/Scripting-4.jpg' />
+</p>
+
+<h1>Manipulating the object</h1>
+
+<p>A print statement like in above example, can be very handy when debugging your script, but this one is not doing anything to the cube it is attached to. Let's change the script to make the cube rotate slowly around its Y axis.
+</p>
+
+<p><pre class='codelisting'>
+function Update () {
+    transform.Rotate(0, 5*Time.deltaTime, 0);
+}
+</pre>
+</p>
+
+<p>So what's all this about? The line that has replaced the print statement first fetches the cube object's <b>Transform</b> and then tells it to rotate 0 degrees around its X axis, 5 around the Y axis and 0 around the Z axis every second. We multiply the number of degrees with <b>Time.deltaTime</b> in order to make the rotation speed consistent on different machines with different frame rates. Remember that the Update function is called on every frame and this variable contains the number of seconds since last time it got called.
+</p>
+
+<p>To find out which values you can modify, a good starting point is to look on the Inspector window of an object. There you'll see a list of <b>Components</b>, with each Component having a number of <b>Properties</b>. As a rule of thumb, you can modify these properties using the Component.property syntax. So if you add a <b>Rigidbody</b> to the cube (making it affected by physics object), you can change the mass of the cube's Rigidbody from scripting by assigning a value to rigidBody.mass.
+</p>
+
+<h2>Adding Variables</h2>
+
+<p>When playing around with the above script, you might want to adjust the speed of rotation. This can be done by modifying the script directly, but requires Unity to recompile it every time. Also if you attach the script to multiple objects they will all rotate in the same way.
+</p>
+
+<p>To get around this, you can add variables to your script.
+</p>
+
+<p><pre class='codelisting'>
+var speed = 5.0;
+
+function Update () {
+    transform.Rotate(0, speed*Time.deltaTime, 0);
+}
+</pre>
+</p>
+
+<p>Note that after recompiling, the speed variable shows up in the cube's Inspector.
+</p>
+
+<p><img class='figure' src='images/Scripting-5.jpg' />
+</p>
+
+<p>Hit Play and try modifying the value inside the Inspector while the game is running. The speed will change instantly.
+</p>
+
+<h2>Where to go from here</h2>
+
+<p>This was just a short introduction on how to use scripts inside the Editor. For more examples, check out the Script Tutorial project that comes with Unity. You could also read through <a class="wiki"  href="../ScriptReference/index.html">Scripting Overview</a> inside the Script Reference, which contains a more thorough introduction into scripting with Unity plus pointers into the reference itself for in-depth information. Also take a look at the <a class="wiki"  href="http://forum.unity3d.com">Unity Forums</a>.
+</p>
+
+
+
+
+
+		<div class="navigation"><a href="Audio Files.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Creating Gameplay.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

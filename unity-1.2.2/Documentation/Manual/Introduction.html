@@ -1,0 +1,49 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Introduction"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="Introduction" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Graphics.html%22%3EGraphics%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Introduction.html%22%3EIntroduction%3C%2Fa%3E" navigation="%3Ca%20href%3D%22Graphics.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22Meshes.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>Introduction</h1>
+		<p><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Graphics.html">Graphics</a> &gt; <a href="Introduction.html">Introduction</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="Graphics.html"><img src="../images/prev.png"></a><a href="Meshes.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			<p>At the core of the graphics engine lies a system that is as simple as it is powerful: Filters and Pipelines.
+All graphics in unity is processed through a collection of filters (called a pipeline). A filter is a small component that takes some graphics data in, modifies it and spits it out to the next filter in the pipeline - small pieces of code that can modify gemoetry.
+</p>
+
+<p>At the end of a pipeline is a Renderer - this takes the resulting graphics from the pipeline and renders it on screen.
+</p>
+
+<p>Filters fall into 3 categories:
+<dl><dt>Producers</dt><dd>These filters produce geometry. They typically load a mesh from disk and insert it into a pipeline.</dd><dt>Modifiers</dt><dd> These filters modift whatever is passed to them. This could be a scale filter that changes the size of an object, or deformations.</dd><dt>Readers</dt><dd> These filters take whatever is passed to them. Examples include ((comp-CollisionFilter|Collision Filter), that takes whatever graphic is in the pipeline and makes object in the world collide with it. </dd></dl>
+</p>
+
+<p>Together, the different components of filter system provides a huge configurability in the graphics system, allowing for just about any effect imaginable.
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

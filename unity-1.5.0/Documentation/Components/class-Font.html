@@ -1,0 +1,66 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Font"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Font" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-AssetsGroup.html%22%3EAsset%20components%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-Font.html%22%3EFont%3C%2Fa%3E" -->
+		<h1>Font</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-AssetsGroup.html">Asset components</a> &gt; <a href="class-Font.html">Font</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-AudioClip.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-Flare.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Fonts can be created or imported for drawing using either the <a href="../Components/class-GuiText.html">GUI Text</a> the <a href="../Components/class-TextMesh.html">Text Mesh</a> components.
+</p>
+
+<h3>Importing True Type Font files (.ttf)</h3>
+
+<p>To add a font to your project you need to place the <b>.ttf</b> file in your Assets folder. Unity will then automatically import it. You have to make sure that the font has a <i>.ttf</i> extension otherwise Unity will not recognize it.
+</p>
+
+<p>To change the <b>size</b> of the font, highlight the Font in the project view and choose <b>Assets -&gt; Import Settings...</b>.
+</p>
+
+<p>This brings up the dialog where where you can choose the size of the Font, and setting whether all font characters should be converted to upper case or lower case. Case conversion is optional, but using only lower or upper case characters reduces generated texture size.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Font-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Font-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>The imported Fonts show some properties in the Inspector but they can not be modified since they are automatically generated from the imported <i>.ttf</i> file.
+</p>
+
+
+<h2>Hints</h2>
+<p><ul><li>
+To display an imported font select the font and choose <b>GameObject -&gt; Create Other -&gt; Text</b>
+</li></ul>
+</p>
+
+
+
+		<div class="navigation"><a href="class-AudioClip.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-Flare.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

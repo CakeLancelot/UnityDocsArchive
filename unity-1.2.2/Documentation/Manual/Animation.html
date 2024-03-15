@@ -1,0 +1,107 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Animation"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Manual" title="Animation" path="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Game%20Logic.html%22%3EGame%20Logic%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Animation.html%22%3EAnimation%3C%2Fa%3E" navigation="%3Ca%20href%3D%22Physics.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fprev.png%22%3E%3C%2Fa%3E%3Ca%20href%3D%22Sound.html%22%3E%3Cimg%20src%3D%22..%2Fimages%2Fnext.png%22%3E%3C%2Fa%3E" -->
+		<h1>Animation</h1>
+		<p><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Game Logic.html">Game Logic</a> &gt; <a href="Animation.html">Animation</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<div class="navigation"><a href="Physics.html"><img src="../images/prev.png"></a><a href="Sound.html"><img src="../images/next.png"></a></div>
+		<!-- #TemplateBeginEditable name="body" -->
+
+			
+
+<p>Animations are best imported from art programs but can also be created inside Unity.
+</p>
+
+<p>To import an animation from your art package you need to export it as the fbx format or maya mb/ma files.
+When you place your fbx or maya file in unity's project folder it will automatically appear in the project view and you can drag it to the scene. The animation on all objects in the scene is imported automatically and you wil see the animation playing when you hit play.
+</p>
+
+<p>For character animation it is useful to have multiple animations on the same object. For example a run, walk and jump animation.
+These animation clips can be played using the <a href="../ScriptReference/Animation.html">Animation.Play</a> script function.
+</p>
+
+<p>Some art tools support mixing of animations and export multiple animation clips on the same geometry. (Also known as multi-take animations)
+Unity will import multiple animation clips and attach them to the animation. They can be played with scripts using the name of the clip.
+</p>
+
+<p>If you have a tool that does not support multi take animations, you can create multiple copies of the file with the same geometry but different animations. The only problem is that all animation clips will have the same name. To fix this you give the different fbx files a special name using the @ sign. For example <i>monster@run.fbx</i>, <i>monster@walk.fbx</i>, <i>monster@jump.fbx</i>. When unity imports those animations it will rename all animations to the name after the @ sign eg. run, walk or jump.
+</p>
+
+<h2>Creating animations inside Unity</h2>
+
+<p>1. Switch to the animation layout. This will give you a time line pane. In the time line you will create and modify animations.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Animation-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/Animation-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>2. Select the object you want to animate in the scene view.
+</p>
+
+<p>3. Click on the record button in the animation time line
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Animation-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/Animation-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>4. Select another time in the timeline by clicking on it. Then move the object some where else and hit record again.
+</p>
+
+<p>If you hit play now, your object will follow the animation you just created.
+</p>
+
+<h2>Hints</h2>
+<p><ul><li>
+By default only the transform's position, rotation and scale is included in the animation.
+Right-click on the timeline and use the &quot;Add Key With Attribute&quot; menu to add other animatable properties of the selected object to the animation.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Animation-2.jpg%22" --><p><table><tr><td><img class="figure" src="images/Animation-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p></li><li>You can scrub on the timeline by dragging a keyframe with the center mouse button
+</p>
+
+<p></li><li>Post Infinity is used to define behaviour of the animation after the last keyframe. Right-click on the timeline and select Post Infinity -&gt; Repeat from the context menu.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Animation-3.jpg%22" --><p><table><tr><td><img class="figure" src="images/Animation-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p></li><li>Sometimes it is useful to create animations which are shared among all objects.
+To do this, create an animation clip in the assets menu.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Animation-4.jpg%22" --><p><table><tr><td><img class="figure" src="images/Animation-4.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p>Then drag the animation clip on an object. Then you animate the object. Then you can drag the animation clip on other objects.
+</li></ul>
+</p>
+
+
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

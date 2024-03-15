@@ -1,0 +1,46 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Script Reference" title="RequireComponent"-->
+			<title>Unity Script Reference &ndash; RequireComponent</title>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+<link rel="StyleSheet"  href="style.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0 border=0><tr>
+<td class="doctitle" height="50">
+	<h1>class RequireComponent</h1>
+	<p></p>
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1" colspan="1" bgcolor="#C9C9C9"><img src="images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+
+<div class="main"><!-- #TemplateBeginEditable name="body" -->
+<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Script Reference" title="class RequireComponent" path="" navigation="" --><!-- #EndLibraryItem -->
+ <div class="toplink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+   <p class='details'>    <div class="superclass">Attribute</div></p>
+   <p class='first'> The RequireComponent attribute lets automatically add required component as a dependency.</p>
+<span class='toc'><p class='tocheader'>Constructors</p><p><a href='#RequireComponent'>RequireComponent</a></p>
+</span>
+<div class='tocclear'></div>
+   <p class='basic'> When you add a script which uses RequireComponent, the required component will automatically be added to the game object.
+This is useful to avoid setup errors.
+For example a script might require that a rigid body is always added to the same game object.
+Using RequireComponent this will be done automatically, thus you can never get the setup wrong.
+<table width="100%" cellspacing="0" cellpadding="0"><tr><td><div class="code">// C# example:<br/>// Mark the PlayerScript as requiring a rigidbody <span class="keyword">in</span> the game object.<br/>[RequireComponent (typeof (<a href="Rigidbody.html" class="classlink">Rigidbody</a>))]<br/><span class="keyword">class</span> PlayerScript : <a href="MonoBehaviour.html" class="classlink">MonoBehaviour</a><br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="standard_type">void</span> FixedUpdate()  {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rigidbody.AddForce(<a href="Vector3.html#up" class="itemlink">Vector3.up</a>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</div></td></tr></table></p>
+   <a name="Constructors"></a><h2 class="script-section">Constructors</h2>
+	<a name="RequireComponent"></a><h3><span class="full-name">RequireComponent.</span>RequireComponent</h3><div class="synopsis">RequireComponent (<span class="standard_type">Type</span> requiredComponent)</div>
+   <p class='details'> Require a single component</p>
+	&nbsp;<div class="synopsis">RequireComponent (<span class="standard_type">Type</span> requiredComponent, <span class="standard_type">Type</span> requiredComponent2)</div>
+   <p class='details'> Require a two components</p>
+	&nbsp;<div class="synopsis">RequireComponent (<span class="standard_type">Type</span> requiredComponent, <span class="standard_type">Type</span> requiredComponent2, <span class="standard_type">Type</span> requiredComponent3)</div>
+   <p class='details'> Require three components</p>
+ <div class="bottomlink"><a href="index.html">Overview</a> | <a href="20_class_hierarchy.html">Class Hierarchy</a> | <a href="10_reference.html"> Alphabetical Reference </a></div>
+</div><!-- #TemplateEndEditable -->
+</body>
+</html><!-- #EndTemplate -->
+

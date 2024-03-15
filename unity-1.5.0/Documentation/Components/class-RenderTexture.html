@@ -1,0 +1,83 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Components" title="Render Texture"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-h1" -->
+		<!-- #BeginLibraryItem name="/Library/manual-h1.lbi" section="Components" title="Render Texture" path="%3Ca%20href%3D%22index.html%22%3EComponents%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22comp-AssetsGroup.html%22%3EAsset%20components%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22class-RenderTexture.html%22%3ERender%20Texture%3C%2Fa%3E" -->
+		<h1>Render Texture</h1>
+		<p ><a href="index.html">Components</a> &gt; <a href="comp-AssetsGroup.html">Asset components</a> &gt; <a href="class-RenderTexture.html">Render Texture</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	</tr><tr>
+	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="class-Flare.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-Material.html">Next<img src="../images/next.png"></a></div>
+
+			
+
+<p>Render Textures are textures that are created and updated at runtime. Most often you create a Render Texture and setup one of your <a href="../Components/class-Camera.html">Cameras</a> to render into it. Then you can use the contents of render texture in Materials just like you would use a regular texture. For example, <a href="../Manual/HOWTO-Water.html"> Water</a> prefabs in Unity Pro standard assets use render textures to make realtime reflections and refractions.
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-RenderTexture-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-RenderTexture-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The Render Texture Inspector showing the contents of water reflection texture (hence the view is upside down)</i>
+</p>
+
+<p>The Render Texture inspector displays the current contents of Render Texture in realtime and can be an invaluable debugging tool for effects that use render textures. To change the actual settings for render texture, switch Inspector to <i>Debug</i> mode:
+</p>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-RenderTexture-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-RenderTexture-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>The Render Texture Inspector in Debug mode</i>
+</p>
+
+<h2>Properties</h2>
+
+<table class="reftable"><tr><th>Property:</th><th>Function:</th></tr><tr><td><b><nobr>
+Width</nobr></b></td><td> Width of the render texture in pixels.
+</td></tr><tr><td><b><nobr>Height</nobr></b></td><td> Height of the render texture in pixels.
+</td></tr><tr><td><b><nobr>Depth</nobr></b></td><td> Color depth (16 for 64 thousand colors, 32 for truecolor). Usually using a depth of 16 is faster.
+<p></td></tr></tr></table>
+</p>
+
+<h2>Example</h2>
+
+<p>A very quick way to make a live arena-camera in your game:
+</p>
+<ol><li> Create a new Render Texture asset using <b>Assets -&gt; Create -&gt; Render Texture</b>.
+</li><li> Create a new Camera using <b>Game Object -&gt; Create Other -&gt; Camera</b>.
+</li><li> Assign the render texture as a <b>Target Texture</b> of the camera.
+</li><li> Create a wide, tall and thin box; drag the render texture onto it to create a material that uses the render texture.
+</li></ol>
+
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-RenderTexture-2.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-RenderTexture-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+</p>
+
+<p><i>Red tinted box displays live view from the selected camera</i>
+</p>
+
+
+
+
+		<div class="navigation"><a href="class-Flare.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-Material.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

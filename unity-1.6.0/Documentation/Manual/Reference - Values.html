@@ -1,0 +1,67 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Reference - Values"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title="Reference - Values" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Advanced.html%22%3EAdvanced%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Shaders.html%22%3EShaders%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Reference%20-%20Values.html%22%3EReference%20-%20Values%3C%2Fa%3E" -->
+		<h1>Reference - Values</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="Advanced.html">Advanced</a> &gt; <a href="Shaders.html">Shaders</a> &gt; <a href="Reference - Values.html">Reference - Values</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Reference - Structure.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ShaderLab Cheat Sheet.html">Next<img src="../images/next.png"></a></div>
+
+			<h2>Quick reference for values accepted by shaderlab</h2>
+
+<p><a href="../Manual/SL-NameAndTags.html">Tag values</a> - passes and subshaders use tags to tell how and when they expect to be rendered to the rendering engine.
+</p>
+
+<p><a href="../Manual/SL-BuiltinValues.html">Builtin variables</a> - a set of builtin variables for the shaders: transformation matrices, light parameters etc.
+</p>
+
+<hr />
+
+<h3>Fog setup</h3>
+
+<p>By default, the shaders are set up correctly regarding fog. When using multipass, you often want to change the fog value for each pass to avoid applying it multiple times.
+</p>
+
+<p><table class="wikitable"><tr><td class="wikicell" ><b>Property name</b></td><td class="wikicell" ><b>Value</b></td></tr><tr><td class="wikicell" >_FogColor</td><td class="wikicell" >The fog color</td></tr><tr><td class="wikicell" >_AddFog </td><td class="wikicell" > Fog color used for Additive passes.</td></tr><tr><td class="wikicell" >_MultiplyFog </td><td class="wikicell" > Fog color used for multiply passes.</td></tr><tr><td class="wikicell" >_FogStart</td><td class="wikicell" >The fog starting distance</td></tr><tr><td class="wikicell" >_FogEnd</td><td class="wikicell" >The fog end distance</td></tr><tr><td class="wikicell" >_FogDensity</td><td class="wikicell" >The fog density</td></tr></table>
+</p>
+
+<h3>Material setup</h3>
+
+<p>You can change the OpenGL material settings from within a shader using the following properties:
+</p>
+
+<p><table class="wikitable"><tr><td class="wikicell" ><b>Property name</b></td><td class="wikicell" ><b>Value</b></td></tr><tr><td class="wikicell" >Ambient</td><td class="wikicell" >The Ambient color</td></tr><tr><td class="wikicell" >Diffuse </td><td class="wikicell" > Diffuse material color</td></tr><tr><td class="wikicell" >Specular </td><td class="wikicell" > Specular material color</td></tr><tr><td class="wikicell" >Emissive</td><td class="wikicell" > Emissive material color</td></tr><tr><td class="wikicell" >Shininess</td><td class="wikicell" >Shininess factor</td></tr></table>
+</p>
+
+<h3>Simple state commands</h3>
+<p><table class="wikitable"><tr><td class="wikicell" >Name string </td><td class="wikicell" > Sets the name of this pass to string</td></tr><tr><td class="wikicell" >Color color </td><td class="wikicell" > Sets the current color to color</td></tr><tr><td class="wikicell" >Blendcolor color </td><td class="wikicell" > uses color  as the blending color</td></tr><tr><td class="wikicell" >Lighting bool </td><td class="wikicell" > Turns OpenGL lighting on/off</td></tr><tr><td class="wikicell" >Colormask rgbflags  </td><td class="wikicell" >  Disables rendering to the color channels that are set. f.eks will no rendering to the alpha channel occur when writing Colormask Alpha</td></tr><tr><td class="wikicell" >Cull cullorient  </td><td class="wikicell" >  cullorient can be Front, Back or FrontAndBack and sets culling of those faces. It is also possible to write Cull false for no culling.</td></tr><tr><td class="wikicell" >Shademodel model  </td><td class="wikicell" >  Sets the shading model in OpenGL. Can be Smooth or Flat.</td></tr><tr><td class="wikicell" >Seperatespecular bool  </td><td class="wikicell" >  Turn Seperate specular on/off.</td></tr></table>
+</p>
+
+
+
+		<div class="navigation"><a href="Reference - Structure.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ShaderLab Cheat Sheet.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

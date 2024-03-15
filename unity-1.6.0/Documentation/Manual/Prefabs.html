@@ -1,0 +1,149 @@
+<!-- #BeginTemplate "/Templates/manual-page.dwt" --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- #TemplateBeginEditable name="doctitle" -->
+		<!-- #BeginLibraryItem name="/Library/manual-title.lbi" section="Manual" title="Prefabs"-->
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+</head>
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
+<body>
+<table class="titlebar" cellpadding=0 cellspacing=0><tr>
+<td class="doctitle">
+	<!-- #TemplateBeginEditable name="manual-top-nav" -->
+		<!-- #BeginLibraryItem name="/Library/manual-top-nav.lbi" section="Manual" title="Prefabs" text="" navlinks="%3Ca%20href%3D%22index.html%22%3EUnity%20Manual%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22User%20Guide.html%22%3EUser%20Guide%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Building%20Scenes.html%22%3EBuilding%20Scenes%3C%2Fa%3E%20%26gt%3B%20%3Ca%20href%3D%22Prefabs.html%22%3EPrefabs%3C%2Fa%3E" -->
+		<h1>Prefabs</h1>
+		<p ><a href="index.html">Unity Manual</a> &gt; <a href="User Guide.html">User Guide</a> &gt; <a href="Building Scenes.html">Building Scenes</a> &gt; <a href="Prefabs.html">Prefabs</a></p>
+		<!-- #EndLibraryItem -->
+	<!-- #TemplateEndEditable -->
+	</td><td class="navbuttons" rowspan=2>
+	<a href="../Manual/index.html" title="Go to Unity manual"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html" title="Go to Components Reference"><img src="../Images/Reference.png" width="66" height="51"></a><a href="../ScriptReference/index.html" title="Go to Scripting Reference"><img src="../Images/Scripting.png" width="66" height="51"></a><!--BeginSwitchLink--><img src="../Images/SwitchNone.png" width="66" height="51"><!--EndSwitchLink--></td>
+	</tr><tr>
+	<td height="1" bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="500" height="1" alt=""></td>
+	</tr>
+</table>
+<div class="manual">
+	<div class="main">
+		<!-- #TemplateBeginEditable name="body" -->
+		<div class="navigation"><a href="Using Components.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Lights.html">Next<img src="../images/next.png"></a></div>
+
+			
+<p>A Prefab is a reusable Game Object that is stored in the Project View. Prefabs can be inserted into any number of scenes, multiple times per scene.  When you add a Prefab to a scene, you create an <b>instance</b> of it.  All Prefab instances are linked to the original Prefab and are essentially clones of it.
+</p>
+
+<p>No matter how many instances exist in your project, when you make any changes to the Prefab you will see the change applied to all instances.  Whether your Prefab is a single Game Object or a group of Game Objects, a change made anywhere in the Prefab's Hierarchy will always be applied to its instances.
+</p>
+
+<h2>Creating Prefabs</h2>
+<p>In order to create a Prefab, you must make a new, blank Prefab using the menu.  This blank Prefab contains no Game Objects, and you cannot create an instance of it.  Think of a new Prefab as an empty container, waiting to be filled with Game Object data.
+</p>
+
+<p><img class='figure' src='images/Prefabs-0.jpg' /><br>
+<i>A new, empty Prefab.  It cannot be instanced until you fill it with a Game Object.</i>
+</p>
+
+<p>It's easy to fill the Prefab with an existing Game Object.  You use a Game Object that you've built in Hierarchy View.  Here are the precise steps for creating a new Prefab:
+</p>
+
+<table><tr><td><div class='cbox'><div class='cbox-data'>
+<ol><li> In Project View, select the folder you want to contain the Prefab.
+</li><li> Choose <b>Assets -> Create -> Prefab</b> from the main menu, or <i>Create --> Prefab</i> from the Project View context menu.
+</li><li> Name your Prefab using the keyboard.
+</li><li> In Hierarchy View, select the Game Object you wish to make into a Prefab.
+</li><li> Drag &amp; Drop the Game Object onto the Prefab in Project View.
+</li></ol>
+
+<p></div></div></td></tr></table>
+</p>
+
+<p>After you have performed these steps, the Game Object and any children it contains have become the first instance of the Prefab.  From here, creating multiple instances of the Prefab is simple.
+</p>
+
+<h2>Instantiating Prefabs</h2>
+<p>To create a Prefab instance in the current scene, Drag the Prefab from the Project View into the Scene or Hierarchy View. This will copy the top-level Game Object and any child Game Objects from the Prefab to the scene. These Game Objects are <b>linked</b> to the Prefab, as displayed by the blue text used for their name in the Project View.
+</p>
+
+<p><img class='figure' src='images/Prefabs-1.jpg' /><br>
+<i>Three of these Game Objects are linked to Prefabs.  One of them is not.</i>
+</p>
+
+<p>More information about instantiating prefabs from your game scripts is in <a href="../Manual/Instantiating Prefabs.html">Instantiating Prefabs</a> page.
+</p>
+
+<h2>Inheritance</h2>
+<p>Inheritance means that whenever the Prefab changes, those changes are applied to all linked Game Objects.  For example, if you add a new script to a Prefab, all of the linked Game Objects will now contain the script as well.  However, it is possible to change the properties of a Prefab instance while keeping the link intact.  All public properties in the Inspector of a linked Game Object will have a checkbox.  This checkbox is the <b>Override Flag</b>. If the override flag of any property is enabled, that property will not be affected by changes in the Prefab.
+</p>
+
+<p>Stated simply, this allows you to modify linked Game Objects to make them unique from their Prefabs, without breaking the Prefab link.
+</p>
+
+<p><img class='figure' src='images/Prefabs-2.jpg' /><br>
+<i>A linked Game Object with no overrides enabled.</i>
+</p>
+
+<p><img class='figure' src='images/Prefabs-3.jpg' /><br>
+<i>A linked Game Object with one override enabled.</i>
+</p>
+
+<p>A property's override flag is automatically enabled when you change it in the Inspector.
+</p>
+
+<p>There are certain types of changes that will break the link between a Game Object and its Prefab. These are the basic rules for keeping a Prefab link:
+</p>
+
+<ul><li> You cannot add a new Component to a linked Game Object
+</li><li> You cannot remove a Component from a linked Game Object
+</li><li> You cannot attach other Game Objects as children to a linked Game Object
+</li></ul>
+
+<p>If you perform any of these actions, you will see a warning message telling you that the Prefab link will be broken if you continue.  When a Game Object's link to a Prefab has been broken, changes to the Prefab will no longer affect that particular Game Object.
+</p>
+
+<p>If you want to make a change to all Prefab instances that requires an action which will break the link, you can reconnect the changed Game Object to its original Prefab.  This will cause the Prefab to adopt the changes and all linked Game Objects to that Prefab will also be changed.
+</p>
+
+
+<h2>Uploading Changes</h2>
+<p>When creating or editing complex Prefabs, it is easier to instantiate them in the scene, edit the instance, and upload the changes to the Prefab itself.  This workflow will allow you to view and tweak the Prefab in Scene View. Once you're done with your edits, select the root of the linked instance Game Object and choose <b>Game Object -> Upload changes to Prefab</b> from the main menu. All of the changes are then copied back to the Prefab, and applied to all other inheriting objects in the scenes.
+</p>
+
+<p>Alternatively, you can use drag &amp; drop to upload your changes. Drag the instanced Game Object back to the Prefab it came from.  It is important that you change and upload a linked instance and not a random Game Object that is unrelated to the Prefab. If you do, all other linked instances will have their Components and properties overriden.
+</p>
+
+<p>Uploading changes using drag &amp; drop can cause unwanted data loss if you drop a different Game Object onto the Prefab.  Using the <b>Upload Changes to Prefab</b> menu option is safer, as it will only work when the selected Game Object is a linked instance. If you drag &amp; drop a different Game Object onto the Prefab, a confirmation pop-up will appear, verifying that you want to change a Prefab.  If you click yes, the data that existed in your Prefab and its linked instances will be replaced.  This operation cannot be undone so please be sure that you want to make a replacement, or always use <b>Upload Changes to Prefab</b> to play it safe.
+</p>
+
+
+<h2>Connecting Game Objects to Prefabs</h2>
+<p>It is possible to apply a Prefab to an existing, unlinked Game Object.  This will add any of the Prefab's components that aren't contained in the Game Object and link it to the Prefab.  This is most useful in specialized cases.  To connect an existing Game Object to a Prefab, hold <b>Alt</b> and drag the Prefab from the Project View onto the Game Object in the Hierarchy View.  The Game Object will now be a linked instance of the Prefab.  This action will not change the Prefab itself, but will add or remove Components &amp; child Game Objects to or from the Game Object you've linked.
+</p>
+
+
+<h2>Importing Prefabs</h2>
+<p>When you place a mesh asset into your Assets folder, Unity automatically imports the file and generates a prefab out of the mesh.  This Prefab is a little bit different from regular Prefabs, because it is built from the asset file itself.  Because the Prefab is dependent on the asset file itself, whenever you make changes to the asset in your 3d art package, all changes will be reflected in all instantiated prefabs.
+</p>
+
+<p>You are free to instantiate an asset Prefab and alter the instance, but you will not be able to upload changes to the Prefab.  This is because uploading the data would alter the asset file itself.  When you have altered an asset instance to your liking, create a new empty Prefab and drag the Game Object to it.  Now you have a standard Prefab linked to the Game Object and can upload changes normally.
+</p>
+
+<p>Here are some clear steps:
+</p>
+
+<table><tr><td><div class='cbox'><div class='cbox-data'>
+<ol><li> Drag the asset Prefab generated from the Project View into the Scene or Hierarchy View.
+</li><li> Modify it to your liking.  E.g. add scripts, child objects, components etc.
+</li><li> Create a new empty prefab. Choose <b>Assets -> Create -> Prefab</b> from the main menu, or <b>Create -> Prefab</b> from the Project View context menu.
+</li><li> Drag the Game Object from the Hierarchy View to the Prefab.
+</li></ol>
+
+<p></div></div></td></tr></table>
+</p>
+
+
+
+		<div class="navigation"><a href="Using Components.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Lights.html">Next<img src="../images/next.png"></a></div>
+		<!-- #TemplateEndEditable -->	
+	</div>
+</div>
+</body></html>
+<!-- #EndTemplate -->

@@ -6,7 +6,7 @@
 		<!-- #EndLibraryItem -->
 	<!-- #TemplateEndEditable -->
 </head>
-<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
 <body>
 <table class="titlebar" cellpadding=0 cellspacing=0><tr>
 <td class="doctitle">
@@ -17,22 +17,22 @@
 		<!-- #EndLibraryItem -->
 	<!-- #TemplateEndEditable -->
 	</td><td class="navbuttons" rowspan=2>
-	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	<a href="../Manual/index.html"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../Images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../Images/Scripting.png" width="66" height="51"></a></td>
 	</tr><tr>
-	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	<td height="1"bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="236" height="1" alt=""></td>
 	</tr>
 </table>
 <div class="manual">
 	<div class="main">
 		<!-- #TemplateBeginEditable name="body" -->
-		<div class="navigation"><a href="comp-RenderingGroup.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-Light.html">Next<img src="../images/next.png"></a></div>
+		<div class="navigation"><a href="comp-RenderingGroup.html"><img src="../Images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-Light.html">Next<img src="../Images/next.png"></a></div>
 
 			
 
 <p>Cameras are the devices that capture and display the world to the player.  By customizing and manipulating cameras, you can make the presentation of your game truly unique.  You can have an unlimited number of cameras in a scene. They can be set to render in any order, at any place on the screen, or only certain parts of the screen.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Camera-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Camera-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Camera-0.jpg%22" --><p><table><tr><td><img class="figure" src="Images/class-Camera-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>Unity's flexible Camera object</i>
@@ -65,7 +65,7 @@ Clear Flags</nobr></b></td><td> Determines which parts of the screen will be cle
 <p>You can create multiple Cameras and assign each one to a different depth.  Cameras are drawn from low depth to high depth.  In other words, a Camera with a depth of 2 will be drawn on top of a Camera with a depth of 1.  You can adjust the values of the <b>Normalized View Port Rectangle</b> property to resize and position the Camera's view onscreen.  This can create multiple mini-views like missile cams, map views, rear-view mirrors, etc.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Camera-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Camera-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Camera-1.jpg%22" --><p><table><tr><td><img class="figure" src="Images/class-Camera-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>Multiple Cameras making use of <b>Normalized View Port Rectangle</b></i>
@@ -88,7 +88,7 @@ Clear Flags</nobr></b></td><td> Determines which parts of the screen will be cle
 <p>For example, if you wanted to draw a player's gun without letting it get clipped inside the environment, you would set one Camera at Depth 0 to draw the environment, and another Camera at Depth 1 to draw the weapon alone.  The weapon Camera's <b>Clear Flags</b> should be set to to &quot;depth only&quot;.  This will keep the graphical display of the environment on the screen, but discard all information about where each object exists in 3-D space.  When the gun is drawn, the opaque parts will completely cover anything drawn, regardless of how close the gun is to the wall.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Camera-2.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Camera-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Camera-2.jpg%22" --><p><table><tr><td><img class="figure" src="Images/class-Camera-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>The gun is drawn last, after clearing the depth buffer of the cameras before it</i>
@@ -103,7 +103,7 @@ Clear Flags</nobr></b></td><td> Determines which parts of the screen will be cle
 <p>The <b>Near</b> and <b>Far Clip Plane</b> properties determine where the Camera's view begins and ends.  The planes are laid out perpendicular to the Camera's direction and are measured from the its position.  The <b>Near plane</b> is the closest location that will be rendered, and the <b>Far plane</b> is the furthest.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Camera-3.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Camera-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Camera-3.jpg%22" --><p><table><tr><td><img class="figure" src="Images/class-Camera-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>Far Clip Plane set to small versus large distance</i>
@@ -128,7 +128,7 @@ Clear Flags</nobr></b></td><td> Determines which parts of the screen will be cle
 <p>It's easy to create a two-player split screen effect using Normalized Viewport Rectangle.  After you have created your two cameras, change player one's Ymin value to 0.5, and player two's Ymax: value to 0.5.  This will make player one's camera display from halfway up the screen to the top, and player two's camera will start at the bottom and stop halfway up the screen.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Camera-4.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Camera-4.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Camera-4.jpg%22" --><p><table><tr><td><img class="figure" src="Images/class-Camera-4.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>Two-player display created with Normalized Viewport Rectangle</i>
@@ -139,7 +139,7 @@ Clear Flags</nobr></b></td><td> Determines which parts of the screen will be cle
 <p>Marking a Camera as orthographic removes all perspective from the Camera's view.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Camera-5.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Camera-5.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Camera-5.jpg%22" --><p><table><tr><td><img class="figure" src="Images/class-Camera-5.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>A non-orthographic and orthographic camera viewports</i>
@@ -151,7 +151,7 @@ Clear Flags</nobr></b></td><td> Determines which parts of the screen will be cle
 <p>This feature is only available for Unity Pro licenses.  It will place the camera's view onto a <a href="../Components/class-RenderTexture.html"> Texture</a> that can then be applied to another object.  This makes it easy to create sports arena video monitors, surveillance cameras, reflections etc.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Camera-6.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-Camera-6.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-Camera-6.jpg%22" --><p><table><tr><td><img class="figure" src="Images/class-Camera-6.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>Render Texture used to create a live Arena-Cam</i>
@@ -171,7 +171,7 @@ Cameras can be instantiated, parented, and scripted just like any other Game Obj
 
 
 
-		<div class="navigation"><a href="comp-RenderingGroup.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-Light.html">Next<img src="../images/next.png"></a></div>
+		<div class="navigation"><a href="comp-RenderingGroup.html"><img src="../Images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-Light.html">Next<img src="../Images/next.png"></a></div>
 		<!-- #TemplateEndEditable -->	
 	</div>
 </div>

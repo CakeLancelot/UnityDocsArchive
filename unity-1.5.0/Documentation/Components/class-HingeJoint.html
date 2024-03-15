@@ -6,7 +6,7 @@
 		<!-- #EndLibraryItem -->
 	<!-- #TemplateEndEditable -->
 </head>
-<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
 <body>
 <table class="titlebar" cellpadding=0 cellspacing=0><tr>
 <td class="doctitle">
@@ -17,22 +17,22 @@
 		<!-- #EndLibraryItem -->
 	<!-- #TemplateEndEditable -->
 	</td><td class="navbuttons" rowspan=2>
-	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	<a href="../Manual/index.html"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../Images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../Images/Scripting.png" width="66" height="51"></a></td>
 	</tr><tr>
-	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	<td height="1"bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="236" height="1" alt=""></td>
 	</tr>
 </table>
 <div class="manual">
 	<div class="main">
 		<!-- #TemplateBeginEditable name="body" -->
-		<div class="navigation"><a href="class-WheelCollider.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-SpringJoint.html">Next<img src="../images/next.png"></a></div>
+		<div class="navigation"><a href="class-WheelCollider.html"><img src="../Images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-SpringJoint.html">Next<img src="../Images/next.png"></a></div>
 
 			
 
 <p>The Hinge Joint groups together 2 <a href="../Components/class-Rigidbody.html">Rigidbodies</a>, constraining them to move like they are connected by a hinge. It is perfect for doors, but can also be used to model chains, pendulums, etc.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-HingeJoint-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-HingeJoint-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-HingeJoint-0.jpg%22" --><p><table><tr><td><img class="figure" src="Images/class-HingeJoint-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>The Hinge Joint</i>
@@ -69,7 +69,7 @@ Connected Body</nobr></b></td><td> Optional reference to the Rigidbody that the 
 <p>Think about how the hinge of a door works. The <b>Axis</b> in this case is up, positive along the Y axis. The <b>Anchor</b> is placed somewhere at the intersection between door and wall.  You would not need to assign the wall to the <b>Connected Body</b>, because the joint will be connected to the world by default.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-HingeJoint-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-HingeJoint-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-HingeJoint-1.jpg%22" --><p><table><tr><td><img class="figure" src="Images/class-HingeJoint-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>A practical Hinge Joint with no <b>Connected Body</b></i>
@@ -78,7 +78,7 @@ Connected Body</nobr></b></td><td> Optional reference to the Rigidbody that the 
 <p>Now think about a doggy door hinge. The doggy door's <b>Axis</b> would be sideways, positive along the relative X axis.  The main door should be assigned as the <b>Connected Body</b>, so the doggy door's hinge is dependent on the main door's Transform.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-HingeJoint-2.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-HingeJoint-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-HingeJoint-2.jpg%22" --><p><table><tr><td><img class="figure" src="Images/class-HingeJoint-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>A practical Hinge Joint with a proper <b>Connected Body</b></i>
@@ -90,7 +90,7 @@ Connected Body</nobr></b></td><td> Optional reference to the Rigidbody that the 
 <p>Multiple Hinge Joints can also be strung together to create a chain.  Add a joint to each link in the chain, and attach the next link as a <b>Connected Body</b>.  The result should be similar to the following picture.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-HingeJoint-3.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-HingeJoint-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-HingeJoint-3.jpg%22" --><p><table><tr><td><img class="figure" src="Images/class-HingeJoint-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>A Nunchaku made exclusively with primitives and Hinge Joints</i>
@@ -101,7 +101,7 @@ Connected Body</nobr></b></td><td> Optional reference to the Rigidbody that the 
 <p>Hinge Joints can be implemented as axles on vehicles, as seen here in Forest Johnson's racing game. However, it's often better just to use a <a href="../Components/class-WheelCollider.html">Wheel Collider</a> for vehicles.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-HingeJoint-4.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-HingeJoint-4.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-HingeJoint-4.jpg%22" --><p><table><tr><td><img class="figure" src="Images/class-HingeJoint-4.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <h2>Hints</h2>
@@ -114,7 +114,7 @@ You do not need to assign a <b>Connected Body</b> to your joint for it to work.
 
 
 
-		<div class="navigation"><a href="class-WheelCollider.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-SpringJoint.html">Next<img src="../images/next.png"></a></div>
+		<div class="navigation"><a href="class-WheelCollider.html"><img src="../Images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-SpringJoint.html">Next<img src="../Images/next.png"></a></div>
 		<!-- #TemplateEndEditable -->	
 	</div>
 </div>

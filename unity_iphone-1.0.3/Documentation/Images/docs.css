@@ -86,32 +86,32 @@ a img {
 
 .nav .nav-prev .nav-left {
 	float: left;
-	background: url(../images/navigation/prev_left.png) top;
+	background: url(../Images/navigation/prev_left.png) top;
 	height: 22px;
 	width: 20px;
 }
 .nav .nav-prev .nav-right {
 	float: left;
-	background: url(../images/navigation/prev_right.png) top;
+	background: url(../Images/navigation/prev_right.png) top;
 	height: 22px;
 	width: 11px;
 }
 .nav .nav-next .nav-left {
 	float: right;
-	background: url(../images/navigation/next_right.png) top;
+	background: url(../Images/navigation/next_right.png) top;
 	height: 22px;
 	width: 20px;
 }
 .nav .nav-next .nav-right {
 	float: right;
-	background: url(../images/navigation/next_left.png) top;
+	background: url(../Images/navigation/next_left.png) top;
 	height: 22px;
 	width: 11px;
 }
 .nav .nav-prev .nav-main,
 .nav .nav-next .nav-main {
 	height: 22px;
-	background: url(../images/navigation/nav_back.png) top repeat-x;
+	background: url(../Images/navigation/nav_back.png) top repeat-x;
 	white-space: nowrap;
 
 	padding-left: 10px;
@@ -139,7 +139,7 @@ a img {
 /* Styles for the title bar */
 .titlebar {
 	width:100%;
-	background: url(../images/top/stretch.png) top;
+	background: url(../Images/top/stretch.png) top;
 	font-weight:bold;
 	color:#a4abae;
 	vertical-align:middle;
@@ -150,13 +150,13 @@ a img {
 	height:64px;
 }
 .titleright {
-	background: url(../images/top/right.png);
+	background: url(../Images/top/right.png);
 	width:9px;
 	height:64px;
 }
 
 .titlemid {
-	background: url(../images/top/stretch.png) top;
+	background: url(../Images/top/stretch.png) top;
 	height:64px;
 	width:100%;
 }
@@ -213,26 +213,26 @@ a img {
 
 /* Buttons the containing style (.Components) is the location of the current page
     I use this to select between on and off images */
-.Components .manual {	background: url(../images/top/manual.png) top right;  margin:0px;}
-.Components .reference {	background: url(../images/top/reference_on.png) top right; }
-.Components .scripting {	background: url(../images/top/scripting.png) top right; }
-.Components .manual:hover {	background: url(../images/top/manual_hover.png) top right; margin:0px;}
-.Components .reference:hover {	background: url(../images/top/reference_onhover.png) top right; }
-.Components .scripting:hover {	background: url(../images/top/scripting_hover.png) top right; }
+.Components .manual {	background: url(../Images/top/manual.png) top right;  margin:0px;}
+.Components .reference {	background: url(../Images/top/reference_on.png) top right; }
+.Components .scripting {	background: url(../Images/top/scripting.png) top right; }
+.Components .manual:hover {	background: url(../Images/top/manual_hover.png) top right; margin:0px;}
+.Components .reference:hover {	background: url(../Images/top/reference_onhover.png) top right; }
+.Components .scripting:hover {	background: url(../Images/top/scripting_hover.png) top right; }
 
-.Manual .manual {	background: url(../images/top/manual_on.png) top right; margin:0px;}
-.Manual .reference {	background: url(../images/top/reference.png) top right; }
-.Manual .scripting {	background: url(../images/top/scripting.png) top right; }
-.Manual .manual:hover {	background: url(../images/top/manual_onhover.png) top right; margin:0px;}
-.Manual .reference:hover {	background: url(../images/top/reference_hover.png) top right; }
-.Manual .scripting:hover {	background: url(../images/top/scripting_hover.png) top right; }
+.Manual .manual {	background: url(../Images/top/manual_on.png) top right; margin:0px;}
+.Manual .reference {	background: url(../Images/top/reference.png) top right; }
+.Manual .scripting {	background: url(../Images/top/scripting.png) top right; }
+.Manual .manual:hover {	background: url(../Images/top/manual_onhover.png) top right; margin:0px;}
+.Manual .reference:hover {	background: url(../Images/top/reference_hover.png) top right; }
+.Manual .scripting:hover {	background: url(../Images/top/scripting_hover.png) top right; }
 
-.Scripting .manual {	background: url(../images/top/manual.png) top right; margin:0px;}
-.Scripting .reference {	background: url(../images/top/reference.png) top right; }
-.Scripting .scripting {	background: url(../images/top/scripting_on.png) top right; }
-.Scripting .manual:hover {	background: url(../images/top/manual_hover.png) top right; margin:0px;}
-.Scripting .reference:hover {	background: url(../images/top/reference_hover.png) top right; }
-.Scripting .scripting:hover {	background: url(../images/top/scripting_onhover.png) top right; }
+.Scripting .manual {	background: url(../Images/top/manual.png) top right; margin:0px;}
+.Scripting .reference {	background: url(../Images/top/reference.png) top right; }
+.Scripting .scripting {	background: url(../Images/top/scripting_on.png) top right; }
+.Scripting .manual:hover {	background: url(../Images/top/manual_hover.png) top right; margin:0px;}
+.Scripting .reference:hover {	background: url(../Images/top/reference_hover.png) top right; }
+.Scripting .scripting:hover {	background: url(../Images/top/scripting_onhover.png) top right; }
 
 
 /* scriptref styles 

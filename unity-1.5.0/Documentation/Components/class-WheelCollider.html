@@ -6,7 +6,7 @@
 		<!-- #EndLibraryItem -->
 	<!-- #TemplateEndEditable -->
 </head>
-<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
 <body>
 <table class="titlebar" cellpadding=0 cellspacing=0><tr>
 <td class="doctitle">
@@ -17,22 +17,22 @@
 		<!-- #EndLibraryItem -->
 	<!-- #TemplateEndEditable -->
 	</td><td class="navbuttons" rowspan=2>
-	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	<a href="../Manual/index.html"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../Images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../Images/Scripting.png" width="66" height="51"></a></td>
 	</tr><tr>
-	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	<td height="1"bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="236" height="1" alt=""></td>
 	</tr>
 </table>
 <div class="manual">
 	<div class="main">
 		<!-- #TemplateBeginEditable name="body" -->
-		<div class="navigation"><a href="class-MeshCollider.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-HingeJoint.html">Next<img src="../images/next.png"></a></div>
+		<div class="navigation"><a href="class-MeshCollider.html"><img src="../Images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-HingeJoint.html">Next<img src="../Images/next.png"></a></div>
 
 			
 
 <p>The <b>Wheel Collider</b> is a special collider for grounded vehicles. It has built-in collision detection, wheel physics, and a slip-based tire friction model.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-WheelCollider-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-WheelCollider-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-WheelCollider-0.jpg%22" --><p><table><tr><td><img class="figure" src="Images/class-WheelCollider-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>The <b>Wheel Collider</b> Component. Car model courtesy of ATI Technologies Inc.</i>
@@ -63,7 +63,7 @@ Center</nobr></b></td><td> Center of the wheel in object local space.
 <p>You do not turn or roll WheelCollider objects to control the car - the objects that have WheelCollider attached should always be fixed relative to the car itself. However, you might want to turn and roll the graphical wheel representations. The best way to do this is to setup separate objects for WheelColliders and visible wheels:
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-WheelCollider-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-WheelCollider-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-WheelCollider-1.jpg%22" --><p><table><tr><td><img class="figure" src="Images/class-WheelCollider-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>Wheel Collider objects are separated from visible wheel models</i>
@@ -74,7 +74,7 @@ Center</nobr></b></td><td> Center of the wheel in object local space.
 <p>Because cars can achieve large velocities, getting race track collision geometry right is very important. Specifically, the <a href="../Components/class-MeshCollider.html">collision mesh</a> should not have small bumps or dents that make up the visible models (e.g. fence poles). Usually collision mesh for the race track is made separately from the visible mesh, making the collision mesh as smooth as possible. It also should not have thin objects - if you have a thin track border, make it wider in collision mesh (or completely remove the other side if the car can never go there).
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-WheelCollider-2.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-WheelCollider-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-WheelCollider-2.jpg%22" --><p><table><tr><td><img class="figure" src="Images/class-WheelCollider-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>Visible geometry (left) is much more complex than collision geometry (right)</i>
@@ -88,7 +88,7 @@ Center</nobr></b></td><td> Center of the wheel in object local space.
 <p>The curve takes a measure of tire slip as an input and gives a force as output. The curve is approximated by a two-piece spline. The first section goes from <i>(0 , 0)</i> to <i>(<b>ExtremumSlip</b> , <b>ExtremumValue</b>)</i>, at which point the curve's tangent is zero. The second section goes from <i>(<b>ExtremumSlip</b> , <b>ExtremumValue</b>)</i> to <i>(<b>AsymptoteSlip</b> , <b>AsymptoteValue</b>)</i>, where curve's tangent is again zero:
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-WheelCollider-3.jpg%22" --><p><table><tr><td><img class="figure" src="images/class-WheelCollider-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/class-WheelCollider-3.jpg%22" --><p><table><tr><td><img class="figure" src="Images/class-WheelCollider-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>Typical shape of a wheel friction curve</i>
@@ -111,7 +111,7 @@ Extremum Slip/Value</nobr></b></td><td> Curve's extremum point.
 
 
 
-		<div class="navigation"><a href="class-MeshCollider.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-HingeJoint.html">Next<img src="../images/next.png"></a></div>
+		<div class="navigation"><a href="class-MeshCollider.html"><img src="../Images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="class-HingeJoint.html">Next<img src="../Images/next.png"></a></div>
 		<!-- #TemplateEndEditable -->	
 	</div>
 </div>

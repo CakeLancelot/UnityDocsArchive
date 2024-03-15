@@ -6,7 +6,7 @@
 		<!-- #EndLibraryItem -->
 	<!-- #TemplateEndEditable -->
 </head>
-<link rel="StyleSheet"  href="../images/manual.css" type="text/css" />
+<link rel="StyleSheet"  href="../Images/manual.css" type="text/css" />
 <body>
 <table class="titlebar" cellpadding=0 cellspacing=0><tr>
 <td class="doctitle">
@@ -17,15 +17,15 @@
 		<!-- #EndLibraryItem -->
 	<!-- #TemplateEndEditable -->
 	</td><td class="navbuttons" rowspan=2>
-	<a href="../Manual/index.html"><img src="../images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../images/Scripting.png" width="66" height="51"></a></td>
+	<a href="../Manual/index.html"><img src="../Images/Manuals.png" width="66" height="51"></a><a href="../Components/index.html"><img src="../Images/Reference.png" width="62" height="51"></a><a href="../ScriptReference/index.html"><img src="../Images/Scripting.png" width="66" height="51"></a></td>
 	</tr><tr>
-	<td height="1"bgcolor="#C9C9C9"><img src="../images/spacer.gif" width="236" height="1" alt=""></td>
+	<td height="1"bgcolor="#C9C9C9"><img src="../Images/spacer.gif" width="236" height="1" alt=""></td>
 	</tr>
 </table>
 <div class="manual">
 	<div class="main">
 		<!-- #TemplateBeginEditable name="body" -->
-		<div class="navigation"><a href="Game Logic.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Animation.html">Next<img src="../images/next.png"></a></div>
+		<div class="navigation"><a href="Game Logic.html"><img src="../Images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Animation.html">Next<img src="../Images/next.png"></a></div>
 
 			
 
@@ -41,7 +41,7 @@
 <p>Rigidbodies are the gateway for applying physics to your objects. The Rigidbody can receive forces and torque to make your objects move in a realistic way.  Any GameObject must contain a Rigidbody to be influenced by gravity, act under added forces via scripting, or interact with other objects through the Ageia physX physics engine.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-0.jpg%22" --><p><table><tr><td><img class="figure" src="images/Physics-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-0.jpg%22" --><p><table><tr><td><img class="figure" src="Images/Physics-0.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>A GameObject with a Rigidbody component attached</i>
@@ -83,7 +83,7 @@ Mass</nobr></b></td><td> The weight of the object. Keep this below 1 for the bes
 <p>Colliders are another kind of component that must be added alongside the Rigidbody in order to allow collisions to occur.  If two Rigidbodies bump into each other, the phyics engine will not calculate a collision unless both objects also have a Collider attached.  Collider-less Rigidbodies will simply pass through each other during physics simulation.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-1.jpg%22" --><p><table><tr><td><img class="figure" src="images/Physics-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-1.jpg%22" --><p><table><tr><td><img class="figure" src="Images/Physics-1.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>A Rigidbody with a Collider component attached</i>
@@ -147,7 +147,7 @@ The relative masses of two objects determines how they react when they collide.
 This works great for one shot objects like rockets, if you don't want it to start with a large velocity but instead accelerate.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-2.jpg%22" --><p><table><tr><td><img class="figure" src="images/Physics-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-2.jpg%22" --><p><table><tr><td><img class="figure" src="Images/Physics-2.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>A rocket propelled forward by the constant force component</i>
@@ -179,7 +179,7 @@ To make an object flow upwards, add a constant force with the Force property hav
 <p>The Sphere Collider is a basic sphere-shaped collision primitive.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-3.jpg%22" --><p><table><tr><td><img class="figure" src="images/Physics-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-3.jpg%22" --><p><table><tr><td><img class="figure" src="Images/Physics-3.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>(Image of a Sphere Collider in Inspector)</i>
@@ -199,7 +199,7 @@ Material</nobr></b></td><td> Reference to the PhysicMaterial that determines how
 <p>The Sphere Collider can be resized to uniform scale, but not along individual axes. It works great for falling boulders, ping pong balls, marbles, etc.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-4.jpg%22" --><p><table><tr><td><img class="figure" src="images/Physics-4.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-4.jpg%22" --><p><table><tr><td><img class="figure" src="Images/Physics-4.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>A standard Sphere Collider</i>
@@ -252,7 +252,7 @@ To add multiple Colliders for an object, create child objects and attach a Colli
 <p>The Box Collider is a basic cube-shaped collision primitive.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-5.jpg%22" --><p><table><tr><td><img class="figure" src="images/Physics-5.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-5.jpg%22" --><p><table><tr><td><img class="figure" src="Images/Physics-5.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>Box collider here is used to approximate car's hull</i>
@@ -268,7 +268,7 @@ To add multiple Colliders for an object, create child objects and attach a Colli
 <p>The Box Collider can be resized into different shapes of rectangular prisms.  It works great for doors, walls, platforms, etc. It is also effective as a human torso in a ragdoll or car hull in a vehicle. Of course, it works perfectly for just boxes and crates as well!
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-6.jpg%22" --><p><table><tr><td><img class="figure" src="images/Physics-6.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-6.jpg%22" --><p><table><tr><td><img class="figure" src="Images/Physics-6.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>A standard Box Collider</i>
@@ -295,7 +295,7 @@ To add multiple Colliders for an object, create child objects and attach a Colli
 <p>The Mesh Collider takes a <a href="../Components/class-Mesh.html">Mesh Asset</a> and builds its Collider based on that mesh.  It is far more accurate for collision detection than using primitives for complicated meshes, but it cannot collide with other Mesh Colliders.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-7.jpg%22" --><p><table><tr><td><img class="figure" src="images/Physics-7.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-7.jpg%22" --><p><table><tr><td><img class="figure" src="Images/Physics-7.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>A Mesh Collider used on the flag tower object</i>
@@ -331,7 +331,7 @@ Mesh Colliders <span style="text-decoration:underline;">cannot</span> collide wi
 <p>To create a physic material select the menu <b>Assets -&gt; Create -&gt; Physic Material</b>.  Then drag the physic material from the project pane on a collider in the scene.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-8.jpg%22" --><p><table><tr><td><img class="figure" src="images/Physics-8.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-8.jpg%22" --><p><table><tr><td><img class="figure" src="Images/Physics-8.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>The Physic Material</i>
@@ -380,7 +380,7 @@ Don't try to use a standard physic material for the main character. Make a custo
 <p>The Hinge Joint groups together 2 <a href="../Components/class-Rigidbody.html">Rigidbodies</a>, constraining them to move like they are connected by a hinge. It is perfect for doors, but can also be used to model chains, pendulums, etc.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-9.jpg%22" --><p><table><tr><td><img class="figure" src="images/Physics-9.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-9.jpg%22" --><p><table><tr><td><img class="figure" src="Images/Physics-9.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>The Hinge Joint</i>
@@ -417,7 +417,7 @@ Connected Body</nobr></b></td><td> Optional reference to the Rigidbody that the 
 <p>Think about how the hinge of a door works. The <b>Axis</b> in this case is up, positive along the Y axis. The <b>Anchor</b> is placed somewhere at the intersection between door and wall.  You would not need to assign the wall to the <b>Connected Body</b>, because the joint will be connected to the world by default.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-10.jpg%22" --><p><table><tr><td><img class="figure" src="images/Physics-10.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-10.jpg%22" --><p><table><tr><td><img class="figure" src="Images/Physics-10.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>A practical Hinge Joint with no <b>Connected Body</b></i>
@@ -426,7 +426,7 @@ Connected Body</nobr></b></td><td> Optional reference to the Rigidbody that the 
 <p>Now think about a doggy door hinge. The doggy door's <b>Axis</b> would be sideways, positive along the relative X axis.  The main door should be assigned as the <b>Connected Body</b>, so the doggy door's hinge is dependent on the main door's Transform.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-11.jpg%22" --><p><table><tr><td><img class="figure" src="images/Physics-11.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-11.jpg%22" --><p><table><tr><td><img class="figure" src="Images/Physics-11.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>A practical Hinge Joint with a proper <b>Connected Body</b></i>
@@ -438,7 +438,7 @@ Connected Body</nobr></b></td><td> Optional reference to the Rigidbody that the 
 <p>Multiple Hinge Joints can also be strung together to create a chain.  Add a joint to each link in the chain, and attach the next link as a <b>Connected Body</b>.  The result should be similar to the following picture.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-12.jpg%22" --><p><table><tr><td><img class="figure" src="images/Physics-12.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-12.jpg%22" --><p><table><tr><td><img class="figure" src="Images/Physics-12.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <p><i>A Nunchaku made exclusively with primitives and Hinge Joints</i>
@@ -449,7 +449,7 @@ Connected Body</nobr></b></td><td> Optional reference to the Rigidbody that the 
 <p>Hinge Joints can be implemented as axles on vehicles, as seen here in Forest Johnson's racing game. However, it's often better just to use a <a href="../Components/class-WheelCollider.html">Wheel Collider</a> for vehicles.
 </p>
 
-<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-13.jpg%22" --><p><table><tr><td><img class="figure" src="images/Physics-13.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem name="/Library/doc-figure.lbi" src="%22images/Physics-13.jpg%22" --><p><table><tr><td><img class="figure" src="Images/Physics-13.jpg"></td></tr></table></p><!-- #EndLibraryItem -->
 </p>
 
 <h2>Hints</h2>
@@ -465,7 +465,7 @@ You do not need to assign a <b>Connected Body</b> to your joint for it to work.
 
 
 
-		<div class="navigation"><a href="Game Logic.html"><img src="../images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Animation.html">Next<img src="../images/next.png"></a></div>
+		<div class="navigation"><a href="Game Logic.html"><img src="../Images/prev.png">Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Animation.html">Next<img src="../Images/next.png"></a></div>
 		<!-- #TemplateEndEditable -->	
 	</div>
 </div>
